@@ -12,7 +12,48 @@
     :root{--navy:#061a36;--navy2:#08254a;--gold:#c99a43;--gold2:#e2b65f;--ink:#10203c;--muted:#627087;--line:#e6eaf0;--white:#fff;--soft:#f7f9fc;--shadow:0 10px 30px rgba(5,24,51,.08)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fff}a{color:inherit;text-decoration:none}button,input{font:inherit}.container{width:min(1240px,calc(100% - 48px));margin:auto}.site-header{position:absolute;top:0;left:0;width:100%;z-index:20;color:white}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;min-width:235px}.brand-mark{width:46px;height:42px;color:var(--gold2);font-weight:800;font-size:38px;line-height:42px;letter-spacing:-8px;font-family:Georgia,serif;text-shadow:0 0 1px #e7c47e}.brand-name{font-weight:700;font-size:16px;letter-spacing:.5px;white-space:nowrap}.brand-tag{font-size:10px;opacity:.85;margin-top:3px;white-space:nowrap}.nav-links{display:flex;align-items:center;gap:24px;font-size:11px;font-weight:500}.nav-links>a,.nav-item>button{color:#fff;opacity:.94}.nav-item{position:relative}.nav-item>button{background:none;border:0;cursor:pointer;font-size:11px;padding:12px 0}.dropdown{display:none;position:absolute;top:100%;left:-14px;min-width:190px;background:white;color:var(--ink);padding:10px;border-radius:10px;box-shadow:var(--shadow)}.dropdown a{display:block;padding:10px;border-radius:6px;font-size:12px}.dropdown a:hover{background:#f3f6fa}.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:block}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,var(--gold),#b9872e);color:#fff;border:1px solid var(--gold);border-radius:4px;padding:12px 17px;font-size:10px;font-weight:700;letter-spacing:.15px;cursor:pointer;transition:.2s}.nav-cta:hover,.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.lang{background:transparent;color:white;border:0;font-size:11px;cursor:pointer}.mobile-toggle{display:none;background:none;border:1px solid #ffffff55;color:white;border-radius:5px;padding:8px;font-size:20px}
     .hero{min-height:410px;padding:110px 0 64px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 55%,#143e70 0,#071b38 43%,#04152d 75%)}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(3,18,39,.15),rgba(3,18,39,.08)),url('https://images.unsplash.com/photo-1524666041070-9fc6a8a8f416?auto=format&fit=crop&w=1800&q=85');background-position:center 48%;background-size:cover;opacity:.38;mix-blend-mode:screen}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,20,43,.96) 0%,rgba(4,20,43,.83) 34%,rgba(4,20,43,.2) 75%,rgba(4,20,43,.48) 100%)}.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:.95fr 1.4fr;align-items:center;gap:26px}.hero-copy{max-width:500px}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--gold2);font-weight:700}.hero h1{font-size:clamp(30px,3.1vw,43px);line-height:1.12;letter-spacing:-1.4px;margin:13px 0 15px;font-weight:700}.hero h1 span{color:var(--gold2)}.hero p{font-size:13px;line-height:1.7;max-width:420px;color:#e3eaf4;margin:0 0 21px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.btn-outline{background:rgba(3,17,36,.28);border:1px solid #c99a43;color:white}.map-visual{height:250px;position:relative;background:radial-gradient(ellipse at 55% 50%,#153e6b66,transparent 65%);border-radius:50%;overflow:hidden}.map-visual svg{width:100%;height:100%;opacity:.9}.map-label{position:absolute;font-size:10px;font-weight:600;color:white;white-space:nowrap}.map-label:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 0 4px #e2b65f2b;margin-right:6px}.canada{left:14%;top:23%}.germany{left:47%;top:28%}.poland{left:57%;top:17%}.iran{left:66%;top:43%}.china{right:5%;top:39%}.india{left:72%;top:61%}.africa{left:54%;bottom:5%}.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;color:#cbd5e1;background:none;border:0;font-size:30px;cursor:pointer}.slider-arrow.prev{left:12px}.slider-arrow.next{right:12px}
-    .services-grid{position:relative;z-index:5;margin-top:-42px;display:grid;grid-template-columns:repeat(6,1fr);background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}.service-card{min-height:137px;padding:20px 10px 13px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;transition:.2s}.service-card:nth-child(6n){border-right:0}.service-card:nth-child(n+7){border-bottom:0}.service-card:hover{background:#fbfcfe;box-shadow:inset 0 -3px var(--gold)}.service-icon{height:43px;width:43px;color:var(--navy2);margin-bottom:9px}.service-icon svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.service-card:nth-child(3n+2) .service-icon{color:#ad8135}.service-card h3{font-size:11px;line-height:1.35;font-weight:700;margin:0;max-width:145px}.service-arrow{position:absolute;right:13px;bottom:10px;font-size:17px;color:var(--navy2)}
+    .services-grid{position:relative;z-index:5;margin-top:-42px;display:grid;grid-template-columns:repeat(6,1fr);background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}.service-card{min-height:137px;padding:20px 10px 13px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;transition:.2s}.service-card:nth-child(6n){border-right:0}.service-card:nth-child(n+7){border-bottom:0}.service-card:hover{background:#fbfcfe;box-shadow:inset 0 -3px var(--gold)}.service-icon{height:43px;width:43px;color:var(--navy2);margin-bottom:9px}.service-icon{
+  width:43px;
+  height:43px;
+  color:var(--navy2);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#f7f9fc,#fff);
+  border:1px solid #e8edf4;
+  border-radius:12px;
+  padding:9px;
+  transition:all .25s ease;
+}
+.service-icon svg{
+  width:100%;
+  height:100%;
+  stroke:currentColor;
+  stroke-width:1.6;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.service-card:nth-child(3n+2) .service-icon{
+  color:#ad8135;
+}
+.service-card:hover .service-icon{
+  color:var(--gold);
+  border-color:var(--gold);
+  background:#fffaf0;
+  transform:translateY(-3px);
+}
+.service-card{
+  min-height:145px;
+}
+.service-card h3{
+  font-size:11px;
+  line-height:1.5;
+  font-weight:700;
+  margin:0;
+  max-width:145px;
+}.service-card:nth-child(3n+2) .service-icon{color:#ad8135}.service-card h3{font-size:11px;line-height:1.35;font-weight:700;margin:0;max-width:145px}.service-arrow{position:absolute;right:13px;bottom:10px;font-size:17px;color:var(--navy2)}
     .stats{margin:12px auto 0;background:linear-gradient(110deg,#071b39,#061a35);color:white;border-radius:9px;display:grid;grid-template-columns:repeat(5,1fr);padding:20px 15px;box-shadow:var(--shadow)}.stat{display:flex;justify-content:center;align-items:center;gap:12px;border-right:1px solid #ffffff28;padding:0 10px}.stat:last-child{border:0}.stat-icon{font-size:28px;color:var(--gold2)}.stat strong{display:block;font-size:22px;line-height:1.1}.stat span{display:block;font-size:10px;color:#d5deea;margin-top:4px}
     .section{padding:22px 0 0}.section-title{text-align:center;font-size:17px;margin:0 0 17px;font-weight:700;letter-spacing:-.4px}.section-title:after{content:"";display:block;width:48px;height:2px;background:var(--gold);margin:9px auto 0}.industries{display:grid;grid-template-columns:repeat(9,1fr);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:0 4px 18px #0a23400a}.industry{padding:15px 7px;min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-right:1px solid #eef1f5;gap:7px}.industry:last-child{border:0}.industry-icon{font-size:29px;color:var(--navy2);line-height:1}.industry:nth-child(6) .industry-icon{color:#9e7d3c}.industry span:last-child{font-size:10px;font-weight:600}
     .partners{padding-top:19px}.partner-strip{display:grid;grid-template-columns:repeat(11,1fr);align-items:center;border:1px solid #edf0f4;border-radius:8px;overflow:hidden}.partner{height:56px;display:flex;align-items:center;justify-content:center;border-right:1px solid #edf0f4;padding:8px;font-weight:800;font-size:15px;color:#25344b;text-align:center;filter:saturate(.85)}.partner:last-child{border:0}.partner:nth-child(3),.partner:nth-child(7){font-size:11px}.partner .gold{color:#bc8d32}.partner .blue{color:#1478b7}.partner .green{color:#438b68}
@@ -120,14 +161,68 @@
   </div>
 </footer>
 <script>
-const serviceItems=[
- ['API & Raw Material Supply','⚗'],['Pharmaceutical Products','♧'],['Technology Transfer','⚗'],['Contract Manufacturing (CMO)','▥'],['Product Registration','▤'],['Regulatory Affairs','♢'],
- ['Sports Nutrition','⚖'],['Infant Formula & Baby Milk','♙'],['Brand Acquisition & Branding','◇'],['Exclusive Agency','♧'],['International Business Development','◎'],['Supply Chain Solutions','▱'],
- ['Private Label Development','◇'],['Market Entry Strategy','◎'],['Licensing & Partnerships','♧'],['Medical Devices','▣'],['Nutraceuticals & Supplements','✚'],['Export & Distribution','⇄']
+
+const serviceItems = [
+  ['API & Raw Material Supply', 'flask'],
+  ['Pharmaceutical Products', 'pill'],
+  ['Product Registration', 'file-check'],
+  ['Regulatory Affairs', 'shield-check'],
+  ['Contract Manufacturing (CMO)', 'factory'],
+  ['Technology Transfer', 'workflow'],
+  ['Exclusive Agency', 'handshake'],
+  ['Brand Acquisition & Branding', 'gem'],
+  ['International Business Development', 'globe'],
+  ['Market Entry Strategy', 'chart-no-axes-combined'],
+  ['Licensing & Partnerships', 'handshake'],
+  ['Supply Chain Solutions', 'truck'],
+  ['Export & Distribution', 'package-check'],
+  ['Private Label Development', 'tags'],
+  ['Sports Nutrition', 'dumbbell'],
+  ['Infant Formula & Baby Milk', 'baby'],
+  ['Medical Devices', 'stethoscope'],
+  ['Nutraceuticals & Supplements', 'leaf']
 ];
-const industryItems=[['💊','Pharmaceutical'],['♡','Healthcare'],['⚖','Sports Nutrition'],['♙','Infant Formula'],['▣','Medical Devices'],['♧','Food Ingredients'],['♙','Cosmetics'],['♧','Veterinary'],['✚','Nutraceuticals']];
-const serviceGrid=document.getElementById('serviceGrid');
-serviceItems.forEach(([name,icon])=>{const card=document.createElement('a');card.className='service-card';card.href='#contact';card.innerHTML=`<span class="service-icon" aria-hidden="true">${icon}</span><h3>${name}</h3><span class="service-arrow">→</span>`;serviceGrid.appendChild(card)});
+
+const serviceGrid = document.getElementById('serviceGrid');
+
+const serviceIcons = {
+  flask: '<path d="M9 3h6"/><path d="M10 3v7l-5.5 9.2A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.8L14 10V3"/><path d="M8 15h8"/>',
+  pill: '<path d="m10.5 20.5 10-10a5.7 5.7 0 0 0-8-8l-10 10a5.7 5.7 0 0 0 8 8Z"/><path d="m8.5 8.5 7 7"/>',
+  'file-check': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m8 15 3 3 5-6"/>',
+  'shield-check': '<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>',
+  factory: '<path d="M2 22V8l7 4V8l7 4V4h6v18Z"/><path d="M6 16h.01M10 16h.01M14 16h.01M18 16h.01"/>',
+  workflow: '<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="m12 12 3 3-3 3"/>',
+  handshake: '<path d="m11 17 2 2a2 2 0 0 0 3-3"/><path d="m14 14 4 4a2 2 0 0 0 3-3l-6-6"/><path d="m3 11 6-6 5 1 3 3"/><path d="m2 12 5 5a2 2 0 0 0 3-3l-2-2"/><path d="m8 12 4-4 4 1"/>',
+  gem: '<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M2 9h20M10 3 8 9l4 13 4-13-2-6"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>',
+  'chart-no-axes-combined': '<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-5 5"/>',
+  truck: '<path d="M10 17h4V5H2v12h3"/><path d="M14 9h5l3 4v4h-3"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/>',
+  'package-check': '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><path d="M12 13v9"/><path d="m9 16 2 2 4-4"/>',
+  tags: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  dumbbell: '<path d="m6.5 6.5 11 11"/><path d="m21 21-4-4"/><path d="m3 3 4 4"/><path d="m14 7 3-3 3 3-3 3"/><path d="m4 14-3 3 3 3 3-3"/>',
+  baby: '<circle cx="12" cy="5" r="2"/><path d="M9 12a3 3 0 0 1 6 0v2a3 3 0 0 1-6 0Z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21v-3m8 3v-3"/>',
+  stethoscope: '<path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4m10 0h2"/><path d="M10 12v2a6 6 0 0 0 12 0v-2"/><circle cx="22" cy="10" r="2"/>',
+  leaf: '<path d="M11 20A8 8 0 0 1 3 12C3 5 12 3 21 3c0 9-2 18-10 18Z"/><path d="M7 17 17 7"/>'
+};
+
+serviceGrid.innerHTML = '';
+
+serviceItems.forEach(([name, icon], index) => {
+  const card = document.createElement('a');
+  card.className = 'service-card';
+  card.href = '#contact';
+  card.innerHTML = `
+    <span class="service-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img" focusable="false">
+        ${serviceIcons[icon]}
+      </svg>
+    </span>
+    <h3>${name}</h3>
+    <span class="service-arrow">→</span>
+  `;
+  serviceGrid.appendChild(card);
+});
+
 const industryGrid=document.getElementById('industryGrid');
 industryItems.forEach(([icon,name])=>{const el=document.createElement('div');el.className='industry';el.innerHTML=`<span class="industry-icon" aria-hidden="true">${icon}</span><span>${name}</span>`;industryGrid.appendChild(el)});
 const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
