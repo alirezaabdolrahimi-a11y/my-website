@@ -1,539 +1,135 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Niaz Net Tehran — International brand representation, sports nutrition, bulk ingredient sourcing, pharmaceutical APIs and business development.">
-<title>NIAZ NET TEHRAN | Strategic Distribution & Trade</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--navy:#061a36;--navy2:#0b2b50;--gold:#c99a43;--gold2:#e2b65f;--ink:#10203c;--muted:#66748a;--line:#e6eaf0;--soft:#f7f9fc;--shadow:0 15px 40px #061a3614}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fff}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-.container{width:min(1240px,calc(100% - 48px));margin:auto}
-.site-header{position:absolute;top:0;left:0;width:100%;z-index:20;color:#fff}
-.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.brand-mark{width:43px;height:42px;color:var(--gold2);font:800 35px/42px Georgia,serif;letter-spacing:-7px}
-.brand-name{display:block;font-size:14px;font-weight:800;letter-spacing:1px;white-space:nowrap}
-.brand-tag{display:block;font-size:9px;letter-spacing:.5px;opacity:.78;margin-top:4px}
-.nav-links{display:flex;align-items:center;gap:21px;font-size:11px;font-weight:600}
-.nav-links>a{color:#fff;transition:.2s}
-.nav-links>a:hover{color:var(--gold2)}
-.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,var(--gold2),#b9852c);color:#071a34;border:1px solid var(--gold);border-radius:4px;padding:12px 17px;font-size:10px;font-weight:800;letter-spacing:.5px;cursor:pointer;transition:.25s}
-.nav-cta:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #c99a4335}
-.mobile-toggle{display:none;background:transparent;color:white;border:1px solid #ffffff55;border-radius:5px;padding:7px 11px;font-size:20px}
-.hero{position:relative;isolation:isolate;overflow:hidden;color:white;background:radial-gradient(ellipse at 80% 35%,#163d68 0,transparent 45%),linear-gradient(120deg,#04152d,#08264a 68%,#061a36);padding:135px 0 76px;min-height:510px}
-.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,#061a36 0%,#061a36e8 44%,#061a3690 100%);pointer-events:none}
-.hero:after{content:"";position:absolute;z-index:-1;width:600px;height:600px;right:-180px;top:-250px;border:1px solid #e2b65f25;border-radius:50%;box-shadow:0 0 0 55px #e2b65f09,0 0 0 110px #e2b65f07}
-.hero-inner{position:relative;min-height:300px}
-.hero-copy{position:relative;z-index:3;width:min(580px,57%);padding:22px 0 28px}
-.eyebrow{display:flex;align-items:center;gap:10px;color:var(--gold2);font-size:10px;font-weight:800;letter-spacing:2.1px;text-transform:uppercase}
-.eyebrow:before{content:"";width:28px;height:2px;background:var(--gold2)}
-.hero h1{font-size:clamp(34px,4vw,52px);line-height:1.12;letter-spacing:-1.8px;margin:19px 0 16px;font-weight:800;max-width:610px}
-.hero h1 span{color:var(--gold2)}
-.hero p{font-size:13px;line-height:1.9;color:#e0e8f3;max-width:465px;margin:0}
-.hero-copy .hero-subline{margin-top:18px;color:#d4dfed;font-size:10px;letter-spacing:.6px}
-.hero-showcase{position:absolute;z-index:1;top:0;right:-3.5%;width:69%;height:335px;overflow:hidden;border-radius:8px 0 0 8px;border:1px solid #e2b65f44;background:#0b2341;box-shadow:0 30px 80px #0004;isolation:isolate}
-.hero-showcase:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#061a36 0%,#061a36c9 14%,transparent 48%),linear-gradient(0deg,#061a36de 0%,transparent 42%),linear-gradient(135deg,#061a3620,#c99a4310)}
-.showcase-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s}
-.showcase-slide.active{opacity:1;visibility:visible}
-.showcase-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.82) contrast(1.05);transform:scale(1.04);transition:transform 5s ease}
-.showcase-slide.active img{transform:scale(1.12)}
-.showcase-overlay{position:absolute;z-index:3;left:35%;right:25px;bottom:48px;max-width:420px;pointer-events:none}
-.showcase-kicker{font-size:9px;letter-spacing:2px;font-weight:800;color:var(--gold2);text-transform:uppercase;margin-bottom:9px}
-.showcase-overlay h2{font-size:clamp(20px,2.4vw,31px);line-height:1.16;margin:0 0 9px;color:#fff;letter-spacing:-.7px}
-.showcase-overlay p{font-size:11px;line-height:1.7;margin:0;color:#edf2f9;max-width:390px}
-.showcase-footer{position:absolute;z-index:4;left:35%;right:24px;bottom:17px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.slide-counter{font-size:10px;letter-spacing:1px;color:#fff}
-.slide-counter strong{color:var(--gold2)}
-.slide-dots{display:flex;gap:7px}
-.slide-dot{width:22px;height:3px;border:0;padding:0;background:#ffffff66;cursor:pointer;transition:.3s}
-.slide-dot.active{width:38px;background:var(--gold2)}
-.hero-side-note{position:absolute;z-index:4;right:20px;top:19px;display:flex;gap:8px;align-items:center;color:#fff;font-size:8px;letter-spacing:1.5px;text-transform:uppercase}
-.hero-side-note:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px var(--gold2)}
-.hero-bottom-line{position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#c99a4370,transparent)}
-.services-grid{position:relative;z-index:5;margin-top:-34px;display:grid;grid-template-columns:repeat(6,1fr);background:white;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
-.service-card{min-height:140px;padding:20px 10px 15px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;transition:transform .25s,background .25s,box-shadow .25s}
-.service-card:nth-child(6n){border-right:0}
-.service-card:nth-child(n+13){border-bottom:0}
-.service-card:hover{background:#fffdf8;transform:translateY(-3px);box-shadow:inset 0 -3px var(--gold),0 10px 22px #061a360c}
-.service-icon{height:45px;width:45px;display:flex;align-items:center;justify-content:center;color:var(--navy2);background:linear-gradient(145deg,#f4f7fb,#fff);border:1px solid #e5eaf2;border-radius:13px;padding:10px;margin-bottom:12px;box-shadow:0 5px 10px #061a360a;transition:.25s}
-.service-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.service-card:nth-child(3n+2) .service-icon{color:#a77b30}
-.service-card:hover .service-icon{transform:translateY(-3px) rotate(-3deg);color:var(--gold);border-color:#d7b46d;background:#fffaf0;box-shadow:0 8px 18px #c99a4322}
-.service-card h3{font-size:10px;line-height:1.5;font-weight:700;margin:0;max-width:150px}
-.service-arrow{position:absolute;right:11px;bottom:8px;color:var(--gold);font-size:15px}
-.stats{margin:13px auto 0;background:linear-gradient(110deg,#071b39,#061a35);color:white;border-radius:9px;display:grid;grid-template-columns:repeat(5,1fr);padding:21px 15px;box-shadow:var(--shadow)}
-.stat{display:flex;justify-content:center;align-items:center;gap:12px;border-right:1px solid #ffffff28;padding:0 10px}
-.stat:last-child{border:0}
-.stat-icon{font-size:26px;color:var(--gold2)}
-.stat strong{display:block;font-size:21px;line-height:1.1}
-.stat span{display:block;font-size:9px;color:#d5deea;margin-top:5px}
-.section{padding:30px 0 0}
-.section-title{text-align:center;font-size:19px;margin:0 0 20px;font-weight:800;letter-spacing:-.5px}
-.section-title:after{content:"";display:block;width:45px;height:2px;background:var(--gold);margin:10px auto 0}
-.industries{display:grid;grid-template-columns:repeat(9,1fr);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:0 4px 18px #0a23400a}
-.industry{padding:16px 7px;min-height:94px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-right:1px solid #eef1f5;gap:8px}
-.industry:last-child{border:0}
-.industry-icon{font-size:26px;color:var(--navy2);line-height:1}
-.industry span:last-child{font-size:9px;font-weight:700}
-.partners{padding-top:28px}
-.partner-strip{display:grid;grid-template-columns:repeat(8,1fr);align-items:center;border:1px solid #edf0f4;border-radius:8px;overflow:hidden}
-.partner{min-height:65px;display:flex;align-items:center;justify-content:center;border-right:1px solid #edf0f4;padding:8px;font-weight:800;font-size:14px;color:#25344b;text-align:center}
-.partner:nth-child(4n){border-right:0}
-.partner:nth-child(n+5){border-top:1px solid #edf0f4}
-.partner .gold{color:#bc8d32}.partner .blue{color:#1478b7}.partner .green{color:#438b68}
-.split{display:grid;grid-template-columns:1.05fr 1fr;gap:16px;padding-top:28px}
-.panel{border:1px solid var(--line);border-radius:10px;padding:21px;box-shadow:0 4px 20px #10203c05}
-.panel h2{font-size:15px;margin:0 0 18px}
-.reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:19px 13px}
-.reason{display:flex;gap:9px;align-items:flex-start}
-.reason-icon{font-size:22px;color:var(--gold);line-height:1.2}
-.reason h3{font-size:10px;margin:0 0 5px}
-.reason p{font-size:9px;line-height:1.65;color:var(--muted);margin:0}
-.network-map{height:230px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#f6f8fb,#fff)}
-.network-map svg{width:100%;height:100%;opacity:.65}
-.network-pin{position:absolute;font-size:22px;color:var(--navy2);text-shadow:0 2px 3px #fff}
-.pin1{left:24%;top:31%}.pin2{left:58%;top:20%;color:var(--gold)}.pin3{right:16%;top:47%}.pin4{right:24%;bottom:12%}
-.country-card{position:absolute;left:35%;top:33%;background:white;box-shadow:var(--shadow);padding:12px;border-radius:8px;width:155px;font-size:10px}
-.country-card strong{font-size:12px}
-.country-card p{margin:8px 0 10px;color:var(--muted);line-height:1.7}
-.country-card .btn{font-size:9px;padding:8px 10px}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.project-card{border:1px solid var(--line);border-radius:9px;padding:20px;background:#fff;box-shadow:0 4px 18px #0a23400a;transition:.25s}
-.project-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.project-symbol{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:10px;background:#f8f2e6;color:#a77a2a;font-size:22px}
-.project-card h3{font-size:13px;margin:13px 0 8px}
-.project-card p,.project-note,.news-placeholder p{font-size:11px;line-height:1.8;color:var(--muted)}
-.project-note{text-align:center;margin:12px 0 0}
-.news-placeholder{border:1px solid var(--line);border-radius:9px;padding:25px;text-align:center;background:linear-gradient(120deg,#f8fafc,#fff)}
-.news-placeholder strong{font-size:14px}
-.news-placeholder .btn{margin-top:8px}
-.contact-band{margin:28px auto 8px;background:linear-gradient(100deg,#061a36,#09284e);border-radius:9px;color:#fff;display:grid;grid-template-columns:1.5fr auto repeat(2,1fr);align-items:center;padding:20px;gap:17px}
-.contact-band h2{font-size:15px;margin:0 0 6px}
-.contact-band p{font-size:10px;color:#d7e0ed;margin:0}
-.contact-item{border-left:1px solid #ffffff2b;padding-left:15px;display:flex;gap:9px;align-items:center;font-size:9px;line-height:1.5;min-width:0}
-.contact-item b{display:block;font-size:10px}
-.contact-icon{color:var(--gold2);font-size:19px}
-footer{margin-top:0;background:#061a36;color:#fff;border-radius:10px 10px 0 0;padding:29px 0 14px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1fr 1.4fr;gap:25px}
-.footer-brand p{font-size:10px;color:#d0d9e7;line-height:1.8;max-width:245px;margin:14px 0}
-.socials{display:flex;gap:9px}
-.socials a{width:25px;height:25px;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;font-size:10px}
-.footer-col h3{font-size:11px;margin:0 0 14px}
-.footer-col>a{display:block;color:#d0d9e7;font-size:9px;margin:0 0 10px}
-.footer-col>a:hover{color:var(--gold2)}
-.newsletter p{font-size:9px;color:#d0d9e7;line-height:1.6}
-.newsletter form{display:flex;flex-direction:column;gap:8px}
-.newsletter input{width:100%;min-width:0;background:transparent;border:1px solid #ffffff40;border-radius:4px;padding:11px;color:white;font-size:10px}
-.newsletter input::placeholder{color:#c5d0df}
-.newsletter .btn{align-self:flex-start;padding:10px 20px}
-.notice{font-size:10px;color:#d0d9e7;min-height:16px;margin-top:8px;line-height:1.6}
-.footer-bottom{display:flex;justify-content:space-between;gap:16px;border-top:1px solid #ffffff25;margin-top:23px;padding-top:13px;color:#c5d0df;font-size:9px}
-.footer-bottom div{display:flex;gap:22px}
-@media(max-width:1080px){
- .nav-links{gap:12px}.brand-name{font-size:12px}
- .services-grid{grid-template-columns:repeat(4,1fr)}
- .service-card:nth-child(6n){border-right:1px solid var(--line)}
- .service-card:nth-child(4n){border-right:0}
- .service-card:nth-child(n+13){border-bottom:1px solid var(--line)}
- .service-card:nth-child(n+17){border-bottom:0}
- .industries{grid-template-columns:repeat(5,1fr)}
- .industry:nth-child(5n){border-right:0}
- .partner-strip{grid-template-columns:repeat(4,1fr)}
- .partner:nth-child(4n){border-right:0}
- .partner:nth-child(n+5){border-top:1px solid #edf0f4}
- .footer-grid{grid-template-columns:repeat(3,1fr)}
- .contact-band{grid-template-columns:1.5fr auto repeat(2,1fr)}
+/* HERO: compact spacing, seamless image area */
+.hero {
+  padding: 92px 0 58px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #04152d 0%, #071b38 58%, #0b294b 100%);
 }
-@media(max-width:760px){
- .container{width:calc(100% - 28px)}
- .nav{min-height:70px}.brand-mark{font-size:31px;width:38px}
- .brand-name{font-size:12px}.brand-tag{font-size:8px}
- .mobile-toggle{display:block}
- .nav-links{display:none;position:absolute;top:65px;left:14px;right:14px;background:#071b39;padding:14px;border:1px solid #ffffff22;border-radius:9px;align-items:stretch;flex-direction:column;gap:3px}
- .nav-links.open{display:flex}
- .nav-links>a{display:block;padding:12px 8px}
- .nav-cta{align-self:flex-start;margin:7px}
- .hero{padding:101px 0 52px;min-height:0}
- .hero-inner{display:flex;flex-direction:column;gap:0}
- .hero-copy{width:100%;padding:14px 0 23px}
- .hero h1{font-size:clamp(32px,9vw,43px);letter-spacing:-1.1px;margin:15px 0 13px}
- .hero p{font-size:12px;line-height:1.8;max-width:95%}
- .hero-copy .hero-subline{font-size:9px;line-height:1.7}
- .hero-showcase{position:relative;top:auto;right:auto;width:100%;height:290px;border-radius:7px;margin:0}
- .showcase-overlay{left:18px;right:18px;bottom:48px}
- .showcase-overlay h2{font-size:24px}
- .showcase-overlay p{font-size:10px}
- .showcase-footer{left:18px;right:18px}
- .hero-side-note{right:13px;top:13px;font-size:7px}
- .services-grid{margin-top:-25px;grid-template-columns:repeat(2,1fr)}
- .service-card{min-height:125px;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
- .service-card:nth-child(2n){border-right:0!important}
- .service-card:nth-last-child(-n+2){border-bottom:0!important}
- .stats{grid-template-columns:repeat(2,1fr);gap:0;padding:8px}
- .stat{justify-content:flex-start;padding:13px 10px;border-right:0;border-bottom:1px solid #ffffff28}
- .stat:nth-child(odd){border-right:1px solid #ffffff28}
- .stat:last-child{grid-column:span 2;border-bottom:0;justify-content:center}
- .stat strong{font-size:18px}.stat-icon{font-size:22px}
- .section{padding-top:25px}
- .industries{grid-template-columns:repeat(3,1fr)}
- .industry{border-bottom:1px solid #eef1f5}
- .industry:nth-child(3n){border-right:0}
- .industry:nth-last-child(-n+3){border-bottom:0}
- .partner-strip{grid-template-columns:repeat(2,1fr)}
- .partner{border-bottom:1px solid #edf0f4;min-height:55px}
- .partner:nth-child(2n){border-right:0}
- .partner:nth-child(n+5){border-top:0}
- .partner:nth-last-child(-n+2){border-bottom:0}
- .split{grid-template-columns:1fr;gap:13px}
- .panel{padding:17px}
- .contact-band{grid-template-columns:1fr 1fr;padding:17px;gap:15px}
- .contact-band>div:first-child{grid-column:span 2}
- .contact-band>.btn{justify-self:start}
- .contact-item{border-left:0;padding-left:0}
- .footer-grid{grid-template-columns:repeat(2,1fr);gap:23px 18px}
- .footer-brand{grid-column:span 2}
- .newsletter{grid-column:span 2}
- .footer-bottom{flex-direction:column}
- .footer-bottom div{flex-wrap:wrap;gap:12px}
- .project-grid{grid-template-columns:1fr}
+
+.hero:before {
+  content: none;
 }
-@media(max-width:390px){
- .hero h1{font-size:31px}
- .hero-showcase{height:260px}
- .showcase-overlay h2{font-size:21px}
- .reasons{grid-template-columns:1fr}
- .contact-band{grid-template-columns:1fr}
- .contact-band>div:first-child{grid-column:auto}
- .contact-band>.btn{justify-self:start}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  align-items: center;
+  gap: 24px;
+  min-height: 390px;
 }
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+  padding: 20px 0;
 }
-</style>
-</head>
-<body>
-<header class="site-header">
- <div class="container nav">
-  <a class="brand" href="#home" aria-label="Niaz Net Tehran home">
-   <span class="brand-mark">NИ</span>
-   <span><span class="brand-name">NIAZ NET TEHRAN</span><span class="brand-tag">Strategic Distribution &amp; Trade</span></span>
-  </a>
-  <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-  <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-   <a href="#home">Home</a>
-   <a href="about.html">About Us</a>
-   <a href="#services">Services</a>
-   <a href="#industries">Industries</a>
-   <a href="#partners">Partners</a>
-   <a href="#projects">Projects</a>
-   <a href="#news">News</a>
-   <a href="#contact">Contact</a>
-   <a class="nav-cta" href="#contact">GET IN TOUCH →</a>
-  </nav>
- </div>
-</header>
 
-<main>
-<section class="hero" id="home">
- <div class="container hero-inner">
-  <div class="hero-copy">
-   <div class="eyebrow">Connecting markets worldwide</div>
-   <h1>Strategic Distribution &amp; Trade<br><span>Connecting Global Brands with New Opportunities</span></h1>
-   <p>We deliver strategic sourcing, pharmaceutical distribution, technology transfer and business development solutions across international markets.</p>
-   <p class="hero-subline">GLOBAL SOURCING · BRAND REPRESENTATION · BULK INGREDIENTS · MARKET DEVELOPMENT</p>
-  </div>
-
-  <div class="hero-showcase" id="heroShowcase" aria-label="Featured business capabilities">
-   <article class="showcase-slide active" aria-hidden="false">
-    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85" alt="International business professionals discussing brand representation and distribution partnerships">
-    <div class="showcase-overlay">
-     <div class="showcase-kicker">01 / Brand acquisition</div>
-     <h2>International Brand Representation</h2>
-     <p>Building relationships with European and American brands, negotiating representation opportunities and developing long-term market partnerships.</p>
-    </div>
-   </article>
-
-   <article class="showcase-slide" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1600&q=85" alt="Professional sports nutrition supplements including protein powder and performance products">
-    <div class="showcase-overlay">
-     <div class="showcase-kicker">02 / Sports nutrition</div>
-     <h2>Sports Nutrition &amp; Bulk Sourcing</h2>
-     <p>Whey protein, creatine and performance supplements — from international bulk ingredient sourcing to finished products, private label and brand representation.</p>
-    </div>
-   </article>
-
-   <article class="showcase-slide" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=1600&q=85" alt="Infant nutrition products and premium formula packaging">
-    <div class="showcase-overlay">
-     <div class="showcase-kicker">03 / Infant nutrition</div>
-     <h2>Infant Nutrition &amp; European Partnerships</h2>
-     <p>Developing partnerships with established infant nutrition brands and coordinating qualified bulk ingredient sourcing and supply opportunities.</p>
-    </div>
-   </article>
-
-   <article class="showcase-slide" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1600&q=85" alt="Pharmaceutical laboratory and active pharmaceutical ingredient quality work">
-    <div class="showcase-overlay">
-     <div class="showcase-kicker">04 / Pharmaceutical ingredients</div>
-     <h2>Active Pharmaceutical Ingredients</h2>
-     <p>Connecting buyers with qualified API sources in Europe and leading manufacturers in China and India, with a focus on documentation and supplier qualification.</p>
-    </div>
-   </article>
-
-   <div class="hero-side-note">International sourcing &amp; partnerships</div>
-   <div class="showcase-footer">
-    <div class="slide-counter"><strong id="slideCurrent">01</strong> / 04</div>
-    <div class="slide-dots" aria-label="Choose featured slide">
-     <button class="slide-dot active" type="button" aria-label="Show brand representation slide" aria-pressed="true"></button>
-     <button class="slide-dot" type="button" aria-label="Show sports nutrition slide" aria-pressed="false"></button>
-     <button class="slide-dot" type="button" aria-label="Show infant nutrition slide" aria-pressed="false"></button>
-     <button class="slide-dot" type="button" aria-label="Show API slide" aria-pressed="false"></button>
-    </div>
-   </div>
-  </div>
- </div>
- <div class="hero-bottom-line"></div>
-</section>
-
-<section class="container" id="services" aria-label="Our services">
- <div class="services-grid" id="serviceGrid"></div>
- <div class="stats">
-  <div class="stat"><div class="stat-icon">▦</div><div><strong>Global</strong><span>Business Development</span></div></div>
-  <div class="stat"><div class="stat-icon">◎</div><div><strong>Worldwide</strong><span>Sourcing Opportunities</span></div></div>
-  <div class="stat"><div class="stat-icon">♧</div><div><strong>Brand</strong><span>Representation</span></div></div>
-  <div class="stat"><div class="stat-icon">⇄</div><div><strong>Bulk</strong><span>Ingredient Supply</span></div></div>
-  <div class="stat"><div class="stat-icon">✓</div><div><strong>Quality</strong><span>Focused Partnerships</span></div></div>
- </div>
-</section>
-
-<section class="container section" id="industries">
- <h2 class="section-title">Industries We Serve</h2>
- <div class="industries" id="industryGrid"></div>
-</section>
-
-<section class="container section partners" id="partners">
- <h2 class="section-title">Global Industry Landscape</h2>
- <div class="partner-strip">
-  <div class="partner"><span class="gold">◉ DSM</span></div>
-  <div class="partner"><span class="blue">KERRY</span></div>
-  <div class="partner"><span class="gold">Glanbia<br>Nutritionals</span></div>
-  <div class="partner">Lonza</div>
-  <div class="partner">BASF</div>
-  <div class="partner"><span class="blue">IFF</span></div>
-  <div class="partner"><span class="green">Arla</span></div>
-  <div class="partner">Fonterra</div>
- </div>
- <p class="project-note">Examples of companies in relevant industry sectors, shown for context only. This display does not imply an existing partnership or authorization.</p>
-</section>
-
-<section class="container split" id="about">
- <div class="panel">
-  <h2>Why Choose Niaz Net?</h2>
-  <div class="reasons">
-   <div class="reason"><div class="reason-icon">◎</div><div><h3>Global Sourcing</h3><p>Identify and coordinate supply opportunities with manufacturers and qualified suppliers worldwide.</p></div></div>
-   <div class="reason"><div class="reason-icon">♧</div><div><h3>Brand Representation</h3><p>Support brand owners seeking distribution, representation and long-term market development.</p></div></div>
-   <div class="reason"><div class="reason-icon">⇄</div><div><h3>Bulk Ingredients</h3><p>Coordinate bulk sourcing opportunities for sports nutrition and pharmaceutical ingredients.</p></div></div>
-   <div class="reason"><div class="reason-icon">◇</div><div><h3>Private Label</h3><p>Explore product development and private-label manufacturing opportunities with suitable partners.</p></div></div>
-   <div class="reason"><div class="reason-icon">▤</div><div><h3>Regulatory Coordination</h3><p>Coordinate product documentation and registration-related communication with relevant parties.</p></div></div>
-   <div class="reason"><div class="reason-icon">◎</div><div><h3>Market Entry</h3><p>Develop commercial pathways to introduce products into target markets.</p></div></div>
-   <div class="reason"><div class="reason-icon">⚗</div><div><h3>Technology Transfer</h3><p>Facilitate discussions around licensing, local production and technical collaboration.</p></div></div>
-   <div class="reason"><div class="reason-icon">↗</div><div><h3>Business Development</h3><p>Connect manufacturers, brand owners and commercial partners around shared opportunities.</p></div></div>
-  </div>
- </div>
-
- <div class="panel">
-  <h2>Our Global Network</h2>
-  <div class="network-map">
-   <svg viewBox="0 0 600 300" aria-hidden="true">
-    <defs><pattern id="mapdots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#9aaabd"/></pattern></defs>
-    <path fill="url(#mapdots)" d="M38 70L90 39 144 45 175 68 162 102 130 119 117 151 83 138 61 108ZM220 63L257 45 285 59 298 86 280 105 251 101 238 124 218 100ZM264 129L299 117 328 139 344 176 323 225 304 240 287 201 281 166ZM312 68L369 48 423 63 456 84 503 82 552 113 531 142 490 134 456 154 413 132 381 110 343 108ZM468 183L507 174 543 198 530 229 496 237 478 211Z"/>
-   </svg>
-   <span class="network-pin pin1">●</span><span class="network-pin pin2">●</span><span class="network-pin pin3">●</span><span class="network-pin pin4">●</span>
-   <div class="country-card"><strong>International Network</strong><p>Supplier discovery<br>Brand partnerships<br>Ingredient sourcing<br>Market development</p><a class="btn" href="#contact">CONTACT US →</a></div>
-  </div>
- </div>
-</section>
-
-<section class="container section" id="projects">
- <h2 class="section-title">Selected Capabilities</h2>
- <div class="project-grid">
-  <article class="project-card"><span class="project-symbol">↗</span><h3>Brand Acquisition &amp; Representation</h3><p>Identifying suitable international brands and coordinating discussions around distribution, agency and market development opportunities.</p></article>
-  <article class="project-card"><span class="project-symbol">⚗</span><h3>Sports Nutrition &amp; Bulk Ingredients</h3><p>Connecting product opportunities across whey protein, creatine, performance supplements, bulk ingredients and private-label manufacturing.</p></article>
-  <article class="project-card"><span class="project-symbol">⇄</span><h3>Pharmaceutical Sourcing &amp; API</h3><p>Coordinating supplier discovery, documentation and commercial communication for active pharmaceutical ingredients and related products.</p></article>
- </div>
- <p class="project-note">Capabilities are presented for business development purposes. Specific supply, representation and regulatory engagements are subject to qualification and agreement.</p>
-</section>
-
-<section class="container section" id="news">
- <h2 class="section-title">News &amp; Events</h2>
- <div class="news-placeholder"><strong>Let's Discuss Your Next Market Opportunity</strong><p>Contact our team to discuss international representation, sourcing, bulk ingredients and commercial cooperation.</p><a class="btn" href="#contact">CONTACT OUR TEAM →</a></div>
-</section>
-
-<section class="container contact-band" id="contact">
- <div><h2>Let's Build Success Together</h2><p>Let's explore the right sourcing and market development opportunity for your business.</p></div>
- <a class="btn" href="mailto:info@niaznet.com">CONTACT US →</a>
- <div class="contact-item"><span class="contact-icon">✉</span><span><b>Email</b>info@niaznet.com</span></div>
- <div class="contact-item"><span class="contact-icon">in</span><span><b>LinkedIn</b>Niaz Net Tehran</span></div>
-</section>
-</main>
-
-<footer>
- <div class="container">
-  <div class="footer-grid">
-   <div class="footer-brand">
-    <a class="brand" href="#home"><span class="brand-mark">NИ</span><span><span class="brand-name">NIAZ NET TEHRAN</span><span class="brand-tag">Strategic Distribution &amp; Trade</span></span></a>
-    <p>Niaz Net Tehran supports international business development, brand representation and sourcing opportunities across pharmaceuticals, healthcare, sports nutrition and related industries.</p>
-    <div class="socials"><a href="#contact" aria-label="LinkedIn">in</a><a href="#contact" aria-label="Instagram">◎</a><a href="#contact" aria-label="WhatsApp">◉</a><a href="mailto:info@niaznet.com" aria-label="Email">✉</a></div>
-   </div>
-   <div class="footer-col"><h3>Quick Links</h3><a href="#about">About Us</a><a href="#services">Our Services</a><a href="#industries">Industries</a><a href="#partners">Industry Landscape</a><a href="#projects">Capabilities</a><a href="#news">News &amp; Events</a></div>
-   <div class="footer-col"><h3>Our Services</h3><a href="#services">API Supply</a><a href="#services">Bulk Ingredients</a><a href="#services">Brand Representation</a><a href="#services">Private Label</a><a href="#services">Technology Transfer</a><a href="#services">Market Entry</a></div>
-   <div class="footer-col"><h3>Industries</h3><a href="#industries">Pharmaceutical</a><a href="#industries">Sports Nutrition</a><a href="#industries">Infant Nutrition</a><a href="#industries">Healthcare</a><a href="#industries">Medical Devices</a><a href="#industries">Nutraceuticals</a></div>
-   <div class="footer-col newsletter"><h3>Contact Our Team</h3><p>Send us your business inquiry and areas of interest.</p><form id="newsletterForm"><input id="newsletterEmail" type="email" placeholder="Your email address" required aria-label="Your email address"><button class="btn" type="submit">SEND INQUIRY →</button></form><div class="notice" id="newsletterNotice" role="status"></div></div>
-  </div>
-  <div class="footer-bottom"><span>© <span id="year"></span> Niaz Net Tehran. All Rights Reserved.</span><div><a href="mailto:info@niaznet.com?subject=Privacy%20Policy%20Request">Privacy Policy</a><a href="mailto:info@niaznet.com?subject=Terms%20of%20Use%20Request">Terms of Use</a><a href="#home">Back to Top ↑</a></div></div>
- </div>
-</footer>
-
-<script>
-const serviceItems=[
- ['API & Raw Material Supply','flask'],
- ['Pharmaceutical Products','pill'],
- ['Product Registration','file-check'],
- ['Regulatory Affairs','shield-check'],
- ['Contract Manufacturing (CMO)','factory'],
- ['Technology Transfer','workflow'],
- ['Exclusive Agency','handshake'],
- ['Brand Acquisition & Branding','gem'],
- ['International Business Development','globe'],
- ['Market Entry Strategy','chart'],
- ['Licensing & Partnerships','handshake'],
- ['Supply Chain Solutions','truck'],
- ['Export & Distribution','package'],
- ['Private Label Development','tags'],
- ['Sports Nutrition: Whey & Creatine','dumbbell'],
- ['Infant Formula & Baby Milk','baby'],
- ['Medical Devices','stethoscope'],
- ['Nutraceuticals & Supplements','leaf']
-];
-
-const serviceIcons={
- flask:'<path d="M9 3h6"/><path d="M10 3v7l-5.5 9.2A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.8L14 10V3"/><path d="M8 15h8"/>',
- pill:'<path d="m10.5 20.5 10-10a5.7 5.7 0 0 0-8-8l-10 10a5.7 5.7 0 0 0 8 8Z"/><path d="m8.5 8.5 7 7"/>',
- 'file-check':'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m8 15 3 3 5-6"/>',
- 'shield-check':'<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>',
- factory:'<path d="M2 22V8l7 4V8l7 4V4h6v18Z"/><path d="M6 16h.01M10 16h.01M14 16h.01M18 16h.01"/>',
- workflow:'<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="m12 12 3 3-3 3"/>',
- handshake:'<path d="m11 17 2 2a2 2 0 0 0 3-3"/><path d="m14 14 4 4a2 2 0 0 0 3-3l-6-6"/><path d="m3 11 6-6 5 1 3 3"/><path d="m2 12 5 5a2 2 0 0 0 3-3l-2-2"/><path d="m8 12 4-4 4 1"/>',
- gem:'<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M2 9h20M10 3 8 9l4 13 4-13-2-6"/>',
- globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>',
- chart:'<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-5 5"/>',
- truck:'<path d="M10 17h4V5H2v12h3"/><path d="M14 9h5l3 4v4h-3"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/>',
- package:'<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><path d="M12 13v9"/>',
- tags:'<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
- dumbbell:'<path d="m6.5 6.5 11 11"/><path d="m21 21-4-4"/><path d="m3 3 4 4"/><path d="m14 7 3-3 3 3-3 3"/><path d="m4 14-3 3 3 3 3-3"/>',
- baby:'<circle cx="12" cy="5" r="2"/><path d="M9 12a3 3 0 0 1 6 0v2a3 3 0 0 1-6 0Z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21v-3m8 3v-3"/>',
- stethoscope:'<path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4m10 0h2"/><path d="M10 12v2a6 6 0 0 0 12 0v-2"/><circle cx="22" cy="10" r="2"/>',
- leaf:'<path d="M11 20A8 8 0 0 1 3 12C3 5 12 3 21 3c0 9-2 18-10 18Z"/><path d="M7 17 17 7"/>'
-};
-
-const serviceGrid=document.getElementById('serviceGrid');
-serviceItems.forEach(([name,icon])=>{
- const card=document.createElement('a');
- card.className='service-card';
- card.href='#contact';
- card.innerHTML=`<span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">${serviceIcons[icon]}</svg></span><h3>${name}</h3><span class="service-arrow">→</span>`;
- serviceGrid.appendChild(card);
-});
-
-const industryItems=[
- ['💊','Pharmaceutical'],
- ['♡','Healthcare'],
- ['🏋','Sports Nutrition'],
- ['♙','Infant Nutrition'],
- ['▣','Medical Devices'],
- ['♧','Food Ingredients'],
- ['✧','Cosmetics'],
- ['♧','Veterinary'],
- ['✚','Nutraceuticals']
-];
-const industryGrid=document.getElementById('industryGrid');
-industryItems.forEach(([icon,name])=>{
- const el=document.createElement('div');
- el.className='industry';
- el.innerHTML=`<span class="industry-icon" aria-hidden="true">${icon}</span><span>${name}</span>`;
- industryGrid.appendChild(el);
-});
-
-/* Four-slide hero carousel */
-const slides=[...document.querySelectorAll('.showcase-slide')];
-const dots=[...document.querySelectorAll('.slide-dot')];
-const slideCurrent=document.getElementById('slideCurrent');
-const showcase=document.getElementById('heroShowcase');
-let activeSlide=0;
-let slideTimer;
-function showSlide(index){
- activeSlide=(index+slides.length)%slides.length;
- slides.forEach((slide,i)=>{
-  const active=i===activeSlide;
-  slide.classList.toggle('active',active);
-  slide.setAttribute('aria-hidden',String(!active));
- });
- dots.forEach((dot,i)=>{
-  const active=i===activeSlide;
-  dot.classList.toggle('active',active);
-  dot.setAttribute('aria-pressed',String(active));
- });
- slideCurrent.textContent=String(activeSlide+1).padStart(2,'0');
+.hero-showcase {
+  position: relative;
+  height: 390px;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  isolation: isolate;
+  background: #102e52;
+  box-shadow: none;
 }
-function startSlideTimer(){
- clearInterval(slideTimer);
- slideTimer=setInterval(()=>showSlide(activeSlide+1),6000);
+
+.showcase-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transform: scale(1.02);
+  transition: opacity .65s ease, transform .8s ease, visibility .65s;
 }
-dots.forEach((dot,index)=>dot.addEventListener('click',()=>{
- showSlide(index);
- startSlideTimer();
-}));
-showcase.addEventListener('mouseenter',()=>clearInterval(slideTimer));
-showcase.addEventListener('mouseleave',startSlideTimer);
-showcase.addEventListener('focusin',()=>clearInterval(slideTimer));
-showcase.addEventListener('focusout',startSlideTimer);
-showSlide(0);
-startSlideTimer();
 
-/* Mobile navigation */
-const toggle=document.getElementById('mobileToggle');
-const nav=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{
- const open=nav.classList.toggle('open');
- toggle.setAttribute('aria-expanded',String(open));
- toggle.textContent=open?'×':'☰';
-});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
- nav.classList.remove('open');
- toggle.setAttribute('aria-expanded','false');
- toggle.textContent='☰';
-}));
+.showcase-image.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 1;
+}
 
-/* The form opens an email draft; no data is stored by this page. */
-document.getElementById('newsletterForm').addEventListener('submit',e=>{
- e.preventDefault();
- const email=document.getElementById('newsletterEmail').value.trim();
- if(!email)return;
- const subject=encodeURIComponent('Niaz Net Tehran — Business Inquiry');
- const body=encodeURIComponent('Please contact me about your services.\n\nMy email: '+email);
- document.getElementById('newsletterNotice').textContent='Opening your email application…';
- window.location.href='mailto:info@niaznet.com?subject='+subject+'&body='+body;
-});
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
-</body>
-</html>
+.showcase-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 0;
+  transition: transform .8s ease;
+}
+
+.showcase-image:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 17, 36, .94) 0%,
+    rgba(3, 17, 36, .25) 48%,
+    rgba(3, 17, 36, .05) 100%
+  );
+  pointer-events: none;
+}
+
+.showcase-image span {
+  position: absolute;
+  z-index: 2;
+  left: 26px;
+  right: 20px;
+  bottom: 26px;
+  color: #fff;
+  font-size: clamp(17px, 2vw, 25px);
+  line-height: 1.3;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .45);
+}
+
+.showcase-image.active:before {
+  content: none;
+}
+
+.hero-showcase:hover .showcase-image.active img {
+  transform: scale(1.04);
+}
+
+@media (min-width: 761px) {
+  .hero-showcase {
+    width: calc(100% + 70px);
+    margin-right: -70px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 88px 0 42px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: 0;
+  }
+
+  .hero-copy {
+    padding: 8px 0 0;
+  }
+
+  .hero-showcase {
+    width: 100%;
+    height: 270px;
+    margin: 0;
+    border-radius: 8px;
+  }
+}
