@@ -117,6 +117,7 @@ button,input{font:inherit}
   border:0!important;
   outline:0!important;
 }
+
 .showcase-image:after{
   content:"";
   position:absolute;
@@ -124,9 +125,18 @@ button,input{font:inherit}
   z-index:1;
   pointer-events:none;
   background:
-    linear-gradient(90deg,#061a36 0%,rgba(6,26,54,.94) 5%,rgba(6,26,54,.70) 26%,rgba(6,26,54,.24) 60%,rgba(6,26,54,.12) 100%),
-    linear-gradient(0deg,rgba(3,17,36,.80) 0%,rgba(3,17,36,.08) 48%,rgba(3,17,36,.10) 100%);
+    linear-gradient(90deg,
+      rgba(6,26,54,.96) 0%,
+      rgba(6,26,54,.78) 12%,
+      rgba(6,26,54,.28) 38%,
+      rgba(6,26,54,.04) 70%,
+      rgba(6,26,54,0) 100%),
+    linear-gradient(0deg,
+      rgba(3,17,36,.48) 0%,
+      rgba(3,17,36,.04) 35%,
+      rgba(3,17,36,0) 65%);
 }
+
 .showcase-image span{
   position:absolute;
   z-index:2;
