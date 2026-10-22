@@ -8,6 +8,133 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  /* Compact hero with an animated service showcase */
+.hero {
+  min-height: 0;
+  padding: 100px 0 54px;
+}
+
+.hero-inner {
+  grid-template-columns: .9fr 1.1fr;
+  gap: 38px;
+}
+
+.hero-copy {
+  max-width: 500px;
+}
+
+.hero p {
+  margin-bottom: 0;
+}
+
+.hero-showcase {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  isolation: isolate;
+  background: linear-gradient(135deg, #102e52, #06162e);
+  box-shadow: 0 20px 50px #0004;
+  perspective: 1000px;
+}
+
+.showcase-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(.96) translateX(18px);
+  transition: opacity .8s ease, transform .8s ease, visibility .8s;
+}
+
+.showcase-image.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+  z-index: 1;
+}
+
+.showcase-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .7s ease, filter .7s ease;
+}
+
+.showcase-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 17, 36, .88),
+    rgba(3, 17, 36, .08) 65%,
+    rgba(3, 17, 36, .12)
+  );
+  pointer-events: none;
+}
+
+.showcase-image span {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  bottom: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-shadow: 0 2px 12px #0008;
+  transition: transform .35s ease;
+}
+
+.hero-showcase:hover .showcase-image.active img {
+  transform: scale(1.07);
+  filter: saturate(1.12) contrast(1.04);
+}
+
+.hero-showcase:hover .showcase-image.active span {
+  transform: translateY(-5px);
+}
+
+.showcase-image.active::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 10px;
+  border: 1px solid #e2b65f99;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 94px 0 54px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .hero-showcase {
+    height: 230px;
+  }
+
+  .showcase-image span {
+    font-size: 16px;
+    left: 18px;
+    bottom: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-image,
+  .showcase-image img,
+  .showcase-image span {
+    transition: none;
+  }
+}
   <style>
     :root{--navy:#061a36;--navy2:#08254a;--gold:#c99a43;--gold2:#e2b65f;--ink:#10203c;--muted:#627087;--line:#e6eaf0;--white:#fff;--soft:#f7f9fc;--shadow:0 10px 30px rgba(5,24,51,.08)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fff}a{color:inherit;text-decoration:none}button,input{font:inherit}.container{width:min(1240px,calc(100% - 48px));margin:auto}.site-header{position:absolute;top:0;left:0;width:100%;z-index:20;color:white}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;min-width:235px}.brand-mark{width:46px;height:42px;color:var(--gold2);font-weight:800;font-size:38px;line-height:42px;letter-spacing:-8px;font-family:Georgia,serif;text-shadow:0 0 1px #e7c47e}.brand-name{font-weight:700;font-size:16px;letter-spacing:.5px;white-space:nowrap}.brand-tag{font-size:10px;opacity:.85;margin-top:3px;white-space:nowrap}.nav-links{display:flex;align-items:center;gap:24px;font-size:11px;font-weight:500}.nav-links>a,.nav-item>button{color:#fff;opacity:.94}.nav-item{position:relative}.nav-item>button{background:none;border:0;cursor:pointer;font-size:11px;padding:12px 0}.dropdown{display:none;position:absolute;top:100%;left:-14px;min-width:190px;background:white;color:var(--ink);padding:10px;border-radius:10px;box-shadow:var(--shadow)}.dropdown a{display:block;padding:10px;border-radius:6px;font-size:12px}.dropdown a:hover{background:#f3f6fa}.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:block}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,var(--gold),#b9872e);color:#fff;border:1px solid var(--gold);border-radius:4px;padding:12px 17px;font-size:10px;font-weight:700;letter-spacing:.15px;cursor:pointer;transition:.2s}.nav-cta:hover,.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.lang{background:transparent;color:white;border:0;font-size:11px;cursor:pointer}.mobile-toggle{display:none;background:none;border:1px solid #ffffff55;color:white;border-radius:5px;padding:8px;font-size:20px}
@@ -87,7 +214,6 @@
 <main>
   <section class="hero" id="home">
     <div class="container hero-inner">
-      <div class="hero-copy"><div class="eyebrow">Connecting markets worldwide</div><h1>Your Global<br>Business Development<br><span>Partner</span></h1><p>Connecting manufacturers, brands, technologies and markets worldwide in pharmaceuticals, healthcare, nutrition and related industries.</p><div class="hero-actions"><a class="btn" href="#services">EXPLORE SERVICES <span>→</span></a><a class="btn btn-outline" href="#contact">BECOME A PARTNER <span>→</span></a></div></div>
       <div class="hero-showcase" aria-label="Featured services">
   <div class="showcase-image active">
     <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=900&q=85" alt="Sports nutrition products">
@@ -178,6 +304,30 @@
     <div class="footer-bottom"><span>© <span id="year"></span> Niaz Net Tehran. All Rights Reserved.</span><div><a href="mailto:info@niaznet.com?subject=Privacy%20Policy%20Request">Privacy Policy</a><a href="mailto:info@niaznet.com?subject=Terms%20of%20Use%20Request">Terms of Use</a><a href="#home">Sitemap</a></div></div>
   </div>
 </footer>
+  const showcaseSlides = [...document.querySelectorAll('.showcase-image')];
+const showcase = document.querySelector('.hero-showcase');
+
+let showcaseIndex = 0;
+let showcaseTimer;
+
+function showNextServiceImage() {
+  showcaseSlides[showcaseIndex].classList.remove('active');
+  showcaseIndex = (showcaseIndex + 1) % showcaseSlides.length;
+  showcaseSlides[showcaseIndex].classList.add('active');
+}
+
+function startServiceShowcase() {
+  clearInterval(showcaseTimer);
+  showcaseTimer = setInterval(showNextServiceImage, 4000);
+}
+
+showcase.addEventListener('mouseenter', () => {
+  clearInterval(showcaseTimer);
+});
+
+showcase.addEventListener('mouseleave', startServiceShowcase);
+
+startServiceShowcase();
 <script>
 
 const serviceItems = [
