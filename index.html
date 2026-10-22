@@ -279,9 +279,7 @@ const serviceIcons = {
   'map-pinned': '<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/><path d="M15 8a2 2 0 1 0 0.01 0Z"/><path d="M15 10v3"/>'
 };
 
-serviceGrid.innerHTML = '';
-
-serviceItems.forEach((item, index) => {
+const industryItems = [
   const {name, icon, slug} = item;
   const card = document.createElement('a');
   card.className = 'service-card';
