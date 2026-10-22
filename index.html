@@ -234,7 +234,7 @@ const industryItems = [
   ['♧', 'Veterinary'],
   ['✚', 'Nutraceuticals']
 ];
-  const industryGrid=document.getElementById('industryGrid');
+const industryGrid=document.getElementById('industryGrid');
 industryItems.forEach(([icon,name])=>{const el=document.createElement('div');el.className='industry';el.innerHTML=`<span class="industry-icon" aria-hidden="true">${icon}</span><span>${name}</span>`;industryGrid.appendChild(el)});
 const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
