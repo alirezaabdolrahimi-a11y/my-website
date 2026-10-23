@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Niaz Net Tehran — Strategic Distribution & Trade, import and export, pharmaceutical sourcing, technology transfer and international business development.">
-  <title>NIAZ NET TEHRAN | Strategic Distribution & Trade</title>
+  <title>NIAZ NET | Strategic Distribution & Trade</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -162,7 +162,7 @@
     .hero h1{font-size:clamp(29px,2.45vw,39px)!important;line-height:1.13!important;max-width:100%!important}
     .hero p{font-size:14px!important;line-height:1.7!important;max-width:460px!important}
     .hero-showcase{grid-column:2!important;grid-row:1!important;width:100%!important;height:clamp(330px,32vw,460px)!important;max-width:none!important;align-self:center!important;margin:0!important}
-    .showcase-image img{object-fit:cover!important;object-position:center!important;background:#071b38!important}
+    .showcase-image img{object-fit:contain!important;object-position:center center!important;background:#071b38!important}
     .showcase-arrow{display:none!important}
     .showcase-dots{right:18px!important;bottom:17px!important}
     .hero-actions-below{grid-column:2!important;grid-row:2!important;margin-top:0!important;justify-content:center!important;width:100%!important}
@@ -177,7 +177,302 @@
     @media(max-width:760px){.hero{padding-top:94px!important}}
     .hero-copy .hero-actions{justify-content:flex-start!important;margin-top:16px!important}
     .hero-copy .partner-hero-btn{font-size:14px!important;padding:14px 22px!important}
+
+    /* Current reference version refinements */
+    .hero-showcase{background:#061a36!important}
+    .showcase-image img{object-fit:contain!important;object-position:center!important;background:#061a36!important}
+    .vip-services{margin:22px 0 4px;padding:20px 22px;border:1px solid #e6eaf0;border-left:4px solid #c99a43;border-radius:10px;background:linear-gradient(110deg,#fff,#f8fafc);box-shadow:0 8px 24px rgba(5,24,51,.06)}
+    .vip-services h2{font-size:16px;margin:0 0 14px;color:#10203c}
+    .vip-service-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .vip-service-link{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #e8edf3;border-radius:8px;background:#fff;font-size:12px;font-weight:700}
+    .vip-service-link span{color:#c99a43;font-size:20px}
+    .vip-service-link:hover{border-color:#c99a43;transform:translateY(-1px)}
+    @media(max-width:760px){.vip-service-list{grid-template-columns:repeat(2,minmax(0,1fr))}.vip-services{padding:16px}}
+
+
+    /* Reference-poster redesign: navy/gold, prominent graphic icon tiles, VIP panel at right */
+    .services-layout{position:relative;z-index:5;margin-top:-30px;display:grid;grid-template-columns:minmax(0,1fr) 250px;align-items:stretch;gap:0;background:#fff;border:1px solid #e8edf3;border-radius:17px;overflow:hidden;box-shadow:0 14px 38px rgba(5,24,51,.10)}
+    .services-grid{margin:0;border:0;border-radius:0;box-shadow:none;grid-template-columns:repeat(7,minmax(0,1fr));align-content:start;overflow:visible}
+    .service-card{min-height:174px;padding:24px 8px 22px;border-right:1px solid #e6eaf0;border-bottom:1px solid #e6eaf0;background:#fff;justify-content:flex-start}
+    .service-card:nth-child(6n){border-right:1px solid #e6eaf0}
+    .service-card:nth-child(7n){border-right:0}
+    .service-icon{width:80px;height:80px;min-width:80px;margin-bottom:12px;padding:16px;border-radius:20px;background:linear-gradient(145deg,#234e77,#071f3d)!important;color:#f0bf57!important;border:1.5px solid #c99a43;box-shadow:0 7px 14px rgba(4,22,45,.20),inset 0 1px 0 #ffffff55}
+    .service-icon svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .service-card:nth-child(3n+2) .service-icon,.service-card:nth-child(3n) .service-icon{background:linear-gradient(145deg,#234e77,#071f3d)!important;color:#f0bf57!important}
+    .service-card:nth-child(7) .service-icon svg{fill:#f0bf57;stroke:#f0bf57}
+    .service-card h3{font-size:13px!important;line-height:1.4!important;font-weight:750;margin:0;max-width:165px;color:#10284a}
+    .service-arrow{font-size:23px;right:50%;transform:translateX(50%);bottom:7px;color:#092b50}
+    .service-card:hover .service-icon,.service-card:focus-visible .service-icon{background:linear-gradient(145deg,#2c5b83,#092b4f)!important;color:#ffd36f!important;transform:translateY(-3px) scale(1.03)!important}
+    .vip-services{margin:0;padding:20px 17px 32px;border:0;border-left:2px solid #c99a43;border-radius:0;background:linear-gradient(180deg,#fff,#fbfcfe);box-shadow:none;position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0}
+    .vip-services h2{display:flex;align-items:center;gap:10px;font-size:14px;letter-spacing:.8px;color:#bd8322;margin:0 0 15px;white-space:nowrap}
+    .vip-crown{font-size:27px;line-height:1;color:#c99a43}
+    .vip-service-list{display:flex;flex-direction:column;gap:10px}
+    .vip-service-link{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.4;color:#17304f}
+    .vip-service-link span{color:#c99a43;font-weight:800}
+    .vip-arrow{position:absolute;right:18px;bottom:12px;font-size:22px;color:#092b50}
+    .showcase-image img{object-fit:contain!important;object-position:center center!important;background:#061a36!important}
+    .showcase-image{background:#061a36}
+    @media(max-width:1250px){.services-layout{grid-template-columns:minmax(0,1fr) 220px}.service-icon{width:68px;height:68px;min-width:68px}.service-card{padding-left:5px;padding-right:5px}.service-card h3{font-size:12px!important}}
+    @media(max-width:900px){.services-layout{grid-template-columns:1fr}.services-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.service-card:nth-child(7n){border-right:1px solid #e6eaf0}.service-card:nth-child(4n){border-right:0}.vip-services{border-left:0;border-top:2px solid #c99a43;padding:18px 22px 36px}.vip-service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.vip-services h2{white-space:normal}}
+    @media(max-width:600px){.services-layout{margin-top:-25px;border-radius:13px}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-card{min-height:150px;padding:17px 7px 24px}.service-card:nth-child(4n){border-right:1px solid #e6eaf0}.service-card:nth-child(2n){border-right:0}.service-icon{width:64px;height:64px;min-width:64px;padding:13px;border-radius:16px}.service-card h3{font-size:12px!important}.vip-service-list{grid-template-columns:1fr}.vip-services{padding:18px 16px 36px}}
+
+    /* Final requested refinements — based only on NiazNet-Tehran-Reference-Redesign */
+    .hero{padding:84px 0 46px!important;min-height:0!important;overflow:visible}
+    .hero-inner{display:grid!important;grid-template-columns:minmax(290px,.72fr) minmax(0,1.28fr)!important;grid-template-rows:auto!important;align-items:center!important;column-gap:0!important;row-gap:0!important}
+    .hero-copy{max-width:100%!important;transform:translateY(-8px)}
+    .hero h1{font-size:clamp(23px,2vw,30px)!important;line-height:1.16!important;margin:8px 0 9px!important}
+    .hero p{font-size:11px!important;line-height:1.5!important;margin-bottom:12px!important;max-width:390px!important}
+    .eyebrow{font-size:9px!important;letter-spacing:1.5px!important}
+    .partner-hero-btn{font-size:11px!important;padding:12px 17px!important;min-width:0!important}
+    .hero-showcase{height:clamp(270px,29vw,390px)!important;width:100%!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:hidden!important;background:transparent!important}
+    .showcase-image{inset:0!important;background:transparent!important}
+    .showcase-image img{object-fit:contain!important;object-position:center!important;background:transparent!important}
+    .showcase-arrow{width:36px;height:36px;font-size:20px}
+    .showcase-arrow.prev{left:8px}.showcase-arrow.next{right:8px}
+    .showcase-dots{bottom:10px;right:12px}
+    .service-arrow,.vip-arrow{display:none!important}
+    .service-card{padding-bottom:18px!important}
+    .service-card h3{font-size:14px!important;line-height:1.4!important}
+    .service-card[data-service-slug="brand-registration"] .service-icon svg{display:none}
+    .service-card[data-service-slug="brand-registration"] .service-icon:after{content:"NN";font-size:24px;font-weight:800;letter-spacing:-1px;color:#f0bf57}
+    .service-card.cbd-service h3{font-size:14px!important}
+    @media(max-width:900px){.hero{padding:94px 0 42px!important}.hero-inner{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)!important;column-gap:0!important}.hero-showcase{height:280px!important}}
+    @media(max-width:600px){.hero{padding:94px 0 48px!important}.hero-inner{grid-template-columns:1fr!important;row-gap:12px!important}.hero-copy{transform:none}.hero-showcase{height:250px!important}.service-card h3{font-size:12px!important}}
+
   </style>
+<style>
+/* Latest Reference Redesign adjustments */
+.hero{min-height:0;padding:90px 0 52px;overflow:visible}
+.hero-inner{grid-template-columns:minmax(0,.78fr) minmax(0,1.45fr);gap:0;align-items:center}
+.hero-copy{transform:translateY(-16px);max-width:430px;min-width:0;padding-right:12px}
+.hero h1{margin-top:10px;margin-bottom:12px}.hero p{margin-bottom:17px}.hero-actions{margin-top:0}
+.hero-actions:after{content:"VIP service";display:block;flex-basis:100%;margin-top:10px;color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+.hero-showcase{height:clamp(330px,25.8vw,460px);min-width:0;position:relative;overflow:hidden;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0;padding:0;background:#071b38}
+.showcase-image{inset:0!important;overflow:hidden}.showcase-image img{width:100%;height:100%;object-fit:contain!important;object-position:center!important;background:#071b38}
+.showcase-art{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;color:#fff;background:radial-gradient(ellipse at 70% 25%,#234f72 0%,#0b2748 42%,#04152d 100%);gap:16px}
+.showcase-art:before{content:"";position:absolute;inset:14px;border:1px solid rgba(221,174,75,.55);pointer-events:none}
+.showcase-art small{font-size:clamp(10px,1vw,15px);letter-spacing:3px;color:#e6b753;font-weight:800}.showcase-art strong{font-size:clamp(25px,3.1vw,52px);line-height:1.08;font-weight:900}.showcase-art strong i{color:#e6b753;font-style:normal}.showcase-art span{max-width:90%;font-size:clamp(11px,1.05vw,16px);line-height:1.6;color:#e4edf7}
+.art-cbd{background:radial-gradient(ellipse at 50% 40%,#24534c,#0b2c35 48%,#04152d)}.art-cosmo{background:radial-gradient(ellipse at 50% 35%,#4d315b,#1c2547 55%,#04152d)}.art-pet{background:radial-gradient(ellipse at 55% 35%,#49603e,#203b38 48%,#04152d)}
+.showcase-dots{right:14px;bottom:12px;gap:6px}.showcase-dot{width:7px;height:7px}
+.service-icon{width:76px!important;height:76px!important;padding:15px!important;border-radius:17px!important;background:linear-gradient(145deg,#356b99 0%,#153c62 48%,#061b35 100%)!important;border:1px solid #d7a84d!important;box-shadow:inset 0 2px 2px rgba(255,255,255,.32),inset 0 -5px 8px rgba(0,0,0,.28),0 8px 15px rgba(3,20,42,.25),0 0 0 1px rgba(220,174,78,.2)!important}
+.service-icon svg{filter:drop-shadow(0 1px 1px rgba(0,0,0,.45));stroke-width:2!important}
+@media(max-width:760px){.hero{padding:88px 0 50px}.hero-inner{grid-template-columns:1fr;gap:18px}.hero-copy{transform:translateY(-8px);padding-right:0}.hero-showcase{height:270px;width:100%}.service-icon{width:62px!important;height:62px!important;padding:12px!important}}
+</style>
+
+<style id="v2-precision-layout-fix">
+/* V2 final refinements: full-bleed, right-aligned hero slider; no frame or directional arrows. */
+@media (min-width: 761px){
+  .hero{padding-top:22px!important;padding-bottom:34px!important;overflow:hidden!important;}
+  .hero-inner{width:calc(100% - 28px)!important;max-width:none!important;margin-left:28px!important;margin-right:0!important;
+    display:grid!important;grid-template-columns:minmax(0, .78fr) minmax(0, 1.62fr)!important;
+    grid-template-rows:auto!important;column-gap:22px!important;row-gap:0!important;align-items:center!important;}
+  .hero-copy{grid-column:1!important;grid-row:1!important;max-width:100%!important;width:100%!important;padding-top:0!important;
+    transform:translateY(-18px)!important;z-index:2!important;}
+  .hero h1{font-size:clamp(27px,2.05vw,36px)!important;line-height:1.12!important;margin:8px 0 10px!important;}
+  .hero p{font-size:12px!important;line-height:1.5!important;max-width:440px!important;margin:0 0 16px!important;}
+  .hero-actions{margin-top:0!important;}
+  .hero-actions:after{margin-top:9px!important;}
+  .hero-showcase{grid-column:2!important;grid-row:1!important;position:relative!important;justify-self:stretch!important;
+    width:100%!important;max-width:none!important;
+    height:clamp(420px,28vw,520px)!important;min-height:420px!important;margin:0!important;
+    border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;overflow:hidden!important;}
+  .showcase-image{inset:0!important;background:transparent!important;}
+  .showcase-image img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:transparent!important;}
+  .showcase-dots{right:14px!important;bottom:12px!important;gap:7px!important;}
+}
+/* Keep a compact mobile layout while retaining full image visibility. */
+@media (max-width:760px){
+  .hero{padding:94px 0 42px!important;overflow:hidden!important;}
+  .hero-inner{width:calc(100% - 28px)!important;margin:0 14px!important;display:flex!important;flex-direction:column!important;gap:16px!important;}
+  .hero-copy{transform:translateY(-6px)!important;padding:0!important;}
+  .hero h1{font-size:27px!important;}
+  .hero-showcase{width:100%!important;height:auto!important;aspect-ratio:2.4/1!important;min-height:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
+  .showcase-image img{object-fit:contain!important;object-position:center!important;background:transparent!important;}
+  .showcase-dots{right:8px!important;bottom:7px!important;gap:5px!important;}
+  .showcase-dot{width:6px!important;height:6px!important;}
+  .showcase-dot.active{width:14px!important;}
+}
+.showcase-arrow{display:none!important}
+/* Slightly reduce the icon blocks while strengthening the navy/gold 3D frame. */
+.service-icon{width:72px!important;height:72px!important;min-width:72px!important;padding:13px!important;border-radius:17px!important;
+ background:linear-gradient(145deg,#3975a5 0%,#1b466d 42%,#071b35 100%)!important;
+ border:1.5px solid #d9ad51!important;
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.42),inset 0 -5px 8px rgba(0,0,0,.34),0 8px 13px rgba(3,20,42,.28),0 0 0 1px rgba(220,174,78,.22)!important;}
+.service-icon svg{width:100%!important;height:100%!important;max-width:27px!important;max-height:27px!important;overflow:visible!important;
+ filter:drop-shadow(0 1px 1px rgba(0,0,0,.42));stroke-width:1.9!important;}
+.service-card.cbd-service .service-icon{background:linear-gradient(145deg,#3975a5 0%,#1b466d 42%,#071b35 100%)!important;color:#f0bf57!important;}
+.service-card.cbd-service .service-icon svg{stroke:#f7fbff!important;fill:none!important;max-width:27px!important;max-height:27px!important;}
+.service-card h3{font-size:10.5px!important;line-height:1.32!important;}
+@media(max-width:760px){.service-icon{width:62px!important;height:62px!important;min-width:62px!important;padding:11px!important}.service-icon svg{max-width:25px!important;max-height:25px!important}}
+</style>
+
+
+<style id="niaznet-final-requested-adjustments">
+/* Requested slide behavior: retain frame, extend toward the right edge on desktop,
+   keep the entire banner visible, and preserve rounded corners. */
+@media (min-width: 761px) {
+  .hero-inner {
+    width: min(1500px, calc(100% - 56px)) !important;
+    grid-template-columns: minmax(300px,.88fr) minmax(0,1.32fr) !important;
+    gap: 26px !important;
+  }
+  .hero-showcase {
+    width: calc(100% + max(0px, (100vw - 1500px)/2)) !important;
+    max-width: none !important;
+    border: 1px solid rgba(226,230,238,.38) !important;
+    border-radius: 13px !important;
+    overflow: hidden !important;
+  }
+}
+.hero-showcase { border:1px solid rgba(226,230,238,.38)!important; border-radius:13px!important; overflow:hidden!important; }
+.showcase-image { inset:0!important; overflow:hidden!important; }
+.showcase-image img { width:100%!important; height:100%!important; object-fit:contain!important; object-position:center!important; background:#061a36!important; }
+.showcase-arrow { display:none!important; }
+.showcase-dots { left:50%!important; right:auto!important; transform:translateX(-50%); bottom:10px!important; }
+.service-icon { width:52px!important; height:52px!important; border-radius:13px!important; border:1px solid #cda64c!important; background:linear-gradient(145deg,#163a67 0%,#071b38 68%,#041329 100%)!important; color:#e8c36a!important; box-shadow:inset 0 1px 0 #ffffff35, 0 7px 14px rgba(4,17,37,.22)!important; }
+.service-icon svg { width:25px!important; height:25px!important; }
+.service-card h3 { font-size:10.5px!important; line-height:1.32!important; }
+.service-card.cbd-service .service-icon { background:linear-gradient(145deg,#35a96b,#17683e)!important; border-color:#75d49a!important; color:#fff!important; }
+.service-card.cbd-service .service-icon svg { stroke:#fff!important; }
+@media(max-width:760px) {
+  .hero-inner { width:calc(100% - 32px)!important; }
+  .hero-showcase { width:100%!important; border-radius:12px!important; }
+  .showcase-image img { object-fit:contain!important; }
+}
+</style>
+
+
+<style id="final-visual-fixes">
+/* Final corrections based on the user's screenshot and reference requirements */
+@media (min-width: 761px) {
+  .hero { padding: 96px 0 56px !important; }
+  .hero-inner {
+    width: calc(100% - 22px) !important;
+    max-width: none !important;
+    margin-left: 22px !important;
+    margin-right: 0 !important;
+    grid-template-columns: minmax(340px, .72fr) minmax(0, 1.28fr) !important;
+    gap: 24px !important;
+    align-items: center !important;
+  }
+  .hero-copy { max-width: 100% !important; padding-right: 0 !important; transform: translateY(-8px) !important; }
+  .hero h1 { font-size: clamp(30px, 2.35vw, 42px) !important; line-height: 1.12 !important; margin: 8px 0 12px !important; }
+  .hero p { font-size: 14px !important; line-height: 1.55 !important; max-width: 430px !important; }
+  .eyebrow { font-size: 11px !important; letter-spacing: 1.5px !important; }
+  .hero-showcase {
+    width: 100% !important; max-width: none !important;
+    height: min(520px, 34vw) !important; min-height: 430px !important;
+    justify-self: stretch !important; align-self: center !important;
+    border: 1px solid rgba(226,230,238,.38) !important;
+    border-radius: 16px !important; overflow: hidden !important;
+    box-shadow: 0 18px 42px rgba(0,0,0,.22) !important;
+    margin: 0 !important; background: #071b38 !important;
+  }
+  .showcase-image { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; display:none !important; overflow:hidden !important; }
+  .showcase-image.active { display:block !important; }
+  .showcase-image img { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:contain !important; object-position:center !important; background:#071b38 !important; }
+}
+@media (max-width: 760px) {
+  .hero-showcase { border:1px solid rgba(226,230,238,.38) !important; border-radius:13px !important; overflow:hidden !important; }
+  .showcase-image img { object-fit:contain !important; background:#071b38 !important; }
+}
+.showcase-arrow { display:none !important; }
+.showcase-dots { position:absolute !important; z-index:10 !important; left:50% !important; bottom:12px !important; transform:translateX(-50%) !important; display:flex !important; flex-wrap:wrap !important; justify-content:center !important; gap:7px !important; width:calc(100% - 24px) !important; pointer-events:auto !important; }
+.showcase-dot { width:8px !important; height:8px !important; min-width:8px !important; padding:0 !important; border:0 !important; border-radius:50% !important; background:rgba(255,255,255,.55) !important; box-shadow:0 1px 3px rgba(0,0,0,.25) !important; cursor:pointer !important; }
+.showcase-dot.active { width:20px !important; border-radius:8px !important; background:#e2b65f !important; }
+/* Service icon tiles stay navy/gold and dimensional; only the CBD leaf glyph is green. */
+.service-icon {
+  width:56px !important; height:56px !important; padding:12px !important;
+  color:#f0bd55 !important;
+  background:linear-gradient(145deg,#214b73 0%,#0b2b4e 55%,#061a36 100%) !important;
+  border:1px solid #c99a43 !important; border-radius:15px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 7px 15px rgba(3,20,42,.24), 0 1px 0 #f0c66b !important;
+}
+.service-icon svg { width:28px !important; height:28px !important; }
+.service-card.cbd-service .service-icon {
+  background:linear-gradient(145deg,#214b73 0%,#0b2b4e 55%,#061a36 100%) !important;
+  border:1px solid #c99a43 !important; color:#f0bd55 !important;
+}
+.service-card.cbd-service .service-icon svg {
+  stroke:#48b978 !important; color:#48b978 !important; fill:none !important;
+}
+/* Slightly smaller service captions, without changing card dimensions or layout. */
+.service-card h3 { font-size:10.5px !important; line-height:1.35 !important; }
+/* Elegant VIP label beneath the main CTA, visually related to the VIP Services panel. */
+.hero-actions:after {
+  content:"♛  VIP SERVICE" !important;
+  display:inline-flex !important; align-items:center !important; gap:8px !important;
+  width:max-content !important; margin-top:12px !important; padding:8px 14px !important;
+  border:1px solid rgba(201,154,67,.8) !important; border-left:3px solid #c99a43 !important;
+  border-radius:7px !important; color:#e2b65f !important;
+  background:linear-gradient(110deg,rgba(201,154,67,.13),rgba(8,37,74,.58)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 4px 12px rgba(0,0,0,.12) !important;
+  font-size:11px !important; font-weight:800 !important; letter-spacing:1.2px !important;
+}
+</style>
+
+
+<style id="user-screenshot-refinements-2026-10-23">
+/* Preserve the established right edge of the hero slideshow; move only its left edge left. */
+@media (min-width: 761px) {
+  .hero { padding-top: 96px !important; padding-bottom: 56px !important; }
+  .hero-inner {
+    width: calc(100% - 22px) !important; max-width: none !important;
+    margin-left: 22px !important; margin-right: 0 !important;
+    grid-template-columns: minmax(340px, .72fr) minmax(0, 1.28fr) !important;
+    column-gap: 8px !important; row-gap: 0 !important; align-items: center !important;
+  }
+  .hero-copy { max-width: 100% !important; width: 100% !important; padding-right: 0 !important; transform: translateY(-8px) !important; }
+  .hero h1 { font-size: clamp(29px, 2.1vw, 36px) !important; line-height: 1.12 !important; margin: 8px 0 10px !important; letter-spacing: -.7px !important; }
+  .hero p { font-size: 13px !important; line-height: 1.52 !important; max-width: 430px !important; margin: 0 0 16px !important; }
+  .eyebrow { font-size: 10px !important; letter-spacing: 1.35px !important; }
+  .hero-showcase {
+    grid-column: 2 !important; grid-row: 1 !important; width: 100% !important;
+    height: min(520px, 34vw) !important; min-height: 430px !important;
+    justify-self: stretch !important; align-self: center !important; margin: 0 !important;
+    border: 1px solid rgba(226,230,238,.38) !important; border-radius: 16px !important;
+    outline: 0 !important; box-shadow: 0 18px 42px rgba(0,0,0,.22) !important;
+    overflow: hidden !important; background: #071b38 !important;
+  }
+}
+/* Compact, elegant VIP label directly under the CTA; no oversized white block. */
+.hero-actions { display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 0 !important; }
+.hero-actions:after {
+  content: "♛  VIP SERVICE" !important; display: inline-flex !important; align-items: center !important;
+  flex: 0 0 auto !important; width: max-content !important; max-width: max-content !important;
+  box-sizing: border-box !important; margin: 10px 0 0 !important; padding: 7px 13px !important;
+  border: 1px solid rgba(213,174,92,.8) !important; border-left: 3px solid #d5ae5c !important;
+  border-radius: 6px !important; color: #f0c66c !important;
+  background: linear-gradient(115deg, rgba(201,154,67,.13), rgba(8,28,54,.82)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 5px 14px rgba(0,0,0,.16) !important;
+  font-size: 12px !important; line-height: 1.25 !important; font-weight: 800 !important;
+  letter-spacing: 1.05px !important; text-transform: uppercase !important; white-space: nowrap !important;
+}
+/* Keep service icon tiles square and at their intended size independently of label font size. */
+.service-icon {
+  box-sizing: border-box !important; display: flex !important; flex: 0 0 64px !important;
+  width: 64px !important; min-width: 64px !important; max-width: 64px !important;
+  height: 64px !important; min-height: 64px !important; max-height: 64px !important;
+  padding: 12px !important; border-radius: 15px !important;
+  border: 1.5px solid #d9ad51 !important;
+  background: linear-gradient(145deg,#3975a5 0%,#1b466d 42%,#071b35 100%) !important;
+  color: #f0bf57 !important;
+  box-shadow: inset 0 2px 2px rgba(255,255,255,.42), inset 0 -5px 8px rgba(0,0,0,.34), 0 8px 13px rgba(3,20,42,.28), 0 0 0 1px rgba(220,174,78,.22) !important;
+}
+.service-icon svg { flex: 0 0 27px !important; width: 27px !important; height: 27px !important; max-width: 27px !important; max-height: 27px !important; }
+.service-card h3 { font-size: 10.5px !important; line-height: 1.32 !important; }
+/* CBD: retain the navy/gold tile; color only the leaf glyph green. */
+.service-card.cbd-service .service-icon {
+  background: linear-gradient(145deg,#3975a5 0%,#1b466d 42%,#071b35 100%) !important;
+  border: 1.5px solid #d9ad51 !important; color: #32b56a !important;
+}
+.service-card.cbd-service .service-icon svg { stroke: #32b56a !important; fill: none !important; }
+@media (max-width: 760px) {
+  .hero-actions:after { margin-top: 9px !important; }
+  .service-icon { flex-basis: 64px !important; width: 64px !important; min-width: 64px !important; height: 64px !important; min-height: 64px !important; }
+}
+</style>
+
 </head>
 <body>
 <header class="site-header">
@@ -201,43 +496,32 @@
     <div class="container hero-inner">
       <div class="hero-copy"><div class="eyebrow">Connecting markets worldwide</div><h1>Your Global Business Development <span>Partner</span></h1><p>Connecting manufacturers, brands, technologies and markets across pharmaceuticals, healthcare, nutrition and related industries.</p><div class="hero-actions"><a class="btn partner-hero-btn" href="contact.html">BECOME OUR PARTNER <span>→</span></a></div></div>
       <div class="hero-showcase" aria-label="Featured services">
-
-  <div class="showcase-image active">
-    <img src="images/BRAND%202%20.png" alt="International brand partnerships" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>International Brand Partnerships</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/ALL.png" alt="Niaz Net Tehran strategic sourcing and global trade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>Strategic Sourcing &amp; Global Trade</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/SPORT.png" alt="Sports nutrition products and bulk protein supply" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>Sports Nutrition &amp; Bulk Protein Supply</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/INFANT.png" alt="Infant formula and baby nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>Infant Formula &amp; Nutrition</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/API.jpg" alt="Pharmaceutical APIs and raw materials" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>APIs &amp; Pharmaceutical Ingredients</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/BRAND.png" alt="Brand acquisition and development" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>Brand Acquisition &amp; Development</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/Fuel%20Your%20Performance%20(1).png" alt="Fuel Your Performance sports nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>Fuel Your Performance</span>
-  </div>
-  <div class="showcase-image">
-    <img src="images/International%20Sports%20Brands%20%26%20Supplements.png" alt="International sports brands and supplements" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-    <span>International Sports Brands &amp; Supplements</span>
-  </div></div>
+  <div class="showcase-image active"><img src="images/00 -Global Products, Global Opportunities.png" alt="Global Products, Global Opportunities" loading="eager"></div>
+  <div class="showcase-image"><img src="images/01-brand-partnerships.png" alt="Brand Partnerships" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/02-all-global-trade.png" alt="All Global Trade" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/03-sports-nutrition.png" alt="Sports Nutrition" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/04-infant-formula.png" alt="Infant Formula" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/05 -CBD Isolate_ Pure Pharmaceutical Grade (2).png" alt="CBD Isolate — Pure Pharmaceutical Grade" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/06 -Luxury Aesthetic Medicine Production Banner.png" alt="Luxury Aesthetic Medicine Production" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/07 -Premium Pet Food_ From Nature to Bowl-1.png" alt="Premium Pet Food — From Nature to Bowl" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/08 -all 2 .png" alt="Global Trade and Product Portfolio" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/09-performance-nutrition.png" alt="Performance Nutrition" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/10-Global Brand, Ingredients, and Export Solutions.png" alt="Global Brand, Ingredients, and Export Solutions" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/11-brand-acquisition-registration.png" alt="Brand Acquisition and Registration" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/12-international-sports-brands.png" alt="International Sports Brands" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/13 -Cosmoderma Aesthetic Manufacturing Banner-3.png" alt="Cosmoderma Aesthetic Manufacturing" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/14-api-pharmaceutical-ingredients.png" alt="API Pharmaceutical Ingredients" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/15-CBD Isolate_ Pure Pharmaceutical Grade (1).png" alt="CBD Isolate — Pure Pharmaceutical Grade" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/16 -Cosmoderma Aesthetic Manufacturing Banner.png" alt="Cosmoderma Aesthetic Manufacturing" loading="lazy"></div>
+  <div class="showcase-image"><img src="images/17 -Premium Pet Food Production Showcase-2.png" alt="Premium Pet Food Production" loading="lazy"></div>
+</div>
     </div>
   </section>
   <section class="container" id="services" aria-label="Our services">
-    <div class="services-grid" id="serviceGrid"></div>
+    <div class="services-layout">
+      <div class="services-grid" id="serviceGrid"></div>
+      <section class="vip-services" aria-labelledby="vipServicesTitle"><h2 id="vipServicesTitle"><span class="vip-crown" aria-hidden="true">♛</span> VIP SERVICES</h2><div class="vip-service-list" id="vipServiceList"></div></section>
+    </div>
     <div class="stats trade-stats">
       <div class="stat"><div class="stat-icon">⇄</div><div><strong>IMPORT / EXPORT</strong><span>Cross-border trade coordination</span></div></div>
       <div class="stat"><div class="stat-icon">◎</div><div><strong>EU</strong><span>European Union markets</span></div></div>
@@ -318,16 +602,17 @@
 <script>
 
 const serviceItems = [
-  { name: 'Brand Registration & Acquisition', icon: 'gem', slug: 'brand-registration', paragraphs: ['Niaz Net Tehran supports brand owners and business partners through the commercial planning and coordination required to introduce a brand into a target market. We help clarify market objectives, identify the appropriate local route, and coordinate discussions with relevant commercial and regulatory stakeholders.', 'From initial assessment to follow-up with partners and documentation teams, our role is to keep the process organized, transparent, and aligned with the brand owner’s goals. Registration requirements and approval timelines depend on the product category and the competent authorities in each market.'] },
+  { name: 'Brand Registration', icon: 'gem', slug: 'brand-registration', paragraphs: ['Niaz Net Tehran supports brand owners and business partners through the commercial planning and coordination required to introduce a brand into a target market. We help clarify market objectives, identify the appropriate local route, and coordinate discussions with relevant commercial and regulatory stakeholders.', 'From initial assessment to follow-up with partners and documentation teams, our role is to keep the process organized, transparent, and aligned with the brand owner’s goals. Registration requirements and approval timelines depend on the product category and the competent authorities in each market.'] },
   { name: 'Sports Nutrition & Supplements', icon: 'dumbbell', slug: 'sports-nutrition', paragraphs: ['We help connect sports nutrition brands and qualified manufacturers with distributors and commercial partners in target markets. Our support can include product and supplier discussions, portfolio assessment, commercial coordination, and planning for market introduction.', 'For protein powders, performance nutrition, and related supplements, we coordinate with the relevant parties on product specifications, documentation, pricing, and distribution expectations. Any market-specific product claims and regulatory requirements must be confirmed with the responsible authorities.'] },
   { name: 'Infant Formula & Baby Milk', icon: 'baby', slug: 'infant-formula', paragraphs: ['Niaz Net Tehran facilitates business development and sourcing discussions for infant formula and baby nutrition products with manufacturers and prospective market partners. We help coordinate product information, commercial terms, supply expectations, and the communication required to assess a potential distribution relationship.', 'Because infant nutrition is a highly regulated category, product eligibility, labeling, registrations, and import conditions must be reviewed for each destination market. We coordinate the relevant stakeholders so commercial planning and regulatory review can progress in a structured way.'] },
-  { name: 'Active Pharmaceutical Ingredients (API)', icon: 'flask', slug: 'api-supply', paragraphs: ['We support sourcing and commercial coordination for Active Pharmaceutical Ingredients (APIs) and selected pharmaceutical raw materials, connecting buyers with manufacturers and suppliers for evaluation. Coordination may cover product specifications, quality documentation requests, quotations, minimum order quantities, and supply terms.', 'Supplier qualification and technical acceptance remain subject to the buyer’s quality requirements and applicable regulations. We help keep communication and documentation requests organized so the relevant quality, regulatory, procurement, and commercial teams can evaluate the opportunity efficiently.'] },
+  { name: 'Cosmoderma (Botox & Dermal Fillers)', icon: 'stethoscope', slug: 'cosmoderma', paragraphs: ['Niaz Net Tehran supports brand registration and market development for aesthetic medicine and cosmoderma products, including botulinum toxin (Botox) and dermal fillers. We coordinate with brand owners and qualified manufacturers to explore product portfolios, target markets, documentation needs, and suitable commercial partners.', 'Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing. Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.'] },
+  { name: 'API', icon: 'flask', slug: 'api-supply', paragraphs: ['We support sourcing and commercial coordination for Active Pharmaceutical Ingredients (APIs) and selected pharmaceutical raw materials, connecting buyers with manufacturers and suppliers for evaluation. Coordination may cover product specifications, quality documentation requests, quotations, minimum order quantities, and supply terms.', 'Supplier qualification and technical acceptance remain subject to the buyer’s quality requirements and applicable regulations. We help keep communication and documentation requests organized so the relevant quality, regulatory, procurement, and commercial teams can evaluate the opportunity efficiently.'] },
   { name: 'Medical Devices & Healthcare Equipment', icon: 'stethoscope', slug: 'medical-devices', paragraphs: ['We support commercial sourcing and market-development discussions for medical devices and healthcare equipment, helping manufacturers and potential distributors assess product fit, target channels, and local partner opportunities.', 'Our coordination can include product portfolio discussions, quotation and supply-term follow-up, and requests for technical and regulatory documentation. Product registration, conformity, and import requirements are assessed according to the destination market and the specific device category.'] },
-  { name: 'CBD Products & Market Coordination', icon: 'leaf', slug: 'cbd-products', paragraphs: ['Niaz Net Tehran can coordinate preliminary commercial discussions for CBD-related products where the product category and intended market allow such activity. Early-stage work may include clarifying product specifications, identifying potential business counterparts, and mapping the questions that must be resolved before a transaction can proceed.', 'CBD laws and product classifications vary significantly by jurisdiction and product type. No sourcing, import, distribution, or marketing activity should proceed until legality, licensing, product status, and all applicable regulatory requirements have been independently confirmed for the relevant markets.'] },
+  { name: 'CBD', icon: 'leaf', slug: 'cbd-products', paragraphs: ['Niaz Net Tehran can coordinate preliminary commercial discussions for CBD-related products where the product category and intended market allow such activity. Early-stage work may include clarifying product specifications, identifying potential business counterparts, and mapping the questions that must be resolved before a transaction can proceed.', 'CBD laws and product classifications vary significantly by jurisdiction and product type. No sourcing, import, distribution, or marketing activity should proceed until legality, licensing, product status, and all applicable regulatory requirements have been independently confirmed for the relevant markets.'] },
   { name: 'Import & Export Services', icon: 'package-check', slug: 'import-export', paragraphs: ['We coordinate import and export opportunities between suppliers, manufacturers, buyers, and distribution partners across international markets. Support may include supplier and buyer communication, quotation collection, commercial-term coordination, document follow-up, and coordination with freight, customs, and logistics parties.', 'Each transaction is assessed according to the product, origin and destination markets, applicable trade rules, and agreed Incoterms. Customs clearance, permits, payment arrangements, shipping, and compliance are handled with the relevant authorized parties; specific requirements and responsibilities are confirmed before execution.'] },
   { name: 'Exclusive Agency & Brand Representation', icon: 'handshake', slug: 'exclusive-agency', paragraphs: ['We help manufacturers and brand owners explore exclusive agency arrangements with suitable local partners. The process can include market and partner assessment, territory and channel discussions, commercial planning, and coordination of the negotiation process.', 'Agency arrangements are structured around clearly defined products, territories, responsibilities, performance expectations, and contract terms. We aim to align the parties on a practical framework for long-term market development while ensuring that final commitments are recorded in an agreed written contract.'] },
   { name: 'Business Development', icon: 'chart-no-axes-combined', slug: 'business-development', paragraphs: ['Niaz Net Tehran helps companies identify and develop commercial opportunities through structured outreach, partner engagement, market prioritization, and follow-up with relevant stakeholders. We focus on connecting business objectives with practical opportunities for cooperation and revenue growth.', 'Depending on the project, support may include preparing a development roadmap, coordinating meetings, evaluating potential partners, and maintaining a clear pipeline of next steps. Scope, targets, and reporting expectations are agreed with the client before work begins.'] },
-  { name: 'Chamber of Commerce & Trade Relations', icon: 'landmark', slug: 'chamber-of-commerce', paragraphs: ['We facilitate business-to-business engagement and trade-network development with relevant chambers of commerce, industry associations, and institutional stakeholders, where appropriate. This can help companies identify networking opportunities, understand the business environment, and establish contact with potential commercial counterparts.', 'Our role is coordination and relationship support, not a claim of official affiliation or guaranteed access. Any formal membership, endorsement, certification, or institutional service is subject to the relevant organization’s own process and approval.'] },
+  { name: 'Private Chamber of Commerce', icon: 'landmark', slug: 'chamber-of-commerce', paragraphs: ['We facilitate business-to-business engagement and trade-network development with relevant chambers of commerce, industry associations, and institutional stakeholders, where appropriate. This can help companies identify networking opportunities, understand the business environment, and establish contact with potential commercial counterparts.', 'Our role is coordination and relationship support, not a claim of official affiliation or guaranteed access. Any formal membership, endorsement, certification, or institutional service is subject to the relevant organization’s own process and approval.'] },
   { name: 'Market Entry Strategy & Solutions', icon: 'map-pinned', slug: 'market-entry', paragraphs: ['We help companies assess how to enter a new market by clarifying target customer segments, routes to market, potential partners, competitive considerations, and commercial priorities. The goal is to translate a broad expansion objective into a practical sequence of decisions and actions.', 'Depending on the project, we can coordinate market information gathering, partner discussions, distribution planning, and regulatory questions with specialist stakeholders. Recommendations are tailored to the product category, the destination market, and the client’s available resources and risk appetite.'] },
   { name: 'Licensing & Strategic Partnerships', icon: 'handshake', slug: 'licensing-partnerships', paragraphs: ['We support the development of licensing and strategic partnership opportunities between rights holders, manufacturers, technology owners, and local commercial partners. This may include coordinating introductory discussions, clarifying the intended scope of cooperation, and organizing commercial and technical information for review.', 'Potential agreements can address territory, permitted use, responsibilities, intellectual property, quality expectations, milestones, and commercial terms. Legal, regulatory, and technical review should be completed by the relevant qualified advisers before any binding agreement is signed.'] },
   { name: 'Pharmaceutical Finished Products', icon: 'pill', slug: 'pharmaceutical-products', paragraphs: ['We coordinate commercial discussions for pharmaceutical finished products between manufacturers, buyers, and potential distribution partners. Depending on the opportunity, support may include product portfolio review, supplier communication, quotation requests, supply planning, and coordination of required product information.', 'Product availability, marketing authorization, import eligibility, quality requirements, and supply terms must be confirmed for each market and product. Our role is to facilitate communication among commercial, quality, regulatory, and logistics stakeholders rather than replace their formal approvals.'] },
@@ -339,7 +624,7 @@ const serviceItems = [
   { name: 'Supply Chain Solutions', icon: 'truck', slug: 'supply-chain-solutions', paragraphs: ['We coordinate supply-chain communication among buyers, suppliers, manufacturers, freight providers, and other relevant parties. Depending on the project, this may include order and shipment follow-up, documentation tracking, delivery planning, and escalation of outstanding commercial or operational questions.', 'The exact scope depends on the transaction, product requirements, and the parties’ responsibilities. Shipping, customs, insurance, and handling arrangements are confirmed with the authorized providers and documented before dispatch.'] },
   { name: 'Private Label & Own-Brand Development', icon: 'tags', slug: 'private-label', paragraphs: ['We support businesses interested in developing products under their own brand by coordinating discussions with potential manufacturers and suppliers. The process may cover product concept, specifications, packaging options, target pricing, minimum order quantities, and preliminary production timelines.', 'Final feasibility depends on manufacturer capability, product category, intellectual-property and trademark considerations, quality requirements, and destination-market regulations. We help structure the discussions so the client can assess options before committing to development or production.'] },
   { name: 'Pet Food & Animal Nutrition', icon: 'paw', slug: 'pet-food', paragraphs: ['Niaz Net Tehran supports commercial sourcing and market-development discussions for pet food, treats, and animal nutrition products, helping manufacturers connect with importers, distributors, retailers, and other suitable partners in target markets. We can coordinate portfolio introductions, product specifications, quotation requests, packaging and private-label discussions, and supply expectations.', 'Product registration, ingredient rules, labeling, veterinary and feed requirements, and import eligibility vary by destination market. Each opportunity should be reviewed with the responsible manufacturer and qualified local specialists before supply or market launch.'] },
-  { name: 'Pet Food & Animal Nutrition', icon: 'paw', slug: 'pet-food', paragraphs: ['Niaz Net Tehran supports commercial sourcing and market-development discussions for pet food, treats, and animal nutrition products, helping manufacturers connect with importers, distributors, retailers, and other suitable partners in target markets. We can coordinate portfolio introductions, product specifications, quotation requests, packaging and private-label discussions, and supply expectations.', 'Product registration, ingredient rules, labeling, veterinary and feed requirements, and import eligibility vary by destination market. Each opportunity should be reviewed with the responsible manufacturer and qualified local specialists before supply or market launch.'] },
+  
   { name: 'Nutraceuticals & Wellness Products', icon: 'leaf', slug: 'nutraceuticals', paragraphs: ['We support commercial sourcing and market-development discussions for nutraceuticals, wellness products, and related categories, connecting potential buyers with manufacturers and business partners for evaluation.', 'Product classification, permitted claims, labeling, quality documentation, and import eligibility differ by market. Each opportunity should be reviewed against applicable rules and the client’s technical and commercial requirements before any market launch.'] }
 ];
 
@@ -363,16 +648,34 @@ const serviceIcons = {
   baby: '<path d="M9 3h6"/><path d="M10 3v4l-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-2-2V3"/><path d="M8 12h8"/><path d="M10 15h4"/>',
   stethoscope: '<path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4m10 0h2"/><path d="M10 12v2a6 6 0 0 0 12 0v-2"/><circle cx="22" cy="10" r="2"/>',
   leaf: '<path d="M11 20A8 8 0 0 1 3 12C3 5 12 3 21 3c0 9-2 18-10 18Z"/><path d="M7 17 17 7"/>',
+  paw: '<path d="M12 14c-3.5 0-6 2.1-6 4.5S8 22 12 22s6-1.1 6-3.5S15.5 14 12 14Z"/><ellipse cx="5.5" cy="10" rx="2" ry="3"/><ellipse cx="10" cy="6.5" rx="2" ry="3"/><ellipse cx="16" cy="6.5" rx="2" ry="3"/><ellipse cx="20.5" cy="10" rx="2" ry="3"/>',
   landmark: '<path d="M3 21h18M5 18h14M4 10h16M3 7l9-4 9 4M6 10v8m4-8v8m4-8v8m4-8v8"/>',
   'map-pinned': '<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/><path d="M15 8a2 2 0 1 0 0.01 0Z"/><path d="M15 10v3"/>'
 };
 
 serviceGrid.innerHTML = '';
 
-serviceItems.forEach((item, index) => {
+const coreServiceOrder = ['brand-registration','sports-nutrition','infant-formula','cosmoderma','api-supply','cbd-products','pet-food'];
+const vipServiceSlugs = ['chamber-of-commerce','technology-transfer','exclusive-agency','contract-manufacturing','licensing-partnerships','market-entry'];
+serviceItems.sort((a,b)=>{
+  const ai=coreServiceOrder.indexOf(a.slug), bi=coreServiceOrder.indexOf(b.slug);
+  if(ai!==-1 || bi!==-1) return (ai===-1?999:ai)-(bi===-1?999:bi);
+  return 0;
+});
+const vipList = document.getElementById('vipServiceList');
+vipServiceSlugs.forEach(slug=>{
+  const item=serviceItems.find(x=>x.slug===slug);
+  if(!item)return;
+  const a=document.createElement('a');
+  a.className='vip-service-link';a.href=`index.html?service=${encodeURIComponent(item.slug)}`;a.target='_blank';a.rel='noopener';
+  a.innerHTML=`<span aria-hidden="true">✦</span>${item.slug==='chamber-of-commerce'?'Private Chamber of Commerce':item.name}`;
+  vipList.appendChild(a);
+});
+serviceItems.filter(item=>!vipServiceSlugs.includes(item.slug)).forEach((item, index) => {
   const {name, icon, slug} = item;
   const card = document.createElement('a');
   card.className = 'service-card' + (slug === 'cbd-products' ? ' cbd-service' : '');
+  card.dataset.serviceSlug = slug;
   card.href = slug === 'sports-nutrition' ? 'sports-nutrition.html' : `index.html?service=${encodeURIComponent(slug)}`;
   card.target = '_blank';
   card.rel = 'noopener';
@@ -383,7 +686,6 @@ serviceItems.forEach((item, index) => {
       </svg>
     </span>
     <h3>${name}</h3>
-    <span class="service-arrow">→</span>
   `;
   serviceGrid.appendChild(card);
 });
@@ -483,80 +785,31 @@ if (requestedService) {
 
 </script>
 
-<script>
-// One accessible controller for all eight slides, arrows, dots, and autoplay.
-(function () {
-  const root = document.querySelector('.hero-showcase');
-  if (!root) return;
-  const slides = Array.from(root.querySelectorAll('.showcase-image'));
-  if (!slides.length) return;
-
-  let current = Math.max(0, slides.findIndex(slide => slide.classList.contains('active')));
-  let timer = null;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const dotsWrap = document.createElement('div');
-  dotsWrap.className = 'showcase-dots';
-  dotsWrap.setAttribute('role', 'group');
-  dotsWrap.setAttribute('aria-label', 'Choose a featured image');
-
-  const dots = slides.map((slide, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'showcase-dot';
-    dot.setAttribute('aria-label', `Show slide ${index + 1}: ${slide.querySelector('span')?.textContent.trim() || 'Featured image'}`);
-    dot.addEventListener('click', () => { show(index); restart(); });
-    dotsWrap.appendChild(dot);
-    return dot;
-  });
-  root.appendChild(dotsWrap);
-
-  function show(index) {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => {
-      const active = i === current;
-      slide.classList.toggle('active', active);
-      slide.setAttribute('aria-hidden', String(!active));
-    });
-    dots.forEach((dot, i) => {
-      const active = i === current;
-      dot.classList.toggle('active', active);
-      dot.setAttribute('aria-current', active ? 'true' : 'false');
-    });
-  }
-
-  function stop() {
-    if (timer !== null) {
-      window.clearInterval(timer);
-      timer = null;
-    }
-  }
-
-  function start() {
-    stop();
-    if (slides.length > 1 && !reducedMotion.matches && !document.hidden) {
-      timer = window.setInterval(() => show(current + 1), 4000);
-    }
-  }
-
-  function restart() { start(); }
-
-
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
-  root.addEventListener('focusin', stop);
-  root.addEventListener('focusout', event => {
-    if (!root.contains(event.relatedTarget)) start();
-  });
-  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
-  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', start);
-
-  show(current);
-  start();
+<script id="v2-single-slider-controller">
+(function(){
+ const root=document.querySelector('.hero-showcase'); if(!root) return;
+ const slides=Array.from(root.querySelectorAll('.showcase-image')); if(!slides.length) return;
+ const dotsWrap=document.createElement('div'); dotsWrap.className='showcase-dots'; dotsWrap.setAttribute('role','group'); dotsWrap.setAttribute('aria-label','Choose slide'); root.appendChild(dotsWrap);
+ let current=Math.max(0,slides.findIndex(s=>s.classList.contains('active'))), timer=null;
+ const dots=slides.map((slide,i)=>{const b=document.createElement('button');b.type='button';b.className='showcase-dot';b.setAttribute('aria-label','Show slide '+(i+1));b.addEventListener('click',()=>{show(i);restart()});dotsWrap.appendChild(b);return b;});
+ function show(i){current=(i+slides.length)%slides.length;slides.forEach((s,n)=>{const on=n===current;s.classList.toggle('active',on);s.setAttribute('aria-hidden',String(!on));});dots.forEach((d,n)=>{const on=n===current;d.classList.toggle('active',on);d.setAttribute('aria-current',String(on));});}
+ function stop(){if(timer){clearInterval(timer);timer=null;}}
+ function start(){stop();if(slides.length>1&&!document.hidden&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show(current+1),5000);}
+ function restart(){start();}
+ root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',start);root.addEventListener('focusin',stop);root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget))start()});document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+ show(current);start();
 })();
 </script>
 
 
+<script id="slider-image-error-fallback">
+document.querySelectorAll('.showcase-image img').forEach(function(img){
+  img.addEventListener('error',function(){
+    const slide=img.closest('.showcase-image');
+    if(slide){ slide.classList.add('image-missing'); }
+  },{once:true});
+});
+</script>
 
 </body>
 </html>
-<!-- Trigger Vercel deployment -->
