@@ -276,6 +276,24 @@
 
 <style>
     .brand-category-item{display:flex;flex-direction:column;gap:5px;padding:17px 18px;border:1px solid rgba(201,154,67,.28);border-radius:10px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(201,154,67,.045))}
+
+    .service-back-link{display:inline-flex;align-items:center;gap:8px;margin:0 0 13px;padding:8px 13px;border:1px solid rgba(201,154,67,.55);border-radius:7px;color:var(--text);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;line-height:1.25;background:rgba(201,154,67,.06);transition:background .2s ease,border-color .2s ease,transform .2s ease}
+    .service-back-link:hover{background:rgba(201,154,67,.14);border-color:var(--gold,#c99a43);transform:translateX(-2px)}
+    .infant-formula-copy .infant-service-block{margin:0 0 24px}
+    .infant-formula-copy .infant-service-block h3{margin:0 0 8px;color:var(--text);font-size:clamp(17px,2vw,21px);line-height:1.4}
+    .infant-formula-copy .infant-service-block p{margin:0}
+    .infant-formula-copy .infant-disclaimer{margin:8px 0 28px;padding-top:17px;border-top:1px solid rgba(201,154,67,.25);font-size:12px}
+    .sports-brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 28px}
+    .sports-brand-placeholder{min-height:118px;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;border:1px dashed rgba(201,154,67,.55);border-radius:12px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(201,154,67,.045));color:var(--muted);font-size:12px;letter-spacing:.04em}
+    .sports-brand-placeholder span{display:block;max-width:150px}
+    .sports-nutrition-copy .sports-service-block{margin:0 0 24px}
+    .sports-nutrition-copy .sports-service-block h3{margin:0 0 8px;color:var(--text);font-size:clamp(17px,2vw,21px);line-height:1.4}
+    .sports-nutrition-copy .sports-service-block p{margin:0}
+    .sports-nutrition-copy .sports-nutrition-disclaimer{margin:6px 0 28px;padding-top:17px;border-top:1px solid rgba(201,154,67,.25);font-size:13px;line-height:1.75}
+    .sports-nutrition-copy .sports-nutrition-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    @media(max-width:760px){.sports-brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:420px){.sports-brand-grid{grid-template-columns:1fr 1fr;gap:9px}.sports-brand-placeholder{min-height:95px;padding:10px}}
+
     /* Brand Registration intentionally reuses the homepage hero geometry and slideshow sizing. */
     @media(min-width:761px){.brand-registration-page.hero{padding-top:116px!important;padding-bottom:48px!important}.brand-registration-page .hero-inner{grid-template-columns:minmax(270px,.68fr) minmax(0,1.52fr)!important;gap:10px!important;width:min(1800px,calc(100% - 20px))!important;align-items:center!important}.brand-registration-page .hero-copy{grid-column:1!important;grid-row:1!important;transform:translateY(18px)!important;max-width:100%!important}.brand-registration-page.hero h1{font-size:clamp(28px,2.35vw,37px)!important;margin-top:13px!important;margin-bottom:14px!important}.brand-registration-page.hero p{max-width:470px!important;margin-bottom:18px!important}.brand-registration-page .hero-showcase{grid-column:2!important;grid-row:1!important;align-self:center!important;width:100%!important;height:clamp(292px,28vw,420px)!important;margin:0!important}.brand-registration-page .showcase-image img{object-fit:contain!important;object-position:center center!important;background:#071b38!important}}
     @media(min-width:761px) and (max-width:1100px){.brand-registration-page .hero-inner{grid-template-columns:minmax(250px,.68fr) minmax(0,1.32fr)!important;column-gap:10px!important}.brand-registration-page .hero-showcase{height:clamp(285px,30vw,350px)!important}}
@@ -464,7 +482,7 @@
 
 const serviceItems = [
   { name: 'Brand Registration', icon: 'gem', slug: 'brand-registration', paragraphs: ['Niaz Net Tehran supports brand owners and business partners through the commercial planning and coordination required to introduce a brand into a target market. We help clarify market objectives, identify the appropriate local route, and coordinate discussions with relevant commercial and regulatory stakeholders.', 'From initial assessment to follow-up with partners and documentation teams, our role is to keep the process organized, transparent, and aligned with the brand owner’s goals. Registration requirements and approval timelines depend on the product category and the competent authorities in each market.'] },
-  { name: 'Sports Nutrition & Supplements', icon: 'dumbbell', slug: 'sports-nutrition', paragraphs: ['We help connect sports nutrition brands and qualified manufacturers with distributors and commercial partners in target markets. Our support can include product and supplier discussions, portfolio assessment, commercial coordination, and planning for market introduction.', 'For protein powders, performance nutrition, and related supplements, we coordinate with the relevant parties on product specifications, documentation, pricing, and distribution expectations. Any market-specific product claims and regulatory requirements must be confirmed with the responsible authorities.'] },
+  { name: 'Sports Nutrition & Supplements', icon: 'dumbbell', slug: 'sports-nutrition', paragraphs: ['We help businesses explore representation opportunities with international sports nutrition and supplement brands, while coordinating commercial discussions with brand owners and potential market partners.', 'We also coordinate bulk sourcing opportunities for sports powders, vitamins, wellness supplements, and diet-related food products. Product specifications, quantities, supplier terms, and market requirements are reviewed for each opportunity.'] },
   { name: 'Infant Formula & Baby Milk', icon: 'baby', slug: 'infant-formula', paragraphs: ['Niaz Net Tehran facilitates business development and sourcing discussions for infant formula and baby nutrition products with manufacturers and prospective market partners. We help coordinate product information, commercial terms, supply expectations, and the communication required to assess a potential distribution relationship.', 'Because infant nutrition is a highly regulated category, product eligibility, labeling, registrations, and import conditions must be reviewed for each destination market. We coordinate the relevant stakeholders so commercial planning and regulatory review can progress in a structured way.'] },
   { name: 'Cosmoderma (Botox & Dermal Fillers)', icon: 'stethoscope', slug: 'cosmoderma', paragraphs: ['Niaz Net Tehran supports brand registration and market development for aesthetic medicine and cosmoderma products, including botulinum toxin (Botox) and dermal fillers. We coordinate with brand owners and qualified manufacturers to explore product portfolios, target markets, documentation needs, and suitable commercial partners.', 'Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing. Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.'] },
   { name: 'API', icon: 'flask', slug: 'api-supply', paragraphs: ['We support sourcing and commercial coordination for Active Pharmaceutical Ingredients (APIs) and selected pharmaceutical raw materials, connecting buyers with manufacturers and suppliers for evaluation. Coordination may cover product specifications, quality documentation requests, quotations, minimum order quantities, and supply terms.', 'Supplier qualification and technical acceptance remain subject to the buyer’s quality requirements and applicable regulations. We help keep communication and documentation requests organized so the relevant quality, regulatory, procurement, and commercial teams can evaluate the opportunity efficiently.'] },
@@ -536,7 +554,7 @@ serviceItems.filter(item=>!vipServiceSlugs.includes(item.slug)).forEach((item, i
   const {name, icon, slug} = item;
   const card = document.createElement('a');
   card.className = 'service-card' + (slug === 'cbd-products' ? ' cbd-service' : '');
-  card.href = slug === 'sports-nutrition' ? 'sports-nutrition.html' : `index.html?service=${encodeURIComponent(slug)}`;
+  card.href = `index.html?service=${encodeURIComponent(slug)}`;
   card.target = '_self';
   card.innerHTML = `
     <span class="service-icon" aria-hidden="true">
@@ -626,65 +644,16 @@ if (requestedService) {
       <section class="hero brand-registration-page" id="home">
         <div class="container hero-inner">
           <div class="hero-copy">
+            <a class="service-back-link" href="index.html#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
             <div class="eyebrow">NIAZ NET · INTERNATIONAL BRAND PARTNERSHIPS</div>
             <h1>Find the Right Brand. <span>Unlock New Markets.</span></h1>
             <p>From international brand partnerships to brand registration and market growth, we help turn your business ambitions into practical opportunities.</p>
           </div>
           <div class="hero-showcase" aria-label="Featured services">
-  <div class="showcase-image active">
-    <img src="images/00 -Global Products, Global Opportunities.png" alt="Global Products, Global Opportunities" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/01-brand-partnerships.png" alt="Brand Partnerships" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/02-all-global-trade.png" alt="Global Trade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/03-sports-nutrition.png" alt="Sports Nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/04-infant-formula.png" alt="Infant Formula" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/05 -CBD Isolate_ Pure Pharmaceutical Grade (2).png" alt="CBD Isolate — Pure Pharmaceutical Grade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/06 -Luxury Aesthetic Medicine Production Banner.png" alt="Luxury Aesthetic Medicine Production" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/07 -Premium Pet Food_ From Nature to Bowl-1.png" alt="Premium Pet Food" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/08 -all 2 .png" alt="Global Product Portfolio" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/09-performance-nutrition.png" alt="Performance Nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/10-Global Brand, Ingredients, and Export Solutions.png" alt="Global Brand, Ingredients, and Export Solutions" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/11-brand-acquisition-registration.png" alt="Brand Acquisition & Registration" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/12-international-sports-brands.png" alt="International Sports Brands" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/13 -Cosmoderma Aesthetic Manufacturing Banner-3.png" alt="Cosmoderma Aesthetic Manufacturing" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/14-api-pharmaceutical-ingredients.png" alt="API & Pharmaceutical Ingredients" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/15-CBD Isolate_ Pure Pharmaceutical Grade (1).png" alt="CBD Isolate — Pharmaceutical Grade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/16 -Cosmoderma Aesthetic Manufacturing Banner.png" alt="Cosmoderma Production" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
-  <div class="showcase-image">
-    <img src="images/17 -Premium Pet Food Production Showcase-2.png" alt="Premium Pet Food Production" onerror="this.closest('.showcase-image').classList.add('image-missing')">
-  </div>
+            <div class="showcase-image active"><img src="images/00 -Global Products, Global Opportunities.png" alt="Global Products, Global Opportunities" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+            <div class="showcase-image"><img src="images/08 -all 2 .png" alt="Global Product Portfolio" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+            <div class="showcase-image"><img src="images/10-Global Brand, Ingredients, and Export Solutions.png" alt="Global Brand, Ingredients, and Export Solutions" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+            <div class="showcase-image"><img src="images/11-brand-acquisition-registration.png" alt="Brand Acquisition & Registration" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
 </div>
         </div>
       </section>
@@ -716,9 +685,124 @@ if (requestedService) {
 
           <div class="brand-registration-actions">
             <a class="btn" href="mailto:info@niaznet.com?subject=Brand%20Registration%20and%20International%20Brand%20Partnerships">LET’S DISCUSS YOUR BRAND →</a>
-            <a class="btn btn-outline" href="https://www.niaznet.net/index.html#services">← BACK TO ALL SERVICES</a>
+            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
           </div>
           <p class="brand-registration-footnote">Brand availability, commercial agreements, product registration and market access are subject to brand-owner decisions and the relevant regulatory authorities in each market.</p>
+        </div>
+      </section>`;
+    } else if (requestedService === 'sports-nutrition') {
+      main.innerHTML = `
+      <section class="hero brand-registration-page sports-nutrition-page" id="home">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <a class="service-back-link" href="index.html#services">← BACK TO ALL SERVICES</a>
+            <div class="eyebrow">NIAZ NET · SPORTS NUTRITION &amp; BULK SUPPLY</div>
+            <h1>Build Your Sports Portfolio. <span>Unlock New Opportunities.</span></h1>
+            <p>From international sports nutrition brand representation to bulk powder sourcing, we help businesses explore commercial opportunities and develop their product portfolios.</p>
+          </div>
+          <div class="hero-showcase" aria-label="Sports nutrition and supplement slideshow">
+            <div class="showcase-image active"><img src="images/00 -Global Products, Global Opportunities.png" alt="Global Products, Global Opportunities" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+            <div class="showcase-image"><img src="images/03-sports-nutrition.png" alt="Sports Nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+            <div class="showcase-image"><img src="images/12-international-sports-brands.png" alt="International Sports Brands" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+</div>
+        </div>
+      </section>
+      <section class="container section brand-registration-details" style="padding-top:24px;max-width:1120px">
+        <div class="panel brand-registration-copy sports-nutrition-copy" style="padding:clamp(24px,4vw,46px);font-size:15px;line-height:1.85;color:var(--muted)">
+          <h2 class="brand-registration-kicker">SPORTS NUTRITION. SMART SOURCING. NEW MARKETS.</h2>
+          <h3 class="brand-registration-subtitle">Grow your product portfolio with NIAZ NET</h3>
+          <p class="brand-registration-intro">With business reach and coordination across <strong>IRAN, Türkiye and Spain</strong>, NIAZ NET helps companies explore international brand opportunities and coordinate product sourcing for sports nutrition, supplements, and health-oriented food products. We bring commercial conversations, sourcing needs, and market objectives together so your business can move forward with greater clarity.</p>
+
+          <div class="sports-service-block">
+            <h3>Sports nutrition &amp; supplement brands</h3>
+            <p>We help businesses identify suitable international sports nutrition brands, connect with brand owners, and explore representation agreements and commercial partnerships for target markets. Each opportunity is assessed around your product portfolio, business goals, and intended market.</p>
+          </div>
+
+          <div class="sports-service-block">
+            <h3>Bulk sports powder supply</h3>
+            <p>For manufacturers, packers, and supplement distributors, we coordinate bulk sourcing opportunities for sports powders and performance nutrition products. Product type, technical specifications, order quantities, supplier terms, and documentation needs are reviewed according to each business requirement.</p>
+          </div>
+
+          <div class="sports-service-block">
+            <h3>Vitamins, wellness supplements &amp; diet-related foods</h3>
+            <p>We also help businesses explore brand representation and bulk sourcing opportunities for vitamin products, health-oriented supplements, and food products related to diet and healthy living. Potential supply and partnership options are considered according to the product category, supplier capabilities, and target-market requirements.</p>
+          </div>
+
+          <p class="sports-nutrition-disclaimer">All brand representation and supply opportunities are subject to the brand owner’s or supplier’s approval, commercial terms, product availability, and applicable regulatory requirements in the destination market.</p>
+
+          <h3 class="brand-registration-categories-title">Sports brand experience &amp; portfolio</h3>
+          <p>Selected sports brands and brand-partnership experience can be presented here. The four spaces below are reserved for brand logos and can be updated when the preferred brands are confirmed.</p>
+          <div class="sports-brand-grid" aria-label="Reserved spaces for four sports brand logos">
+            <div class="sports-brand-placeholder"><span>SPORTS BRAND LOGO 01<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>SPORTS BRAND LOGO 02<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>SPORTS BRAND LOGO 03<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>SPORTS BRAND LOGO 04<br>To be added</span></div>
+          </div>
+
+          <p class="brand-registration-closing">Whether you are looking for a sports nutrition brand, planning to source bulk powders, or expanding into vitamins and health-oriented products, NIAZ NET can help you explore suitable partners and coordinate the next steps.</p>
+
+          <div class="sports-nutrition-actions">
+            <a class="btn" href="mailto:info@niaznet.com?subject=Sports%20Nutrition%20Brands%20and%20Bulk%20Supply">LET’S DISCUSS YOUR REQUIREMENTS →</a>
+            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
+          </div>
+          <p class="brand-registration-footnote">Brand representation, product supply, market access, and any required registration remain subject to the relevant brand owner, supplier, and regulatory authorities.</p>
+        </div>
+      </section>`;
+    } else if (requestedService === 'infant-formula') {
+      main.innerHTML = `
+      <section class="hero brand-registration-page infant-formula-page" id="home">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <a class="service-back-link" href="index.html#services">← BACK TO ALL SERVICES</a>
+            <div class="eyebrow">NIAZ NET · INFANT FORMULA &amp; BABY NUTRITION</div>
+            <h1>Build Better Beginnings. <span>Source with Confidence.</span></h1>
+            <p>From leading international infant-formula brands to complete manufacturing-line solutions and carefully specified ingredients, NIAZ NET helps connect your project with qualified global partners.</p>
+          </div>
+          <div class="hero-showcase" aria-label="Infant formula and baby nutrition showcase">
+            <div class="showcase-image active"><img src="images/04-infant-formula.png" alt="Infant formula and baby nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+          </div>
+        </div>
+      </section>
+      <section class="container section brand-registration-details" style="padding-top:24px;max-width:1120px">
+        <div class="panel brand-registration-copy infant-formula-copy" style="padding:clamp(24px,4vw,46px);font-size:15px;line-height:1.85;color:var(--muted)">
+          <h2 class="brand-registration-kicker">GLOBAL INFANT NUTRITION. TECHNICAL KNOW-HOW. TRUSTED SOURCING.</h2>
+          <h3 class="brand-registration-subtitle">A stronger foundation for your infant-nutrition business</h3>
+          <p class="brand-registration-intro">NIAZ NET supports companies developing or expanding in infant nutrition by coordinating access to established international manufacturers, production technology, and specialist ingredients. We bring commercial opportunities and technical requirements together, helping your team assess the right route from brand partnership to manufacturing and supply.</p>
+
+          <div class="infant-service-block">
+            <h3>Leading European, American &amp; Canadian infant-formula brands</h3>
+            <p>We help identify high-quality, internationally established infant-formula brands and facilitate discussions with European, American, and Canadian brand owners. Where commercially available, our support can include exploring exclusive agency or distribution agreements, defining target territories, and coordinating the steps needed to evaluate a formal representation partnership. All exclusivity and agency arrangements require approval from the brand owner and agreement on territory, regulatory pathway, and commercial terms.</p>
+          </div>
+
+          <div class="infant-service-block">
+            <h3>Infant-formula production lines — from concept to equipment sourcing</h3>
+            <p>We coordinate project planning and sourcing for two principal manufacturing approaches: <strong>dry-blending production</strong>, using qualified powdered ingredients and controlled blending/packing processes; and a <strong>fresh-milk wet process</strong>, where milk is processed, standardized and concentrated before spray drying and downstream blending or packing. The appropriate process depends on the intended product range, capacity, technical specification, utilities, and investment plan.</p>
+            <p style="margin-top:10px">We can help prepare a preliminary production-line concept, identify suitable equipment suppliers in qualified manufacturing countries, and coordinate technical and commercial evaluation. Equipment and facility requirements can be assessed against the applicable GMP framework and relevant FDA requirements for the intended market. Certification, registration, and regulatory acceptance are not automatic and must be confirmed for the specific facility, equipment, product, and jurisdiction by the competent authorities.</p>
+          </div>
+
+          <div class="infant-service-block">
+            <h3>Specialist ingredients &amp; oxidation-sensitive nutrients</h3>
+            <p>We help source infant-formula ingredients and supporting materials from advanced international supply markets, subject to supplier qualification, specification, availability, and destination-market requirements. This can include <strong>DHA and ARA oils</strong>, other specified long-chain polyunsaturated fatty acids, and oxidation-sensitive micronutrients such as <strong>vitamins A, D3, E and K, vitamin C (ascorbic acid), beta-carotene and lutein</strong>. Product form, purity, stability data, packaging, storage conditions, and supporting quality documentation can be reviewed against the project specification.</p>
+          </div>
+
+          <p class="infant-disclaimer">Infant nutrition is a highly regulated category. Brand representation, ingredient supply, production-line design, certifications, and product-market access are subject to supplier and brand-owner approval, technical qualification, applicable laws, and acceptance by the relevant regulatory authorities.</p>
+
+          <h3 class="brand-registration-categories-title">Selected brands, technology &amp; supply experience</h3>
+          <p>Four spaces are reserved for infant-nutrition brands or selected project references. We will add the logos or approved references after you confirm which brands and projects should be displayed.</p>
+          <div class="sports-brand-grid infant-brand-grid" aria-label="Reserved spaces for four infant nutrition brands or project references">
+            <div class="sports-brand-placeholder"><span>BRAND / PROJECT 01<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>BRAND / PROJECT 02<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>BRAND / PROJECT 03<br>To be added</span></div>
+            <div class="sports-brand-placeholder"><span>BRAND / PROJECT 04<br>To be added</span></div>
+          </div>
+
+          <p class="brand-registration-closing">Whether you are seeking a leading international brand, planning a new infant-formula facility, or sourcing specialist ingredients, NIAZ NET can help you connect the commercial, technical, and supply-chain discussions needed to assess your next step.</p>
+
+          <div class="sports-nutrition-actions">
+            <a class="btn" href="mailto:info@niaznet.com?subject=Infant%20Formula%20Brands%2C%20Production%20Lines%20and%20Ingredients">DISCUSS YOUR INFANT-NUTRITION PROJECT →</a>
+            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
+          </div>
+          <p class="brand-registration-footnote">Any brand, ingredient, equipment, or production opportunity is subject to technical evaluation, supplier qualification, commercial agreement, and applicable regulatory requirements.</p>
         </div>
       </section>`;
     } else {
