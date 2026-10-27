@@ -14,15 +14,15 @@ Implemented in this package
 
 Important limits
 - This improves technical SEO; it does not guarantee first place for broad terms such as export, import, medicine, API, China or India. Rankings depend on competition, useful original content, crawl/indexing, real-world authority, relevant editorial links and site performance.
-- The canonical origin is set to https://niaznet.com based on the brand email/domain context. Verify that this is the site's final primary domain and that HTTP/www variants redirect consistently before deployment. If another host is primary, update canonical URLs in the HTML and sitemap.
+- The canonical origin is set to https://www.niaznet.net based on the brand email/domain context. Verify that this is the site's final primary domain and that HTTP/www variants redirect consistently before deployment. If another host is primary, update canonical URLs in the HTML and sitemap.
 - Country targeting is framed as trade opportunities and subject to applicable law and each transaction's feasibility. Verify the business actually accepts enquiries from each target market before advertising specific country capabilities.
 - The current language switch is a client-side partial translation, not a full SEO multilingual architecture. Do not add hreflang until distinct, fully translated and indexable language URLs exist (for example /fa/ and /tr/).
 - Contact form/newsletter forms still need a real backend or verified form service before they can collect and store submissions.
 
 Deploy / next actions
 1. Upload the whole ZIP contents to the GitHub repository and deploy to Vercel.
-2. Confirm https://niaznet.com/ resolves and serves the new version; test each service HTML page directly.
+2. Confirm https://www.niaznet.net/ resolves and serves the new version; test each service HTML page directly.
 3. Verify domain ownership in Google Search Console and Bing Webmaster Tools.
-4. Submit https://niaznet.com/sitemap.xml, then inspect the homepage and a few priority service URLs for crawl/indexing errors.
+4. Submit https://www.niaznet.net/sitemap.xml, then inspect the homepage and a few priority service URLs for crawl/indexing errors.
 5. Use Search Console queries to refine pages around realistic commercial-intent terms such as pharmaceutical API sourcing, import-export coordination Iran/Türkiye, medical device distribution, and pharmaceutical market entry.
 6. Build genuine authority through useful case studies, supplier/manufacturer profiles that may be published, relevant industry association listings, trade publications and legitimate partner mentions. Avoid purchased/spammy backlink packages and keyword stuffing.
