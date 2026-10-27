@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://niaznet.com/sitemap.xml
+Sitemap: https://www.niaznet.net/sitemap.xml
