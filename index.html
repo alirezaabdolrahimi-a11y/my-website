@@ -1134,74 +1134,83 @@ if (requestedService) {
 </script>
 
 <script>
-// One accessible controller for the featured-services slides, dots, and autoplay.
+// Accessible slideshow controller: supports both the homepage and dynamically rendered service pages.
 (function () {
-  document.querySelectorAll('.hero-showcase').forEach(root => {
-  const slides = Array.from(root.querySelectorAll('.showcase-image'));
-  if (!slides.length) return;
+  function initShowcase(root) {
+    if (root.dataset.showcaseInitialized === 'true') return;
+    const slides = Array.from(root.querySelectorAll('.showcase-image'));
+    if (!slides.length) return;
+    root.dataset.showcaseInitialized = 'true';
 
-  let current = Math.max(0, slides.findIndex(slide => slide.classList.contains('active')));
-  let timer = null;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const dotsWrap = document.createElement('div');
-  dotsWrap.className = 'showcase-dots';
-  dotsWrap.setAttribute('role', 'group');
-  dotsWrap.setAttribute('aria-label', 'Choose a featured image');
+    let current = Math.max(0, slides.findIndex(slide => slide.classList.contains('active')));
+    let timer = null;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const dotsWrap = document.createElement('div');
+    dotsWrap.className = 'showcase-dots';
+    dotsWrap.setAttribute('role', 'group');
+    dotsWrap.setAttribute('aria-label', 'Choose a featured image');
 
-  const dots = slides.map((slide, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'showcase-dot';
-    dot.setAttribute('aria-label', `Show slide ${index + 1}: ${slide.querySelector('span')?.textContent.trim() || 'Featured image'}`);
-    dot.addEventListener('click', () => { show(index); restart(); });
-    dotsWrap.appendChild(dot);
-    return dot;
-  });
-  root.appendChild(dotsWrap);
-
-  function show(index) {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => {
-      const active = i === current;
-      slide.classList.toggle('active', active);
-      slide.setAttribute('aria-hidden', String(!active));
+    const dots = slides.map((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'showcase-dot';
+      dot.setAttribute('aria-label', `Show slide ${index + 1}`);
+      dot.addEventListener('click', () => { show(index); restart(); });
+      dotsWrap.appendChild(dot);
+      return dot;
     });
-    dots.forEach((dot, i) => {
-      const active = i === current;
-      dot.classList.toggle('active', active);
-      dot.setAttribute('aria-current', active ? 'true' : 'false');
+    root.appendChild(dotsWrap);
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const active = i === current;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach((dot, i) => {
+        const active = i === current;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+    }
+    function stop() {
+      if (timer !== null) { window.clearInterval(timer); timer = null; }
+    }
+    function start() {
+      stop();
+      if (slides.length > 1 && !reducedMotion.matches && !document.hidden) {
+        timer = window.setInterval(() => show(current + 1), 4000);
+      }
+    }
+    function restart() { start(); }
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', event => {
+      if (!root.contains(event.relatedTarget)) start();
     });
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', start);
+    show(current);
+    start();
   }
 
-  function stop() {
-    if (timer !== null) {
-      window.clearInterval(timer);
-      timer = null;
-    }
+  function scan(root) {
+    if (root.matches && root.matches('.hero-showcase')) initShowcase(root);
+    if (root.querySelectorAll) root.querySelectorAll('.hero-showcase').forEach(initShowcase);
   }
 
-  function start() {
-    stop();
-    if (slides.length > 1 && !reducedMotion.matches && !document.hidden) {
-      timer = window.setInterval(() => show(current + 1), 4000);
-    }
-  }
-
-  function restart() { start(); }
-
-
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
-  root.addEventListener('focusin', stop);
-  root.addEventListener('focusout', event => {
-    if (!root.contains(event.relatedTarget)) start();
+  // Initialize slides already in the document (homepage).
+  scan(document);
+  // Service detail pages are injected later; initialize their slides as soon as they appear.
+  const observer = new MutationObserver(records => {
+    records.forEach(record => record.addedNodes.forEach(node => {
+      if (node.nodeType === 1) scan(node);
+    }));
   });
-  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
-  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', start);
-
-  show(current);
-  start();
-  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
 </script>
 
