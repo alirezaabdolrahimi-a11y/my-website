@@ -1,0 +1,104 @@
+NIAZ NET WEBSITE — BACKUP MANIFEST
+Snapshot date: 2026-10-31
+Repository: alirezaabdolrahimi-a11y/my-website
+Source branch: main
+Source commit: dedce92f8c23c3d5c3602e99c7a216c9eb135fb0
+Source tree SHA: c45c9f271d0afd0b59f20d63af5d6c09c3a4bbd7
+Backup branch: backup/2026-10-31
+
+Inventory verified from GitHub recursive tree API.
+Tree truncated: false
+Total entries: 82
+Files: 80
+Directories: 2
+Total file bytes (sum of Git blob sizes): 47763312
+
+IMPORTANT SCOPE NOTES:
+- The snapshot is the Git repository contents at the exact source commit above.
+- GitHub-generated ZIP at the source commit contains the tracked files and folders.
+- This manifest is added as a separate commit on the backup branch; it does not modify the source commit or main branch.
+- Git commit history beyond the pinned source commit is retained by GitHub but a standalone mirror/bundle has NOT been generated here.
+- Vercel project settings, domains, DNS, environment variable names/values, deployment logs, and external integrations are NOT stored in this repository snapshot.
+- Never store secrets, API tokens, passwords, or private environment values in this repository or this manifest.
+
+FILE INVENTORY (path | bytes | git blob SHA)
+about.html | 83452 | d57849f780b6bf34e47d4e7e4c6ed554a173dd16
+api-supply.html | 98024 | f41aab39fc03e19d965737d0f2b941607a500dfe
+become-our-partner.html | 81283 | 3050b33f23ea12d1c19eb6445c420e22440ba9c3
+brand-registration.html | 98005 | 0f3ecee9ac917512814f40c5bc4d252dae52a945
+business-development.html | 97884 | 66bb448a25888dc871d1bcd7f43bb09754570d9d
+BUTTON_LAYOUT_UPDATE.txt | 420 | 89ae4f8824f40c3b62f93fd186143be245066532
+cbd-products.html | 97980 | 19c7a49f59dd0e21fc3df2b4afb18b748d1a4e8b
+chamber-of-commerce.html | 98056 | ad6b24580686380437c2a2922523fb234ff10b66
+contact.html | 81633 | 459d678a28cdf2aef65c882e6330912f4e6af016
+contract-manufacturing.html | 98114 | f0522c8aa66a3941862c8d69012bf0600e043296
+cosmoderma.html | 97949 | 21e8f18ef37ede403b771da874c05bb7f5e1cb08
+exclusive-agency.html | 97987 | c70646dfbabd8a229e585c5fab40264cc268d802
+favicon.png | 353165 | b006fc64395b6b88349599718f50b7d9e1100b7b
+images/.gitkeep | 1 | 8b137891791fe96927ad78e64b0aad7bded08bdc
+images/00 -Global Products, Global Opportunities.png | 3025581 | 691ce10c3b312dd489a0c051796cf55de28ee4d0
+images/01-brand-partnerships.png | 793309 | d547893ad6e8783e109ddd549093c2fbdc8216f5
+images/02-all-global-trade.png | 913544 | 5a8731300224dff00db7df97b90fee8826953e7d
+images/03-sports-nutrition.png | 974104 | 140095064ef86ac9c9dd6994b275c5883a489877
+images/04-infant-formula.png | 1029259 | 22c3a69a9fc1d3fa6008e19fd333bb920be5d539
+images/05 -CBD Isolate_ Pure Pharmaceutical Grade (2).png | 2784486 | 8bd4d7c2361aa097df3534a936754dbd1c2bfb38
+images/06 -Luxury Aesthetic Medicine Production Banner.png | 2953021 | b896db215872e4bdc7abb99a88a476ac3adced39
+images/07 -Premium Pet Food_ From Nature to Bowl-1.png | 3130744 | 903558ae2d3d33e001483d0102c2b41cb8e955c8
+images/08 -all 2 .png | 3417550 | ecb59c3b38b0d7a8b8397493b29b45abaf0b8e36
+images/09-performance-nutrition.png | 974104 | 140095064ef86ac9c9dd6994b275c5883a489877
+images/10-Global Brand, Ingredients, and Export Solutions.png | 3044700 | 11fd75dd0db4391ca828b26b7fcf6dcab097922c
+images/11-brand-acquisition-registration.png | 828675 | cfd80bf0c2236f7009a2e824c62e77bdecda102f
+images/12-international-sports-brands.png | 919586 | c3917678f358f3c063f6ded3c2eb866f8adb30a7
+images/13 -Cosmoderma Aesthetic Manufacturing Banner-3.png | 2980591 | 2aea4b3b61f728a3c38378c1376808427633d6a9
+images/14-api-pharmaceutical-ingredients.png | 474285 | 43984fed97bad35ed4fc6657f358da63960a4123
+images/15-CBD Isolate_ Pure Pharmaceutical Grade (1).png | 3001707 | 72686c6e15a84f90b6732290cb9702017cbec31f
+images/16 -Cosmoderma Aesthetic Manufacturing Banner.png | 2963820 | 2aeac92257fa3ce20cb3d02b3b3c97218c51cd06
+images/17 -Premium Pet Food Production Showcase-2.png | 3181944 | 0aac4e49802a96fa6a8525f53e6d7ad87e277d63
+images/Infant 01.png | 1955002 | ce11e44e09a2678f3aca1220b9cdb7a7efb40701
+images/Infant 02.png | 1876348 | 98c2c6a2fdb7bda6bcd57951acc178b000dec41b
+images/Infant 03.png | 1852500 | d8511217c3038d8914ce1cd68737f8a92f6b0c05
+images/niaz-net-logo.png | 1061447 | 3a16ac3f8dd90d428f41d81ffc49f9f2592e5f5e
+images/service-icons/api.png | 14431 | c3f3fcbde8c81b07adc870f9289449fe15b52234
+images/service-icons/brand.png | 12811 | 32820ccc439ead6072cfa58f060eac121754751d
+images/service-icons/business-development.png | 16973 | 516745e40f108c5a4d9de9bf295bfb3d2e5e7801
+images/service-icons/cbd.png | 23617 | 9e590516c254c2b819ab15ebdad0e0eb43baf447
+images/service-icons/chamber-of-commerce.png | 19340 | 29195425edc8a7aac79c5710805aae3e6456ec82
+images/service-icons/contract-manufacturing.png | 13682 | ab47e1c1fb720efd3e7186b3525fa0f9e8961fbb
+images/service-icons/cosmoderma.png | 18318 | 87b657956f4c06dd9ae39bfabdb400193bb7ee58
+images/service-icons/exclusive-agency.png | 12938 | 109c03ac9fa61b9721f772de42afd7fe48265c73
+images/service-icons/import-export-globe.png | 30188 | e7b54e25143934a316839363f2aca67e5ac98b42
+images/service-icons/infant-formula.png | 10139 | d80a3736460a48c5b6db93e4ebb2d187d47f2f08
+images/service-icons/licensing-partnerships.png | 10594 | b42e2b9f36ddaf92b1429fd9d8e1a9b2a7dbc14f
+images/service-icons/market-entry.png | 20489 | 065ecf5d830ee3e0cc086d4dc8321c9d49a85d57
+images/service-icons/medical-devices.png | 18450 | 17a530a84a58b28f56898498e31cce35d4d39841
+images/service-icons/nutraceuticals.png | 12788 | d83e244533193a117788fdba414dfb7464aacbcc
+images/service-icons/pet-food.png | 13856 | 2d53f97cfd0b2455bfb13fad2f4409e5e4cc7915
+images/service-icons/pharmaceutical-products.png | 15166 | 15edbf5a4b86e5ddee1352d483eafcc928c65af1
+images/service-icons/private-label.png | 12993 | 2266c672562c256d0da1179b21575c9535a330a7
+images/service-icons/regulatory-affairs.png | 12858 | e4fd7d38f314edd11c4303a1ba9de72730732164
+images/service-icons/sports-nutrition.png | 23289 | 5f7589ce677f60cc2ac418cf8ec133d9c1771782
+images/service-icons/supply-chain-solutions.png | 11921 | 9752c650a6c334ffd2a4d962ed239f99ae521286
+images/service-icons/technology-transfer.png | 14437 | ae5902654473dc9e14ea9e16cd811abd2c7816db
+import-export.html | 98054 | b9fa448760645f0d87ea156aee1b100d8389a474
+index.html | 154639 | 027b3efc6cf39959307e25562910cce50d650044
+industries.html | 81936 | b436b0eac9085a1202cf543fb9af19c380de1b5f
+infant-formula.html | 98007 | 1a0e795336942ec850562dc8308e7acb88167dab
+international-business-development.html | 98099 | 9aaa26645fad013621163bfacae89b8482cc6cc5
+international-markets.html | 99268 | e0709e5ee5c2f520ec6aa9f3f3fec6cd5155f6d6
+licensing-partnerships.html | 98097 | e9ae46e01a62f68c78c07e971062da434f1b089c
+market-entry.html | 98026 | 9960224832e93379d71c0b8eac4681df406fd647
+medical-devices.html | 97953 | 645604e4cfc976e9ede192db812de4a883d131f9
+nutraceuticals.html | 97819 | 77183f6b27bc1e7c3b5da56ef048e77eac46a634
+pet-food.html | 97975 | c66d3b47c5a32fbda84e83e0159060b87fce52a8
+pharmaceutical-products.html | 97998 | 6bfd1884a67300256624e09af5c37e8d5fe5b610
+private-label.html | 98082 | ec24868bb738cf3d09ca95dd43de028d9920e42e
+product-registration.html | 98113 | 8e959f8a0ecc9b8d8f0f35db50a758dfbf05fd68
+projects.html | 91974 | 2993faceffd1542db4f6442d6ada4e0c12654def
+README.txt | 520 | af86ab6a7fe61c030b3d6ecd3d3e289092f455db
+regulatory-affairs.html | 98065 | d467430f9ff6702ca8bac7cfae9d7346b2470ccf
+robots.txt | 69 | 0d56936e096ca8336806e2468e64de979ba5e578
+SEO_README.txt | 3133 | b62ac470a02bed61b6fb7606ebcae4ab17289768
+sitemap.xml | 2033 | 71c3699969574726dfd2ad1e0fee36dd51eef3e8
+sports-nutrition.html | 97923 | 6f8fe7d44844e70cef43383ca4f807f609786281
+supply-chain-solutions.html | 97904 | 31dd3a482ec4bb63a1713466023c8c00cb79eba6
+technology-transfer.html | 98087 | 70e3e8fd7c77a0a2db6b64480e7b38aac3c135e1
