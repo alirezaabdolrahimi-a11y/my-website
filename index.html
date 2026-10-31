@@ -989,7 +989,7 @@ if (requestedService) {
       </section>`;
     } else if (requestedService === 'api-supply') {
       document.title='API & Pharmaceutical Ingredients | NIAZ NET';
-      main.innerHTML=`<section class="hero brand-registration-page"><div class="container hero-inner"><div class="hero-copy"><div class="hero-actions service-page-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=API%20Inquiry">CONTACT OUR TEAM →</a></div><div class="eyebrow">NIAZ NET · API &amp; PHARMACEUTICAL INGREDIENTS</div><h1>Pharmaceutical Ingredients. <span>Qualified Supply Opportunities.</span></h1><p>Search our working portfolio of active pharmaceutical ingredients and selected pharmaceutical intermediates. Filter by material type and identify products for a focused sourcing inquiry.</p></div><div class="hero-showcase"><div class="showcase-image active"><img src="images/14-api-pharmaceutical-ingredients.png" alt="API and pharmaceutical ingredients"></div></div></div></section>
+      main.innerHTML=`<section class="hero brand-registration-page"><div class="container hero-inner"><div class="hero-copy"><div class="hero-actions service-page-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=API%20Inquiry">CONTACT OUR TEAM →</a></div><div class="eyebrow">NIAZ NET · API &amp; PHARMACEUTICAL INGREDIENTS</div><h1>Pharmaceutical Ingredients. <span>Qualified Supply Opportunities.</span></h1><p>Search our working portfolio of active pharmaceutical ingredients and selected pharmaceutical intermediates. Filter by material type and identify products for a focused sourcing inquiry.</p></div><div class="hero-showcase" aria-label="API sourcing and pharmaceutical ingredients slideshow"><div class="showcase-image active"><img src="images/14-api-pharmaceutical-ingredients.png" alt="Pharmaceutical ingredient sourcing services"></div><div class="showcase-image"><img src="images/08 -all 2 .png" alt="Pharmaceutical supply coordination services" loading="lazy"></div><div class="showcase-image"><img src="images/00 -Global Products, Global Opportunities.png" alt="International pharmaceutical sourcing coordination" loading="lazy"></div></div></div></section>
       <section class="container section" style="max-width:1180px;padding-top:24px"><div class="panel" style="padding:28px"><div class="eyebrow">PRODUCT PORTFOLIO</div><h2>Search the API &amp; Ingredients Catalogue</h2><p style="color:var(--muted);line-height:1.8">API means Active Pharmaceutical Ingredient. Intermediates are materials or processed forms used during manufacturing. Excipients are non-active formulation ingredients. Confirm final classification, grade and specifications with the supplier.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0"><input id="apiSearchInput" type="search" placeholder="Search product name..." style="flex:2;min-width:220px;padding:12px"><select id="apiCategoryFilter" style="flex:1;min-width:160px;padding:12px"><option>All</option><option>API</option><option>Intermediate</option><option>Excipient</option></select><select id="apiSortDirection" style="padding:12px"><option value="asc">A to Z</option><option value="desc">Z to A</option></select></div>
       <p id="apiResultsCount" aria-live="polite">Loading catalogue…</p><div style="overflow-x:auto"><table id="apiCatalogTable" style="width:100%;min-width:600px;border-collapse:collapse;text-align:left"><thead><tr><th data-sort="number">NO. ↕</th><th data-sort="name">PRODUCT / MATERIAL ↕</th><th data-sort="category">CATEGORY ↕</th><th>NOTES</th></tr></thead><tbody id="apiCatalogBody"></tbody></table></div><p id="apiNoResults" style="display:none">No matching materials found.</p>
@@ -1130,10 +1130,34 @@ if (requestedService) {
         </div>
       </section>`;
     } else {
+      const serviceSlideshowImages = {
+        'cosmoderma': ['06 -Luxury Aesthetic Medicine Production Banner.png', '16 -Cosmoderma Aesthetic Manufacturing Banner.png'],
+        'medical-devices': ['08 -all 2 .png', '02-all-global-trade.png', '00 -Global Products, Global Opportunities.png'],
+        'cbd-products': ['05 -CBD Isolate_ Pure Pharmaceutical Grade (2).png', '15-CBD Isolate_ Pure Pharmaceutical Grade (1).png'],
+        'import-export': ['02-all-global-trade.png', '00 -Global Products, Global Opportunities.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'exclusive-agency': ['01-brand-partnerships.png', '11-brand-acquisition-registration.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'business-development': ['00 -Global Products, Global Opportunities.png', '02-all-global-trade.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'chamber-of-commerce': ['02-all-global-trade.png', '00 -Global Products, Global Opportunities.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'market-entry': ['00 -Global Products, Global Opportunities.png', '10-Global Brand, Ingredients, and Export Solutions.png', '02-all-global-trade.png'],
+        'licensing-partnerships': ['01-brand-partnerships.png', '10-Global Brand, Ingredients, and Export Solutions.png', '11-brand-acquisition-registration.png'],
+        'pharmaceutical-products': ['14-api-pharmaceutical-ingredients.png', '08 -all 2 .png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'product-registration': ['11-brand-acquisition-registration.png', '01-brand-partnerships.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'regulatory-affairs': ['14-api-pharmaceutical-ingredients.png', '11-brand-acquisition-registration.png', '02-all-global-trade.png'],
+        'contract-manufacturing': ['06 -Luxury Aesthetic Medicine Production Banner.png', '14-api-pharmaceutical-ingredients.png', '17 -Premium Pet Food Production Showcase-2.png'],
+        'technology-transfer': ['06 -Luxury Aesthetic Medicine Production Banner.png', '14-api-pharmaceutical-ingredients.png', '08 -all 2 .png'],
+        'international-business-development': ['00 -Global Products, Global Opportunities.png', '02-all-global-trade.png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'supply-chain-solutions': ['02-all-global-trade.png', '00 -Global Products, Global Opportunities.png', '17 -Premium Pet Food Production Showcase-2.png'],
+        'private-label': ['01-brand-partnerships.png', '08 -all 2 .png', '10-Global Brand, Ingredients, and Export Solutions.png'],
+        'pet-food': ['07 -Premium Pet Food_ From Nature to Bowl-1.png', '17 -Premium Pet Food Production Showcase-2.png'],
+        'nutraceuticals': ['03-sports-nutrition.png', '09-performance-nutrition.png', '14-api-pharmaceutical-ingredients.png']
+      };
+      const slideImages = serviceSlideshowImages[requestedService] || ['00 -Global Products, Global Opportunities.png', '02-all-global-trade.png', '10-Global Brand, Ingredients, and Export Solutions.png'];
+      const slideshowMarkup = `<div class="hero-showcase" aria-label="${selectedService.name} service slideshow">${slideImages.map((image, index) => `<div class="showcase-image${index === 0 ? ' active' : ''}"><img src="images/${image}" alt="${selectedService.name} service visual ${index + 1}" ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>`).join('')}</div>`;
       main.innerHTML = `
       <section class="hero" id="home" style="min-height:300px;padding-top:120px">
         <div class="container hero-inner" style="grid-template-columns:1fr">
-          <div class="hero-copy"><div class="eyebrow">Niaz Net Tehran · Our Services</div><h1>${selectedService.name}</h1><p>Strategic distribution, trade coordination, and international business support.</p><div class="hero-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=Business%20Inquiry'Inquiry: ' + selectedService.name)}">CONTACT OUR TEAM →</a></div></div>
+          <div class="hero-copy"><div class="eyebrow">NIAZ NET · OUR SERVICES</div><h1>${selectedService.name}</h1><p>${selectedService.paragraphs[0]}</p><div class="hero-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">CONTACT OUR TEAM →</a></div></div>
+          ${slideshowMarkup}
         </div>
       </section>
       <section class="container section" style="padding-top:38px;max-width:900px">
