@@ -1,1 +1,1047 @@
-[]
+[
+  {
+    "name": "Atropine Sulphate",
+    "category": "API",
+    "note": "Spelling normalized from “Atripoine Sulphate”."
+  },
+  {
+    "name": "Alprazolam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ambroxol HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ampicillin Sodium Sterile",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Amitriptyline HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Atorvastatin Calcium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Atenolol",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Bisacodyl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Bromhexine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Budesonide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Carbamazepine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Celecoxib",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Cefoperazone Sodium Sterile",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Cefotaxime Sodium Sterile",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ceftizoxime Sodium Sterile",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Cyproheptadine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Chlordiazepoxide HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Chlordiazepoxide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Clonazepam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Clobazam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Clopidogrel Bisulphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Dextromethorphan Hydrobromide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Divalproex Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Domperidone (Powder/Maleate)",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Donepezil HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Dopamine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Dorzolamide HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Entacapone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Esomeprazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Esomeprazole Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ethambutol HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Etizolam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Etoricoxib",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Febuxostat",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fenofibrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fenticonazole Nitrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fexofenadine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fluconazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Flucloxacillin Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fluphenazine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fluphenazine Decanoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fluoxetine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Fluvoxamine Maleate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Furosemide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Gabapentin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Glibenclamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Glimepiride",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Glycopyrrolate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Guaifenesin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Haloperidol Base",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Haloperidol Decanoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Imipramine HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Iodochlorhydroxyquinoline",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ipratropium Bromide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Iron Sucrose",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Isoniazid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Isoxsuprine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Itopride HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ketoconazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ketoprofen",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Lamotrigine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levetiracetam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levocetirizine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levodropropizine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levofloxacin Hemihydrate/HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levomepromazine Maleate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Levosulpiride",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Lidocaine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Linezolid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Lisinopril",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Loperamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Loratadine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Losartan Potassium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Melitracen HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Midazolam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Midazolam HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Midazolam Maleate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mebeverine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Meclizine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mefenamic Acid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Meloxicam",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mesalamine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Metaxalone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Metformin HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methocarbamol",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methoxsalen",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methotrexate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methyl Cobalamin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methyl Nicotinate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Methylprednisolone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Metoclopramide HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Metronidazole Benzoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mezlocillin Sodium Sterile",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Miconazole Base",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Miconazole Nitrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Midazolam Hydrochloride",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Midazolam Base",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Minoxidil",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Minoxidil Sulphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mometasone Furoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Montelukast Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mosapride Citrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Moxifloxacin HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mupirocin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Mycophenolate Mofetil",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Naloxone HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Naltrexone HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nandrolone Decanoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nandrolone Phenylpropionate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Naphazoline Nitrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nebivolol HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Niacinamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Niclosamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nifedipine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nimesulide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nitazoxanide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nizatidine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Noradrenaline Tartrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Nortriptyline HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ofloxacin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Olanzapine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Olmesartan Medoxomil",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ondansetron",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ornidazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Oxiconazole Nitrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Oxomemazine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Oxybutynin HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Oxymetazoline HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pamidronate Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pantoprazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Papaverine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Promethazine HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Phenytoin Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Picosulphate Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Paliperidone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Potassium Iodide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Povidone Iodine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Prazosin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pregabalin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Probenecid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Prochlorperazine Maleate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Propranolol HCl",
+    "category": "API",
+    "note": "Spelling normalized from “Propanolol Hcl”."
+  },
+  {
+    "name": "Propantheline Bromide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pseudoephedrine",
+    "category": "API",
+    "note": "Spelling normalized from “Psuedoephedrine”."
+  },
+  {
+    "name": "Pyrazinamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pyrilamine Maleate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Pyrimethamine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Quetiapine Fumarate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ranitidine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ranolazine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Rivastigmine Tartrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Risedronate Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Risperidone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Ritodrine HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Rosuvastatin Calcium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Salbutamol Sulphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Selegiline HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Selenium Sulfide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sertraline HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sibutramine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sildenafil Citrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Silver Sulphadiazine",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sitagliptin Phosphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Alendronate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Chloride",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Cromoglycate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Alginate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Glycerophosphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Hypophosphite",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Picosulphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sodium Valproate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Sparfloxacin",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tadalafil",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tamoxifen Citrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tamsulosin HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tazarotene",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Telmisartan",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Terazosin HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Terbutaline Sulphate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Terconazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Testosterone",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tetracaine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Thiocolchicoside",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Thioridazine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Timolol Maleate",
+    "category": "API",
+    "note": "Probable correction of “Ptimolol Maleate”; confirm supplier specification."
+  },
+  {
+    "name": "Tinidazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tioconazole",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Triprolidine HCl",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tizanidine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tolnaftate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tolterodine Tartrate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Topiramate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tolperisone HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tramadol HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Triclosan",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Trihexyphenidyl HCL (Benzhexol)",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Trimetazidine Dihydrochloride",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Trimethoprim",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Trioxsalen",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tropicamide",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Undecylenic Acid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Valsartan",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Valproic Acid",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Venlafaxine HCL",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Warfarin Sodium",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Xalindrone",
+    "category": "API",
+    "note": "Name retained as supplied; confirm identity and spelling."
+  },
+  {
+    "name": "Zuclopentixol Acetate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Zuclopentixol Decanoate",
+    "category": "API",
+    "note": ""
+  },
+  {
+    "name": "Tamsulosin HCl Pellets",
+    "category": "Intermediate",
+    "note": "Pelletized intermediate presentation; confirm composition and release specification."
+  }
+]
