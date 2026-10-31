@@ -821,8 +821,8 @@
   },
   {
     "name": "Sodium Chloride",
-    "category": "API",
-    "note": ""
+    "category": "Excipient",
+    "note": "Often used as a formulation or processing excipient; may also be specified as an active ingredient for particular products."
   },
   {
     "name": "Sodium Cromoglycate",
@@ -831,8 +831,8 @@
   },
   {
     "name": "Sodium Alginate",
-    "category": "API",
-    "note": ""
+    "category": "Excipient",
+    "note": "Commonly used as a formulation excipient; may have other uses depending on product and specification."
   },
   {
     "name": "Sodium Glycerophosphate",
