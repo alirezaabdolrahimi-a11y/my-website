@@ -1,28 +1,50 @@
-NIAZ NET — INTERNATIONAL SEO FOUNDATION
+NIAZ NET — SEO FOUNDATION & MULTILINGUAL ROADMAP
+Last reviewed: 2026-10-31
 
-Base: NIAZ_NET_pages_only_v5_center_four_service_buttons.zip
+WORKING STATUS
+- Working branch: seo-multilingual-foundation
+- Review: https://github.com/alirezaabdolrahimi-a11y/my-website/pull/8
+- The PR is draft and unmerged. The production branch (main) has not been changed.
+- No production deployment has been requested or performed.
 
-Implemented in this package
-- Unique titles, meta descriptions, canonical links, robots directives, Open Graph and Twitter metadata for core pages.
-- An international-markets landing page covering Iran, Türkiye, selected Middle Eastern markets, Spain, China and India with transparent scope caveats.
-- 23 dedicated service URLs with server-readable HTML content, unique metadata, internal related-service links, Service schema and breadcrumbs.
-- Homepage service cards and core footer service links point to dedicated service URLs rather than query-string pages.
-- Organization and WebSite structured data on the home page, plus Organization references on service pages.
-- robots.txt and sitemap.xml.
-- The NIAZ NET logo, favicon and homepage/service showcase images referenced by the baseline pages.
-- The homepage remains based on the refined V5 design; the removed trade strip and homepage industry grid are not restored.
+COMPLETED IN THE WORKING BRANCH
+- Homepage: canonical URL, robots directives, Open Graph and Twitter metadata, Organization and WebSite structured data.
+- Public-facing brand name standardized to NIAZ NET across all 30 HTML pages.
+- All 30 HTML pages checked for title, meta description, canonical, Open Graph title and Twitter card metadata.
+- All 30 page titles reviewed and found distinct.
+- Existing 23 standalone service pages retained; their Service and Breadcrumb structured data remains in place.
+- Page-level structured data added to About, Contact, Industries, Projects and Become Our Partner.
+- Business Development and Cross-Border Business Development pages now have distinct search intent and metadata.
+- The nine industry descriptions have been rewritten to describe their respective commercial scope rather than repeating generic copy.
+- Regulatory wording on the homepage and About page has been clarified: NIAZ NET coordinates commercial and documentation discussions; regulatory decisions and approvals remain with the relevant authorities.
+- Sitemap and robots.txt retained; projects.html remains intentionally outside the sitemap pending confirmation of the project and active-agreement claims shown on that page.
 
-Important limits
-- This improves technical SEO; it does not guarantee first place for broad terms such as export, import, medicine, API, China or India. Rankings depend on competition, useful original content, crawl/indexing, real-world authority, relevant editorial links and site performance.
-- The canonical origin is set to https://www.niaznet.net based on the brand email/domain context. Verify that this is the site's final primary domain and that HTTP/www variants redirect consistently before deployment. If another host is primary, update canonical URLs in the HTML and sitemap.
-- Country targeting is framed as trade opportunities and subject to applicable law and each transaction's feasibility. Verify the business actually accepts enquiries from each target market before advertising specific country capabilities.
-- The current language switch is a client-side partial translation, not a full SEO multilingual architecture. Do not add hreflang until distinct, fully translated and indexable language URLs exist (for example /fa/ and /tr/).
-- Contact form/newsletter forms still need a real backend or verified form service before they can collect and store submissions.
+KNOWN ITEMS TO CONFIRM OR COMPLETE
+- The current language selector is only a partial client-side English/Persian text switch. It is not a complete SEO multilingual implementation.
+- Localized, crawlable page sets for Persian (/fa/), Arabic (/ar/), Turkish (/tr/) and Spanish (/es/) have not yet been created.
+- Do not add hreflang annotations until matching translated pages exist and each alternate points reciprocally to the others.
+- The contact details currently use both info@niaznet.net and info@niaznet.com in different places. Confirm the intended public email before standardizing it.
+- The sitemap currently contains 29 URLs. The Projects page is excluded pending confirmation that all displayed project categories, counts and agreement descriptions are approved for public indexing.
+- Newsletter and contact forms need a verified backend or form service before they can collect submissions.
+- India and Spain office details are described as pending confirmation; do not present them as established offices until addresses are verified.
+- The latest Vercel status is blocked by the team's build-rate limit. This is not a successful preview validation and should not be interpreted as proof that the latest code builds correctly.
 
-Deploy / next actions
-1. Upload the whole ZIP contents to the GitHub repository and deploy to Vercel.
-2. Confirm https://www.niaznet.net/ resolves and serves the new version; test each service HTML page directly.
-3. Verify domain ownership in Google Search Console and Bing Webmaster Tools.
-4. Submit https://www.niaznet.net/sitemap.xml, then inspect the homepage and a few priority service URLs for crawl/indexing errors.
-5. Use Search Console queries to refine pages around realistic commercial-intent terms such as pharmaceutical API sourcing, import-export coordination Iran/Türkiye, medical device distribution, and pharmaceutical market entry.
-6. Build genuine authority through useful case studies, supplier/manufacturer profiles that may be published, relevant industry association listings, trade publications and legitimate partner mentions. Avoid purchased/spammy backlink packages and keyword stuffing.
+MULTILINGUAL IMPLEMENTATION REQUIREMENTS
+For every supported language:
+1. Create a complete, human-reviewed localized page set under /fa/, /ar/, /tr/ or /es/.
+2. Translate visible content, page titles, descriptions, navigation, forms, accessibility labels and relevant structured data.
+3. Set the correct html lang attribute; use RTL layout for Persian and Arabic.
+4. Give each localized page a self-referencing canonical URL.
+5. Add reciprocal hreflang links for en, fa, ar, tr and es only where equivalent pages exist.
+6. Update internal links so visitors remain in their selected language wherever a translated page is available.
+7. Add the localized URLs to sitemap.xml after the pages are complete and tested.
+8. Preserve the existing NIAZ NET visual identity and existing English content; do not replace the site with a new design.
+
+FINAL QA AND RELEASE
+- Retry preview builds when the Vercel team build-rate limit is cleared.
+- Test all changed URLs, mobile navigation, language switching, RTL layout, forms, image paths, canonical tags, hreflang reciprocity, sitemap and structured data.
+- Review Google Search Console and Bing Webmaster Tools after the approved release.
+- Do not merge the draft PR or deploy to production without the user's explicit approval.
+
+SEO NOTE
+Technical SEO improvements do not guarantee rankings. Prioritize accurate, original business information, useful sector-specific content, crawlable URLs, genuine experience and relevant authority. Avoid keyword stuffing, mass-generated thin pages and unsupported business or regulatory claims.
