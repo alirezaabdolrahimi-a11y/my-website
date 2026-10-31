@@ -74,6 +74,8 @@
 
     /* Featured-services slideshow: restore styling and automatic rotation */
     .hero-showcase{position:relative;isolation:isolate;z-index:1;min-width:0;width:100%;height:298px;border:1px solid rgba(226,230,238,.28);border-radius:15px;overflow:hidden;background:#071b38;box-shadow:0 18px 42px rgba(0,0,0,.22)}
+    .hero-showcase{touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+
     .showcase-image{position:absolute;inset:0;display:none;opacity:0;transition:opacity .55s ease;background:linear-gradient(135deg,#0a2749,#1a5681 52%,#071b38)}
     .showcase-image.active{display:block;opacity:1;animation:showcaseFade .55s ease}
     .showcase-image img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
@@ -1184,6 +1186,34 @@ if (requestedService) {
       }
     }
     function restart() { start(); }
+
+    // Touch support: horizontal swipes navigate slides while vertical gestures still scroll the page.
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let activePointerId = null;
+    root.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' || event.target.closest('button')) return;
+      activePointerId = event.pointerId;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      stop();
+    });
+    root.addEventListener('pointerup', event => {
+      if (activePointerId !== event.pointerId) return;
+      const deltaX = event.clientX - pointerStartX;
+      const deltaY = event.clientY - pointerStartY;
+      activePointerId = null;
+      if (Math.abs(deltaX) >= 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+        show(current + (deltaX < 0 ? 1 : -1));
+      }
+      start();
+    });
+    root.addEventListener('pointercancel', event => {
+      if (activePointerId === event.pointerId) {
+        activePointerId = null;
+        start();
+      }
+    });
 
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', start);
