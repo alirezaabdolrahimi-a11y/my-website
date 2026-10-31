@@ -3,8 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Niaz Net Tehran — Strategic Distribution & Trade, import and export, pharmaceutical sourcing, technology transfer and international business development.">
-  <title>NIAZ NET TEHRAN | Strategic Distribution & Trade</title>
+  <meta name="description" content="NIAZ NET coordinates international trade, distribution, pharmaceutical sourcing, market entry and business development across selected markets.">
+  <title>NIAZ NET | International Trade, Distribution &amp; Business Development</title>
+  <link rel="canonical" href="https://www.niaznet.net/">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#061a36">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NIAZ NET">
+  <meta property="og:title" content="NIAZ NET | International Trade, Distribution &amp; Business Development">
+  <meta property="og:description" content="NIAZ NET coordinates international trade, distribution, pharmaceutical sourcing, market entry and business development across selected markets.">
+  <meta property="og:url" content="https://www.niaznet.net/">
+  <meta property="og:image" content="https://www.niaznet.net/images/niaz-net-logo.png">
+  <meta property="og:image:alt" content="NIAZ NET company logo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NIAZ NET | International Trade, Distribution &amp; Business Development">
+  <meta name="twitter:description" content="NIAZ NET coordinates international trade, distribution, pharmaceutical sourcing, market entry and business development across selected markets.">
+  <meta name="twitter:image" content="https://www.niaznet.net/images/niaz-net-logo.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.niaznet.net/#organization",
+        "name": "NIAZ NET",
+        "url": "https://www.niaznet.net/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.niaznet.net/images/niaz-net-logo.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.niaznet.net/#website",
+        "url": "https://www.niaznet.net/",
+        "name": "NIAZ NET",
+        "publisher": {
+          "@id": "https://www.niaznet.net/#organization"
+        },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -843,7 +884,7 @@ vipServiceSlugs.forEach(slug=>{
   const item=serviceItems.find(x=>x.slug===slug);
   if(!item)return;
   const a=document.createElement('a');
-  a.className='vip-service-link';a.href=`index.html?service=${encodeURIComponent(item.slug)}`;a.target='_self';
+  a.className='vip-service-link';a.href=`${item.slug}.html`;a.target='_self';
   const vipLabel = slug==='chamber-of-commerce' ? 'Private Chamber of Commerce' : slug==='exclusive-agency' ? 'Exclusive Agency' : slug==='market-entry' ? 'Market Entry' : item.name;
   a.innerHTML=`<img src="${iconPath(slug)}" alt="" loading="lazy"><span class="vip-label">${vipLabel}</span>`;
   vipList.appendChild(a);
@@ -855,7 +896,7 @@ if(importExportItem){
   const card=document.createElement('a');
   card.className='service-card import-export-card';
   card.dataset.serviceSlug=importExportItem.slug;
-  card.href=`index.html?service=${encodeURIComponent(importExportItem.slug)}`;
+  card.href=`${importExportItem.slug}.html`;
   card.target='_self';
   card.innerHTML=`
     <span class="service-icon" aria-hidden="true"><img src="${iconPath(importExportItem.slug)}" alt="" loading="lazy"></span>
@@ -870,7 +911,7 @@ serviceDisplayOrder.forEach(slug=>{
   const card=document.createElement('a');
   card.className='service-card'+(slug==='cbd-products'?' cbd-service':'');
   card.dataset.serviceSlug=slug;
-  card.href=`index.html?service=${encodeURIComponent(slug)}`;
+  card.href=`${slug}.html`;
   card.target='_self';
   card.innerHTML=`
     <span class="service-icon" aria-hidden="true"><img src="${iconPath(slug)}" alt="" loading="lazy"></span>
@@ -931,7 +972,13 @@ const requestedService = new URLSearchParams(window.location.search).get('servic
 if (requestedService) {
   const selectedService = serviceItems.find(item => item.slug === requestedService);
   if (selectedService) {
-    document.title = `${selectedService.name} | NIAZ NET TEHRAN`;
+    document.title = `${selectedService.name} | NIAZ NET`;
+    const serviceCanonical = document.querySelector('link[rel="canonical"]');
+    if (serviceCanonical) serviceCanonical.href = `https://www.niaznet.net/${requestedService}.html`;
+    const serviceDescription = document.querySelector('meta[name="description"]');
+    if (serviceDescription && selectedService.paragraphs && selectedService.paragraphs[0]) {
+      serviceDescription.content = selectedService.paragraphs[0].replace(/\s+/g, ' ').trim().slice(0, 300);
+    }
     const main = document.querySelector('main');
     if (requestedService === 'brand-registration') {
       main.innerHTML = `
