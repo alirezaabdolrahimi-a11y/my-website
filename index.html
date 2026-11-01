@@ -178,9 +178,13 @@
     .service-card:hover .service-icon,.service-card:focus-visible .service-icon{transform:translateY(-5px) scale(1.06)!important;box-shadow:inset 0 1px 0 #ffffff9c,0 12px 20px #071b3933!important}
     .service-card h3{font-size:11px}
     .lang{cursor:pointer}
-    body[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
-    body[dir="rtl"] .nav-links,body[dir="rtl"] .hero-copy,body[dir="rtl"] .section-title,body[dir="rtl"] .service-card{text-align:right}
-    body[dir="rtl"] .hero-actions-below{justify-content:center!important} body[dir="rtl"] .nav{direction:rtl} body[dir="rtl"] .nav-links{direction:rtl} body[dir="rtl"] .hero-actions,body[dir="rtl"] .hero-actions-below,body[dir="rtl"] .socials,body[dir="rtl"] .footer-bottom{direction:rtl} body[dir="rtl"] .service-card{direction:rtl} body[dir="rtl"] .dropdown{left:auto;right:-14px}
+    html[lang="fa"] body{font-family:Tahoma,Arial,sans-serif}
+    /* Persian changes text direction only; keep the English layout/grid and image positions unchanged. */
+    html[lang="fa"] .nav,html[lang="fa"] .nav-links,html[lang="fa"] .hero-inner,html[lang="fa"] .hero-actions,html[lang="fa"] .services-layout,html[lang="fa"] .services-grid,html[lang="fa"] .stats,html[lang="fa"] .footer-grid,html[lang="fa"] .footer-bottom{direction:ltr}
+    html[lang="fa"] .nav-links>a,html[lang="fa"] .nav-cta,html[lang="fa"] .hero-copy .eyebrow,html[lang="fa"] .hero-copy h1,html[lang="fa"] .hero-copy p,html[lang="fa"] .section-title,html[lang="fa"] .service-card h3,html[lang="fa"] .panel h2,html[lang="fa"] .reason h3,html[lang="fa"] .reason p,html[lang="fa"] .contact-band h2,html[lang="fa"] .contact-band p,html[lang="fa"] .footer-brand p,html[lang="fa"] .footer-col h3,html[lang="fa"] .footer-col a,html[lang="fa"] .newsletter p,html[lang="fa"] .footer-bottom a{direction:rtl;text-align:right}
+    html[lang="fa"] .service-card{text-align:center}
+    html[lang="fa"] .service-card h3{text-align:center}
+    html[lang="fa"] .dropdown{left:-14px;right:auto}
     @media(min-width:761px) and (max-width:1100px){.hero-inner{grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr)!important;column-gap:12px!important}.hero-showcase{height:clamp(310px,34vw,400px)!important}}
     @media(max-width:760px){.hero{padding-top:105px}.hero-inner{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:16px}.hero-copy{grid-column:1;grid-row:1;max-width:100%;padding-top:0}.hero-showcase{grid-column:1;grid-row:2;height:250px}.hero-actions-below{grid-column:1;grid-row:3}.hero h1{font-size:27px}.hero-showcase img{object-fit:contain}.stats.trade-stats{grid-template-columns:repeat(2,1fr)}.stats.trade-stats .stat:last-child{grid-column:auto}.partner-hero-btn{font-size:13px}.network-map-modern{height:240px}}
     
@@ -649,20 +653,22 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
       <div class="hero-copy"><div class="eyebrow">Connecting markets worldwide</div><h1>Your Global Business Development <span>Partner</span></h1><p>Connecting manufacturers, brands, technologies and markets across pharmaceuticals, healthcare, nutrition and related industries.</p><div class="hero-actions"><a class="btn partner-hero-btn" href="mailto:agent@niaznet.net?subject=Partnership%20Inquiry">BECOME OUR PARTNER <span>→</span></a></div></div>
       <div class="hero-showcase" aria-label="Featured services">
   <div class="showcase-image active">
-    <img src="images/00 -Global Products, Global Opportunities.png" alt="Global Products, Global Opportunities" onerror="this.closest('.showcase-image').classList.add('image-missing')">
+    <img src="images/02-all-global-trade.png" alt="Global Trade and International Distribution" fetchpriority="high" decoding="async" onerror="this.closest('.showcase-image').classList.add('image-missing')">
   </div>
   <div class="showcase-image">
-    <img src="images/01-brand-partnerships.png" alt="Brand Partnerships" onerror="this.closest('.showcase-image').classList.add('image-missing')">
+    
   </div>
   <div class="showcase-image">
-    <img src="images/02-all-global-trade.png" alt="Global Trade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
+    
   </div>
   <div class="showcase-image">
-    <img src="images/03-sports-nutrition.png" alt="Sports Nutrition" onerror="this.closest('.showcase-image').classList.add('image-missing')">
+    
   </div>
   <div class="showcase-image">
-    <img src="images/04-infant-formula.png" alt="Infant Formula" onerror="this.closest('.showcase-image').classList.add('image-missing')">
+    
   </div>
+<div class="showcase-image"><img src="images/01-brand-partnerships.png" alt="Brand Partnerships" loading="lazy" decoding="async" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
+  <div class="showcase-image"><img src="images/14-api-pharmaceutical-ingredients.png" alt="API and Pharmaceutical Ingredients" loading="lazy" decoding="async" onerror="this.closest('.showcase-image').classList.add('image-missing')"></div>
   <div class="showcase-image">
     <img src="images/05 -CBD Isolate_ Pure Pharmaceutical Grade (2).png" alt="CBD Isolate — Pure Pharmaceutical Grade" onerror="this.closest('.showcase-image').classList.add('image-missing')">
   </div>
@@ -930,14 +936,14 @@ const langButton=document.getElementById('langButton');
 const bilingualMap=[
   ['Home','خانه'],['About Us','درباره ما'],['Services','خدمات'],['Industries','صنایع'],['Partners','شرکای تجاری'],['Projects','پروژه‌ها'],['News','اخبار'],['Contact','تماس با ما'],['GET IN TOUCH','ارتباط با ما'],
   ['Connecting markets worldwide','اتصال بازارها در سراسر جهان'],['Your Global Business Development ','شریک توسعه کسب‌وکار جهانی شما '],
-  ['Partner',''],['Connecting manufacturers, brands, technologies and markets across pharmaceuticals, healthcare, nutrition and related industries.','ایجاد ارتباط میان تولیدکنندگان، برندها، فناوری‌ها و بازارهای دارویی، سلامت و تغذیه.'],
+  ['Partner','تجاری'],['Connecting manufacturers, brands, technologies and markets across pharmaceuticals, healthcare, nutrition and related industries.','ایجاد ارتباط میان تولیدکنندگان، برندها، فناوری‌ها و بازارهای دارویی، سلامت و تغذیه.'],
   ['BECOME OUR PARTNER','همکاری با ما'],['Global Partners','شرکای جهانی'],['Business Contact','اطلاعات تماس تجاری'],['What helps us respond faster?','چه اطلاعاتی به پاسخ سریع‌تر کمک می‌کند؟'],['Start a conversation','شروع گفتگو'],['Contact Our Team','تماس با تیم ما'],['Full name *','نام و نام خانوادگی *'],['Company *','شرکت *'],['Job title / Position','عنوان شغلی / سمت'],['Phone / WhatsApp *','تلفن / واتساپ *'],['Business email *','ایمیل کاری *'],['Request type','نوع درخواست'],['Your request and relevant details *','درخواست و جزئیات مرتبط *'],['PREPARE INQUIRY EMAIL →','آماده‌سازی ایمیل درخواست →'],['Import / Export','واردات / صادرات'],['Distribution or exclusive agency','توزیع یا نمایندگی انحصاری'],['Pharmaceuticals / API / healthcare','دارو / ماده مؤثره / سلامت'],['Sports nutrition / supplements','تغذیه ورزشی / مکمل‌ها'],['Pet food / animal nutrition','غذای حیوانات / تغذیه دام'],['Brand development / registration','توسعه / ثبت برند'],['Technology transfer / contract manufacturing','انتقال فناوری / تولید قراردادی'],['Other business inquiry','سایر درخواست‌های تجاری'],['Home','خانه']
 ];
 let currentLang='en';
 function applyLanguage(lang){
   currentLang=lang;
   document.documentElement.lang=lang==='fa'?'fa':'en';
-  document.body.dir=lang==='fa'?'rtl':'ltr';
+  document.body.classList.toggle('lang-fa',lang==='fa');
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
   langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
   document.querySelectorAll('.nav-links>a').forEach(a=>{
@@ -954,10 +960,95 @@ function applyLanguage(lang){
   });
 
   const exactTranslations={
-   'About our company':'درباره شرکت ما','Our Services':'خدمات ما','Industries':'صنایع','Partners':'شرکای تجاری','News':'اخبار','Contact':'تماس',
-   'Pharmaceuticals & APIs':'داروها و مواد مؤثره دارویی','Healthcare & Medical Devices':'سلامت و تجهیزات پزشکی','Sports Nutrition & Supplements':'تغذیه ورزشی و مکمل‌ها','Infant Nutrition':'تغذیه نوزاد','Pet Food & Animal Nutrition':'غذای حیوانات و تغذیه دام','Import, Export & Ingredients':'واردات، صادرات و مواد اولیه','Brand Development & Agency':'توسعه برند و نمایندگی','Technology Transfer & Manufacturing':'انتقال فناوری و تولید','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟',
-   'Strategic Distribution & Trade':'توزیع راهبردی و تجارت','Contact Our Team':'تماس با تیم ما','Your request and relevant details *':'درخواست و جزئیات مرتبط *','Business inquiry — NIAZ NET':'درخواست تجاری — نیاز نت تهران'
+   'Strategic Distribution & Trade':'توزیع راهبردی و تجارت',
+   'Global Partners':'شرکای بین‌المللی',
+   'Why Choose NIAZ NET?':'چرا NIAZ NET را انتخاب کنید؟',
+   'Global Sourcing':'تأمین جهانی',
+   'Access to high quality products from trusted manufacturers worldwide.':'دسترسی به محصولات باکیفیت از تولیدکنندگان معتبر در سراسر جهان.',
+   'Exclusive Agency':'نمایندگی انحصاری',
+   'Get exclusive rights for brands and products in your target markets.':'دریافت حقوق انحصاری برندها و محصولات در بازارهای هدف.',
+   'Technology Transfer':'انتقال فناوری',
+   'Advanced technologies and know-how for local manufacturing.':'فناوری‌های پیشرفته و دانش فنی برای تولید داخلی.',
+   'Brand Development':'توسعه برند',
+   'Build, grow and manage powerful brands in new and existing markets.':'ایجاد، توسعه و مدیریت برندهای قدرتمند در بازارهای جدید و موجود.',
+   'Regulatory Coordination':'هماهنگی امور رگولاتوری',
+   'Coordination of product documentation and communication with qualified regulatory specialists and local partners; formal decisions remain with the relevant authorities.':'هماهنگی اسناد محصولات و ارتباط با متخصصان واجد صلاحیت امور رگولاتوری و شرکای محلی؛ تصمیم‌گیری رسمی بر عهده مراجع ذی‌صلاح است.',
+   'Market Entry':'ورود به بازار',
+   'Strategic support to enter and grow in new and emerging markets.':'پشتیبانی راهبردی برای ورود و توسعه فعالیت در بازارهای جدید و نوظهور.',
+   'Private Label':'تولید با برند اختصاصی',
+   'Develop your own brand with our end-to-end solutions.':'برند اختصاصی خود را با راهکارهای جامع ما توسعه دهید.',
+   'Licensing & Partnerships':'مجوزها و مشارکت‌های تجاری',
+   'Build long-term partnerships and licensing opportunities for mutual growth.':'ایجاد مشارکت‌های بلندمدت و فرصت‌های صدور مجوز برای رشد متقابل.',
+   'Our Global Network':'شبکه بین‌المللی ما',
+   'Spain':'اسپانیا','Switzerland':'سوئیس','Türkiye':'ترکیه','Iran':'ایران','India':'هند',
+   'Connected markets · Trade coordination · Partner development':'اتصال بازارها · هماهنگی تجارت · توسعه همکاری‌ها',
+   'Selected Projects & Active Agreements':'پروژه‌های منتخب و توافق‌نامه‌های فعال',
+   'A snapshot of current commercial agreements and contract-manufacturing projects across nutrition, healthcare and industrial sectors.':'نمایی از توافق‌های تجاری و پروژه‌های تولید قراردادی در حوزه‌های تغذیه، سلامت و صنایع.',
+   'Sports Nutrition Brands':'برندهای تغذیه ورزشی',
+   'Commercial agreements with':'توافق‌های تجاری با',
+   'sports-nutrition supplement brands':'برند مکمل‌های تغذیه ورزشی',
+   'Infant Formula Manufacturers':'تولیدکنندگان شیرخشک نوزاد',
+   'Agreements with':'توافق‌نامه با',
+   'infant-formula manufacturers':'تولیدکننده شیرخشک نوزاد',
+   'Infant Formula Production Lines':'خطوط تولید شیرخشک نوزاد',
+   'Projects involving':'پروژه‌های مرتبط با',
+   'manufacturers of infant-formula production lines':'تولیدکننده خطوط تولید شیرخشک نوزاد',
+   'Botulinum Toxin & Dermal Fillers':'سم بوتولینوم و فیلرهای پوستی',
+   'of botulinum toxin and dermal filler products.':'از محصولات سم بوتولینوم و فیلرهای پوستی.',
+   'CBD Products':'محصولات CBD',
+   'CBD manufacturers':'تولیدکنندگان CBD',
+   'Vitamin Supplements':'مکمل‌های ویتامینی',
+   'An agreement with':'توافق‌نامه با',
+   'vitamin-supplement manufacturer':'تولیدکننده مکمل ویتامینی',
+   'Medical Devices':'تجهیزات پزشکی',
+   'medical-device manufacturers':'تولیدکنندگان تجهیزات پزشکی',
+   'Dog Food':'غذای سگ',
+   'dog-food manufacturer':'تولیدکننده غذای سگ',
+   'Industrial Production Lines':'خطوط تولید صنعتی',
+   'industrial production-line manufacturers':'تولیدکنندگان خطوط تولید صنعتی',
+   'CMO Project — Africa':'پروژه تولید قراردادی — آفریقا',
+   'Contract manufacturing for':'تولید قراردادی برای',
+   'brand across 4 products':'برند در قالب ۴ محصول',
+   'for the African market.':'برای بازار آفریقا.',
+   'CMO Project — CIS':'پروژه تولید قراردادی — کشورهای مستقل مشترک‌المنافع',
+   'for CIS markets.':'برای بازارهای کشورهای مستقل مشترک‌المنافع.',
+   'CMO Pilot — Africa':'پایلوت تولید قراردادی — آفریقا',
+   'A pilot / trial-stage project covering':'پروژه در مرحله آزمایشی شامل',
+   'products for 1 brand': 'محصول برای یک برند',
+   'News & Events':'اخبار و رویدادها',
+   'Meet NIAZ NET at upcoming industry events':'در رویدادهای پیش‌روی صنعت با NIAZ NET دیدار کنید',
+   'Contact us to discuss market development, sourcing and international cooperation opportunities.':'برای گفتگو درباره توسعه بازار، تأمین کالا و فرصت‌های همکاری بین‌المللی با ما تماس بگیرید.',
+   'Let\'s Build Success Together':'برای موفقیت، در کنار هم بسازیم',
+   'We are ready to be your trusted partner in growth.':'آماده‌ایم شریک قابل اعتماد شما در مسیر رشد باشیم.',
+   'Email':'ایمیل','Business Contact':'اطلاعات تماس تجاری',
+   'Tehran Office':'دفتر تهران','Turkey / WhatsApp':'ترکیه / واتساپ',
+   'Tehran Address':'نشانی تهران','Our Offices':'دفاتر ما','Iran Office':'دفتر ایران','Türkiye Office':'دفتر ترکیه',
+   'India & Spain':'هند و اسپانیا',
+   'Our India and Spain office details will be published here once the official addresses are confirmed.':'اطلاعات دفاتر هند و اسپانیا پس از تأیید نشانی‌های رسمی منتشر خواهد شد.',
+   'Quick Links':'دسترسی سریع','About Us':'درباره ما','Our Services':'خدمات ما',
+   'Global Partners':'شرکای بین‌المللی','Projects':'پروژه‌ها','News & Events':'اخبار و رویدادها',
+   'Brand Registration':'ثبت برند','Import & Export':'واردات و صادرات','API Supply':'تأمین مواد مؤثره دارویی',
+   'All Services':'همه خدمات','Subscribe to Our Newsletter':'عضویت در خبرنامه',
+   'Get the latest updates and industry insights.':'آخرین اخبار و تحلیل‌های تخصصی صنعت را دریافت کنید.',
+   'Privacy Policy':'سیاست حفظ حریم خصوصی','Terms of Use':'شرایط استفاده','Sitemap':'نقشه سایت',
+   'Home':'صفحه اصلی','Services':'خدمات','Industries':'صنایع','Partners':'شرکای تجاری','Contact':'تماس با ما',
+   'BECOME OUR PARTNER':'به جمع شرکای تجاری ما بپیوندید',
+   'About our company':'درباره شرکت ما','Contact Our Team':'تماس با تیم ما',
+   'Your request and relevant details *':'درخواست و جزئیات مرتبط *',
+   'Business inquiry — NIAZ NET':'درخواست تجاری — NIAZ NET',
+   'Full name *':'نام و نام خانوادگی *','Company *':'نام شرکت *','Job title / Position':'عنوان شغلی / سمت',
+   'Phone / WhatsApp *':'تلفن / واتساپ *','Business email *':'ایمیل کاری *','Request type':'نوع درخواست',
+   'Import / Export':'واردات / صادرات','Distribution or exclusive agency':'توزیع یا نمایندگی انحصاری',
+   'Pharmaceuticals / API / healthcare':'دارو / مواد مؤثره دارویی / سلامت',
+   'Sports nutrition / supplements':'تغذیه ورزشی / مکمل‌ها','Pet food / animal nutrition':'غذای حیوانات / تغذیه حیوانات',
+   'Brand development / registration':'توسعه / ثبت برند','Technology transfer / contract manufacturing':'انتقال فناوری / تولید قراردادی',
+   'Other business inquiry':'سایر درخواست‌های تجاری','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟'
   };
+  const heroHeading=document.querySelector('.hero-copy h1');
+  if(heroHeading){
+    if(!heroHeading.dataset.enHtml)heroHeading.dataset.enHtml=heroHeading.innerHTML;
+    heroHeading.innerHTML=lang==='fa'?'شریک توسعه کسب‌وکار جهانی شما <span>تجاری</span>':heroHeading.dataset.enHtml;
+  }
   document.querySelectorAll('h1,h2,h3,h4,label,button,a,p,li,small,option,span').forEach(el=>{
     if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
   });
