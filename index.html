@@ -998,7 +998,14 @@ function applyLanguage(lang){
    'Pharmaceuticals / API / healthcare':'دارو / مواد مؤثره دارویی / سلامت',
    'Sports nutrition / supplements':'تغذیه ورزشی / مکمل‌ها','Pet food / animal nutrition':'غذای حیوانات / تغذیه حیوانات',
    'Brand development / registration':'توسعه / ثبت برند','Technology transfer / contract manufacturing':'انتقال فناوری / تولید قراردادی',
-   'Other business inquiry':'سایر درخواست‌های تجاری','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟'
+   'Other business inquiry':'سایر درخواست‌های تجاری','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟',
+   'API':'مواد مؤثره دارویی','Sport Nutrition':'تغذیه ورزشی','Infant Formula & Baby Milk':'شیرخشک و تغذیه نوزاد',
+   'CBD':'CBD','Business Development / R&D':'توسعه کسب‌وکار / تحقیق و توسعه',
+   'FDF / Finished Products':'محصولات نهایی دارویی','Vitamin & Supplements':'ویتامین و مکمل‌ها',
+   'Pet Food':'غذای حیوانات','Medical Devices':'تجهیزات پزشکی','Private Label Orders':'سفارش با برند اختصاصی',
+   'Contract Manufacturing (CMO)':'تولید قراردادی (CMO)','Cosmoderma':'کازمودرما',
+   'Regulatory':'امور رگولاتوری','Licensing Strategy':'استراتژی صدور مجوز','Supply Chain':'زنجیره تأمین',
+   'Chamber of Commerce':'اتاق بازرگانی','Market Entry':'ورود به بازار'
   };
   const heroHeading=document.querySelector('.hero-copy h1');
   if(heroHeading){
@@ -1270,6 +1277,7 @@ if (requestedService) {
   }
 }
 
+if(currentLang==='fa')applyLanguage('fa');
 </script>
 
 <script>
