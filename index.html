@@ -698,6 +698,58 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
 }
 </style>
 
+
+<style id="niaz-net-final-button-fix-2026-11-01">
+/* Final override: these rules intentionally come last in the document head. */
+@media(min-width:1101px){
+  .services-layout{grid-template-columns:minmax(0,1fr) 250px!important;align-items:start!important}
+  .services-grid{display:grid!important;grid-template-columns:repeat(5,5cm)!important;justify-content:center!important;align-content:start!important;gap:10px!important}
+}
+.services-grid>.service-card:not(.import-export-card){
+  box-sizing:border-box!important;width:5cm!important;min-width:5cm!important;max-width:5cm!important;
+  height:2cm!important;min-height:2cm!important;max-height:2cm!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;
+  gap:6px!important;padding:5px 7px!important;margin:0!important;overflow:hidden!important;
+  border-radius:999px!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon{
+  position:static!important;inset:auto!important;transform:none!important;flex:0 0 44px!important;
+  width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;
+  margin:0!important;padding:2px!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon img,
+.services-grid>.service-card:not(.import-export-card) .service-icon svg{
+  display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;
+}
+.services-grid>.service-card:not(.import-export-card) h3{
+  flex:1 1 auto!important;min-width:0!important;width:auto!important;max-width:none!important;
+  margin:0!important;padding:0!important;text-align:left!important;white-space:nowrap!important;
+  overflow:visible!important;text-overflow:clip!important;font-size:10px!important;line-height:1.05!important;
+  letter-spacing:-.25px!important;font-weight:800!important;
+}
+.vip-service-list{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:9px!important}
+.vip-service-link{
+  box-sizing:border-box!important;width:6cm!important;min-width:6cm!important;max-width:6cm!important;
+  height:1.5cm!important;min-height:1.5cm!important;max-height:1.5cm!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;
+  gap:8px!important;padding:4px 9px!important;margin:0!important;overflow:hidden!important;
+  white-space:nowrap!important;text-align:left!important;border-radius:999px!important;
+}
+.vip-service-link img{flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;object-fit:contain!important}
+.vip-service-link .vip-label{display:block!important;flex:1 1 auto!important;min-width:0!important;white-space:nowrap!important;overflow:visible!important;text-align:left!important;font-size:10px!important;line-height:1.05!important}
+@media(max-width:1100px){
+  .services-layout{grid-template-columns:1fr!important}
+  .services-grid{display:grid!important;grid-template-columns:repeat(4,5cm)!important;justify-content:center!important;gap:9px!important}
+  .vip-service-list{display:grid!important;grid-template-columns:repeat(3,6cm)!important;justify-content:center!important}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:repeat(2,minmax(0,5cm))!important;justify-content:center!important;gap:8px!important}
+  .services-grid>.service-card:not(.import-export-card){width:5cm!important;min-width:0!important;max-width:100%!important}
+  .vip-service-list{grid-template-columns:minmax(0,6cm)!important;justify-content:center!important}
+  .vip-service-link{width:6cm!important;min-width:0!important;max-width:100%!important}
+}
+</style>
+
 </head>
 <body>
 <header class="site-header">
