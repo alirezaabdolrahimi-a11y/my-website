@@ -598,7 +598,6 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
 <meta name="twitter:description" content="NIAZ NET supports international distribution, import and export, pharmaceutical and healthcare sourcing, regulatory coordination, technology transfer and business development.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NIAZ NET","url":"https://www.niaznet.net/","description":"NIAZ NET supports international distribution, import and export, pharmaceutical and healthcare sourcing, regulatory coordination, technology transfer and business development."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"NIAZ NET","url":"https://www.niaznet.net/"}</script>
-<link rel="stylesheet" href="assets/css/service-tile-system.css">
 </head>
 <body>
 <header class="site-header">
@@ -828,14 +827,14 @@ const serviceDisplayLabels = {
   'sports-nutrition':'Sport Nutrition',
   'infant-formula':'Infant Formula & Baby Milk',
   'cbd-products':'CBD',
-  'business-development':'Business Development / R&D',
+  'business-development':'BD + R&D',
   'pharmaceutical-products':'FDF / Finished Products',
   'nutraceuticals':'Vitamin & Supplements',
   'pet-food':'Pet Food',
   'medical-devices':'Medical Devices',
   'technology-transfer':'Technology Transfer',
   'private-label':'Private Label Orders',
-  'contract-manufacturing':'Contract Manufacturing (CMO)',
+  'contract-manufacturing':'CMO',
   'cosmoderma':'Cosmoderma',
   'regulatory-affairs':'Regulatory',
   'licensing-partnerships':'Licensing Strategy',
@@ -857,7 +856,7 @@ vipServiceSlugs.forEach(slug=>{
   const item=serviceItems.find(x=>x.slug===slug);
   if(!item)return;
   const a=document.createElement('a');
-  a.className='vip-service-link';a.href=`index.html?service=${encodeURIComponent(item.slug)}`;a.target='_self';
+  a.className='vip-service-link';a.href=`${item.slug}.html`;a.target='_self';
   const vipLabel = slug==='chamber-of-commerce' ? 'Private Chamber of Commerce' : slug==='exclusive-agency' ? 'Exclusive Agency' : slug==='market-entry' ? 'Market Entry' : item.name;
   a.innerHTML=`<img src="${iconPath(slug)}" alt="" loading="lazy"><span class="vip-label">${vipLabel}</span>`;
   vipList.appendChild(a);
@@ -869,7 +868,7 @@ if(importExportItem){
   const card=document.createElement('a');
   card.className='service-card import-export-card';
   card.dataset.serviceSlug=importExportItem.slug;
-  card.href=`index.html?service=${encodeURIComponent(importExportItem.slug)}`;
+  card.href=`${importExportItem.slug}.html`;
   card.target='_self';
   card.innerHTML=`
     <span class="service-icon" aria-hidden="true"><img src="${iconPath(importExportItem.slug)}" alt="" loading="lazy"></span>
@@ -884,7 +883,7 @@ serviceDisplayOrder.forEach(slug=>{
   const card=document.createElement('a');
   card.className='service-card'+(slug==='cbd-products'?' cbd-service':'');
   card.dataset.serviceSlug=slug;
-  card.href=`index.html?service=${encodeURIComponent(slug)}`;
+  card.href=`${slug}.html`;
   card.target='_self';
   card.innerHTML=`
     <span class="service-icon" aria-hidden="true"><img src="${iconPath(slug)}" alt="" loading="lazy"></span>
