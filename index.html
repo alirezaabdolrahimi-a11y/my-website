@@ -604,7 +604,7 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
 .services-layout{display:grid!important;grid-template-columns:minmax(0,1fr) 250px!important;align-items:start!important;gap:22px!important}
 .services-grid{
   display:grid!important;
-  grid-template-columns:repeat(5,minmax(0,5cm))!important;
+  grid-template-columns:repeat(4,minmax(0,5cm))!important;
   justify-content:center!important;
   align-content:start!important;
   gap:12px 10px!important;
@@ -664,10 +664,13 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
   .services-layout{grid-template-columns:minmax(0,1fr) 230px!important;gap:14px!important}
   .services-grid{grid-template-columns:repeat(4,minmax(0,5cm))!important}
 }
-@media(max-width:980px){
+@media(max-width:1100px){
   .services-layout{grid-template-columns:1fr!important}
   .services-grid{grid-template-columns:repeat(4,minmax(0,5cm))!important}
   .vip-service-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,6cm))!important;justify-content:center!important}
+}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(3,minmax(0,5cm))!important}
 }
 @media(max-width:760px){
   .services-grid{grid-template-columns:repeat(2,minmax(0,5cm))!important;gap:10px 8px!important}
