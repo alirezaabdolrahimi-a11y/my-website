@@ -23,11 +23,11 @@ KNOWN ITEMS TO CONFIRM OR COMPLETE
 - The current language selector is only a partial client-side English/Persian text switch. It is not a complete SEO multilingual implementation.
 - Localized, crawlable page sets for Persian (/fa/), Arabic (/ar/), Turkish (/tr/) and Spanish (/es/) have not yet been created.
 - Do not add hreflang annotations until matching translated pages exist and each alternate points reciprocally to the others.
-- The contact details currently use both info@niaznet.net and info@niaznet.com in different places. Confirm the intended public email before standardizing it.
+- Official domain: https://niaznet.net/. Confirmed contact emails: info@niaznet.net, agent@niaznet.net and alireza@niaznet.net. All HTML pages and the sitemap have been standardized to the apex domain and the confirmed info address.
 - The sitemap currently contains 29 URLs. The Projects page is excluded pending confirmation that all displayed project categories, counts and agreement descriptions are approved for public indexing.
 - Newsletter and contact forms need a verified backend or form service before they can collect submissions.
 - India and Spain office details are described as pending confirmation; do not present them as established offices until addresses are verified.
-- The latest Vercel status is blocked by the team's build-rate limit. This is not a successful preview validation and should not be interpreted as proof that the latest code builds correctly.
+- A Vercel Preview deployment has previously reached READY, but every new commit still requires a fresh build and browser-level QA before release.
 
 MULTILINGUAL IMPLEMENTATION REQUIREMENTS
 For every supported language:
@@ -48,3 +48,15 @@ FINAL QA AND RELEASE
 
 SEO NOTE
 Technical SEO improvements do not guarantee rankings. Prioritize accurate, original business information, useful sector-specific content, crawlable URLs, genuine experience and relevant authority. Avoid keyword stuffing, mass-generated thin pages and unsupported business or regulatory claims.
+
+
+UPDATES — 2026-11-01
+- Canonical, Open Graph and other absolute site URLs standardized to https://niaznet.net/ (without the unconfirmed www host).
+- Replaced info@niaznet.com references throughout the HTML pages with info@niaznet.net.
+- Contact page now displays all three confirmed addresses: info@niaznet.net, agent@niaznet.net and alireza@niaznet.net.
+- Homepage Organization structured data includes the three confirmed contact points.
+- API page now contains all 209 catalogue entries as crawlable static HTML rows, with a client-side search/filter as progressive enhancement and an ItemList JSON-LD description. Product names no longer depend on fetching api-catalog.json to appear in the initial page HTML.
+- Homepage slideshow reduced from 18 hero slides to 3 smaller assets; secondary images use lazy loading and async decoding.
+- Persian toggle on homepage no longer sets dir=rtl on the whole body or reverses the page grids. Text direction is applied to selected text elements while the layout containers remain LTR.
+- Persian translation remains incomplete. The current client-side translation map is not a complete localized site and does not create indexable Persian URLs. Do not claim multilingual SEO is complete; next phase must create fully translated /fa/ page equivalents and then add reciprocal hreflang and localized sitemap URLs.
+- Large PNG/JPG hero assets across service pages remain a performance opportunity. A proper WebP/AVIF conversion pipeline is still recommended; do not claim all slideshow images have been compressed.
