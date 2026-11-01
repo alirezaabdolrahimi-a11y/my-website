@@ -23,7 +23,7 @@ KNOWN ITEMS TO CONFIRM OR COMPLETE
 - The current language selector is only a partial client-side English/Persian text switch. It is not a complete SEO multilingual implementation.
 - Localized, crawlable page sets for Persian (/fa/), Arabic (/ar/), Turkish (/tr/) and Spanish (/es/) have not yet been created.
 - Do not add hreflang annotations until matching translated pages exist and each alternate points reciprocally to the others.
-- Official domain: https://niaznet.net/. Confirmed contact emails: info@niaznet.net, agent@niaznet.net and alireza@niaznet.net. All HTML pages and the sitemap have been standardized to the apex domain and the confirmed info address.
+- Official registered domain: niaznet.net; current canonical host: https://www.niaznet.net/ (Vercel apex-to-www 308 redirect). Confirmed contact emails: info@niaznet.net, agent@niaznet.net and alireza@niaznet.net. All HTML pages and the sitemap have been standardized to the apex domain and the confirmed info address.
 - The sitemap currently contains 29 URLs. The Projects page is excluded pending confirmation that all displayed project categories, counts and agreement descriptions are approved for public indexing.
 - Newsletter and contact forms need a verified backend or form service before they can collect submissions.
 - India and Spain office details are described as pending confirmation; do not present them as established offices until addresses are verified.
@@ -51,7 +51,7 @@ Technical SEO improvements do not guarantee rankings. Prioritize accurate, origi
 
 
 UPDATES — 2026-11-01
-- Canonical, Open Graph and other absolute site URLs standardized to https://niaznet.net/ (without the unconfirmed www host).
+- Canonical, Open Graph and other absolute site URLs standardized to https://www.niaznet.net/. The registered domain is niaznet.net; Vercel currently applies a permanent 308 redirect from the apex host niaznet.net to www.niaznet.net, so canonical URLs follow the final destination host.
 - Replaced info@niaznet.com references throughout the HTML pages with info@niaznet.net.
 - Contact page now displays all three confirmed addresses: info@niaznet.net, agent@niaznet.net and alireza@niaznet.net.
 - Homepage Organization structured data includes the three confirmed contact points.
