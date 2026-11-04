@@ -7,7 +7,6 @@
   <title>NIAZ NET | Strategic Distribution, Trade & Business Development</title>
 <link rel="canonical" href="https://www.niaznet.net/">
 <link rel="alternate" hreflang="en" href="https://www.niaznet.net/">
-<link rel="alternate" hreflang="fa" href="https://www.niaznet.net/fa/">
 <link rel="alternate" hreflang="tr" href="https://www.niaznet.net/tr/">
 <link rel="alternate" hreflang="es" href="https://www.niaznet.net/es/">
 <link rel="alternate" hreflang="fr" href="https://www.niaznet.net/fr/">
@@ -926,7 +925,7 @@ function applyLanguage(lang){
   });
 }
 langButton.addEventListener('click',()=>applyLanguage(currentLang==='en'?'fa':'en'));
-try{const savedLanguage=localStorage.getItem('niaznet-language');if(savedLanguage==='fa')applyLanguage('fa')}catch(e){}
+try{const savedLanguage=localStorage.getItem('niaznet-language');const requestedLanguage=new URLSearchParams(location.search).get('lang');if(requestedLanguage==='fa'||savedLanguage==='fa')applyLanguage('fa')}catch(e){}
 
 document.getElementById('year').textContent=new Date().getFullYear();
 
