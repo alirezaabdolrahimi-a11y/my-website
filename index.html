@@ -6,6 +6,12 @@
   <meta name="description" content="NIAZ NET supports international distribution, import and export, pharmaceutical and healthcare sourcing, regulatory coordination, technology transfer and business development.">
   <title>NIAZ NET | Strategic Distribution, Trade & Business Development</title>
 <link rel="canonical" href="https://www.niaznet.net/">
+<link rel="alternate" hreflang="en" href="https://www.niaznet.net/">
+<link rel="alternate" hreflang="fa" href="https://www.niaznet.net/fa/">
+<link rel="alternate" hreflang="tr" href="https://www.niaznet.net/tr/">
+<link rel="alternate" hreflang="es" href="https://www.niaznet.net/es/">
+<link rel="alternate" hreflang="fr" href="https://www.niaznet.net/fr/">
+<link rel="alternate" hreflang="x-default" href="https://www.niaznet.net/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NIAZ NET">
@@ -892,6 +898,7 @@ const bilingualMap=[
 let currentLang='en';
 function applyLanguage(lang){
   currentLang=lang;
+  try{document.cookie='niaznet-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}
   document.documentElement.lang=lang==='fa'?'fa':'en';
   document.body.dir=lang==='fa'?'rtl':'ltr';
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
