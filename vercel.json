@@ -1,0 +1,59 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/tr/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/es/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "CI"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/fr/",
+      "permanent": false
+    }
+  ]
+}
