@@ -13,7 +13,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/tr/",
@@ -31,7 +31,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/es/",
@@ -49,7 +49,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/fr/",
@@ -67,7 +67,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/tr/",
@@ -85,7 +85,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/es/",
@@ -103,7 +103,7 @@
       "missing": [
         {
           "type": "cookie",
-          "key": "niaznet-language"
+          "key": "niaznet-manual-language"
         }
       ],
       "destination": "/fr/",
