@@ -54,6 +54,60 @@
       ],
       "destination": "/fr/",
       "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/tr/",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/es/",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "CI"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "niaznet-language"
+        }
+      ],
+      "destination": "/fr/",
+      "permanent": false
     }
   ]
 }
