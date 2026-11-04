@@ -1189,6 +1189,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
         <h2 class="section-title">${selectedService.name}</h2>
         <div class="panel" style="padding:clamp(22px,4vw,42px);font-size:15px;line-height:1.9;color:var(--muted)">
           <p>${selectedService.paragraphs[0]}</p><p>${selectedService.paragraphs[1]}</p>
+          ${requestedService === 'import-export' ? `<h3 style="margin:30px 0 14px;color:var(--navy)">Explore African Market Opportunities</h3><p>Dedicated market pages for commercial enquiries in selected African markets.</p><div class="project-grid" aria-label="African market pages"><a class="project-card" href="south-africa-market.html"><span class="project-symbol">🌍</span><h3>South Africa Market</h3><p>Pharmaceutical products, APIs, medical devices and distribution partnerships.</p></a><a class="project-card" href="kenya-market.html"><span class="project-symbol">🌍</span><h3>Kenya Market</h3><p>Medicines, health products, medical devices, nutrition and distribution enquiries.</p></a><a class="project-card" href="cote-divoire-market.html"><span class="project-symbol">🌍</span><h3>Côte d’Ivoire Market</h3><p>Marché pharmaceutique, principes actifs, dispositifs médicaux et partenariats commerciaux.</p></a></div>` : ''}
           <a class="btn" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">DISCUSS THIS SERVICE →</a>
         </div>
       </section>`;
