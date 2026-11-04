@@ -924,7 +924,7 @@ function applyLanguage(lang){
     if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
   });
 }
-langButton.addEventListener('click',()=>{const order=['en','fa','tr','es','fr'];const next=order[(order.indexOf(document.documentElement.lang)+1)%order.length];document.cookie='niaznet-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';location.href=next==='en'?'/':next==='fa'?'/index.html?lang=fa':'/'+next+'/';});
+langButton.addEventListener('click',()=>{const order=['en','fa','tr','es','fr'];const next=order[(order.indexOf(document.documentElement.lang)+1)%order.length];document.cookie='niaznet-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';location.href=next==='en'?'/':next==='fa'?'/index.html?lang=fa':'/'+next+'/';});
 try{const savedLanguage=localStorage.getItem('niaznet-language');if(savedLanguage==='fa')applyLanguage('fa')}catch(e){}
 
 document.getElementById('year').textContent=new Date().getFullYear();
@@ -1284,7 +1284,6 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
 
 
 
-<script>document.cookie='niaznet-language=tr; Path=/; Max-Age=31536000; SameSite=Lax; Secure';</script>
 </body>
 </html>
 <!-- Trigger Vercel deployment -->
