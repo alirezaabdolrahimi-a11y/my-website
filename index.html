@@ -924,7 +924,7 @@ function applyLanguage(lang){
     if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
   });
 }
-langButton.addEventListener('click',()=>applyLanguage(currentLang==='en'?'fa':'en'));
+langButton.addEventListener('click',()=>{const order=['en','fa','tr','es','fr'];const active=document.documentElement.lang||'en';const next=order[(order.indexOf(active)+1)%order.length];try{document.cookie='niaznet-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}if(next==='tr'||next==='es'||next==='fr'){location.href='/'+next+'/';return;}applyLanguage(next);});
 try{const savedLanguage=localStorage.getItem('niaznet-language');const requestedLanguage=new URLSearchParams(location.search).get('lang');if(requestedLanguage==='fa'||savedLanguage==='fa')applyLanguage('fa')}catch(e){}
 
 document.getElementById('year').textContent=new Date().getFullYear();
