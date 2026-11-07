@@ -840,7 +840,7 @@ const serviceIconAssets = {
   'chamber-of-commerce':'chamber-of-commerce.png','exclusive-agency':'exclusive-agency.png','market-entry':'market-entry.png',
   'import-export':'import-export-globe.png'
 };
-const iconPath = slug => `images/service-icons/${serviceIconAssets[slug] || 'brand.png'}`;
+const iconPath = slug => `/images/service-icons/${serviceIconAssets[slug] || 'brand.png'}`;
 const vipList = document.getElementById('vipServiceList');
 vipServiceSlugs.forEach(slug=>{
   const item=serviceItems.find(x=>x.slug===slug);
