@@ -150,9 +150,11 @@
     .service-card:hover .service-icon,.service-card:focus-visible .service-icon{transform:translateY(-5px) scale(1.06)!important;box-shadow:inset 0 1px 0 #ffffff9c,0 12px 20px #071b3933!important}
     .service-card h3{font-size:11px}
     .lang{cursor:pointer}
-    body[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
-    body[dir="rtl"] .nav-links,body[dir="rtl"] .hero-copy,body[dir="rtl"] .section-title,body[dir="rtl"] .service-card{text-align:right}
-    body[dir="rtl"] .hero-actions-below{justify-content:center!important} body[dir="rtl"] .nav{direction:rtl} body[dir="rtl"] .nav-links{direction:rtl} body[dir="rtl"] .hero-actions,body[dir="rtl"] .hero-actions-below,body[dir="rtl"] .socials,body[dir="rtl"] .footer-bottom{direction:rtl} body[dir="rtl"] .service-card{direction:rtl} body[dir="rtl"] .dropdown{left:auto;right:-14px}
+    body[data-content-lang="fa"]{font-family:Tahoma,Arial,sans-serif}
+    body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-copy,body[data-content-lang="fa"] .section-title,body[data-content-lang="fa"] .service-card{text-align:right}
+    body[data-content-lang="fa"] .hero-actions-below{justify-content:center!important}
+    body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .hero-actions-below,body[data-content-lang="fa"] .socials,body[data-content-lang="fa"] .footer-bottom,body[data-content-lang="fa"] .service-card{direction:ltr}
+    body[data-content-lang="fa"] .dropdown{left:auto;right:-14px}
     @media(min-width:761px) and (max-width:1100px){.hero-inner{grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr)!important;column-gap:12px!important}.hero-showcase{height:clamp(310px,34vw,400px)!important}}
     @media(max-width:760px){.hero{padding-top:105px}.hero-inner{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:16px}.hero-copy{grid-column:1;grid-row:1;max-width:100%;padding-top:0}.hero-showcase{grid-column:1;grid-row:2;height:250px}.hero-actions-below{grid-column:1;grid-row:3}.hero h1{font-size:27px}.hero-showcase img{object-fit:contain}.stats.trade-stats{grid-template-columns:repeat(2,1fr)}.stats.trade-stats .stat:last-child{grid-column:auto}.partner-hero-btn{font-size:13px}.network-map-modern{height:240px}}
     
@@ -899,7 +901,8 @@ function applyLanguage(lang){
   currentLang=lang;
   try{document.cookie='niaznet-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}
   document.documentElement.lang=lang==='fa'?'fa':'en';
-  document.body.dir=lang==='fa'?'rtl':'ltr';
+  document.body.dir='ltr';
+  document.body.dataset.contentLang=lang;
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
   langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
   document.querySelectorAll('.nav-links>a').forEach(a=>{
@@ -918,7 +921,28 @@ function applyLanguage(lang){
   const exactTranslations={
    'About our company':'درباره شرکت ما','Our Services':'خدمات ما','Industries':'صنایع','Partners':'شرکای تجاری','News':'اخبار','Contact':'تماس',
    'Pharmaceuticals & APIs':'داروها و مواد مؤثره دارویی','Healthcare & Medical Devices':'سلامت و تجهیزات پزشکی','Sports Nutrition & Supplements':'تغذیه ورزشی و مکمل‌ها','Infant Nutrition':'تغذیه نوزاد','Pet Food & Animal Nutrition':'غذای حیوانات و تغذیه دام','Import, Export & Ingredients':'واردات، صادرات و مواد اولیه','Brand Development & Agency':'توسعه برند و نمایندگی','Technology Transfer & Manufacturing':'انتقال فناوری و تولید','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟',
-   'Strategic Distribution & Trade':'توزیع راهبردی و تجارت','Contact Our Team':'تماس با تیم ما','Your request and relevant details *':'درخواست و جزئیات مرتبط *','Business inquiry — Niaz Net Tehran':'درخواست تجاری — نیاز نت تهران'
+   'Strategic Distribution & Trade':'توزیع راهبردی و تجارت','Contact Our Team':'تماس با تیم ما','Your request and relevant details *':'درخواست و جزئیات مرتبط *','Business inquiry — Niaz Net Tehran':'درخواست تجاری — نیاز نت تهران',
+   'Your Global Business Development Partner':'شریک شما در توسعه کسب‌وکار بین‌المللی','Global Partners':'شرکای تجاری جهانی','Why Choose Niaz Net?':'چرا نیاز نت؟',
+   'Global Sourcing':'تأمین جهانی','Access to high quality products from trusted manufacturers worldwide.':'دسترسی به محصولات باکیفیت از تولیدکنندگان معتبر در سراسر جهان.',
+   'Exclusive Agency':'نمایندگی انحصاری','Get exclusive rights for brands and products in your target markets.':'دریافت حقوق انحصاری برندها و محصولات در بازارهای هدف شما.',
+   'Technology Transfer':'انتقال فناوری','Advanced technologies and know-how for local manufacturing.':'فناوری‌های پیشرفته و دانش فنی برای تولید داخلی.',
+   'Brand Development':'توسعه برند','Build, grow and manage powerful brands in new and existing markets.':'ایجاد، توسعه و مدیریت برندهای قدرتمند در بازارهای جدید و موجود.',
+   'Regulatory Expertise':'تخصص امور رگولاتوری','Full support in registration, compliance and regulatory affairs.':'پشتیبانی کامل در ثبت، انطباق و امور مقرراتی.',
+   'Market Entry':'ورود به بازار','Strategic support to enter and grow in new and emerging markets.':'پشتیبانی راهبردی برای ورود و توسعه در بازارهای جدید و نوظهور.',
+   'Private Label':'تولید با برند اختصاصی','Develop your own brand with our end-to-end solutions.':'برند اختصاصی خود را با راهکارهای جامع ما توسعه دهید.',
+   'Licensing Partnerships':'همکاری‌های مبتنی بر مجوز','Build long-term partnerships and licensing opportunities for mutual growth.':'ایجاد همکاری‌های بلندمدت و فرصت‌های صدور مجوز برای رشد متقابل.',
+   'Our Global Network':'شبکه جهانی ما','Connected markets · Trade coordination · Partner development':'بازارهای به‌هم‌پیوسته · هماهنگی تجاری · توسعه همکاری‌ها',
+   'A snapshot of current commercial agreements and contract-manufacturing projects across nutrition, healthcare and industrial sectors.':'مروری بر توافق‌های تجاری و پروژه‌های تولید قراردادی در حوزه‌های تغذیه، سلامت و صنایع.',
+   'Sports Nutrition Brands':'برندهای تغذیه ورزشی','Infant Formula Manufacturers':'تولیدکنندگان شیرخشک نوزاد','Infant Formula Production Lines':'خطوط تولید شیرخشک نوزاد',
+   'Botulinum Toxin Dermal Fillers':'سم بوتولینوم و فیلرهای پوستی','CBD Products':'محصولات CBD','Vitamin Supplements':'مکمل‌های ویتامینی',
+   'Medical Devices':'تجهیزات پزشکی','Dog Food':'غذای حیوانات خانگی','Industrial Production Lines':'خطوط تولید صنعتی',
+   'CMO Project — Africa':'پروژه تولید قراردادی — آفریقا','CMO Project — CIS':'پروژه تولید قراردادی — کشورهای مستقل مشترک‌المنافع','CMO Pilot — Africa':'پایلوت تولید قراردادی — آفریقا',
+   'News Events':'اخبار و رویدادها','Meet NIAZ NET at upcoming industry events':'در رویدادهای پیش‌روی صنعت با NIAZ NET دیدار کنید',
+   'Contact us to discuss market development, sourcing and international cooperation opportunities.':'برای گفت‌وگو درباره توسعه بازار، تأمین و فرصت‌های همکاری بین‌المللی با ما تماس بگیرید.',
+   'Let\'s Build Success Together':'بیایید با هم موفقیت بسازیم','We are ready to be your trusted partner in growth.':'ما آماده‌ایم شریک قابل اعتماد شما در مسیر رشد باشیم.',
+   'Email':'ایمیل','Tehran Office':'دفتر تهران','Tehran Address':'نشانی تهران','Our Offices':'دفاتر ما','Iran Office':'دفتر ایران','Türkiye Office':'دفتر ترکیه',
+   'Quick Links':'دسترسی سریع','Subscribe to Our Newsletter':'عضویت در خبرنامه','Get the latest updates and industry insights.':'از آخرین اخبار و تحلیل‌های تخصصی مطلع شوید.',
+   'SUBSCRIBE':'عضویت','Privacy Policy':'سیاست حفظ حریم خصوصی','Terms of Use':'شرایط استفاده','Sitemap':'نقشه سایت','All Services':'همه خدمات'
   };
   document.querySelectorAll('h1,h2,h3,h4,label,button,a,p,li,small,option,span').forEach(el=>{
     if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
