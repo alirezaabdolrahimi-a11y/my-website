@@ -517,17 +517,16 @@ for(const node of nodes){
 for(const el of document.querySelectorAll('input[placeholder],textarea[placeholder]'))if(dict[norm(el.placeholder)]){el.placeholder=dict[norm(el.placeholder)];el.dir='rtl';}
 for(const el of document.querySelectorAll('[aria-label]'))if(dict[norm(el.getAttribute('aria-label'))])el.setAttribute('aria-label',dict[norm(el.getAttribute('aria-label'))]);
 const titleMap={
-'api-supply.html':'تأمین مواد اولیه دارویی و API | نیازنت',
-'brand-registration.html':'ثبت برند در بازارهای بین‌المللی | نیازنت',
-'exclusive-agency.html':'نمایندگی انحصاری و نمایندگی برند | نیازنت',
-'contract-manufacturing.html':'تولید قراردادی و هماهنگی تولید | نیازنت',
-'import-export.html':'خدمات واردات و صادرات بین‌المللی | نیازنت',
-'infant-formula.html':'شیرخشک و محصولات تغذیه نوزاد | نیازنت',
-'sports-nutrition.html':'تغذیه ورزشی و تأمین مکمل | نیازنت',
-'technology-transfer.html':'انتقال فناوری و تولید داخلی | نیازنت',
-'market-entry.html':'راهبرد ورود به بازارهای بین‌المللی | نیازنت',
-'pharmaceutical-products.html':'تجارت محصولات نهایی دارویی | نیازنت'
-};
+"api-supply.html":"تأمین مواد اولیه دارویی و API | نیازنت",
+"brand-registration.html":"ثبت برند در بازارهای بین‌المللی | نیازنت",
+"exclusive-agency.html":"نمایندگی انحصاری و نمایندگی برند | نیازنت",
+"contract-manufacturing.html":"تولید قراردادی و هماهنگی تولید | نیازنت",
+"import-export.html":"خدمات واردات و صادرات بین‌المللی | نیازنت",
+"infant-formula.html":"شیرخشک و محصولات تغذیه نوزاد | نیازنت",
+"sports-nutrition.html":"تغذیه ورزشی و تأمین مکمل | نیازنت",
+"technology-transfer.html":"انتقال فناوری و تولید داخلی | نیازنت",
+"market-entry.html":"راهبرد ورود به بازارهای بین‌المللی | نیازنت",
+"pharmaceutical-products.html":"تجارت محصولات نهایی دارویی | نیازنت",
 "international-business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
 "international-markets.html":"بازارهای بین‌المللی و خدمات واردات و صادرات | نیازنت",
 "kenya-market.html":"بازار دارو و سلامت کنیا | نیازنت",
