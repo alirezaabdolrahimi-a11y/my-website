@@ -21,7 +21,10 @@ const common={
 "Regulatory approvals, import eligibility, quality acceptance, licensing and transaction feasibility must be confirmed for each product and destination market by the responsible parties and qualified professionals. NIAZ NET coordinates commercial communication; it does not replace regulatory authorities, legal advisers or independent quality assessment.":"تأییدیه‌های مقرراتی، مجاز بودن واردات، پذیرش کیفیت، صدور مجوز و امکان‌پذیری معامله باید برای هر محصول و بازار مقصد توسط طرف‌های مسئول و متخصصان واجد صلاحیت بررسی و تأیید شود. نیازنت هماهنگی ارتباطات تجاری را بر عهده دارد و جایگزین مراجع مقرراتی، مشاوران حقوقی یا ارزیابی مستقل کیفیت نیست.",
 "Send us the product or project details, target market and the type of support required. Our team can review the initial scope and identify the information needed for a useful commercial discussion.":"جزئیات محصول یا پروژه، بازار هدف و نوع پشتیبانی موردنیاز را برای ما ارسال کنید. تیم ما می‌تواند دامنه اولیه را بررسی کرده و اطلاعات لازم برای آغاز یک گفت‌وگوی تجاری مؤثر را مشخص کند.",
 "Niaz Net Tehran. All Rights Reserved.":"نیازنت تهران. تمامی حقوق محفوظ است.",
-"EN⌄":"FA⌄"
+"EN⌄":"FA⌄",
+"NIAZ NET · INTERNATIONAL MARKETS":"نیازنت · بازارهای بین‌المللی",
+"NIAZ NET · AFRICAN MARKETS":"نیازنت · بازارهای آفریقا",
+"NIAZ NET · MARCHÉS AFRICAINS":"نیازنت · بازارهای آفریقا"
 };
 const pages={
 'api-supply.html':{
