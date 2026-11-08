@@ -165,6 +165,73 @@ const pages={
 'Current GMP, CoA, registration, shelf-life and other product documents as applicable and available.':'اسناد موجود و مرتبط محصول از جمله GMP، گواهی آنالیز (CoA)، مدارک ثبت و مدت ماندگاری.'
 }
 };
+
+Object.assign(pages,{
+'become-our-partner.html':{
+'PARTNERSHIPS & COLLABORATION':'مشارکت‌ها و همکاری‌ها','Become Our Partner':'به جمع شرکای ما بپیوندید',
+'We welcome discussions with manufacturers, brand owners, technology providers, distributors and qualified commercial partners seeking to develop opportunities in target markets.':'از گفت‌وگو با تولیدکنندگان، صاحبان برند، ارائه‌دهندگان فناوری، توزیع‌کنندگان و شرکای تجاری واجد صلاحیت که به‌دنبال توسعه فرصت‌ها در بازارهای هدف هستند استقبال می‌کنیم.',
+'START A PARTNERSHIP DISCUSSION →':'آغاز گفت‌وگو درباره همکاری ←','CONTACT DETAILS':'اطلاعات تماس','Who We Work With':'با چه مجموعه‌هایی همکاری می‌کنیم',
+'Manufacturers & Brand Owners':'تولیدکنندگان و صاحبان برند','Explore market representation, sourcing, licensing and distribution opportunities.':'فرصت‌های نمایندگی در بازار، تأمین، صدور مجوز و توزیع را بررسی کنید.',
+'Commercial & Distribution Partners':'شرکای تجاری و توزیع','Coordinate market access, partner discussions and cross-border trade opportunities.':'دسترسی به بازار، گفت‌وگو با شرکا و فرصت‌های تجارت فرامرزی را هماهنگ می‌کنیم.',
+'Technology & Production Partners':'شرکای فناوری و تولید','Discuss contract manufacturing, private label and technology transfer opportunities.':'درباره فرصت‌های تولید قراردادی، برند اختصاصی و انتقال فناوری گفت‌وگو کنید.',
+'Start a Conversation':'گفت‌وگو را آغاز کنید','Send us a short introduction including your company, product or service, target market and preferred type of cooperation.':'معرفی کوتاهی شامل اطلاعات شرکت، محصول یا خدمت، بازار هدف و نوع همکاری موردنظر برای ما ارسال کنید.',
+'Our team can then review the opportunity and follow up.':'سپس تیم ما فرصت را بررسی کرده و پیگیری خواهد کرد.','EMAIL YOUR PARTNERSHIP ENQUIRY →':'ارسال درخواست همکاری از طریق ایمیل ←'
+},
+'business-development.html':{
+'International Business Development':'توسعه کسب‌وکار بین‌المللی','Structure international business-development opportunities through partner identification, commercial introductions, market planning and follow-up across target markets.':'فرصت‌های توسعه کسب‌وکار بین‌المللی را از طریق شناسایی شرکا، معرفی‌های تجاری، برنامه‌ریزی بازار و پیگیری در بازارهای هدف ساختارمند می‌کنیم.',
+'Business Development: commercial coordination':'توسعه کسب‌وکار: هماهنگی تجاری',
+'Niaz Net Tehran helps companies identify and develop commercial opportunities through structured outreach, partner engagement, market prioritization, and follow-up with relevant stakeholders.':'نیازنت تهران به شرکت‌ها کمک می‌کند از طریق ارتباط‌گیری هدفمند، تعامل با شرکا، اولویت‌بندی بازارها و پیگیری با ذی‌نفعان مرتبط، فرصت‌های تجاری را شناسایی و توسعه دهند.',
+'We focus on connecting business objectives with practical opportunities for cooperation and revenue growth.':'تمرکز ما بر پیوند دادن اهداف کسب‌وکار با فرصت‌های عملی همکاری و رشد درآمد است.',
+'Depending on the project, support may include preparing a development roadmap, coordinating meetings, evaluating potential partners, and maintaining a clear pipeline of next steps.':'بسته به پروژه، پشتیبانی می‌تواند شامل تهیه نقشه راه توسعه، هماهنگی جلسات، ارزیابی شرکای بالقوه و پیگیری شفاف مراحل بعدی باشد.',
+'Scope, targets, and reporting expectations are agreed with the client before work begins.':'دامنه کار، اهداف و انتظارات گزارش‌دهی پیش از آغاز همکاری با مشتری توافق می‌شوند.',
+'We start with the commercial objective and the type of counterpart needed, then organize relevant partner outreach and follow-up.':'کار را با تعیین هدف تجاری و نوع طرف همکاری موردنیاز آغاز می‌کنیم و سپس ارتباط‌گیری و پیگیری با شرکای مرتبط را سازمان‌دهی می‌کنیم.',
+'The scope is tailored to the product, market and project stage.':'دامنه خدمات متناسب با محصول، بازار و مرحله پروژه تعیین می‌شود.',
+'Company and product profile with the objective of the project.':'معرفی شرکت و محصول به همراه هدف پروژه.',
+'Target geography and the type of manufacturer, buyer, distributor or investor sought.':'جغرافیای هدف و نوع تولیدکننده، خریدار، توزیع‌کننده یا سرمایه‌گذار موردنظر.',
+'Expected milestones, timeline and practical criteria for a suitable opportunity.':'نقاط عطف مورد انتظار، زمان‌بندی و معیارهای عملی برای فرصت مناسب.'
+},
+'cbd-products.html':{
+'CBD Product Market Coordination':'هماهنگی تجاری محصولات CBD','Coordinate preliminary commercial enquiries for CBD-related products only where lawful, with product classification, licensing and destination-market requirements reviewed first.':'درخواست‌های تجاری اولیه درباره محصولات مرتبط با CBD را صرفاً در موارد مجاز قانونی و پس از بررسی طبقه‌بندی محصول، مجوزها و الزامات بازار مقصد هماهنگ می‌کنیم.',
+'CBD Products & Market Coordination':'محصولات CBD و هماهنگی بازار','CBD Products & Market Coordination: commercial coordination':'محصولات CBD: هماهنگی تجاری',
+'Niaz Net Tehran can coordinate preliminary commercial discussions for CBD-related products where the product category and intended market allow such activity.':'نیازنت تهران می‌تواند در مواردی که گروه محصول و بازار مقصد اجازه می‌دهند، گفت‌وگوهای تجاری اولیه درباره محصولات مرتبط با CBD را هماهنگ کند.',
+'Early-stage work may include clarifying product specifications, identifying potential business counterparts, and mapping the questions that must be resolved before a transaction can proceed.':'اقدامات اولیه می‌تواند شامل شفاف‌سازی مشخصات محصول، شناسایی طرف‌های تجاری بالقوه و تعیین پرسش‌هایی باشد که پیش از انجام معامله باید پاسخ داده شوند.',
+'CBD laws and product classifications vary significantly by jurisdiction and product type.':'قوانین مربوط به CBD و طبقه‌بندی محصولات آن بر اساس حوزه قضایی و نوع محصول تفاوت قابل‌توجهی دارند.',
+'No sourcing, import, distribution, or marketing activity should proceed until legality, licensing, product status, and all applicable regulatory requirements have been independently confirmed for the relevant markets.':'تا زمانی که قانونی بودن فعالیت، مجوزها، وضعیت محصول و تمامی الزامات مقرراتی قابل‌اعمال به‌طور مستقل برای بازارهای مربوط تأیید نشده‌اند، هیچ‌گونه تأمین، واردات، توزیع یا بازاریابی نباید انجام شود.',
+'Before any transaction is explored, the product composition and legal status must be checked for the specific destination market.':'پیش از بررسی هر معامله، ترکیب محصول و وضعیت قانونی آن باید برای بازار مقصد مشخص بررسی شود.',
+'The service is limited to preliminary coordination where the activity is lawful.':'این خدمت صرفاً به هماهنگی اولیه در مواردی که فعالیت قانونی است محدود می‌شود.',
+'Product type, composition and cannabinoid information, where relevant.':'نوع محصول، ترکیبات و اطلاعات کانابینوئیدی در صورت ارتباط.',
+'Origin and destination markets and the applicable license or product status.':'بازارهای مبدأ و مقصد و وضعیت مجوز یا محصول مربوط.',
+'Manufacturer information, available documentation and proposed commercial route.':'اطلاعات تولیدکننده، اسناد موجود و مسیر تجاری پیشنهادی.'
+},
+'chamber-of-commerce.html':{
+'Private Chamber of Commerce & Trade Networks':'شبکه‌های اتاق بازرگانی خصوصی و تجارت',
+'Coordinate business introductions, trade-delegation communication and cross-border commercial opportunities with relevant chambers and business networks.':'معرفی‌های تجاری، ارتباطات هیئت‌های بازرگانی و فرصت‌های تجاری فرامرزی را با اتاق‌ها و شبکه‌های تجاری مرتبط هماهنگ می‌کنیم.',
+'Private Chamber of Commerce: commercial coordination':'اتاق بازرگانی خصوصی: هماهنگی تجاری',
+'We facilitate business-to-business engagement and trade-network development with relevant chambers of commerce, industry associations, and institutional stakeholders, where appropriate.':'در صورت تناسب، تعاملات بنگاه‌به‌بنگاه و توسعه شبکه‌های تجاری را با اتاق‌های بازرگانی، انجمن‌های صنعتی و ذی‌نفعان نهادی مرتبط تسهیل می‌کنیم.',
+'This can help companies identify networking opportunities, understand the business environment, and establish contact with potential commercial counterparts.':'این همکاری می‌تواند به شرکت‌ها در شناسایی فرصت‌های شبکه‌سازی، شناخت محیط کسب‌وکار و برقراری ارتباط با طرف‌های تجاری بالقوه کمک کند.',
+'Our role is coordination and relationship support, not a claim of official affiliation or guaranteed access.':'نقش ما هماهنگی و پشتیبانی از روابط تجاری است و به‌معنای وابستگی رسمی یا تضمین دسترسی نیست.',
+'Any formal membership, endorsement, certification, or institutional service is subject to the relevant organization’s own process and approval.':'هرگونه عضویت رسمی، تأیید، گواهی یا خدمت نهادی تابع فرایندها و تأییدیه‌های خود سازمان مربوط است.',
+'We clarify the purpose of the proposed trade or business-networking activity and the participants who need to be involved.':'هدف فعالیت تجاری یا شبکه‌سازی پیشنهادی و شرکت‌کنندگان موردنیاز را مشخص می‌کنیم.',
+'Introductions and institutional coordination depend on interest and availability of the relevant organizations.':'معرفی‌ها و هماهنگی‌های نهادی به علاقه‌مندی و امکان همکاری سازمان‌های مربوط بستگی دارد.',
+'Country, sector and objective of the proposed introduction or delegation.':'کشور، بخش اقتصادی و هدف معرفی یا هیئت پیشنهادی.',
+'Company profile and the type of counterpart or institution sought.':'معرفی شرکت و نوع طرف همکاری یا نهاد موردنظر.',
+'Preferred date range, participant list and intended outcomes, if applicable.':'بازه زمانی ترجیحی، فهرست شرکت‌کنندگان و نتایج مورد انتظار، در صورت وجود.'
+},
+'cosmoderma.html':{
+'Cosmoderma & Aesthetic Medicine':'کازمودرما و پزشکی زیبایی','Explore commercial coordination for aesthetic medicine, botulinum toxin products, dermal fillers and cosmoderma manufacturing or market-development opportunities.':'فرصت‌های هماهنگی تجاری در حوزه پزشکی زیبایی، محصولات سم بوتولینوم، فیلرهای پوستی و تولید یا توسعه بازار محصولات کازمودرما را بررسی کنید.',
+'Cosmoderma (Botox & Dermal Fillers): commercial coordination':'کازمودرما (بوتاکس و فیلرهای پوستی): هماهنگی تجاری',
+'Niaz Net Tehran supports brand registration and market development for aesthetic medicine and cosmoderma products, including botulinum toxin (Botox) and dermal fillers.':'نیازنت تهران از ثبت برند و توسعه بازار محصولات پزشکی زیبایی و کازمودرما، از جمله سم بوتولینوم (بوتاکس) و فیلرهای پوستی پشتیبانی می‌کند.',
+'We coordinate with brand owners and qualified manufacturers to explore product portfolios, target markets, documentation needs, and suitable commercial partners.':'با صاحبان برند و تولیدکنندگان واجد صلاحیت برای بررسی سبد محصولات، بازارهای هدف، نیازهای مستندات و شرکای تجاری مناسب هماهنگی می‌کنیم.',
+'Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing.':'توانمندی‌های ما شامل هماهنگی ثبت برند، تأمین مواد اولیه مناسب و گفت‌وگو با شرکای واجد صلاحیت درباره راه‌اندازی خط تولید یا تولید داخلی است.',
+'Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.':'پیش از هر فعالیت تجاری، مجاز بودن محصول، الزامات کیفیت و مجوزهای مقرراتی باید برای هر بازار مقصد تأیید شوند.',
+'We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity.':'مشخص می‌کنیم پروژه مربوط به سبد محصولات موجود، تأمین تولیدکننده، نمایندگی برند یا فرصت راه‌اندازی خط تولید است.',
+'Product classification and local registration need to be confirmed before commercial activity.':'طبقه‌بندی محصول و ثبت محلی آن باید پیش از فعالیت تجاری تأیید شوند.',
+'Product type and intended use, such as botulinum toxin, dermal filler or skincare.':'نوع محصول و کاربرد موردنظر، مانند سم بوتولینوم، فیلر پوستی یا محصولات مراقبت از پوست.',
+'Manufacturer and product regulatory status, where known.':'وضعیت مقرراتی تولیدکننده و محصول، در صورت اطلاع.',
+'Target country, expected commercial model and available technical documentation.':'کشور هدف، مدل تجاری مورد انتظار و مستندات فنی موجود.'
+}
+});
+
 const file=location.pathname.split('/').pop();
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
