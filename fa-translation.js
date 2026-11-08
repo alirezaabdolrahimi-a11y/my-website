@@ -508,7 +508,7 @@ Object.assign(pages,{
 }
 });
 
-Object.assign(pages,{
+const extraPageTranslations={
 "api-supply.html":{
 "API Sourcing & Pharmaceutical Raw Materials":"تأمین مواد مؤثره دارویی و مواد اولیه دارویی",
 "We support sourcing and commercial coordination for Active Pharmaceutical Ingredients (APIs) and selected pharmaceutical raw materials, connecting buyers with manufacturers and suppliers for evaluation. Coordination may cover product specifications, quality documentation requests, quotations, minimum order quantities, and supply terms.":"در زمینه تأمین و هماهنگی تجاری مواد مؤثره دارویی (API) و برخی مواد اولیه دارویی فعالیت می‌کنیم و خریداران را برای ارزیابی به تولیدکنندگان و تأمین‌کنندگان مرتبط می‌سازیم. این هماهنگی می‌تواند شامل مشخصات محصول، درخواست اسناد کیفیت، استعلام قیمت، حداقل مقدار سفارش و شرایط تأمین باشد.",
@@ -584,7 +584,8 @@ Object.assign(pages,{
 "Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing. Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.":"توانمندی‌های ما شامل هماهنگی ثبت برند، تأمین مواد اولیه مناسب و گفت‌وگو با شرکای واجد صلاحیت درباره راه‌اندازی خط تولید یا تولید داخلی است. پیش از هر فعالیت تجاری، مجاز بودن محصول، الزامات کیفیت و مجوزهای مقرراتی باید برای هر بازار مقصد تأیید شوند.",
 "We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity. Product classification and local registration need to be confirmed before commercial activity.":"مشخص می‌کنیم پروژه مربوط به سبد محصولات موجود، تأمین تولیدکننده، نمایندگی برند یا فرصت راه‌اندازی خط تولید است. طبقه‌بندی محصول و ثبت محلی آن باید پیش از فعالیت تجاری تأیید شوند."
 }
-});
+};
+Object.keys(extraPageTranslations).forEach(function(page){pages[page]=Object.assign({},pages[page]||{},extraPageTranslations[page]);});
 
 const file=location.pathname.split('/').pop();
 const dict=Object.assign({},common,pages[file]||{});
