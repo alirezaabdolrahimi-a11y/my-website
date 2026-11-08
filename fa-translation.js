@@ -498,7 +498,7 @@ Object.assign(pages,{
 "Import / Export":"واردات و صادرات",
 "Approvisionnement API":"تأمین مواد مؤثره دارویی"
 }
-};
+});
 
 const file=location.pathname.split('/').pop();
 const dict=Object.assign({},common,pages[file]||{});
