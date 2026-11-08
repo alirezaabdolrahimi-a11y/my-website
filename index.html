@@ -150,9 +150,11 @@
     .service-card:hover .service-icon,.service-card:focus-visible .service-icon{transform:translateY(-5px) scale(1.06)!important;box-shadow:inset 0 1px 0 #ffffff9c,0 12px 20px #071b3933!important}
     .service-card h3{font-size:11px}
     .lang{cursor:pointer}
-    body[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
-    body[dir="rtl"] .nav-links,body[dir="rtl"] .hero-copy,body[dir="rtl"] .section-title,body[dir="rtl"] .service-card{text-align:right}
-    body[dir="rtl"] .hero-actions-below{justify-content:center!important} body[dir="rtl"] .nav{direction:rtl} body[dir="rtl"] .nav-links{direction:rtl} body[dir="rtl"] .hero-actions,body[dir="rtl"] .hero-actions-below,body[dir="rtl"] .socials,body[dir="rtl"] .footer-bottom{direction:rtl} body[dir="rtl"] .service-card{direction:rtl} body[dir="rtl"] .dropdown{left:auto;right:-14px}
+    body[data-content-lang="fa"]{font-family:Tahoma,Arial,sans-serif}
+    body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-copy,body[data-content-lang="fa"] .section-title,body[data-content-lang="fa"] .service-card{text-align:right}
+    body[data-content-lang="fa"] .hero-actions-below{justify-content:center!important}
+    body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .hero-actions-below,body[data-content-lang="fa"] .socials,body[data-content-lang="fa"] .footer-bottom,body[data-content-lang="fa"] .service-card{direction:ltr}
+    body[data-content-lang="fa"] .dropdown{left:auto;right:-14px}
     @media(min-width:761px) and (max-width:1100px){.hero-inner{grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr)!important;column-gap:12px!important}.hero-showcase{height:clamp(310px,34vw,400px)!important}}
     @media(max-width:760px){.hero{padding-top:105px}.hero-inner{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:16px}.hero-copy{grid-column:1;grid-row:1;max-width:100%;padding-top:0}.hero-showcase{grid-column:1;grid-row:2;height:250px}.hero-actions-below{grid-column:1;grid-row:3}.hero h1{font-size:27px}.hero-showcase img{object-fit:contain}.stats.trade-stats{grid-template-columns:repeat(2,1fr)}.stats.trade-stats .stat:last-child{grid-column:auto}.partner-hero-btn{font-size:13px}.network-map-modern{height:240px}}
     
@@ -899,7 +901,8 @@ function applyLanguage(lang){
   currentLang=lang;
   try{document.cookie='niaznet-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}
   document.documentElement.lang=lang==='fa'?'fa':'en';
-  document.body.dir=lang==='fa'?'rtl':'ltr';
+  document.body.dir='ltr';
+  document.body.dataset.contentLang=lang;
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
   langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
   document.querySelectorAll('.nav-links>a').forEach(a=>{
