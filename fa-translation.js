@@ -540,6 +540,12 @@ const titleMap={
 "south-africa-market.html":"بازار دارو و سلامت آفریقای جنوبی | نیازنت",
 "supply-chain-solutions.html":"راهکارهای زنجیره تأمین | نیازنت",
 "cote-divoire-market.html":"بازار دارو و سلامت ساحل عاج | نیازنت"
+,
+"become-our-partner.html":"همکاری با نیازنت | نیازنت",
+"business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
+"cbd-products.html":"هماهنگی تجاری محصولات CBD | نیازنت",
+"chamber-of-commerce.html":"اتاق بازرگانی و هماهنگی تجارت | نیازنت",
+"cosmoderma.html":"کازمودرما و پزشکی زیبایی | نیازنت"
 };
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
