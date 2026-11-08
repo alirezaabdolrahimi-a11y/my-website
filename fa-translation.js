@@ -1,7 +1,18 @@
 (function(){
 'use strict';
 const params=new URLSearchParams(location.search);
-if(params.get('lang')!=='fa')return;
+const isTurkishPage=/^\/tr\//.test(location.pathname);
+const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
+if(languageAnchor&&!document.querySelector('.fa-lang')){
+ const faLink=document.createElement('a');
+ faLink.className='lang fa-lang';
+ faLink.href=(isTurkishPage?location.pathname.replace(/^\/tr\//,'/'):location.pathname)+'?lang=fa';
+ faLink.setAttribute('aria-label','فارسی');
+ faLink.setAttribute('title','فارسی');
+ faLink.textContent='FA⌄';
+ languageAnchor.parentNode.insertBefore(faLink,languageAnchor.nextSibling);
+}
+if(isTurkishPage||params.get('lang')!=='fa')return;
 const common={
 'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
 'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما',
@@ -17,6 +28,27 @@ const common={
 'Regulatory approvals, import eligibility, quality acceptance, licensing and transaction feasibility must be confirmed for each product and destination market by the responsible parties and qualified professionals.':'مجوزهای قانونی، امکان واردات، تأیید کیفیت، الزامات صدور مجوز و امکان‌پذیری معامله باید برای هر محصول و بازار مقصد، توسط طرف‌های مسئول و متخصصان واجد صلاحیت بررسی و تأیید شوند.',
 'NIAZ NET coordinates commercial communication; it does not replace regulatory authorities, legal advisers or independent quality assessment.':'نیازنت هماهنگی ارتباطات تجاری را بر عهده می‌گیرد و جایگزین مراجع قانونی، مشاوران حقوقی یا ارزیابی مستقل کیفیت نیست.',
 'Strategic Distribution & Trade':'توزیع راهبردی و تجارت بین‌الملل','TEHRAN':'تهران'
+,
+"Regulatory approvals, import eligibility, quality acceptance, licensing and transaction feasibility must be confirmed for each product and destination market by the responsible parties and qualified professionals. NIAZ NET coordinates commercial communication; it does not replace regulatory authorities, legal advisers or independent quality assessment.":"تأییدیه‌های مقرراتی، مجاز بودن واردات، پذیرش کیفیت، صدور مجوز و امکان‌پذیری معامله باید برای هر محصول و بازار مقصد توسط طرف‌های مسئول و متخصصان واجد صلاحیت بررسی و تأیید شود. نیازنت هماهنگی ارتباطات تجاری را بر عهده دارد و جایگزین مراجع مقرراتی، مشاوران حقوقی یا ارزیابی مستقل کیفیت نیست.",
+"Send us the product or project details, target market and the type of support required. Our team can review the initial scope and identify the information needed for a useful commercial discussion.":"جزئیات محصول یا پروژه، بازار هدف و نوع پشتیبانی موردنیاز را برای ما ارسال کنید. تیم ما می‌تواند دامنه اولیه را بررسی کرده و اطلاعات لازم برای آغاز یک گفت‌وگوی تجاری مؤثر را مشخص کند.",
+"Niaz Net Tehran. All Rights Reserved.":"نیازنت تهران. تمامی حقوق محفوظ است.",
+"EN⌄":"FA⌄",
+"NIAZ NET · INTERNATIONAL MARKETS":"نیازنت · بازارهای بین‌المللی",
+"NIAZ NET · AFRICAN MARKETS":"نیازنت · بازارهای آفریقا",
+"NIAZ NET · MARCHÉS AFRICAINS":"نیازنت · بازارهای آفریقا",
+"Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
+"Pharmaceutical Products":"محصولات دارویی",
+"Contract Manufacturing":"تولید قراردادی",
+"Product Registration":"ثبت محصول",
+"Regulatory Affairs":"امور مقرراتی",
+"Market Entry Strategy & Solutions":"استراتژی و راهکارهای ورود به بازار",
+"Business Development":"توسعه کسب‌وکار",
+"Private Label & Own-Brand Development":"تولید با برند اختصاصی و توسعه برند اختصاصی",
+"Supply Chain":"زنجیره تأمین",
+"Exclusive Agency & Brand Representation":"نمایندگی انحصاری و نمایندگی برند",
+"Nutraceuticals & Wellness Products":"محصولات نوتراسوتیک و سلامت‌محور",
+"Private Chamber of Commerce":"اتاق بازرگانی خصوصی",
+"International Business Development":"توسعه کسب‌وکار بین‌المللی"
 };
 const pages={
 'api-supply.html':{
@@ -229,8 +261,355 @@ Object.assign(pages,{
 'Product type and intended use, such as botulinum toxin, dermal filler or skincare.':'نوع محصول و کاربرد موردنظر، مانند سم بوتولینوم، فیلر پوستی یا محصولات مراقبت از پوست.',
 'Manufacturer and product regulatory status, where known.':'وضعیت مقرراتی تولیدکننده و محصول، در صورت اطلاع.',
 'Target country, expected commercial model and available technical documentation.':'کشور هدف، مدل تجاری مورد انتظار و مستندات فنی موجود.'
+},
+"international-business-development.html":{
+"International Business Development":"توسعه کسب‌وکار بین‌المللی",
+"Connect business opportunities with potential partners through market mapping, commercial introductions, opportunity assessment and cross-border coordination.":"فرصت‌های تجاری را از طریق شناسایی و تحلیل بازار، معرفی تجاری، ارزیابی فرصت‌ها و هماهنگی فرامرزی به شرکای بالقوه متصل می‌کنیم.",
+"International Business Development: commercial coordination":"توسعه کسب‌وکار بین‌المللی: هماهنگی تجاری",
+"We help companies build cross-border business relationships and explore opportunities across selected international markets. Our work can include coordinating introductions, supporting partner evaluation, aligning commercial expectations, and following up on opportunities across different markets.":"به شرکت‌ها کمک می‌کنیم روابط تجاری فرامرزی ایجاد کنند و فرصت‌های بازارهای بین‌المللی منتخب را بررسی کنند. فعالیت ما می‌تواند شامل هماهنگی معرفی طرف‌های تجاری، پشتیبانی از ارزیابی شرکا، هم‌راستا کردن انتظارات تجاری و پیگیری فرصت‌ها در بازارهای مختلف باشد.",
+"International projects often involve different business practices, documentation needs, regulatory conditions, and logistics constraints. We help maintain a coordinated process and clear communication, while transaction-specific obligations are confirmed by the relevant parties and advisers.":"پروژه‌های بین‌المللی معمولاً با رویه‌های تجاری متفاوت، نیازهای مستندسازی، شرایط مقرراتی و محدودیت‌های لجستیکی همراه هستند. ما به حفظ روندی هماهنگ و ارتباطات شفاف کمک می‌کنیم؛ در حالی که تعهدات هر معامله باید توسط طرف‌های ذی‌ربط و مشاوران آن‌ها تأیید شود.",
+"How we approach this service":"رویکرد ما در ارائه این خدمت",
+"We translate a broad international growth objective into a clearer partner or market-development brief. Follow-up focuses on relevant counterparties and agreed criteria rather than guaranteed introductions or outcomes.":"هدف کلی توسعه بین‌المللی را به یک برنامه روشن‌تر برای همکاری با شرکا یا توسعه بازار تبدیل می‌کنیم. پیگیری‌ها بر طرف‌های مرتبط و معیارهای توافق‌شده متمرکز است و به معنای تضمین معرفی یا نتیجه نخواهد بود.",
+"Information to include in an enquiry":"اطلاعات موردنیاز برای ثبت درخواست",
+"Company profile and the business objective to be achieved.":"معرفی شرکت و هدف تجاری موردنظر.",
+"Target countries, sectors, partner type and preferred commercial model.":"کشورهای هدف، حوزه‌های فعالیت، نوع شریک موردنظر و مدل تجاری ترجیحی.",
+"Project timing, qualification criteria and any existing leads or relationships.":"زمان‌بندی پروژه، معیارهای ارزیابی صلاحیت و سرنخ‌ها یا روابط تجاری موجود.",
+"Related services":"خدمات مرتبط",
+"Business Development":"توسعه کسب‌وکار",
+"Market Entry Strategy & Solutions":"استراتژی و راهکارهای ورود به بازار",
+"Private Chamber of Commerce":"اتاق بازرگانی خصوصی"
+},
+"licensing-partnerships.html":{
+"Licensing Strategy & Partnerships":"استراتژی صدور مجوز و مشارکت‌های راهبردی",
+"Coordinate licensing discussions, strategic partnerships, commercial scope and partner communication for technology, product and distribution opportunities.":"مذاکرات صدور مجوز، مشارکت‌های راهبردی، چارچوب همکاری تجاری و ارتباط با شرکا را برای فرصت‌های فناوری، محصول و توزیع هماهنگ می‌کنیم.",
+"Licensing & Strategic Partnerships: commercial coordination":"صدور مجوز و مشارکت‌های راهبردی: هماهنگی تجاری",
+"We support the development of licensing and strategic partnership opportunities between rights holders, manufacturers, technology owners, and local commercial partners. This may include coordinating introductory discussions, clarifying the intended scope of cooperation, and organizing commercial and technical information for review.":"از توسعه فرصت‌های صدور مجوز و مشارکت راهبردی میان صاحبان حقوق، تولیدکنندگان، مالکان فناوری و شرکای تجاری محلی پشتیبانی می‌کنیم. این فعالیت می‌تواند شامل هماهنگی جلسات اولیه، شفاف‌سازی چارچوب همکاری موردنظر و سامان‌دهی اطلاعات تجاری و فنی برای بررسی باشد.",
+"Potential agreements can address territory, permitted use, responsibilities, intellectual property, quality expectations, milestones, and commercial terms. Legal, regulatory, and technical review should be completed by the relevant qualified advisers before any binding agreement is signed.":"توافق‌های احتمالی می‌توانند قلمرو جغرافیایی، موارد استفاده مجاز، مسئولیت‌ها، مالکیت فکری، انتظارات کیفی، نقاط عطف و شرایط تجاری را پوشش دهند. پیش از امضای هر توافق الزام‌آور، بررسی حقوقی، مقرراتی و فنی باید توسط مشاوران واجد صلاحیت انجام شود.",
+"We help organize early discussions around the asset or technology, territory, responsibilities and the intended commercial model. Legal, IP and regulatory terms should be reviewed by the parties and their qualified advisers.":"به سازمان‌دهی مذاکرات اولیه درباره دارایی یا فناوری، قلمرو فعالیت، مسئولیت‌ها و مدل تجاری موردنظر کمک می‌کنیم. شرایط حقوقی، مالکیت فکری و مقرراتی باید توسط طرف‌ها و مشاوران متخصص آن‌ها بررسی شود.",
+"Technology, intellectual property or product scope being discussed.":"فناوری، مالکیت فکری یا محدوده محصولی که موضوع مذاکره است.",
+"Target territory, desired rights, exclusivity and project stage.":"قلمرو هدف، حقوق موردنظر، انحصاری بودن همکاری و مرحله اجرای پروژه.",
+"Parties involved, proposed responsibilities and any existing term sheet or technical brief.":"طرف‌های درگیر، مسئولیت‌های پیشنهادی و هرگونه پیش‌نویس شرایط همکاری یا شرح فنی موجود.",
+"Technology Transfer":"انتقال فناوری",
+"Contract Manufacturing":"تولید قراردادی",
+"Exclusive Agency & Brand Representation":"نمایندگی انحصاری و نمایندگی برند"
+},
+"medical-devices.html":{
+"Medical Devices & Healthcare Equipment":"تجهیزات پزشکی و تجهیزات سلامت",
+"Coordinate sourcing and distribution enquiries for medical devices and healthcare equipment, including supplier discussions and technical-document requests.":"درخواست‌های تأمین و توزیع تجهیزات پزشکی و تجهیزات سلامت، از جمله مذاکرات با تأمین‌کنندگان و درخواست مدارک فنی را هماهنگ می‌کنیم.",
+"Medical Devices & Healthcare Equipment: commercial coordination":"تجهیزات پزشکی و تجهیزات سلامت: هماهنگی تجاری",
+"We support commercial sourcing and market-development discussions for medical devices and healthcare equipment, helping manufacturers and potential distributors assess product fit, target channels, and local partner opportunities.":"از مذاکرات تجاری برای تأمین و توسعه بازار تجهیزات پزشکی و سلامت پشتیبانی می‌کنیم تا تولیدکنندگان و توزیع‌کنندگان بالقوه بتوانند تناسب محصول، کانال‌های هدف و فرصت‌های همکاری محلی را ارزیابی کنند.",
+"Our coordination can include product portfolio discussions, quotation and supply-term follow-up, and requests for technical and regulatory documentation. Product registration, conformity, and import requirements are assessed according to the destination market and the specific device category.":"هماهنگی ما می‌تواند شامل بررسی سبد محصولات، پیگیری استعلام قیمت و شرایط تأمین و درخواست مستندات فنی و مقرراتی باشد. ثبت محصول، انطباق و الزامات واردات بر اساس بازار مقصد و طبقه‌بندی مشخص هر دستگاه ارزیابی می‌شود.",
+"We help structure the commercial discussion around the intended use, device classification and destination-market requirements. Technical evaluation and registration decisions remain with the responsible parties and authorities.":"به ساختاردهی مذاکرات تجاری بر اساس کاربرد موردنظر، طبقه‌بندی دستگاه و الزامات بازار مقصد کمک می‌کنیم. ارزیابی فنی و تصمیم‌گیری درباره ثبت محصول بر عهده طرف‌های مسئول و مراجع ذی‌صلاح است.",
+"Device name, intended use, model and technical specifications.":"نام دستگاه، کاربرد موردنظر، مدل و مشخصات فنی.",
+"Current regulatory status and available conformity or quality documentation.":"وضعیت مقرراتی فعلی و مدارک موجود انطباق یا کیفیت.",
+"Destination country, buyer/distributor profile and expected order or project scope.":"کشور مقصد، مشخصات خریدار یا توزیع‌کننده و دامنه سفارش یا پروژه موردانتظار.",
+"Product Registration":"ثبت محصول",
+"Regulatory Affairs":"امور مقرراتی",
+"Import & Export":"واردات و صادرات"
+},
+"nutraceuticals.html":{
+"Nutraceuticals & Wellness Products":"محصولات نوتراسوتیک و سلامت‌محور",
+"Explore nutraceutical and wellness-product sourcing, supplement portfolios, supplier documentation and market-development opportunities subject to local requirements.":"فرصت‌های تأمین محصولات نوتراسوتیک و سلامت‌محور، سبد مکمل‌ها، مدارک تأمین‌کنندگان و توسعه بازار را با رعایت الزامات محلی بررسی کنید.",
+"Nutraceuticals & Wellness Products: commercial coordination":"محصولات نوتراسوتیک و سلامت‌محور: هماهنگی تجاری",
+"We support commercial sourcing and market-development discussions for nutraceuticals, wellness products, and related categories, connecting potential buyers with manufacturers and business partners for evaluation.":"از مذاکرات تجاری تأمین و توسعه بازار محصولات نوتراسوتیک، محصولات سلامت‌محور و گروه‌های مرتبط پشتیبانی می‌کنیم و خریداران بالقوه را برای ارزیابی به تولیدکنندگان و شرکای تجاری متصل می‌سازیم.",
+"Product classification, permitted claims, labeling, quality documentation, and import eligibility differ by market. Each opportunity should be reviewed against applicable rules and the client’s technical and commercial requirements before any market launch.":"طبقه‌بندی محصول، ادعاهای مجاز، برچسب‌گذاری، مستندات کیفیت و شرایط مجاز واردات در هر بازار متفاوت است. پیش از عرضه به بازار، هر فرصت باید با مقررات مربوطه و الزامات فنی و تجاری مشتری تطبیق داده شود.",
+"We clarify the product category, ingredients, intended market and commercial route before coordinating supplier or distribution enquiries. Product classification and permitted claims must be reviewed for the relevant market.":"پیش از هماهنگی درخواست‌های تأمین یا توزیع، گروه محصول، ترکیبات، بازار هدف و مسیر تجاری را مشخص می‌کنیم. طبقه‌بندی محصول و ادعاهای مجاز باید برای بازار مربوطه بررسی شوند.",
+"Ingredient list, dosage form, product specifications and intended claims.":"فهرست ترکیبات، شکل دارویی یا شکل عرضه، مشخصات محصول و ادعاهای موردنظر.",
+"Target country, channel, branding model and estimated order volume.":"کشور هدف، کانال عرضه، مدل برندینگ و حجم تقریبی سفارش.",
+"Available CoA, quality documents, labels and information relevant to product classification.":"گواهی آنالیز (CoA)، مدارک کیفیت، برچسب‌ها و اطلاعات موجود مرتبط با طبقه‌بندی محصول.",
+"Sports Nutrition":"تغذیه ورزشی",
+"Private Label & Own-Brand Development":"تولید با برند اختصاصی و توسعه برند اختصاصی",
+"Pharmaceutical Products":"محصولات دارویی"
+},
+"pet-food.html":{
+"Pet Food & Animal Nutrition":"غذای حیوانات خانگی و تغذیه حیوانات",
+"Coordinate sourcing and distribution enquiries for pet food, treats and animal nutrition, including manufacturer discussions, product specifications and market requirements.":"درخواست‌های تأمین و توزیع غذای حیوانات خانگی، تشویقی‌ها و محصولات تغذیه حیوانات را از جمله مذاکرات با تولیدکنندگان، مشخصات محصول و الزامات بازار هماهنگ می‌کنیم.",
+"Pet Food & Animal Nutrition: commercial coordination":"غذای حیوانات خانگی و تغذیه حیوانات: هماهنگی تجاری",
+"Niaz Net Tehran supports commercial sourcing and market-development discussions for pet food, treats, and animal nutrition products, helping manufacturers connect with importers, distributors, retailers, and other suitable partners in target markets. We can coordinate portfolio introductions, product specifications, quotation requests, packaging and private-label discussions, and supply expectations.":"نیازنت تهران از مذاکرات تجاری تأمین و توسعه بازار غذای حیوانات خانگی، تشویقی‌ها و محصولات تغذیه حیوانات پشتیبانی می‌کند و به تولیدکنندگان کمک می‌کند با واردکنندگان، توزیع‌کنندگان، خرده‌فروشان و سایر شرکای مناسب در بازارهای هدف ارتباط برقرار کنند. ما می‌توانیم معرفی سبد محصولات، مشخصات فنی، درخواست قیمت، مذاکرات بسته‌بندی و تولید با برند اختصاصی و انتظارات تأمین را هماهنگ کنیم.",
+"Product registration, ingredient rules, labeling, veterinary and feed requirements, and import eligibility vary by destination market. Each opportunity should be reviewed with the responsible manufacturer and qualified local specialists before supply or market launch.":"ثبت محصول، مقررات ترکیبات، برچسب‌گذاری، الزامات دامپزشکی و خوراک و شرایط مجاز واردات در بازارهای مقصد متفاوت است. پیش از تأمین یا عرضه به بازار، هر فرصت باید با تولیدکننده مسئول و متخصصان محلی واجد صلاحیت بررسی شود.",
+"We help frame commercial pet-food and animal-nutrition enquiries around product type, buyer channel, packaging and destination market. Feed, veterinary, ingredient and labelling requirements vary by jurisdiction.":"به تنظیم درخواست‌های تجاری غذای حیوانات و محصولات تغذیه حیوانات بر اساس نوع محصول، کانال خریدار، بسته‌بندی و بازار مقصد کمک می‌کنیم. الزامات خوراک، دامپزشکی، ترکیبات و برچسب‌گذاری در حوزه‌های قضایی مختلف متفاوت است.",
+"Product type, ingredients/specification, pack sizes and intended animal category.":"نوع محصول، ترکیبات یا مشخصات فنی، اندازه بسته‌بندی و گروه حیوان هدف.",
+"Target market, channel, estimated volume and branded/private-label preference.":"بازار هدف، کانال عرضه، حجم تقریبی و ترجیح میان برند اختصاصی یا برند تولیدکننده.",
+"Available quality, ingredient, feed/veterinary and import documents.":"مدارک موجود کیفیت، ترکیبات، خوراک و دامپزشکی و اسناد واردات.",
+"Import & Export":"واردات و صادرات",
+"Private Label & Own-Brand Development":"تولید با برند اختصاصی و توسعه برند اختصاصی",
+"Nutraceuticals & Wellness Products":"محصولات نوتراسوتیک و سلامت‌محور"
+},
+"private-label.html":{
+"Private Label & Own-Brand Development":"تولید با برند اختصاصی و توسعه برند اختصاصی",
+"Coordinate private-label enquiries with potential manufacturers, including product concepts, specifications, packaging options, minimum orders and supply terms.":"درخواست‌های تولید با برند اختصاصی را با تولیدکنندگان بالقوه هماهنگ می‌کنیم؛ از جمله ایده محصول، مشخصات، گزینه‌های بسته‌بندی، حداقل سفارش و شرایط تأمین.",
+"Private Label & Own-Brand Development: commercial coordination":"تولید با برند اختصاصی و توسعه برند اختصاصی: هماهنگی تجاری",
+"We support businesses interested in developing products under their own brand by coordinating discussions with potential manufacturers and suppliers. The process may cover product concept, specifications, packaging options, target pricing, minimum order quantities, and preliminary production timelines.":"با هماهنگی مذاکرات با تولیدکنندگان و تأمین‌کنندگان بالقوه، از کسب‌وکارهایی که قصد تولید محصول با برند خود را دارند پشتیبانی می‌کنیم. این فرایند می‌تواند شامل ایده محصول، مشخصات، گزینه‌های بسته‌بندی، قیمت هدف، حداقل مقدار سفارش و زمان‌بندی اولیه تولید باشد.",
+"Final feasibility depends on manufacturer capability, product category, intellectual-property and trademark considerations, quality requirements, and destination-market regulations. We help structure the discussions so the client can assess options before committing to development or production.":"امکان‌پذیری نهایی به توان تولیدکننده، گروه محصول، ملاحظات مالکیت فکری و علامت تجاری، الزامات کیفیت و مقررات بازار مقصد بستگی دارد. مذاکرات را ساختارمند می‌کنیم تا مشتری پیش از تعهد به توسعه یا تولید، گزینه‌ها را ارزیابی کند.",
+"We help prepare an initial manufacturing brief for an own-brand product and coordinate questions with suitable potential manufacturers. Formulation, packaging, IP rights and regulatory feasibility must be confirmed before production commitments.":"به تهیه شرح اولیه تولید برای محصولی با برند اختصاصی و هماهنگی پرسش‌ها با تولیدکنندگان بالقوه مناسب کمک می‌کنیم. فرمولاسیون، بسته‌بندی، حقوق مالکیت فکری و امکان‌پذیری مقرراتی باید پیش از تعهد تولید تأیید شوند.",
+"Product category, concept, target user and desired formulation/specification.":"گروه محصول، ایده اولیه، مصرف‌کننده هدف و فرمولاسیون یا مشخصات موردنظر.",
+"Packaging, branding, estimated volume, target price and launch timing.":"بسته‌بندی، برندینگ، حجم تقریبی، قیمت هدف و زمان عرضه.",
+"Quality standards, required documents, destination market and any claims to review.":"استانداردهای کیفیت، مدارک موردنیاز، بازار مقصد و هرگونه ادعایی که باید بررسی شود.",
+"Contract Manufacturing":"تولید قراردادی",
+"Sports Nutrition":"تغذیه ورزشی",
+"Nutraceuticals & Wellness Products":"محصولات نوتراسوتیک و سلامت‌محور"
+},
+"product-registration.html":{
+"Product Registration & Dossier Coordination":"ثبت محصول و هماهنگی پرونده فنی",
+"Organize product-registration communication and dossier-document requests for regulated products, with requirements confirmed by qualified local specialists.":"ارتباطات مربوط به ثبت محصولات تحت نظارت و درخواست مدارک پرونده فنی را سازمان‌دهی می‌کنیم؛ الزامات باید توسط متخصصان محلی واجد صلاحیت تأیید شوند.",
+"Product Registration & Dossier Coordination: commercial coordination":"ثبت محصول و هماهنگی پرونده فنی: هماهنگی تجاری",
+"We coordinate the collection and follow-up of product registration documents and technical dossiers between manufacturers, brand owners, and local regulatory teams. This can include tracking requested documents, clarifying formats, organizing open questions, and following up on pending items.":"جمع‌آوری و پیگیری مدارک ثبت محصول و پرونده‌های فنی را میان تولیدکنندگان، صاحبان برند و تیم‌های مقرراتی محلی هماهنگ می‌کنیم. این فعالیت می‌تواند شامل پیگیری مدارک درخواستی، شفاف‌سازی قالب اسناد، سامان‌دهی پرسش‌های باز و پیگیری موارد باقی‌مانده باشد.",
+"Required documents, submission formats, translations, legalization, and review timelines depend on the product and the destination authority. Final dossier content and regulatory submissions must be validated by the responsible manufacturer and authorized regulatory professionals.":"مدارک موردنیاز، قالب ارائه، ترجمه‌ها، تأییدات رسمی و زمان‌بندی بررسی به محصول و مرجع مقصد بستگی دارد. محتوای نهایی پرونده و درخواست‌های مقرراتی باید توسط تولیدکننده مسئول و متخصصان مجاز امور مقرراتی تأیید شود.",
+"We help track document requests and coordinate communication around a specific product-market registration question. The registration strategy and dossier acceptance must be confirmed by the responsible applicant and qualified local specialists.":"به پیگیری درخواست مدارک و هماهنگی ارتباطات درباره موضوع مشخص ثبت محصول در بازار مقصد کمک می‌کنیم. راهبرد ثبت و پذیرش پرونده باید توسط متقاضی مسئول و متخصصان محلی واجد صلاحیت تأیید شود.",
+"Product category, manufacturer and target registration country.":"گروه محصول، تولیدکننده و کشور هدف برای ثبت.",
+"Current registration status and available dossier/document index.":"وضعیت فعلی ثبت و فهرست پرونده یا مدارک موجود.",
+"Applicant or local representative details, deadlines and the specific question needing coordination.":"اطلاعات متقاضی یا نماینده محلی، مهلت‌ها و پرسش مشخصی که به هماهنگی نیاز دارد.",
+"Regulatory Affairs":"امور مقرراتی",
+"Brand Registration":"ثبت برند",
+"Medical Devices & Healthcare Equipment":"تجهیزات پزشکی و تجهیزات سلامت"
+},
+"regulatory-affairs.html":{
+"Regulatory Affairs & Compliance Coordination":"امور مقرراتی و هماهنگی انطباق",
+"Coordinate regulatory-document requests, compliance questions and communication between manufacturers, market partners and qualified regulatory specialists.":"درخواست مدارک مقرراتی، پرسش‌های انطباق و ارتباط میان تولیدکنندگان، شرکای بازار و متخصصان واجد صلاحیت امور مقرراتی را هماهنگ می‌کنیم.",
+"Regulatory Affairs & Compliance Coordination: commercial coordination":"امور مقرراتی و هماهنگی انطباق: هماهنگی تجاری",
+"We help coordinate communication around regulatory requirements for products entering or expanding within target markets. This may include organizing documentation requests, tracking regulatory questions, and aligning manufacturers, local representatives, and regulatory specialists.":"به هماهنگی ارتباطات درباره الزامات مقرراتی محصولات برای ورود یا توسعه در بازارهای هدف کمک می‌کنیم. این فعالیت می‌تواند شامل سامان‌دهی درخواست مدارک، پیگیری پرسش‌های مقرراتی و هماهنگ‌سازی تولیدکنندگان، نمایندگان محلی و متخصصان امور مقرراتی باشد.",
+"Regulatory decisions and approvals remain the responsibility of the competent authorities and appropriately authorized professionals. Our coordination is intended to improve visibility and follow-up, while product-specific requirements are confirmed case by case.":"تصمیمات و تأییدیه‌های مقرراتی همچنان در صلاحیت مراجع ذی‌صلاح و متخصصان دارای مجوز مربوطه است. هدف از هماهنگی ما افزایش شفافیت و بهبود پیگیری است؛ در حالی که الزامات هر محصول به‌صورت موردی تأیید می‌شود.",
+"We help make regulatory enquiries more structured by identifying the product, market, pending question and responsible parties. Interpretations, submissions and regulatory decisions remain with qualified specialists and competent authorities.":"با مشخص کردن محصول، بازار، پرسش در دست بررسی و طرف‌های مسئول، به ساختارمند شدن درخواست‌های مقرراتی کمک می‌کنیم. تفسیر مقررات، ارائه درخواست‌ها و تصمیمات مقرراتی بر عهده متخصصان واجد صلاحیت و مراجع ذی‌صلاح است.",
+"Product type, intended use and destination market.":"نوع محصول، کاربرد موردنظر و بازار مقصد.",
+"The exact regulatory question, deadline and authority or pathway involved if known.":"پرسش دقیق مقرراتی، مهلت زمانی و مرجع یا مسیر مربوطه در صورت مشخص بودن.",
+"Available label, technical file, registration and quality documentation.":"برچسب موجود، پرونده فنی و مستندات ثبت و کیفیت.",
+"Product Registration":"ثبت محصول",
+"Pharmaceutical Products":"محصولات دارویی",
+"Medical Devices & Healthcare Equipment":"تجهیزات پزشکی و تجهیزات سلامت"
+},
+"supply-chain-solutions.html":{
+"Supply Chain Solutions":"راهکارهای زنجیره تأمین",
+"Coordinate order and shipment follow-up, trade-document tracking, delivery planning and communication among buyers, suppliers and logistics providers.":"پیگیری سفارش و محموله، رصد اسناد تجاری، برنامه‌ریزی تحویل و ارتباط میان خریداران، تأمین‌کنندگان و ارائه‌دهندگان خدمات لجستیکی را هماهنگ می‌کنیم.",
+"Supply Chain Solutions: commercial coordination":"راهکارهای زنجیره تأمین: هماهنگی تجاری",
+"We coordinate supply-chain communication among buyers, suppliers, manufacturers, freight providers, and other relevant parties. Depending on the project, this may include order and shipment follow-up, documentation tracking, delivery planning, and escalation of outstanding commercial or operational questions.":"ارتباطات زنجیره تأمین میان خریداران، تأمین‌کنندگان، تولیدکنندگان، شرکت‌های حمل‌ونقل و سایر طرف‌های مرتبط را هماهنگ می‌کنیم. بسته به پروژه، این فعالیت می‌تواند شامل پیگیری سفارش و محموله، رصد اسناد، برنامه‌ریزی تحویل و ارجاع پرسش‌های تجاری یا عملیاتی حل‌نشده باشد.",
+"The exact scope depends on the transaction, product requirements, and the parties’ responsibilities. Shipping, customs, insurance, and handling arrangements are confirmed with the authorized providers and documented before dispatch.":"دامنه دقیق خدمات به معامله، الزامات محصول و مسئولیت‌های طرف‌ها بستگی دارد. ترتیبات حمل‌ونقل، گمرک، بیمه و جابه‌جایی با ارائه‌دهندگان مجاز تأیید و پیش از ارسال مستند می‌شود.",
+"We clarify responsibilities and information flows among the buyer, supplier, freight provider and other involved parties. Shipping, insurance, customs and handling are performed by the authorized providers under transaction-specific agreements.":"مسئولیت‌ها و جریان اطلاعات میان خریدار، تأمین‌کننده، شرکت حمل‌ونقل و سایر طرف‌های درگیر را شفاف می‌کنیم. حمل‌ونقل، بیمه، امور گمرکی و جابه‌جایی توسط ارائه‌دهندگان مجاز و بر اساس توافق‌های مختص هر معامله انجام می‌شود.",
+"Goods, quantity, origin, destination and requested delivery window.":"نوع کالا، مقدار، مبدأ، مقصد و بازه زمانی تحویل درخواستی.",
+"Current order/shipment status, named parties and agreed Incoterms if known.":"وضعیت فعلی سفارش یا محموله، طرف‌های نام‌برده و اینکوترمز توافق‌شده در صورت اطلاع.",
+"Documents outstanding, handling requirements and the point that needs escalation.":"مدارک باقی‌مانده، الزامات جابه‌جایی و موضوعی که نیازمند پیگیری یا ارجاع است.",
+"Import & Export":"واردات و صادرات",
+"Pharmaceutical Products":"محصولات دارویی",
+"Pet Food & Animal Nutrition":"غذای حیوانات خانگی و تغذیه حیوانات"
+},
+"international-markets.html":{
+"INTERNATIONAL MARKETS":"بازارهای بین‌المللی",
+"Import & Export Markets: Iran, Türkiye & Beyond":"بازارهای واردات و صادرات: ایران، ترکیه و فراتر از آن",
+"We coordinate cross-border business enquiries involving pharmaceutical products, APIs, healthcare products and related sectors. Each opportunity is assessed by product, origin, destination, counterparties and applicable legal or regulatory requirements.":"درخواست‌های تجاری فرامرزی مرتبط با محصولات دارویی، مواد مؤثره دارویی (API)، محصولات سلامت و حوزه‌های مرتبط را هماهنگ می‌کنیم. هر فرصت بر اساس محصول، مبدأ، مقصد، طرف‌های معامله و الزامات قانونی یا مقرراتی مربوطه ارزیابی می‌شود.",
+"IMPORT / EXPORT SERVICES →":"خدمات واردات و صادرات ←",
+"Iran":"ایران",
+"Trade and distribution enquiries involving Iran may require careful review of product eligibility, local registration, import/export permissions, payment arrangements and the responsibilities of all parties. We help organize the commercial questions and document requests for each eligible opportunity.":"درخواست‌های تجاری و توزیع مرتبط با ایران ممکن است به بررسی دقیق مجاز بودن محصول، ثبت محلی، مجوزهای واردات و صادرات، ترتیبات پرداخت و مسئولیت همه طرف‌ها نیاز داشته باشد. ما به سامان‌دهی پرسش‌های تجاری و درخواست مدارک برای هر فرصت واجد شرایط کمک می‌کنیم.",
+"Import & Export":"واردات و صادرات",
+"API Supply":"تأمین مواد مؤثره دارویی",
+"Pharmaceutical Products":"محصولات دارویی",
+"Türkiye":"ترکیه",
+"Türkiye can be a relevant point for supplier discussions, distribution planning and regional business coordination. The fit of each opportunity depends on the product category, manufacturer, destination market and agreed commercial route.":"ترکیه می‌تواند نقطه‌ای مناسب برای مذاکره با تأمین‌کنندگان، برنامه‌ریزی توزیع و هماهنگی تجاری منطقه‌ای باشد. تناسب هر فرصت به گروه محصول، تولیدکننده، بازار مقصد و مسیر تجاری مورد توافق بستگی دارد.",
+"Supply Chain":"زنجیره تأمین",
+"Exclusive Agency":"نمایندگی انحصاری",
+"Market Entry":"ورود به بازار",
+"Selected Middle Eastern markets":"بازارهای منتخب خاورمیانه",
+"Requirements differ across Middle Eastern countries and between medicines, APIs, medical devices, nutrition products and other goods. Product registration, labeling, local representation and import permissions should be checked country by country before any market launch or shipment.":"الزامات در کشورهای خاورمیانه و میان داروها، مواد مؤثره دارویی، تجهیزات پزشکی، محصولات تغذیه‌ای و سایر کالاها متفاوت است. ثبت محصول، برچسب‌گذاری، نمایندگی محلی و مجوزهای واردات باید پیش از عرضه یا ارسال، برای هر کشور جداگانه بررسی شود.",
+"Medical Devices":"تجهیزات پزشکی",
+"Product Registration":"ثبت محصول",
+"Regulatory Coordination":"هماهنگی امور مقرراتی",
+"Spain and wider Europe":"اسپانیا و سایر کشورهای اروپا",
+"Opportunities involving Spain and other European markets can require product-specific assessment, partner qualification, documentation review and careful checks of relevant trade and regulatory rules. This page does not imply a registered office or authorized representation in every European country.":"فرصت‌های مرتبط با اسپانیا و سایر بازارهای اروپایی ممکن است به ارزیابی اختصاصی محصول، بررسی صلاحیت شرکا، بازبینی مدارک و کنترل دقیق مقررات تجاری و مقرراتی مربوطه نیاز داشته باشد. این صفحه به معنای وجود دفتر ثبت‌شده یا نمایندگی مجاز در تمام کشورهای اروپایی نیست.",
+"Business Development":"توسعه کسب‌وکار",
+"Technology Transfer":"انتقال فناوری",
+"Brand Registration":"ثبت برند",
+"China and India":"چین و هند",
+"Manufacturer and supplier enquiries involving China or India should be assessed on specification, manufacturing capability, available quality documents, order conditions and destination-market requirements. Supplier qualification and technical acceptance remain the buyer’s responsibility.":"درخواست‌های مرتبط با تولیدکنندگان و تأمین‌کنندگان چین یا هند باید بر اساس مشخصات محصول، توان تولید، مدارک کیفی موجود، شرایط سفارش و الزامات بازار مقصد ارزیابی شوند. تأیید صلاحیت تأمین‌کننده و پذیرش فنی بر عهده خریدار است.",
+"API Sourcing":"تأمین مواد مؤثره دارویی",
+"Contract Manufacturing":"تولید قراردادی",
+"Private Label":"برند اختصاصی",
+"Products and service categories":"گروه محصولات و خدمات",
+"NIAZ NET coordinates commercial enquiries for pharmaceutical finished products, active pharmaceutical ingredients, medical devices, brand registration, exclusive agency, technology transfer, contract manufacturing and supply-chain follow-up.":"نیازنت درخواست‌های تجاری مربوط به محصولات نهایی دارویی، مواد مؤثره دارویی، تجهیزات پزشکی، ثبت برند، نمایندگی انحصاری، انتقال فناوری، تولید قراردادی و پیگیری زنجیره تأمین را هماهنگ می‌کند.",
+"All Services":"همه خدمات",
+"Business Enquiry":"درخواست تجاری",
+"Geographic references describe markets of interest for commercial enquiries; they are not a claim of a local office, guaranteed distribution capability or regulatory authorization in every listed jurisdiction. Availability, legality and transaction feasibility must be confirmed for each product and destination.":"اشاره به مناطق جغرافیایی، بیانگر بازارهای مورد توجه برای درخواست‌های تجاری است و به معنای ادعای وجود دفتر محلی، توان تضمین‌شده توزیع یا مجوز مقرراتی در تمام مناطق نام‌برده نیست. موجود بودن محصول، قانونی بودن فعالیت و امکان‌پذیری معامله باید برای هر محصول و مقصد تأیید شود."
+},
+"kenya-market.html":{
+"AFRICAN MARKETS":"بازارهای آفریقا",
+"Kenya Pharmaceutical & Healthcare Market":"بازار دارو و سلامت کنیا",
+"Commercial coordination for eligible pharmaceutical, API, medical device, healthcare and nutrition trade enquiries involving Kenya.":"هماهنگی تجاری درخواست‌های واجد شرایط مرتبط با دارو، مواد مؤثره دارویی (API)، تجهیزات پزشکی، محصولات سلامت و تغذیه در ارتباط با کنیا.",
+"← IMPORT & EXPORT SERVICES":"← خدمات واردات و صادرات",
+"Kenya Market":"بازار کنیا",
+"Kenya: market and trade context":"کنیا: شناخت بازار و تجارت",
+"Kenya is a significant East African commercial hub and a potential market for pharmaceutical, medical device, healthcare and nutrition products. Opportunities depend on product category, local importer eligibility, product authorisation, quality documentation, logistics and applicable Kenyan rules. This page supports business enquiries; it does not claim that NIAZ NET has a Kenyan office, appointed distributor or registered product portfolio in the country.":"کنیا یکی از مراکز مهم تجاری شرق آفریقا و بازاری بالقوه برای محصولات دارویی، تجهیزات پزشکی، محصولات سلامت و تغذیه است. فرصت‌ها به گروه محصول، صلاحیت واردکننده محلی، مجوز محصول، مستندات کیفیت، لجستیک و مقررات جاری کنیا بستگی دارند. این صفحه برای پشتیبانی از درخواست‌های تجاری تهیه شده و به معنای ادعای وجود دفتر، توزیع‌کننده منصوب یا سبد محصولات ثبت‌شده نیازنت در این کشور نیست.",
+"Relevant product and partnership areas":"حوزه‌های مرتبط محصولات و همکاری",
+"Finished medicines and selected pharmaceutical products, subject to registration and import authorisation.":"داروهای نهایی و محصولات دارویی منتخب، مشروط به ثبت و دریافت مجوز واردات.",
+"APIs, excipients and pharmaceutical raw materials, subject to product classification and local requirements.":"مواد مؤثره دارویی (API)، مواد جانبی و مواد اولیه دارویی، با رعایت طبقه‌بندی محصول و الزامات محلی.",
+"Medical devices, diagnostics and healthcare technologies, subject to relevant approval and importer conditions.":"تجهیزات پزشکی، محصولات تشخیصی و فناوری‌های سلامت، مشروط به تأییدیه‌های مربوطه و شرایط واردکننده.",
+"Nutrition, nutraceutical and wellness products, subject to classification, claims and import requirements.":"محصولات تغذیه‌ای، نوتراسوتیک و سلامت‌محور، با رعایت طبقه‌بندی، ادعاهای مجاز و الزامات واردات.",
+"Contract manufacturing, private-label, technology-transfer and distribution-partner discussions.":"مذاکرات تولید قراردادی، تولید با برند اختصاصی، انتقال فناوری و همکاری با شرکای توزیع.",
+"Regulatory and import considerations":"ملاحظات مقرراتی و واردات",
+"The Pharmacy and Poisons Board (PPB) is Kenya’s medicines and health-products regulator. Its official resources cover product registration and marketing authorisation, licensing, import and export permits, and trade procedures. InfoTrade Kenya describes the commercial medicines import-permit process and supporting documents. Requirements differ by product and consignment; prospective importers should verify the current process with PPB and the relevant authorities before any commitment or shipment.":"هیئت دارو و سموم کنیا (PPB) مرجع تنظیم‌گر داروها و محصولات سلامت در این کشور است. منابع رسمی این نهاد موضوعاتی مانند ثبت محصول و مجوز عرضه به بازار، صدور مجوزها، پروانه‌های واردات و صادرات و رویه‌های تجاری را پوشش می‌دهند. سامانه InfoTrade Kenya فرایند دریافت مجوز تجاری واردات دارو و مدارک پشتیبان آن را توضیح می‌دهد. الزامات بر اساس محصول و محموله متفاوت است؛ واردکنندگان بالقوه باید پیش از هرگونه تعهد یا ارسال، فرایند جاری را از PPB و مراجع مربوطه استعلام کنند.",
+"Pharmacy and Poisons Board (PPB)":"هیئت دارو و سموم کنیا (PPB)",
+"PPB — Trade Affairs":"PPB — امور تجاری",
+"InfoTrade Kenya — Commercial Medicines Import Permit":"InfoTrade Kenya — مجوز تجاری واردات دارو",
+"How NIAZ NET can coordinate an enquiry":"نحوه هماهنگی درخواست توسط نیازنت",
+"We can coordinate initial communication among manufacturers, suppliers, prospective importers and distribution partners; organize product and company information; request quotations; and identify the commercial and documentation questions that need confirmation. Any supply or representation arrangement remains subject to due diligence, written agreement and local regulatory feasibility.":"می‌توانیم ارتباطات اولیه میان تولیدکنندگان، تأمین‌کنندگان، واردکنندگان بالقوه و شرکای توزیع را هماهنگ کنیم؛ اطلاعات محصول و شرکت‌ها را سامان دهیم؛ استعلام قیمت بگیریم و پرسش‌های تجاری و مستندی را که نیازمند تأیید هستند مشخص کنیم. هرگونه توافق تأمین یا نمایندگی منوط به بررسی‌های لازم، توافق کتبی و امکان‌پذیری مقرراتی در بازار محلی است.",
+"Information to include in your enquiry":"اطلاعات موردنیاز برای درخواست شما",
+"Product name, dosage form or specification, manufacturer and country of origin.":"نام محصول، شکل دارویی یا مشخصات فنی، تولیدکننده و کشور مبدأ.",
+"Importer or buyer profile, intended use and estimated order quantity.":"مشخصات واردکننده یا خریدار، کاربرد موردنظر و مقدار تقریبی سفارش.",
+"Registration or marketing-authorisation status and available quality documents.":"وضعیت ثبت یا مجوز عرضه به بازار و مدارک کیفی موجود.",
+"Target price, delivery location, timing and preferred Incoterms if known.":"قیمت هدف، محل تحویل، زمان‌بندی و اینکوترمز ترجیحی در صورت مشخص بودن.",
+"NIAZ NET provides commercial coordination and does not act as a regulatory authority, customs broker, legal adviser or Kenyan licence holder. No product is represented as registered, approved or available in Kenya unless independently verified for that product and transaction.":"نیازنت هماهنگی تجاری ارائه می‌دهد و به‌عنوان مرجع مقرراتی، کارگزار گمرکی، مشاور حقوقی یا دارنده مجوز محلی در کنیا فعالیت نمی‌کند. هیچ محصولی به‌عنوان ثبت‌شده، تأییدشده یا موجود در کنیا معرفی نمی‌شود، مگر آنکه وضعیت آن برای همان محصول و معامله به‌طور مستقل تأیید شده باشد.",
+"Discuss Kenya":"گفت‌وگو درباره بازار کنیا",
+"Share your product portfolio, target customer profile or sourcing requirement for an initial commercial review.":"برای ارزیابی اولیه تجاری، سبد محصولات، مشخصات مشتری هدف یا نیاز تأمین خود را ارسال کنید.",
+"SEND AN ENQUIRY →":"ارسال درخواست ←",
+"Explore other African markets":"بررسی سایر بازارهای آفریقا",
+"South Africa Market":"بازار آفریقای جنوبی",
+"Côte d’Ivoire Market":"بازار ساحل عاج",
+"API Supply":"تأمین مواد مؤثره دارویی"
+},
+"south-africa-market.html":{
+"AFRICAN MARKETS":"بازارهای آفریقا",
+"South Africa Pharmaceutical & Healthcare Market":"بازار دارو و سلامت آفریقای جنوبی",
+"Commercial coordination for eligible pharmaceutical, API, medical device, healthcare and nutrition trade enquiries involving South Africa.":"هماهنگی تجاری درخواست‌های واجد شرایط مرتبط با دارو، مواد مؤثره دارویی (API)، تجهیزات پزشکی، محصولات سلامت و تغذیه در ارتباط با آفریقای جنوبی.",
+"← IMPORT & EXPORT SERVICES":"← خدمات واردات و صادرات",
+"South Africa Market":"بازار آفریقای جنوبی",
+"South Africa: market and trade context":"آفریقای جنوبی: شناخت بازار و تجارت",
+"South Africa is an important regional market for healthcare products and a potential point of entry for wider Southern African commercial discussions. Each opportunity must be assessed by product category, intended use, manufacturer, importer, route to market and the applicable South African requirements. This page describes a market focus for enquiries; it does not imply a local office, appointed distributor or existing product registration.":"آفریقای جنوبی بازار منطقه‌ای مهمی برای محصولات سلامت و نقطه ورود بالقوه‌ای برای مذاکرات تجاری گسترده‌تر در جنوب آفریقا است. هر فرصت باید بر اساس گروه محصول، کاربرد موردنظر، تولیدکننده، واردکننده، مسیر ورود به بازار و الزامات مربوطه در آفریقای جنوبی ارزیابی شود. این صفحه بر بازار هدف برای درخواست‌های تجاری تمرکز دارد و به معنای وجود دفتر محلی، توزیع‌کننده منصوب یا ثبت قبلی محصول نیست.",
+"Relevant product and partnership areas":"حوزه‌های مرتبط محصولات و همکاری",
+"Finished pharmaceutical products and selected healthcare products, subject to product registration and import eligibility.":"محصولات نهایی دارویی و محصولات منتخب سلامت، مشروط به ثبت محصول و مجاز بودن واردات.",
+"Active pharmaceutical ingredients (APIs), excipients and other pharmaceutical raw materials, subject to classification, permits and buyer requirements.":"مواد مؤثره دارویی (API)، مواد جانبی و سایر مواد اولیه دارویی، با رعایت طبقه‌بندی، مجوزها و الزامات خریدار.",
+"Medical devices and diagnostic products, subject to applicable registration, licensing and conformity requirements.":"تجهیزات پزشکی و محصولات تشخیصی، مشروط به الزامات مربوط به ثبت، صدور مجوز و انطباق.",
+"Nutrition, nutraceutical and wellness products where the product classification and claims permit import and distribution.":"محصولات تغذیه‌ای، نوتراسوتیک و سلامت‌محور، در صورتی که طبقه‌بندی محصول و ادعاهای آن واردات و توزیع را مجاز کند.",
+"Contract manufacturing, private-label, technology-transfer and supplier representation discussions.":"مذاکرات تولید قراردادی، تولید با برند اختصاصی، انتقال فناوری و نمایندگی تأمین‌کنندگان.",
+"Regulatory and import considerations":"ملاحظات مقرراتی و واردات",
+"Medicines and scheduled substances are regulated in South Africa, and import or export activities may require product-specific authorisations and permits. The South African Health Products Regulatory Authority (SAHPRA) publishes guidance on the importation and exportation of medicines and related licensing. Requirements differ by product class and transaction; importers should confirm current rules directly with the relevant authorities and licensed local professionals before placing orders or shipping.":"داروها و مواد تحت کنترل در آفریقای جنوبی تابع مقررات هستند و فعالیت‌های واردات یا صادرات ممکن است به مجوزها و پروانه‌های اختصاصی محصول نیاز داشته باشند. سازمان تنظیم مقررات محصولات سلامت آفریقای جنوبی (SAHPRA) راهنماهایی درباره واردات و صادرات دارو و مجوزهای مرتبط منتشر می‌کند. الزامات بر اساس گروه محصول و نوع معامله متفاوت است؛ واردکنندگان باید پیش از ثبت سفارش یا ارسال، مقررات جاری را مستقیماً از مراجع مربوطه و متخصصان محلی دارای مجوز تأیید کنند.",
+"SAHPRA — Guideline for the Importation and Exportation of Medicines":"SAHPRA — راهنمای واردات و صادرات دارو",
+"South African Government — Register as Importer":"دولت آفریقای جنوبی — ثبت‌نام به‌عنوان واردکننده",
+"How NIAZ NET can coordinate an enquiry":"نحوه هماهنگی درخواست توسط نیازنت",
+"We can help structure the initial commercial discussion between manufacturers, suppliers, prospective buyers and distribution partners; collect product and company information; coordinate quotations and commercial terms; and identify documentation questions for review by the responsible parties. Any representation, distribution or supply arrangement is subject to due diligence, written agreement and regulatory feasibility.":"می‌توانیم به ساختاردهی مذاکرات تجاری اولیه میان تولیدکنندگان، تأمین‌کنندگان، خریداران بالقوه و شرکای توزیع کمک کنیم؛ اطلاعات محصول و شرکت را گردآوری کنیم؛ استعلام قیمت و شرایط تجاری را هماهنگ کنیم و پرسش‌های مستندی را برای بررسی طرف‌های مسئول مشخص سازیم. هرگونه توافق نمایندگی، توزیع یا تأمین منوط به بررسی‌های لازم، توافق کتبی و امکان‌پذیری مقرراتی است.",
+"Information to include in your enquiry":"اطلاعات موردنیاز برای درخواست شما",
+"Product name, dosage form or technical specification, manufacturer and country of origin.":"نام محصول، شکل دارویی یا مشخصات فنی، تولیدکننده و کشور مبدأ.",
+"Target customer or importer profile, intended use and estimated annual or initial quantity.":"مشخصات مشتری هدف یا واردکننده، کاربرد موردنظر و مقدار اولیه یا سالانه تخمینی.",
+"Registration or licence status, available quality documents and requested certificates.":"وضعیت ثبت یا مجوز، مدارک کیفی موجود و گواهی‌های درخواستی.",
+"Target price or commercial terms, delivery location, timing and preferred Incoterms if known.":"قیمت هدف یا شرایط تجاری، محل تحویل، زمان‌بندی و اینکوترمز ترجیحی در صورت مشخص بودن.",
+"NIAZ NET provides commercial coordination and does not act as a regulatory authority, customs broker, legal adviser or local licence holder. No product is represented as registered, approved or available in South Africa unless this has been independently verified for that product and transaction.":"نیازنت هماهنگی تجاری ارائه می‌دهد و به‌عنوان مرجع مقرراتی، کارگزار گمرکی، مشاور حقوقی یا دارنده مجوز محلی فعالیت نمی‌کند. هیچ محصولی به‌عنوان ثبت‌شده، تأییدشده یا موجود در آفریقای جنوبی معرفی نمی‌شود، مگر آنکه وضعیت آن برای همان محصول و معامله به‌طور مستقل تأیید شده باشد.",
+"Discuss South Africa":"گفت‌وگو درباره بازار آفریقای جنوبی",
+"Share your product portfolio, target customer profile or sourcing requirement for an initial commercial review.":"برای ارزیابی اولیه تجاری، سبد محصولات، مشخصات مشتری هدف یا نیاز تأمین خود را ارسال کنید.",
+"SEND AN ENQUIRY →":"ارسال درخواست ←",
+"Explore other African markets":"بررسی سایر بازارهای آفریقا",
+"Kenya Market":"بازار کنیا",
+"Côte d’Ivoire Market":"بازار ساحل عاج",
+"API Supply":"تأمین مواد مؤثره دارویی"
+},
+"cote-divoire-market.html":{
+"MARCHÉS AFRICAINS":"بازارهای آفریقا",
+"Marché pharmaceutique et de la santé en Côte d’Ivoire":"بازار دارو و سلامت ساحل عاج",
+"Coordination commerciale des demandes éligibles concernant les médicaments, les principes actifs, les dispositifs médicaux, les produits de santé et la nutrition en Côte d’Ivoire.":"هماهنگی تجاری درخواست‌های واجد شرایط مرتبط با دارو، مواد مؤثره دارویی، تجهیزات پزشکی، محصولات سلامت و تغذیه در ساحل عاج.",
+"← IMPORT & EXPORT SERVICES":"← خدمات واردات و صادرات",
+"Marché de la Côte d’Ivoire":"بازار ساحل عاج",
+"Côte d’Ivoire : contexte du marché et du commerce":"ساحل عاج: شناخت بازار و تجارت",
+"La Côte d’Ivoire constitue un marché important en Afrique de l’Ouest et un point de référence pour les échanges régionaux. Les possibilités dans les médicaments, les matières premières pharmaceutiques, les dispositifs médicaux, les produits de santé et la nutrition doivent être évaluées selon la classification du produit, l’importateur autorisé, les autorisations requises, les documents qualité et les conditions logistiques. Cette page présente un axe de développement commercial ; elle ne signifie pas que NIAZ NET dispose d’un bureau local, d’un distributeur nommé ou de produits déjà enregistrés dans le pays.":"ساحل عاج یکی از بازارهای مهم غرب آفریقا و نقطه‌ای مرجع برای تجارت منطقه‌ای است. فرصت‌های مربوط به دارو، مواد اولیه دارویی، تجهیزات پزشکی، محصولات سلامت و تغذیه باید بر اساس طبقه‌بندی محصول، واردکننده مجاز، مجوزهای لازم، مدارک کیفیت و شرایط لجستیکی ارزیابی شوند. این صفحه محور توسعه تجاری را معرفی می‌کند و به معنای وجود دفتر محلی، توزیع‌کننده منصوب یا محصولات ثبت‌شده نیازنت در این کشور نیست.",
+"Domaines de produits et de partenariats":"حوزه‌های محصولات و همکاری",
+"Médicaments et produits pharmaceutiques finis, sous réserve des autorisations et de l’enregistrement applicables.":"داروها و محصولات نهایی دارویی، مشروط به دریافت مجوزها و ثبت‌های لازم.",
+"Principes actifs pharmaceutiques (API), excipients et matières premières, selon leur classification et les exigences locales.":"مواد مؤثره دارویی (API)، مواد جانبی و مواد اولیه، بر اساس طبقه‌بندی آن‌ها و الزامات محلی.",
+"Dispositifs médicaux, équipements de diagnostic et technologies de santé, sous réserve des règles applicables.":"تجهیزات پزشکی، تجهیزات تشخیصی و فناوری‌های سلامت، با رعایت مقررات مربوطه.",
+"Produits de nutrition, nutraceutiques et de bien-être, selon leur classification et les allégations autorisées.":"محصولات تغذیه‌ای، نوتراسوتیک و سلامت‌محور، بر اساس طبقه‌بندی و ادعاهای مجاز.",
+"Fabrication à façon, marque de distributeur, transfert de technologie et représentation commerciale.":"تولید قراردادی، تولید با برند اختصاصی، انتقال فناوری و نمایندگی تجاری.",
+"Réglementation et importation":"مقررات و واردات",
+"Les importations de produits pharmaceutiques en Côte d’Ivoire sont soumises aux règles nationales et au contrôle de l’Autorité Ivoirienne de Régulation Pharmaceutique (AIRP). Le portail officiel de facilitation du commerce décrit notamment les conditions liées à l’importateur autorisé, à l’autorisation de mise sur le marché (AMM) et à l’autorisation d’importation. Les exigences doivent être vérifiées pour chaque produit et chaque opération auprès de l’AIRP et des autorités compétentes avant toute commande ou expédition.":"واردات محصولات دارویی به ساحل عاج تابع مقررات ملی و نظارت سازمان تنظیم مقررات دارویی ساحل عاج (AIRP) است. درگاه رسمی تسهیل تجارت، از جمله شرایط مربوط به واردکننده مجاز، مجوز عرضه به بازار (AMM) و مجوز واردات را تشریح می‌کند. الزامات باید برای هر محصول و هر معامله، پیش از ثبت سفارش یا ارسال، از AIRP و مراجع ذی‌صلاح استعلام و تأیید شوند.",
+"Portail officiel — Importer des produits pharmaceutiques en Côte d’Ivoire":"درگاه رسمی — واردات محصولات دارویی به ساحل عاج",
+"Coordination commerciale par NIAZ NET":"هماهنگی تجاری توسط نیازنت",
+"Nous pouvons organiser les premiers échanges entre fabricants, fournisseurs, acheteurs potentiels et partenaires de distribution, centraliser les informations produit et entreprise, coordonner les demandes de devis et clarifier les questions commerciales et documentaires à confirmer. Toute relation de fourniture ou de représentation dépend d’une vérification préalable, d’un accord écrit et de la faisabilité réglementaire locale.":"می‌توانیم گفت‌وگوهای اولیه میان تولیدکنندگان، تأمین‌کنندگان، خریداران بالقوه و شرکای توزیع را سازمان‌دهی کنیم، اطلاعات محصول و شرکت را متمرکز سازیم، درخواست‌های استعلام قیمت را هماهنگ کنیم و پرسش‌های تجاری و مستندی نیازمند تأیید را روشن سازیم. هرگونه رابطه تأمین یا نمایندگی منوط به بررسی اولیه، توافق کتبی و امکان‌پذیری مقرراتی در بازار محلی است.",
+"Informations à inclure dans votre demande":"اطلاعات موردنیاز در درخواست شما",
+"Nom du produit, forme pharmaceutique ou spécification technique, fabricant et pays d’origine.":"نام محصول، شکل دارویی یا مشخصات فنی، تولیدکننده و کشور مبدأ.",
+"Profil de l’importateur ou de l’acheteur, usage prévu et quantité estimée.":"مشخصات واردکننده یا خریدار، کاربرد موردنظر و مقدار تخمینی.",
+"Statut d’enregistrement ou d’AMM et documents qualité disponibles.":"وضعیت ثبت یا مجوز عرضه به بازار (AMM) و مدارک کیفی موجود.",
+"Prix indicatif, lieu de livraison, calendrier et Incoterms souhaités, si connus.":"قیمت پیشنهادی، محل تحویل، زمان‌بندی و اینکوترمز موردنظر در صورت مشخص بودن.",
+"NIAZ NET assure une coordination commerciale et ne remplace ni l’autorité réglementaire, ni un commissionnaire en douane, ni un conseiller juridique, ni un titulaire d’autorisation local. Aucun produit n’est présenté comme enregistré, approuvé ou disponible en Côte d’Ivoire sans vérification indépendante pour le produit et l’opération concernés.":"نیازنت هماهنگی تجاری ارائه می‌دهد و جایگزین مرجع مقرراتی، کارگزار گمرکی، مشاور حقوقی یا دارنده مجوز محلی نیست. هیچ محصولی به‌عنوان ثبت‌شده، تأییدشده یا موجود در ساحل عاج معرفی نمی‌شود، مگر آنکه وضعیت آن برای همان محصول و معامله به‌طور مستقل بررسی شده باشد.",
+"Discuter du marché ivoirien":"گفت‌وگو درباره بازار ساحل عاج",
+"Envoyez votre portefeuille de produits, votre profil de client cible ou votre besoin d’approvisionnement pour une première évaluation commerciale.":"برای ارزیابی اولیه تجاری، سبد محصولات، مشخصات مشتری هدف یا نیاز تأمین خود را ارسال کنید.",
+"ENVOYER UNE DEMANDE →":"ارسال درخواست ←",
+"Autres marchés africains":"بررسی سایر بازارهای آفریقا",
+"Afrique du Sud":"آفریقای جنوبی",
+"Kenya":"کنیا",
+"Import / Export":"واردات و صادرات",
+"Approvisionnement API":"تأمین مواد مؤثره دارویی"
 }
 });
+
+const extraPageTranslations={
+"api-supply.html":{
+"API Sourcing & Pharmaceutical Raw Materials":"تأمین مواد مؤثره دارویی و مواد اولیه دارویی",
+"We support sourcing and commercial coordination for Active Pharmaceutical Ingredients (APIs) and selected pharmaceutical raw materials, connecting buyers with manufacturers and suppliers for evaluation. Coordination may cover product specifications, quality documentation requests, quotations, minimum order quantities, and supply terms.":"در زمینه تأمین و هماهنگی تجاری مواد مؤثره دارویی (API) و برخی مواد اولیه دارویی فعالیت می‌کنیم و خریداران را برای ارزیابی به تولیدکنندگان و تأمین‌کنندگان مرتبط می‌سازیم. این هماهنگی می‌تواند شامل مشخصات محصول، درخواست اسناد کیفیت، استعلام قیمت، حداقل مقدار سفارش و شرایط تأمین باشد.",
+"Supplier qualification and technical acceptance remain subject to the buyer’s quality requirements and applicable regulations. We help keep communication and documentation requests organized so the relevant quality, regulatory, procurement, and commercial teams can evaluate the opportunity efficiently.":"تأیید صلاحیت تأمین‌کننده و پذیرش فنی محصول تابع الزامات کیفی خریدار و مقررات مربوطه است. ما ارتباطات و درخواست اسناد را سامان‌دهی می‌کنیم تا تیم‌های کیفیت، امور مقرراتی، تدارکات و بازرگانی بتوانند فرصت موردنظر را به‌صورت مؤثر ارزیابی کنند.",
+"For API enquiries we organize the initial product and supplier questions so procurement, quality and regulatory teams can review the opportunity. Technical acceptance remains with the buyer and its qualified quality function.":"در درخواست‌های مربوط به API، پرسش‌های اولیه درباره محصول و تأمین‌کننده را سازمان‌دهی می‌کنیم تا تیم‌های تدارکات، کیفیت و امور مقرراتی فرصت را بررسی کنند. مسئولیت پذیرش فنی بر عهده خریدار و واحد کیفیت واجد صلاحیت اوست."
+},
+"brand-registration.html":{
+"Niaz Net Tehran supports brand owners and business partners through the commercial planning and coordination required to introduce a brand into a target market. We help clarify market objectives, identify the appropriate local route, and coordinate discussions with relevant commercial and regulatory stakeholders.":"نیازنت تهران از صاحبان برند و شرکای تجاری در برنامه‌ریزی و هماهنگی تجاری لازم برای معرفی برند به بازار هدف پشتیبانی می‌کند. به شفاف‌سازی اهداف بازار، شناسایی مسیر مناسب محلی و هماهنگی گفت‌وگو با ذی‌نفعان تجاری و مقرراتی مرتبط کمک می‌کنیم.",
+"From initial assessment to follow-up with partners and documentation teams, our role is to keep the process organized, transparent, and aligned with the brand owner’s goals. Registration requirements and approval timelines depend on the product category and the competent authorities in each market.":"از ارزیابی اولیه تا پیگیری با شرکا و تیم‌های مستندسازی، نقش ما سامان‌دهی شفاف فرایند و هم‌راستا نگه‌داشتن آن با اهداف صاحب برند است. الزامات ثبت و زمان‌بندی تأییدیه‌ها به گروه محصول و مراجع ذی‌صلاح هر بازار بستگی دارد.",
+"We clarify the product category, brand ownership, target markets and the intended route to market. Where needed, we help organize discussions among brand owners, potential representatives and qualified local regulatory specialists.":"گروه محصول، مالکیت برند، بازارهای هدف و مسیر موردنظر ورود به بازار را مشخص می‌کنیم. در صورت نیاز، گفت‌وگو میان صاحبان برند، نمایندگان بالقوه و متخصصان محلی واجد صلاحیت امور مقرراتی را هماهنگ می‌کنیم."
+},
+"exclusive-agency.html":{
+"We help manufacturers and brand owners explore exclusive agency arrangements with suitable local partners. The process can include market and partner assessment, territory and channel discussions, commercial planning, and coordination of the negotiation process.":"به تولیدکنندگان و صاحبان برند کمک می‌کنیم امکان ایجاد نمایندگی انحصاری با شرکای محلی مناسب را بررسی کنند. این فرایند می‌تواند شامل ارزیابی بازار و شرکا، مذاکره درباره قلمرو و کانال‌های فروش، برنامه‌ریزی تجاری و هماهنگی مذاکرات باشد.",
+"Agency arrangements are structured around clearly defined products, territories, responsibilities, performance expectations, and contract terms. We aim to align the parties on a practical framework for long-term market development while ensuring that final commitments are recorded in an agreed written contract.":"توافق‌های نمایندگی بر اساس محصولات، قلمروها، مسئولیت‌ها، انتظارات عملکردی و شرایط قراردادی مشخص تنظیم می‌شوند. هدف ما هم‌راستا کردن طرف‌ها بر سر چارچوبی عملی برای توسعه بلندمدت بازار است؛ به‌گونه‌ای که تعهدات نهایی در قرارداد کتبی مورد توافق ثبت شوند.",
+"We help brand owners and prospective representatives outline a potential agency relationship before detailed negotiations. Exclusivity, territory, targets and obligations depend on due diligence and agreement between the parties.":"به صاحبان برند و نمایندگان بالقوه کمک می‌کنیم پیش از ورود به مذاکرات تفصیلی، چارچوب اولیه رابطه نمایندگی را مشخص کنند. انحصار، قلمرو، اهداف و تعهدات به بررسی‌های لازم و توافق طرف‌ها بستگی دارد."
+},
+"contract-manufacturing.html":{
+"We facilitate discussions between companies seeking contract manufacturing and manufacturers with potentially suitable capabilities. Coordination may include product and capacity requirements, manufacturing scope, quality documentation requests, timelines, packaging needs, and preliminary commercial terms.":"مذاکرات میان شرکت‌های متقاضی تولید قراردادی و تولیدکنندگانی را که احتمالاً ظرفیت‌های مناسب دارند تسهیل می‌کنیم. هماهنگی می‌تواند شامل الزامات محصول و ظرفیت، دامنه تولید، درخواست مدارک کیفیت، زمان‌بندی، نیازهای بسته‌بندی و شرایط اولیه تجاری باشد.",
+"Manufacturing suitability, quality agreements, audits, technical transfer, validation, and applicable GMP or other standards must be evaluated by the responsible technical and quality teams. Any manufacturing relationship proceeds only after the parties complete due diligence and agree on contractual responsibilities.":"تناسب تولید، توافق‌نامه‌های کیفیت، ممیزی‌ها، انتقال فنی، اعتبارسنجی و الزامات GMP یا سایر استانداردهای مربوطه باید توسط تیم‌های فنی و کیفیت مسئول ارزیابی شوند. هرگونه همکاری تولیدی تنها پس از بررسی‌های لازم و توافق طرف‌ها درباره مسئولیت‌های قراردادی پیش خواهد رفت.",
+"We organize preliminary discussions with potential manufacturers around product requirements, capability, quality expectations and commercial scope. Feasibility depends on manufacturer qualification, capacity, specifications and market rules.":"مذاکرات اولیه با تولیدکنندگان بالقوه را پیرامون الزامات محصول، توانمندی، انتظارات کیفی و دامنه تجاری سازمان‌دهی می‌کنیم. امکان‌پذیری به صلاحیت تولیدکننده، ظرفیت، مشخصات فنی و مقررات بازار بستگی دارد."
+},
+"import-export.html":{
+"We coordinate import and export opportunities between suppliers, manufacturers, buyers, and distribution partners across international markets. Support may include supplier and buyer communication, quotation collection, commercial-term coordination, document follow-up, and coordination with freight, customs, and logistics parties.":"فرصت‌های واردات و صادرات میان تأمین‌کنندگان، تولیدکنندگان، خریداران و شرکای توزیع در بازارهای بین‌المللی را هماهنگ می‌کنیم. خدمات ما می‌تواند شامل ارتباط با تأمین‌کننده و خریدار، دریافت استعلام قیمت، هماهنگی شرایط تجاری، پیگیری اسناد و هماهنگی با طرف‌های حمل‌ونقل، گمرک و لجستیک باشد.",
+"Dedicated market pages for commercial enquiries involving selected African markets. Each opportunity is assessed individually against product classification, local importer requirements and applicable trade rules.":"صفحات اختصاصی بازار برای درخواست‌های تجاری مرتبط با بازارهای منتخب آفریقا ارائه شده‌اند. هر فرصت به‌صورت جداگانه بر اساس طبقه‌بندی محصول، الزامات واردکننده محلی و مقررات تجاری مربوطه ارزیابی می‌شود.",
+"Each transaction is assessed according to the product, origin and destination markets, applicable trade rules, and agreed Incoterms. Customs clearance, permits, payment arrangements, shipping, and compliance are handled with the relevant authorized parties; specific requirements and responsibilities are confirmed before execution.":"هر معامله بر اساس محصول، بازارهای مبدأ و مقصد، مقررات تجاری مربوطه و اینکوترمز توافق‌شده ارزیابی می‌شود. ترخیص گمرکی، مجوزها، ترتیبات پرداخت، حمل‌ونقل و انطباق با مقررات با طرف‌های مجاز مربوطه انجام می‌شود؛ الزامات و مسئولیت‌های مشخص نیز پیش از اجرا تأیید خواهند شد.",
+"We organize the commercial hand-offs among buyers, suppliers and logistics parties, with the product, origin, destination and agreed responsibilities identified early. Customs, permits and shipping arrangements must be confirmed for each transaction.":"هماهنگی‌های تجاری میان خریداران، تأمین‌کنندگان و طرف‌های لجستیکی را با مشخص کردن زودهنگام محصول، مبدأ، مقصد و مسئولیت‌های مورد توافق سامان می‌دهیم. امور گمرکی، مجوزها و ترتیبات حمل‌ونقل باید برای هر معامله جداگانه تأیید شوند."
+},
+"infant-formula.html":{
+"Niaz Net Tehran facilitates business development and sourcing discussions for infant formula and baby nutrition products with manufacturers and prospective market partners. We help coordinate product information, commercial terms, supply expectations, and the communication required to assess a potential distribution relationship.":"نیازنت تهران مذاکرات توسعه کسب‌وکار و تأمین محصولات شیرخشک نوزاد و تغذیه کودک را با تولیدکنندگان و شرکای بالقوه بازار تسهیل می‌کند. به هماهنگی اطلاعات محصول، شرایط تجاری، انتظارات تأمین و ارتباطات لازم برای ارزیابی همکاری احتمالی در زمینه توزیع کمک می‌کنیم.",
+"Because infant nutrition is a highly regulated category, product eligibility, labeling, registrations, and import conditions must be reviewed for each destination market. We coordinate the relevant stakeholders so commercial planning and regulatory review can progress in a structured way.":"از آنجا که تغذیه نوزاد گروهی با نظارت مقرراتی سخت‌گیرانه است، مجاز بودن محصول، برچسب‌گذاری، ثبت‌ها و شرایط واردات باید برای هر بازار مقصد بررسی شوند. ذی‌نفعان مربوطه را هماهنگ می‌کنیم تا برنامه‌ریزی تجاری و بررسی مقرراتی به شکلی ساختارمند پیش برود.",
+"We treat infant nutrition enquiries as product- and market-specific because age stage, formulation, labelling and import rules can differ substantially. Commercial discussions should progress alongside an appropriate regulatory review.":"درخواست‌های مربوط به تغذیه نوزاد را بر اساس محصول و بازار به‌صورت اختصاصی بررسی می‌کنیم؛ زیرا گروه سنی، فرمولاسیون، برچسب‌گذاری و مقررات واردات می‌توانند تفاوت‌های قابل‌توجهی داشته باشند. مذاکرات تجاری باید هم‌زمان با بررسی مقرراتی مناسب پیش برود."
+},
+"sports-nutrition.html":{
+"We also coordinate bulk sourcing opportunities for sports powders, vitamins, wellness supplements, and diet-related food products. Product specifications, quantities, supplier terms, and market requirements are reviewed for each opportunity.":"همچنین فرصت‌های تأمین عمده پودرهای ورزشی، ویتامین‌ها، مکمل‌های سلامت‌محور و محصولات غذایی مرتبط با رژیم را هماهنگ می‌کنیم. مشخصات محصول، مقدار، شرایط تأمین‌کننده و الزامات بازار برای هر فرصت جداگانه بررسی می‌شوند.",
+"We first distinguish whether the enquiry concerns established branded products, bulk nutrition ingredients or an own-brand project. This helps frame a realistic supplier conversation around product format, demand, channel and market requirements.":"ابتدا مشخص می‌کنیم درخواست مربوط به محصولات برنددار موجود، مواد اولیه تغذیه‌ای به‌صورت عمده یا پروژه تولید با برند اختصاصی است. این تفکیک به شکل‌گیری مذاکره‌ای واقع‌بینانه با تأمین‌کننده بر اساس شکل محصول، تقاضا، کانال عرضه و الزامات بازار کمک می‌کند."
+},
+"technology-transfer.html":{
+"We help coordinate technology-transfer opportunities between technology owners, product developers, and prospective local manufacturers. Early discussions can clarify the proposed scope, technical information required, production objectives, and the parties’ roles in evaluating feasibility.":"فرصت‌های انتقال فناوری میان مالکان فناوری، توسعه‌دهندگان محصول و تولیدکنندگان محلی بالقوه را هماهنگ می‌کنیم. مذاکرات اولیه می‌تواند دامنه پیشنهادی، اطلاعات فنی موردنیاز، اهداف تولید و نقش طرف‌ها در ارزیابی امکان‌پذیری را روشن کند.",
+"A successful transfer may require technical assessment, intellectual-property review, quality planning, training, validation, and regulatory approval. These workstreams are defined with the relevant experts and captured in the final project and contractual documents.":"انتقال موفق ممکن است به ارزیابی فنی، بررسی مالکیت فکری، برنامه‌ریزی کیفیت، آموزش، اعتبارسنجی و تأییدیه‌های مقرراتی نیاز داشته باشد. این فعالیت‌ها با متخصصان مربوطه تعریف و در اسناد نهایی پروژه و قرارداد ثبت می‌شوند.",
+"We clarify the technology or process to be transferred, the expected local-production outcome and the capabilities a receiving site may need. Technical feasibility, IP rights and regulatory approvals require separate confirmation.":"فناوری یا فرایند قابل انتقال، نتیجه موردانتظار از تولید داخلی و توانمندی‌های موردنیاز محل دریافت فناوری را مشخص می‌کنیم. امکان‌پذیری فنی، حقوق مالکیت فکری و تأییدیه‌های مقرراتی نیازمند بررسی و تأیید جداگانه هستند.",
+"Licensing Strategy":"استراتژی صدور مجوز"
+},
+"market-entry.html":{
+"We help companies assess how to enter a new market by clarifying target customer segments, routes to market, potential partners, competitive considerations, and commercial priorities. The goal is to translate a broad expansion objective into a practical sequence of decisions and actions.":"به شرکت‌ها کمک می‌کنیم با روشن کردن بخش‌های مشتریان هدف، مسیرهای ورود به بازار، شرکای بالقوه، ملاحظات رقابتی و اولویت‌های تجاری، ورود به بازار جدید را ارزیابی کنند. هدف، تبدیل یک برنامه کلی توسعه به مجموعه‌ای عملی از تصمیم‌ها و اقدامات است.",
+"Depending on the project, we can coordinate market information gathering, partner discussions, distribution planning, and regulatory questions with specialist stakeholders. Recommendations are tailored to the product category, the destination market, and the client’s available resources and risk appetite.":"بسته به پروژه، می‌توانیم گردآوری اطلاعات بازار، مذاکره با شرکا، برنامه‌ریزی توزیع و بررسی پرسش‌های مقرراتی با ذی‌نفعان متخصص را هماهنگ کنیم. پیشنهادها بر اساس گروه محصول، بازار مقصد، منابع در دسترس و میزان ریسک‌پذیری مشتری تنظیم می‌شوند.",
+"We help outline a market-entry route by considering target customers, channel options, potential partners and the questions that need local confirmation. Any market assessment should be supported by product-specific research and advice from qualified local specialists where required.":"با در نظر گرفتن مشتریان هدف، گزینه‌های کانال فروش، شرکای بالقوه و پرسش‌های نیازمند تأیید محلی، به ترسیم مسیر ورود به بازار کمک می‌کنیم. هر ارزیابی بازار باید در صورت لزوم با پژوهش اختصاصی محصول و مشاوره متخصصان محلی واجد صلاحیت پشتیبانی شود."
+},
+"pharmaceutical-products.html":{
+"We coordinate commercial discussions for pharmaceutical finished products between manufacturers, buyers, and potential distribution partners. Depending on the opportunity, support may include product portfolio review, supplier communication, quotation requests, supply planning, and coordination of required product information.":"مذاکرات تجاری مربوط به محصولات نهایی دارویی را میان تولیدکنندگان، خریداران و شرکای بالقوه توزیع هماهنگ می‌کنیم. بسته به فرصت، خدمات می‌تواند شامل بررسی سبد محصولات، ارتباط با تأمین‌کننده، درخواست استعلام قیمت، برنامه‌ریزی تأمین و هماهنگی اطلاعات موردنیاز محصول باشد.",
+"Product availability, marketing authorization, import eligibility, quality requirements, and supply terms must be confirmed for each market and product. Our role is to facilitate communication among commercial, quality, regulatory, and logistics stakeholders rather than replace their formal approvals.":"موجود بودن محصول، مجوز عرضه به بازار، مجاز بودن واردات، الزامات کیفیت و شرایط تأمین باید برای هر محصول و بازار تأیید شوند. نقش ما تسهیل ارتباط میان ذی‌نفعان بازرگانی، کیفیت، امور مقرراتی و لجستیک است و جایگزین تأییدیه‌های رسمی آن‌ها نمی‌شود.",
+"We organize business enquiries around the product portfolio, source, target market and distribution model. Product eligibility, product registration and the right to import or distribute must be checked in the destination market.":"درخواست‌های تجاری را بر اساس سبد محصول، منبع تأمین، بازار هدف و مدل توزیع سامان‌دهی می‌کنیم. مجاز بودن محصول، ثبت آن و حق واردات یا توزیع باید در بازار مقصد بررسی شود."
+},
+"become-our-partner.html":{
+"Send us a short introduction including your company, product or service, target market and preferred type of cooperation. Our team can then review the opportunity and follow up.":"معرفی کوتاهی از شرکت، محصول یا خدمت، بازار هدف و نوع همکاری موردنظر خود برای ما ارسال کنید. تیم ما فرصت را بررسی کرده و پیگیری‌های لازم را انجام خواهد داد."
+},
+"business-development.html":{
+"Niaz Net Tehran helps companies identify and develop commercial opportunities through structured outreach, partner engagement, market prioritization, and follow-up with relevant stakeholders. We focus on connecting business objectives with practical opportunities for cooperation and revenue growth.":"نیازنت تهران به شرکت‌ها کمک می‌کند از طریق ارتباط‌گیری ساختارمند، تعامل با شرکا، اولویت‌بندی بازار و پیگیری با ذی‌نفعان مرتبط، فرصت‌های تجاری را شناسایی و توسعه دهند. تمرکز ما بر پیوند دادن اهداف کسب‌وکار با فرصت‌های عملی همکاری و رشد درآمد است.",
+"Depending on the project, support may include preparing a development roadmap, coordinating meetings, evaluating potential partners, and maintaining a clear pipeline of next steps. Scope, targets, and reporting expectations are agreed with the client before work begins.":"بسته به پروژه، پشتیبانی می‌تواند شامل تهیه نقشه راه توسعه، هماهنگی جلسات، ارزیابی شرکای بالقوه و حفظ مسیر شفافی از اقدامات بعدی باشد. دامنه کار، اهداف و انتظارات گزارش‌دهی پیش از شروع فعالیت با مشتری توافق می‌شوند.",
+"We start with the commercial objective and the type of counterpart needed, then organize relevant partner outreach and follow-up. The scope is tailored to the product, market and project stage.":"کار را با هدف تجاری و نوع طرف همکاری موردنیاز آغاز می‌کنیم و سپس ارتباط‌گیری و پیگیری با شرکای مرتبط را سازمان می‌دهیم. دامنه فعالیت بر اساس محصول، بازار و مرحله پروژه تنظیم می‌شود."
+},
+"cbd-products.html":{
+"Niaz Net Tehran can coordinate preliminary commercial discussions for CBD-related products where the product category and intended market allow such activity. Early-stage work may include clarifying product specifications, identifying potential business counterparts, and mapping the questions that must be resolved before a transaction can proceed.":"نیازنت تهران تنها در مواردی که گروه محصول و بازار هدف چنین فعالیتی را مجاز بدانند، می‌تواند مذاکرات تجاری اولیه درباره محصولات مرتبط با CBD را هماهنگ کند. اقدامات اولیه ممکن است شامل شفاف‌سازی مشخصات محصول، شناسایی طرف‌های تجاری بالقوه و تعیین پرسش‌هایی باشد که پیش از انجام معامله باید پاسخ داده شوند.",
+"CBD laws and product classifications vary significantly by jurisdiction and product type. No sourcing, import, distribution, or marketing activity should proceed until legality, licensing, product status, and all applicable regulatory requirements have been independently confirmed for the relevant markets.":"قوانین مربوط به CBD و طبقه‌بندی محصولات آن بر اساس حوزه قضایی و نوع محصول تفاوت زیادی دارند. هیچ فعالیتی در زمینه تأمین، واردات، توزیع یا بازاریابی نباید پیش از تأیید مستقل قانونی بودن، مجوزها، وضعیت محصول و تمام الزامات مقرراتی مربوطه در بازارهای موردنظر انجام شود.",
+"Before any transaction is explored, the product composition and legal status must be checked for the specific destination market. The service is limited to preliminary coordination where the activity is lawful.":"پیش از بررسی هر معامله، ترکیب محصول و وضعیت قانونی آن باید برای بازار مقصد مشخص بررسی شود. این خدمت فقط به هماهنگی اولیه در مواردی محدود است که فعالیت مربوطه قانونی باشد."
+},
+"chamber-of-commerce.html":{
+"We facilitate business-to-business engagement and trade-network development with relevant chambers of commerce, industry associations, and institutional stakeholders, where appropriate. This can help companies identify networking opportunities, understand the business environment, and establish contact with potential commercial counterparts.":"در صورت تناسب، تعاملات بنگاه‌به‌بنگاه و توسعه شبکه‌های تجاری را با اتاق‌های بازرگانی مرتبط، انجمن‌های صنعتی و ذی‌نفعان نهادی تسهیل می‌کنیم. این فعالیت می‌تواند به شرکت‌ها در شناسایی فرصت‌های شبکه‌سازی، شناخت فضای کسب‌وکار و برقراری ارتباط با طرف‌های تجاری بالقوه کمک کند.",
+"Our role is coordination and relationship support, not a claim of official affiliation or guaranteed access. Any formal membership, endorsement, certification, or institutional service is subject to the relevant organization’s own process and approval.":"نقش ما هماهنگی و پشتیبانی از ایجاد ارتباط است و به معنای ادعای وابستگی رسمی یا دسترسی تضمین‌شده نیست. هرگونه عضویت رسمی، تأیید، گواهی یا خدمت نهادی تابع فرایندها و تأییدیه‌های خود سازمان مربوطه خواهد بود.",
+"We clarify the purpose of the proposed trade or business-networking activity and the participants who need to be involved. Introductions and institutional coordination depend on interest and availability of the relevant organizations.":"هدف فعالیت تجاری یا شبکه‌سازی پیشنهادی و افراد یا سازمان‌هایی را که باید در آن مشارکت کنند مشخص می‌کنیم. معرفی طرف‌ها و هماهنگی نهادی به علاقه‌مندی و امکان همکاری سازمان‌های مربوطه بستگی دارد."
+},
+"cosmoderma.html":{
+"Niaz Net Tehran supports brand registration and market development for aesthetic medicine and cosmoderma products, including botulinum toxin (Botox) and dermal fillers. We coordinate with brand owners and qualified manufacturers to explore product portfolios, target markets, documentation needs, and suitable commercial partners.":"نیازنت تهران از ثبت برند و توسعه بازار محصولات پزشکی زیبایی و کازمودرما، از جمله سم بوتولینوم (بوتاکس) و فیلرهای پوستی پشتیبانی می‌کند. با صاحبان برند و تولیدکنندگان واجد صلاحیت برای بررسی سبد محصولات، بازارهای هدف، نیازهای مستندات و شرکای تجاری مناسب هماهنگی می‌کنیم.",
+"Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing. Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.":"توانمندی‌های ما شامل هماهنگی ثبت برند، تأمین مواد اولیه مناسب و گفت‌وگو با شرکای واجد صلاحیت درباره راه‌اندازی خط تولید یا تولید داخلی است. پیش از هر فعالیت تجاری، مجاز بودن محصول، الزامات کیفیت و مجوزهای مقرراتی باید برای هر بازار مقصد تأیید شوند.",
+"We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity. Product classification and local registration need to be confirmed before commercial activity.":"مشخص می‌کنیم پروژه مربوط به سبد محصولات موجود، تأمین تولیدکننده، نمایندگی برند یا فرصت راه‌اندازی خط تولید است. طبقه‌بندی محصول و ثبت محلی آن باید پیش از فعالیت تجاری تأیید شوند."
+}
+};
+Object.keys(extraPageTranslations).forEach(function(page){pages[page]=Object.assign({},pages[page]||{},extraPageTranslations[page]);});
 
 const file=location.pathname.split('/').pop();
 const dict=Object.assign({},common,pages[file]||{});
@@ -249,16 +628,35 @@ for(const node of nodes){
 for(const el of document.querySelectorAll('input[placeholder],textarea[placeholder]'))if(dict[norm(el.placeholder)]){el.placeholder=dict[norm(el.placeholder)];el.dir='rtl';}
 for(const el of document.querySelectorAll('[aria-label]'))if(dict[norm(el.getAttribute('aria-label'))])el.setAttribute('aria-label',dict[norm(el.getAttribute('aria-label'))]);
 const titleMap={
-'api-supply.html':'تأمین مواد اولیه دارویی و API | نیازنت',
-'brand-registration.html':'ثبت برند در بازارهای بین‌المللی | نیازنت',
-'exclusive-agency.html':'نمایندگی انحصاری و نمایندگی برند | نیازنت',
-'contract-manufacturing.html':'تولید قراردادی و هماهنگی تولید | نیازنت',
-'import-export.html':'خدمات واردات و صادرات بین‌المللی | نیازنت',
-'infant-formula.html':'شیرخشک و محصولات تغذیه نوزاد | نیازنت',
-'sports-nutrition.html':'تغذیه ورزشی و تأمین مکمل | نیازنت',
-'technology-transfer.html':'انتقال فناوری و تولید داخلی | نیازنت',
-'market-entry.html':'راهبرد ورود به بازارهای بین‌المللی | نیازنت',
-'pharmaceutical-products.html':'تجارت محصولات نهایی دارویی | نیازنت'
+"api-supply.html":"تأمین مواد اولیه دارویی و API | نیازنت",
+"brand-registration.html":"ثبت برند در بازارهای بین‌المللی | نیازنت",
+"exclusive-agency.html":"نمایندگی انحصاری و نمایندگی برند | نیازنت",
+"contract-manufacturing.html":"تولید قراردادی و هماهنگی تولید | نیازنت",
+"import-export.html":"خدمات واردات و صادرات بین‌المللی | نیازنت",
+"infant-formula.html":"شیرخشک و محصولات تغذیه نوزاد | نیازنت",
+"sports-nutrition.html":"تغذیه ورزشی و تأمین مکمل | نیازنت",
+"technology-transfer.html":"انتقال فناوری و تولید داخلی | نیازنت",
+"market-entry.html":"راهبرد ورود به بازارهای بین‌المللی | نیازنت",
+"pharmaceutical-products.html":"تجارت محصولات نهایی دارویی | نیازنت",
+"international-business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
+"international-markets.html":"بازارهای بین‌المللی و خدمات واردات و صادرات | نیازنت",
+"kenya-market.html":"بازار دارو و سلامت کنیا | نیازنت",
+"licensing-partnerships.html":"استراتژی صدور مجوز و مشارکت‌های راهبردی | نیازنت",
+"medical-devices.html":"تجهیزات پزشکی و تجهیزات سلامت | نیازنت",
+"nutraceuticals.html":"محصولات نوتراسوتیک و سلامت‌محور | نیازنت",
+"pet-food.html":"غذای حیوانات خانگی و تغذیه حیوانات | نیازنت",
+"private-label.html":"تولید با برند اختصاصی | نیازنت",
+"product-registration.html":"ثبت محصول و هماهنگی پرونده فنی | نیازنت",
+"regulatory-affairs.html":"امور مقرراتی و هماهنگی انطباق | نیازنت",
+"south-africa-market.html":"بازار دارو و سلامت آفریقای جنوبی | نیازنت",
+"supply-chain-solutions.html":"راهکارهای زنجیره تأمین | نیازنت",
+"cote-divoire-market.html":"بازار دارو و سلامت ساحل عاج | نیازنت"
+,
+"become-our-partner.html":"همکاری با نیازنت | نیازنت",
+"business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
+"cbd-products.html":"هماهنگی تجاری محصولات CBD | نیازنت",
+"chamber-of-commerce.html":"اتاق بازرگانی و هماهنگی تجارت | نیازنت",
+"cosmoderma.html":"کازمودرما و پزشکی زیبایی | نیازنت"
 };
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
