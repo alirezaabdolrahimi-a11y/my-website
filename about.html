@@ -535,4 +535,20 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
 </div>
 </footer>
 <script>const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'})}const langButton=document.getElementById('langButton');if(langButton){langButton.addEventListener('click',()=>{window.location.href='index.html'})}</script>
+<script id="niaz-language-dropdown">
+(function(){
+ const button=document.getElementById('langButton'); if(!button)return;
+ const path=location.pathname; const match=path.match(/^\/(tr|es|fr)(\/|$)/);
+ const basePath=match?path.replace(/^\/(tr|es|fr)(?=\/|$)/,'')||'/':path;
+ const active=(match&&match[1])||(new URLSearchParams(location.search).get('lang')==='fa'?'fa':(document.documentElement.lang||'en').slice(0,2));
+ const labels=[['en','English'],['fa','فارسی'],['tr','Türkçe'],['es','Español'],['fr','Français']];
+ const wrap=document.createElement('span');wrap.className='niaz-language-switcher';button.parentNode.insertBefore(wrap,button);wrap.appendChild(button);
+ const menu=document.createElement('div');menu.className='niaz-language-menu';menu.hidden=true;menu.setAttribute('role','menu');menu.setAttribute('aria-label','Choose website language');
+ labels.forEach(([code,label])=>{const item=document.createElement('button');item.type='button';item.className='niaz-language-option';item.textContent=label;item.setAttribute('role','menuitem');item.setAttribute('aria-current',code===active?'true':'false');item.addEventListener('click',()=>{let target;if(code==='fa')target=basePath+'?lang=fa';else if(code==='en')target=basePath;else if(code==='tr')target='/tr'+(basePath==='/'?'/':basePath);else target='/'+code+'/';location.href=target;});menu.appendChild(item);});
+ wrap.appendChild(menu);const style=document.createElement('style');style.textContent='.niaz-language-switcher{position:relative;display:inline-flex;align-items:center}.niaz-language-menu{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:150px;padding:7px;background:#fff;border:1px solid #e6eaf0;border-radius:8px;box-shadow:0 10px 30px rgba(5,24,51,.18)}.niaz-language-menu[hidden]{display:none}.niaz-language-option{display:block;width:100%;padding:10px 12px;border:0;border-radius:5px;background:#fff;color:#10203c;text-align:left;font:500 12px/1.3 Inter,Arial,sans-serif;cursor:pointer}.niaz-language-option:hover,.niaz-language-option:focus{background:#f3f6fa;outline:none}.niaz-language-option[aria-current=true]{color:#9b7028;font-weight:700}.niaz-language-switcher>.lang{white-space:nowrap}';document.head.appendChild(style);
+ button.setAttribute('aria-haspopup','menu');button.setAttribute('aria-expanded','false');function close(){menu.hidden=true;button.setAttribute('aria-expanded','false');}
+ document.addEventListener('click',function(e){if(e.target.closest('#langButton')){e.preventDefault();e.stopImmediatePropagation();menu.hidden=!menu.hidden;button.setAttribute('aria-expanded',String(!menu.hidden));return;}if(!wrap.contains(e.target))close();},true);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();button.focus();}});button.textContent=active.toUpperCase()+'⌄';
+})();
+</script>
 </body></html>
