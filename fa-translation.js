@@ -8,6 +8,7 @@ if(languageAnchor&&!document.querySelector('.fa-lang')){
  faLink.className='lang fa-lang';
  faLink.href=(isTurkishPage?location.pathname.replace(/^\/tr\//,'/'):location.pathname)+'?lang=fa';
  faLink.setAttribute('aria-label','فارسی');
+ faLink.setAttribute('title','فارسی');
  faLink.textContent='FA⌄';
  languageAnchor.parentNode.insertBefore(faLink,languageAnchor.nextSibling);
 }
