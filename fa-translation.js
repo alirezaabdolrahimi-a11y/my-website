@@ -1,7 +1,17 @@
 (function(){
 'use strict';
 const params=new URLSearchParams(location.search);
-if(params.get('lang')!=='fa')return;
+const isTurkishPage=/^\/tr\//.test(location.pathname);
+const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
+if(languageAnchor&&!document.querySelector('.fa-lang')){
+ const faLink=document.createElement('a');
+ faLink.className='lang fa-lang';
+ faLink.href=(isTurkishPage?location.pathname.replace(/^\/tr\//,'/'):location.pathname)+'?lang=fa';
+ faLink.setAttribute('aria-label','فارسی');
+ faLink.textContent='FA⌄';
+ languageAnchor.parentNode.insertBefore(faLink,languageAnchor.nextSibling);
+}
+if(isTurkishPage||params.get('lang')!=='fa')return;
 const common={
 'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
 'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما',
