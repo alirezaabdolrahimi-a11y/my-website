@@ -589,6 +589,29 @@
 }
 </style>
 
+
+<style id="niaz-persian-rtl-fix">
+/* Preserve the existing visual composition while making Persian text RTL. */
+html[lang="fa"], body[data-content-lang="fa"] { direction: rtl; }
+body[data-content-lang="fa"] .site-header .nav,
+body[data-content-lang="fa"] .nav-links,
+body[data-content-lang="fa"] .hero-inner,
+body[data-content-lang="fa"] .hero-showcase,
+body[data-content-lang="fa"] .services-layout,
+body[data-content-lang="fa"] .services-grid,
+body[data-content-lang="fa"] .partner-strip,
+body[data-content-lang="fa"] .split { direction: ltr; }
+body[data-content-lang="fa"] .hero-copy,
+body[data-content-lang="fa"] .section-title,
+body[data-content-lang="fa"] .panel,
+body[data-content-lang="fa"] .reason > div:last-child,
+body[data-content-lang="fa"] #contact,
+body[data-content-lang="fa"] footer { direction: rtl; text-align: right; }
+body[data-content-lang="fa"] .hero-actions { direction: rtl; }
+body[data-content-lang="fa"] input,
+body[data-content-lang="fa"] textarea,
+body[data-content-lang="fa"] select { direction: rtl; text-align: right; }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -901,7 +924,8 @@ function applyLanguage(lang){
   currentLang=lang;
   try{document.cookie='niaznet-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+lang+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}
   document.documentElement.lang=lang==='fa'?'fa':'en';
-  document.body.dir='ltr';
+  document.documentElement.dir=lang==='fa'?'rtl':'ltr';
+  document.body.dir=lang==='fa'?'rtl':'ltr';
   document.body.dataset.contentLang=lang;
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
   langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
@@ -948,7 +972,6 @@ function applyLanguage(lang){
     if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
   });
 }
-langButton.addEventListener('click',()=>{const order=['en','fa','tr'];const active=document.documentElement.lang||'en';const next=order[(order.indexOf(active)+1)%order.length];try{document.cookie='niaznet-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}catch(e){}if(next==='tr'||next==='es'||next==='fr'){location.href='/'+next+'/';return;}applyLanguage(next);});
 try{const savedLanguage=localStorage.getItem('niaznet-language');const requestedLanguage=new URLSearchParams(location.search).get('lang');if(requestedLanguage==='fa'||savedLanguage==='fa')applyLanguage('fa')}catch(e){}
 
 document.getElementById('year').textContent=new Date().getFullYear();
@@ -1225,9 +1248,9 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
       </section>`;
     }
     document.querySelectorAll('.site-header a[href="#home"], .site-header a[href="#services"], .site-header a[href="#contact"]').forEach(link => {
-      if (link.getAttribute('href') === '#home') link.href = 'index.html#home';
-      if (link.getAttribute('href') === '#services') link.href = 'index.html#services';
-      if (link.getAttribute('href') === '#contact') link.href = 'index.html#contact';
+      if (link.getAttribute('href') === '#home') link.href = '/';
+      if (link.getAttribute('href') === '#services') link.href = '/#services';
+      if (link.getAttribute('href') === '#contact') link.href = '/#contact';
     });
   }
 }
@@ -1318,14 +1341,14 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
  const wrap=document.createElement('span'); wrap.className='niaz-language-switcher';
  button.parentNode.insertBefore(wrap,button); wrap.appendChild(button);
  const menu=document.createElement('div'); menu.className='niaz-language-menu'; menu.hidden=true; menu.setAttribute('role','menu'); menu.setAttribute('aria-label','Choose website language');
- labels.forEach(([code,label])=>{const item=document.createElement('button');item.type='button';item.className='niaz-language-option';item.textContent=label;item.setAttribute('role','menuitem');item.setAttribute('aria-current',code===active?'true':'false');item.addEventListener('click',()=>{let target;if(code==='fa')target=basePath+'?lang=fa';else if(code==='en')target=basePath;else if(code==='tr')target='/tr'+(basePath==='/'?'/':basePath);else target='/'+code+'/';location.href=target;});menu.appendChild(item);});
+ labels.forEach(([code,label])=>{const item=document.createElement('button');item.type='button';item.className='niaz-language-option';item.textContent=label;item.setAttribute('role','menuitem');item.setAttribute('aria-current',code===active?'true':'false');item.addEventListener('click',()=>{try{localStorage.setItem('niaznet-language',code);document.cookie='niaznet-language='+code+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+code+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';}catch(e){}const targetUrl=new URL(location.href);targetUrl.pathname=basePath;if(code==='fa'){targetUrl.searchParams.set('lang','fa');}else{targetUrl.searchParams.delete('lang');if(code==='tr')targetUrl.pathname='/tr'+(basePath==='/'?'/':basePath);else if(code==='es'||code==='fr')targetUrl.pathname='/'+code+'/';}location.href=targetUrl.pathname+targetUrl.search+targetUrl.hash;});menu.appendChild(item);});
  wrap.appendChild(menu);
  const style=document.createElement('style');style.textContent='.niaz-language-switcher{position:relative;display:inline-flex;align-items:center}.niaz-language-menu{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:150px;padding:7px;background:#fff;border:1px solid #e6eaf0;border-radius:8px;box-shadow:0 10px 30px rgba(5,24,51,.18)}.niaz-language-menu[hidden]{display:none}.niaz-language-option{display:block;width:100%;padding:10px 12px;border:0;border-radius:5px;background:#fff;color:#10203c;text-align:left;font:500 12px/1.3 Inter,Arial,sans-serif;cursor:pointer}.niaz-language-option:hover,.niaz-language-option:focus{background:#f3f6fa;outline:none}.niaz-language-option[aria-current=true]{color:#9b7028;font-weight:700}.niaz-language-switcher>.lang{white-space:nowrap}';document.head.appendChild(style);
  button.setAttribute('aria-haspopup','menu');button.setAttribute('aria-expanded','false');
  function close(){menu.hidden=true;button.setAttribute('aria-expanded','false');}
  document.addEventListener('click',function(e){if(e.target.closest('#langButton')){e.preventDefault();e.stopImmediatePropagation();menu.hidden=!menu.hidden;button.setAttribute('aria-expanded',String(!menu.hidden));return;}if(!wrap.contains(e.target))close();},true);
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();button.focus();}});
- button.textContent=active.toUpperCase()+'⌄';
+ button.textContent=(active==='fa'?'فارسی':active.toUpperCase())+'⌄';
 })();
 </script>
 </body>
