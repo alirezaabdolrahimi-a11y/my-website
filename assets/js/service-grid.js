@@ -21,7 +21,7 @@
 
   function serviceHref(slug, routeMode, staticPrefix, queryPrefix) {
     return routeMode === 'static'
-      ? (staticPrefix || '/tr/') + slug + '.html'
+      ? (staticPrefix || '/') + slug + '.html'
       : (queryPrefix || '/') + 'index.html?service=' + encodeURIComponent(slug);
   }
 
@@ -31,7 +31,7 @@
     const labels = config.labels || {};
     const vipLabels = config.vipLabels || {};
     const routeMode = config.routeMode === 'static' ? 'static' : 'query';
-    const staticPrefix = config.staticPrefix || '/tr/';
+    const staticPrefix = config.staticPrefix || '/';
     const queryPrefix = config.queryPrefix || '/';
     const importExportLabel = config.importExportLabel || 'IMPORT / EXPORT';
     const serviceGrid = document.getElementById('serviceGrid');
@@ -74,7 +74,7 @@
       const card = document.createElement('a');
       card.className = 'service-card' + (slug === 'cbd-products' ? ' cbd-service' : '');
       card.dataset.serviceSlug = slug;
-      card.href = serviceHref(slug, routeMode);
+      card.href = serviceHref(slug, routeMode, staticPrefix, queryPrefix);
       card.target = '_self';
       card.innerHTML = '<span class="service-icon" aria-hidden="true"><img src="' + iconPath(slug) + '" alt="" loading="lazy"></span><h3>' + (labels[slug] || item.name) + '</h3>';
       serviceGrid.appendChild(card);
