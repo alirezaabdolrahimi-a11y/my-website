@@ -52,6 +52,7 @@ window.renderNiazServiceGrid({
   labels: serviceDisplayLabels,
   vipLabels: {"chamber-of-commerce":"Özel Ticaret Odası","exclusive-agency":"Münhasır Temsilcilik","market-entry":"Pazara Giriş"},
   routeMode: 'static',
+  staticPrefix: '/tr/',
   importExportLabel: 'İTHALAT / İHRACAT'
 });
 
