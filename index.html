@@ -1248,9 +1248,9 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
       </section>`;
     }
     document.querySelectorAll('.site-header a[href="#home"], .site-header a[href="#services"], .site-header a[href="#contact"]').forEach(link => {
-      if (link.getAttribute('href') === '#home') link.href = 'index.html#home';
-      if (link.getAttribute('href') === '#services') link.href = 'index.html#services';
-      if (link.getAttribute('href') === '#contact') link.href = 'index.html#contact';
+      if (link.getAttribute('href') === '#home') link.href = '/';
+      if (link.getAttribute('href') === '#services') link.href = '/#services';
+      if (link.getAttribute('href') === '#contact') link.href = '/#contact';
     });
   }
 }
