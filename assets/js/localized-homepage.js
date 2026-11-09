@@ -1,6 +1,7 @@
 
 
 const isFrench = (document.documentElement.lang || '').toLowerCase().startsWith('fr');
+const homePath = isFrench ? '/fr/index.html' : '/es/index.html';
 const contactTeamLabel = isFrench ? 'CONTACTEZ NOTRE ÉQUIPE →' : 'CONTACTE CON NUESTRO EQUIPO →';
 
 const serviceItems = [
@@ -60,6 +61,7 @@ window.renderNiazServiceGrid({
     "market-entry": isFrench ? "Accès au Marché" : "Entrada al Mercado"
   },
   routeMode: 'query',
+  queryPrefix: isFrench ? '/fr/' : '/es/',
   importExportLabel: 'IMPORT / EXPORT'
 });
 
@@ -79,7 +81,7 @@ if (requestedService) {
             <h1>Find the Right Brand. <span>Unlock New Markets.</span></h1>
             <p>From international brand partnerships to brand registration and market growth, we help turn your business ambitions into practical opportunities.</p>
             <div class="hero-actions service-page-actions">
-              <a class="btn" href="index.html#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
+              <a class="btn" href="${homePath}#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
               <a class="btn btn-outline" href="mailto:info@niaznet.net?subject=Business%20Inquiry">${contactTeamLabel}</a>
             </div>
           </div>
@@ -119,7 +121,7 @@ if (requestedService) {
 
           <div class="brand-registration-actions">
             <a class="btn" href="mailto:info@niaznet.net?subject=Brand%20Registration%20and%20International%20Brand%20Partnerships">LET’S DISCUSS YOUR BRAND →</a>
-            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
+            <a class="btn btn-outline" href="${homePath}#services">← BACK TO ALL SERVICES</a>
           </div>
           <p class="brand-registration-footnote">Brand availability, commercial agreements, product registration and market access are subject to brand-owner decisions and the relevant regulatory authorities in each market.</p>
         </div>
@@ -127,11 +129,11 @@ if (requestedService) {
     } else if (requestedService === 'api-supply') {
       document.title='API & Pharmaceutical Ingredients | NIAZ NET';
       main.innerHTML=`<section class="hero brand-registration-page"><div class="container hero-inner"><div class="hero-copy"><div class="eyebrow">NIAZ NET · API &amp; PHARMACEUTICAL INGREDIENTS</div><h1>Pharmaceutical Ingredients. <span>Qualified Supply Opportunities.</span></h1><p>Search our working portfolio of active pharmaceutical ingredients and selected pharmaceutical intermediates. Filter by material type and identify products for a focused sourcing inquiry.</p>
-<div class="hero-actions service-page-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=API%20Inquiry">${contactTeamLabel}</a></div></div><div class="hero-showcase" aria-label="API sourcing and pharmaceutical ingredients slideshow"><div class="showcase-image active"><img src="/images/14-api-pharmaceutical-ingredients.png" alt="Pharmaceutical ingredient sourcing services"></div><div class="showcase-image"><img src="/images/08 -all 2 .png" alt="Pharmaceutical supply coordination services" loading="lazy"></div><div class="showcase-image"><img src="/images/00 -Global Products, Global Opportunities.png" alt="International pharmaceutical sourcing coordination" loading="lazy"></div></div></div></section>
+<div class="hero-actions service-page-actions"><a class="btn" href="${homePath}#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=API%20Inquiry">${contactTeamLabel}</a></div></div><div class="hero-showcase" aria-label="API sourcing and pharmaceutical ingredients slideshow"><div class="showcase-image active"><img src="/images/14-api-pharmaceutical-ingredients.png" alt="Pharmaceutical ingredient sourcing services"></div><div class="showcase-image"><img src="/images/08 -all 2 .png" alt="Pharmaceutical supply coordination services" loading="lazy"></div><div class="showcase-image"><img src="/images/00 -Global Products, Global Opportunities.png" alt="International pharmaceutical sourcing coordination" loading="lazy"></div></div></div></section>
       <section class="container section" style="max-width:1180px;padding-top:24px"><div class="panel" style="padding:28px"><div class="eyebrow">PRODUCT PORTFOLIO</div><h2>Search the API &amp; Ingredients Catalogue</h2><p style="color:var(--muted);line-height:1.8">API means Active Pharmaceutical Ingredient. Intermediates are materials or processed forms used during manufacturing. Excipients are non-active formulation ingredients. Confirm final classification, grade and specifications with the supplier.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0"><input id="apiSearchInput" type="search" placeholder="Search product name..." style="flex:2;min-width:220px;padding:12px"><select id="apiCategoryFilter" style="flex:1;min-width:160px;padding:12px"><option>All</option><option>API</option><option>Intermediate</option><option>Excipient</option></select><select id="apiSortDirection" style="padding:12px"><option value="asc">A to Z</option><option value="desc">Z to A</option></select></div>
       <p id="apiResultsCount" aria-live="polite">Loading catalogue…</p><div style="overflow-x:auto"><table id="apiCatalogTable" style="width:100%;min-width:480px;border-collapse:collapse;text-align:left"><thead><tr><th data-sort="number">NO. ↕</th><th data-sort="name">PRODUCT / MATERIAL ↕</th><th data-sort="category">CATEGORY ↕</th></tr></thead><tbody id="apiCatalogBody"></tbody></table></div><p id="apiNoResults" style="display:none">No matching materials found.</p>
-      <p style="margin-top:22px;color:var(--muted);line-height:1.8">Catalogue classification is indicative and based on the material name and typical pharmaceutical use. Some materials may have a different regulatory role depending on formulation, grade, concentration and intended use. Confirm the current supplier specification, compendial standard and regulatory classification before procurement.</p><div class="sports-nutrition-actions"><a class="btn" href="mailto:info@niaznet.net?subject=API%20Sourcing%20Inquiry">SEND AN API INQUIRY →</a><a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a></div></div></section>
+      <p style="margin-top:22px;color:var(--muted);line-height:1.8">Catalogue classification is indicative and based on the material name and typical pharmaceutical use. Some materials may have a different regulatory role depending on formulation, grade, concentration and intended use. Confirm the current supplier specification, compendial standard and regulatory classification before procurement.</p><div class="sports-nutrition-actions"><a class="btn" href="mailto:info@niaznet.net?subject=API%20Sourcing%20Inquiry">SEND AN API INQUIRY →</a><a class="btn btn-outline" href="${homePath}#services">← BACK TO ALL SERVICES</a></div></div></section>
       <style>#apiCatalogTable th,#apiCatalogTable td{padding:12px;border-bottom:1px solid var(--border);font-size:13px}#apiCatalogTable th{cursor:pointer;color:var(--text)}#apiCatalogTable td{color:var(--muted)}@media(max-width:650px){#apiSearchInput,#apiCategoryFilter,#apiSortDirection{width:100%;flex:auto}}</style>`;
       (async()=>{const status=document.getElementById('apiResultsCount');try{const r=await fetch('api-catalog.json');if(!r.ok)throw Error('load failed');const baseData=await r.json();
 const additions=[
@@ -179,7 +181,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
             <h1>Build Your Sports Portfolio. <span>Unlock New Opportunities.</span></h1>
             <p>From international sports nutrition brand representation to bulk powder sourcing, we help businesses explore commercial opportunities and develop their product portfolios.</p>
             <div class="hero-actions service-page-actions">
-              <a class="btn" href="index.html#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
+              <a class="btn" href="${homePath}#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
               <a class="btn btn-outline" href="mailto:info@niaznet.net?subject=Business%20Inquiry">${contactTeamLabel}</a>
             </div>
           </div>
@@ -226,7 +228,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
 
           <div class="sports-nutrition-actions">
             <a class="btn" href="mailto:info@niaznet.net?subject=Sports%20Nutrition%20Brands%20and%20Bulk%20Supply">LET’S DISCUSS YOUR REQUIREMENTS →</a>
-            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
+            <a class="btn btn-outline" href="${homePath}#services">← BACK TO ALL SERVICES</a>
           </div>
           <p class="brand-registration-footnote">Brand representation, product supply, market access, and any required registration remain subject to the relevant brand owner, supplier, and regulatory authorities.</p>
         </div>
@@ -240,7 +242,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
             <h1>Build Better Beginnings. <span>Source with Confidence.</span></h1>
             <p>From leading international infant-formula brands to complete manufacturing-line solutions and carefully specified ingredients, NIAZ NET helps connect your project with qualified global partners.</p>
             <div class="hero-actions service-page-actions">
-              <a class="btn" href="index.html#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
+              <a class="btn" href="${homePath}#services" aria-label="Back to all services">← BACK TO ALL SERVICES</a>
               <a class="btn btn-outline" href="mailto:info@niaznet.net?subject=Business%20Inquiry">${contactTeamLabel}</a>
             </div>
           </div>
@@ -289,7 +291,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
 
           <div class="sports-nutrition-actions">
             <a class="btn" href="mailto:info@niaznet.net?subject=Infant%20Formula%20Brands%2C%20Production%20Lines%20and%20Ingredients">DISCUSS YOUR INFANT-NUTRITION PROJECT →</a>
-            <a class="btn btn-outline" href="index.html#services">← BACK TO ALL SERVICES</a>
+            <a class="btn btn-outline" href="${homePath}#services">← BACK TO ALL SERVICES</a>
           </div>
           <p class="brand-registration-footnote">Any brand, ingredient, equipment, or production opportunity is subject to technical evaluation, supplier qualification, commercial agreement, and applicable regulatory requirements.</p>
         </div>
@@ -321,7 +323,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
       main.innerHTML = `
       <section class="hero" id="home" style="min-height:300px;padding-top:120px">
         <div class="container hero-inner" style="grid-template-columns:1fr">
-          <div class="hero-copy"><div class="eyebrow">NIAZ NET · OUR SERVICES</div><h1>${selectedService.name}</h1><p>${selectedService.paragraphs[0]}</p><div class="hero-actions"><a class="btn" href="index.html#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">${contactTeamLabel}</a></div></div>
+          <div class="hero-copy"><div class="eyebrow">NIAZ NET · OUR SERVICES</div><h1>${selectedService.name}</h1><p>${selectedService.paragraphs[0]}</p><div class="hero-actions"><a class="btn" href="${homePath}#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">${contactTeamLabel}</a></div></div>
           ${slideshowMarkup}
         </div>
       </section>
