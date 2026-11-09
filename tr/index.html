@@ -350,16 +350,8 @@ serviceDisplayOrder.forEach(slug=>{
   serviceGrid.appendChild(card);
 });
 
-const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
-
-document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('newsletterNotice').textContent='Thank you. Haberlerletter signup needs to be connected to an email service.';});
-
 
 try{localStorage.setItem('niaznet-language','tr')}catch(e){}document.documentElement.lang='tr';document.body.dir='ltr';
-
-document.getElementById('year').textContent=new Date().getFullYear();
 
 // Service detail views load in the current tab, powered by this single HTML file.
 const requestedService = new URLSearchParams(window.location.search).get('service');
@@ -646,6 +638,8 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
 
 </script>
 
+<script src="/site-shell.js" defer></script>
+<script src="/newsletter.js" defer></script>
 <script src="/hero-slideshow.js" defer></script>
 
 
