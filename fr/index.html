@@ -347,53 +347,6 @@ serviceDisplayOrder.forEach(slug=>{
   serviceGrid.appendChild(card);
 });
 
-const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
-
-document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('newsletterNotice').textContent='Thank you. Newsletter signup needs to be connected to an email service.';});
-
-const langButton=document.getElementById('langButton');
-const bilingualMap=[
-  ['Home','خانه'],['About Us','درباره ما'],['Services','خدمات'],['Industries','صنایع'],['Partners','شرکای تجاری'],['Projets','پروژه‌ها'],['News','اخبار'],['Contact','تماس با ما'],['GET IN TOUCH','ارتباط با ما'],
-  ['Connecter les marchés du monde entier','اتصال بازارها در سراسر جهان'],['Votre partenaire mondial en ','شریک توسعه کسب‌وکار جهانی شما '],
-  ['Partner',''],['Nous mettons en relation fabricants, marques, technologies et marchés dans les secteurs pharmaceutique, de la santé, de la nutrition et domaines connexes.','ایجاد ارتباط میان تولیدکنندگان، برندها، فناوری‌ها و بازارهای دارویی، سلامت و تغذیه.'],
-  ['DEVENEZ NOTRE PARTENAIRE','همکاری با ما'],['Partenaires Mondiaux','شرکای جهانی'],['Business Contact','اطلاعات تماس تجاری'],['What helps us respond faster?','چه اطلاعاتی به پاسخ سریع‌تر کمک می‌کند؟'],['Start a conversation','شروع گفتگو'],['Contact Our Team','تماس با تیم ما'],['Full name *','نام و نام خانوادگی *'],['Company *','شرکت *'],['Job title / Position','عنوان شغلی / سمت'],['Phone / WhatsApp *','تلفن / واتساپ *'],['Business email *','ایمیل کاری *'],['Request type','نوع درخواست'],['Your request and relevant details *','درخواست و جزئیات مرتبط *'],['PREPARE INQUIRY EMAIL →','آماده‌سازی ایمیل درخواست →'],['Import / Export','واردات / صادرات'],['Distribution or exclusive agency','توزیع یا نمایندگی انحصاری'],['Pharmaceuticals / API / healthcare','دارو / ماده مؤثره / سلامت'],['Sports nutrition / supplements','تغذیه ورزشی / مکمل‌ها'],['Pet food / animal nutrition','غذای حیوانات / تغذیه دام'],['Brand development / registration','توسعه / ثبت برند'],['Technology transfer / contract manufacturing','انتقال فناوری / تولید قراردادی'],['Other business inquiry','سایر درخواست‌های تجاری'],['Home','خانه']
-];
-let currentLang='en';
-function applyLanguage(lang){
-  currentLang=lang;
-  document.documentElement.lang=lang==='fa'?'fa':'en';
-  document.body.dir=lang==='fa'?'rtl':'ltr';
-  try{localStorage.setItem('niaznet-language',lang)}catch(e){}
-  langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
-  document.querySelectorAll('.nav-links>a').forEach(a=>{
-    const t=a.dataset.enText || a.textContent.trim();
-    a.dataset.enText=t;
-    const hit=bilingualMap.find(x=>x[0]===t);
-    if(hit)a.textContent=lang==='fa'?hit[1]:hit[0];
-  });
-  document.querySelectorAll('.eyebrow,.hero h1 span,.hero p,.partner-hero-btn,.section-title').forEach(el=>{
-    const original=el.dataset.enText || el.textContent.trim();
-    el.dataset.enText=original;
-    const hit=bilingualMap.find(x=>x[0]===original);
-    if(hit)el.textContent=lang==='fa'?hit[1]:hit[0];
-  });
-
-  const exactTranslations={
-   'About our company':'درباره شرکت ما','Our Services':'خدمات ما','Industries':'صنایع','Partners':'شرکای تجاری','News':'اخبار','Contact':'تماس',
-   'Pharmaceuticals & APIs':'داروها و مواد مؤثره دارویی','Healthcare & Medical Devices':'سلامت و تجهیزات پزشکی','Sports Nutrition & Supplements':'تغذیه ورزشی و مکمل‌ها','Infant Nutrition':'تغذیه نوزاد','Pet Food & Animal Nutrition':'غذای حیوانات و تغذیه دام','Import, Export & Ingredients':'واردات، صادرات و مواد اولیه','Développement de Marque & Agency':'توسعه برند و نمایندگی','Transfert de Technologie & Manufacturing':'انتقال فناوری و تولید','Have a product or market in mind?':'محصول یا بازار مشخصی در نظر دارید؟',
-   'Strategic Distribution & Trade':'توزیع راهبردی و تجارت','Contact Our Team':'تماس با تیم ما','Your request and relevant details *':'درخواست و جزئیات مرتبط *','Business inquiry — Niaz Net Tehran':'درخواست تجاری — نیاز نت تهران'
-  };
-  document.querySelectorAll('h1,h2,h3,h4,label,button,a,p,li,small,option,span').forEach(el=>{
-    if(el.children.length===0){const en=el.dataset.enText || el.textContent.trim();if(exactTranslations[en]){el.dataset.enText=en;el.textContent=lang==='fa'?exactTranslations[en]:en;}}
-  });
-}
-langButton.addEventListener('click',()=>{const order=['en','fa','tr','es','fr'];const next=order[(order.indexOf(document.documentElement.lang)+1)%order.length];document.cookie='niaznet-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';document.cookie='niaznet-manual-language='+next+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure';location.href=next==='en'?'/':next==='fa'?'/index.html?lang=fa':'/'+next+'/';});
-try{const savedLanguage=localStorage.getItem('niaznet-language');if(savedLanguage==='fa')applyLanguage('fa')}catch(e){}
-
-document.getElementById('year').textContent=new Date().getFullYear();
-
 // Service detail views load in the current tab, powered by this single HTML file.
 const requestedService = new URLSearchParams(window.location.search).get('service');
 if (requestedService) {
@@ -675,6 +628,8 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
 
 </script>
 
+<script src="/site-shell.js" defer></script>
+<script src="/newsletter.js" defer></script>
 <script src="/hero-slideshow.js" defer></script>
 
 
