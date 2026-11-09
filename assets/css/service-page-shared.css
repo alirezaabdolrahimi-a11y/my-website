@@ -598,3 +598,22 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
     .service-disclaimer{font-size:12px!important;border-top:1px solid var(--line);padding-top:16px;margin-top:24px}
     @media(max-width:800px){.service-detail-grid{grid-template-columns:1fr}.service-aside{position:static}.seo-service-hero{padding-top:112px}.service-content{padding-top:20px}}
     
+/* Shared searchable API catalogue — used by English and Turkish API pages. */
+.api-catalog-section{margin:0 0 28px}
+.api-catalog-panel{padding:clamp(20px,3vw,32px)}
+.api-catalog-panel h2{margin:7px 0 10px;font-size:clamp(20px,2.4vw,27px);color:var(--text,#10203c)}
+.api-catalog-intro,.api-catalog-note{color:var(--muted);font-size:13px;line-height:1.75}
+.api-catalog-controls{display:grid;grid-template-columns:minmax(220px,2fr) minmax(150px,1fr) minmax(120px,.8fr);gap:10px;margin:18px 0 12px}
+.api-catalog-controls input,.api-catalog-controls select{width:100%;min-width:0;min-height:44px;padding:10px 12px;border:1px solid var(--line,#e6eaf0);border-radius:6px;background:#fff;color:var(--text,#10203c);font:inherit}
+.api-results-count{margin:10px 0;color:var(--muted);font-size:12px}
+.api-catalog-table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line,#e6eaf0);border-radius:7px}
+.api-catalog-table{width:100%;min-width:620px;border-collapse:collapse;text-align:left}
+.api-catalog-table th,.api-catalog-table td{padding:12px 14px;border-bottom:1px solid var(--line,#e6eaf0);font-size:13px;line-height:1.55}
+.api-catalog-table th{background:#f7f9fc;color:var(--text,#10203c);font-weight:700}
+.api-catalog-table td{color:var(--muted)}
+.api-catalog-table tbody tr:last-child td{border-bottom:0}
+.api-catalog-table th button{padding:0;border:0;background:transparent;color:inherit;font:inherit;font-weight:inherit;text-align:left;cursor:pointer}
+.api-catalog-table th button:focus-visible,.api-catalog-controls input:focus-visible,.api-catalog-controls select:focus-visible{outline:2px solid var(--gold,#c99a43);outline-offset:2px}
+.api-no-results{padding:16px 0;color:var(--muted);font-size:13px}
+.api-catalog-note{margin:18px 0 0;font-size:12px}
+@media(max-width:650px){.api-catalog-controls{grid-template-columns:1fr}.api-catalog-panel{padding:18px}}
