@@ -51,7 +51,8 @@ window.renderNiazServiceGrid({
   items: serviceItems,
   labels: serviceDisplayLabels,
   vipLabels: {"chamber-of-commerce":"Private Chamber of Commerce","exclusive-agency":"Exclusive Agency","market-entry":"Market Entry"},
-  routeMode: 'query',
+  routeMode: 'static',
+  staticPrefix: '/',
   importExportLabel: 'IMPORT / EXPORT'
 });
 
