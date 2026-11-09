@@ -31,11 +31,8 @@
 </div>
 <div class="footer-bottom"><span>© <span id="year"></span> Niaz Net Tehran. Tüm Hakları Saklıdır.</span><div><a href="mailto:info@niaznet.net?subject=Privacy%20Policy%20Request">Gizlilik Politikası</a><a href="mailto:info@niaznet.net?subject=Terms%20of%20Use%20Request">Kullanım Koşulları</a><a href="index.html"#home>Site Haritası</a></div></div>
 </div>
-</footer><script>document.getElementById('year')?.replaceChildren(document.createTextNode(new Date().getFullYear()));
-const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
-if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});}
-const newsletter=document.getElementById('newsletterForm'); if(newsletter){newsletter.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('newsletterNotice');if(n)n.textContent='Bülten aboneliği henüz etkin değil. Güncellemeler için lütfen info@niaznet.net adresine e-posta gönderin.';});}
-</script><!-- Service slideshow controller -->
+</footer><script src="/site-shell.js" defer></script>
+<script src="/newsletter.js" defer></script><!-- Service slideshow controller -->
 <script>
 (function(){
  const root=document.querySelector('.hero-showcase');
