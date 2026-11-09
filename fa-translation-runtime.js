@@ -965,6 +965,56 @@ Object.assign(extraPageTranslations,{
     "Import / Export": "واردات / صادرات"
   }
 });
+Object.assign(extraPageTranslations,{
+  "about.html": {
+    "Learn about NIAZ NET, its international business development approach, strategic sourcing, distribution, trade and partnership services.": "با رویکرد نیازنت در توسعه کسب‌وکار بین‌المللی، تأمین راهبردی، توزیع، تجارت و خدمات مشارکت تجاری آشنا شوید."
+  },
+  "contact.html": {
+    "Contact NIAZ NET for international business development, distribution, sourcing, manufacturing and partnership enquiries.": "برای درخواست‌های توسعه کسب‌وکار بین‌المللی، توزیع، تأمین، تولید و همکاری تجاری با نیازنت تماس بگیرید."
+  },
+  "international-markets.html": {
+    "Explore trade opportunities involving Iran, Türkiye, the Middle East, Spain, China and India, subject to product, legal and regulatory requirements.": "فرصت‌های تجاری مرتبط با ایران، ترکیه، خاورمیانه، اسپانیا، چین و هند را با رعایت الزامات محصول، قانونی و مقرراتی بررسی کنید."
+  },
+  "medical-devices.html": {
+    "Coordinate sourcing and distribution enquiries for medical devices and healthcare equipment, including supplier discussions and technical-document requests.": "درخواست‌های تأمین و توزیع تجهیزات پزشکی و سلامت، از جمله مذاکره با تأمین‌کنندگان و درخواست مدارک فنی را هماهنگ می‌کنیم."
+  },
+  "licensing-partnerships.html": {
+    "Coordinate licensing discussions, strategic partnerships, commercial scope and partner communication for technology, product and distribution opportunities.": "مذاکرات صدور مجوز، مشارکت‌های راهبردی، دامنه همکاری تجاری و ارتباط شرکا را برای فرصت‌های فناوری، محصول و توزیع هماهنگ می‌کنیم."
+  },
+  "product-registration.html": {
+    "Organize product-registration communication and dossier-document requests for regulated products, with requirements confirmed by qualified local specialists.": "ارتباطات ثبت محصول و درخواست مدارک پرونده فنی محصولات تحت نظارت را سازمان‌دهی می‌کنیم؛ الزامات باید توسط متخصصان محلی واجد صلاحیت تأیید شوند."
+  },
+  "regulatory-affairs.html": {
+    "Coordinate regulatory-document requests, compliance questions and communication between manufacturers, market partners and qualified regulatory specialists.": "درخواست مدارک مقرراتی، پرسش‌های انطباق و ارتباط میان تولیدکنندگان، شرکای بازار و متخصصان واجد صلاحیت را هماهنگ می‌کنیم."
+  },
+  "international-business-development.html": {
+    "Connect business opportunities with potential partners through market mapping, commercial introductions, opportunity assessment and cross-border coordination.": "فرصت‌های تجاری را از طریق شناسایی بازار، معرفی تجاری، ارزیابی فرصت‌ها و هماهنگی فرامرزی به شرکای بالقوه متصل می‌کنیم."
+  },
+  "supply-chain-solutions.html": {
+    "Coordinate order and shipment follow-up, trade-document tracking, delivery planning and communication among buyers, suppliers and logistics providers.": "پیگیری سفارش و محموله، ردیابی اسناد تجاری، برنامه‌ریزی تحویل و ارتباط میان خریداران، تأمین‌کنندگان و ارائه‌دهندگان خدمات لجستیکی را هماهنگ می‌کنیم."
+  },
+  "private-label.html": {
+    "Coordinate private-label enquiries with potential manufacturers, including product concepts, specifications, packaging options, minimum orders and supply terms.": "درخواست‌های تولید با برند اختصاصی را با تولیدکنندگان بالقوه هماهنگ می‌کنیم؛ از جمله ایده محصول، مشخصات، گزینه‌های بسته‌بندی، حداقل سفارش و شرایط تأمین."
+  },
+  "pet-food.html": {
+    "Coordinate sourcing and distribution enquiries for pet food and animal nutrition, including product specifications, suppliers and market requirements.": "درخواست‌های تأمین و توزیع غذای حیوانات خانگی و محصولات تغذیه حیوانات، از جمله مشخصات محصول، تأمین‌کنندگان و الزامات بازار را هماهنگ می‌کنیم."
+  },
+  "nutraceuticals.html": {
+    "Explore nutraceutical and wellness product sourcing, supplement portfolios, supplier documents and market-development opportunities.": "فرصت‌های تأمین نوتراسوتیک‌ها و محصولات سلامت‌محور، سبد مکمل‌ها، مدارک تأمین‌کنندگان و توسعه بازار را بررسی کنید."
+  },
+  "projects.html": {
+    "Explore NIAZ NET projects, active brand agreements, manufacturing partnerships and contract-manufacturing collaborations.": "پروژه‌ها، توافق‌های فعال برندها، مشارکت‌های تولیدی و همکاری‌های تولید قراردادی نیازنت را بررسی کنید."
+  },
+  "cote-divoire-market.html": {
+    "Découvrez les opportunités commerciales dans les produits pharmaceutiques, les API et les dispositifs médicaux en Côte d’Ivoire. NIAZ NET coordonne les demandes commerciales éligibles.": "فرصت‌های تجاری محصولات دارویی، مواد مؤثره دارویی و تجهیزات پزشکی در ساحل عاج را بررسی کنید. نیازنت درخواست‌های تجاری واجد شرایط را هماهنگ می‌کند."
+  },
+  "kenya-market.html": {
+    "Explore pharmaceutical, API, medical device and healthcare trade opportunities involving Kenya. NIAZ NET coordinates eligible import-export enquiries and partner discussions.": "فرصت‌های تجاری دارو، مواد مؤثره دارویی، تجهیزات پزشکی و محصولات سلامت مرتبط با کنیا را بررسی کنید. نیازنت درخواست‌های واجد شرایط واردات و صادرات و مذاکرات با شرکا را هماهنگ می‌کند."
+  },
+  "south-africa-market.html": {
+    "Explore pharmaceutical, API, medical device and healthcare trade opportunities involving South Africa. NIAZ NET coordinates eligible import-export enquiries and partner discussions.": "فرصت‌های تجاری دارو، مواد مؤثره دارویی، تجهیزات پزشکی و محصولات سلامت مرتبط با آفریقای جنوبی را بررسی کنید. نیازنت درخواست‌های واجد شرایط واردات و صادرات و مذاکرات با شرکا را هماهنگ می‌کند."
+  }
+});
 Object.keys(extraPageTranslations).forEach(function(page){pages[page]=Object.assign({},pages[page]||{},extraPageTranslations[page]);});
 
 const file=location.pathname.split('/').pop();
