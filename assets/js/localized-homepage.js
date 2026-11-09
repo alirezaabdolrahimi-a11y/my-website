@@ -54,7 +54,11 @@ const serviceDisplayLabels = {
 window.renderNiazServiceGrid({
   items: serviceItems,
   labels: serviceDisplayLabels,
-  vipLabels: {"chamber-of-commerce":"Private Chamber of Commerce","exclusive-agency":"Représentation Exclusive / Representación Exclusiva","market-entry":"Accès au Marché / Entrada al Mercado"},
+  vipLabels: {
+    "chamber-of-commerce": "Private Chamber of Commerce",
+    "exclusive-agency": isFrench ? "Représentation Exclusive" : "Representación Exclusiva",
+    "market-entry": isFrench ? "Accès au Marché" : "Entrada al Mercado"
+  },
   routeMode: 'query',
   importExportLabel: 'IMPORT / EXPORT'
 });
