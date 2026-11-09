@@ -131,12 +131,6 @@ serviceDisplayOrder.forEach(slug=>{
   serviceGrid.appendChild(card);
 });
 
-const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
-
-document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('newsletterNotice').textContent='Thank you. Newsletter signup needs to be connected to an email service.';});
-
 const langButton=document.getElementById('langButton');
 const bilingualMap=[
   ['Home','خانه'],['About Us','درباره ما'],['Services','خدمات'],['Industries','صنایع'],['Partners','شرکای تجاری'],['Projects','پروژه‌ها'],['News','اخبار'],['Contact','تماس با ما'],['GET IN TOUCH','ارتباط با ما'],
@@ -198,8 +192,6 @@ function applyLanguage(lang){
   });
 }
 try{const savedLanguage=localStorage.getItem('niaznet-language');const requestedLanguage=new URLSearchParams(location.search).get('lang');if(requestedLanguage==='fa'||savedLanguage==='fa')applyLanguage('fa')}catch(e){}
-
-document.getElementById('year').textContent=new Date().getFullYear();
 
 // Service detail views load in the current tab, powered by this single HTML file.
 const requestedService = new URLSearchParams(window.location.search).get('service');
