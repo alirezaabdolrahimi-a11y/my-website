@@ -1,0 +1,2 @@
+/* Turkish homepage visual adjustment retained from the original stylesheet. */
+.service-card:nth-child(3n+2) .service-icon{background:linear-gradient(145deg,#f3bd51,#c18422);color:#ad8135}
