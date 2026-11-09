@@ -21,7 +21,7 @@
 
   function serviceHref(slug, routeMode) {
     return routeMode === 'static'
-      ? slug + '.html'
+      ? '/tr/' + slug + '.html'
       : 'index.html?service=' + encodeURIComponent(slug);
   }
 
