@@ -11,6 +11,13 @@
     document.head.appendChild(languageScript);
   }
 
+  if (document.getElementById('newsletterForm') && !document.querySelector('script[src="/newsletter.js"]')) {
+    var newsletterScript = document.createElement('script');
+    newsletterScript.src = '/newsletter.js';
+    newsletterScript.async = true;
+    document.head.appendChild(newsletterScript);
+  }
+
   var toggle = document.getElementById('mobileToggle');
   var nav = document.getElementById('navLinks');
   if (toggle && nav) {
