@@ -45,6 +45,19 @@
     window.location.assign(target.pathname + target.search + target.hash);
   });
 
+  var persian = document.createElement('button');
+  persian.type = 'button';
+  persian.className = 'tr-language-option';
+  persian.textContent = 'فارسی';
+  persian.setAttribute('role', 'menuitem');
+  persian.addEventListener('click', function () {
+    persistLanguage('fa');
+    var target = new URL(window.location.href);
+    target.pathname = target.pathname.startsWith('/tr/') ? target.pathname.slice(3) : (target.pathname === '/tr' ? '/' : target.pathname);
+    target.searchParams.set('lang', 'fa');
+    window.location.assign(target.pathname + target.search + target.hash);
+  });
+
   var turkish = document.createElement('button');
   turkish.type = 'button';
   turkish.className = 'tr-language-option';
@@ -57,7 +70,7 @@
     button.setAttribute('aria-expanded', 'false');
   });
 
-  menu.append(english, turkish);
+  menu.append(english, persian, turkish);
   wrap.appendChild(menu);
 
   var style = document.createElement('style');
