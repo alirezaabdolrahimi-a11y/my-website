@@ -3,7 +3,7 @@
 const params=new URLSearchParams(location.search);
 const isTurkishPage=/^\/tr\//.test(location.pathname);
 const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
-if(languageAnchor&&!document.querySelector('.fa-lang')){
+if(languageAnchor&&!document.querySelector('.fa-lang')&&!document.getElementById('langButton')){
  const faLink=document.createElement('a');
  faLink.className='lang fa-lang';
  faLink.href=(isTurkishPage?location.pathname.replace(/^\/tr\//,'/'):location.pathname)+'?lang=fa';
@@ -609,6 +609,54 @@ const extraPageTranslations={
 "We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity. Product classification and local registration need to be confirmed before commercial activity.":"مشخص می‌کنیم پروژه مربوط به سبد محصولات موجود، تأمین تولیدکننده، نمایندگی برند یا فرصت راه‌اندازی خط تولید است. طبقه‌بندی محصول و ثبت محلی آن باید پیش از فعالیت تجاری تأیید شوند."
 }
 };
+
+extraPageTranslations["projects.html"] = {
+"Projects & Active Agreements":"پروژه‌ها و قراردادهای فعال",
+"An overview of current brand agreements, manufacturing partnerships and contract-manufacturing initiatives across nutrition, healthcare and industrial sectors.":"نمایی از توافق‌های فعلی برندها، همکاری‌های تولیدی و پروژه‌های تولید قراردادی در حوزه‌های تغذیه، سلامت و صنایع.",
+"Building partnerships. Bringing projects to market.":"ایجاد مشارکت‌ها و رساندن پروژه‌ها به بازار",
+"The portfolio below summarizes the categories and project scope. Partner names, logos and short profiles can be added to the reserved spaces once approved for publication.":"فهرست زیر دسته‌بندی‌ها و دامنه پروژه‌ها را نشان می‌دهد. نام شرکا، نشان‌های تجاری و معرفی کوتاه آن‌ها پس از تأیید انتشار در بخش‌های مشخص‌شده درج خواهد شد.",
+"Sports Nutrition Brands":"برندهای تغذیه ورزشی",
+"Commercial agreements with sports-nutrition supplement brands.":"توافق‌های تجاری با برندهای مکمل و تغذیه ورزشی.",
+"Infant Formula Manufacturers":"تولیدکنندگان شیرخشک نوزاد",
+"Agreements with infant-formula manufacturers.":"توافق‌ با تولیدکنندگان شیرخشک نوزاد.",
+"Infant Formula Production Lines":"خطوط تولید شیرخشک نوزاد",
+"Projects involving manufacturers of infant-formula production lines.":"پروژه‌های مرتبط با تولیدکنندگان خطوط تولید شیرخشک نوزاد.",
+"Botulinum Toxin & Dermal Fillers":"سم بوتولینوم و فیلرهای پوستی",
+"Agreements with manufacturers of botulinum toxin and dermal filler products.":"توافق با تولیدکنندگان محصولات سم بوتولینوم و فیلرهای پوستی.",
+"CBD Products":"محصولات CBD",
+"Commercial agreements with CBD manufacturers.":"توافق‌های تجاری با تولیدکنندگان محصولات CBD.",
+"Vitamin Supplements":"مکمل‌های ویتامینی",
+"An agreement with a vitamin-supplement manufacturer.":"توافق با یک تولیدکننده مکمل‌های ویتامینی.",
+"Medical Devices":"تجهیزات پزشکی",
+"Agreements with medical-device manufacturers.":"توافق با تولیدکنندگان تجهیزات پزشکی.",
+"Dog Food":"غذای سگ",
+"An agreement with a dog-food manufacturer.":"توافق با یک تولیدکننده غذای سگ.",
+"Industrial Production Lines":"خطوط تولید صنعتی",
+"Projects with industrial production-line manufacturers.":"پروژه‌هایی با تولیدکنندگان خطوط تولید صنعتی.",
+"CMO Project — Africa":"پروژه تولید قراردادی (CMO) — آفریقا",
+"Contract manufacturing for one brand across four products for the African market.":"تولید قراردادی چهار محصول برای یک برند ویژه بازار آفریقا.",
+"CMO Project — CIS":"پروژه تولید قراردادی (CMO) — کشورهای مستقل مشترک‌المنافع",
+"Contract manufacturing for one brand across four products for CIS markets.":"تولید قراردادی چهار محصول برای یک برند ویژه بازار کشورهای مستقل مشترک‌المنافع.",
+"CMO Pilot — Africa":"پایلوت تولید قراردادی (CMO) — آفریقا",
+"Pilot / trial-stage project for one brand covering 300 products.":"پروژه آزمایشی برای یک برند با پوشش ۳۰۰ محصول.",
+"Operations are expected to launch soon.":"انتظار می‌رود عملیات این پروژه به‌زودی آغاز شود.",
+"Interested in working with NIAZ NET?":"مایل به همکاری با نیازنت هستید؟",
+"Contact our team to discuss brand representation, manufacturing cooperation or market-entry opportunities.":"برای گفت‌وگو درباره نمایندگی برند، همکاری تولیدی یا فرصت‌های ورود به بازار با تیم ما تماس بگیرید.",
+"BECOME OUR PARTNER →":"به شریک تجاری ما بپیوندید ←",
+"CONTACT OUR TEAM →":"با تیم ما تماس بگیرید ←",
+"LOGO":"نشان تجاری",
+"Partner / Brand":"شریک / برند",
+"Space reserved for partner name, logo and a short introduction.":"این بخش برای درج نام شریک، نشان تجاری و معرفی کوتاه در نظر گرفته شده است.",
+"6 brands":"۶ برند",
+"5 brands":"۵ برند",
+"3 brands":"۳ برند",
+"4 brands":"۴ برند",
+"1 brand":"۱ برند",
+"7 brands":"۷ برند",
+"2 brands":"۲ برند",
+"1 brand · 4 products":"۱ برند · ۴ محصول",
+"1 brand · 300 products":"۱ برند · ۳۰۰ محصول"
+};
 Object.keys(extraPageTranslations).forEach(function(page){pages[page]=Object.assign({},pages[page]||{},extraPageTranslations[page]);});
 
 const file=location.pathname.split('/').pop();
@@ -653,6 +701,7 @@ const titleMap={
 "cote-divoire-market.html":"بازار دارو و سلامت ساحل عاج | نیازنت"
 ,
 "become-our-partner.html":"همکاری با نیازنت | نیازنت",
+"projects.html":"پروژه‌ها و قراردادهای فعال | نیازنت",
 "business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
 "cbd-products.html":"هماهنگی تجاری محصولات CBD | نیازنت",
 "chamber-of-commerce.html":"اتاق بازرگانی و هماهنگی تجارت | نیازنت",
