@@ -1,0 +1,193 @@
+
+/* Clean, consistent service tiles: artwork is a standalone transparent PNG, never a crop of the navy button. */
+.services-grid{gap:12px!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;grid-template-columns:repeat(10,minmax(0,1fr))!important;align-items:stretch!important}
+.services-grid>.service-card:not(.import-export-card){grid-column:span 2!important;box-sizing:border-box!important;min-height:104px!important;height:104px!important;margin:0!important;padding:10px 7px 9px!important;gap:5px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border:2px solid #e9b94f!important;border-radius:999px!important;background:linear-gradient(155deg,#123b64 0%,#08284c 55%,#03182f 100%)!important;box-shadow:0 3px 0 #956819,0 5px 10px rgba(4,22,44,.16),inset 0 1px 0 rgba(255,255,255,.2)!important;transition:transform .18s ease,box-shadow .18s ease!important}
+.services-grid>.service-card:not(.import-export-card) .service-icon{display:flex!important;align-items:center!important;justify-content:center!important;position:static!important;inset:auto!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex:0 0 44px!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important}
+.services-grid>.service-card:not(.import-export-card) .service-icon img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:transparent!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))!important}
+.services-grid>.service-card:not(.import-export-card) .service-icon svg{display:none!important}
+.services-grid>.service-card:not(.import-export-card) h3{font-size:clamp(10px,.78vw,12px)!important;line-height:1.15!important;font-weight:750!important;color:#fff!important;text-align:center!important;margin:0!important;padding:0!important;max-width:100%!important;overflow-wrap:anywhere!important;text-shadow:0 1px 2px rgba(0,0,0,.35)!important}
+.services-grid>.service-card:not(.import-export-card):hover{transform:translateY(-2px)!important;box-shadow:0 5px 0 #956819,0 8px 14px rgba(4,22,44,.2),inset 0 1px 0 rgba(255,255,255,.24)!important}
+.services-grid>.import-export-card{grid-column:1/-1!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:10px!important;position:relative!important;box-sizing:border-box!important;min-height:70px!important;height:70px!important;width:min(100%,440px)!important;max-width:440px!important;margin:0 auto 5px!important;padding:8px 18px!important;border:3px solid #ffdc82!important;border-radius:999px!important;background:linear-gradient(180deg,#123d6a,#06264b 55%,#03172f)!important;box-shadow:0 4px 0 #9c6c1b,0 8px 13px rgba(2,17,37,.25),inset 0 1px 0 rgba(255,255,255,.32)!important;overflow:hidden!important}
+.services-grid>.import-export-card .service-icon{position:static!important;display:flex!important;align-items:center!important;justify-content:center!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;flex:0 0 48px!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:none!important}
+.services-grid>.import-export-card .service-icon img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))!important}
+.services-grid>.import-export-card h3{font-size:clamp(15px,1.5vw,20px)!important;line-height:1.1!important;letter-spacing:.035em!important;color:#fff!important;font-weight:850!important;margin:0!important;padding:0!important;text-align:center!important}
+.vip-services{padding:14px 12px 18px!important;border:1px solid #e8b94d!important;border-radius:16px!important;background:linear-gradient(160deg,#f9fbfd,#edf3f8)!important;box-shadow:0 5px 12px rgba(4,22,44,.08)!important}
+.vip-services h2{font-size:14px!important;margin:0 0 12px!important}
+.vip-service-list{display:flex!important;flex-direction:column!important;gap:10px!important}
+.vip-service-link{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;min-height:74px!important;box-sizing:border-box!important;padding:10px 12px!important;border:2px solid #e9b94f!important;border-radius:999px!important;background:linear-gradient(155deg,#123b64,#06264a 60%,#03182f)!important;color:#fff!important;box-shadow:0 3px 0 #956819,0 5px 9px rgba(4,22,44,.14)!important;text-decoration:none!important;font-size:11px!important;line-height:1.2!important;font-weight:750!important}
+.vip-service-link img{display:block!important;flex:0 0 38px!important;width:38px!important;height:38px!important;object-fit:contain!important;background:transparent!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))!important}
+.vip-service-link .vip-label{color:#fff!important;font-size:11px!important;line-height:1.2!important;font-weight:750!important;overflow-wrap:anywhere!important}
+.vip-service-link span:not(.vip-label){display:none!important}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(8,minmax(0,1fr))!important}.services-grid>.service-card:not(.import-export-card){grid-column:span 2!important}.vip-service-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}.vip-service-link{min-height:68px!important;padding:8px!important}}
+@media(max-width:600px){.services-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}.services-grid>.service-card:not(.import-export-card){grid-column:span 2!important;min-height:92px!important;height:92px!important;padding:8px 5px!important}.services-grid>.service-card:not(.import-export-card) .service-icon{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;flex-basis:38px!important}.services-grid>.service-card:not(.import-export-card) h3{font-size:10px!important}.services-grid>.import-export-card{min-height:60px!important;height:60px!important;width:calc(100% - 8px)!important;gap:7px!important}.services-grid>.import-export-card .service-icon{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;flex-basis:38px!important}.services-grid>.import-export-card h3{font-size:14px!important}.vip-service-list{grid-template-columns:1fr!important}.vip-service-link{min-height:62px!important}.vip-service-link img{width:34px!important;height:34px!important;flex-basis:34px!important}}
+
+
+/* Preserved original style-block boundary */
+
+
+/* Service detail action row: keep Back and Contact side by side like the API service page. */
+.service-page-actions{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:12px!important;margin:0 0 16px!important}
+.service-page-actions .btn{min-height:42px!important}
+@media(max-width:520px){.service-page-actions{gap:9px!important}.service-page-actions .btn{padding:10px 13px!important;font-size:9px!important}}
+
+/* The oval outer frames are smaller and better separated; artwork inside remains the original size. */
+.services-grid{row-gap:8px!important;column-gap:4px!important}
+.services-grid>.service-card:not(.import-export-card){
+  width:72%!important;min-height:82px!important;height:auto!important;
+  margin:10px auto 13px!important;padding:8px 8px!important;
+  justify-content:center!important;gap:5px!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon{
+  width:45px!important;height:43px!important;min-width:45px!important;min-height:43px!important;
+  flex:0 0 auto!important;margin:0!important;padding:0!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon img{width:100%!important;height:100%!important;object-fit:contain!important}
+.services-grid>.service-card:not(.import-export-card) h3{max-width:100%!important;text-align:center!important;line-height:1.13!important;overflow-wrap:anywhere!important}
+
+/* The three VIP oval frames receive the same width reduction and extra separation; their icons stay unchanged. */
+.vip-service-list{gap:14px!important}
+.vip-service-link{
+  width:70%!important;min-height:72px!important;height:auto!important;
+  margin:0 auto!important;padding:9px 8px!important;gap:7px!important;
+  align-items:center!important;justify-content:center!important;text-align:center!important;
+}
+.vip-service-link img{width:36px!important;height:34px!important;min-width:36px!important;min-height:34px!important;object-fit:contain!important}
+.vip-service-link .vip-label{display:block!important;text-align:center!important;overflow-wrap:anywhere!important}
+
+/* Make Import / Export a longer centered bar, extended in both directions; leave its globe artwork unchanged. */
+.services-grid>.import-export-card{
+  width:min(96%,760px)!important;max-width:760px!important;
+  min-height:70px!important;height:70px!important;
+  margin:2px auto 18px!important;padding:10px 22px!important;
+}
+.services-grid>.import-export-card .service-icon,
+.services-grid>.import-export-card .service-icon img{
+  width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+  flex:0 0 44px!important;object-fit:contain!important;
+}
+
+/* Keep these two requested service labels centered in their oval buttons and centered as a pair. */
+.services-grid>.service-card[data-service-slug="licensing-partnerships"],
+.services-grid>.service-card[data-service-slug="supply-chain-solutions"]{text-align:center!important;justify-self:center!important}
+.services-grid>.service-card[data-service-slug="licensing-partnerships"] h3,
+.services-grid>.service-card[data-service-slug="supply-chain-solutions"] h3{text-align:center!important;width:100%!important}
+
+@media(max-width:900px){
+  .services-grid{column-gap:2px!important;row-gap:6px!important}
+  .services-grid>.service-card:not(.import-export-card){width:78%!important;margin:8px auto 10px!important}
+  .services-grid>.import-export-card{width:min(96%,700px)!important;max-width:700px!important}
+  .vip-service-link{width:78%!important}
+}
+@media(max-width:600px){
+  .services-grid>.service-card:not(.import-export-card){width:72%!important;min-height:80px!important;margin:7px auto 9px!important;padding:7px 5px!important}
+  /* Keep service and Import / Export artwork at the desktop dimensions on mobile too. */
+  .services-grid>.service-card:not(.import-export-card) .service-icon{width:45px!important;height:43px!important;min-width:45px!important;min-height:43px!important}
+  .services-grid>.import-export-card{width:96%!important;max-width:none!important;min-height:62px!important;height:62px!important;margin:3px auto 13px!important;padding:7px 12px!important;gap:9px!important}
+  .services-grid>.import-export-card .service-icon,.services-grid>.import-export-card .service-icon img{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex-basis:44px!important}
+  .vip-service-list{gap:12px!important}
+  .vip-service-link{width:82%!important;min-height:72px!important}
+}
+
+
+/* Preserved original style-block boundary */
+
+
+/* Remove-only update: no replacement for the four-item trade strip or home-page Industries section. */
+/* Keep the lead Import / Export service action centered and long, as previously requested. */
+.services-grid>.import-export-card{
+  grid-column:1/-1!important;justify-self:center!important;align-self:center!important;
+  width:min(96%,800px)!important;max-width:800px!important;
+  margin:0 auto 15px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  text-align:center!important;
+}
+.services-grid>.import-export-card h3{text-align:center!important}
+/* Center the main hero call-to-action within its copy area as well. */
+.hero-actions{display:flex!important;justify-content:center!important;align-items:center!important}
+
+
+/* Preserved original style-block boundary */
+
+
+/* Use the existing service artwork inside the original project-icon frames. */
+#projects .project-symbol img{display:block;width:100%;height:100%;object-fit:contain}
+/* Narrow VIP action buttons so they sit comfortably inside the original VIP panel. */
+.vip-service-link{width:66.6667%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;box-sizing:border-box!important}
+@media(max-width:900px){.vip-service-link{width:66.6667%!important}}
+@media(max-width:600px){.vip-service-link{width:66.6667%!important}}
+
+
+/* Preserved original style-block boundary */
+
+
+/* Exact requested oval dimensions; preserve existing artwork and desktop label typography. */
+@media (min-width:901px){.services-layout{grid-template-columns:minmax(0,1fr) 250px!important}}
+.services-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,5cm)!important;
+  justify-content:start!important;
+  justify-items:start!important;
+  align-items:start!important;
+  column-gap:10px!important;
+  row-gap:12px!important;
+}
+.services-grid>.service-card:not(.import-export-card){
+  grid-column:auto!important;
+  box-sizing:border-box!important;
+  width:5cm!important; min-width:5cm!important; max-width:5cm!important;
+  height:2cm!important; min-height:2cm!important; max-height:2cm!important;
+  margin:0!important; padding:4px 5px!important; gap:2px!important;
+  display:flex!important; flex-direction:column!important;
+  align-items:center!important; justify-content:center!important;
+  overflow:visible!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon{
+  width:44px!important; height:44px!important;
+  min-width:44px!important; min-height:44px!important;
+  flex:0 0 44px!important; margin:0!important;
+}
+.services-grid>.service-card:not(.import-export-card) .service-icon img{
+  width:100%!important; height:100%!important; object-fit:contain!important;
+}
+.services-grid>.service-card:not(.import-export-card) h3{
+  width:100%!important; max-width:none!important;
+  margin:0!important; padding:0!important;
+  font-size:12px!important; line-height:1.1!important;
+  white-space:nowrap!important; overflow:visible!important;
+  overflow-wrap:normal!important; word-break:normal!important;
+  text-align:center!important;
+}
+/* VIP actions: exact 6 cm x 1.5 cm, left aligned, with original icon/font sizes. */
+.vip-services{box-sizing:border-box!important;padding-left:10px!important;padding-right:10px!important}
+.vip-service-list{
+  display:flex!important; flex-direction:column!important;
+  align-items:flex-start!important; justify-content:flex-start!important;
+  gap:10px!important; width:100%!important;
+}
+.vip-service-link{
+  box-sizing:border-box!important;
+  width:6cm!important; min-width:6cm!important; max-width:6cm!important;
+  height:1.5cm!important; min-height:1.5cm!important; max-height:1.5cm!important;
+  margin:0!important; padding:4px 8px!important; gap:7px!important;
+  display:flex!important; flex-direction:row!important;
+  align-items:center!important; justify-content:flex-start!important;
+  text-align:left!important; white-space:nowrap!important; overflow:visible!important;
+}
+.vip-service-link img{
+  width:36px!important; height:34px!important;
+  min-width:36px!important; min-height:34px!important; flex:0 0 36px!important;
+}
+.vip-service-link .vip-label{
+  display:block!important; flex:0 0 auto!important;
+  margin:0!important; font-size:11px!important; line-height:1.2!important;
+  text-align:left!important; white-space:nowrap!important;
+  overflow-wrap:normal!important; word-break:normal!important;
+}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(auto-fit,5cm)!important;justify-content:start!important;column-gap:10px!important;row-gap:12px!important}
+  .services-grid>.service-card:not(.import-export-card){width:5cm!important;min-width:5cm!important;max-width:5cm!important;height:2cm!important;min-height:2cm!important;max-height:2cm!important;margin:0!important}
+  .services-grid>.service-card:not(.import-export-card) .service-icon{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex-basis:44px!important}
+  .services-grid>.service-card:not(.import-export-card) h3{font-size:12px!important;white-space:nowrap!important}
+  .vip-service-list{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important}
+  .vip-service-link{width:6cm!important;min-width:6cm!important;max-width:6cm!important;height:1.5cm!important;min-height:1.5cm!important;max-height:1.5cm!important;margin:0!important}
+}
