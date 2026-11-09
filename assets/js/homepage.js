@@ -119,7 +119,10 @@ function applyLanguage(lang){
 try{const savedLanguage=localStorage.getItem('niaznet-language');const requestedLanguage=new URLSearchParams(location.search).get('lang');if(requestedLanguage==='fa'||savedLanguage==='fa')applyLanguage('fa')}catch(e){}
 
 // Service detail views load in the current tab, powered by this single HTML file.
-const requestedService = new URLSearchParams(window.location.search).get('service');
+const requestedParams = new URLSearchParams(window.location.search);
+const requestedService = requestedParams.get('service');
 if (requestedService && serviceItems.some(item => item.slug === requestedService)) {
-  window.location.replace('/' + requestedService + '.html');
+  const language = requestedParams.get('lang');
+  const target = '/' + requestedService + '.html' + (language ? '?lang=' + encodeURIComponent(language) : '');
+  window.location.replace(target);
 }
