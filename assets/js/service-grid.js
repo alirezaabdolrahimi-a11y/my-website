@@ -19,9 +19,9 @@
     'import-export':'import-export-globe.png'
   };
 
-  function serviceHref(slug, routeMode) {
+  function serviceHref(slug, routeMode, staticPrefix) {
     return routeMode === 'static'
-      ? '/tr/' + slug + '.html'
+      ? (staticPrefix || '/tr/') + slug + '.html'
       : 'index.html?service=' + encodeURIComponent(slug);
   }
 
@@ -31,6 +31,7 @@
     const labels = config.labels || {};
     const vipLabels = config.vipLabels || {};
     const routeMode = config.routeMode === 'static' ? 'static' : 'query';
+    const staticPrefix = config.staticPrefix || '/tr/';
     const importExportLabel = config.importExportLabel || 'IMPORT / EXPORT';
     const serviceGrid = document.getElementById('serviceGrid');
     if (!serviceGrid) return;
@@ -47,7 +48,7 @@
         if (!item) return;
         const link = document.createElement('a');
         link.className = 'vip-service-link';
-        link.href = serviceHref(slug, routeMode);
+        link.href = serviceHref(slug, routeMode, staticPrefix);
         link.target = '_self';
         const label = vipLabels[slug] || item.name;
         link.innerHTML = '<img src="' + iconPath(slug) + '" alt="" loading="lazy"><span class="vip-label">' + label + '</span>';
@@ -60,7 +61,7 @@
       const card = document.createElement('a');
       card.className = 'service-card import-export-card';
       card.dataset.serviceSlug = importExportItem.slug;
-      card.href = serviceHref(importExportItem.slug, routeMode);
+      card.href = serviceHref(importExportItem.slug, routeMode, staticPrefix);
       card.target = '_self';
       card.innerHTML = '<span class="service-icon" aria-hidden="true"><img src="' + iconPath(importExportItem.slug) + '" alt="" loading="lazy"></span><h3>' + importExportLabel + '</h3>';
       serviceGrid.appendChild(card);
