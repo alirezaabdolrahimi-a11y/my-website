@@ -28,38 +28,6 @@ const serviceItems = [
 
 const serviceGrid = document.getElementById('serviceGrid');
 
-const serviceIcons = {
-  flask: '<path d="M9 3h6"/><path d="M10 3v7l-5.5 9.2A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.8L14 10V3"/><path d="M8 15h8"/>',
-  pill: '<path d="m10.5 20.5 10-10a5.7 5.7 0 0 0-8-8l-10 10a5.7 5.7 0 0 0 8 8Z"/><path d="m8.5 8.5 7 7"/>',
-  'file-check': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m8 15 3 3 5-6"/>',
-  'shield-check': '<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>',
-  factory: '<path d="M2 22V8l7 4V8l7 4V4h6v18Z"/><path d="M6 16h.01M10 16h.01M14 16h.01M18 16h.01"/>',
-  workflow: '<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="m12 12 3 3-3 3"/>',
-  handshake: '<path d="m11 17 2 2a2 2 0 0 0 3-3"/><path d="m14 14 4 4a2 2 0 0 0 3-3l-6-6"/><path d="m3 11 6-6 5 1 3 3"/><path d="m2 12 5 5a2 2 0 0 0 3-3l-2-2"/><path d="m8 12 4-4 4 1"/>',
-  gem: '<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M2 9h20M10 3 8 9l4 13 4-13-2-6"/>',
-  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>',
-  'chart-no-axes-combined': '<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-5 5"/>',
-  truck: '<path d="M10 17h4V5H2v12h3"/><path d="M14 9h5l3 4v4h-3"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/>',
-  'package-check': '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><path d="M12 13v9"/><path d="m9 16 2 2 4-4"/>',
-  tags: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
-  dumbbell: '<path d="M3 9v6"/><path d="M6 6v12"/><path d="M18 6v12"/><path d="M21 9v6"/><path d="M6 12h12"/><path d="M3 10H1v4h2"/><path d="M21 10h2v4h-2"/>',
-  baby: '<path d="M9 3h6"/><path d="M10 3v4l-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-2-2V3"/><path d="M8 12h8"/><path d="M10 15h4"/>',
-  stethoscope: '<path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4m10 0h2"/><path d="M10 12v2a6 6 0 0 0 12 0v-2"/><circle cx="22" cy="10" r="2"/>',
-  leaf: '<path d="M11 20A8 8 0 0 1 3 12C3 5 12 3 21 3c0 9-2 18-10 18Z"/><path d="M7 17 17 7"/>',
-  paw: '<path d="M12 14c-3.5 0-6 2.1-6 4.5S8 22 12 22s6-1.1 6-3.5S15.5 14 12 14Z"/><ellipse cx="5.5" cy="10" rx="2" ry="3"/><ellipse cx="10" cy="6.5" rx="2" ry="3"/><ellipse cx="16" cy="6.5" rx="2" ry="3"/><ellipse cx="20.5" cy="10" rx="2" ry="3"/>',
-  landmark: '<path d="M3 21h18M5 18h14M4 10h16M3 7l9-4 9 4M6 10v8m4-8v8m4-8v8m4-8v8"/>',
-  'map-pinned': '<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/><path d="M15 8a2 2 0 1 0 0.01 0Z"/><path d="M15 10v3"/>'
-};
-
-serviceGrid.innerHTML = '';
-
-const serviceDisplayOrder = [
-  'brand-registration','api-supply','sports-nutrition','infant-formula','cbd-products',
-  'business-development','pharmaceutical-products','nutraceuticals','pet-food','medical-devices',
-  'technology-transfer','private-label','contract-manufacturing','cosmoderma','regulatory-affairs',
-  'licensing-partnerships','supply-chain-solutions'
-];
-const vipServiceSlugs = ['chamber-of-commerce','exclusive-agency','market-entry'];
 const serviceDisplayLabels = {
   'brand-registration':'Brand Registration',
   'api-supply':'API',
@@ -79,56 +47,12 @@ const serviceDisplayLabels = {
   'licensing-partnerships':'Licensing Strategy',
   'supply-chain-solutions':'Supply Chain'
 };
-const serviceIconAssets = {
-  'brand-registration':'brand.png','api-supply':'api.png','sports-nutrition':'sports-nutrition.png',
-  'infant-formula':'infant-formula.png','cbd-products':'cbd.png','business-development':'business-development.png',
-  'pharmaceutical-products':'pharmaceutical-products.png','nutraceuticals':'nutraceuticals.png','pet-food':'pet-food.png',
-  'medical-devices':'medical-devices.png','technology-transfer':'technology-transfer.png','private-label':'private-label.png',
-  'contract-manufacturing':'contract-manufacturing.png','cosmoderma':'cosmoderma.png','regulatory-affairs':'regulatory-affairs.png',
-  'licensing-partnerships':'licensing-partnerships.png','supply-chain-solutions':'supply-chain-solutions.png',
-  'chamber-of-commerce':'chamber-of-commerce.png','exclusive-agency':'exclusive-agency.png','market-entry':'market-entry.png',
-  'import-export':'import-export-globe.png'
-};
-const iconPath = slug => `images/service-icons/${serviceIconAssets[slug] || 'brand.png'}`;
-const vipList = document.getElementById('vipServiceList');
-vipServiceSlugs.forEach(slug=>{
-  const item=serviceItems.find(x=>x.slug===slug);
-  if(!item)return;
-  const a=document.createElement('a');
-  a.className='vip-service-link';a.href=`index.html?service=${encodeURIComponent(item.slug)}`;a.target='_self';
-  const vipLabel = slug==='chamber-of-commerce' ? 'Private Chamber of Commerce' : slug==='exclusive-agency' ? 'Exclusive Agency' : slug==='market-entry' ? 'Market Entry' : item.name;
-  a.innerHTML=`<img src="${iconPath(slug)}" alt="" loading="lazy"><span class="vip-label">${vipLabel}</span>`;
-  vipList.appendChild(a);
-});
-
-/* Import / Export is presented as the full-width lead card; its original service URL is retained. */
-const importExportItem = serviceItems.find(item=>item.slug==='import-export');
-if(importExportItem){
-  const card=document.createElement('a');
-  card.className='service-card import-export-card';
-  card.dataset.serviceSlug=importExportItem.slug;
-  card.href=`index.html?service=${encodeURIComponent(importExportItem.slug)}`;
-  card.target='_self';
-  card.innerHTML=`
-    <span class="service-icon" aria-hidden="true"><img src="${iconPath(importExportItem.slug)}" alt="" loading="lazy"></span>
-    <h3>IMPORT / EXPORT</h3>
-  `;
-  serviceGrid.appendChild(card);
-}
-serviceDisplayOrder.forEach(slug=>{
-  const item=serviceItems.find(x=>x.slug===slug);
-  if(!item)return;
-  const {icon} = item;
-  const card=document.createElement('a');
-  card.className='service-card'+(slug==='cbd-products'?' cbd-service':'');
-  card.dataset.serviceSlug=slug;
-  card.href=`index.html?service=${encodeURIComponent(slug)}`;
-  card.target='_self';
-  card.innerHTML=`
-    <span class="service-icon" aria-hidden="true"><img src="${iconPath(slug)}" alt="" loading="lazy"></span>
-    <h3>${serviceDisplayLabels[slug] || item.name}</h3>
-  `;
-  serviceGrid.appendChild(card);
+window.renderNiazServiceGrid({
+  items: serviceItems,
+  labels: serviceDisplayLabels,
+  vipLabels: {"chamber-of-commerce":"Private Chamber of Commerce","exclusive-agency":"Exclusive Agency","market-entry":"Market Entry"},
+  routeMode: 'query',
+  importExportLabel: 'IMPORT / EXPORT'
 });
 
 const langButton=document.getElementById('langButton');
