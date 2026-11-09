@@ -50,6 +50,7 @@ const common={
 "Private Chamber of Commerce":"اتاق بازرگانی خصوصی",
 "International Business Development":"توسعه کسب‌وکار بین‌المللی"
 };
+Object.assign(common,{"IMPORT / EXPORT":"واردات / صادرات","Import / Export":"واردات / صادرات"});
 Object.assign(common,{
   "← BACK TO ALL SERVICES": "← بازگشت به همه خدمات",
   "CONTACT OUR TEAM →": "با تیم ما تماس بگیرید ←",
