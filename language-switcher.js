@@ -6,11 +6,24 @@
 
   var button = document.getElementById('langButton');
   if (!button) {
-    button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'lang';
-    button.id = 'langButton';
-    nav.appendChild(button);
+    var existingLanguageControl = nav.querySelector('.lang');
+    if (existingLanguageControl && existingLanguageControl.tagName.toLowerCase() === 'a') {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = existingLanguageControl.className;
+      button.id = 'langButton';
+      existingLanguageControl.replaceWith(button);
+    } else if (existingLanguageControl) {
+      button = existingLanguageControl;
+      button.id = 'langButton';
+      button.type = 'button';
+    } else {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'lang';
+      button.id = 'langButton';
+      nav.appendChild(button);
+    }
   }
   if (button.dataset.languageMenuReady === 'true') return;
   button.dataset.languageMenuReady = 'true';
