@@ -856,12 +856,7 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classLi
 
 document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('newsletterNotice').textContent='Thank you. Haberlerletter signup needs to be connected to an email service.';});
 
-const bilingualMap=[
-  ['Ana Sayfa','خانه'],['Hakkımızda','درباره ما'],['Hizmetler','خدمات'],['Industries','صنایع'],['İş Ortakları','شرکای تجاری'],['Projeler','پروژه‌ها'],['Haberler','اخبار'],['İletişim','تماس با ما'],['İLETİŞİME GEÇİN','ارتباط با ما'],
-  ['Dünya pazarlarını birbirine bağlıyoruz','اتصال بازارها در سراسر جهان'],['Küresel İş Geliştirme ','شریک توسعه کسب‌وکار جهانی شما '],
-  ['Partner',''],['İlaç, sağlık, beslenme ve ilgili sektörlerde üreticileri, markaları, teknolojileri ve pazarları buluşturuyoruz.','ایجاد ارتباط میان تولیدکنندگان، برندها، فناوری‌ها و بازارهای دارویی، سلامت و تغذیه.'],
-  ['İŞ ORTAĞIMIZ OLUN','همکاری با ما'],['Küresel İş Ortakları','شرکای جهانی'],['Business İletişim','اطلاعات تماس تجاری'],['What helps us respond faster?','چه اطلاعاتی به پاسخ سریع‌تر کمک می‌کند؟'],['Start a conversation','شروع گفتگو'],['İletişim Our Team','تماس با تیم ما'],['Full name *','نام و نام خانوادگی *'],['Company *','شرکت *'],['Job title / Position','عنوان شغلی / سمت'],['Phone / WhatsApp *','تلفن / واتساپ *'],['Business email *','ایمیل کاری *'],['Request type','نوع درخواست'],['Your request and relevant details *','درخواست و جزئیات مرتبط *'],['PREPARE INQUIRY EMAIL →','آماده‌سازی ایمیل درخواست →'],['Import / Export','واردات / صادرات'],['Distribution or exclusive agency','توزیع یا نمایندگی انحصاری'],['Pharmaceuticals / API / healthcare','دارو / ماده مؤثره / سلامت'],['Sports nutrition / supplements','تغذیه ورزشی / مکمل‌ها'],['Pet food / animal nutrition','غذای حیوانات / تغذیه دام'],['Brand development / registration','توسعه / ثبت برند'],['Technology transfer / contract manufacturing','انتقال فناوری / تولید قراردادی'],['Other business inquiry','سایر درخواست‌های تجاری'],['Ana Sayfa','خانه']
-];
+
 try{localStorage.setItem('niaznet-language','tr')}catch(e){}document.documentElement.lang='tr';document.body.dir='ltr';
 
 document.getElementById('year').textContent=new Date().getFullYear();
