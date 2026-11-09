@@ -24,12 +24,21 @@
   menu.setAttribute('role', 'menu');
   menu.setAttribute('aria-label', 'Dil seçimi');
 
+  function persistLanguage(code) {
+    try {
+      localStorage.setItem('niaznet-language', code);
+      document.cookie = 'niaznet-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+      document.cookie = 'niaznet-manual-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+    } catch (error) {}
+  }
+
   var english = document.createElement('button');
   english.type = 'button';
   english.className = 'tr-language-option';
   english.textContent = 'English';
   english.setAttribute('role', 'menuitem');
   english.addEventListener('click', function () {
+    persistLanguage('en');
     var target = new URL(window.location.href);
     target.pathname = target.pathname.startsWith('/tr/') ? target.pathname.slice(3) : (target.pathname === '/tr' ? '/' : target.pathname);
     target.searchParams.delete('lang');
@@ -43,6 +52,7 @@
   turkish.setAttribute('role', 'menuitem');
   turkish.setAttribute('aria-current', 'true');
   turkish.addEventListener('click', function () {
+    persistLanguage('tr');
     menu.hidden = true;
     button.setAttribute('aria-expanded', 'false');
   });
