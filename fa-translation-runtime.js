@@ -972,6 +972,7 @@ const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
 function translate(){
 document.documentElement.lang='fa';
+document.documentElement.dir='rtl';
 document.body.dataset.contentLang='fa';
 document.body.style.direction='ltr';
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
