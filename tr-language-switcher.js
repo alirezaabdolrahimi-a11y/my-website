@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+
   var nav = document.querySelector('.nav-links');
   if (!nav) return;
 
@@ -9,20 +10,21 @@
     button.type = 'button';
     button.className = 'lang';
     button.id = 'langButton';
-    button.textContent = 'TR⌄';
     nav.appendChild(button);
   }
 
-  var wrap = document.createElement('span');
-  wrap.className = 'tr-language-switcher';
-  button.parentNode.insertBefore(wrap, button);
-  wrap.appendChild(button);
-
-  var menu = document.createElement('div');
-  menu.className = 'tr-language-menu';
-  menu.hidden = true;
-  menu.setAttribute('role', 'menu');
-  menu.setAttribute('aria-label', 'Dil seçimi');
+  var path = window.location.pathname;
+  var match = path.match(/^\/(tr|es|fr)(\/|$)/);
+  var basePath = match ? path.replace(/^\/(tr|es|fr)(?=\/|$)/, '') || '/' : path;
+  var params = new URLSearchParams(window.location.search);
+  var active = (match && match[1]) || (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2));
+  var labels = [
+    ['en', 'English'],
+    ['fa', 'فارسی'],
+    ['tr', 'Türkçe'],
+    ['es', 'Español'],
+    ['fr', 'Français']
+  ];
 
   function persistLanguage(code) {
     try {
@@ -32,54 +34,51 @@
     } catch (error) {}
   }
 
-  var english = document.createElement('button');
-  english.type = 'button';
-  english.className = 'tr-language-option';
-  english.textContent = 'English';
-  english.setAttribute('role', 'menuitem');
-  english.addEventListener('click', function () {
-    persistLanguage('en');
-    var target = new URL(window.location.href);
-    target.pathname = target.pathname.startsWith('/tr/') ? target.pathname.slice(3) : (target.pathname === '/tr' ? '/' : target.pathname);
-    target.searchParams.delete('lang');
-    window.location.assign(target.pathname + target.search + target.hash);
+  var wrap = document.createElement('span');
+  wrap.className = 'niaz-language-switcher';
+  button.parentNode.insertBefore(wrap, button);
+  wrap.appendChild(button);
+
+  var menu = document.createElement('div');
+  menu.className = 'niaz-language-menu';
+  menu.hidden = true;
+  menu.setAttribute('role', 'menu');
+  menu.setAttribute('aria-label', 'Choose website language');
+
+  labels.forEach(function (entry) {
+    var code = entry[0];
+    var item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'niaz-language-option';
+    item.textContent = entry[1];
+    item.setAttribute('role', 'menuitem');
+    item.setAttribute('aria-current', code === active ? 'true' : 'false');
+    item.addEventListener('click', function () {
+      persistLanguage(code);
+      var target;
+      if (code === 'fa') target = basePath + '?lang=fa';
+      else if (code === 'en') target = basePath;
+      else if (code === 'tr') target = '/tr' + (basePath === '/' ? '/' : basePath);
+      else target = '/' + code + '/';
+      window.location.assign(target);
+    });
+    menu.appendChild(item);
   });
 
-  var persian = document.createElement('button');
-  persian.type = 'button';
-  persian.className = 'tr-language-option';
-  persian.textContent = 'فارسی';
-  persian.setAttribute('role', 'menuitem');
-  persian.addEventListener('click', function () {
-    persistLanguage('fa');
-    var target = new URL(window.location.href);
-    target.pathname = target.pathname.startsWith('/tr/') ? target.pathname.slice(3) : (target.pathname === '/tr' ? '/' : target.pathname);
-    target.searchParams.set('lang', 'fa');
-    window.location.assign(target.pathname + target.search + target.hash);
-  });
-
-  var turkish = document.createElement('button');
-  turkish.type = 'button';
-  turkish.className = 'tr-language-option';
-  turkish.textContent = 'Türkçe';
-  turkish.setAttribute('role', 'menuitem');
-  turkish.setAttribute('aria-current', 'true');
-  turkish.addEventListener('click', function () {
-    persistLanguage('tr');
-    menu.hidden = true;
-    button.setAttribute('aria-expanded', 'false');
-  });
-
-  menu.append(english, persian, turkish);
   wrap.appendChild(menu);
 
   var style = document.createElement('style');
-  style.textContent = '.tr-language-switcher{position:relative;display:inline-flex;align-items:center}.tr-language-menu{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:130px;padding:6px;background:#fff;border:1px solid #e6eaf0;border-radius:7px;box-shadow:0 10px 25px rgba(5,24,51,.18)}.tr-language-menu[hidden]{display:none}.tr-language-option{display:block;width:100%;padding:9px 11px;border:0;border-radius:5px;background:#fff;color:#10203c;text-align:left;font:500 12px/1.3 Inter,Arial,sans-serif;cursor:pointer}.tr-language-option:hover,.tr-language-option:focus{background:#f3f6fa;outline:none}.tr-language-option[aria-current=true]{color:#9b7028;font-weight:700}';
+  style.textContent = '.niaz-language-switcher{position:relative;display:inline-flex;align-items:center}.niaz-language-menu{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:150px;padding:7px;background:#fff;border:1px solid #e6eaf0;border-radius:8px;box-shadow:0 10px 30px rgba(5,24,51,.18)}.niaz-language-menu[hidden]{display:none}.niaz-language-option{display:block;width:100%;padding:10px 12px;border:0;border-radius:5px;background:#fff;color:#10203c;text-align:left;font:500 12px/1.3 Inter,Arial,sans-serif;cursor:pointer}.niaz-language-option:hover,.niaz-language-option:focus{background:#f3f6fa;outline:none}.niaz-language-option[aria-current=true]{color:#9b7028;font-weight:700}.niaz-language-switcher>.lang{white-space:nowrap}';
   document.head.appendChild(style);
 
   button.setAttribute('aria-haspopup', 'menu');
   button.setAttribute('aria-expanded', 'false');
-  button.textContent = 'TR⌄';
+  button.textContent = active.toUpperCase() + '⌄';
+
+  function closeMenu() {
+    menu.hidden = true;
+    button.setAttribute('aria-expanded', 'false');
+  }
 
   button.addEventListener('click', function (event) {
     event.preventDefault();
@@ -89,15 +88,12 @@
   }, true);
 
   document.addEventListener('click', function (event) {
-    if (!wrap.contains(event.target)) {
-      menu.hidden = true;
-      button.setAttribute('aria-expanded', 'false');
-    }
+    if (!wrap.contains(event.target)) closeMenu();
   });
+
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
-      menu.hidden = true;
-      button.setAttribute('aria-expanded', 'false');
+      closeMenu();
       button.focus();
     }
   });
