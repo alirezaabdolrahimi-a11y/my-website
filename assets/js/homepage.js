@@ -31,7 +31,7 @@ const serviceGrid = document.getElementById('serviceGrid');
 const serviceDisplayLabels = {
   'brand-registration':'Brand Registration',
   'api-supply':'API',
-  'sports-nutrition':'Sport Nutrition',
+  'sports-nutrition':'Sports Nutrition',
   'infant-formula':'Infant Formula & Nutrition',
   'cbd-products':'CBD',
   'business-development':'BD + R&D',
