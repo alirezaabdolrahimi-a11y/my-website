@@ -74,11 +74,18 @@
       var target = new URL(window.location.href);
       target.pathname = basePath;
       if (code === 'fa') {
-        target.searchParams.set('lang', 'fa');
+        if (basePath === '/about.html') {
+          target.pathname = '/fa/about.html';
+          target.searchParams.delete('lang');
+        } else {
+          target.pathname = basePath;
+          target.searchParams.set('lang', 'fa');
+        }
       } else {
         target.searchParams.delete('lang');
         if (code === 'tr') target.pathname = '/tr' + (basePath === '/' ? '/' : basePath);
         else if (code === 'es' || code === 'fr') target.pathname = '/' + code + '/';
+        else target.pathname = basePath;
       }
       window.location.assign(target.pathname + target.search + target.hash);
     });
