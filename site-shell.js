@@ -18,6 +18,19 @@
     document.head.appendChild(newsletterScript);
   }
 
+  var pathname = window.location.pathname || '/';
+  var isHomePage = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname);
+  if (!isHomePage) {
+    var localeMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
+    var homeHref = localeMatch
+      ? '/' + localeMatch[1].toLowerCase() + '/index.html#home'
+      : '/index.html#home';
+
+    document.querySelectorAll('a[href="#home"]').forEach(function (link) {
+      link.setAttribute('href', homeHref);
+    });
+  }
+
   var toggle = document.getElementById('mobileToggle');
   var nav = document.getElementById('navLinks');
   if (toggle && nav) {
