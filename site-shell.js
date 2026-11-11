@@ -54,11 +54,27 @@
     existingContactPanel.id = 'niaz-contact-team';
     existingContactPanel.classList.add('niaz-contact-strip');
   } else if (!document.getElementById('niaz-contact-team')) {
-    var footerForContact = document.querySelector('footer');
-    if (footerForContact) footerForContact.insertAdjacentHTML('beforebegin', contactMarkup);
-    else {
-      var mainForContact = document.querySelector('main');
-      if (mainForContact) mainForContact.insertAdjacentHTML('beforeend', contactMarkup);
+    var ctaPattern = /become our partner|contact our team|contact niaz net|contact details|get in touch|contact us|start a partnership discussion|iş ortağımız olun|iletişime geçin|iletişim bilgileri|ارتباط با ما|تماس با نیاز نت|همکاری با ما/i;
+    var ctaGroups = new Set();
+    document.querySelectorAll('main a').forEach(function (link) {
+      if (link.closest('header, footer, .niaz-contact-strip')) return;
+      if (!ctaPattern.test((link.textContent || '').replace(/\\s+/g, ' ').trim())) return;
+      var group = link.closest('.hero-actions, .page-actions, .sports-nutrition-actions, .service-page-actions, .brand-registration-actions, .projects-cta, .service-aside') || link.parentElement;
+      if (group && !group.closest('header, footer, .niaz-contact-strip')) ctaGroups.add(group);
+    });
+    if (ctaGroups.size) {
+      var groupIndex = 0;
+      ctaGroups.forEach(function (group) {
+        var markup = contactMarkup.replace('id="niaz-contact-team"', 'id="niaz-contact-team-' + (++groupIndex) + '"').replace('aria-labelledby="niaz-contact-heading"', 'aria-labelledby="niaz-contact-heading-' + groupIndex + '"').replace('id="niaz-contact-heading"', 'id="niaz-contact-heading-' + groupIndex + '"');
+        group.insertAdjacentHTML('afterend', markup);
+      });
+    } else {
+      var footerForContact = document.querySelector('footer');
+      if (footerForContact) footerForContact.insertAdjacentHTML('beforebegin', contactMarkup);
+      else {
+        var mainForContact = document.querySelector('main');
+        if (mainForContact) mainForContact.insertAdjacentHTML('beforeend', contactMarkup);
+      }
     }
   }
 
