@@ -29,8 +29,8 @@
   button.dataset.languageMenuReady = 'true';
 
   var path = window.location.pathname;
-  var localeMatch = path.match(/^\/(tr|es|fr)(\/|$)/);
-  var basePath = localeMatch ? path.replace(/^\/(tr|es|fr)(?=\/|$)/, '') || '/' : path;
+  var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/);
+  var basePath = localeMatch ? path.replace(/^\/(tr|es|fr|fa)(?=\/|$)/, '') || '/' : path;
   var params = new URLSearchParams(window.location.search);
   var active = (localeMatch && localeMatch[1]) ||
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2));
@@ -74,11 +74,18 @@
       var target = new URL(window.location.href);
       target.pathname = basePath;
       if (code === 'fa') {
-        target.searchParams.set('lang', 'fa');
+        if (basePath === '/about.html') {
+          target.pathname = '/fa/about.html';
+          target.searchParams.delete('lang');
+        } else {
+          target.pathname = basePath;
+          target.searchParams.set('lang', 'fa');
+        }
       } else {
         target.searchParams.delete('lang');
         if (code === 'tr') target.pathname = '/tr' + (basePath === '/' ? '/' : basePath);
         else if (code === 'es' || code === 'fr') target.pathname = '/' + code + '/';
+        else target.pathname = basePath;
       }
       window.location.assign(target.pathname + target.search + target.hash);
     });
