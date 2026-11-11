@@ -66,7 +66,8 @@
       var groupIndex = 0;
       ctaGroups.forEach(function (group) {
         var markup = contactMarkup.replace('id="niaz-contact-team"', 'id="niaz-contact-team-' + (++groupIndex) + '"').replace('aria-labelledby="niaz-contact-heading"', 'aria-labelledby="niaz-contact-heading-' + groupIndex + '"').replace('id="niaz-contact-heading"', 'id="niaz-contact-heading-' + groupIndex + '"');
-        var insertionTarget = group.closest('.hero, .page-hero, .about-cta, .service-detail-grid, .page-panel') || group;\n        insertionTarget.insertAdjacentHTML('afterend', markup);
+        var insertionTarget = group.closest('.hero, .page-hero, .about-cta, .service-detail-grid, .page-panel') || group;
+        insertionTarget.insertAdjacentHTML('afterend', markup);
       });
     } else {
       var footerForContact = document.querySelector('footer');
