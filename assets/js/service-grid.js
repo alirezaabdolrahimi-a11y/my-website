@@ -3,8 +3,7 @@
 
   const SERVICE_DISPLAY_ORDER = [
     'brand-registration','api-supply','sports-nutrition','infant-formula','cbd-products',
-    'business-development','pharmaceutical-products','product-registration','international-business-development',
-    'nutraceuticals','pet-food','medical-devices',
+    'business-development','pharmaceutical-products','nutraceuticals','pet-food','medical-devices',
     'technology-transfer','private-label','contract-manufacturing','cosmoderma','regulatory-affairs',
     'licensing-partnerships','supply-chain-solutions'
   ];
