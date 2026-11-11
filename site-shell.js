@@ -19,9 +19,9 @@
   }
 
   var pathname = window.location.pathname || '/';
-  var isHomePage = pathname === '/' || /(?:^|\\/)index\\.html$/.test(pathname);
+  var isHomePage = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname);
   if (!isHomePage) {
-    var localeMatch = pathname.match(/^\\/(tr|es|fr|fa)(?:\\/|$)/i);
+    var localeMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
     var homeHref = localeMatch
       ? '/' + localeMatch[1].toLowerCase() + '/index.html#home'
       : '/index.html#home';
