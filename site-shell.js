@@ -58,7 +58,7 @@
     var ctaGroups = new Set();
     document.querySelectorAll('main a').forEach(function (link) {
       if (link.closest('header, footer, .niaz-contact-strip')) return;
-      if (!ctaPattern.test((link.textContent || '').replace(/\\s+/g, ' ').trim())) return;
+      if (!ctaPattern.test((link.textContent || '').replace(/\s+/g, ' ').trim())) return;
       var group = link.closest('.hero-actions, .page-actions, .sports-nutrition-actions, .service-page-actions, .brand-registration-actions, .projects-cta, .service-aside') || link.parentElement;
       if (group && !group.closest('header, footer, .niaz-contact-strip')) ctaGroups.add(group);
     });
