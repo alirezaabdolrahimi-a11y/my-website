@@ -38,7 +38,7 @@ const common={
 "NIAZ NET · MARCHÉS AFRICAINS":"نیازنت · بازارهای آفریقا",
 "Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
 "Pharmaceutical Products":"محصولات دارویی",
-"Contract Manufacturing":"تولید قراردادی",
+"Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Product Registration":"ثبت محصول",
 "Regulatory Affairs":"امور مقرراتی",
 "Market Entry Strategy & Solutions":"استراتژی و راهکارهای ورود به بازار",
@@ -333,7 +333,7 @@ Object.assign(pages,{
 "Target territory, desired rights, exclusivity and project stage.":"قلمرو هدف، حقوق موردنظر، انحصاری بودن همکاری و مرحله اجرای پروژه.",
 "Parties involved, proposed responsibilities and any existing term sheet or technical brief.":"طرف‌های درگیر، مسئولیت‌های پیشنهادی و هرگونه پیش‌نویس شرایط همکاری یا شرح فنی موجود.",
 "Technology Transfer":"انتقال فناوری",
-"Contract Manufacturing":"تولید قراردادی",
+"Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Exclusive Agency & Brand Representation":"نمایندگی انحصاری و نمایندگی برند"
 },
 "medical-devices.html":{
@@ -388,7 +388,7 @@ Object.assign(pages,{
 "Product category, concept, target user and desired formulation/specification.":"گروه محصول، ایده اولیه، مصرف‌کننده هدف و فرمولاسیون یا مشخصات موردنظر.",
 "Packaging, branding, estimated volume, target price and launch timing.":"بسته‌بندی، برندینگ، حجم تقریبی، قیمت هدف و زمان عرضه.",
 "Quality standards, required documents, destination market and any claims to review.":"استانداردهای کیفیت، مدارک موردنیاز، بازار مقصد و هرگونه ادعایی که باید بررسی شود.",
-"Contract Manufacturing":"تولید قراردادی",
+"Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Sports Nutrition":"تغذیه ورزشی",
 "Nutraceuticals & Wellness Products":"محصولات نوتراسوتیک و سلامت‌محور"
 },
@@ -462,7 +462,7 @@ Object.assign(pages,{
 "China and India":"چین و هند",
 "Manufacturer and supplier enquiries involving China or India should be assessed on specification, manufacturing capability, available quality documents, order conditions and destination-market requirements. Supplier qualification and technical acceptance remain the buyer’s responsibility.":"درخواست‌های مرتبط با تولیدکنندگان و تأمین‌کنندگان چین یا هند باید بر اساس مشخصات محصول، توان تولید، مدارک کیفی موجود، شرایط سفارش و الزامات بازار مقصد ارزیابی شوند. تأیید صلاحیت تأمین‌کننده و پذیرش فنی بر عهده خریدار است.",
 "API Sourcing":"تأمین مواد مؤثره دارویی",
-"Contract Manufacturing":"تولید قراردادی",
+"Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Private Label":"برند اختصاصی",
 "Products and service categories":"گروه محصولات و خدمات",
 "NIAZ NET coordinates commercial enquiries for pharmaceutical finished products, active pharmaceutical ingredients, medical devices, brand registration, exclusive agency, technology transfer, contract manufacturing and supply-chain follow-up.":"نیازنت درخواست‌های تجاری مربوط به محصولات نهایی دارویی، مواد مؤثره دارویی، تجهیزات پزشکی، ثبت برند، نمایندگی انحصاری، انتقال فناوری، تولید قراردادی و پیگیری زنجیره تأمین را هماهنگ می‌کند.",
