@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   if (body.fields.website && String(body.fields.website).trim()) return res.status(200).json({ ok: true });
   delete body.fields.website;
   const emailValue = Array.isArray(body.fields.email) ? body.fields.email[0] : body.fields.email;
-  if (!emailValue || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(emailValue))) return res.status(400).json({ error: 'A valid business email is required' });
+  if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(emailValue))) return res.status(400).json({ error: 'A valid business email is required' });
   const fields = Object.entries(body.fields).map(([name, value]) => {
     const safeName = String(name).replace(/[<>]/g, '').slice(0, 100);
     const safeValue = (Array.isArray(value) ? value : [value]).map(v => String(v).slice(0, 4000)).join(', ');
