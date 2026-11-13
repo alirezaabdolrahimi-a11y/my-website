@@ -323,7 +323,7 @@ const search=document.getElementById('apiSearchInput'),filter=document.getElemen
       main.innerHTML = `
       <section class="hero" id="home" style="min-height:300px;padding-top:120px">
         <div class="container hero-inner" style="grid-template-columns:1fr">
-          <div class="hero-copy"><div class="eyebrow">NIAZ NET · OUR SERVICES</div><h1>${selectedService.name}</h1><p>${selectedService.paragraphs[0]}</p><div class="hero-actions"><a class="btn" href="${homePath}#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">${contactTeamLabel}</a></div></div>
+          <div class="hero-copy"><div class="eyebrow">NIAZ NET · OUR SERVICES</div><h1 class="${requestedService === 'contract-manufacturing' ? 'fcm-cmo-title' : ''}">${requestedService === 'contract-manufacturing' ? '<span>FCM: Foreign Contract Manufacturing</span><span>CMO: Contract Manufacturing Order</span><span>Product Coordination</span>' : selectedService.name}</h1><p>${selectedService.paragraphs[0]}</p><div class="hero-actions"><a class="btn" href="${homePath}#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=${encodeURIComponent('Inquiry: ' + selectedService.name)}">${contactTeamLabel}</a></div></div>
           ${slideshowMarkup}
         </div>
       </section>
