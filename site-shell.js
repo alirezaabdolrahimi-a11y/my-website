@@ -49,7 +49,15 @@
   // Remove every legacy form (including duplicate newsletter and separate contact/partner forms).
   document.querySelectorAll('form').forEach(function (form) { form.remove(); });
   document.querySelectorAll('.footer-col.newsletter').forEach(function (column) {
-    column.innerHTML = '<h3>Contact NIAZ NET</h3><p>For business enquiries and cooperation opportunities, contact our team.</p><a class="footer-contact-link" href="' + contactTarget + '">CONTACT OUR TEAM →</a>';
+    var footerCopy = {
+      en: ['Contact NIAZ NET','For business enquiries and cooperation opportunities, contact our team.','CONTACT OUR TEAM →'],
+      tr: ['NIAZ NET ile iletişim','Ticari talepler ve iş birliği fırsatları için ekibimizle iletişime geçin.','EKİBİMİZLE İLETİŞİME GEÇİN →'],
+      fa: ['ارتباط با نیاز نت','برای درخواست‌های تجاری و فرصت‌های همکاری با تیم ما در ارتباط باشید.','ارتباط با تیم ما ←'],
+      es: ['Contacte con NIAZ NET','Para consultas comerciales y oportunidades de colaboración, contacte con nuestro equipo.','CONTACTE CON NUESTRO EQUIPO →'],
+      fr: ['Contacter NIAZ NET','Pour toute demande commerciale ou opportunité de partenariat, contactez notre équipe.','CONTACTER NOTRE ÉQUIPE →']
+    };
+    var ft = footerCopy[locale] || footerCopy.en;
+    column.innerHTML = '<h3>' + ft[0] + '</h3><p>' + ft[1] + '</p><a class="footer-contact-link" href="' + contactTarget + '">' + ft[2] + '</a>';
   });
 
   // Create the only form on the localized homepage.
