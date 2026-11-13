@@ -139,7 +139,9 @@ const pages={
 'contract-manufacturing.html':{
 'Contract Manufacturing & Production Coordination':'تولید قراردادی و هماهنگی تولید',
 'Explore contract manufacturing opportunities, manufacturer capability discussions, product specifications, preliminary production terms and quality requirements.':'فرصت‌های تولید قراردادی، گفت‌وگو درباره توانمندی تولیدکنندگان، مشخصات محصول، شرایط اولیه تولید و الزامات کیفیت را بررسی کنید.',
-'Contract Manufacturing (CMO): commercial coordination':'تولید قراردادی (CMO): هماهنگی تجاری',
+'Contract Manufacturing (CMO): commercial coordination':'تولید قراردادی (FCM & CMO): هماهنگی تجاری',
+'Contract Manufacturing (FCM & CMO) & Production Coordination':'تولید قراردادی (FCM & CMO) و هماهنگی تولید',
+'Contract Manufacturing (FCM & CMO): commercial coordination':'تولید قراردادی (FCM & CMO): هماهنگی تجاری',
 'We facilitate discussions between companies seeking contract manufacturing and manufacturers with potentially suitable capabilities.':'گفت‌وگو میان شرکت‌های متقاضی تولید قراردادی و تولیدکنندگان دارای توانمندی‌های بالقوه متناسب را تسهیل می‌کنیم.',
 'Coordination may include product and capacity requirements, manufacturing scope, quality documentation requests, timelines, packaging needs, and preliminary commercial terms.':'هماهنگی می‌تواند شامل الزامات محصول و ظرفیت، دامنه تولید، درخواست اسناد کیفیت، زمان‌بندی، نیازهای بسته‌بندی و شرایط اولیه تجاری باشد.',
 'Manufacturing suitability, quality agreements, audits, technical transfer, validation, and applicable GMP or other standards must be evaluated by the responsible technical and quality teams.':'تناسب تولیدکننده، توافق‌نامه‌های کیفیت، ممیزی‌ها، انتقال فنی، اعتبارسنجی و انطباق با GMP یا سایر استانداردها باید توسط تیم‌های فنی و کیفیت مسئول ارزیابی شوند.',
