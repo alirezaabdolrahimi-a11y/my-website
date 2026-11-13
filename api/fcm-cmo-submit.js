@@ -8,6 +8,8 @@ export default async function handler(req, res) {
   if (!allowed.includes(body.formType) || !['en', 'fa', 'tr'].includes(body.language) || !body.fields || typeof body.fields !== 'object') {
     return res.status(400).json({ error: 'Invalid form payload' });
   }
+  if (body.fields.website && String(body.fields.website).trim()) return res.status(200).json({ ok: true });
+  delete body.fields.website;
   const fields = Object.entries(body.fields).map(([name, value]) => {
     const safeName = String(name).replace(/[<>]/g, '').slice(0, 100);
     const safeValue = (Array.isArray(value) ? value : [value]).map(v => String(v).slice(0, 4000)).join(', ');
