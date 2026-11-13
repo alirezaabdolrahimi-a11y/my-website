@@ -1,0 +1,18 @@
+.fcm-downloads{margin:34px 0 18px;padding:28px;border:1px solid #e6eaf0;border-radius:14px;background:linear-gradient(180deg,#fff,#f8fafc);box-shadow:0 10px 28px rgba(5,24,51,.06)}
+.fcm-downloads-head{max-width:760px;margin:0 auto 22px;text-align:center}
+.fcm-downloads-kicker{display:inline-block;color:#b9872e;font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+.fcm-downloads h2{margin:7px 0 8px;color:#071b38;font-size:clamp(21px,2.5vw,28px);line-height:1.25}
+.fcm-downloads-head p{margin:0;color:#627087;font-size:13px;line-height:1.7}
+.fcm-download-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.fcm-download-card{display:flex;min-height:220px;flex-direction:column;align-items:flex-start;padding:20px;border:1px solid #e3e8ef;border-radius:12px;background:#fff;box-shadow:0 5px 16px rgba(5,24,51,.045);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.fcm-download-card:hover{transform:translateY(-3px);border-color:#c99a43;box-shadow:0 12px 24px rgba(5,24,51,.09)}
+.fcm-download-icon{display:grid;width:48px;height:48px;place-items:center;margin-bottom:14px;border:1px solid #ead9b8;border-radius:13px;background:linear-gradient(145deg,#fffaf0,#f4e7ce);color:#9a6b1d}
+.fcm-download-icon svg{width:27px;height:27px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fcm-download-card h3{margin:0 0 7px;color:#0b2344;font-size:16px;line-height:1.35}
+.fcm-download-card p{margin:0 0 18px;color:#66758a;font-size:12px;line-height:1.65}
+.fcm-download-link{display:inline-flex;align-items:center;gap:9px;margin-top:auto;padding:10px 14px;border-radius:6px;background:linear-gradient(135deg,#c99a43,#b9872e);color:#fff;font-size:11px;font-weight:800;letter-spacing:.2px}
+.fcm-download-link:hover{filter:brightness(1.07)}
+.fcm-download-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){.fcm-downloads{padding:20px 15px}.fcm-download-grid{grid-template-columns:1fr}.fcm-download-card{min-height:0}.fcm-downloads-head{text-align:start}}
+[dir="rtl"] .fcm-downloads-head{text-align:center}
+[dir="rtl"] .fcm-download-card{align-items:flex-start}
