@@ -37,18 +37,75 @@
     });
   });
 
+  // One shared contact destination and one single enquiry form across the site.
   var currentLocale = (document.documentElement.lang || 'en').toLowerCase();
-  var isTurkish = currentLocale.startsWith('tr');
-  var partnerHref = isTurkish ? '/tr/become-our-partner.html' : '/become-our-partner.html';
-  var contactHref = isTurkish ? '/tr/contact.html' : '/contact.html';
-  document.querySelectorAll('a').forEach(function (link) {
-    var label = (link.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-    if (/^(become our partner|iş ortağımız olun|iş ortağımız ol|partner with us|partner with niaz net)$/.test(label)) {
-      link.setAttribute('href', partnerHref);
-    } else if (/^(get in touch|contact us|contact our team|contact details|contact|ekibimizle iletişime geçin|iletişim bilgileri|iletişim)$/.test(label)) {
-      link.setAttribute('href', contactHref);
-    }
+  var localeMatch = (window.location.pathname || '/').match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
+  var locale = localeMatch ? localeMatch[1].toLowerCase() : (currentLocale.slice(0,2) || 'en');
+  var queryLang = new URLSearchParams(window.location.search).get('lang');
+  if (queryLang === 'fa') locale = 'fa';
+  var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
+  var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#contact';
+
+  // Remove every legacy form (including duplicate newsletter and separate contact/partner forms).
+  document.querySelectorAll('form').forEach(function (form) { form.remove(); });
+  document.querySelectorAll('.footer-col.newsletter').forEach(function (column) {
+    column.innerHTML = '<h3>Contact NIAZ NET</h3><p>For business enquiries and cooperation opportunities, contact our team.</p><a class="footer-contact-link" href="' + contactTarget + '">CONTACT OUR TEAM →</a>';
   });
+
+  // Create the only form on the localized homepage.
+  var contactSection = document.getElementById('contact');
+  if (contactSection && !document.getElementById('niazContactHubForm')) {
+    var copy = {
+      en: ['Contact our team','Full name *','Company','Job title / Position','Phone / WhatsApp','Business email *','Request type','General business enquiry','Partnership / distribution','Product sourcing / API','FCM / CMO / contract manufacturing','Regulatory / registration','Other','Your request and relevant details *','SEND ENQUIRY BY EMAIL →','Your email application will open with the details addressed to info@niaznet.net. Review and press Send.'],
+      tr: ['Ekibimizle iletişime geçin','Ad Soyad *','Şirket','Görev / Pozisyon','Telefon / WhatsApp','İş e-postası *','Talep türü','Genel ticari talep','İş ortaklığı / distribütörlük','Ürün tedariki / API','FCM / CMO / fason üretim','Mevzuat / ruhsatlandırma','Diğer','Talebiniz ve ilgili ayrıntılar *','E-POSTA İLE TALEP GÖNDER →','E-posta uygulamanız info@niaznet.net adresine hazırlanmış bir taslak açacaktır. Kontrol edip Gönder’e basın.'],
+      fa: ['ارتباط با تیم ما','نام و نام خانوادگی *','شرکت','عنوان شغلی / سمت','تلفن / واتساپ','ایمیل کاری *','نوع درخواست','درخواست عمومی تجاری','همکاری / نمایندگی / توزیع','تأمین محصول / API','تولید قراردادی FCM / CMO','رگولاتوری / ثبت محصول','سایر','شرح درخواست و جزئیات *','ارسال درخواست از طریق ایمیل ←','ایمیل پیش‌نویس‌شده به info@niaznet.net باز می‌شود؛ اطلاعات را بررسی و ارسال کنید.'],
+      es: ['Contacte con nuestro equipo','Nombre completo *','Empresa','Cargo / Puesto','Teléfono / WhatsApp','Correo empresarial *','Tipo de solicitud','Consulta comercial general','Alianza / distribución','Abastecimiento de productos / API','FCM / CMO / fabricación por contrato','Regulación / registro','Otro','Su solicitud y detalles relevantes *','ENVIAR CONSULTA POR CORREO →','Se abrirá un borrador dirigido a info@niaznet.net. Revíselo y pulse Enviar.'],
+      fr: ['Contactez notre équipe','Nom complet *','Entreprise','Fonction / Poste','Téléphone / WhatsApp','E-mail professionnel *','Type de demande','Demande commerciale générale','Partenariat / distribution','Approvisionnement / API','FCM / CMO / fabrication sous contrat','Réglementation / enregistrement','Autre','Votre demande et les détails utiles *','ENVOYER PAR E-MAIL →','Un brouillon adressé à info@niaznet.net sera ouvert. Vérifiez-le puis envoyez-le.']
+    };
+    var t = copy[locale] || copy.en;
+    var section = document.createElement('section');
+    section.className = 'container section niaz-contact-hub';
+    section.id = 'niaz-contact-hub';
+    section.innerHTML = '<div class="page-panel"><h2>' + t[0] + '</h2><form id="niazContactHubForm" class="niaz-inquiry-form"><div class="niaz-form-grid">' +
+      '<label class="niaz-form-field">' + t[1] + '<input name="Full name" autocomplete="name" required></label>' +
+      '<label class="niaz-form-field">' + t[2] + '<input name="Company" autocomplete="organization"></label>' +
+      '<label class="niaz-form-field">' + t[3] + '<input name="Job title / Position"></label>' +
+      '<label class="niaz-form-field">' + t[4] + '<input name="Phone / WhatsApp" autocomplete="tel"></label>' +
+      '<label class="niaz-form-field">' + t[5] + '<input name="Business email" type="email" autocomplete="email" required></label>' +
+      '<label class="niaz-form-field">' + t[6] + '<select name="Request type"><option>' + t[7] + '</option><option>' + t[8] + '</option><option>' + t[9] + '</option><option>' + t[10] + '</option><option>' + t[11] + '</option><option>' + t[12] + '</option></select></label>' +
+      '<label class="niaz-form-field wide">' + t[13] + '<textarea name="Request details" required></textarea></label></div><div class="niaz-form-actions"><button class="btn" type="submit">' + t[14] + '</button></div><p class="niaz-form-note">' + t[15] + '</p></form></div>';
+    contactSection.insertAdjacentElement('afterend', section);
+    var centralForm = section.querySelector('#niazContactHubForm');
+    centralForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!centralForm.reportValidity()) return;
+      var body = [];
+      new FormData(centralForm).forEach(function (value, key) { body.push(key + ': ' + String(value)); });
+      var subject = 'NIAZ NET ' + (locale === 'fa' ? 'Business Enquiry' : locale === 'tr' ? 'Ticari Talep' : locale === 'es' ? 'Consulta comercial' : locale === 'fr' ? 'Demande commerciale' : 'Business Enquiry');
+      window.location.href = 'mailto:info@niaznet.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.join('\n'));
+    });
+  }
+
+  function routeContactLinks(root) {
+    (root || document).querySelectorAll('a').forEach(function (link) {
+      var label = (link.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      var href = (link.getAttribute('href') || '').toLowerCase();
+      var isContactAction = /^(become our partner|iş ortağımız olun|iş ortağımız ol|partner with us|partner with niaz net|start a partnership discussion|contact us|contact our team|contact details|contact|let’s discuss your brand|let's discuss your brand|discuss this service|discuss your requirements|discuss your infant-nutrition project|email our team|email your partnership enquiry|send enquiry by email|ekibimizle iletişime geçin|iletişim bilgileri|iletişim|iş ortağımız olun|ortaklık görüşmesi başlatın|ekibimize e-posta gönderin)$/.test(label);
+      var isContactDestination = /(?:contact\.html|become-our-partner\.html|mailto:.*(?:business|contact|partner|inquiry|enquiry|talep|iletişim))/i.test(href);
+      if (isContactAction || isContactDestination || link.classList.contains('whatsapp-float')) {
+        link.setAttribute('href', contactTarget);
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    });
+  }
+  routeContactLinks(document);
+  if (window.MutationObserver) {
+    var contactObserver = new MutationObserver(function (records) {
+      records.forEach(function (record) { record.addedNodes.forEach(function (node) { if (node.nodeType === 1) routeContactLinks(node); }); });
+    });
+    contactObserver.observe(document.body, { childList: true, subtree: true });
+  }
 
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
@@ -58,13 +115,6 @@
     languageScript.src = '/language-switcher.js';
     languageScript.async = true;
     document.head.appendChild(languageScript);
-  }
-
-  if (document.getElementById('newsletterForm') && !document.querySelector('script[src="/newsletter.js"]')) {
-    var newsletterScript = document.createElement('script');
-    newsletterScript.src = '/newsletter.js';
-    newsletterScript.async = true;
-    document.head.appendChild(newsletterScript);
   }
 
   var pathname = window.location.pathname || '/';
