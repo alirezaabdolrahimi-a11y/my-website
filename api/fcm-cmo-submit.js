@@ -2,14 +2,17 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   const key = process.env.RESEND_API_KEY;
-  if (!key) return res.status(503).json({ error: 'Email service is not configured' });
+  const from = process.env.FCM_EMAIL_FROM;
+  if (!key || !from) return res.status(503).json({ error: 'Email service is not configured' });
   const body = req.body || {};
   const allowed = ['solid', 'liquid', 'sterile'];
-  if (!allowed.includes(body.formType) || !['en', 'fa', 'tr'].includes(body.language) || !body.fields || typeof body.fields !== 'object') {
+  if (!allowed.includes(body.formType) || !['en', 'fa', 'tr'].includes(body.language) || !body.fields || typeof body.fields !== 'object' || Array.isArray(body.fields) || JSON.stringify(body).length > 90000) {
     return res.status(400).json({ error: 'Invalid form payload' });
   }
   if (body.fields.website && String(body.fields.website).trim()) return res.status(200).json({ ok: true });
   delete body.fields.website;
+  const emailValue = Array.isArray(body.fields.email) ? body.fields.email[0] : body.fields.email;
+  if (!emailValue || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(emailValue))) return res.status(400).json({ error: 'A valid business email is required' });
   const fields = Object.entries(body.fields).map(([name, value]) => {
     const safeName = String(name).replace(/[<>]/g, '').slice(0, 100);
     const safeValue = (Array.isArray(value) ? value : [value]).map(v => String(v).slice(0, 4000)).join(', ');
@@ -21,8 +24,9 @@ export default async function handler(req, res) {
     method: 'POST',
     headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.FCM_EMAIL_FROM || 'NIAZ NET Website <onboarding@resend.dev>',
+      from,
       to: ['info@niaznet.net'],
+      reply_to: String(emailValue).slice(0, 254),
       subject: 'FCM & CMO enquiry — ' + titles[body.formType],
       html
     })
