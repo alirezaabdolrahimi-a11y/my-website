@@ -44,7 +44,7 @@
   var queryLang = new URLSearchParams(window.location.search).get('lang');
   if (queryLang === 'fa') locale = 'fa';
   var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
-  var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#contact';
+  var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#niaz-contact-hub';
 
   // Remove every legacy form (including duplicate newsletter and separate contact/partner forms).
   document.querySelectorAll('form').forEach(function (form) { form.remove(); });
@@ -92,7 +92,7 @@
       var href = (link.getAttribute('href') || '').toLowerCase();
       var isContactAction = /^(become our partner|iş ortağımız olun|iş ortağımız ol|partner with us|partner with niaz net|start a partnership discussion|contact us|contact our team|contact details|contact|let’s discuss your brand|let's discuss your brand|discuss this service|discuss your requirements|discuss your infant-nutrition project|email our team|email your partnership enquiry|send enquiry by email|ekibimizle iletişime geçin|iletişim bilgileri|iletişim|iş ortağımız olun|ortaklık görüşmesi başlatın|ekibimize e-posta gönderin)$/.test(label);
       var isContactDestination = /(?:contact\.html|become-our-partner\.html|mailto:.*(?:business|contact|partner|inquiry|enquiry|talep|iletişim))/i.test(href);
-      if (isContactAction || isContactDestination || link.classList.contains('whatsapp-float')) {
+      if (isContactAction || isContactDestination || link.classList.contains('whatsapp-float') || (href === '#contact' && !/^(?:\/|\/tr\/|\/es\/|\/fr\/)$/.test(window.location.pathname))) {
         link.setAttribute('href', contactTarget);
         link.removeAttribute('target');
         link.removeAttribute('rel');
