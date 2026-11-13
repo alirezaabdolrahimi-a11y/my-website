@@ -16,3 +16,6 @@
 @media(max-width:760px){.fcm-downloads{padding:20px 15px}.fcm-download-grid{grid-template-columns:1fr}.fcm-download-card{min-height:0}.fcm-downloads-head{text-align:start}}
 [dir="rtl"] .fcm-downloads-head{text-align:center}
 [dir="rtl"] .fcm-download-card{align-items:flex-start}
+
+.fcm-downloads[data-fcm-ready="false"]{visibility:hidden}
+.fcm-downloads[data-fcm-ready="true"]{visibility:visible}
