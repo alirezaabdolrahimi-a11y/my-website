@@ -130,7 +130,9 @@
   if (!isHomePage) {
     var localeMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
     var homeHref = localeMatch
-      ? '/' + localeMatch[1].toLowerCase() + '/index.html#home'
+      ? (localeMatch[1].toLowerCase() === 'fa'
+          ? '/index.html?lang=fa#home'
+          : '/' + localeMatch[1].toLowerCase() + '/index.html#home')
       : '/index.html#home';
 
     document.querySelectorAll('a[href="#home"]').forEach(function (link) {
