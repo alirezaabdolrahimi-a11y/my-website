@@ -15,7 +15,7 @@ if(languageAnchor&&!document.querySelector('.fa-lang')&&!document.getElementById
 if(isTurkishPage||params.get('lang')!=='fa')return;
 const common={
 'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
-'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما',
+'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما','DOWNLOAD FCM/CMO FORM':'دانلود فرم FCM/CMO',
 'Home / Our Services /':'خانه / خدمات ما /','How we approach this service':'رویکرد ما در این خدمت','Information to include in an enquiry':'اطلاعات موردنیاز برای ثبت درخواست',
 'Discuss this service':'درباره این خدمت گفت‌وگو کنید','DISCUSS THIS SERVICE →':'درباره این خدمت گفت‌وگو کنید ←',
 'Related services':'خدمات مرتبط','Quick Links':'دسترسی سریع','International Markets':'بازارهای بین‌المللی','Global Partners':'شرکای جهانی','News & Events':'اخبار و رویدادها',
