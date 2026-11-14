@@ -108,6 +108,19 @@
     });
   }
   routeContactLinks(document);
+
+  // On every contact CTA, open a new email draft and continue to the central enquiry form.
+  document.addEventListener('click', function (event) {
+    var link = event.target && event.target.closest ? event.target.closest('a') : null;
+    if (!link) return;
+    var href = (link.getAttribute('href') || '').toLowerCase();
+    if (href !== contactTarget.toLowerCase()) return;
+    var subject = locale === 'fa' ? 'NIAZ NET Business Enquiry' : locale === 'tr' ? 'NIAZ NET Ticari Talep' : locale === 'es' ? 'Consulta comercial - NIAZ NET' : locale === 'fr' ? 'Demande commerciale - NIAZ NET' : 'NIAZ NET Business Enquiry';
+    var mailto = 'mailto:info@niaznet.net?subject=' + encodeURIComponent(subject);
+    window.open(mailto, '_blank');
+    // Do not prevent the anchor's normal navigation to the central contact form.
+  }, true);
+
   if (window.MutationObserver) {
     var contactObserver = new MutationObserver(function (records) {
       records.forEach(function (record) { record.addedNodes.forEach(function (node) { if (node.nodeType === 1) routeContactLinks(node); }); });
