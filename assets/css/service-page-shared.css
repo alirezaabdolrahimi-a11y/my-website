@@ -423,7 +423,7 @@
 .vip-service-link span{color:var(--nn-gold-light)!important;font-size:26px!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
 .vip-service-link:hover{transform:translateY(-2px)!important;filter:brightness(1.05)!important;border-color:var(--nn-gold-light)!important}
 /* Unified action button language across pages: back, contact and partner. */
-a.service-back-link,a.btn[href*="contact"],a.btn[href*="become-our-partner"],.contact-band a.btn,.hero-actions a.btn,.news-placeholder a.btn{
+a.service-back-link,a.btn[href*="contact"],a.btn[href*="become-our-partner"],.contact-band a.btn,.hero-actions a.btn,.news-placeholder a.btn,a.btn.fcm-download-cta{
   display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;
   min-height:42px!important;box-sizing:border-box!important;padding:11px 22px!important;
   color:#082449!important;background:linear-gradient(180deg,#ffdc82 0%,#edbd52 52%,#ce922c 100%)!important;
@@ -431,7 +431,7 @@ a.service-back-link,a.btn[href*="contact"],a.btn[href*="become-our-partner"],.co
   text-decoration:none!important;box-shadow:0 4px 0 #9b6a18,0 7px 12px rgba(3,20,42,.18),inset 0 1px 0 rgba(255,255,255,.62)!important;
   transition:transform .18s ease,filter .18s ease!important;
 }
-a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-partner"]:hover,.contact-band a.btn:hover,.hero-actions a.btn:hover,.news-placeholder a.btn:hover{transform:translateY(-2px)!important;filter:brightness(1.04)!important}
+a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-partner"]:hover,.contact-band a.btn:hover,.hero-actions a.btn:hover,.news-placeholder a.btn:hover,a.btn.fcm-download-cta:hover{transform:translateY(-2px)!important;filter:brightness(1.04)!important}
 @media(max-width:760px){
  .services-grid>.import-export-card{min-height:76px!important;height:76px!important;width:min(100%,440px)!important;gap:9px!important;padding:9px 14px!important}
  .services-grid>.import-export-card .service-icon{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;flex-basis:42px!important}
