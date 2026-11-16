@@ -67,6 +67,8 @@
     .showcase-image{position:absolute;inset:0;display:none;opacity:0;transition:opacity .55s ease;background:linear-gradient(135deg,#0a2749,#1a5681 52%,#071b38)}
     .showcase-image.active{display:block;opacity:1;animation:showcaseFade .55s ease}
     .showcase-image img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+    /* New Cosmoderma artwork: fill the same frame without cropping any image content. */
+    .showcase-image-wide img{object-fit:fill}
     .showcase-image:after{display:none}
     .showcase-image span{display:none}
     .showcase-arrow{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:46px;height:46px;border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(4,20,42,.42);color:#fff;font-size:25px;display:grid;place-items:center;cursor:pointer;transition:background .2s ease,transform .2s ease}.showcase-arrow:hover{background:rgba(4,20,42,.78);transform:translateY(-50%) scale(1.04)}.showcase-arrow.prev{left:14px}.showcase-arrow.next{right:14px}
