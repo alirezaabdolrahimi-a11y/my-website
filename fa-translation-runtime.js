@@ -1544,7 +1544,7 @@ Object.assign(titleMap,{
   "kenya-market.html": "بازار دارو و سلامت کنیا | نیازنت",
   "south-africa-market.html": "بازار دارو و سلامت آفریقای جنوبی | نیازنت"
 });
-Object.assign(titleMap,{"index.html":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت"});
+Object.assign(titleMap,{"index.html":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","project-details.html":"جزئیات پروژه | نیازنت"});
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
 }
