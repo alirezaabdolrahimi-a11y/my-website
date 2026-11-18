@@ -1547,6 +1547,24 @@ Object.assign(titleMap,{
 Object.assign(titleMap,{"index.html":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","project-details.html":"جزئیات پروژه | نیازنت"});
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
+if(file==='cosmoderma.html'&&params.get('lang')==='fa'){
+ const article=document.querySelector('.service-article');
+ if(article&&!document.getElementById('fa-cosmoderma-portfolio')){
+  const section=document.createElement('section');
+  section.id='fa-cosmoderma-portfolio';
+  section.className='fa-cosmoderma-portfolio';
+  section.setAttribute('dir','rtl');
+  section.innerHTML='<h2>سبد محصولات تخصصی کازمودرما و زیبایی</h2>'+
+   '<h3>۱. سم بوتولینوم</h3><p>در کنار MASPORT، امکان بررسی درخواست‌های سازمانی برای ZABOTRIX و سایر محصولات مجاز سم بوتولینوم وجود دارد. نوع محصول، وضعیت ثبت، مدارک فنی، شرایط تأمین و صلاحیت خریدار باید برای هر بازار به‌صورت مستقل بررسی شود.</p>'+
+   '<h3>۲. فیلرهای پوستی و محصولات زیبایی</h3><p>سبد همکاری می‌تواند فیلرهای پوستی منتخب، از جمله محصولات تولیدکنندگان کره جنوبی و فرآورده‌های مبتنی بر اسید هیالورونیک را دربرگیرد. انتخاب محصول و مدل توزیع بر اساس مشخصات فنی، مستندات کیفیت و مجوزهای بازار مقصد انجام می‌شود.</p>'+
+   '<h3>۳. ویتاکازمتیک و مراقبت تخصصی پوست و مو</h3><p>این حوزه شامل فرآورده‌های ویتاکازمتیک (Vitacosmatic)، محصولات تقویتی و حمایتی، محصولات غیررنگی آرایشی و بهداشتی و راهکارهای مراقبت تخصصی پوست و مو است؛ از جمله محصولات مناسب مراقبت پیش و پس از کاشت مو و مراقبت از پوست سر.</p>'+
+   '<h3>۴. فناوری‌های نوین پوست و مو</h3><p>امکان بررسی و توسعه سبد محصولاتی که از فناوری ژن و نانوفناوری در فرمولاسیون یا سامانه‌های مراقبت پوست و مو بهره می‌برند نیز وجود دارد. هرگونه معرفی، ادعای عملکرد یا عرضه این محصولات منوط به مستندات علمی معتبر، ارزیابی ایمنی و مجوزهای قانونی مربوط است.</p>'+
+   '<h3>۵. توسعه بازار و همکاری تولیدی</h3><p>نیازنت می‌تواند در شناسایی تولیدکننده، ارزیابی سبد محصول، نمایندگی و توزیع، تأمین مواد اولیه، ثبت برند و محصول، تولید قراردادی و بررسی فرصت‌های تولید داخلی با شرکای واجد صلاحیت هماهنگی تجاری انجام دهد.</p>'+
+   '<p class="service-disclaimer">این اطلاعات برای معرفی حوزه‌های همکاری تجاری است و جایگزین توصیه پزشکی یا ارزیابی بالینی نیست. امکان واردات، ثبت، تبلیغ و عرضه هر محصول باید با توجه به قوانین و مجوزهای کشور مقصد تأیید شود.</p>';
+  const headings=article.querySelectorAll('h2');
+  if(headings.length>2)article.insertBefore(section,headings[2]);else article.appendChild(section);
+ }
+}
 }
 const style=document.createElement('style');
 style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
