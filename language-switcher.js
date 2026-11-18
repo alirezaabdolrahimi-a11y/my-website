@@ -6,15 +6,15 @@
 
   var button = document.getElementById('langButton');
   if (!button) {
-    var existingLanguageControl = nav.querySelector('.lang');
-    if (existingLanguageControl && existingLanguageControl.tagName.toLowerCase() === 'a') {
+    var existing = nav.querySelector('.lang');
+    if (existing && existing.tagName.toLowerCase() === 'a') {
       button = document.createElement('button');
       button.type = 'button';
-      button.className = existingLanguageControl.className;
+      button.className = existing.className;
       button.id = 'langButton';
-      existingLanguageControl.replaceWith(button);
-    } else if (existingLanguageControl) {
-      button = existingLanguageControl;
+      existing.replaceWith(button);
+    } else if (existing) {
+      button = existing;
       button.id = 'langButton';
       button.type = 'button';
     } else {
@@ -28,12 +28,13 @@
   if (button.dataset.languageMenuReady === 'true') return;
   button.dataset.languageMenuReady = 'true';
 
-  var path = window.location.pathname;
-  var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/);
-  var basePath = localeMatch ? path.replace(/^\/(tr|es|fr|fa)(?=\/|$)/, '') || '/' : path;
+  var path = window.location.pathname || '/';
+  var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/i);
+  var basePath = localeMatch ? (path.replace(/^\/(tr|es|fr|fa)(?=\/|$)/i, '') || '/') : path;
   var params = new URLSearchParams(window.location.search);
-  var active = (localeMatch && localeMatch[1]) ||
-    (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2));
+  var active = (localeMatch && localeMatch[1].toLowerCase()) ||
+    (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
+
   var languages = [
     ['en', 'English'],
     ['fa', 'فارسی'],
@@ -45,9 +46,34 @@
   function persistLanguage(code) {
     try {
       localStorage.setItem('niaznet-language', code);
-      document.cookie = 'niaznet-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
-      document.cookie = 'niaznet-manual-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+      document.cookie = 'niaznet-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax';
+      document.cookie = 'niaznet-manual-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax';
     } catch (error) {}
+  }
+
+  function languageTarget(code) {
+    var target = new URL(window.location.href);
+    var currentPath = target.pathname || '/';
+    var currentLocale = currentPath.match(/^\/(tr|es|fr|fa)(\/|$)/i);
+    var cleanPath = currentLocale ? (currentPath.replace(/^\/(tr|es|fr|fa)(?=\/|$)/i, '') || '/') : currentPath;
+
+    target.searchParams.delete('lang');
+    if (code === 'fa') {
+      if (cleanPath === '/about.html') {
+        target.pathname = '/fa/about.html';
+      } else {
+        target.pathname = cleanPath;
+        target.searchParams.set('lang', 'fa');
+      }
+    } else if (code === 'tr') {
+      target.pathname = '/tr' + (cleanPath === '/' ? '/' : cleanPath);
+    } else if (code === 'en') {
+      target.pathname = cleanPath;
+    } else {
+      target.pathname = '/' + code + '/';
+      target.search = '';
+    }
+    return target.pathname + target.search + target.hash;
   }
 
   var wrapper = document.createElement('span');
@@ -69,29 +95,14 @@
     item.textContent = language[1];
     item.setAttribute('role', 'menuitem');
     item.setAttribute('aria-current', code === active ? 'true' : 'false');
-    item.addEventListener('click', function () {
+    item.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
       persistLanguage(code);
-      var target = new URL(window.location.href);
-      target.pathname = basePath;
-      if (code === 'fa') {
-        if (basePath === '/about.html') {
-          target.pathname = '/fa/about.html';
-          target.searchParams.delete('lang');
-        } else {
-          target.pathname = basePath;
-          target.searchParams.set('lang', 'fa');
-        }
-      } else {
-        target.searchParams.delete('lang');
-        if (code === 'tr') target.pathname = '/tr' + (basePath === '/' ? '/' : basePath);
-        else if (code === 'es' || code === 'fr') target.pathname = '/' + code + '/';
-        else target.pathname = basePath;
-      }
-      window.location.assign(target.pathname + target.search + target.hash);
+      window.location.assign(languageTarget(code));
     });
     menu.appendChild(item);
   });
-
   wrapper.appendChild(menu);
 
   var style = document.createElement('style');
@@ -109,15 +120,14 @@
 
   button.addEventListener('click', function (event) {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     menu.hidden = !menu.hidden;
     button.setAttribute('aria-expanded', String(!menu.hidden));
-  }, true);
+  });
 
   document.addEventListener('click', function (event) {
     if (!wrapper.contains(event.target)) closeMenu();
   });
-
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       closeMenu();
