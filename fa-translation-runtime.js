@@ -1018,6 +1018,26 @@ Object.assign(extraPageTranslations,{
 });
 Object.keys(extraPageTranslations).forEach(function(page){pages[page]=Object.assign({},pages[page]||{},extraPageTranslations[page]);});
 
+Object.assign(pages['cosmoderma.html'], {
+  'Cosmoderma (Botox & Dermal Fillers): commercial coordination': 'کازمودرما و پزشکی زیبایی؛ تأمین و توسعه بازار محصولات تخصصی',
+  'MASPORT Botulinum Toxin – Institutional Commercial Enquiries': 'MASPORT؛ محصول سم بوتولینوم برای درخواست‌های تجاری سازمانی',
+  'NIAZ NET provides global marketing and sales representation for MASPORT, manufactured by Iran-based Masoun Darou, based on the representation authority stated by the company. Commercial enquiries concerning MASPORT wholesale supply, distribution partnerships and quotations are handled for eligible institutional buyers and qualified healthcare professionals, subject to the laws and product authorisations applicable in each destination market.': 'نیازنت بر اساس اختیار نمایندگی اعلام‌شده از سوی شرکت، هماهنگی بازاریابی و فروش بین‌المللی محصول MASPORT تولید شرکت داروسازی ماسون دارو در ایران را انجام می‌دهد. درخواست‌های مربوط به تأمین عمده، همکاری در توزیع و دریافت پیشنهاد تجاری، برای خریداران سازمانی واجد شرایط و متخصصان سلامتِ دارای صلاحیت بررسی می‌شود؛ مشروط به رعایت قوانین و مجوزهای معتبر محصول در هر بازار مقصد.',
+  'This page is not a consumer product advertisement and does not publish public price lists or treatment claims. For Türkiye, product registration, import eligibility, promotion requirements and buyer qualifications must be confirmed before any transaction or product communication.': 'این صفحه آگهی فروش مستقیم به مصرف‌کننده نیست و شامل فهرست عمومی قیمت یا ادعاهای درمانی نمی‌شود. در بازار ترکیه، وضعیت ثبت محصول، مجاز بودن واردات، الزامات معرفی و تبلیغ و صلاحیت خریدار باید پیش از هرگونه مذاکره نهایی یا ارتباط تجاری درباره محصول بررسی و تأیید شود.',
+  'Commercial enquiry topics include MASPORT wholesale supply, MASPORT distributor opportunities and institutional botulinum toxin procurement.': 'موضوع درخواست‌های تجاری می‌تواند شامل تأمین عمده MASPORT، بررسی فرصت‌های همکاری با توزیع‌کنندگان و خرید سازمانی محصولات سم بوتولینوم باشد.',
+  'Our capabilities include coordination for brand registration, sourcing of suitable raw materials, and discussions with qualified partners regarding production-line setup or local manufacturing. Product eligibility, quality requirements, and regulatory approvals must be confirmed for each destination market before commercial activity.': 'حوزه همکاری نیازنت می‌تواند هماهنگی ثبت برند، بررسی و تأمین مواد اولیه مناسب و گفت‌وگو با شرکای واجد صلاحیت درباره راه‌اندازی خطوط تولید یا تولید داخلی را دربرگیرد. مجاز بودن محصول، الزامات کیفیت و تأییدیه‌های مقرراتی باید پیش از آغاز فعالیت تجاری، برای هر محصول و بازار مقصد به‌طور مستقل احراز شود.',
+  'We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity.': 'در آغاز همکاری، ماهیت پروژه را مشخص می‌کنیم: توسعه و عرضه سبد محصولات موجود، شناسایی و ارزیابی تولیدکننده، نمایندگی و توسعه بازار برند، یا بررسی امکان راه‌اندازی خط تولید.',
+  'Product classification and local registration need to be confirmed before commercial activity.': 'طبقه‌بندی قانونی محصول و الزامات ثبت و اخذ مجوز در کشور مقصد باید پیش از هرگونه فعالیت تجاری بررسی و تأیید شود.',
+  'Product type and intended use, such as botulinum toxin, dermal filler or skincare.': 'نوع محصول و کاربرد موردنظر؛ از جمله سم بوتولینوم، فیلرهای پوستی، محصولات مراقبت تخصصی پوست و مو یا فرآورده‌های مراقبتی پس از کاشت مو.',
+  'Manufacturer and product regulatory status, where known.': 'اطلاعات تولیدکننده و وضعیت ثبت، مجوزها و مستندات مقرراتی محصول، در صورت دسترسی.',
+  'Target country, expected commercial model and available technical documentation.': 'کشور مقصد، مدل همکاری تجاری موردنظر و مدارک فنی و کیفی موجود.',
+  'Discuss this service': 'درخواست بررسی همکاری در حوزه کازمودرما',
+  'Send us the product or project details, target market and the type of support required. Our team can review the initial scope and identify the information needed for a useful commercial discussion.': 'نوع محصول یا پروژه، کشور و بازار هدف و مدل همکاری موردنظر را برای ما ارسال کنید. تیم نیازنت پس از بررسی اولیه، اطلاعات تکمیلی و مسیر مناسب برای گفت‌وگوی تجاری با تولیدکنندگان، صاحبان برند یا شرکای توزیع را مشخص خواهد کرد.',
+  'DISCUSS THIS SERVICE →': 'درخواست گفت‌وگوی تجاری ←',
+  'Related services': 'خدمات مرتبط',
+  'Brand Registration': 'ثبت و توسعه برند',
+  'Contract Manufacturing': 'تولید قراردادی',
+  'Regulatory Affairs': 'امور مقرراتی و اخذ مجوزها'
+});
 const file=location.pathname.split('/').pop();
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
