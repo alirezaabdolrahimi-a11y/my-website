@@ -1464,12 +1464,12 @@ if(params.get('lang')==='fa'){
   if(!raw||raw.charAt(0)==='#'||anchor.hasAttribute('download')||/^(mailto:|tel:|javascript:|data:)/i.test(raw))return;
   var target;
   try{target=new URL(raw,location.href);}catch(error){return;}
-  if(!/(^|\\.)niaznet\\.net$/i.test(target.hostname)&&target.hostname!==location.hostname)return;
+  if(!/(^|\.)niaznet\.net$/i.test(target.hostname)&&target.hostname!==location.hostname)return;
   var pathname=target.pathname||'/';
-  if(/^\\/(assets|images|downloads|files)\\//i.test(pathname))return;
-  if(pathname!=='/'&&!/\\.html?$/i.test(pathname))return;
-  if(/^\\/fa\\//i.test(pathname))return;
-  pathname=pathname.replace(/^\\/tr(?=\\/)/i,'')||'/';
+  if(/^\/(assets|images|downloads|files)\//i.test(pathname))return;
+  if(pathname!=='/'&&!/\.html?$/i.test(pathname))return;
+  if(/^\/fa\//i.test(pathname))return;
+  pathname=pathname.replace(/^\/tr(?=\/)/i,'')||'/';
   if(pathname==='/about.html'){
    target.pathname='/fa/about.html';
    target.searchParams.delete('lang');
