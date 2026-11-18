@@ -1422,6 +1422,16 @@ Object.assign(pages, {
   }
 });
 
+
+/* Preserve earlier About-page translations while extending the page copy. */
+Object.assign(pages['about.html'], {
+  "Building Connections. Creating Opportunities.":"پیوند می‌سازیم و فرصت خلق می‌کنیم.",
+  "Connecting manufacturers, brands, technologies and markets across pharmaceuticals, healthcare, nutrition and related industries.":"تولیدکنندگان، برندها، فناوری‌ها و بازارها را در حوزه‌های دارویی، سلامت، تغذیه و صنایع مرتبط به یکدیگر متصل می‌کنیم.",
+  "Our Approach":"رویکرد ما",
+  "NIAZ NET supports international business development through sourcing, brand partnerships, market coordination, regulatory follow-up and trade facilitation. Each opportunity is assessed according to the product, destination market and the requirements of the relevant partners and authorities.":"نیازنت از طریق تأمین کالا، همکاری با صاحبان برند، هماهنگی بازار، پیگیری امور مقرراتی و تسهیل تجارت، از توسعه کسب‌وکار بین‌المللی پشتیبانی می‌کند. هر فرصت بر اساس نوع محصول، بازار مقصد و الزامات شرکا و مراجع ذی‌ربط ارزیابی می‌شود.",
+  "Learn about NIAZ NET, its international business development approach, strategic sourcing, distribution, trade and partnership services.":"با رویکرد نیازنت در توسعه کسب‌وکار بین‌المللی، تأمین راهبردی، توزیع، تجارت و خدمات مشارکت تجاری آشنا شوید."
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
