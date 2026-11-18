@@ -1458,6 +1458,28 @@ const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
 function translate(){
+if(params.get('lang')==='fa'){
+ document.querySelectorAll('a[href]').forEach(function(anchor){
+  var raw=anchor.getAttribute('href');
+  if(!raw||raw.charAt(0)==='#'||anchor.hasAttribute('download')||/^(mailto:|tel:|javascript:|data:)/i.test(raw))return;
+  var target;
+  try{target=new URL(raw,location.href);}catch(error){return;}
+  if(!/(^|\\.)niaznet\\.net$/i.test(target.hostname)&&target.hostname!==location.hostname)return;
+  var pathname=target.pathname||'/';
+  if(/^\\/(assets|images|downloads|files)\\//i.test(pathname))return;
+  if(pathname!=='/'&&!/\\.html?$/i.test(pathname))return;
+  if(/^\\/fa\\//i.test(pathname))return;
+  pathname=pathname.replace(/^\\/tr(?=\\/)/i,'')||'/';
+  if(pathname==='/about.html'){
+   target.pathname='/fa/about.html';
+   target.searchParams.delete('lang');
+  }else{
+   target.pathname=pathname;
+   target.searchParams.set('lang','fa');
+  }
+  anchor.setAttribute('href',target.pathname+target.search+target.hash);
+ });
+}
 document.documentElement.lang='fa';
 document.documentElement.dir='rtl';
 document.body.dataset.contentLang='fa';
