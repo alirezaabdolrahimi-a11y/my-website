@@ -1432,6 +1432,28 @@ Object.assign(pages['about.html'], {
   "Learn about NIAZ NET, its international business development approach, strategic sourcing, distribution, trade and partnership services.":"با رویکرد نیازنت در توسعه کسب‌وکار بین‌المللی، تأمین راهبردی، توزیع، تجارت و خدمات مشارکت تجاری آشنا شوید."
 });
 
+
+Object.assign(common, {
+  "Let's Build Success Together":"بیایید موفقیت را با هم بسازیم",
+  "in your default email application.":"در برنامه پیش‌فرض ایمیل شما.",
+  "NIAZ NET. All Rights Reserved.":"نیازنت. تمامی حقوق محفوظ است.",
+  "Product Coordination":"هماهنگی تولید",
+  "01 / NIAZ NET":"۰۱ / نیازنت","02 / NIAZ NET":"۰۲ / نیازنت",
+  "03 / NIAZ NET":"۰۳ / نیازنت","04 / NIAZ NET":"۰۴ / نیازنت",
+  "SPORTS BRAND LOGO 01":"جایگاه لوگوی برند ورزشی ۰۱",
+  "SPORTS BRAND LOGO 02":"جایگاه لوگوی برند ورزشی ۰۲",
+  "SPORTS BRAND LOGO 03":"جایگاه لوگوی برند ورزشی ۰۳",
+  "SPORTS BRAND LOGO 04":"جایگاه لوگوی برند ورزشی ۰۴",
+  "BRAND / PARTNER LOGO 01":"جایگاه لوگوی برند / شریک ۰۱",
+  "BRAND / PARTNER LOGO 02":"جایگاه لوگوی برند / شریک ۰۲",
+  "BRAND / PARTNER LOGO 03":"جایگاه لوگوی برند / شریک ۰۳",
+  "BRAND / PARTNER LOGO 04":"جایگاه لوگوی برند / شریک ۰۴",
+  "BRAND / PROJECT 01":"جایگاه برند / پروژه ۰۱",
+  "BRAND / PROJECT 02":"جایگاه برند / پروژه ۰۲",
+  "BRAND / PROJECT 03":"جایگاه برند / پروژه ۰۳",
+  "BRAND / PROJECT 04":"جایگاه برند / پروژه ۰۴"
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
