@@ -35,13 +35,14 @@
   var active = (localeMatch && localeMatch[1].toLowerCase()) ||
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
 
-  var languages = [
-    ['en', 'English'],
-    ['fa', 'فارسی'],
-    ['tr', 'Türkçe'],
-    ['es', 'Español'],
-    ['fr', 'Français']
-  ];
+  var languageNames = {
+    en: { en: 'English', fa: 'انگلیسی', tr: 'İngilizce', es: 'Inglés', fr: 'Anglais' },
+    fa: { en: 'Persian', fa: 'فارسی', tr: 'Farsça', es: 'Persa', fr: 'Persan' },
+    tr: { en: 'Turkish', fa: 'ترکی', tr: 'Türkçe', es: 'Turco', fr: 'Turc' },
+    es: { en: 'Spanish', fa: 'اسپانیایی', tr: 'İspanyolca', es: 'Español', fr: 'Espagnol' },
+    fr: { en: 'French', fa: 'فرانسوی', tr: 'Fransızca', es: 'Francés', fr: 'Français' }
+  };
+  var languages = ['en', 'fa', 'tr', 'es', 'fr'];
 
   function persistLanguage(code) {
     try {
@@ -85,14 +86,13 @@
   menu.className = 'niaz-language-menu';
   menu.hidden = true;
   menu.setAttribute('role', 'menu');
-  menu.setAttribute('aria-label', 'Choose website language');
+  menu.setAttribute('aria-label', active === 'fa' ? 'انتخاب زبان وب‌سایت' : active === 'tr' ? 'Web sitesi dilini seçin' : active === 'es' ? 'Elegir idioma del sitio web' : active === 'fr' ? 'Choisir la langue du site' : 'Choose website language');
 
-  languages.forEach(function (language) {
-    var code = language[0];
+  languages.forEach(function (code) {
     var item = document.createElement('button');
     item.type = 'button';
     item.className = 'niaz-language-option';
-    item.textContent = language[1];
+    item.textContent = languageNames[active] && languageNames[active][code] || languageNames.en[code];
     item.setAttribute('role', 'menuitem');
     item.setAttribute('aria-current', code === active ? 'true' : 'false');
     item.addEventListener('click', function (event) {
