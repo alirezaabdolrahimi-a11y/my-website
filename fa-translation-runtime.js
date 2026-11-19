@@ -2051,6 +2051,10 @@ const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
 function translate(){
 if(params.get('lang')==='fa'){
+ document.querySelectorAll('a[data-fcm-link][download]').forEach(function(anchor){
+  var downloadHref=anchor.getAttribute('href')||'';
+  anchor.setAttribute('href',downloadHref.replace(/-(en|tr|es|fr)(?=\\.rtf$)/i,'-fa'));
+ });
  document.querySelectorAll('a[href]').forEach(function(anchor){
   var raw=anchor.getAttribute('href');
   if(!raw||raw.charAt(0)==='#'||anchor.hasAttribute('download')||/^(mailto:|tel:|javascript:|data:)/i.test(raw))return;
