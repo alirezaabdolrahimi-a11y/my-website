@@ -2003,6 +2003,15 @@ Object.assign(common, {
   "We clarify whether the project concerns an existing product range, manufacturer sourcing, brand representation or a production-line opportunity. Product classification and local registration need to be confirmed before commercial activity.": "مشخص می‌کنیم که پروژه مربوط به سبد محصولات موجود، تأمین از تولیدکننده، نمایندگی برند یا فرصت ایجاد خط تولید است. طبقه‌بندی محصول و ثبت محلی آن باید پیش از فعالیت تجاری تأیید شود."
 });
 
+
+// Remaining import-export page copy.
+Object.assign(common, {
+  "We coordinate import and export opportunities between suppliers, manufacturers, buyers, and distribution partners across international markets. Support may include supplier and buyer communication, quotation collection, commercial-term coordination, document follow-up, and coordination with freight, customs, and logistics parties.": "فرصت‌های واردات و صادرات میان تأمین‌کنندگان، تولیدکنندگان، خریداران و شرکای توزیع در بازارهای بین‌المللی را هماهنگ می‌کنیم. این پشتیبانی می‌تواند شامل ارتباط با تأمین‌کننده و خریدار، دریافت استعلام قیمت، هماهنگی شرایط تجاری، پیگیری اسناد و هماهنگی با طرف‌های حمل‌ونقل، گمرک و لجستیک باشد.",
+  "Dedicated market pages for commercial enquiries involving selected African markets. Each opportunity is assessed individually against product classification, local importer requirements and applicable trade rules.": "صفحات اختصاصی بازار برای درخواست‌های تجاری مرتبط با برخی بازارهای منتخب آفریقا در نظر گرفته شده‌اند. هر فرصت به‌صورت جداگانه و بر اساس طبقه‌بندی محصول، الزامات واردکننده محلی و مقررات تجاری مربوط ارزیابی می‌شود.",
+  "Each transaction is assessed according to the product, origin and destination markets, applicable trade rules, and agreed Incoterms. Customs clearance, permits, payment arrangements, shipping, and compliance are handled with the relevant authorized parties; specific requirements and responsibilities are confirmed before execution.": "هر معامله بر اساس نوع محصول، بازار مبدأ و مقصد، مقررات تجاری مربوط و اینکوترمز مورد توافق ارزیابی می‌شود. ترخیص گمرکی، مجوزها، ترتیبات پرداخت، حمل‌ونقل و انطباق با مقررات با همکاری طرف‌های مجاز مربوط انجام می‌شود؛ الزامات و مسئولیت‌های مشخص پیش از اجرا تأیید خواهند شد.",
+  "We organize the commercial hand-offs among buyers, suppliers and logistics parties, with the product, origin, destination and agreed responsibilities identified early. Customs, permits and shipping arrangements must be confirmed for each transaction.": "هماهنگی‌های تجاری میان خریداران، تأمین‌کنندگان و طرف‌های لجستیکی را انجام می‌دهیم و از ابتدا محصول، مبدأ، مقصد و مسئولیت‌های مورد توافق را مشخص می‌کنیم. ترتیبات گمرکی، مجوزها و حمل‌ونقل باید برای هر معامله به‌طور جداگانه تأیید شوند."
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
@@ -2094,6 +2103,7 @@ Object.assign(titleMap,{
   "south-africa-market.html": "بازار دارو و سلامت آفریقای جنوبی | نیازنت"
 });
 Object.assign(titleMap,{"index.html":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","project-details.html":"جزئیات پروژه | نیازنت"});
+Object.assign(titleMap,{"cosmoderma.html":"MASPORT و کازمودرما | نیازنت","import-export.html":"خدمات واردات و صادرات بین‌المللی | نیازنت"});
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
 if(file==='cosmoderma.html'&&params.get('lang')==='fa'){
