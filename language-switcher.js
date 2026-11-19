@@ -36,13 +36,12 @@
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
 
   var languageNames = {
-    en: { en: 'English', fa: 'انگلیسی', tr: 'İngilizce', es: 'Inglés', fr: 'Anglais' },
-    fa: { en: 'Persian', fa: 'فارسی', tr: 'Farsça', es: 'Persa', fr: 'Persan' },
-    tr: { en: 'Turkish', fa: 'ترکی', tr: 'Türkçe', es: 'Turco', fr: 'Turc' },
-    es: { en: 'Spanish', fa: 'اسپانیایی', tr: 'İspanyolca', es: 'Español', fr: 'Espagnol' },
-    fr: { en: 'French', fa: 'فرانسوی', tr: 'Fransızca', es: 'Francés', fr: 'Français' }
+    en: { en: 'English', fa: 'Persian', tr: 'Turkish' },
+    fa: { en: 'انگلیسی', fa: 'فارسی', tr: 'ترکی' },
+    tr: { en: 'İngilizce', fa: 'Farsça', tr: 'Türkçe' }
   };
-  var languages = ['en', 'fa', 'tr', 'es', 'fr'];
+  var languages = ['en', 'fa', 'tr'];
+  if (languages.indexOf(active) === -1) active = 'en';
 
   function persistLanguage(code) {
     try {
@@ -71,8 +70,7 @@
     } else if (code === 'en') {
       target.pathname = cleanPath;
     } else {
-      target.pathname = '/' + code + '/';
-      target.search = '';
+      target.pathname = cleanPath;
     }
     return target.pathname + target.search + target.hash;
   }
