@@ -89,7 +89,7 @@
       if (!centralForm.reportValidity()) return;
       var body = [];
       new FormData(centralForm).forEach(function (value, key) { body.push(key + ': ' + String(value)); });
-      var subject = 'NIAZ NET ' + (locale === 'fa' ? 'Business Enquiry' : locale === 'tr' ? 'Ticari Talep' : locale === 'es' ? 'Consulta comercial' : locale === 'fr' ? 'Demande commerciale' : 'Business Enquiry');
+      var subject = locale === 'fa' ? 'درخواست تجاری - نیازنت' : locale === 'tr' ? 'NIAZ NET Ticari Talep' : locale === 'es' ? 'Consulta comercial - NIAZ NET' : locale === 'fr' ? 'Demande commerciale - NIAZ NET' : 'NIAZ NET Business Enquiry';
       window.location.href = 'mailto:info@niaznet.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.join('\n'));
     });
   }
@@ -115,7 +115,7 @@
     if (!link) return;
     var href = (link.getAttribute('href') || '').toLowerCase();
     if (href !== contactTarget.toLowerCase()) return;
-    var subject = locale === 'fa' ? 'NIAZ NET Business Enquiry' : locale === 'tr' ? 'NIAZ NET Ticari Talep' : locale === 'es' ? 'Consulta comercial - NIAZ NET' : locale === 'fr' ? 'Demande commerciale - NIAZ NET' : 'NIAZ NET Business Enquiry';
+    var subject = locale === 'fa' ? 'درخواست تجاری - نیازنت' : locale === 'tr' ? 'NIAZ NET Ticari Talep' : locale === 'es' ? 'Consulta comercial - NIAZ NET' : locale === 'fr' ? 'Demande commerciale - NIAZ NET' : 'NIAZ NET Business Enquiry';
     var mailto = 'mailto:info@niaznet.net?subject=' + encodeURIComponent(subject);
     window.open(mailto, '_blank');
     // Do not prevent the anchor's normal navigation to the central contact form.
@@ -142,11 +142,12 @@
   var isHomePage = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname);
   if (!isHomePage) {
     var localeMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
+    var queryLanguage = new URLSearchParams(window.location.search).get('lang');
     var homeHref = localeMatch
       ? (localeMatch[1].toLowerCase() === 'fa'
           ? '/index.html?lang=fa#home'
           : '/' + localeMatch[1].toLowerCase() + '/index.html#home')
-      : '/index.html#home';
+      : (queryLanguage === 'fa' ? '/index.html?lang=fa#home' : '/index.html#home');
 
     document.querySelectorAll('a[href="#home"]').forEach(function (link) {
       link.setAttribute('href', homeHref);

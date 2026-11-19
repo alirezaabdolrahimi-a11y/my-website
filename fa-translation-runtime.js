@@ -1810,6 +1810,65 @@ Object.assign(common, {
   "Contact": "تماس با ما"
 });
 
+
+// Final Persian homepage, project-counter and contact-detail coverage.
+Object.assign(common, {
+  "Brand Development": "توسعه برند",
+  "Regulatory Expertise": "تخصص در امور مقرراتی",
+  "Market Entry": "ورود به بازار",
+  "Private Label": "برند اختصاصی",
+  "Licensing & Partnerships": "صدور مجوز و مشارکت‌ها",
+  "Our Global Network": "شبکه جهانی ما",
+  "Spain": "اسپانیا",
+  "Switzerland": "سوئیس",
+  "Türkiye": "ترکیه",
+  "Iran": "ایران",
+  "India": "هند",
+  "A snapshot of current commercial agreements and contract-manufacturing projects across nutrition, healthcare and industrial sectors.": "نمایی از توافق‌های تجاری جاری و پروژه‌های تولید قراردادی در حوزه‌های تغذیه، سلامت و صنایع.",
+  "Commercial agreements with": "توافق‌های تجاری با",
+  "6 sports-nutrition supplement brands": "۶ برند مکمل و تغذیه ورزشی",
+  "Agreements with": "توافق‌ها با",
+  "5 infant-formula manufacturers": "۵ تولیدکننده شیرخشک نوزاد",
+  "Projects involving": "پروژه‌های مرتبط با",
+  "3 manufacturers of infant-formula production lines": "۳ تولیدکننده خطوط تولید شیرخشک نوزاد",
+  "4 manufacturers": "۴ تولیدکننده",
+  "of botulinum toxin and dermal filler products.": "محصولات سم بوتولینوم و فیلرهای پوستی.",
+  "4 CBD manufacturers": "۴ تولیدکننده محصولات CBD",
+  "An agreement with": "توافق با",
+  "1 vitamin-supplement manufacturer": "۱ تولیدکننده مکمل ویتامینی",
+  "7 medical-device manufacturers": "۷ تولیدکننده تجهیزات پزشکی",
+  "1 dog-food manufacturer": "۱ تولیدکننده غذای سگ",
+  "Projects with": "پروژه‌هایی با",
+  "2 industrial production-line manufacturers": "۲ تولیدکننده خطوط تولید صنعتی",
+  "Contract manufacturing for": "تولید قراردادی برای",
+  "1 brand across 4 products": "یک برند در چهار محصول",
+  "for the African market.": "برای بازار آفریقا.",
+  "for CIS markets.": "برای بازار کشورهای مستقل مشترک‌المنافع (CIS).",
+  "A pilot / trial-stage project covering": "یک پروژه در مرحله آزمایشی شامل",
+  "300 products for 1 brand": "۳۰۰ محصول برای یک برند",
+  ", with launch and operations expected soon.": "؛ آغاز و اجرای عملیات آن به‌زودی پیش‌بینی می‌شود.",
+  "Meet NIAZ NET at upcoming industry events": "در رویدادهای صنعتی پیش‌رو با نیازنت دیدار کنید",
+  "Contact us to discuss market development, sourcing and international cooperation opportunities.": "برای گفت‌وگو درباره توسعه بازار، تأمین و فرصت‌های همکاری بین‌المللی با ما تماس بگیرید.",
+  "Let's Build Success Together": "بیایید با هم موفقیت بسازیم",
+  "We are ready to be your trusted partner in growth.": "ما آماده‌ایم شریک قابل اعتماد شما در مسیر رشد باشیم.",
+  "Email": "ایمیل",
+  "Tehran Office": "دفتر تهران",
+  "Turkey / WhatsApp": "ترکیه / واتس‌اپ",
+  "Tehran Address": "نشانی دفتر تهران",
+  "Tel:": "تلفن:",
+  "Mobile:": "تلفن همراه:",
+  "Tel / WhatsApp:": "تلفن / واتس‌اپ:",
+  "Iran Office": "دفتر ایران",
+  "Türkiye Office": "دفتر ترکیه",
+  "Unit 603, 6th Floor, Marjan Tower, Corner of Moshiri Alley, North Mofatteh Street, Tehran, Iran.": "ایران، تهران، خیابان مفتح شمالی، نبش کوچه مشیری، برج مرجان، طبقه ششم، واحد ۶۰۳.",
+  "Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran": "ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳.",
+  "Efes Evler, Block A1-2, Apartment 68, T31 CD, Ispartakule, Avcılar, Istanbul, Türkiye.": "ترکیه، استانبول، آوجیلار، ایسپارتاکوله، خیابان T31 CD، مجتمع Efes Evler، بلوک A1-2، واحد ۶۸.",
+  "NIAZ NET · PROJECT PORTFOLIO": "نیازنت · سبد پروژه‌ها",
+  "NIAZ NET · INTERNATIONAL MARKETS": "نیازنت · بازارهای بین‌المللی",
+  "NIAZ NET · AFRICAN MARKETS": "نیازنت · بازارهای آفریقا",
+  "NIAZ NET. All Rights Reserved.": "نیازنت. تمامی حقوق محفوظ است."
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
