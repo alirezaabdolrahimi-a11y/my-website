@@ -2012,6 +2012,19 @@ Object.assign(common, {
   "We organize the commercial hand-offs among buyers, suppliers and logistics parties, with the product, origin, destination and agreed responsibilities identified early. Customs, permits and shipping arrangements must be confirmed for each transaction.": "هماهنگی‌های تجاری میان خریداران، تأمین‌کنندگان و طرف‌های لجستیکی را انجام می‌دهیم و از ابتدا محصول، مبدأ، مقصد و مسئولیت‌های مورد توافق را مشخص می‌کنیم. ترتیبات گمرکی، مجوزها و حمل‌ونقل باید برای هر معامله به‌طور جداگانه تأیید شوند."
 });
 
+
+// Persian metadata and final import/export service coverage.
+Object.assign(common, {
+  "We coordinate import and export opportunities between suppliers, manufacturers, buyers, and distribution partners across international markets. Support may include supplier and buyer communication, quotation collection, commercial-term coordination, document follow-up, and coordination with freight, customs, and logistics parties.": "فرصت‌های واردات و صادرات میان تأمین‌کنندگان، تولیدکنندگان، خریداران و شرکای توزیع در بازارهای بین‌المللی را هماهنگ می‌کنیم. این پشتیبانی می‌تواند شامل ارتباط با تأمین‌کننده و خریدار، دریافت استعلام قیمت، هماهنگی شرایط تجاری، پیگیری اسناد و هماهنگی با طرف‌های حمل‌ونقل، گمرک و لجستیک باشد.",
+  "Dedicated market pages for commercial enquiries involving selected African markets. Each opportunity is assessed individually against product classification, local importer requirements and applicable trade rules.": "صفحات اختصاصی بازار برای درخواست‌های تجاری مرتبط با برخی بازارهای منتخب آفریقا در نظر گرفته شده‌اند. هر فرصت به‌صورت جداگانه و بر اساس طبقه‌بندی محصول، الزامات واردکننده محلی و مقررات تجاری مربوط ارزیابی می‌شود.",
+  "Each transaction is assessed according to the product, origin and destination markets, applicable trade rules, and agreed Incoterms. Customs clearance, permits, payment arrangements, shipping, and compliance are handled with the relevant authorized parties; specific requirements and responsibilities are confirmed before execution.": "هر معامله بر اساس نوع محصول، بازار مبدأ و مقصد، مقررات تجاری مربوط و اینکوترمز مورد توافق ارزیابی می‌شود. ترخیص گمرکی، مجوزها، ترتیبات پرداخت، حمل‌ونقل و انطباق با مقررات با همکاری طرف‌های مجاز مربوط انجام می‌شود؛ الزامات و مسئولیت‌های مشخص پیش از اجرا تأیید خواهند شد.",
+  "We organize the commercial hand-offs among buyers, suppliers and logistics parties, with the product, origin, destination and agreed responsibilities identified early. Customs, permits and shipping arrangements must be confirmed for each transaction.": "هماهنگی‌های تجاری میان خریداران، تأمین‌کنندگان و طرف‌های لجستیکی را انجام می‌دهیم و از ابتدا محصول، مبدأ، مقصد و مسئولیت‌های مورد توافق را مشخص می‌کنیم. ترتیبات گمرکی، مجوزها و حمل‌ونقل باید برای هر معامله به‌طور جداگانه تأیید شوند.",
+  "NIAZ NET supports international distribution, import and export, pharmaceutical and healthcare sourcing, regulatory coordination, technology transfer and business development.": "نیازنت در زمینه توزیع بین‌المللی، واردات و صادرات، تأمین دارو و محصولات سلامت، هماهنگی امور مقرراتی، انتقال فناوری و توسعه کسب‌وکار خدمات ارائه می‌کند.",
+  "Learn about NIAZ NET, its international business development approach, strategic sourcing, distribution, trade and partnership services.": "با رویکرد نیازنت در توسعه کسب‌وکار بین‌المللی، تأمین راهبردی، توزیع، تجارت و خدمات مشارکت آشنا شوید.",
+  "Contact NIAZ NET for international business development, distribution, sourcing, manufacturing and partnership enquiries.": "برای درخواست‌های توسعه کسب‌وکار بین‌المللی، توزیع، تأمین، تولید و همکاری با نیازنت تماس بگیرید.",
+  "Project details, brand reference placeholders and visual presentation spaces for NIAZ NET projects.": "جزئیات پروژه‌ها، جایگاه‌های معرفی برند و فضاهای نمایش تصویری پروژه‌های نیازنت."
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
@@ -2104,6 +2117,7 @@ Object.assign(titleMap,{
 });
 Object.assign(titleMap,{"index.html":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","":"توسعه کسب‌وکار جهانی و تجارت بین‌الملل | نیازنت","project-details.html":"جزئیات پروژه | نیازنت"});
 Object.assign(titleMap,{"cosmoderma.html":"MASPORT و کازمودرما | نیازنت","import-export.html":"خدمات واردات و صادرات بین‌المللی | نیازنت"});
+Object.assign(titleMap,{"index.html":"نیازنت | توزیع راهبردی، تجارت و توسعه کسب‌وکار","about.html":"درباره نیازنت | توسعه کسب‌وکار بین‌المللی","contact.html":"تماس با نیازنت | درخواست‌های تجاری و همکاری","project-details.html":"جزئیات پروژه | نیازنت"});
 if(titleMap[file])document.title=titleMap[file];
 const meta=document.querySelector('meta[name="description"]');if(meta&&dict[norm(meta.content)])meta.content=dict[norm(meta.content)];
 if(file==='cosmoderma.html'&&params.get('lang')==='fa'){
