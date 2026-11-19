@@ -2025,6 +2025,27 @@ Object.assign(common, {
   "Project details, brand reference placeholders and visual presentation spaces for NIAZ NET projects.": "جزئیات پروژه‌ها، جایگاه‌های معرفی برند و فضاهای نمایش تصویری پروژه‌های نیازنت."
 });
 
+
+// Persian coverage for the partnership application page.
+Object.assign(common, {
+  "Send us a short introduction including your company, product or service, target market and preferred type of cooperation. Our team can then review the opportunity and follow up.": "معرفی کوتاهی از شرکت، محصول یا خدمت، بازار هدف و نوع همکاری موردنظر خود برای ما ارسال کنید. تیم ما فرصت را بررسی کرده و پیگیری‌های لازم را انجام خواهد داد.",
+  "Partnership Application": "درخواست همکاری",
+  "Share your company and opportunity details. The form prepares an email to": "اطلاعات شرکت و فرصت همکاری موردنظر را وارد کنید. این فرم پیش‌نویس ایمیلی خطاب به نشانی زیر آماده می‌کند:",
+  "in your default email application.": "در برنامه پیش‌فرض ایمیل شما.",
+  "Partner type": "نوع شریک تجاری",
+  "Manufacturer / Brand owner": "تولیدکننده / صاحب برند",
+  "Distributor / Importer": "توزیع‌کننده / واردکننده",
+  "Technology / Production partner": "شریک فناوری / تولید",
+  "Supplier / API manufacturer": "تأمین‌کننده / تولیدکننده مواد مؤثره دارویی",
+  "Other commercial partner": "سایر شرکای تجاری",
+  "Product / Service": "محصول / خدمت",
+  "Target market": "بازار هدف",
+  "Partnership proposal and relevant details *": "پیشنهاد همکاری و جزئیات مرتبط *",
+  "PREPARE PARTNERSHIP EMAIL →": "← آماده‌سازی ایمیل درخواست همکاری",
+  "Become a Partner | NIAZ NET": "همکاری با نیازنت | نیازنت",
+  "info@niaznet.net": "info@niaznet.net"
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
