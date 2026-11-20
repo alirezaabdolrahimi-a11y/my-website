@@ -11,22 +11,22 @@
   var locale = (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
   if (root.getAttribute('data-slideshow') === 'infant-formula') {
     var infantSlides = [
-      { src: '/images/04-infant-formula.png', alt: {
+      { src: '/images/slides/04-infant-formula.png', alt: {
         en: 'Infant formula and baby nutrition products',
         fa: 'محصولات شیرخشک و تغذیه نوزاد',
         tr: 'Bebek maması ve bebek beslenmesi ürünleri'
       }},
-      { src: '/images/Infant%2001.png', alt: {
+      { src: '/images/slides/Infant%2001.png', alt: {
         en: 'Infant nutrition product range',
         fa: 'گروه محصولات تغذیه نوزاد',
         tr: 'Bebek beslenmesi ürün grubu'
       }},
-      { src: '/images/Infant%2002.png', alt: {
+      { src: '/images/slides/Infant%2002.png', alt: {
         en: 'Infant formula supply and product presentation',
         fa: 'معرفی و تأمین محصولات شیرخشک',
         tr: 'Bebek maması tedariki ve ürün sunumu'
       }},
-      { src: '/images/Infant%2003.png', alt: {
+      { src: '/images/slides/Infant%2003.png', alt: {
         en: 'Infant formula and specialized baby nutrition',
         fa: 'شیرخشک و محصولات تخصصی تغذیه نوزاد',
         tr: 'Bebek maması ve özel bebek beslenmesi'
@@ -69,12 +69,12 @@
   }
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
-      { src: '/images/03-sports-nutrition.png', alt: {
+      { src: '/images/slides/03-sports-nutrition.png', alt: {
         en: 'Sports nutrition and supplement sourcing',
         fa: 'تأمین و تجارت محصولات تغذیه ورزشی و مکمل‌ها',
         tr: 'Sporcu beslenmesi ve takviye ürünleri tedariki'
       }},
-      { src: '/images/12-international-sports-brands.png', alt: {
+      { src: '/images/slides/12-international-sports-brands.png', alt: {
         en: 'International sports nutrition brands and partnerships',
         fa: 'برندها و همکاری‌های بین‌المللی در حوزه تغذیه ورزشی',
         tr: 'Uluslararası sporcu beslenmesi markaları ve iş birlikleri'
@@ -106,7 +106,7 @@
     var persianSlide = document.createElement('div');
     var persianImage = document.createElement('img');
     persianSlide.className = 'showcase-image active';
-    persianImage.src = '/images/FA_About%20us01.png';
+    persianImage.src = '/images/slides/FA_About%20us01.png';
     persianImage.alt = 'معرفی نیاز نت';
     persianImage.loading = 'eager';
     persianImage.decoding = 'async';
