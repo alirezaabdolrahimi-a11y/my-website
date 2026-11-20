@@ -7,6 +7,25 @@
 
   var slides = Array.from(root.querySelectorAll('.showcase-image'));
   if (!slides.length) return;
+
+  // Add the approved Persian-only introductory artwork as slide 1 on the
+  // homepage and About Us showcase. Existing EN/TR slides remain untouched.
+  var params = new URLSearchParams(window.location.search);
+  var isPersian = (document.documentElement.lang || '').toLowerCase().startsWith('fa') ||
+    /^\/fa\//i.test(window.location.pathname) || params.get('lang') === 'fa';
+  if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
+    var persianSlide = document.createElement('div');
+    var persianImage = document.createElement('img');
+    persianSlide.className = 'showcase-image active';
+    persianImage.src = '/images/FA_About%20us01.png';
+    persianImage.alt = 'معرفی نیاز نت';
+    persianImage.loading = 'eager';
+    persianImage.decoding = 'async';
+    persianSlide.appendChild(persianImage);
+    slides.forEach(function (slide) { slide.classList.remove('active'); });
+    root.insertBefore(persianSlide, root.firstChild);
+    slides.unshift(persianSlide);
+  }
   root.dataset.slideshowReady = 'true';
 
   var isTurkish = (document.documentElement.lang || '').toLowerCase().startsWith('tr');
