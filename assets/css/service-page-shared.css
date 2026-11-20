@@ -595,3 +595,27 @@ a.service-back-link:hover,a.btn[href*="contact"]:hover,a.btn[href*="become-our-p
     .service-disclaimer{font-size:12px!important;border-top:1px solid var(--line);padding-top:16px;margin-top:24px}
     @media(max-width:800px){.service-detail-grid{grid-template-columns:1fr}.service-aside{position:static}.seo-service-hero{padding-top:112px}.service-content{padding-top:20px}}
     
+
+/* Infant Formula hero: match the wider slideshow canvas used across NIAZ NET. */
+@media (min-width: 761px) {
+  .infant-formula-hero > .hero-inner {
+    width: min(1800px, calc(100% - 56px)) !important;
+    max-width: 1800px !important;
+    margin-inline: auto !important;
+  }
+  .infant-formula-hero .hero-showcase {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+@media (max-width: 760px) {
+  .infant-formula-hero > .hero-inner {
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+  }
+  .infant-formula-hero .hero-showcase {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
