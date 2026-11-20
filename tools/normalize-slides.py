@@ -82,6 +82,14 @@ def update_refs(source_rel, output_rel, files):
 def main():
     sources = collect_sources()
     if not sources:
+        existing = sorted((ROOT / "images/slides").glob("*.png"))
+        if existing:
+            for image_path in existing:
+                with Image.open(image_path) as image:
+                    if image.size != SIZE:
+                        raise RuntimeError(f"Non-canonical slide size: {image_path} is {image.size}")
+            print(f"Already normalized: verified {len(existing)} slide images at {SIZE[0]}x{SIZE[1]}.")
+            return
         raise RuntimeError("No slideshow images detected.")
     files = list(ROOT.rglob("*.html")) + [ROOT / "hero-slideshow.js"]
     for source in sources:
