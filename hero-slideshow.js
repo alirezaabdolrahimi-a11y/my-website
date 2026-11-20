@@ -48,8 +48,8 @@
   }
   if (root.getAttribute('data-slideshow') === 'cbd') {
     var cbdSlides = [
-      { src: '/images/05%20-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20(2).png', alt: { en: 'CBD_NON THC product coordination and compliant sourcing', fa: 'هماهنگی تجاری و تأمین محصولات CBD_NON THC مطابق مقررات', tr: 'CBD_NON THC ürün koordinasyonu ve mevzuata uygun tedarik' } },
-      { src: '/images/15-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20(1).png', alt: { en: 'CBD_NON THC pharmaceutical-grade product presentation', fa: 'معرفی محصولات CBD_NON THC با گرید دارویی', tr: 'CBD_NON THC farmasötik kalite ürün sunumu' } }
+      { src: '/images/slides/05%20-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20%282%29.png', alt: { en: 'CBD_NON THC product coordination and compliant sourcing', fa: 'هماهنگی تجاری و تأمین محصولات CBD_NON THC مطابق مقررات', tr: 'CBD_NON THC ürün koordinasyonu ve mevzuata uygun tedarik' } },
+      { src: '/images/slides/15-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20%281%29.png', alt: { en: 'CBD_NON THC pharmaceutical-grade product presentation', fa: 'معرفی محصولات CBD_NON THC با گرید دارویی', tr: 'CBD_NON THC farmasötik kalite ürün sunumu' } }
     ];
     Array.from(root.querySelectorAll('.showcase-image')).forEach(function (slide) { slide.remove(); });
     slides = [];
