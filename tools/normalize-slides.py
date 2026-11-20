@@ -69,8 +69,11 @@ def normalize(source_rel):
     return output_rel.as_posix()
 
 def update_refs(source_rel, output_rel, files):
-    enc_src, enc_out = quote(source_rel, safe="/"), quote(output_rel, safe="/")
-    variants = {source_rel, "/" + source_rel, "./" + source_rel, enc_src, "/" + enc_src, "./" + enc_src}
+    enc_out = quote(output_rel, safe="/")
+    encoded_variants = {quote(source_rel, safe="/"), quote(source_rel, safe="/()")}
+    variants = {source_rel, "/" + source_rel, "./" + source_rel}
+    for enc_src in encoded_variants:
+        variants.update({enc_src, "/" + enc_src, "./" + enc_src})
     for file in files:
         before = file.read_text(encoding="utf-8")
         after = before
