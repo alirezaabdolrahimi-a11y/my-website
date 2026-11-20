@@ -1,4 +1,4 @@
-// Shared accessible controller for the homepage featured-image slideshow.
+// Shared accessible slideshow controller used across NIAZ NET pages.
 (function () {
   'use strict';
 
@@ -6,13 +6,45 @@
   if (!root || root.dataset.slideshowReady === 'true') return;
 
   var slides = Array.from(root.querySelectorAll('.showcase-image'));
+  var params = new URLSearchParams(window.location.search);
+  var pathname = (window.location.pathname || '/').toLowerCase();
+  var locale = (document.documentElement.lang || '').toLowerCase().slice(0, 2) ||
+    (params.get('lang') || 'en').toLowerCase();
+  if (root.getAttribute('data-slideshow') === 'sports') {
+    var sportsSlides = [
+      { src: '/images/03-sports-nutrition.png', alt: {
+        en: 'Sports nutrition and supplement sourcing',
+        fa: 'تأمین و تجارت محصولات تغذیه ورزشی و مکمل‌ها',
+        tr: 'Sporcu beslenmesi ve takviye ürünleri tedariki'
+      }},
+      { src: '/images/12-international-sports-brands.png', alt: {
+        en: 'International sports nutrition brands and partnerships',
+        fa: 'برندها و همکاری‌های بین‌المللی در حوزه تغذیه ورزشی',
+        tr: 'Uluslararası sporcu beslenmesi markaları ve iş birlikleri'
+      }}
+    ];
+    sportsSlides.forEach(function (item, index) {
+      var slide = document.createElement('div');
+      var image = document.createElement('img');
+      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
+      image.src = item.src;
+      image.alt = item.alt[locale] || item.alt.en;
+      image.loading = index === 0 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      image.onerror = function () { slide.classList.add('image-missing'); };
+      slide.appendChild(image);
+      root.appendChild(slide);
+    });
+    slides = Array.from(root.querySelectorAll('.showcase-image'));
+  }
   if (!slides.length) return;
 
   // Add the approved Persian-only introductory artwork as slide 1 on the
   // homepage and About Us showcase. Existing EN/TR slides remain untouched.
-  var params = new URLSearchParams(window.location.search);
-  var isPersian = (document.documentElement.lang || '').toLowerCase().startsWith('fa') ||
-    /^\/fa\//i.test(window.location.pathname) || params.get('lang') === 'fa';
+  var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
+    /(?:^|\/)about\.html$/.test(pathname);
+  var isPersian = isHomeOrAbout && (locale === 'fa' ||
+    /^\/fa\//i.test(window.location.pathname) || params.get('lang') === 'fa');
   if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
     var persianSlide = document.createElement('div');
     var persianImage = document.createElement('img');
@@ -28,7 +60,8 @@
   }
   root.dataset.slideshowReady = 'true';
 
-  var isTurkish = (document.documentElement.lang || '').toLowerCase().startsWith('tr');
+  var isTurkish = locale === 'tr';
+  var isPersianLocale = locale === 'fa';
   var current = Math.max(0, slides.findIndex(function (slide) {
     return slide.classList.contains('active');
   }));
@@ -37,15 +70,15 @@
   var dotsWrap = document.createElement('div');
   dotsWrap.className = 'showcase-dots';
   dotsWrap.setAttribute('role', 'group');
-  dotsWrap.setAttribute('aria-label', isTurkish ? 'Öne çıkan görseli seçin' : 'Choose a featured image');
+  dotsWrap.setAttribute('aria-label', isPersianLocale ? 'انتخاب اسلاید' : isTurkish ? 'Öne çıkan görseli seçin' : 'Choose a featured image');
 
   var dots = slides.map(function (slide, index) {
     var dot = document.createElement('button');
     var caption = slide.querySelector('span');
     dot.type = 'button';
     dot.className = 'showcase-dot';
-    dot.setAttribute('aria-label', (isTurkish ? 'Slaytı göster ' : 'Show slide ') +
-      (index + 1) + ': ' + (caption ? caption.textContent.trim() : (isTurkish ? 'Öne çıkan görsel' : 'Featured image')));
+    dot.setAttribute('aria-label', (isPersianLocale ? 'نمایش اسلاید ' : isTurkish ? 'Slaytı göster ' : 'Show slide ') +
+      (index + 1) + ': ' + (caption ? caption.textContent.trim() : (isPersianLocale ? 'تصویر منتخب' : isTurkish ? 'Öne çıkan görsel' : 'Featured image')));
     dot.addEventListener('click', function () {
       show(index);
       start();
@@ -54,6 +87,36 @@
     return dot;
   });
   root.appendChild(dotsWrap);
+
+  if (root.getAttribute('data-showcase-arrows') === 'true') {
+    var previous = document.createElement('button');
+    var next = document.createElement('button');
+    previous.type = next.type = 'button';
+    previous.className = 'showcase-arrow prev';
+    next.className = 'showcase-arrow next';
+    previous.textContent = '‹';
+    next.textContent = '›';
+    previous.setAttribute('aria-label', isPersianLocale ? 'اسلاید قبلی' : isTurkish ? 'Önceki slayt' : 'Previous slide');
+    next.setAttribute('aria-label', isPersianLocale ? 'اسلاید بعدی' : isTurkish ? 'Sonraki slayt' : 'Next slide');
+    previous.addEventListener('click', function () { show(current - 1); start(); });
+    next.addEventListener('click', function () { show(current + 1); start(); });
+    root.append(previous, next);
+  }
+
+  var touchStart = null;
+  root.addEventListener('touchstart', function (event) {
+    if (event.touches.length === 1) touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  }, { passive: true });
+  root.addEventListener('touchend', function (event) {
+    if (!touchStart || !event.changedTouches.length) return;
+    var dx = event.changedTouches[0].clientX - touchStart.x;
+    var dy = event.changedTouches[0].clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      show(current + (dx < 0 ? 1 : -1));
+      start();
+    }
+  }, { passive: true });
 
   function show(index) {
     current = (index + slides.length) % slides.length;
