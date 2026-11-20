@@ -97,6 +97,16 @@ def canonical_path(raw):
     return unquote(parsed.path).lstrip("/")
 
 def validate_site():
+    shared_shell = (ROOT / "site-shell.js").read_text(encoding="utf-8")
+    required_frame_rules = (
+        "html body .hero-showcase.hero-showcase.hero-showcase",
+        "aspect-ratio:1944 / 809!important",
+        "height:auto!important",
+        "object-fit:contain!important",
+    )
+    for rule in required_frame_rules:
+        if rule not in shared_shell:
+            raise RuntimeError(f"Shared slideshow frame is missing its mandatory override: {rule}")
     pages = list(ROOT.rglob("*.html"))
     slideshow_pages = 0
     for page in pages:
