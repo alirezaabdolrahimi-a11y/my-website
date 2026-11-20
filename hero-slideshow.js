@@ -145,20 +145,19 @@
   });
   root.appendChild(dotsWrap);
 
-  if (root.getAttribute('data-showcase-arrows') === 'true') {
-    var previous = document.createElement('button');
-    var next = document.createElement('button');
-    previous.type = next.type = 'button';
-    previous.className = 'showcase-arrow prev';
-    next.className = 'showcase-arrow next';
-    previous.textContent = '‹';
-    next.textContent = '›';
-    previous.setAttribute('aria-label', isPersianLocale ? 'اسلاید قبلی' : isTurkish ? 'Önceki slayt' : 'Previous slide');
-    next.setAttribute('aria-label', isPersianLocale ? 'اسلاید بعدی' : isTurkish ? 'Sonraki slayt' : 'Next slide');
-    previous.addEventListener('click', function () { show(current - 1); start(); });
-    next.addEventListener('click', function () { show(current + 1); start(); });
-    root.append(previous, next);
-  }
+  // Controls are part of the shared structure on every page and in every locale.
+  var previous = document.createElement('button');
+  var next = document.createElement('button');
+  previous.type = next.type = 'button';
+  previous.className = 'showcase-arrow prev';
+  next.className = 'showcase-arrow next';
+  previous.textContent = '‹';
+  next.textContent = '›';
+  previous.setAttribute('aria-label', isPersianLocale ? 'اسلاید قبلی' : isTurkish ? 'Önceki slayt' : 'Previous slide');
+  next.setAttribute('aria-label', isPersianLocale ? 'اسلاید بعدی' : isTurkish ? 'Sonraki slayt' : 'Next slide');
+  previous.addEventListener('click', function () { show(current - 1); start(); });
+  next.addEventListener('click', function () { show(current + 1); start(); });
+  root.append(previous, next);
 
   var touchStart = null;
   root.addEventListener('touchstart', function (event) {
