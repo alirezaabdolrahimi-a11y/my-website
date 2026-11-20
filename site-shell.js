@@ -2,6 +2,21 @@
   'use strict';
 
 
+  // NIAZ NET slideshow standard: one frame ratio on every page and language.
+  // Keep the complete artwork visible; never crop or stretch slide images.
+  if (!document.getElementById('niaz-slideshow-standard')) {
+    var slideshowStyle = document.createElement('style');
+    slideshowStyle.id = 'niaz-slideshow-standard';
+    slideshowStyle.textContent = [
+      '.hero-showcase{box-sizing:border-box!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:1944/809!important;overflow:hidden!important;background:#071b38!important;}',
+      '.hero-showcase .showcase-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;overflow:hidden!important;}',
+      '.hero-showcase .showcase-image img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;object-position:center!important;background:#071b38!important;}',
+      '@media(max-width:760px){.hero-showcase{width:100%!important;height:auto!important;aspect-ratio:1944/809!important;min-height:0!important;}}'
+    ].join('\\n');
+    document.head.appendChild(slideshowStyle);
+  }
+
+
   if (!document.getElementById('niaz-site-enhancements')) {
     var enhancementStyle = document.createElement('style');
     enhancementStyle.id = 'niaz-site-enhancements';
