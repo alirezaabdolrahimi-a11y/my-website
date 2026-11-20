@@ -12,7 +12,7 @@
       '.hero-showcase .showcase-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;overflow:hidden!important;}',
       '.hero-showcase .showcase-image img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;object-position:center!important;background:#071b38!important;}',
       '@media(max-width:760px){.hero-showcase{width:100%!important;height:auto!important;aspect-ratio:1944/809!important;min-height:0!important;}}'
-    ].join('\\n');
+    ].join('\n');
     document.head.appendChild(slideshowStyle);
   }
 
