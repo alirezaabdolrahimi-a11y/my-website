@@ -9,6 +9,43 @@
   var params = new URLSearchParams(window.location.search);
   var pathname = (window.location.pathname || '/').toLowerCase();
   var locale = (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
+  if (root.getAttribute('data-slideshow') === 'infant-formula') {
+    var infantSlides = [
+      { src: '/images/04-infant-formula.png', alt: {
+        en: 'Infant formula and baby nutrition products',
+        fa: 'محصولات شیرخشک و تغذیه نوزاد',
+        tr: 'Bebek maması ve bebek beslenmesi ürünleri'
+      }},
+      { src: '/images/Infant%2001.png', alt: {
+        en: 'Infant nutrition product range',
+        fa: 'گروه محصولات تغذیه نوزاد',
+        tr: 'Bebek beslenmesi ürün grubu'
+      }},
+      { src: '/images/Infant%2002.png', alt: {
+        en: 'Infant formula supply and product presentation',
+        fa: 'معرفی و تأمین محصولات شیرخشک',
+        tr: 'Bebek maması tedariki ve ürün sunumu'
+      }},
+      { src: '/images/Infant%2003.png', alt: {
+        en: 'Infant formula and specialized baby nutrition',
+        fa: 'شیرخشک و محصولات تخصصی تغذیه نوزاد',
+        tr: 'Bebek maması ve özel bebek beslenmesi'
+      }}
+    ];
+    infantSlides.forEach(function (item, index) {
+      var slide = document.createElement('div');
+      var image = document.createElement('img');
+      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
+      image.src = item.src;
+      image.alt = item.alt[locale] || item.alt.en;
+      image.loading = index === 0 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      image.onerror = function () { slide.classList.add('image-missing'); };
+      slide.appendChild(image);
+      root.appendChild(slide);
+    });
+    slides = Array.from(root.querySelectorAll('.showcase-image'));
+  }
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
       { src: '/images/03-sports-nutrition.png', alt: {
