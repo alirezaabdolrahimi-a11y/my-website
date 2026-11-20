@@ -119,6 +119,14 @@
 
   var isTurkish = locale === 'tr';
   var isPersianLocale = locale === 'fa';
+  var labels = {
+    en: { choose: 'Choose a featured image', show: 'Show slide ', featured: 'Featured image', previous: 'Previous slide', next: 'Next slide' },
+    fa: { choose: 'انتخاب اسلاید', show: 'نمایش اسلاید ', featured: 'تصویر منتخب', previous: 'اسلاید قبلی', next: 'اسلاید بعدی' },
+    tr: { choose: 'Öne çıkan görseli seçin', show: 'Slaytı göster ', featured: 'Öne çıkan görsel', previous: 'Önceki slayt', next: 'Sonraki slayt' },
+    es: { choose: 'Elegir imagen destacada', show: 'Mostrar diapositiva ', featured: 'Imagen destacada', previous: 'Diapositiva anterior', next: 'Diapositiva siguiente' },
+    fr: { choose: 'Choisir une image à la une', show: 'Afficher la diapositive ', featured: 'Image à la une', previous: 'Diapositive précédente', next: 'Diapositive suivante' }
+  };
+  var textLabels = labels[locale] || labels.en;
   var current = Math.max(0, slides.findIndex(function (slide) {
     return slide.classList.contains('active');
   }));
@@ -127,15 +135,14 @@
   var dotsWrap = document.createElement('div');
   dotsWrap.className = 'showcase-dots';
   dotsWrap.setAttribute('role', 'group');
-  dotsWrap.setAttribute('aria-label', isPersianLocale ? 'انتخاب اسلاید' : isTurkish ? 'Öne çıkan görseli seçin' : 'Choose a featured image');
+  dotsWrap.setAttribute('aria-label', textLabels.choose);
 
   var dots = slides.map(function (slide, index) {
     var dot = document.createElement('button');
     var caption = slide.querySelector('span');
     dot.type = 'button';
     dot.className = 'showcase-dot';
-    dot.setAttribute('aria-label', (isPersianLocale ? 'نمایش اسلاید ' : isTurkish ? 'Slaytı göster ' : 'Show slide ') +
-      (index + 1) + ': ' + (caption ? caption.textContent.trim() : (isPersianLocale ? 'تصویر منتخب' : isTurkish ? 'Öne çıkan görsel' : 'Featured image')));
+    dot.setAttribute('aria-label', textLabels.show + (index + 1) + ': ' + (caption ? caption.textContent.trim() : textLabels.featured));
     dot.addEventListener('click', function () {
       show(index);
       start();
@@ -153,8 +160,8 @@
   next.className = 'showcase-arrow next';
   previous.textContent = '‹';
   next.textContent = '›';
-  previous.setAttribute('aria-label', isPersianLocale ? 'اسلاید قبلی' : isTurkish ? 'Önceki slayt' : 'Previous slide');
-  next.setAttribute('aria-label', isPersianLocale ? 'اسلاید بعدی' : isTurkish ? 'Sonraki slayt' : 'Next slide');
+  previous.setAttribute('aria-label', textLabels.previous);
+  next.setAttribute('aria-label', textLabels.next);
   previous.addEventListener('click', function () { show(current - 1); start(); });
   next.addEventListener('click', function () { show(current + 1); start(); });
   root.append(previous, next);
