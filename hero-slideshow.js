@@ -8,8 +8,7 @@
   var slides = Array.from(root.querySelectorAll('.showcase-image'));
   var params = new URLSearchParams(window.location.search);
   var pathname = (window.location.pathname || '/').toLowerCase();
-  var locale = (document.documentElement.lang || '').toLowerCase().slice(0, 2) ||
-    (params.get('lang') || 'en').toLowerCase();
+  var locale = (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
       { src: '/images/03-sports-nutrition.png', alt: {
