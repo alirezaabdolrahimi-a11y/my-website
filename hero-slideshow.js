@@ -46,6 +46,25 @@
     });
     slides = Array.from(root.querySelectorAll('.showcase-image'));
   }
+  if (root.getAttribute('data-slideshow') === 'cbd') {
+    var cbdSlides = [
+      { src: '/images/05%20-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20(2).png', alt: { en: 'CBD_NON THC product coordination and compliant sourcing', fa: 'هماهنگی تجاری و تأمین محصولات CBD_NON THC مطابق مقررات', tr: 'CBD_NON THC ürün koordinasyonu ve mevzuata uygun tedarik' } },
+      { src: '/images/15-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20(1).png', alt: { en: 'CBD_NON THC pharmaceutical-grade product presentation', fa: 'معرفی محصولات CBD_NON THC با گرید دارویی', tr: 'CBD_NON THC farmasötik kalite ürün sunumu' } }
+    ];
+    cbdSlides.forEach(function (item, index) {
+      var slide = document.createElement('div');
+      var image = document.createElement('img');
+      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
+      image.src = item.src;
+      image.alt = item.alt[locale] || item.alt.en;
+      image.loading = index === 0 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      image.onerror = function () { slide.classList.add('image-missing'); };
+      slide.appendChild(image);
+      root.appendChild(slide);
+    });
+    slides = Array.from(root.querySelectorAll('.showcase-image'));
+  }
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
       { src: '/images/03-sports-nutrition.png', alt: {
