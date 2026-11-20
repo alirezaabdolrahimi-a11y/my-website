@@ -20,9 +20,15 @@
   };
 
   function serviceHref(slug, routeMode, staticPrefix, queryPrefix) {
-    return routeMode === 'static'
-      ? (staticPrefix || '/') + slug + '.html'
-      : (queryPrefix || '/') + 'index.html?service=' + encodeURIComponent(slug);
+    if (routeMode === 'static') {
+      var href = (staticPrefix || '/') + slug + '.html';
+      var params = new URLSearchParams(window.location.search);
+      var savedLanguage = '';
+      try { savedLanguage = localStorage.getItem('niaznet-language') || ''; } catch (error) {}
+      if (params.get('lang') === 'fa' || (!params.has('lang') && savedLanguage === 'fa')) href += '?lang=fa';
+      return href;
+    }
+    return (queryPrefix || '/') + 'index.html?service=' + encodeURIComponent(slug);
   }
 
   window.renderNiazServiceGrid = function (config) {
