@@ -152,19 +152,7 @@
   });
   root.appendChild(dotsWrap);
 
-  // Controls are part of the shared structure on every page and in every locale.
-  var previous = document.createElement('button');
-  var next = document.createElement('button');
-  previous.type = next.type = 'button';
-  previous.className = 'showcase-arrow prev';
-  next.className = 'showcase-arrow next';
-  previous.textContent = '‹';
-  next.textContent = '›';
-  previous.setAttribute('aria-label', textLabels.previous);
-  next.setAttribute('aria-label', textLabels.next);
-  previous.addEventListener('click', function () { show(current - 1); start(); });
-  next.addEventListener('click', function () { show(current + 1); start(); });
-  root.append(previous, next);
+  // Per the site-wide slideshow standard, no left/right arrow controls are rendered.
 
   var touchStart = null;
   root.addEventListener('touchstart', function (event) {
