@@ -265,7 +265,7 @@ Object.assign(pages,{
 'Target geography and the type of manufacturer, buyer, distributor or investor sought.':'جغرافیای هدف و نوع تولیدکننده، خریدار، توزیع‌کننده یا سرمایه‌گذار موردنظر.',
 'Expected milestones, timeline and practical criteria for a suitable opportunity.':'نقاط عطف مورد انتظار، زمان‌بندی و معیارهای عملی برای فرصت مناسب.'
 },
-'CBD_NON THC-products.html':{
+'cbd-products.html':{
 'CBD_NON THC Product Market Coordination':'هماهنگی تجاری محصولات CBD_NON THC','Coordinate preliminary commercial enquiries for CBD_NON THC-related products only where lawful, with product classification, licensing and destination-market requirements reviewed first.':'درخواست‌های تجاری اولیه درباره محصولات مرتبط با CBD_NON THC را صرفاً در موارد مجاز قانونی و پس از بررسی طبقه‌بندی محصول، مجوزها و الزامات بازار مقصد هماهنگ می‌کنیم.',
 'CBD_NON THC Products & Market Coordination':'محصولات CBD_NON THC و هماهنگی بازار','CBD_NON THC Products & Market Coordination: commercial coordination':'محصولات CBD_NON THC: هماهنگی تجاری',
 'Niaz Net Tehran can coordinate preliminary commercial discussions for CBD_NON THC-related products where the product category and intended market allow such activity.':'نیازنت تهران می‌تواند در مواردی که گروه محصول و بازار مقصد اجازه می‌دهند، گفت‌وگوهای تجاری اولیه درباره محصولات مرتبط با CBD_NON THC را هماهنگ کند.',
@@ -636,7 +636,7 @@ const extraPageTranslations={
 "Depending on the project, support may include preparing a development roadmap, coordinating meetings, evaluating potential partners, and maintaining a clear pipeline of next steps. Scope, targets, and reporting expectations are agreed with the client before work begins.":"بسته به پروژه، پشتیبانی می‌تواند شامل تهیه نقشه راه توسعه، هماهنگی جلسات، ارزیابی شرکای بالقوه و حفظ مسیر شفافی از اقدامات بعدی باشد. دامنه کار، اهداف و انتظارات گزارش‌دهی پیش از شروع فعالیت با مشتری توافق می‌شوند.",
 "We start with the commercial objective and the type of counterpart needed, then organize relevant partner outreach and follow-up. The scope is tailored to the product, market and project stage.":"کار را با هدف تجاری و نوع طرف همکاری موردنیاز آغاز می‌کنیم و سپس ارتباط‌گیری و پیگیری با شرکای مرتبط را سازمان می‌دهیم. دامنه فعالیت بر اساس محصول، بازار و مرحله پروژه تنظیم می‌شود."
 },
-"CBD_NON THC-products.html":{
+"cbd-products.html":{
 "Niaz Net Tehran can coordinate preliminary commercial discussions for CBD_NON THC-related products where the product category and intended market allow such activity. Early-stage work may include clarifying product specifications, identifying potential business counterparts, and mapping the questions that must be resolved before a transaction can proceed.":"نیازنت تهران تنها در مواردی که گروه محصول و بازار هدف چنین فعالیتی را مجاز بدانند، می‌تواند مذاکرات تجاری اولیه درباره محصولات مرتبط با CBD_NON THC را هماهنگ کند. اقدامات اولیه ممکن است شامل شفاف‌سازی مشخصات محصول، شناسایی طرف‌های تجاری بالقوه و تعیین پرسش‌هایی باشد که پیش از انجام معامله باید پاسخ داده شوند.",
 "CBD_NON THC laws and product classifications vary significantly by jurisdiction and product type. No sourcing, import, distribution, or marketing activity should proceed until legality, licensing, product status, and all applicable regulatory requirements have been independently confirmed for the relevant markets.":"قوانین مربوط به CBD_NON THC و طبقه‌بندی محصولات آن بر اساس حوزه قضایی و نوع محصول تفاوت زیادی دارند. هیچ فعالیتی در زمینه تأمین، واردات، توزیع یا بازاریابی نباید پیش از تأیید مستقل قانونی بودن، مجوزها، وضعیت محصول و تمام الزامات مقرراتی مربوطه در بازارهای موردنظر انجام شود.",
 "Before any transaction is explored, the product composition and legal status must be checked for the specific destination market. The service is limited to preliminary coordination where the activity is lawful.":"پیش از بررسی هر معامله، ترکیب محصول و وضعیت قانونی آن باید برای بازار مقصد مشخص بررسی شود. این خدمت فقط به هماهنگی اولیه در مواردی محدود است که فعالیت مربوطه قانونی باشد."
@@ -2118,7 +2118,7 @@ const titleMap={
 "become-our-partner.html":"همکاری با نیازنت | نیازنت",
 "projects.html":"پروژه‌ها و قراردادهای فعال | نیازنت",
 "business-development.html":"توسعه کسب‌وکار بین‌المللی | نیازنت",
-"CBD_NON THC-products.html":"هماهنگی تجاری محصولات CBD_NON THC | نیازنت",
+"cbd-products.html":"هماهنگی تجاری محصولات CBD_NON THC | نیازنت",
 "chamber-of-commerce.html":"اتاق بازرگانی و هماهنگی تجارت | نیازنت",
 "cosmoderma.html":"کازمودرما و پزشکی زیبایی | نیازنت"
 };
