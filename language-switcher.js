@@ -35,11 +35,8 @@
   var active = (localeMatch && localeMatch[1].toLowerCase()) ||
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
 
-  var languageNames = {
-    en: { en: 'English', fa: 'Persian', tr: 'Turkish' },
-    fa: { en: 'انگلیسی', fa: 'فارسی', tr: 'ترکی' },
-    tr: { en: 'İngilizce', fa: 'Farsça', tr: 'Türkçe' }
-  };
+  // Keep language names in English on every localized page.
+  var languageNames = { en: 'English', fa: 'Persian', tr: 'Turkish' };
   var languages = ['en', 'fa', 'tr'];
   if (languages.indexOf(active) === -1) active = 'en';
 
@@ -84,13 +81,13 @@
   menu.className = 'niaz-language-menu';
   menu.hidden = true;
   menu.setAttribute('role', 'menu');
-  menu.setAttribute('aria-label', active === 'fa' ? 'انتخاب زبان وب‌سایت' : active === 'tr' ? 'Web sitesi dilini seçin' : active === 'es' ? 'Elegir idioma del sitio web' : active === 'fr' ? 'Choisir la langue du site' : 'Choose website language');
+  menu.setAttribute('aria-label', 'Choose website language');
 
   languages.forEach(function (code) {
     var item = document.createElement('button');
     item.type = 'button';
     item.className = 'niaz-language-option';
-    item.textContent = languageNames[active] && languageNames[active][code] || languageNames.en[code];
+    item.textContent = languageNames[code];
     item.setAttribute('role', 'menuitem');
     item.setAttribute('aria-current', code === active ? 'true' : 'false');
     item.addEventListener('click', function (event) {
