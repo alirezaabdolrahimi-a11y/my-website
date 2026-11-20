@@ -72,7 +72,7 @@ function applyLanguage(lang){
   document.body.dir=lang==='fa'?'rtl':'ltr';
   document.body.dataset.contentLang=lang;
   try{localStorage.setItem('niaznet-language',lang)}catch(e){}
-  langButton.textContent=lang==='fa'?'فارسی⌄':'EN⌄';
+  langButton.textContent=lang.toUpperCase()+'⌄';
   document.querySelectorAll('.nav-links>a').forEach(a=>{
     const t=a.dataset.enText || a.textContent.trim();
     a.dataset.enText=t;
