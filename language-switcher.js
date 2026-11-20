@@ -111,7 +111,7 @@
 
   button.setAttribute('aria-haspopup', 'menu');
   button.setAttribute('aria-expanded', 'false');
-  button.textContent = (active === 'fa' ? 'فارسی' : active.toUpperCase()) + '⌄';
+  button.textContent = 'Language⌄';
 
   button.addEventListener('click', function (event) {
     event.preventDefault();
