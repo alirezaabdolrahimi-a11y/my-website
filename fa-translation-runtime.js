@@ -2097,6 +2097,24 @@ for(const node of nodes){
 }
 for(const el of document.querySelectorAll('input[placeholder],textarea[placeholder]'))if(dict[norm(el.placeholder)]){el.placeholder=dict[norm(el.placeholder)];el.dir='rtl';}
 for(const el of document.querySelectorAll('[aria-label]'))if(dict[norm(el.getAttribute('aria-label'))])el.setAttribute('aria-label',dict[norm(el.getAttribute('aria-label'))]);
+const formFieldNames={
+'Full name':'نام و نام خانوادگی',
+'Company':'شرکت',
+'Job title / Position':'عنوان شغلی / سمت',
+'Phone / WhatsApp':'تلفن / واتساپ',
+'Business email':'ایمیل کاری',
+'Request type':'نوع درخواست',
+'Request details':'جزئیات درخواست',
+'Partner type':'نوع شریک تجاری',
+'Product or service':'محصول یا خدمت',
+'Target market':'بازار هدف',
+'Partnership proposal':'پیشنهاد همکاری'
+};
+document.querySelectorAll('form[data-mailto-form] [name]').forEach(function(el){
+ const fieldName=el.getAttribute('name');
+ if(formFieldNames[fieldName])el.setAttribute('name',formFieldNames[fieldName]);
+});
+
 const titleMap={
 "api-supply.html":"تأمین مواد اولیه دارویی و API | نیازنت",
 "brand-registration.html":"ثبت برند در بازارهای بین‌المللی | نیازنت",
