@@ -77,8 +77,8 @@
   var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
   var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#niaz-contact-hub';
 
-  // Remove every legacy form (including duplicate newsletter and separate contact/partner forms).
-  document.querySelectorAll('form').forEach(function (form) { form.remove(); });
+  // Remove only the legacy newsletter form; preserve contact and partnership enquiry forms.
+  document.querySelectorAll('form#newsletterForm').forEach(function (form) { form.remove(); });
   document.querySelectorAll('.footer-col.newsletter').forEach(function (column) {
     var footerCopy = {
       en: ['Contact NIAZ NET','For business enquiries and cooperation opportunities, contact our team.','CONTACT OUR TEAM →'],
