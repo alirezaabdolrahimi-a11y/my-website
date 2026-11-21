@@ -48,7 +48,7 @@
     whatsappLink.rel = 'noopener noreferrer';
     var whatsappPath = window.location.pathname || '/';
     var whatsappQueryLanguage = new URLSearchParams(window.location.search).get('lang');
-    var whatsappLanguage = whatsappQueryLanguage === 'fa' || /^\\/fa\\//i.test(whatsappPath) ? 'fa' : /^\\/tr\\//i.test(whatsappPath) ? 'tr' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+    var whatsappLanguage = whatsappQueryLanguage === 'fa' || whatsappPath.indexOf('/fa/') === 0 ? 'fa' : whatsappPath.indexOf('/tr/') === 0 ? 'tr' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
     var whatsappLabels = { en: 'Message NIAZ NET on WhatsApp', fa: 'ارسال پیام به نیازنت در واتساپ', tr: 'WhatsApp üzerinden NIAZ NET\'e mesaj gönder' };
     whatsappLink.setAttribute('aria-label', whatsappLabels[whatsappLanguage] || whatsappLabels.en);
     whatsappLink.title = 'WhatsApp';
