@@ -30,7 +30,6 @@
 
   var path = window.location.pathname || '/';
   var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/i);
-  var basePath = localeMatch ? (path.replace(/^\/(tr|es|fr|fa)(?=\/|$)/i, '') || '/') : path;
   var params = new URLSearchParams(window.location.search);
   var active = (localeMatch && localeMatch[1].toLowerCase()) ||
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
