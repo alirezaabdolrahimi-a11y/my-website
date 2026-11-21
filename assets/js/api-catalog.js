@@ -13,7 +13,10 @@
 
   root.dataset.ready = 'true';
   var rows = Array.from(body.querySelectorAll('tr'));
-  var isTurkish = document.documentElement.lang.toLowerCase() === 'tr';
+  var queryLanguage = new URLSearchParams(window.location.search).get('lang');
+  var language = queryLanguage === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  var isTurkish = language === 'tr';
+  var isPersian = language === 'fa';
 
   function render() {
     var query = input.value.trim().toLocaleLowerCase(isTurkish ? 'tr' : 'en');
@@ -27,9 +30,11 @@
       if (visible) shown += 1;
     });
 
-    count.textContent = isTurkish
-      ? shown + ' / ' + rows.length + ' kayıt gösteriliyor'
-      : 'Showing ' + shown + ' of ' + rows.length + ' records';
+    count.textContent = isPersian
+      ? 'نمایش ' + shown + ' مورد از ' + rows.length + ' مورد'
+      : isTurkish
+        ? shown + ' / ' + rows.length + ' kayıt gösteriliyor'
+        : 'Showing ' + shown + ' of ' + rows.length + ' records';
     empty.hidden = shown !== 0;
   }
 
