@@ -117,8 +117,6 @@
   }
   root.dataset.slideshowReady = 'true';
 
-  var isTurkish = locale === 'tr';
-  var isPersianLocale = locale === 'fa';
   var labels = {
     en: { choose: 'Choose a featured image', show: 'Show slide ', featured: 'Featured image', previous: 'Previous slide', next: 'Next slide' },
     fa: { choose: 'انتخاب اسلاید', show: 'نمایش اسلاید ', featured: 'تصویر منتخب', previous: 'اسلاید قبلی', next: 'اسلاید بعدی' },

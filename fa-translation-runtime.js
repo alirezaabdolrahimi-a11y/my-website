@@ -1,5 +1,7 @@
 (function(){
 'use strict';
+if(document.documentElement.dataset.faTranslationRuntimeLoaded==='true')return;
+document.documentElement.dataset.faTranslationRuntimeLoaded='true';
 const params=new URLSearchParams(location.search);
 const isTurkishPage=/^\/tr\//.test(location.pathname);
 const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
@@ -2046,6 +2048,11 @@ Object.assign(common, {
   "info@niaznet.net": "info@niaznet.net"
 });
 
+Object.assign(pages['api-supply.html'], {
+  'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Product identity, specifications, quality standard, supplier qualification and destination-market requirements must be confirmed before any transaction.':'این فهرست صرفاً مرجعی اولیه برای بررسی و درخواست تأمین است و به‌معنای اعلام موجودی فعلی، تأیید تأمین‌کننده یا احراز انطباق مقرراتی نیست. هویت محصول، مشخصات، استاندارد کیفیت، صلاحیت تأمین‌کننده و الزامات بازار مقصد باید پیش از هر معامله تأیید شوند.',
+  'We coordinate commercial sourcing enquiries for APIs, intermediates and pharmaceutical excipients with international manufacturers and suppliers. Include the product name, specification, destination market and required quantity in your enquiry.':'ما درخواست‌های تجاری تأمین مواد مؤثره دارویی (API)، مواد حدواسط و مواد جانبی دارویی را با تولیدکنندگان و تأمین‌کنندگان بین‌المللی هماهنگ می‌کنیم. لطفاً نام محصول، مشخصات، بازار مقصد و مقدار موردنیاز را در درخواست خود درج کنید.'
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
@@ -2090,6 +2097,24 @@ for(const node of nodes){
 }
 for(const el of document.querySelectorAll('input[placeholder],textarea[placeholder]'))if(dict[norm(el.placeholder)]){el.placeholder=dict[norm(el.placeholder)];el.dir='rtl';}
 for(const el of document.querySelectorAll('[aria-label]'))if(dict[norm(el.getAttribute('aria-label'))])el.setAttribute('aria-label',dict[norm(el.getAttribute('aria-label'))]);
+const formFieldNames={
+'Full name':'نام و نام خانوادگی',
+'Company':'شرکت',
+'Job title / Position':'عنوان شغلی / سمت',
+'Phone / WhatsApp':'تلفن / واتساپ',
+'Business email':'ایمیل کاری',
+'Request type':'نوع درخواست',
+'Request details':'جزئیات درخواست',
+'Partner type':'نوع شریک تجاری',
+'Product or service':'محصول یا خدمت',
+'Target market':'بازار هدف',
+'Partnership proposal':'پیشنهاد همکاری'
+};
+document.querySelectorAll('form[data-mailto-form] [name]').forEach(function(el){
+ const fieldName=el.getAttribute('name');
+ if(formFieldNames[fieldName])el.setAttribute('name',formFieldNames[fieldName]);
+});
+
 const titleMap={
 "api-supply.html":"تأمین مواد اولیه دارویی و API | نیازنت",
 "brand-registration.html":"ثبت برند در بازارهای بین‌المللی | نیازنت",
@@ -2168,5 +2193,13 @@ const style=document.createElement('style');
 style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
 document.head.appendChild(style);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',translate,{once:true});else translate();
-const observer=new MutationObserver(()=>translate());observer.observe(document.body,{childList:true,subtree:true});
+let translationFrame=0;
+const observer=new MutationObserver(()=>{
+ if(translationFrame)return;
+ translationFrame=requestAnimationFrame(()=>{
+  translationFrame=0;
+  translate();
+ });
+});
+observer.observe(document.body,{childList:true,subtree:true});
 })();

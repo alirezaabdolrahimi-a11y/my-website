@@ -30,13 +30,14 @@
 
   var path = window.location.pathname || '/';
   var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/i);
-  var basePath = localeMatch ? (path.replace(/^\/(tr|es|fr|fa)(?=\/|$)/i, '') || '/') : path;
   var params = new URLSearchParams(window.location.search);
   var active = (localeMatch && localeMatch[1].toLowerCase()) ||
     (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
 
   // Keep language names in English on every localized page.
   var languageNames = { en: 'English', fa: 'Persian', tr: 'Turkish' };
+  var languageLabels = { en: 'Language', fa: 'زبان', tr: 'Dil' };
+  var menuLabels = { en: 'Choose website language', fa: 'انتخاب زبان سایت', tr: 'Web sitesi dilini seçin' };
   var languages = ['en', 'fa', 'tr'];
   if (languages.indexOf(active) === -1) active = 'en';
 
@@ -81,7 +82,7 @@
   menu.className = 'niaz-language-menu';
   menu.hidden = true;
   menu.setAttribute('role', 'menu');
-  menu.setAttribute('aria-label', 'Choose website language');
+  menu.setAttribute('aria-label', menuLabels[active] || menuLabels.en);
 
   languages.forEach(function (code) {
     var item = document.createElement('button');
@@ -111,7 +112,7 @@
 
   button.setAttribute('aria-haspopup', 'menu');
   button.setAttribute('aria-expanded', 'false');
-  button.textContent = 'Language⌄';
+  button.textContent = (languageLabels[active] || languageLabels.en) + '⌄';
 
   button.addEventListener('click', function (event) {
     event.preventDefault();
