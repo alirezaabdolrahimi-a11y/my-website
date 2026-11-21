@@ -126,7 +126,10 @@
   }
 
   function routeContactLinks(root) {
-    (root || document).querySelectorAll('a').forEach(function (link) {
+    var scope = root || document;
+    var links = Array.prototype.slice.call(scope.querySelectorAll('a'));
+    if (scope.nodeType === 1 && scope.matches && scope.matches('a')) links.unshift(scope);
+    links.forEach(function (link) {
       var label = (link.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
       var href = (link.getAttribute('href') || '').toLowerCase();
       var isContactAction = /^(become our partner|iş ortağımız olun|iş ortağımız ol|partner with us|partner with niaz net|start a partnership discussion|contact us|contact our team|contact details|contact|let’s discuss your brand|let's discuss your brand|discuss this service|discuss your requirements|discuss your infant-nutrition project|email our team|email your partnership enquiry|send enquiry by email|ekibimizle iletişime geçin|iletişim bilgileri|iletişim|iş ortağımız olun|ortaklık görüşmesi başlatın|ekibimize e-posta gönderin)$/.test(label);
