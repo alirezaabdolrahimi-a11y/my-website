@@ -30,8 +30,8 @@ jobs:
       - run: python tools/normalize-slides.py
       - name: Verify normalization produced no uncommitted changes
         run: |
-          if ! git diff --quiet || ! git diff --cached --quiet; then
-            echo "Slideshow normalization changed tracked files. Run the normalizer locally and review the result before committing."
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Slideshow normalization changed or created files. Review the result locally before committing."
             git status --short
             exit 1
           fi
