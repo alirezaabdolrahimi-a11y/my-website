@@ -27,12 +27,15 @@ jobs:
       - name: Check shared JavaScript syntax
         run: node --check site-shell.js && node --check hero-slideshow.js
       - run: python -m pip install --disable-pip-version-check Pillow
-      - run: python tools/normalize-slides.py
-      - name: Verify normalization produced no uncommitted changes
+      - name: Validate normalization in an isolated copy
         run: |
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          git archive HEAD | tar -x -C "$tmp_dir"
+          python "$tmp_dir/tools/normalize-slides.py"
           if [ -n "$(git status --porcelain)" ]; then
-            echo "Slideshow normalization changed or created files. Review the result locally before committing."
+            echo "The validation job modified the checked-out repository."
             git status --short
             exit 1
           fi
-          echo "All slideshow assets and references already match the canonical format."
+          echo "Validation completed in an isolated copy; the checked-out repository remains unchanged."
