@@ -1,5 +1,7 @@
 (function(){
 'use strict';
+if(document.documentElement.dataset.faTranslationRuntimeLoaded==='true')return;
+document.documentElement.dataset.faTranslationRuntimeLoaded='true';
 const params=new URLSearchParams(location.search);
 const isTurkishPage=/^\/tr\//.test(location.pathname);
 const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
@@ -2168,5 +2170,13 @@ const style=document.createElement('style');
 style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
 document.head.appendChild(style);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',translate,{once:true});else translate();
-const observer=new MutationObserver(()=>translate());observer.observe(document.body,{childList:true,subtree:true});
+let translationFrame=0;
+const observer=new MutationObserver(()=>{
+ if(translationFrame)return;
+ translationFrame=requestAnimationFrame(()=>{
+  translationFrame=0;
+  translate();
+ });
+});
+observer.observe(document.body,{childList:true,subtree:true});
 })();
