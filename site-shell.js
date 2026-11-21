@@ -80,6 +80,13 @@
   if (queryLang === 'fa') locale = 'fa';
   var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
   var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#niaz-contact-hub';
+  var isLocalizedHomepage = window.location.pathname === '/' || /\/index\.html$/i.test(window.location.pathname);
+  if (!document.getElementById('niaz-contact-visibility')) {
+    var contactVisibilityStyle = document.createElement('style');
+    contactVisibilityStyle.id = 'niaz-contact-visibility';
+    contactVisibilityStyle.textContent = '#contact[hidden],.niaz-contact-hub[hidden]{display:none!important}';
+    document.head.appendChild(contactVisibilityStyle);
+  }
 
   // Remove only the legacy newsletter form; preserve contact and partnership enquiry forms.
   document.querySelectorAll('form#newsletterForm').forEach(function (form) { form.remove(); });
@@ -118,6 +125,12 @@
       '<label class="niaz-form-field">' + t[6] + '<select name="Request type"><option>' + t[7] + '</option><option>' + t[8] + '</option><option>' + t[9] + '</option><option>' + t[10] + '</option><option>' + t[11] + '</option><option>' + t[12] + '</option></select></label>' +
       '<label class="niaz-form-field wide">' + t[13] + '<textarea name="Request details" required></textarea></label></div><div class="niaz-form-actions"><button class="btn" type="submit">' + t[14] + '</button></div><p class="niaz-form-note">' + t[15] + '</p></form></div>';
     contactSection.insertAdjacentElement('afterend', section);
+    if (isLocalizedHomepage) {
+      var showContactHub = window.location.hash.toLowerCase() === '#niaz-contact-hub';
+      contactSection.hidden = !showContactHub;
+      section.hidden = !showContactHub;
+      if (showContactHub) window.requestAnimationFrame(function () { section.scrollIntoView({ block: 'start' }); });
+    }
     var centralForm = section.querySelector('#niazContactHubForm');
     centralForm.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -147,16 +160,15 @@
   }
   routeContactLinks(document);
 
-  // On every contact CTA, open a new email draft and continue to the central enquiry form.
+  // Reveal the homepage contact area only when a contact CTA is activated.
   document.addEventListener('click', function (event) {
     var link = event.target && event.target.closest ? event.target.closest('a') : null;
     if (!link) return;
     var href = (link.getAttribute('href') || '').toLowerCase();
-    if (href !== contactTarget.toLowerCase()) return;
-    var subject = locale === 'fa' ? 'درخواست تجاری - نیازنت' : locale === 'tr' ? 'NIAZ NET Ticari Talep' : locale === 'es' ? 'Consulta comercial - NIAZ NET' : locale === 'fr' ? 'Demande commerciale - NIAZ NET' : 'NIAZ NET Business Enquiry';
-    var mailto = 'mailto:info@niaznet.net?subject=' + encodeURIComponent(subject);
-    window.open(mailto, '_blank');
-    // Do not prevent the anchor's normal navigation to the central contact form.
+    if (href !== contactTarget.toLowerCase() || !isLocalizedHomepage) return;
+    if (contactSection) contactSection.hidden = false;
+    var contactHub = document.getElementById('niaz-contact-hub');
+    if (contactHub) contactHub.hidden = false;
   }, true);
 
   if (window.MutationObserver) {
