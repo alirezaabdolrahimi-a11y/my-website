@@ -2048,6 +2048,11 @@ Object.assign(common, {
   "info@niaznet.net": "info@niaznet.net"
 });
 
+Object.assign(pages['api-supply.html'], {
+  'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Product identity, specifications, quality standard, supplier qualification and destination-market requirements must be confirmed before any transaction.':'این فهرست صرفاً مرجعی اولیه برای بررسی و درخواست تأمین است و به‌معنای اعلام موجودی فعلی، تأیید تأمین‌کننده یا احراز انطباق مقرراتی نیست. هویت محصول، مشخصات، استاندارد کیفیت، صلاحیت تأمین‌کننده و الزامات بازار مقصد باید پیش از هر معامله تأیید شوند.',
+  'We coordinate commercial sourcing enquiries for APIs, intermediates and pharmaceutical excipients with international manufacturers and suppliers. Include the product name, specification, destination market and required quantity in your enquiry.':'ما درخواست‌های تجاری تأمین مواد مؤثره دارویی (API)، مواد حدواسط و مواد جانبی دارویی را با تولیدکنندگان و تأمین‌کنندگان بین‌المللی هماهنگ می‌کنیم. لطفاً نام محصول، مشخصات، بازار مقصد و مقدار موردنیاز را در درخواست خود درج کنید.'
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
