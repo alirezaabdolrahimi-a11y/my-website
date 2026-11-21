@@ -117,13 +117,13 @@
     section.className = 'container section niaz-contact-hub';
     section.id = 'niaz-contact-hub';
     section.innerHTML = '<div class="page-panel"><h2>' + t[0] + '</h2><form id="niazContactHubForm" class="niaz-inquiry-form"><div class="niaz-form-grid">' +
-      '<label class="niaz-form-field">' + t[1] + '<input name="Full name" autocomplete="name" required></label>' +
-      '<label class="niaz-form-field">' + t[2] + '<input name="Company" autocomplete="organization"></label>' +
-      '<label class="niaz-form-field">' + t[3] + '<input name="Job title / Position"></label>' +
-      '<label class="niaz-form-field">' + t[4] + '<input name="Phone / WhatsApp" autocomplete="tel"></label>' +
-      '<label class="niaz-form-field">' + t[5] + '<input name="Business email" type="email" autocomplete="email" required></label>' +
-      '<label class="niaz-form-field">' + t[6] + '<select name="Request type"><option>' + t[7] + '</option><option>' + t[8] + '</option><option>' + t[9] + '</option><option>' + t[10] + '</option><option>' + t[11] + '</option><option>' + t[12] + '</option></select></label>' +
-      '<label class="niaz-form-field wide">' + t[13] + '<textarea name="Request details" required></textarea></label></div><div class="niaz-form-actions"><button class="btn" type="submit">' + t[14] + '</button></div><p class="niaz-form-note">' + t[15] + '</p></form></div>';
+      '<label class="niaz-form-field">' + t[1] + '<input name="' + t[1].replace(' *','') + '" autocomplete="name" required></label>' +
+      '<label class="niaz-form-field">' + t[2] + '<input name="' + t[2] + '" autocomplete="organization"></label>' +
+      '<label class="niaz-form-field">' + t[3] + '<input name="' + t[3] + '"></label>' +
+      '<label class="niaz-form-field">' + t[4] + '<input name="' + t[4] + '" autocomplete="tel"></label>' +
+      '<label class="niaz-form-field">' + t[5] + '<input name="' + t[5].replace(' *','') + '" type="email" autocomplete="email" required></label>' +
+      '<label class="niaz-form-field">' + t[6] + '<select name="' + t[6] + '"><option>' + t[7] + '</option><option>' + t[8] + '</option><option>' + t[9] + '</option><option>' + t[10] + '</option><option>' + t[11] + '</option><option>' + t[12] + '</option></select></label>' +
+      '<label class="niaz-form-field wide">' + t[13] + '<textarea name="' + t[13].replace(' *','') + '" required></textarea></label></div><div class="niaz-form-actions"><button class="btn" type="submit">' + t[14] + '</button></div><p class="niaz-form-note">' + t[15] + '</p></form></div>';
     contactSection.insertAdjacentElement('afterend', section);
     if (isLocalizedHomepage) {
       var showContactHub = window.location.hash.toLowerCase() === '#niaz-contact-hub';
