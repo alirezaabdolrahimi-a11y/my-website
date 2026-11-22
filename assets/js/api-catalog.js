@@ -14,8 +14,8 @@
   root.dataset.ready = 'true';
   var rows = Array.from(body.querySelectorAll('tr'));
   var queryLanguage = new URLSearchParams(window.location.search).get('lang');
-  var isTurkishPath = /^\/tr(?:\/|$)/i.test(window.location.pathname || '/');
-  var language = isTurkishPath ? 'tr' : queryLanguage === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  var routeLocaleMatch = (window.location.pathname || '/').match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
+  var language = routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() : queryLanguage === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
   var isTurkish = language === 'tr';
   var isPersian = language === 'fa';
 
