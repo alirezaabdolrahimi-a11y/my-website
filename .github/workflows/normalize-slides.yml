@@ -51,3 +51,14 @@ jobs:
             exit 1
           fi
           echo "Validation completed in an isolated copy; the checked-out repository remains unchanged."
+
+      - name: Package complete source backup
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        run: git archive --format=zip --prefix=NIAZNET_FULL_BACKUP/ HEAD > "$RUNNER_TEMP/NIAZNET_FULL_BACKUP_2026-11-22.zip"
+      - name: Upload complete source backup
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: NIAZNET_FULL_BACKUP_2026-11-22
+          path: ${{ runner.temp }}/NIAZNET_FULL_BACKUP_2026-11-22.zip
+          retention-days: 90
