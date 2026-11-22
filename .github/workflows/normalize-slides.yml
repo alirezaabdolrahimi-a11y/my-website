@@ -1,5 +1,7 @@
 name: Normalize NIAZ NET slideshow assets
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -8,32 +10,74 @@ on:
       - 'hero-slideshow.js'
       - 'site-shell.js'
       - 'tools/normalize-slides.py'
+      - 'tools/check-site-integrity.py'
+      - 'assets/js/**/*.js'
+      - 'assets/css/**/*.css'
+      - 'api-catalog.json'
+      - 'NIAZNET_MASTER_TECHNICAL_AUDIT_2026-11-22.md'
       - '.github/workflows/normalize-slides.yml'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
   normalize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Check shared JavaScript syntax
-        run: node --check site-shell.js && node --check hero-slideshow.js
-      - run: python -m pip install --disable-pip-version-check Pillow
-      - run: python tools/normalize-slides.py
-      - name: Commit normalized assets
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "All slideshow assets already use the canonical format."
-          else
-            git commit -m "Normalize all slideshow artwork to 1944x809"
-            git push
+          node --check site-shell.js
+          node --check hero-slideshow.js
+          node --check language-switcher.js
+          node --check fa-translation.js
+          node --check fa-translation-runtime.js
+          node --check assets/js/api-catalog.js
+          node --check assets/js/fcm-cmo-forms.js
+          node --check assets/js/fcm-cmo-downloads.js
+          node --check assets/js/localized-homepage.js
+          node --check assets/js/service-grid.js
+          node --check assets/js/homepage.js
+          node --check assets/js/homepage-tr.js
+          node --check tools/test-locale-precedence.js
+      - run: python -m pip install --disable-pip-version-check Pillow
+      - name: Prepare and validate normalized site copy
+        run: |
+          normalized_dir="$RUNNER_TEMP/NIAZNET_NORMALIZED_SITE"
+          rm -rf "$normalized_dir"
+          mkdir -p "$normalized_dir"
+          git archive HEAD | tar -x -C "$normalized_dir"
+          python "$normalized_dir/tools/normalize-slides.py"
+          python "$normalized_dir/tools/check-site-integrity.py"
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "The normalization job modified the checked-out repository."
+            git status --short
+            exit 1
           fi
+          echo "Normalized site prepared in an isolated directory; the checked-out repository remains unchanged."
+      - name: Upload normalized site build
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: NIAZNET_NORMALIZED_SITE_2026-11-22
+          path: ${{ runner.temp }}/NIAZNET_NORMALIZED_SITE/
+          include-hidden-files: true
+          retention-days: 90
+
+      - name: Prepare complete source backup
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        run: |
+          mkdir -p "$RUNNER_TEMP/NIAZNET_FULL_BACKUP"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/NIAZNET_FULL_BACKUP"
+      - name: Upload complete source backup
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: NIAZNET_FULL_BACKUP_2026-11-22
+          path: ${{ runner.temp }}/NIAZNET_FULL_BACKUP/
+          include-hidden-files: true
+          retention-days: 90

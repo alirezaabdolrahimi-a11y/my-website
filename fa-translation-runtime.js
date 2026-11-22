@@ -1,20 +1,23 @@
 (function(){
 'use strict';
+if(document.documentElement.dataset.faTranslationRuntimeLoaded==='true')return;
+document.documentElement.dataset.faTranslationRuntimeLoaded='true';
 const params=new URLSearchParams(location.search);
-const isTurkishPage=/^\/tr\//.test(location.pathname);
+const isNonPersianLocalePage=/^\/(?:tr|es|fr)(?:\/|$)/i.test(location.pathname);
+if(isNonPersianLocalePage)return;
 const languageAnchor=document.querySelector('.lang')||document.querySelector('.nav-cta');
 if(languageAnchor&&!document.querySelector('.fa-lang')&&!document.getElementById('langButton')){
  const faLink=document.createElement('a');
  faLink.className='lang fa-lang';
- faLink.href=(isTurkishPage?location.pathname.replace(/^\/tr\//,'/'):location.pathname)+'?lang=fa';
+ faLink.href=location.pathname+'?lang=fa';
  faLink.setAttribute('aria-label','فارسی');
  faLink.setAttribute('title','فارسی');
  faLink.textContent='FA⌄';
  languageAnchor.parentNode.insertBefore(faLink,languageAnchor.nextSibling);
 }
-if(isTurkishPage||params.get('lang')!=='fa')return;
+if(params.get('lang')!=='fa')return;
 const common={
-'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
+'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','PARTNERS':'شرکای تجاری','Partner':'شریک تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
 'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما','DOWNLOAD FCM/CMO FORM':'دانلود فرم FCM/CMO',
 'Home / Our Services /':'خانه / خدمات ما /','How we approach this service':'رویکرد ما در این خدمت','Information to include in an enquiry':'اطلاعات موردنیاز برای ثبت درخواست',
 'Discuss this service':'درباره این خدمت گفت‌وگو کنید','DISCUSS THIS SERVICE →':'درباره این خدمت گفت‌وگو کنید ←',
@@ -36,7 +39,6 @@ const common={
 "NIAZ NET · INTERNATIONAL MARKETS":"نیازنت · بازارهای بین‌المللی",
 "NIAZ NET · AFRICAN MARKETS":"نیازنت · بازارهای آفریقا",
 "NIAZ NET · MARCHÉS AFRICAINS":"نیازنت · بازارهای آفریقا",
-"Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
 "Pharmaceutical Products":"محصولات دارویی",
 "Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Product Registration":"ثبت محصول",
@@ -1042,13 +1044,11 @@ Object.assign(pages['cosmoderma.html'], {
 /* Targeted completion pass: home, forms, catalog controls and project pages. */
 Object.assign(common, {
   "TR⌄":"FA⌄", "EN⌄":"FA⌄",
-  "Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
   "Contact Our Team":"ارتباط با تیم ما",
   "Contact our team":"با تیم ما در ارتباط باشید",
   "CONTACT NIAZ NET":"تماس با نیازنت",
   "Let’s Build Success Together.":"برای ساختن موفقیت، در کنار شما هستیم.",
   "Contact our team about international business development, product sourcing, brand partnerships, regulatory coordination or trade opportunities.":"برای توسعه کسب‌وکار بین‌المللی، تأمین محصولات، همکاری با برندها، هماهنگی امور مقرراتی یا فرصت‌های تجاری با تیم ما در ارتباط باشید.",
-  "Contact Our Team":"ارتباط با تیم ما",
   "Email:":"ایمیل:",
   "Tehran Office:":"دفتر تهران:",
   "Turkey / WhatsApp:":"ترکیه / واتساپ:",
@@ -2046,6 +2046,59 @@ Object.assign(common, {
   "info@niaznet.net": "info@niaznet.net"
 });
 
+Object.assign(pages['api-supply.html'], {
+  'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Product identity, specifications, quality standard, supplier qualification and destination-market requirements must be confirmed before any transaction.':'این فهرست صرفاً مرجعی اولیه برای بررسی و درخواست تأمین است و به‌معنای اعلام موجودی فعلی، تأیید تأمین‌کننده یا احراز انطباق مقرراتی نیست. هویت محصول، مشخصات، استاندارد کیفیت، صلاحیت تأمین‌کننده و الزامات بازار مقصد باید پیش از هر معامله تأیید شوند.',
+  'We coordinate commercial sourcing enquiries for APIs, intermediates and pharmaceutical excipients with international manufacturers and suppliers. Include the product name, specification, destination market and required quantity in your enquiry.':'ما درخواست‌های تجاری تأمین مواد مؤثره دارویی (API)، مواد حدواسط و مواد جانبی دارویی را با تولیدکنندگان و تأمین‌کنندگان بین‌المللی هماهنگ می‌کنیم. لطفاً نام محصول، مشخصات، بازار مقصد و مقدار موردنیاز را در درخواست خود درج کنید.'
+});
+
+
+Object.assign(common, {
+  "About our company": "درباره شرکت ما",
+  "Industries": "صنایع",
+  "Pharmaceuticals & APIs": "داروها و مواد مؤثره دارویی",
+  "Healthcare & Medical Devices": "سلامت و تجهیزات پزشکی",
+  "Sports Nutrition & Supplements": "تغذیه ورزشی و مکمل‌ها",
+  "Infant Nutrition": "تغذیه نوزاد",
+  "Import, Export & Ingredients": "واردات، صادرات و مواد اولیه",
+  "Brand Development & Agency": "توسعه برند و نمایندگی",
+  "Technology Transfer & Manufacturing": "انتقال فناوری و تولید",
+  "Have a product or market in mind?": "محصول یا بازار مشخصی در نظر دارید؟",
+  "Business inquiry — Niaz Net Tehran": "درخواست تجاری — نیاز نت تهران",
+  "Your Global Business Development Partner": "شریک شما در توسعه کسب‌وکار بین‌المللی",
+  "Your Global Business Development": "شریک شما در توسعه کسب‌وکار جهانی",
+  "Licensing Partnerships": "همکاری‌های مبتنی بر مجوز",
+  "Licensing & Partnerships": "همکاری‌های مبتنی بر مجوز",
+  "Botulinum Toxin Dermal Fillers": "سم بوتولینوم و فیلرهای پوستی",
+  "Botulinum Toxin & Dermal Fillers": "سم بوتولینوم و فیلرهای پوستی",
+  "News Events": "اخبار و رویدادها",
+  "News & Events": "اخبار و رویدادها",
+  "Let's Build Success Together": "بیایید با هم موفقیت بسازیم",
+  "Business Contact": "اطلاعات تماس تجاری",
+  "What helps us respond faster?": "چه اطلاعاتی به پاسخ سریع‌تر کمک می‌کند؟",
+  "Start a conversation": "شروع گفتگو",
+  "PREPARE INQUIRY EMAIL →": "آماده‌سازی ایمیل درخواست →",
+  "Pet food / animal nutrition": "غذای حیوانات / تغذیه دام",
+  "Brand development / registration": "توسعه / ثبت برند",
+  "Other business inquiry": "سایر درخواست‌های تجاری"
+});
+
+Object.assign(pages['index.html'], {'NIAZ NET | Strategic Distribution, Trade & Business Development':'نیازنت | توزیع راهبردی، تجارت و توسعه کسب‌وکار'});
+Object.assign(pages['about.html'], {'About NIAZ NET | International Business Development':'درباره نیازنت | توسعه کسب‌وکار بین‌المللی'});
+Object.assign(pages['projects.html'], {'Projects | NIAZ NET':'پروژه‌ها | نیازنت'});
+Object.assign(pages['contact.html'], {'Contact NIAZ NET | Business & Partnership Enquiries':'تماس با نیازنت | درخواست‌های تجاری و همکاری'});
+Object.assign(pages['api-supply.html'], {'Pharmaceutical API Sourcing & Supply | NIAZ NET':'تأمین و عرضه مواد مؤثره دارویی | نیازنت'});
+Object.assign(pages['api-supply.html'], {'API Sourcing Coordination':'هماهنگی تأمین مواد مؤثره دارویی'});
+Object.assign(pages['import-export.html'], {'Import & Export Services | International Trade | NIAZ NET':'خدمات واردات و صادرات | تجارت بین‌المللی | نیازنت'});
+Object.assign(pages['licensing-partnerships.html'], {'Licensing Strategy & Strategic Partnerships | NIAZ NET':'راهبرد صدور مجوز و مشارکت‌های راهبردی | نیازنت'});
+Object.assign(pages['medical-devices.html'], {'Medical Device & Healthcare Equipment Trade | NIAZ NET':'تجارت تجهیزات پزشکی و تجهیزات مراقبت سلامت | نیازنت'});
+Object.assign(pages['nutraceuticals.html'], {'Nutraceuticals, Vitamins & Wellness Products | NIAZ NET':'محصولات نوتراسوتیک، ویتامین‌ها و تندرستی | نیازنت'});
+Object.assign(pages['pet-food.html'], {'Pet Food & Animal Nutrition Trade | NIAZ NET':'تجارت غذای حیوانات خانگی و تغذیه دام | نیازنت'});
+Object.assign(pages['private-label.html'], {'Private Label & Own-Brand Product Development | NIAZ NET':'توسعه محصولات با برند اختصاصی و برند خصوصی | نیازنت'});
+Object.assign(pages['product-registration.html'], {'Product Registration & Dossier Coordination | NIAZ NET':'ثبت محصول و هماهنگی پرونده‌های فنی | نیازنت'});
+Object.assign(pages['regulatory-affairs.html'], {'Regulatory Affairs & Compliance Coordination | NIAZ NET':'امور مقرراتی و هماهنگی انطباق | نیازنت'});
+Object.assign(pages['supply-chain-solutions.html'], {'Supply Chain Coordination & Trade Logistics | NIAZ NET':'هماهنگی زنجیره تأمین و لجستیک تجاری | نیازنت'});
+Object.assign(pages['project-details.html'], {'Project Details | NIAZ NET':'جزئیات پروژه | نیازنت'});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
@@ -2090,6 +2143,24 @@ for(const node of nodes){
 }
 for(const el of document.querySelectorAll('input[placeholder],textarea[placeholder]'))if(dict[norm(el.placeholder)]){el.placeholder=dict[norm(el.placeholder)];el.dir='rtl';}
 for(const el of document.querySelectorAll('[aria-label]'))if(dict[norm(el.getAttribute('aria-label'))])el.setAttribute('aria-label',dict[norm(el.getAttribute('aria-label'))]);
+const formFieldNames={
+'Full name':'نام و نام خانوادگی',
+'Company':'شرکت',
+'Job title / Position':'عنوان شغلی / سمت',
+'Phone / WhatsApp':'تلفن / واتساپ',
+'Business email':'ایمیل کاری',
+'Request type':'نوع درخواست',
+'Request details':'جزئیات درخواست',
+'Partner type':'نوع شریک تجاری',
+'Product or service':'محصول یا خدمت',
+'Target market':'بازار هدف',
+'Partnership proposal':'پیشنهاد همکاری'
+};
+document.querySelectorAll('form[data-mailto-form] [name]').forEach(function(el){
+ const fieldName=el.getAttribute('name');
+ if(formFieldNames[fieldName])el.setAttribute('name',formFieldNames[fieldName]);
+});
+
 const titleMap={
 "api-supply.html":"تأمین مواد اولیه دارویی و API | نیازنت",
 "brand-registration.html":"ثبت برند در بازارهای بین‌المللی | نیازنت",
@@ -2164,9 +2235,26 @@ if(file==='cosmoderma.html'&&params.get('lang')==='fa'){
  }
 }
 }
-const style=document.createElement('style');
-style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
-document.head.appendChild(style);
+const styleId='fa-translation-runtime-style';
+if(!document.getElementById(styleId)){
+ const style=document.createElement('style');
+ style.id=styleId;
+ style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
+ document.head.appendChild(style);
+}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',translate,{once:true});else translate();
-const observer=new MutationObserver(()=>translate());observer.observe(document.body,{childList:true,subtree:true});
+let translationTimer=0;
+const observer=new MutationObserver((records)=>{
+ const hasTranslatableNodes=records.some(record=>Array.from(record.addedNodes).some(node=>
+  node.nodeType===1 && !(node.matches&&node.matches('script,style,link,svg')) &&
+  !(node.closest&&node.closest('script,style,svg'))
+ ));
+ if(!hasTranslatableNodes)return;
+ if(translationTimer)clearTimeout(translationTimer);
+ translationTimer=setTimeout(()=>{
+  translationTimer=0;
+  translate();
+ },120);
+});
+observer.observe(document.body,{childList:true,subtree:true});
 })();

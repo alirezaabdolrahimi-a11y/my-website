@@ -8,7 +8,8 @@
   var slides = Array.from(root.querySelectorAll('.showcase-image'));
   var params = new URLSearchParams(window.location.search);
   var pathname = (window.location.pathname || '/').toLowerCase();
-  var locale = (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
+  var routeLocaleMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
+  var locale = routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() : (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
   if (root.getAttribute('data-slideshow') === 'infant-formula') {
     var infantSlides = [
       { src: '/images/slides/04-infant-formula.png', alt: {
@@ -100,8 +101,7 @@
   // homepage and About Us showcase. Existing EN/TR slides remain untouched.
   var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
     /(?:^|\/)about\.html$/.test(pathname);
-  var isPersian = isHomeOrAbout && (locale === 'fa' ||
-    /^\/fa\//i.test(window.location.pathname) || params.get('lang') === 'fa');
+  var isPersian = isHomeOrAbout && (routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() === 'fa' : (locale === 'fa' || params.get('lang') === 'fa'));
   if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
     var persianSlide = document.createElement('div');
     var persianImage = document.createElement('img');
@@ -117,8 +117,6 @@
   }
   root.dataset.slideshowReady = 'true';
 
-  var isTurkish = locale === 'tr';
-  var isPersianLocale = locale === 'fa';
   var labels = {
     en: { choose: 'Choose a featured image', show: 'Show slide ', featured: 'Featured image', previous: 'Previous slide', next: 'Next slide' },
     fa: { choose: 'انتخاب اسلاید', show: 'نمایش اسلاید ', featured: 'تصویر منتخب', previous: 'اسلاید قبلی', next: 'اسلاید بعدی' },

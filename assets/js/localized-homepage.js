@@ -31,38 +31,89 @@ const serviceItems = [
   { name: 'Nutraceuticals & Wellness Products', icon: 'leaf', slug: 'nutraceuticals', paragraphs: ['We support commercial sourcing and market-development discussions for nutraceuticals, wellness products, and related categories, connecting potential buyers with manufacturers and business partners for evaluation.', 'Product classification, permitted claims, labeling, quality documentation, and import eligibility differ by market. Each opportunity should be reviewed against applicable rules and the client’s technical and commercial requirements before any market launch.'] }
 ];
 
+const localizedServiceNames = isFrench ? {
+  'brand-registration': 'Enregistrement de marques',
+  'sports-nutrition': 'Nutrition sportive et compléments',
+  'infant-formula': 'Nutrition infantile et préparations',
+  'cosmoderma': 'Cosmoderma (toxine botulique et produits de comblement)',
+  'api-supply': 'API et matières premières pharmaceutiques',
+  'medical-devices': 'Dispositifs médicaux et équipements de santé',
+  'cbd-products': 'Produits CBD sans THC',
+  'import-export': 'Services d’importation et d’exportation',
+  'exclusive-agency': 'Représentation exclusive',
+  'business-development': 'Développement commercial',
+  'chamber-of-commerce': 'Chambre de commerce privée',
+  'market-entry': 'Stratégie et solutions d’entrée sur le marché',
+  'licensing-partnerships': 'Licences et partenariats stratégiques',
+  'pharmaceutical-products': 'Produits pharmaceutiques finis',
+  'product-registration': 'Enregistrement des produits et coordination des dossiers',
+  'regulatory-affairs': 'Affaires réglementaires et conformité',
+  'contract-manufacturing': 'Fabrication à façon (FCM et CMO)',
+  'technology-transfer': 'Transfert de technologie et production locale',
+  'international-business-development': 'Développement commercial international',
+  'supply-chain-solutions': 'Solutions de chaîne d’approvisionnement',
+  'private-label': 'Marque de distributeur et développement de marque',
+  'pet-food': 'Alimentation et nutrition animales',
+  'nutraceuticals': 'Nutraceutiques et produits de bien-être'
+} : {
+  'brand-registration': 'Registro de marcas',
+  'sports-nutrition': 'Nutrición deportiva y suplementos',
+  'infant-formula': 'Fórmula infantil y nutrición',
+  'cosmoderma': 'Cosmoderma (toxina botulínica y rellenos dérmicos)',
+  'api-supply': 'API y materias primas farmacéuticas',
+  'medical-devices': 'Dispositivos médicos y equipos sanitarios',
+  'cbd-products': 'Productos de CBD sin THC',
+  'import-export': 'Servicios de importación y exportación',
+  'exclusive-agency': 'Representación exclusiva',
+  'business-development': 'Desarrollo empresarial',
+  'chamber-of-commerce': 'Cámara de comercio privada',
+  'market-entry': 'Estrategia y soluciones de entrada al mercado',
+  'licensing-partnerships': 'Licencias y alianzas estratégicas',
+  'pharmaceutical-products': 'Productos farmacéuticos terminados',
+  'product-registration': 'Registro de productos y coordinación de expedientes',
+  'regulatory-affairs': 'Asuntos regulatorios y cumplimiento',
+  'contract-manufacturing': 'Fabricación por contrato (FCM y CMO)',
+  'technology-transfer': 'Transferencia de tecnología y producción local',
+  'international-business-development': 'Desarrollo empresarial internacional',
+  'supply-chain-solutions': 'Soluciones de cadena de suministro',
+  'private-label': 'Marca propia y desarrollo de marca',
+  'pet-food': 'Alimentación y nutrición animal',
+  'nutraceuticals': 'Nutracéuticos y productos de bienestar'
+};
+serviceItems.forEach(item => { if (localizedServiceNames[item.slug]) item.name = localizedServiceNames[item.slug]; });
+
 const serviceGrid = document.getElementById('serviceGrid');
 
 const serviceDisplayLabels = {
-  'brand-registration':'Brand Registration',
-  'api-supply':'API',
-  'sports-nutrition':'Sport Nutrition',
-  'infant-formula':'Infant Formula & Nutrition',
-  'cbd-products':'CBD_NON THC',
-  'business-development':'BD + R&D',
-  'pharmaceutical-products':'FDF / Finished Products',
-  'nutraceuticals':'Vitamin & Supplements',
-  'pet-food':'Pet Food',
-  'medical-devices':'Medical Devices',
-  'technology-transfer': isFrench ? 'Transfert de Technologie' : 'Transferencia de Tecnología',
-  'private-label': isFrench ? 'Marque de Distributeur Orders' : 'Marca Privada Orders',
-  'contract-manufacturing':'FCM & CMO',
-  'cosmoderma':'Cosmoderma',
-  'regulatory-affairs':'Regulatory',
-  'licensing-partnerships':'Licensing Strategy',
-  'supply-chain-solutions':'Supply Chain'
+  'brand-registration': localizedServiceNames['brand-registration'],
+  'api-supply': 'API',
+  'sports-nutrition': isFrench ? 'Nutrition sportive' : 'Nutrición deportiva',
+  'infant-formula': isFrench ? 'Nutrition infantile' : 'Nutrición infantil',
+  'cbd-products': isFrench ? 'CBD sans THC' : 'CBD sin THC',
+  'business-development': isFrench ? 'Développement commercial' : 'Desarrollo empresarial',
+  'pharmaceutical-products': isFrench ? 'Produits pharmaceutiques' : 'Productos farmacéuticos',
+  'nutraceuticals': isFrench ? 'Vitamines et compléments' : 'Vitaminas y suplementos',
+  'pet-food': isFrench ? 'Alimentation animale' : 'Alimentación animal',
+  'medical-devices': isFrench ? 'Dispositifs médicaux' : 'Dispositivos médicos',
+  'technology-transfer': isFrench ? 'Transfert de technologie' : 'Transferencia de tecnología',
+  'private-label': isFrench ? 'Marque de distributeur' : 'Marca propia',
+  'contract-manufacturing': isFrench ? 'Fabrication à façon' : 'Fabricación por contrato',
+  'cosmoderma': 'Cosmoderma',
+  'regulatory-affairs': isFrench ? 'Affaires réglementaires' : 'Asuntos regulatorios',
+  'licensing-partnerships': isFrench ? 'Licences et partenariats' : 'Licencias y alianzas',
+  'supply-chain-solutions': isFrench ? 'Chaîne d’approvisionnement' : 'Cadena de suministro'
 };
 window.renderNiazServiceGrid({
   items: serviceItems,
   labels: serviceDisplayLabels,
   vipLabels: {
-    "chamber-of-commerce": "Private Chamber of Commerce",
-    "exclusive-agency": isFrench ? "Représentation Exclusive" : "Representación Exclusiva",
-    "market-entry": isFrench ? "Accès au Marché" : "Entrada al Mercado"
+    "chamber-of-commerce": localizedServiceNames['chamber-of-commerce'],
+    "exclusive-agency": localizedServiceNames['exclusive-agency'],
+    "market-entry": localizedServiceNames['market-entry']
   },
   routeMode: 'query',
   queryPrefix: isFrench ? '/fr/' : '/es/',
-  importExportLabel: 'IMPORT / EXPORT'
+  importExportLabel: isFrench ? 'IMPORTATION / EXPORTATION' : 'IMPORTACIÓN / EXPORTACIÓN'
 });
 
 // Service detail views load in the current tab, powered by this single HTML file.
@@ -131,47 +182,15 @@ if (requestedService) {
       main.innerHTML=`<section class="hero brand-registration-page"><div class="container hero-inner"><div class="hero-copy"><div class="eyebrow">NIAZ NET · API &amp; PHARMACEUTICAL INGREDIENTS</div><h1>Pharmaceutical Ingredients. <span>Qualified Supply Opportunities.</span></h1><p>Search our working portfolio of active pharmaceutical ingredients and selected pharmaceutical intermediates. Filter by material type and identify products for a focused sourcing inquiry.</p>
 <div class="hero-actions service-page-actions"><a class="btn" href="${homePath}#services">← BACK TO ALL SERVICES</a><a class="btn btn-outline" href="mailto:info@niaznet.net?subject=API%20Inquiry">${contactTeamLabel}</a></div></div><div class="hero-showcase" aria-label="API sourcing and pharmaceutical ingredients slideshow"><div class="showcase-image active"><img src="/images/14-api-pharmaceutical-ingredients.png" alt="Pharmaceutical ingredient sourcing services"></div><div class="showcase-image"><img src="/images/08 -all 2 .png" alt="Pharmaceutical supply coordination services" loading="lazy"></div><div class="showcase-image"><img src="/images/00 -Global Products, Global Opportunities.png" alt="International pharmaceutical sourcing coordination" loading="lazy"></div></div></div></section>
       <section class="container section" style="max-width:1180px;padding-top:24px"><div class="panel" style="padding:28px"><div class="eyebrow">PRODUCT PORTFOLIO</div><h2>Search the API &amp; Ingredients Catalogue</h2><p style="color:var(--muted);line-height:1.8">API means Active Pharmaceutical Ingredient. Intermediates are materials or processed forms used during manufacturing. Excipients are non-active formulation ingredients. Confirm final classification, grade and specifications with the supplier.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0"><input id="apiSearchInput" type="search" placeholder="Search product name..." style="flex:2;min-width:220px;padding:12px"><select id="apiCategoryFilter" style="flex:1;min-width:160px;padding:12px"><option>All</option><option>API</option><option>Intermediate</option><option>Excipient</option></select><select id="apiSortDirection" style="padding:12px"><option value="asc">A to Z</option><option value="desc">Z to A</option></select></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0"><input id="apiSearchInput" type="search" placeholder="Search product name..." style="flex:2;min-width:220px;padding:12px"><select id="apiCategoryFilter" style="flex:1;min-width:160px;padding:12px"><option value="All">All</option></select><select id="apiSortDirection" style="padding:12px"><option value="asc">A to Z</option><option value="desc">Z to A</option></select></div>
       <p id="apiResultsCount" aria-live="polite">Loading catalogue…</p><div style="overflow-x:auto"><table id="apiCatalogTable" style="width:100%;min-width:480px;border-collapse:collapse;text-align:left"><thead><tr><th data-sort="number">NO. ↕</th><th data-sort="name">PRODUCT / MATERIAL ↕</th><th data-sort="category">CATEGORY ↕</th></tr></thead><tbody id="apiCatalogBody"></tbody></table></div><p id="apiNoResults" style="display:none">No matching materials found.</p>
       <p style="margin-top:22px;color:var(--muted);line-height:1.8">Catalogue classification is indicative and based on the material name and typical pharmaceutical use. Some materials may have a different regulatory role depending on formulation, grade, concentration and intended use. Confirm the current supplier specification, compendial standard and regulatory classification before procurement.</p><div class="sports-nutrition-actions"><a class="btn" href="mailto:info@niaznet.net?subject=API%20Sourcing%20Inquiry">SEND AN API INQUIRY →</a><a class="btn btn-outline" href="${homePath}#services">← BACK TO ALL SERVICES</a></div></div></section>
       <style>#apiCatalogTable th,#apiCatalogTable td{padding:12px;border-bottom:1px solid var(--border);font-size:13px}#apiCatalogTable th{cursor:pointer;color:var(--text)}#apiCatalogTable td{color:var(--muted)}@media(max-width:650px){#apiSearchInput,#apiCategoryFilter,#apiSortDirection{width:100%;flex:auto}}</style>`;
       (async()=>{const status=document.getElementById('apiResultsCount');try{const r=await fetch('api-catalog.json');if(!r.ok)throw Error('load failed');const baseData=await r.json();
-const additions=[
-{name:'Croscarmellose Sodium',category:'Excipient',note:'Superdisintegrant used to promote tablet disintegration.'},
-{name:'Dibasic Calcium Phosphate Dihydrate',category:'Excipient',note:'Diluent/filler for solid dosage formulations.'},
-{name:'HPMC',category:'Excipient',note:'Hypromellose; used as binder, film former and release-controlling polymer. Confirm viscosity grade.'},
-{name:'HPMC 15',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC 3',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC 4000',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC 4000M',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC 50',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC 6',category:'Excipient',note:'Hypromellose viscosity grade; confirm manufacturer specification.'},
-{name:'HPMC K100',category:'Excipient',note:'Hypromellose K-series grade; confirm viscosity and substitution specification.'},
-{name:'HPMC K100M',category:'Excipient',note:'High-viscosity hypromellose grade, commonly used for controlled release.'},
-{name:'Hypromellose Phthalate',category:'Excipient',note:'Enteric-coating polymer.'},
-{name:'Iron Oxide Brown',category:'Excipient',note:'Pharmaceutical colorant; confirm applicable compendial grade.'},
-{name:'Iron Oxide Red',category:'Excipient',note:'Pharmaceutical colorant; confirm applicable compendial grade.'},
-{name:'Iron Oxide Yellow',category:'Excipient',note:'Pharmaceutical colorant; confirm applicable compendial grade.'},
-{name:'Magnesium Stearate',category:'Excipient',note:'Lubricant for tablet and capsule manufacture.'},
-{name:'MCC',category:'Excipient',note:'Microcrystalline cellulose; filler and binder.'},
-{name:'MCC Silicified',category:'Excipient',note:'Silicified microcrystalline cellulose; filler with improved flow and compactability.'},
-{name:'MCC 101',category:'Excipient',note:'Microcrystalline cellulose grade; confirm particle size and specification.'},
-{name:'MCC 102',category:'Excipient',note:'Microcrystalline cellulose grade; confirm particle size and specification.'},
-{name:'Omeprazole Pellet',category:'Intermediate',note:'Pelletized intermediate containing omeprazole; confirm API assay, composition and enteric protection.'},
-{name:'Pregelatinized Starch',category:'Excipient',note:'Multifunctional excipient used as binder, filler and disintegrant.'},
-{name:'Simethicone',category:'API',note:'Antifoaming active ingredient in relevant medicinal products; confirm intended regulatory role and specification.'},
-{name:'Simethicone 100%',category:'API',note:'Simethicone active material; confirm pharmacopeial grade and specification.'},
-{name:'Simethicone 30%',category:'Intermediate',note:'Typically a 30% simethicone preparation/emulsion; confirm carrier and active content.'},
-{name:'Simethicone Powder 50%',category:'Intermediate',note:'Powdered preparation typically containing 50% simethicone; confirm carrier and active content.'},
-{name:'Sodium Starch Glycolate',category:'Excipient',note:'Superdisintegrant.'},
-{name:'Sodium Starch Glycolate Type A',category:'Excipient',note:'Type A sodium starch glycolate; confirm compendial specification.'},
-{name:'Sodium Starch Glycolate Type B',category:'Excipient',note:'Type B sodium starch glycolate; confirm compendial specification.'},
-{name:'Sodium Stearyl Fumarate',category:'Excipient',note:'Tablet lubricant.'},
-{name:'Talc',category:'Excipient',note:'Glidant, anti-adherent and processing aid; confirm pharmaceutical grade.'}
-];
-const known=new Set(baseData.map(x=>String(x.name).trim().toLowerCase()));
-const data=baseData.concat(additions.filter(x=>!known.has(x.name.toLowerCase())));
-const search=document.getElementById('apiSearchInput'),filter=document.getElementById('apiCategoryFilter'),dir=document.getElementById('apiSortDirection'),body=document.getElementById('apiCatalogBody'),empty=document.getElementById('apiNoResults');let key='name',asc=true;function render(){const q=search.value.toLowerCase().trim(),cat=filter.value;let a=data.map((x,i)=>({...x,n:i+1})).filter(x=>(cat==='All'||x.category===cat)&&(!q||(x.name+' '+x.category).toLowerCase().includes(q)));a.sort((x,y)=>{const z=key==='number'?x.n-y.n:String(x[key]).localeCompare(String(y[key]));return asc?z:-z});body.innerHTML=a.map(x=>'<tr><td>'+x.n+'</td><td>'+x.name+'</td><td>'+x.category+'</td></tr>').join('');status.textContent='Showing '+a.length+' of '+data.length+' materials';empty.style.display=a.length?'none':'block'}search.addEventListener('input',render);filter.addEventListener('change',render);dir.addEventListener('change',()=>{asc=dir.value==='asc';render()});document.querySelectorAll('#apiCatalogTable th[data-sort]').forEach(t=>t.addEventListener('click',()=>{if(key===t.dataset.sort)asc=!asc;else{key=t.dataset.sort;asc=true}dir.value=asc?'asc':'desc';render()}));render()}catch(e){status.textContent='Catalogue could not be loaded. Contact our team.'}})();
+const data=baseData;
+const categoryLabels=isFrench?{API:'API',Intermediate:'Intermédiaire',Excipient:'Excipient','Human APIs':'API à usage humain','Veterinary APIs':'API vétérinaires','Pharmaceutical Intermediates':'Intermédiaires pharmaceutiques','Specialty Chemicals & Catalysts':'Produits chimiques de spécialité et catalyseurs'}:{API:'API',Intermediate:'Intermedio',Excipient:'Excipiente','Human APIs':'API humanos','Veterinary APIs':'API veterinarios','Pharmaceutical Intermediates':'Intermedios farmacéuticos','Specialty Chemicals & Catalysts':'Productos químicos especiales y catalizadores'};
+
+const search=document.getElementById('apiSearchInput'),filter=document.getElementById('apiCategoryFilter'),dir=document.getElementById('apiSortDirection'),body=document.getElementById('apiCatalogBody'),empty=document.getElementById('apiNoResults');filter.innerHTML='<option value="All">'+(isFrench?'Toutes les catégories':'Todas las categorías')+'</option>'+Array.from(new Set(data.map(x=>x.category))).sort().map(category=>'<option value="'+category+'">'+(categoryLabels[category]||category)+'</option>').join('');let key='name',asc=true;function render(){const q=search.value.toLowerCase().trim(),cat=filter.value;let a=data.map((x,i)=>({...x,n:i+1})).filter(x=>(cat==='All'||x.category===cat)&&(!q||(x.name+' '+x.category).toLowerCase().includes(q)));a.sort((x,y)=>{const z=key==='number'?x.n-y.n:String(x[key]).localeCompare(String(y[key]));return asc?z:-z});body.innerHTML=a.map(x=>'<tr><td>'+x.n+'</td><td>'+x.name+'</td><td>'+x.category+'</td></tr>').join('');status.textContent='Showing '+a.length+' of '+data.length+' materials';empty.style.display=a.length?'none':'block'}search.addEventListener('input',render);filter.addEventListener('change',render);dir.addEventListener('change',()=>{asc=dir.value==='asc';render()});document.querySelectorAll('#apiCatalogTable th[data-sort]').forEach(t=>t.addEventListener('click',()=>{if(key===t.dataset.sort)asc=!asc;else{key=t.dataset.sort;asc=true}dir.value=asc?'asc':'desc';render()}));render()}catch(e){status.textContent='Catalogue could not be loaded. Contact our team.'}})();
     } else if (requestedService === 'sports-nutrition') {
       main.innerHTML = `
       <section class="hero brand-registration-page sports-nutrition-page" id="home">

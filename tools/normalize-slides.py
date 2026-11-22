@@ -98,6 +98,10 @@ def canonical_path(raw):
 
 def validate_site():
     shared_shell = (ROOT / "site-shell.js").read_text(encoding="utf-8")
+    shared_stylesheet_path = ROOT / "assets" / "css" / "site-shell-enhancements.css"
+    if "site-shell-enhancements.css" not in shared_shell or not shared_stylesheet_path.is_file():
+        raise RuntimeError("Shared site-shell stylesheet is missing or not referenced by site-shell.js")
+    shared_shell += "\n" + shared_stylesheet_path.read_text(encoding="utf-8")
     required_frame_rules = (
         "html body .hero-showcase.hero-showcase.hero-showcase",
         "aspect-ratio:1944 / 809!important",
