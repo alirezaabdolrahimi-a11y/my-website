@@ -141,3 +141,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 87. [x] Audit Persian translation coverage across all 33 page dictionaries and visible text nodes. Added 16 missing page-title/coordination translations, translated the uppercase `PARTNERS` heading, replaced the blank `Partner` value, and confirmed no meaningful untranslated English UI text remains in the audited dictionary pages; proper names, logos and product names remain intentionally unchanged.
+
+
+88. [x] Audit API catalogue data quality and UI: 239 unique product names, seven canonical categories, no duplicate names; EN/TR filter options and all 239 `data-category` values now match `api-catalog.json`. Verified the result-count string is localized for Persian and Turkish and route detection takes precedence over stale query values.
