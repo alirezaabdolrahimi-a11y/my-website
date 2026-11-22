@@ -105,6 +105,8 @@ for name in ("api-supply.html","tr/api-supply.html"):
     options = {unescape(x) for x in re.findall(r'<option value="([^"]+)"',source)} - {"all"}
     check(options==category_set,f"API category filter options do not match canonical categories in {name}")
 localized = (ROOT/"assets/js/localized-homepage.js").read_text(encoding="utf-8")
+check("const homePath = isFrench ? '/fr/index.html' : '/es/index.html';" in localized and "queryPrefix: isFrench ? '/fr/' : '/es/'" in localized,"ES/FR service query routes do not return to the correct localized homepage")
+check("const localizedServiceNames = isFrench ?" in localized and "IMPORTACIÓN / EXPORTACIÓN" in localized and "IMPORTATION / EXPORTATION" in localized,"ES/FR service labels are not fully localized")
 check("const additions=[" not in localized and "const data=baseData;" in localized,"ES/FR API page has a second catalogue source")
 check(localized.find("filter=document.getElementById('apiCategoryFilter')") < localized.find("filter.innerHTML="),"API filter is used before its DOM binding")
 
@@ -115,6 +117,24 @@ grid = (ROOT/"assets/js/service-grid.js").read_text(encoding="utf-8")
 forms = (ROOT/"assets/js/fcm-cmo-forms.js").read_text(encoding="utf-8")
 downloads = (ROOT/"assets/js/fcm-cmo-downloads.js").read_text(encoding="utf-8")
 check("if (!localeMatch && queryLang === 'fa') locale = 'fa';" in shell,"site-shell query language overrides a localized route")
+check("niazSiteShellInitialized" in shell,"site-shell duplicate initialization guard is missing")
+check("document.querySelectorAll('form#newsletterForm')" in shell and "document.querySelectorAll('form').forEach" not in shell,"site-shell must remove only the obsolete newsletter form, not all forms")
+check("form[data-mailto-form]" in shell and "form.dataset.mailtoBound = 'true'" in shell,"Shared mailto forms are not protected against duplicate submit binding")
+check("nav.classList.toggle('open')" in shell and "toggle.setAttribute('aria-expanded', String(open))" in shell,"Mobile navigation state/ARIA handler is missing")
+check("contactObserver.observe(document.body, { childList: true, subtree: true })" in shell,"Dynamic contact-link observer is missing")
+check("routeContactLinks(document)" in shell and "contact\\\\.html|become-our-partner\\\\.html" in shell,"Contact/partner CTA routing is not applied to static and dynamic links")
+# Static load-order/dependency audit for all pages that include the shared shell.
+shell_pages=[]
+for rel, audit in page_data.items():
+    shell_refs=[i for i,x in enumerate(audit.scripts) if x.rstrip('/').endswith('site-shell.js')]
+    language_refs=[i for i,x in enumerate(audit.scripts) if x.rstrip('/').endswith('language-switcher.js')]
+    if shell_refs:
+        shell_pages.append(rel)
+        check(len(shell_refs)==1,f"site-shell.js must load exactly once in {rel}")
+        if language_refs:
+            check(len(language_refs)==1 and shell_refs[0]<language_refs[0],f"Shared shell/language-switcher order is invalid in {rel}")
+expected_shell_pages=[rel for rel in page_data if not rel.startswith('downloads/fcm-cmo/')]
+check(len(shell_pages)==len(expected_shell_pages),f"Expected every non-download page to load the shared shell once; found {len(shell_pages)} of {len(expected_shell_pages)}")
 check("form[data-mailto-form]" in shell and "mailto:info@niaznet.net?subject=" in shell,"Shared mailto form handler or destination is missing")
 check("niazContactHubForm" in shell and "niaz-contact-hub" in shell,"Homepage contact hub is missing")
 for name in ("contact.html","become-our-partner.html","tr/contact.html","tr/become-our-partner.html"):
@@ -130,10 +150,18 @@ check('images/service-icons/cbd.png' in (ROOT/"projects.html").read_text(encodin
 check('/images/service-icons/cbd.png' in (ROOT/"tr/projects.html").read_text(encoding="utf-8"),"Turkish CBD project icon path regression")
 for name in ("es/index.html","fr/index.html"):
     source=(ROOT/name).read_text(encoding="utf-8")
-    check('/about.html' in source and '/projects.html' in source,f"Legacy ES/FR home links regress in {name}")
+    check('href="#about"' in source and 'href="#projects"' in source,f"ES/FR homepage navigation leaves its localized page in {name}")
+    check('/about.html' not in source and '/projects.html' not in source,f"ES/FR homepage still routes About/Projects to EN-only pages in {name}")
+    check('href="/es/index.html#home"' in source if name.startswith('es/') else 'href="/fr/index.html#home"' in source,f"Localized homepage route is missing in {name}")
 fa_loader=(ROOT/"fa-translation.js").read_text(encoding="utf-8")
 fa_runtime=(ROOT/"fa-translation-runtime.js").read_text(encoding="utf-8")
 check("fa-translation-runtime.js" in fa_loader and "data-fa-translation-runtime" in fa_loader,"Persian runtime loader or duplicate-load guard missing")
+check("isNonPersianLocalePage" in fa_loader and "!params.has('lang')" in fa_loader,"Persian saved preference must not override explicit query language or TR/ES/FR route")
+check("isNonPersianLocalePage" in fa_runtime and "if(isNonPersianLocalePage)return;" in fa_runtime,"Persian runtime must refuse TR/ES/FR locale routes even if loaded directly")
+locale_test = subprocess.run(["node", "tools/test-locale-precedence.js"], cwd=ROOT, text=True, capture_output=True)
+check(locale_test.returncode == 0, f"Persian locale-precedence runtime test failed: {locale_test.stderr[:300]}")
+lang_switcher=(ROOT/"language-switcher.js").read_text(encoding="utf-8")
+check("es: 'Idioma'" in lang_switcher and "fr: 'Langue'" in lang_switcher and "['es', 'fr'].indexOf(active)" in lang_switcher,"Legacy ES/FR language menu labels are not preserved")
 check("document.readyState==='loading'" in fa_runtime and "else translate()" in fa_runtime,"Persian runtime may miss initialization after DOMContentLoaded")
 check("'PARTNERS':'شرکای تجاری'" in fa_runtime and "'Partner':'شریک تجاری'" in fa_runtime and '"Partner": " "' not in fa_runtime,"Persian partner labels are missing or blank")
 for title_key in ("NIAZ NET | Strategic Distribution, Trade & Business Development","About NIAZ NET | International Business Development","Projects | NIAZ NET","Contact NIAZ NET | Business & Partnership Enquiries","Pharmaceutical API Sourcing & Supply | NIAZ NET","API Sourcing Coordination","Import & Export Services | International Trade | NIAZ NET","Licensing Strategy & Strategic Partnerships | NIAZ NET","Medical Device & Healthcare Equipment Trade | NIAZ NET","Nutraceuticals, Vitamins & Wellness Products | NIAZ NET","Pet Food & Animal Nutrition Trade | NIAZ NET","Private Label & Own-Brand Product Development | NIAZ NET","Product Registration & Dossier Coordination | NIAZ NET","Regulatory Affairs & Compliance Coordination | NIAZ NET","Supply Chain Coordination & Trade Logistics | NIAZ NET","Project Details | NIAZ NET"):

@@ -43,6 +43,7 @@ jobs:
           node --check assets/js/service-grid.js
           node --check assets/js/homepage.js
           node --check assets/js/homepage-tr.js
+          node --check tools/test-locale-precedence.js
       - run: python -m pip install --disable-pip-version-check Pillow
       - name: Prepare and validate normalized site copy
         run: |

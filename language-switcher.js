@@ -36,10 +36,10 @@
 
   // Keep language names in English on every localized page.
   var languageNames = { en: 'English', fa: 'Persian', tr: 'Turkish' };
-  var languageLabels = { en: 'Language', fa: 'زبان', tr: 'Dil' };
-  var menuLabels = { en: 'Choose website language', fa: 'انتخاب زبان سایت', tr: 'Web sitesi dilini seçin' };
+  var languageLabels = { en: 'Language', fa: 'زبان', tr: 'Dil', es: 'Idioma', fr: 'Langue' };
+  var menuLabels = { en: 'Choose website language', fa: 'انتخاب زبان سایت', tr: 'Web sitesi dilini seçin', es: 'Seleccionar el idioma del sitio', fr: 'Choisir la langue du site' };
   var languages = ['en', 'fa', 'tr'];
-  if (languages.indexOf(active) === -1) active = 'en';
+  if (languages.indexOf(active) === -1 && ['es', 'fr'].indexOf(active) === -1) active = 'en';
 
   function persistLanguage(code) {
     try {

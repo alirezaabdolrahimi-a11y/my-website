@@ -2,13 +2,13 @@
   'use strict';
 
   var pathname = window.location.pathname || '/';
-  var isTurkishPage = /^\/tr\//.test(pathname);
+  var isNonPersianLocalePage = /^\/(?:tr|es|fr)(?:\/|$)/i.test(pathname);
   var isHomepage = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname);
   var params = new URLSearchParams(window.location.search);
   var requestedLanguage = params.get('lang');
 
   // Preserve the homepage's saved Persian preference through the shared runtime.
-  if (!isTurkishPage && isHomepage && requestedLanguage !== 'fa') {
+  if (!isNonPersianLocalePage && isHomepage && !params.has('lang')) {
     try {
       if (window.localStorage.getItem('niaznet-language') === 'fa') {
         var target = new URL(window.location.href);
@@ -19,7 +19,7 @@
     } catch (error) {}
   }
 
-  if (isTurkishPage || requestedLanguage !== 'fa') return;
+  if (isNonPersianLocalePage || requestedLanguage !== 'fa') return;
   if (document.querySelector('script[data-fa-translation-runtime]')) return;
 
   var runtime = document.createElement('script');

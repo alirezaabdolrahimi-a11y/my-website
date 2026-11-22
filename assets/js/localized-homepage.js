@@ -31,38 +31,89 @@ const serviceItems = [
   { name: 'Nutraceuticals & Wellness Products', icon: 'leaf', slug: 'nutraceuticals', paragraphs: ['We support commercial sourcing and market-development discussions for nutraceuticals, wellness products, and related categories, connecting potential buyers with manufacturers and business partners for evaluation.', 'Product classification, permitted claims, labeling, quality documentation, and import eligibility differ by market. Each opportunity should be reviewed against applicable rules and the client’s technical and commercial requirements before any market launch.'] }
 ];
 
+const localizedServiceNames = isFrench ? {
+  'brand-registration': 'Enregistrement de marques',
+  'sports-nutrition': 'Nutrition sportive et compléments',
+  'infant-formula': 'Nutrition infantile et préparations',
+  'cosmoderma': 'Cosmoderma (toxine botulique et produits de comblement)',
+  'api-supply': 'API et matières premières pharmaceutiques',
+  'medical-devices': 'Dispositifs médicaux et équipements de santé',
+  'cbd-products': 'Produits CBD sans THC',
+  'import-export': 'Services d’importation et d’exportation',
+  'exclusive-agency': 'Représentation exclusive',
+  'business-development': 'Développement commercial',
+  'chamber-of-commerce': 'Chambre de commerce privée',
+  'market-entry': 'Stratégie et solutions d’entrée sur le marché',
+  'licensing-partnerships': 'Licences et partenariats stratégiques',
+  'pharmaceutical-products': 'Produits pharmaceutiques finis',
+  'product-registration': 'Enregistrement des produits et coordination des dossiers',
+  'regulatory-affairs': 'Affaires réglementaires et conformité',
+  'contract-manufacturing': 'Fabrication à façon (FCM et CMO)',
+  'technology-transfer': 'Transfert de technologie et production locale',
+  'international-business-development': 'Développement commercial international',
+  'supply-chain-solutions': 'Solutions de chaîne d’approvisionnement',
+  'private-label': 'Marque de distributeur et développement de marque',
+  'pet-food': 'Alimentation et nutrition animales',
+  'nutraceuticals': 'Nutraceutiques et produits de bien-être'
+} : {
+  'brand-registration': 'Registro de marcas',
+  'sports-nutrition': 'Nutrición deportiva y suplementos',
+  'infant-formula': 'Fórmula infantil y nutrición',
+  'cosmoderma': 'Cosmoderma (toxina botulínica y rellenos dérmicos)',
+  'api-supply': 'API y materias primas farmacéuticas',
+  'medical-devices': 'Dispositivos médicos y equipos sanitarios',
+  'cbd-products': 'Productos de CBD sin THC',
+  'import-export': 'Servicios de importación y exportación',
+  'exclusive-agency': 'Representación exclusiva',
+  'business-development': 'Desarrollo empresarial',
+  'chamber-of-commerce': 'Cámara de comercio privada',
+  'market-entry': 'Estrategia y soluciones de entrada al mercado',
+  'licensing-partnerships': 'Licencias y alianzas estratégicas',
+  'pharmaceutical-products': 'Productos farmacéuticos terminados',
+  'product-registration': 'Registro de productos y coordinación de expedientes',
+  'regulatory-affairs': 'Asuntos regulatorios y cumplimiento',
+  'contract-manufacturing': 'Fabricación por contrato (FCM y CMO)',
+  'technology-transfer': 'Transferencia de tecnología y producción local',
+  'international-business-development': 'Desarrollo empresarial internacional',
+  'supply-chain-solutions': 'Soluciones de cadena de suministro',
+  'private-label': 'Marca propia y desarrollo de marca',
+  'pet-food': 'Alimentación y nutrición animal',
+  'nutraceuticals': 'Nutracéuticos y productos de bienestar'
+};
+serviceItems.forEach(item => { if (localizedServiceNames[item.slug]) item.name = localizedServiceNames[item.slug]; });
+
 const serviceGrid = document.getElementById('serviceGrid');
 
 const serviceDisplayLabels = {
-  'brand-registration':'Brand Registration',
-  'api-supply':'API',
-  'sports-nutrition':'Sport Nutrition',
-  'infant-formula':'Infant Formula & Nutrition',
-  'cbd-products':'CBD_NON THC',
-  'business-development':'BD + R&D',
-  'pharmaceutical-products':'FDF / Finished Products',
-  'nutraceuticals':'Vitamin & Supplements',
-  'pet-food':'Pet Food',
-  'medical-devices':'Medical Devices',
-  'technology-transfer': isFrench ? 'Transfert de Technologie' : 'Transferencia de Tecnología',
-  'private-label': isFrench ? 'Marque de Distributeur Orders' : 'Marca Privada Orders',
-  'contract-manufacturing':'FCM & CMO',
-  'cosmoderma':'Cosmoderma',
-  'regulatory-affairs':'Regulatory',
-  'licensing-partnerships':'Licensing Strategy',
-  'supply-chain-solutions':'Supply Chain'
+  'brand-registration': localizedServiceNames['brand-registration'],
+  'api-supply': 'API',
+  'sports-nutrition': isFrench ? 'Nutrition sportive' : 'Nutrición deportiva',
+  'infant-formula': isFrench ? 'Nutrition infantile' : 'Nutrición infantil',
+  'cbd-products': isFrench ? 'CBD sans THC' : 'CBD sin THC',
+  'business-development': isFrench ? 'Développement commercial' : 'Desarrollo empresarial',
+  'pharmaceutical-products': isFrench ? 'Produits pharmaceutiques' : 'Productos farmacéuticos',
+  'nutraceuticals': isFrench ? 'Vitamines et compléments' : 'Vitaminas y suplementos',
+  'pet-food': isFrench ? 'Alimentation animale' : 'Alimentación animal',
+  'medical-devices': isFrench ? 'Dispositifs médicaux' : 'Dispositivos médicos',
+  'technology-transfer': isFrench ? 'Transfert de technologie' : 'Transferencia de tecnología',
+  'private-label': isFrench ? 'Marque de distributeur' : 'Marca propia',
+  'contract-manufacturing': isFrench ? 'Fabrication à façon' : 'Fabricación por contrato',
+  'cosmoderma': 'Cosmoderma',
+  'regulatory-affairs': isFrench ? 'Affaires réglementaires' : 'Asuntos regulatorios',
+  'licensing-partnerships': isFrench ? 'Licences et partenariats' : 'Licencias y alianzas',
+  'supply-chain-solutions': isFrench ? 'Chaîne d’approvisionnement' : 'Cadena de suministro'
 };
 window.renderNiazServiceGrid({
   items: serviceItems,
   labels: serviceDisplayLabels,
   vipLabels: {
-    "chamber-of-commerce": "Private Chamber of Commerce",
-    "exclusive-agency": isFrench ? "Représentation Exclusive" : "Representación Exclusiva",
-    "market-entry": isFrench ? "Accès au Marché" : "Entrada al Mercado"
+    "chamber-of-commerce": localizedServiceNames['chamber-of-commerce'],
+    "exclusive-agency": localizedServiceNames['exclusive-agency'],
+    "market-entry": localizedServiceNames['market-entry']
   },
   routeMode: 'query',
   queryPrefix: isFrench ? '/fr/' : '/es/',
-  importExportLabel: 'IMPORT / EXPORT'
+  importExportLabel: isFrench ? 'IMPORTATION / EXPORTATION' : 'IMPORTACIÓN / EXPORTACIÓN'
 });
 
 // Service detail views load in the current tab, powered by this single HTML file.

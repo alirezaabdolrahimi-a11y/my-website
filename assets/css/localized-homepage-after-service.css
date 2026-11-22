@@ -41,7 +41,6 @@
   width:45px!important;height:43px!important;min-width:45px!important;min-height:43px!important;
   flex:0 0 auto!important;margin:0!important;padding:0!important;
 }
-.services-grid>.service-card:not(.import-export-card) .service-icon img{width:100%!important;height:100%!important;object-fit:contain!important}
 .services-grid>.service-card:not(.import-export-card) h3{max-width:100%!important;text-align:center!important;line-height:1.13!important;overflow-wrap:anywhere!important}
 
 /* The three VIP oval frames receive the same width reduction and extra separation; their icons stay unchanged. */
