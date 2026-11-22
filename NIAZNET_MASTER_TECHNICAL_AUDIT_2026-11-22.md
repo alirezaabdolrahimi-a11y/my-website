@@ -89,3 +89,9 @@ This is the single numbered master list. Every newly discovered issue must be ap
 62. [ ] Browser visual/interactive testing remains open: headless Chromium in this execution environment did not complete even a minimal `data:` page, so no page-level browser results are claimed. Retry in a functioning browser environment before merge.
 
 63. [x] Correct the API filter initialization order introduced during catalogue unification: bind the `filter` DOM element before assigning its dynamically generated options. Verified by source-order assertion and `node --check`; browser interaction remains open.
+
+
+64. [x] Repair the CI syntax list after removing `newsletter.js`: remove the stale `node --check newsletter.js` command, add `assets/js/localized-homepage.js`, and include `assets/js`, `assets/css` and `api-catalog.json` in the relevant push path filters.
+65. [x] Run `tools/normalize-slides.py` in a separate normalized build copy: it generated the two missing MASPORT normalized copies, validated 26 exact-size 1944×809 assets, 59 slideshow pages and 31 locale pairs, while preserving original source images.
+66. [ ] The normalized slideshow copies and updated HTML references are in the normalized build package, not yet committed to the GitHub source branch; keep this distinction explicit until the package is approved for deployment or a safe binary-asset commit path is available.
+67. [ ] Run the updated GitHub Actions workflow on the latest PR head and download/verify both raw-source and normalized-site artifacts; browser QA remains open.
