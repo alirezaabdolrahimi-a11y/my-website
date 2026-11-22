@@ -114,3 +114,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 76. [x] Extend locale precedence to every localized route (`/tr/`, `/es/`, `/fr/`, `/fa/`) in the WhatsApp label, slideshow and API UI. ES/FR WhatsApp accessibility labels are now localized, and stale `?lang=fa` no longer triggers Persian-only slideshow content on ES/FR pages.
+
+
+77. [x] Restore the missing Performance Nutrition homepage slide in EN/TR/ES/FR at its original position between slides 08 and 10. The authoritative `index(1).html` includes this slide; its original image bytes match the existing Sports Nutrition image, so the existing normalized asset is reused without editing or adding duplicate artwork. All four homepages now have 18 slides in identical order.
