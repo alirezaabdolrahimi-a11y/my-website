@@ -16,7 +16,7 @@ if(languageAnchor&&!document.querySelector('.fa-lang')&&!document.getElementById
 }
 if(isTurkishPage||params.get('lang')!=='fa')return;
 const common={
-'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
+'Home':'خانه','About Us':'درباره ما','Services':'خدمات','Partners':'شرکای تجاری','PARTNERS':'شرکای تجاری','Partner':'شریک تجاری','Projects':'پروژه‌ها','News':'اخبار','Contact':'تماس با ما','GET IN TOUCH':'با ما در تماس باشید',
 'NIAZ NET · OUR SERVICES':'نیازنت · خدمات ما','← BACK TO ALL SERVICES':'← بازگشت به همه خدمات','CONTACT OUR TEAM →':'← تماس با تیم ما','DOWNLOAD FCM/CMO FORM':'دانلود فرم FCM/CMO',
 'Home / Our Services /':'خانه / خدمات ما /','How we approach this service':'رویکرد ما در این خدمت','Information to include in an enquiry':'اطلاعات موردنیاز برای ثبت درخواست',
 'Discuss this service':'درباره این خدمت گفت‌وگو کنید','DISCUSS THIS SERVICE →':'درباره این خدمت گفت‌وگو کنید ←',
@@ -2065,7 +2065,6 @@ Object.assign(common, {
   "Business inquiry — Niaz Net Tehran": "درخواست تجاری — نیاز نت تهران",
   "Your Global Business Development Partner": "شریک شما در توسعه کسب‌وکار بین‌المللی",
   "Your Global Business Development": "شریک شما در توسعه کسب‌وکار جهانی",
-  "Partner": " ",
   "Licensing Partnerships": "همکاری‌های مبتنی بر مجوز",
   "Licensing & Partnerships": "همکاری‌های مبتنی بر مجوز",
   "Botulinum Toxin Dermal Fillers": "سم بوتولینوم و فیلرهای پوستی",
@@ -2081,6 +2080,23 @@ Object.assign(common, {
   "Brand development / registration": "توسعه / ثبت برند",
   "Other business inquiry": "سایر درخواست‌های تجاری"
 });
+
+Object.assign(pages['index.html'], {'NIAZ NET | Strategic Distribution, Trade & Business Development':'نیازنت | توزیع راهبردی، تجارت و توسعه کسب‌وکار'});
+Object.assign(pages['about.html'], {'About NIAZ NET | International Business Development':'درباره نیازنت | توسعه کسب‌وکار بین‌المللی'});
+Object.assign(pages['projects.html'], {'Projects | NIAZ NET':'پروژه‌ها | نیازنت'});
+Object.assign(pages['contact.html'], {'Contact NIAZ NET | Business & Partnership Enquiries':'تماس با نیازنت | درخواست‌های تجاری و همکاری'});
+Object.assign(pages['api-supply.html'], {'Pharmaceutical API Sourcing & Supply | NIAZ NET':'تأمین و عرضه مواد مؤثره دارویی | نیازنت'});
+Object.assign(pages['api-supply.html'], {'API Sourcing Coordination':'هماهنگی تأمین مواد مؤثره دارویی'});
+Object.assign(pages['import-export.html'], {'Import & Export Services | International Trade | NIAZ NET':'خدمات واردات و صادرات | تجارت بین‌المللی | نیازنت'});
+Object.assign(pages['licensing-partnerships.html'], {'Licensing Strategy & Strategic Partnerships | NIAZ NET':'راهبرد صدور مجوز و مشارکت‌های راهبردی | نیازنت'});
+Object.assign(pages['medical-devices.html'], {'Medical Device & Healthcare Equipment Trade | NIAZ NET':'تجارت تجهیزات پزشکی و تجهیزات مراقبت سلامت | نیازنت'});
+Object.assign(pages['nutraceuticals.html'], {'Nutraceuticals, Vitamins & Wellness Products | NIAZ NET':'محصولات نوتراسوتیک، ویتامین‌ها و تندرستی | نیازنت'});
+Object.assign(pages['pet-food.html'], {'Pet Food & Animal Nutrition Trade | NIAZ NET':'تجارت غذای حیوانات خانگی و تغذیه دام | نیازنت'});
+Object.assign(pages['private-label.html'], {'Private Label & Own-Brand Product Development | NIAZ NET':'توسعه محصولات با برند اختصاصی و برند خصوصی | نیازنت'});
+Object.assign(pages['product-registration.html'], {'Product Registration & Dossier Coordination | NIAZ NET':'ثبت محصول و هماهنگی پرونده‌های فنی | نیازنت'});
+Object.assign(pages['regulatory-affairs.html'], {'Regulatory Affairs & Compliance Coordination | NIAZ NET':'امور مقرراتی و هماهنگی انطباق | نیازنت'});
+Object.assign(pages['supply-chain-solutions.html'], {'Supply Chain Coordination & Trade Logistics | NIAZ NET':'هماهنگی زنجیره تأمین و لجستیک تجاری | نیازنت'});
+Object.assign(pages['project-details.html'], {'Project Details | NIAZ NET':'جزئیات پروژه | نیازنت'});
 
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
