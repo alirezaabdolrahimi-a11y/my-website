@@ -43,18 +43,27 @@ jobs:
           node --check assets/js/homepage.js
           node --check assets/js/homepage-tr.js
       - run: python -m pip install --disable-pip-version-check Pillow
-      - name: Validate normalization in an isolated copy
+      - name: Prepare and validate normalized site copy
         run: |
-          tmp_dir="$(mktemp -d)"
-          trap 'rm -rf "$tmp_dir"' EXIT
-          git archive HEAD | tar -x -C "$tmp_dir"
-          python "$tmp_dir/tools/normalize-slides.py"
+          normalized_dir="$RUNNER_TEMP/NIAZNET_NORMALIZED_SITE"
+          rm -rf "$normalized_dir"
+          mkdir -p "$normalized_dir"
+          git archive HEAD | tar -x -C "$normalized_dir"
+          python "$normalized_dir/tools/normalize-slides.py"
           if [ -n "$(git status --porcelain)" ]; then
-            echo "The validation job modified the checked-out repository."
+            echo "The normalization job modified the checked-out repository."
             git status --short
             exit 1
           fi
-          echo "Validation completed in an isolated copy; the checked-out repository remains unchanged."
+          echo "Normalized site prepared in an isolated directory; the checked-out repository remains unchanged."
+      - name: Upload normalized site build
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
+        uses: actions/upload-artifact@v4
+        with:
+          name: NIAZNET_NORMALIZED_SITE_2026-11-22
+          path: ${{ runner.temp }}/NIAZNET_NORMALIZED_SITE/
+          include-hidden-files: true
+          retention-days: 90
 
       - name: Prepare complete source backup
         if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
