@@ -125,6 +125,7 @@ home_fr = page_data["fr/index.html"].slide_sources
 check(all(len(x)==18 for x in (home_en,home_tr,home_es,home_fr)),f"All four homepages must have 18 slides: EN={len(home_en)}, TR={len(home_tr)}, ES={len(home_es)}, FR={len(home_fr)}")
 check(home_en==home_tr==home_es==home_fr,"Homepage slide order differs between locales")
 check(all(x.count("/images/slides/03-sports-nutrition.png")==2 for x in (home_en,home_tr,home_es,home_fr)),"Restored Performance Nutrition slide is missing or does not reuse the verified original image")
+check(all(x[3].endswith("03-sports-nutrition.png") and x[9].endswith("03-sports-nutrition.png") for x in (home_en,home_tr,home_es,home_fr)),"Performance Nutrition slide must remain at position 09")
 check('alt="Performance Nutrition"' in (ROOT/"index.html").read_text(encoding="utf-8"),"English Performance Nutrition slide alt text missing")
 check('alt="Performans Beslenmesi"' in (ROOT/"tr/index.html").read_text(encoding="utf-8"),"Turkish Performance Nutrition slide alt text missing")
 
