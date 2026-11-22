@@ -37,7 +37,7 @@ This is the single numbered master list. Every newly discovered issue must be ap
 23. [ ] Browser-test navigation, mobile menu, contact hub, WhatsApp, language switching and dynamic link routing.
 
 ## CSS and visual regression
-24. [x] Compare CSS overlap against representative page stylesheet loading; selector overlap alone was not treated as a live conflict.
+24. [x] Compare CSS overlap against actual page stylesheet loading. `service-page-shared.css` and `service-tile-system.css` are co-loaded on 54 pages; 20 selectors overlap and static comparison found 100 same-context property conflicts. The latter is a deliberate hard-override layer using `!important`; visual validation is required before cleanup.
 25. [ ] Audit repeated selectors within homepage.css, service-page-shared.css, secondary-page-base.css, projects-base.css and localized styles.
 26. [ ] Remove only proven redundant CSS after checking cascade order, declarations and media context.
 27. [ ] Verify navy/gold palette, typography, icon sizing, hero layout, cards, footer and navigation on desktop/tablet/mobile.
@@ -83,3 +83,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 59. [ ] Re-verify prior fixes after shared-core changes: Turkish Cosmoderma links, CBD icon paths, ES/FR home links, Persian runtime, API rows, FCM/CMO guards, locale-specific downloads, contact routing and isolated slideshow CI.
 
 60. [x] Align FCM/CMO form locale detection with download locale precedence: `/tr/` route takes priority over `?lang=fa`, preventing a Turkish page from generating a Persian form when a stale or manually added query parameter is present.
+
+61. [ ] Deep-review the co-loaded `service-page-shared.css` + `service-tile-system.css` cascade on representative EN/TR service pages. Static analysis found 20 shared selectors and 100 property conflicts in matching contexts; treat these as potential overrides, not automatic defects, and do not refactor until browser visuals can be verified.
