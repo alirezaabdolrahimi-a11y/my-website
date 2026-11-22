@@ -103,3 +103,8 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 71. [x] Delete the unreferenced 190-byte `assets/css/turkish-overrides.css`; no HTML, JS or CSS file referenced it, and its only rule was already present in `homepage.css` and other active shared stylesheets.
+
+
+72. [x] Verify stylesheet cascade order on every page that loads both `service-page-shared.css` and `service-tile-system.css`: 54 pages co-load them, and all 54 load the hard-override tile system after the shared stylesheet.
+73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 217 files, 114,032,517 uncompressed bytes, ZIP SHA-256 `523a09ec375fba3f6a86e565c30e7531ad479e1fa745f5559533c211a01aac63`.
+74. [x] Final local static regression pass: slideshow normalizer, site-integrity checker, all JavaScript syntax checks, and unreferenced JS/CSS inventory passed; no unreferenced JS or CSS files remain.
