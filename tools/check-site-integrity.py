@@ -114,9 +114,11 @@ check("if (!localizedRoute && (params.get('lang') === 'fa'" in grid,"Service lin
 check("location.pathname.startsWith('/tr/')?'tr':new URLSearchParams(location.search).get('lang')==='fa'?'fa':'en'" in forms,"FCM/CMO form locale precedence mismatch")
 check("path.startsWith('/tr/')?'tr':query==='fa'?'fa'" in downloads,"FCM/CMO download locale precedence mismatch")
 
-for page_name,consumer in (("index.html","homepage.js"),("tr/index.html","homepage-tr.js")):
+for page_name,consumer in (("index.html","homepage.js"),("tr/index.html","homepage-tr.js"),("es/index.html","localized-homepage.js"),("fr/index.html","localized-homepage.js")):
     sources = [Path(urlsplit(urljoin("https://www.niaznet.net/"+page_name,x)).path).name for x in page_data[page_name].scripts]
     check("service-grid.js" in sources and consumer in sources and sources.index("service-grid.js") < sources.index(consumer),f"service-grid.js must load before {consumer} in {page_name}")
+    other_consumers = {"homepage.js","homepage-tr.js","localized-homepage.js"} - {consumer}
+    check(not (other_consumers & set(sources)),f"Conflicting homepage renderer loaded in {page_name}")
 
 home_en = page_data["index.html"].slide_sources
 home_tr = page_data["tr/index.html"].slide_sources
