@@ -108,3 +108,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 72. [x] Verify stylesheet cascade order on every page that loads both `service-page-shared.css` and `service-tile-system.css`: 54 pages co-load them, and all 54 load the hard-override tile system after the shared stylesheet.
 73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 217 files, ZIP integrity passed; final SHA-256 is recorded in the handoff.
 74. [x] Final local static regression pass: slideshow normalizer, site-integrity checker, all JavaScript syntax checks, and unreferenced JS/CSS inventory passed; no unreferenced JS or CSS files remain.
+
+
+75. [x] Remove two redundant same-value keys from the Persian translation dictionaries (`Strategic Distribution & Trade` and `Contact Our Team`); a top-level object-literal audit now finds no duplicate keys in the common/page translation maps, and `node --check` passes.
