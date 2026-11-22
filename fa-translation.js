@@ -25,6 +25,6 @@
   var runtime = document.createElement('script');
   runtime.src = '/fa-translation-runtime.js';
   runtime.dataset.faTranslationRuntime = 'true';
-  runtime.async = true;
+  runtime.async = false;
   document.head.appendChild(runtime);
 })();

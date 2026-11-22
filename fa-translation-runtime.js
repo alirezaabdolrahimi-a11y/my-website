@@ -2234,17 +2234,26 @@ if(file==='cosmoderma.html'&&params.get('lang')==='fa'){
  }
 }
 }
-const style=document.createElement('style');
-style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
-document.head.appendChild(style);
+const styleId='fa-translation-runtime-style';
+if(!document.getElementById(styleId)){
+ const style=document.createElement('style');
+ style.id=styleId;
+ style.textContent='body[data-content-lang="fa"]{direction:ltr!important}body[data-content-lang="fa"] :is(h1,h2,h3,h4,p,li,blockquote,.eyebrow,.breadcrumb,.service-copy,.section-copy){text-align:right;direction:rtl;unicode-bidi:plaintext}body[data-content-lang="fa"] .nav,body[data-content-lang="fa"] .nav-links,body[data-content-lang="fa"] .hero-inner,body[data-content-lang="fa"] .hero-actions,body[data-content-lang="fa"] .services-grid,body[data-content-lang="fa"] .footer-grid{direction:ltr!important}body[data-content-lang="fa"] .nav-links>a,body[data-content-lang="fa"] .nav-item>button,body[data-content-lang="fa"] .btn,body[data-content-lang="fa"] .nav-cta{direction:rtl}';
+ document.head.appendChild(style);
+}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',translate,{once:true});else translate();
-let translationFrame=0;
-const observer=new MutationObserver(()=>{
- if(translationFrame)return;
- translationFrame=requestAnimationFrame(()=>{
-  translationFrame=0;
+let translationTimer=0;
+const observer=new MutationObserver((records)=>{
+ const hasTranslatableNodes=records.some(record=>Array.from(record.addedNodes).some(node=>
+  node.nodeType===1 && !(node.matches&&node.matches('script,style,link,svg')) &&
+  !(node.closest&&node.closest('script,style,svg'))
+ ));
+ if(!hasTranslatableNodes)return;
+ if(translationTimer)clearTimeout(translationTimer);
+ translationTimer=setTimeout(()=>{
+  translationTimer=0;
   translate();
- });
+ },120);
 });
 observer.observe(document.body,{childList:true,subtree:true});
 })();
