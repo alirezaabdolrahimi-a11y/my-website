@@ -135,3 +135,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 84. [x] Add an integrity guard ensuring each EN/TR/ES/FR homepage loads only its own renderer (`homepage.js`, `homepage-tr.js`, or `localized-homepage.js`) and loads `service-grid.js` first, preventing conflicting global `const` declarations.
 
 85. [x] Re-run the integrity checker against the extracted GitHub Actions run #99 normalized artifact; 84 HTML pages, API=239, Cosmoderma=8/8, 26 normalized slide assets, all 1944×809. CI artifact digests: normalized `7820cfda7bbb9abbf71b79e8c402f2de5d537a6c8d82fd2f6d079e6715875209`; raw source `208b6857efcace1e8adee47cfabbd4ef6ecbbdd7a441cf8f1d1c744debac438a`.
+
+
+86. [x] Reconcile API filter categories against the canonical 239-record JSON: corrected eight rows incorrectly marked `Human APIs` in `data-category` to `API` in EN/TR, matching the JSON and visible category; added integrity assertions for all 239 row/category pairs and the seven filter options.
