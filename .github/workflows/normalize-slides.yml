@@ -10,6 +10,7 @@ on:
       - 'hero-slideshow.js'
       - 'site-shell.js'
       - 'tools/normalize-slides.py'
+      - 'tools/check-site-integrity.py'
       - 'assets/js/**/*.js'
       - 'assets/css/**/*.css'
       - 'api-catalog.json'
@@ -50,6 +51,7 @@ jobs:
           mkdir -p "$normalized_dir"
           git archive HEAD | tar -x -C "$normalized_dir"
           python "$normalized_dir/tools/normalize-slides.py"
+          python "$normalized_dir/tools/check-site-integrity.py"
           if [ -n "$(git status --porcelain)" ]; then
             echo "The normalization job modified the checked-out repository."
             git status --short
