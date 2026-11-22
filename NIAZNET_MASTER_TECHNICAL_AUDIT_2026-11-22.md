@@ -87,3 +87,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 61. [ ] Deep-review the co-loaded `service-page-shared.css` + `service-tile-system.css` cascade on representative EN/TR service pages. Static analysis found 20 shared selectors and 100 property conflicts in matching contexts; treat these as potential overrides, not automatic defects, and do not refactor until browser visuals can be verified.
 
 62. [ ] Browser visual/interactive testing remains open: headless Chromium in this execution environment did not complete even a minimal `data:` page, so no page-level browser results are claimed. Retry in a functioning browser environment before merge.
+
+63. [x] Correct the API filter initialization order introduced during catalogue unification: bind the `filter` DOM element before assigning its dynamically generated options. Verified by source-order assertion and `node --check`; browser interaction remains open.
