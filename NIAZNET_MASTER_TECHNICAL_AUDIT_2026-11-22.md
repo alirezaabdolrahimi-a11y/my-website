@@ -94,12 +94,12 @@ This is the single numbered master list. Every newly discovered issue must be ap
 64. [x] Repair the CI syntax list after removing `newsletter.js`: remove the stale `node --check newsletter.js` command, add `assets/js/localized-homepage.js`, and include `assets/js`, `assets/css` and `api-catalog.json` in the relevant push path filters.
 65. [x] Run `tools/normalize-slides.py` in a separate normalized build copy: the PR CI artifact contains 26 exact-size 1944×809 assets, 59 slideshow pages and 31 locale pairs; the complete offline package additionally contains the new Vitacosmetic slide (27 assets). Original source images remain preserved.
 66. [ ] The normalized slideshow copies and updated HTML references are in the normalized build package, not yet committed to the GitHub source branch; keep this distinction explicit until the package is approved for deployment or a safe binary-asset commit path is available.
-67. [x] Run GitHub Actions workflow run #97 (`44986274161`) on PR head `db8c7915baa0f293d303ab1fe56cb03f08350ff4`; both raw-source and normalized-site artifacts downloaded and ZIP-tested successfully. Browser QA remains open.
+67. [x] Run GitHub Actions workflow run #99 (`44986573536`) on latest PR head `dde7fd615502afb069aa7b094f8187ace6071c2b`; both raw-source and normalized-site artifacts downloaded and ZIP-tested successfully. Browser QA remains open.
 
 
 68. [x] Fix Turkish-route precedence across site-shell.js, hero-slideshow.js, api-catalog.js and service-grid.js: a stale `?lang=fa` or saved Persian preference no longer overrides a `/tr/` route. FCM/CMO form and download locale precedence are aligned.
 69. [x] Add `tools/check-site-integrity.py` and wire it into the normalized build workflow after slideshow normalization; the local normalized build passed the equivalent comprehensive integrity checks.
-70. [x] Verify the latest PR-head workflow run #97 and both uploaded artifacts (raw source + normalized site); both ZIPs pass integrity checks. Browser visual/interactive testing remains open.
+70. [x] Verify the latest PR-head workflow run #99 and both uploaded artifacts (raw source + normalized site); both ZIPs pass integrity checks. Browser visual/interactive testing remains open.
 
 
 71. [x] Delete the unreferenced 190-byte `assets/css/turkish-overrides.css`; no HTML, JS or CSS file referenced it, and its only rule was already present in `homepage.css` and other active shared stylesheets.
@@ -133,3 +133,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 83. [x] Run a TypeScript semantic scan across the 12 shared/core JavaScript files: zero undefined-name diagnostics (TS2304/TS2552). Remaining diagnostics are DOM element/event typing and cross-file global-scope warnings; these are not represented as browser-test passes.
 84. [x] Add an integrity guard ensuring each EN/TR/ES/FR homepage loads only its own renderer (`homepage.js`, `homepage-tr.js`, or `localized-homepage.js`) and loads `service-grid.js` first, preventing conflicting global `const` declarations.
+
+85. [x] Re-run the integrity checker against the extracted GitHub Actions run #99 normalized artifact; 84 HTML pages, API=239, Cosmoderma=8/8, 26 normalized slide assets, all 1944×809. CI artifact digests: normalized `7820cfda7bbb9abbf71b79e8c402f2de5d537a6c8d82fd2f6d079e6715875209`; raw source `208b6857efcace1e8adee47cfabbd4ef6ecbbdd7a441cf8f1d1c744debac438a`.
