@@ -1044,13 +1044,11 @@ Object.assign(pages['cosmoderma.html'], {
 /* Targeted completion pass: home, forms, catalog controls and project pages. */
 Object.assign(common, {
   "TR⌄":"FA⌄", "EN⌄":"FA⌄",
-  "Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
   "Contact Our Team":"ارتباط با تیم ما",
   "Contact our team":"با تیم ما در ارتباط باشید",
   "CONTACT NIAZ NET":"تماس با نیازنت",
   "Let’s Build Success Together.":"برای ساختن موفقیت، در کنار شما هستیم.",
   "Contact our team about international business development, product sourcing, brand partnerships, regulatory coordination or trade opportunities.":"برای توسعه کسب‌وکار بین‌المللی، تأمین محصولات، همکاری با برندها، هماهنگی امور مقرراتی یا فرصت‌های تجاری با تیم ما در ارتباط باشید.",
-  "Contact Our Team":"ارتباط با تیم ما",
   "Email:":"ایمیل:",
   "Tehran Office:":"دفتر تهران:",
   "Turkey / WhatsApp:":"ترکیه / واتساپ:",
