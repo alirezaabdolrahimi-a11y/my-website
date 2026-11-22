@@ -129,3 +129,7 @@ This is the single numbered master list. Every newly discovered issue must be ap
 81. [ ] Commit the new binary slide asset and its EN/TR page references to the GitHub repair branch. It is included and validated in the normalized ZIP, but the GitHub branch still retains the previous image until the binary asset can be added safely; do not merge the old image version as if this item were complete.
 
 82. [x] Rebuild the normalized full-site ZIP after the Vitacosmetic slide correction: 219 files, 27 canonical 1944×809 slide assets, 84 HTML pages, 18 homepage slides in four locales, and 8 Cosmoderma slides per EN/TR page.
+
+
+83. [x] Run a TypeScript semantic scan across the 12 shared/core JavaScript files: zero undefined-name diagnostics (TS2304/TS2552). Remaining diagnostics are DOM element/event typing and cross-file global-scope warnings; these are not represented as browser-test passes.
+84. [x] Add an integrity guard ensuring each EN/TR/ES/FR homepage loads only its own renderer (`homepage.js`, `homepage-tr.js`, or `localized-homepage.js`) and loads `service-grid.js` first, preventing conflicting global `const` declarations.
