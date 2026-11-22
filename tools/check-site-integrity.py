@@ -8,6 +8,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 import json
 import re
 import sys
+import subprocess
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -137,6 +138,43 @@ check("document.readyState==='loading'" in fa_runtime and "else translate()" in 
 check("'PARTNERS':'شرکای تجاری'" in fa_runtime and "'Partner':'شریک تجاری'" in fa_runtime and '"Partner": " "' not in fa_runtime,"Persian partner labels are missing or blank")
 for title_key in ("NIAZ NET | Strategic Distribution, Trade & Business Development","About NIAZ NET | International Business Development","Projects | NIAZ NET","Contact NIAZ NET | Business & Partnership Enquiries","Pharmaceutical API Sourcing & Supply | NIAZ NET","API Sourcing Coordination","Import & Export Services | International Trade | NIAZ NET","Licensing Strategy & Strategic Partnerships | NIAZ NET","Medical Device & Healthcare Equipment Trade | NIAZ NET","Nutraceuticals, Vitamins & Wellness Products | NIAZ NET","Pet Food & Animal Nutrition Trade | NIAZ NET","Private Label & Own-Brand Product Development | NIAZ NET","Product Registration & Dossier Coordination | NIAZ NET","Regulatory Affairs & Compliance Coordination | NIAZ NET","Supply Chain Coordination & Trade Logistics | NIAZ NET","Project Details | NIAZ NET"):
     check(title_key in fa_runtime,f"Missing Persian title translation key: {title_key}")
+# Extract the Persian dictionary in Node, then compare it to visible text in each dictionary-backed page.
+extractor = r"""
+const fs=require('fs'),vm=require('vm');
+const source=fs.readFileSync('fa-translation-runtime.js','utf8');
+const start=source.indexOf('const common={');
+const end=source.indexOf('const file=location',start);
+if(start<0||end<0)throw new Error('Persian dictionary boundaries not found');
+const code=source.slice(start,end)+'\nglobalThis.result={common:common,pages:pages};';
+const sandbox={};vm.runInNewContext(code,sandbox,{timeout:10000});
+process.stdout.write(JSON.stringify(sandbox.result));
+"""
+extracted = subprocess.run(["node","-e",extractor],cwd=ROOT,text=True,capture_output=True)
+check(extracted.returncode==0,f"Could not extract Persian dictionary: {extracted.stderr[:300]}")
+fa_dictionary=json.loads(extracted.stdout) if extracted.returncode==0 else {"common":{},"pages":{}}
+class VisibleText(HTMLParser):
+    def __init__(self): super().__init__(); self.skip=0; self.values=[]
+    def handle_starttag(self,tag,attrs):
+        if tag in ("script","style","noscript","svg"): self.skip+=1
+    def handle_endtag(self,tag):
+        if tag in ("script","style","noscript","svg") and self.skip: self.skip-=1
+    def handle_data(self,data):
+        value=re.sub(r"\s+"," ",data).strip()
+        if value and not self.skip: self.values.append(value)
+translation_gaps=[]
+for page_key,page_dictionary in fa_dictionary.get("pages",{}).items():
+    page_path=ROOT/page_key
+    if not page_path.exists(): continue
+    parser=VisibleText(); parser.feed(page_path.read_text(encoding="utf-8",errors="replace"))
+    page_map={re.sub(r"\s+"," ",k).strip():v for k,v in page_dictionary.items()}
+    dictionary={**{re.sub(r"\s+"," ",k).strip():v for k,v in fa_dictionary.get("common",{}).items()},**page_map}
+    for phrase in dict.fromkeys(parser.values):
+        if phrase in dictionary: continue
+        if len(re.findall(r"[A-Za-z]{2,}",phrase))<2 or re.fullmatch(r"[A-Z0-9 &|,.-]+",phrase): continue
+        if page_key=="api-supply.html" and (phrase.lower() in api_names or phrase=="Showing 239 of 239 records"): continue
+        if page_key=="sports-nutrition.html" and re.match(r"^(Premium|100%|Whey)",phrase): continue
+        translation_gaps.append((page_key,phrase))
+check(not translation_gaps,f"Meaningful untranslated Persian UI text remains: {translation_gaps[:12]}")
 check("if(document.getElementById('fcm-cmo-forms'))return;" in forms,"FCM/CMO form duplicate-insertion guard missing")
 check("root.dataset.fcmReady='true';" in downloads,"FCM/CMO download locale-ready guard missing")
 workflow=(ROOT/".github/workflows/normalize-slides.yml").read_text(encoding="utf-8")
