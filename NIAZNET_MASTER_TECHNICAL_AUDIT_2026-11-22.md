@@ -81,3 +81,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 57. [ ] Keep main and Production unchanged until separate publication approval.
 58. [x] Search for the historical industryItems undefined-reference issue; no remaining references found.
 59. [ ] Re-verify prior fixes after shared-core changes: Turkish Cosmoderma links, CBD icon paths, ES/FR home links, Persian runtime, API rows, FCM/CMO guards, locale-specific downloads, contact routing and isolated slideshow CI.
+
+60. [x] Align FCM/CMO form locale detection with download locale precedence: `/tr/` route takes priority over `?lang=fa`, preventing a Turkish page from generating a Persian form when a stale or manually added query parameter is present.
