@@ -1,30 +1,5 @@
 
-const serviceItems = [
-  { name: 'Brand Registration', slug: 'brand-registration' },
-  { name: 'Sports Nutrition & Supplements', slug: 'sports-nutrition' },
-  { name: 'Infant Formula & Nutrition', slug: 'infant-formula' },
-  { name: 'Cosmoderma (Botox & Dermal Fillers)', slug: 'cosmoderma' },
-  { name: 'API', slug: 'api-supply' },
-  { name: 'Medical Devices & Healthcare Equipment', slug: 'medical-devices' },
-  { name: 'CBD_NON THC Products & Market Coordination', slug: 'cbd-products' },
-  { name: 'Import & Export Services', slug: 'import-export' },
-  { name: 'Exclusive Agency & Brand Representation', slug: 'exclusive-agency' },
-  { name: 'Business Development', slug: 'business-development' },
-  { name: 'Private Chamber of Commerce', slug: 'chamber-of-commerce' },
-  { name: 'Market Entry Strategy & Solutions', slug: 'market-entry' },
-  { name: 'Licensing & Strategic Partnerships', slug: 'licensing-partnerships' },
-  { name: 'Pharmaceutical Finished Products', slug: 'pharmaceutical-products' },
-  { name: 'Product Registration & Dossier Coordination', slug: 'product-registration' },
-  { name: 'Regulatory Affairs & Compliance Coordination', slug: 'regulatory-affairs' },
-  { name: 'Contract Manufacturing (FCM & CMO)', slug: 'contract-manufacturing' },
-  { name: 'Technology Transfer & Local Production', slug: 'technology-transfer' },
-  { name: 'International Business Development', slug: 'international-business-development' },
-  { name: 'Supply Chain Solutions', slug: 'supply-chain-solutions' },
-  { name: 'Private Label & Own-Brand Development', slug: 'private-label' },
-  { name: 'Pet Food & Animal Nutrition', slug: 'pet-food' },
-  
-  { name: 'Nutraceuticals & Wellness Products', slug: 'nutraceuticals' },
-];
+const serviceItems = window.NIAZ_SERVICE_CATALOG.map(function (item) { return { name: item.en, slug: item.slug }; });
 
 const serviceGrid = document.getElementById('serviceGrid');
 

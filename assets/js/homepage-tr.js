@@ -1,30 +1,5 @@
 
-const serviceItems = [
-  { name: 'Marka Tescili', slug: 'brand-registration' },
-  { name: 'Sporcu Beslenmesi ve Takviyeler', slug: 'sports-nutrition' },
-  { name: 'Bebek Maması ve Beslenmesi', slug: 'infant-formula' },
-  { name: 'Kozmoderma (Botoks ve Dermal Dolgular)', slug: 'cosmoderma' },
-  { name: 'API', slug: 'api-supply' },
-  { name: 'Tıbbi Cihazlar ve Sağlık Ekipmanları', slug: 'medical-devices' },
-  { name: 'CBD_NON THC Ürünleri ve Pazar Koordinasyonu', slug: 'cbd-products' },
-  { name: 'İthalat ve İhracat Hizmetleri', slug: 'import-export' },
-  { name: 'Münhasır Temsilcilik ve Marka Temsili', slug: 'exclusive-agency' },
-  { name: 'İş Geliştirme', slug: 'business-development' },
-  { name: 'Özel Ticaret Odası', slug: 'chamber-of-commerce' },
-  { name: 'Pazara Giriş Stratejisi ve Çözümleri', slug: 'market-entry' },
-  { name: 'Lisanslama ve Stratejik İş Ortaklıkları', slug: 'licensing-partnerships' },
-  { name: 'Bitmiş Farmasötik Ürünler', slug: 'pharmaceutical-products' },
-  { name: 'Ürün Tescili ve Dosya Koordinasyonu', slug: 'product-registration' },
-  { name: 'Mevzuat İşleri ve Uyum Koordinasyonu', slug: 'regulatory-affairs' },
-  { name: 'Fason Üretim (FCM & CMO)', slug: 'contract-manufacturing' },
-  { name: 'Teknoloji Transferi ve Yerel Üretim', slug: 'technology-transfer' },
-  { name: 'International İş Geliştirme', slug: 'international-business-development' },
-  { name: 'Tedarik Zinciri Çözümleri', slug: 'supply-chain-solutions' },
-  { name: 'Özel Marka Geliştirme', slug: 'private-label' },
-  { name: 'Evcil Hayvan Maması ve Hayvan Beslenmesi', slug: 'pet-food' },
-  
-  { name: 'Nütrasötikler ve Sağlıklı Yaşam Ürünleri', slug: 'nutraceuticals' },
-];
+const serviceItems = window.NIAZ_SERVICE_CATALOG.map(function (item) { return { name: item.tr, slug: item.slug }; });
 
 const serviceGrid = document.getElementById('serviceGrid');
 

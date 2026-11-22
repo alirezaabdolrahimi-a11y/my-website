@@ -1,6 +1,125 @@
 (function () {
   'use strict';
 
+  // Single source of truth for the EN/TR homepage service names and slugs.
+  window.NIAZ_SERVICE_CATALOG = Object.freeze([
+  {
+    "slug": "brand-registration",
+    "en": "Brand Registration",
+    "tr": "Marka Tescili"
+  },
+  {
+    "slug": "sports-nutrition",
+    "en": "Sports Nutrition & Supplements",
+    "tr": "Sporcu Beslenmesi ve Takviyeler"
+  },
+  {
+    "slug": "infant-formula",
+    "en": "Infant Formula & Nutrition",
+    "tr": "Bebek Maması ve Beslenmesi"
+  },
+  {
+    "slug": "cosmoderma",
+    "en": "Cosmoderma (Botox & Dermal Fillers)",
+    "tr": "Kozmoderma (Botoks ve Dermal Dolgular)"
+  },
+  {
+    "slug": "api-supply",
+    "en": "API",
+    "tr": "API"
+  },
+  {
+    "slug": "medical-devices",
+    "en": "Medical Devices & Healthcare Equipment",
+    "tr": "Tıbbi Cihazlar ve Sağlık Ekipmanları"
+  },
+  {
+    "slug": "cbd-products",
+    "en": "CBD_NON THC Products & Market Coordination",
+    "tr": "CBD_NON THC Ürünleri ve Pazar Koordinasyonu"
+  },
+  {
+    "slug": "import-export",
+    "en": "Import & Export Services",
+    "tr": "İthalat ve İhracat Hizmetleri"
+  },
+  {
+    "slug": "exclusive-agency",
+    "en": "Exclusive Agency & Brand Representation",
+    "tr": "Münhasır Temsilcilik ve Marka Temsili"
+  },
+  {
+    "slug": "business-development",
+    "en": "Business Development",
+    "tr": "İş Geliştirme"
+  },
+  {
+    "slug": "chamber-of-commerce",
+    "en": "Private Chamber of Commerce",
+    "tr": "Özel Ticaret Odası"
+  },
+  {
+    "slug": "market-entry",
+    "en": "Market Entry Strategy & Solutions",
+    "tr": "Pazara Giriş Stratejisi ve Çözümleri"
+  },
+  {
+    "slug": "licensing-partnerships",
+    "en": "Licensing & Strategic Partnerships",
+    "tr": "Lisanslama ve Stratejik İş Ortaklıkları"
+  },
+  {
+    "slug": "pharmaceutical-products",
+    "en": "Pharmaceutical Finished Products",
+    "tr": "Bitmiş Farmasötik Ürünler"
+  },
+  {
+    "slug": "product-registration",
+    "en": "Product Registration & Dossier Coordination",
+    "tr": "Ürün Tescili ve Dosya Koordinasyonu"
+  },
+  {
+    "slug": "regulatory-affairs",
+    "en": "Regulatory Affairs & Compliance Coordination",
+    "tr": "Mevzuat İşleri ve Uyum Koordinasyonu"
+  },
+  {
+    "slug": "contract-manufacturing",
+    "en": "Contract Manufacturing (FCM & CMO)",
+    "tr": "Fason Üretim (FCM & CMO)"
+  },
+  {
+    "slug": "technology-transfer",
+    "en": "Technology Transfer & Local Production",
+    "tr": "Teknoloji Transferi ve Yerel Üretim"
+  },
+  {
+    "slug": "international-business-development",
+    "en": "International Business Development",
+    "tr": "International İş Geliştirme"
+  },
+  {
+    "slug": "supply-chain-solutions",
+    "en": "Supply Chain Solutions",
+    "tr": "Tedarik Zinciri Çözümleri"
+  },
+  {
+    "slug": "private-label",
+    "en": "Private Label & Own-Brand Development",
+    "tr": "Özel Marka Geliştirme"
+  },
+  {
+    "slug": "pet-food",
+    "en": "Pet Food & Animal Nutrition",
+    "tr": "Evcil Hayvan Maması ve Hayvan Beslenmesi"
+  },
+  {
+    "slug": "nutraceuticals",
+    "en": "Nutraceuticals & Wellness Products",
+    "tr": "Nütrasötikler ve Sağlıklı Yaşam Ürünleri"
+  }
+].map(function (item) { return Object.freeze(item); }));
+
   const SERVICE_DISPLAY_ORDER = [
     'brand-registration','api-supply','sports-nutrition','infant-formula','cbd-products',
     'business-development','pharmaceutical-products','nutraceuticals','pet-food','medical-devices',
