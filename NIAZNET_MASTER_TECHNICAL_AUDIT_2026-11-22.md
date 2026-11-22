@@ -106,7 +106,7 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 72. [x] Verify stylesheet cascade order on every page that loads both `service-page-shared.css` and `service-tile-system.css`: 54 pages co-load them, and all 54 load the hard-override tile system after the shared stylesheet.
-73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 217 files, ZIP integrity passed; final SHA-256 is recorded in the handoff.
+73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 219 files, ZIP integrity passed; final SHA-256 is recorded in the handoff.
 74. [x] Final local static regression pass: slideshow normalizer, site-integrity checker, all JavaScript syntax checks, and unreferenced JS/CSS inventory passed; no unreferenced JS or CSS files remain.
 
 
@@ -127,3 +127,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 80. [x] Create the required Vitacosmetic slide for the third image in the three-slide Cosmoderma portfolio sequence (overall slide 05 of the eight-image page). The 1944×809 slide explicitly covers non-coloured cosmetics/personal care, strengthening/support products, hair-transplant aftercare, and gene/nanotechnology applications; EN/TR page copies in the normalized build now use it, while the eight-image count is preserved.
 81. [ ] Commit the new binary slide asset and its EN/TR page references to the GitHub repair branch. It is included and validated in the normalized ZIP, but the GitHub branch still retains the previous image until the binary asset can be added safely; do not merge the old image version as if this item were complete.
+
+82. [x] Rebuild the normalized full-site ZIP after the Vitacosmetic slide correction: 219 files, 27 canonical 1944×809 slide assets, 84 HTML pages, 18 homepage slides in four locales, and 8 Cosmoderma slides per EN/TR page.
