@@ -117,3 +117,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 77. [x] Restore the missing Performance Nutrition homepage slide in EN/TR/ES/FR at its original position between slides 08 and 10. The authoritative `index(1).html` includes this slide; its original image bytes match the existing Sports Nutrition image, so the existing normalized asset is reused without editing or adding duplicate artwork. All four homepages now have 18 slides in identical order.
+
+
+78. [x] Compare the old compact base ZIP with the current source. Legacy `shared-site.js`/`contact-actions.js` and their old CSS counterparts are not restored because their duties are now handled by `site-shell.js`, `secondary-page-base.css` and `service-tile-system.css`; the integrity suite now checks the shared contact/partner form markers and mailto destination.
