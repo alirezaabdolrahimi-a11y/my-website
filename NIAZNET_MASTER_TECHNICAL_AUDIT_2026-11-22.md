@@ -138,3 +138,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 86. [x] Reconcile API filter categories against the canonical 239-record JSON: corrected eight rows incorrectly marked `Human APIs` in `data-category` to `API` in EN/TR, matching the JSON and visible category; added integrity assertions for all 239 row/category pairs and the seven filter options.
+
+
+87. [x] Audit Persian translation coverage across all 33 page dictionaries and visible text nodes. Added 16 missing page-title/coordination translations, translated the uppercase `PARTNERS` heading, replaced the blank `Partner` value, and confirmed no meaningful untranslated English UI text remains in the audited dictionary pages; proper names, logos and product names remain intentionally unchanged.
