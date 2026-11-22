@@ -120,3 +120,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 78. [x] Compare the old compact base ZIP with the current source. Legacy `shared-site.js`/`contact-actions.js` and their old CSS counterparts are not restored because their duties are now handled by `site-shell.js`, `secondary-page-base.css` and `service-tile-system.css`; the integrity suite now checks the shared contact/partner form markers and mailto destination.
+
+
+79. [x] Extend the integrity suite to assert 18 homepage slides in EN/TR/ES/FR, identical order in all four locales, and the Performance Nutrition image at slide position 09.
