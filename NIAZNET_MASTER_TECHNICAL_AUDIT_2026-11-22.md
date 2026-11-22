@@ -85,3 +85,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 60. [x] Align FCM/CMO form locale detection with download locale precedence: `/tr/` route takes priority over `?lang=fa`, preventing a Turkish page from generating a Persian form when a stale or manually added query parameter is present.
 
 61. [ ] Deep-review the co-loaded `service-page-shared.css` + `service-tile-system.css` cascade on representative EN/TR service pages. Static analysis found 20 shared selectors and 100 property conflicts in matching contexts; treat these as potential overrides, not automatic defects, and do not refactor until browser visuals can be verified.
+
+62. [ ] Browser visual/interactive testing remains open: headless Chromium in this execution environment did not complete even a minimal `data:` page, so no page-level browser results are claimed. Retry in a functioning browser environment before merge.
