@@ -122,7 +122,7 @@ check("document.querySelectorAll('form#newsletterForm')" in shell and "document.
 check("form[data-mailto-form]" in shell and "form.dataset.mailtoBound = 'true'" in shell,"Shared mailto forms are not protected against duplicate submit binding")
 check("nav.classList.toggle('open')" in shell and "toggle.setAttribute('aria-expanded', String(open))" in shell,"Mobile navigation state/ARIA handler is missing")
 check("contactObserver.observe(document.body, { childList: true, subtree: true })" in shell,"Dynamic contact-link observer is missing")
-check("routeContactLinks(document)" in shell and "contact\\\\.html|become-our-partner\\\\.html" in shell,"Contact/partner CTA routing is not applied to static and dynamic links")
+check("routeContactLinks(document)" in shell and r"contact\.html|become-our-partner\.html" in shell,"Contact/partner CTA routing is not applied to static and dynamic links")
 # Static load-order/dependency audit for all pages that include the shared shell.
 shell_pages=[]
 for rel, audit in page_data.items():
