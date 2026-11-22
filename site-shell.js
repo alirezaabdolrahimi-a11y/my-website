@@ -180,7 +180,7 @@
   }
 
   var year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
+  if (year) year.textContent = String(new Date().getFullYear());
 
   if (!document.querySelector('script[src="/language-switcher.js"]')) {
     var languageScript = document.createElement('script');
