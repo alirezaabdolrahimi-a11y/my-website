@@ -10,6 +10,10 @@ on:
       - 'hero-slideshow.js'
       - 'site-shell.js'
       - 'tools/normalize-slides.py'
+      - 'assets/js/**/*.js'
+      - 'assets/css/**/*.css'
+      - 'api-catalog.json'
+      - 'NIAZNET_MASTER_TECHNICAL_AUDIT_2026-11-22.md'
       - '.github/workflows/normalize-slides.yml'
   workflow_dispatch:
 permissions:
@@ -34,7 +38,7 @@ jobs:
           node --check assets/js/api-catalog.js
           node --check assets/js/fcm-cmo-forms.js
           node --check assets/js/fcm-cmo-downloads.js
-          node --check newsletter.js
+          node --check assets/js/localized-homepage.js
           node --check assets/js/service-grid.js
           node --check assets/js/homepage.js
           node --check assets/js/homepage-tr.js
@@ -52,13 +56,16 @@ jobs:
           fi
           echo "Validation completed in an isolated copy; the checked-out repository remains unchanged."
 
-      - name: Package complete source backup
+      - name: Prepare complete source backup
         if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
-        run: git archive --format=zip --prefix=NIAZNET_FULL_BACKUP/ HEAD > "$RUNNER_TEMP/NIAZNET_FULL_BACKUP_2026-11-22.zip"
+        run: |
+          mkdir -p "$RUNNER_TEMP/NIAZNET_FULL_BACKUP"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/NIAZNET_FULL_BACKUP"
       - name: Upload complete source backup
         if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/sitewide-rebuild-2026-11-21'
         uses: actions/upload-artifact@v4
         with:
           name: NIAZNET_FULL_BACKUP_2026-11-22
-          path: ${{ runner.temp }}/NIAZNET_FULL_BACKUP_2026-11-22.zip
+          path: ${{ runner.temp }}/NIAZNET_FULL_BACKUP/
+          include-hidden-files: true
           retention-days: 90
