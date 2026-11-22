@@ -95,3 +95,8 @@ This is the single numbered master list. Every newly discovered issue must be ap
 65. [x] Run `tools/normalize-slides.py` in a separate normalized build copy: it generated the two missing MASPORT normalized copies, validated 26 exact-size 1944×809 assets, 59 slideshow pages and 31 locale pairs, while preserving original source images.
 66. [ ] The normalized slideshow copies and updated HTML references are in the normalized build package, not yet committed to the GitHub source branch; keep this distinction explicit until the package is approved for deployment or a safe binary-asset commit path is available.
 67. [ ] Run the updated GitHub Actions workflow on the latest PR head and download/verify both raw-source and normalized-site artifacts; browser QA remains open.
+
+
+68. [x] Fix Turkish-route precedence across site-shell.js, hero-slideshow.js, api-catalog.js and service-grid.js: a stale `?lang=fa` or saved Persian preference no longer overrides a `/tr/` route. FCM/CMO form and download locale precedence are aligned.
+69. [x] Add `tools/check-site-integrity.py` and wire it into the normalized build workflow after slideshow normalization; the local normalized build passed the equivalent comprehensive integrity checks.
+70. [ ] Run the latest GitHub Actions workflow on the current PR head and verify both uploaded artifacts; browser visual/interactive testing remains open.
