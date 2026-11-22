@@ -144,7 +144,8 @@
       var params = new URLSearchParams(window.location.search);
       var savedLanguage = '';
       try { savedLanguage = localStorage.getItem('niaznet-language') || ''; } catch (error) {}
-      if (params.get('lang') === 'fa' || (!params.has('lang') && savedLanguage === 'fa')) href += '?lang=fa';
+      var localizedRoute = /^\/(tr|es|fr|fa)(?:\/|$)/i.test(window.location.pathname || '/');
+      if (!localizedRoute && (params.get('lang') === 'fa' || (!params.has('lang') && savedLanguage === 'fa'))) href += '?lang=fa';
       return href;
     }
     return (queryPrefix || '/') + 'index.html?service=' + encodeURIComponent(slug);

@@ -8,7 +8,8 @@
   var slides = Array.from(root.querySelectorAll('.showcase-image'));
   var params = new URLSearchParams(window.location.search);
   var pathname = (window.location.pathname || '/').toLowerCase();
-  var locale = (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
+  var isTurkishPath = /^\/tr(?:\/|$)/i.test(pathname);
+  var locale = isTurkishPath ? 'tr' : (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
   if (root.getAttribute('data-slideshow') === 'infant-formula') {
     var infantSlides = [
       { src: '/images/slides/04-infant-formula.png', alt: {
@@ -100,7 +101,7 @@
   // homepage and About Us showcase. Existing EN/TR slides remain untouched.
   var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
     /(?:^|\/)about\.html$/.test(pathname);
-  var isPersian = isHomeOrAbout && (locale === 'fa' ||
+  var isPersian = isHomeOrAbout && !isTurkishPath && (locale === 'fa' ||
     /^\/fa\//i.test(window.location.pathname) || params.get('lang') === 'fa');
   if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
     var persianSlide = document.createElement('div');

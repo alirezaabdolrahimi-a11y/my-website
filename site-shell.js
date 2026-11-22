@@ -48,7 +48,7 @@
     whatsappLink.rel = 'noopener noreferrer';
     var whatsappPath = window.location.pathname || '/';
     var whatsappQueryLanguage = new URLSearchParams(window.location.search).get('lang');
-    var whatsappLanguage = whatsappQueryLanguage === 'fa' || whatsappPath.indexOf('/fa/') === 0 ? 'fa' : whatsappPath.indexOf('/tr/') === 0 ? 'tr' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+    var whatsappLanguage = /^\/tr(?:\/|$)/i.test(whatsappPath) ? 'tr' : (/^\/fa(?:\/|$)/i.test(whatsappPath) || whatsappQueryLanguage === 'fa') ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
     var whatsappLabels = { en: 'Message NIAZ NET on WhatsApp', fa: 'ارسال پیام به نیازنت در واتساپ', tr: 'WhatsApp üzerinden NIAZ NET\'e mesaj gönder' };
     whatsappLink.setAttribute('aria-label', whatsappLabels[whatsappLanguage] || whatsappLabels.en);
     whatsappLink.title = 'WhatsApp';
@@ -77,7 +77,7 @@
   var localeMatch = (window.location.pathname || '/').match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
   var locale = localeMatch ? localeMatch[1].toLowerCase() : (currentLocale.slice(0,2) || 'en');
   var queryLang = new URLSearchParams(window.location.search).get('lang');
-  if (queryLang === 'fa') locale = 'fa';
+  if (!localeMatch && queryLang === 'fa') locale = 'fa';
   var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
   var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#niaz-contact-hub';
   var isLocalizedHomepage = window.location.pathname === '/' || /\/index\.html$/i.test(window.location.pathname);
