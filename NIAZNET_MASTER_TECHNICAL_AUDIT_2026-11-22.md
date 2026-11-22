@@ -123,3 +123,7 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 79. [x] Extend the integrity suite to assert 18 homepage slides in EN/TR/ES/FR, identical order in all four locales, and the Performance Nutrition image at slide position 09.
+
+
+80. [x] Create the required Vitacosmetic slide for the third image in the three-slide Cosmoderma portfolio sequence (overall slide 05 of the eight-image page). The 1944×809 slide explicitly covers non-coloured cosmetics/personal care, strengthening/support products, hair-transplant aftercare, and gene/nanotechnology applications; EN/TR page copies in the normalized build now use it, while the eight-image count is preserved.
+81. [ ] Commit the new binary slide asset and its EN/TR page references to the GitHub repair branch. It is included and validated in the normalized ZIP, but the GitHub branch still retains the previous image until the binary asset can be added safely; do not merge the old image version as if this item were complete.
