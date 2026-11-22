@@ -106,5 +106,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 72. [x] Verify stylesheet cascade order on every page that loads both `service-page-shared.css` and `service-tile-system.css`: 54 pages co-load them, and all 54 load the hard-override tile system after the shared stylesheet.
-73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 217 files, 114,032,517 uncompressed bytes, ZIP SHA-256 `523a09ec375fba3f6a86e565c30e7531ad479e1fa745f5559533c211a01aac63`.
+73. [x] Generate and verify the normalized full-site ZIP after the repair batch: 217 files, ZIP integrity passed; final SHA-256 is recorded in the handoff.
 74. [x] Final local static regression pass: slideshow normalizer, site-integrity checker, all JavaScript syntax checks, and unreferenced JS/CSS inventory passed; no unreferenced JS or CSS files remain.
