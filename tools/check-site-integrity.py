@@ -2,6 +2,7 @@
 """Regression checks for NIAZ NET shared core and repaired site data."""
 from collections import Counter
 from html.parser import HTMLParser
+from html import unescape
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 import json
@@ -92,6 +93,16 @@ for name in ("api-supply.html","tr/api-supply.html"):
     source = (ROOT/name).read_text(encoding="utf-8")
     names = {x.lower() for x in re.findall(r'data-name="([^"]+)"',source)}
     check(len(names)==239 and names==api_names,f"API catalogue mismatch in {name}: {len(names)} unique rows")
+api_categories = {str(x["name"]).strip().lower(): str(x["category"]).strip() for x in api}
+category_set = {x["category"] for x in api}
+check(len(category_set)==7,"Canonical API catalogue must contain seven distinct categories")
+for name in ("api-supply.html","tr/api-supply.html"):
+    source = (ROOT/name).read_text(encoding="utf-8")
+    table_rows = re.findall(r'<tr data-name="([^"]+)" data-category="([^"]+)"',source)
+    mismatches = [(product,category,api_categories.get(product.lower())) for product,category in table_rows if api_categories.get(product.lower()) != category]
+    check(len(table_rows)==239 and not mismatches,f"API filter categories diverge from canonical data in {name}: {mismatches[:8]}")
+    options = {unescape(x) for x in re.findall(r'<option value="([^"]+)"',source)} - {"all"}
+    check(options==category_set,f"API category filter options do not match canonical categories in {name}")
 localized = (ROOT/"assets/js/localized-homepage.js").read_text(encoding="utf-8")
 check("const additions=[" not in localized and "const data=baseData;" in localized,"ES/FR API page has a second catalogue source")
 check(localized.find("filter=document.getElementById('apiCategoryFilter')") < localized.find("filter.innerHTML="),"API filter is used before its DOM binding")
