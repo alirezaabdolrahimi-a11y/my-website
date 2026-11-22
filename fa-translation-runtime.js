@@ -2053,6 +2053,38 @@ Object.assign(pages['api-supply.html'], {
   'We coordinate commercial sourcing enquiries for APIs, intermediates and pharmaceutical excipients with international manufacturers and suppliers. Include the product name, specification, destination market and required quantity in your enquiry.':'ما درخواست‌های تجاری تأمین مواد مؤثره دارویی (API)، مواد حدواسط و مواد جانبی دارویی را با تولیدکنندگان و تأمین‌کنندگان بین‌المللی هماهنگ می‌کنیم. لطفاً نام محصول، مشخصات، بازار مقصد و مقدار موردنیاز را در درخواست خود درج کنید.'
 });
 
+
+Object.assign(common, {
+  "About our company": "درباره شرکت ما",
+  "Industries": "صنایع",
+  "Pharmaceuticals & APIs": "داروها و مواد مؤثره دارویی",
+  "Healthcare & Medical Devices": "سلامت و تجهیزات پزشکی",
+  "Sports Nutrition & Supplements": "تغذیه ورزشی و مکمل‌ها",
+  "Infant Nutrition": "تغذیه نوزاد",
+  "Import, Export & Ingredients": "واردات، صادرات و مواد اولیه",
+  "Brand Development & Agency": "توسعه برند و نمایندگی",
+  "Technology Transfer & Manufacturing": "انتقال فناوری و تولید",
+  "Have a product or market in mind?": "محصول یا بازار مشخصی در نظر دارید؟",
+  "Business inquiry — Niaz Net Tehran": "درخواست تجاری — نیاز نت تهران",
+  "Your Global Business Development Partner": "شریک شما در توسعه کسب‌وکار بین‌المللی",
+  "Your Global Business Development": "شریک شما در توسعه کسب‌وکار جهانی",
+  "Partner": " ",
+  "Licensing Partnerships": "همکاری‌های مبتنی بر مجوز",
+  "Licensing & Partnerships": "همکاری‌های مبتنی بر مجوز",
+  "Botulinum Toxin Dermal Fillers": "سم بوتولینوم و فیلرهای پوستی",
+  "Botulinum Toxin & Dermal Fillers": "سم بوتولینوم و فیلرهای پوستی",
+  "News Events": "اخبار و رویدادها",
+  "News & Events": "اخبار و رویدادها",
+  "Let's Build Success Together": "بیایید با هم موفقیت بسازیم",
+  "Business Contact": "اطلاعات تماس تجاری",
+  "What helps us respond faster?": "چه اطلاعاتی به پاسخ سریع‌تر کمک می‌کند؟",
+  "Start a conversation": "شروع گفتگو",
+  "PREPARE INQUIRY EMAIL →": "آماده‌سازی ایمیل درخواست →",
+  "Pet food / animal nutrition": "غذای حیوانات / تغذیه دام",
+  "Brand development / registration": "توسعه / ثبت برند",
+  "Other business inquiry": "سایر درخواست‌های تجاری"
+});
+
 const file=location.pathname.split('/').pop() || 'index.html';
 const dict=Object.assign({},common,pages[file]||{});
 function norm(s){return s.replace(/\s+/g,' ').trim();}
