@@ -97,10 +97,8 @@
   }
   if (!slides.length) return;
 
-  // Add the approved Persian-only introductory artwork as slide 1 on the
-  // homepage and About Us showcase. Existing EN/TR slides remain untouched.
-  var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
-    /(?:^|\/)about\.html$/.test(pathname);
+  // Keep the approved Persian-only introductory artwork exclusive to the Persian About Us page.
+  var isHomeOrAbout = /(?:^|\/)fa\/about\.html$/.test(pathname);
   var isPersian = isHomeOrAbout && (routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() === 'fa' : (locale === 'fa' || params.get('lang') === 'fa'));
   if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
     var persianSlide = document.createElement('div');
