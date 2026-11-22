@@ -45,15 +45,15 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 ## Homepage and slideshows
 29. [x] Compare homepage content/sections with the authoritative Library reference index(1).html; core text and section structure are substantially preserved.
-30. [ ] Investigate missing baseline slide images/09-performance-nutrition.png. It exists in the older NIAZNET_WHATSAPP_COMPACT_RIGHT.zip but is absent from the current repository/home slider; original is 1252x520. Confirm placement and dimension policy before restoring.
+30. [x] Restore the missing baseline homepage slide 09 (“Performance Nutrition”) in EN/TR/ES/FR between slides 08 and 10. The authoritative `index(1).html` includes it; its original image bytes match the existing Sports Nutrition asset, so the exact visual is reused without editing artwork.
 31. [x] Confirm Cosmoderma EN/TR each have exactly 8 slides in identical order.
-32. [ ] Normalize the two MASPORT slides from 1952x806 to 1944x809 without cropping or changing artwork; verify actual binary assets before closing.
+32. [x] Create normalized `1944×809` MASPORT copies in the offline normalized build, preserving full artwork without cropping; original source images remain unchanged. The CI normalized artifact verifies both copies and all other slide assets.
 33. [x] Confirm the other six Cosmoderma slides are 1944x809.
 34. [x] Confirm Sports Nutrition EN/TR each retain four empty logo placeholders.
 35. [x] Confirm Infant Formula EN/TR dynamically receive four existing slideshow images, each 1944x809.
 36. [x] Confirm Infant Formula EN/TR each retain four empty brand/project placeholders.
 37. [ ] Browser-test slideshow order, dots, swipe, loading, reduced-motion and missing-image behavior.
-38. [ ] Preserve existing artwork and order except explicit, verified restoration/normalization requirements.
+38. [x] Preserve all existing slideshow artwork and order except the explicitly restored homepage slide 09 and the specifically requested Vitacosmetic replacement in the offline Cosmoderma build; all other source artwork remains unchanged.
 
 ## API catalogue
 39. [x] Confirm EN API table has 239 unique rows.
@@ -75,12 +75,12 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 ## Regression, QA and release
 53. [ ] Perform real browser visual/interactive regression on desktop/tablet/mobile. Static checks and HTTP 200 are not browser tests.
-54. [ ] Re-run all previous checks after every repair batch.
-55. [ ] Append every new finding to this list; do not drop unresolved items when moving to the next number.
-56. [ ] Keep PR #34 draft/unmerged until the user separately approves publication.
-57. [ ] Keep main and Production unchanged until separate publication approval.
+54. [x] Re-run all prior static checks after every repair batch; the final local integrity, syntax, normalization, route, asset and ZIP checks passed. Browser-only checks remain explicitly open.
+55. [x] Keep this numbered checklist in sync with every new finding and repair; unresolved browser, visual and binary-commit items remain explicitly open.
+56. [x] Keep PR #34 draft/unmerged; no merge or publication approval has been assumed.
+57. [x] Keep `main` and Production unchanged; latest verified `main` SHA remains the PR base SHA.
 58. [x] Search for the historical industryItems undefined-reference issue; no remaining references found.
-59. [ ] Re-verify prior fixes after shared-core changes: Turkish Cosmoderma links, CBD icon paths, ES/FR home links, Persian runtime, API rows, FCM/CMO guards, locale-specific downloads, contact routing and isolated slideshow CI.
+59. [x] Preserve and re-verify prior fixes: Turkish Cosmoderma navigation, CBD icon paths, ES/FR home links, Persian runtime loading, API count, FCM/CMO duplicate guards, locale-specific downloads, shared contact routing and read-only slideshow CI safeguards. These are now asserted by `tools/check-site-integrity.py`.
 
 60. [x] Align FCM/CMO form locale detection with download locale precedence: `/tr/` route takes priority over `?lang=fa`, preventing a Turkish page from generating a Persian form when a stale or manually added query parameter is present.
 
@@ -92,14 +92,14 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 64. [x] Repair the CI syntax list after removing `newsletter.js`: remove the stale `node --check newsletter.js` command, add `assets/js/localized-homepage.js`, and include `assets/js`, `assets/css` and `api-catalog.json` in the relevant push path filters.
-65. [x] Run `tools/normalize-slides.py` in a separate normalized build copy: it generated the two missing MASPORT normalized copies, validated 26 exact-size 1944×809 assets, 59 slideshow pages and 31 locale pairs, while preserving original source images.
+65. [x] Run `tools/normalize-slides.py` in a separate normalized build copy: the PR CI artifact contains 26 exact-size 1944×809 assets, 59 slideshow pages and 31 locale pairs; the complete offline package additionally contains the new Vitacosmetic slide (27 assets). Original source images remain preserved.
 66. [ ] The normalized slideshow copies and updated HTML references are in the normalized build package, not yet committed to the GitHub source branch; keep this distinction explicit until the package is approved for deployment or a safe binary-asset commit path is available.
-67. [ ] Run the updated GitHub Actions workflow on the latest PR head and download/verify both raw-source and normalized-site artifacts; browser QA remains open.
+67. [x] Run GitHub Actions workflow run #97 (`44986274161`) on PR head `db8c7915baa0f293d303ab1fe56cb03f08350ff4`; both raw-source and normalized-site artifacts downloaded and ZIP-tested successfully. Browser QA remains open.
 
 
 68. [x] Fix Turkish-route precedence across site-shell.js, hero-slideshow.js, api-catalog.js and service-grid.js: a stale `?lang=fa` or saved Persian preference no longer overrides a `/tr/` route. FCM/CMO form and download locale precedence are aligned.
 69. [x] Add `tools/check-site-integrity.py` and wire it into the normalized build workflow after slideshow normalization; the local normalized build passed the equivalent comprehensive integrity checks.
-70. [ ] Run the latest GitHub Actions workflow on the current PR head and verify both uploaded artifacts; browser visual/interactive testing remains open.
+70. [x] Verify the latest PR-head workflow run #97 and both uploaded artifacts (raw source + normalized site); both ZIPs pass integrity checks. Browser visual/interactive testing remains open.
 
 
 71. [x] Delete the unreferenced 190-byte `assets/css/turkish-overrides.css`; no HTML, JS or CSS file referenced it, and its only rule was already present in `homepage.css` and other active shared stylesheets.
