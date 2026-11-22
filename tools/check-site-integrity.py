@@ -114,6 +114,16 @@ for page_name,consumer in (("index.html","homepage.js"),("tr/index.html","homepa
     sources = [Path(urlsplit(urljoin("https://www.niaznet.net/"+page_name,x)).path).name for x in page_data[page_name].scripts]
     check("service-grid.js" in sources and consumer in sources and sources.index("service-grid.js") < sources.index(consumer),f"service-grid.js must load before {consumer} in {page_name}")
 
+home_en = page_data["index.html"].slide_sources
+home_tr = page_data["tr/index.html"].slide_sources
+home_es = page_data["es/index.html"].slide_sources
+home_fr = page_data["fr/index.html"].slide_sources
+check(all(len(x)==18 for x in (home_en,home_tr,home_es,home_fr)),f"All four homepages must have 18 slides: EN={len(home_en)}, TR={len(home_tr)}, ES={len(home_es)}, FR={len(home_fr)}")
+check(home_en==home_tr==home_es==home_fr,"Homepage slide order differs between locales")
+check(all(x.count("/images/slides/03-sports-nutrition.png")==2 for x in (home_en,home_tr,home_es,home_fr)),"Restored Performance Nutrition slide is missing or does not reuse the verified original image")
+check('alt="Performance Nutrition"' in (ROOT/"index.html").read_text(encoding="utf-8"),"English Performance Nutrition slide alt text missing")
+check('alt="Performans Beslenmesi"' in (ROOT/"tr/index.html").read_text(encoding="utf-8"),"Turkish Performance Nutrition slide alt text missing")
+
 cos_en = page_data["cosmoderma.html"].slide_sources
 cos_tr = page_data["tr/cosmoderma.html"].slide_sources
 check(len(cos_en)==8 and len(cos_tr)==8,f"Cosmoderma must have 8 slides in both locales: EN={len(cos_en)}, TR={len(cos_tr)}")
