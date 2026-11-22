@@ -38,7 +38,6 @@ const common={
 "NIAZ NET · INTERNATIONAL MARKETS":"نیازنت · بازارهای بین‌المللی",
 "NIAZ NET · AFRICAN MARKETS":"نیازنت · بازارهای آفریقا",
 "NIAZ NET · MARCHÉS AFRICAINS":"نیازنت · بازارهای آفریقا",
-"Strategic Distribution & Trade":"توزیع راهبردی و تجارت بین‌الملل",
 "Pharmaceutical Products":"محصولات دارویی",
 "Contract Manufacturing":"تولید قراردادی (FCM & CMO)",
 "Product Registration":"ثبت محصول",
