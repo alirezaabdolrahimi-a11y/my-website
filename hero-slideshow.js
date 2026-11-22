@@ -70,12 +70,12 @@
   }
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
-      { src: '/images/slides/03-sports-nutrition.png', alt: {
+      { src: '/images/slides/03sports.png', alt: {
         en: 'Sports nutrition and supplement sourcing',
         fa: 'تأمین و تجارت محصولات تغذیه ورزشی و مکمل‌ها',
         tr: 'Sporcu beslenmesi ve takviye ürünleri tedariki'
       }},
-      { src: '/images/slides/12-international-sports-brands.png', alt: {
+      { src: '/images/slides/12sport.png', alt: {
         en: 'International sports nutrition brands and partnerships',
         fa: 'برندها و همکاری‌های بین‌المللی در حوزه تغذیه ورزشی',
         tr: 'Uluslararası sporcu beslenmesi markaları ve iş birlikleri'
