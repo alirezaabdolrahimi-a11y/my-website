@@ -11,7 +11,7 @@
   },
   {
     "name": "Ambroxol HCL",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "name": "Bromhexine HCL",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -161,7 +161,7 @@
   },
   {
     "name": "Etoricoxib",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "name": "Furosemide",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -241,7 +241,7 @@
   },
   {
     "name": "Guaifenesin",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -421,7 +421,7 @@
   },
   {
     "name": "Methocarbamol",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -561,7 +561,7 @@
   },
   {
     "name": "Niclosamide",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -681,7 +681,7 @@
   },
   {
     "name": "Povidone Iodine",
-    "category": "API",
+    "category": "Human APIs",
     "note": ""
   },
   {
@@ -1043,5 +1043,155 @@
     "name": "Tamsulosin HCl Pellets",
     "category": "Intermediate",
     "note": "Pelletized intermediate presentation; confirm composition and release specification."
+  },
+  {
+    "name": "LIDOCAINE HCL / BASE",
+    "category": "Human APIs",
+    "note": ""
+  },
+  {
+    "name": "SILDENAFIL CITRATE / BASE",
+    "category": "Human APIs",
+    "note": ""
+  },
+  {
+    "name": "PIPERAZINE CITRATE",
+    "category": "Human APIs",
+    "note": ""
+  },
+  {
+    "name": "POTASSIUM IODIDE / IODATE",
+    "category": "Human APIs",
+    "note": ""
+  },
+  {
+    "name": "PHENYLEPHRINE HCL",
+    "category": "Human APIs",
+    "note": ""
+  },
+  {
+    "name": "ROXARSONE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "HALQUINOL 40%, 60%, 80%, 98%",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "OXYCLOZANIDE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "RAFOXANIDE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "TRICLABENDAZOLE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "OXFENDAZOLE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "CLOSANTEL SODIUM / BASE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "FENBENDAZOLE",
+    "category": "Veterinary APIs",
+    "note": ""
+  },
+  {
+    "name": "1- ACETYL - 4- (4-HYDROXY PHENYL) PIPERAZINE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "CIS-TOSYLATE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "4,4,4-TRIFLUORO-1(4-METHYL PHENYL PIPERAZINE BUTANE-1,3-DIONE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "4-HYDRAZINO BENZENE SULPHONAMIDE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "N-METHYL LORATADINE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "4-CHLORO BENZHYDRYL PIPERAZINE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "(R)-((4-CHLOROPHENYL)) PHENYLMETHYL) PIPERAZINE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "DIPHENYL ACETONITRILE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "2-AMINO-3,5-DIBROMO BENZALDEHYDE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "1-AMINO 4-METHYL PIPERAZINE",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "R-(-)-3-(CARBAMOYLMETHYL)-5-METHYLHEXANOIC ACID (RCMH)",
+    "category": "Pharmaceutical Intermediates",
+    "note": ""
+  },
+  {
+    "name": "TETRA BUTYL AMMONIUM BROMIDE",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
+  },
+  {
+    "name": "TETRA BUTYL AMMONIUM HYDROGEN SULPHATE",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
+  },
+  {
+    "name": "ETHYL TRIPHENYL PHOSPHONIUM BROMIDE",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
+  },
+  {
+    "name": "PHENYL TRIMETHYL AMMONIUM CHLORIDE",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
+  },
+  {
+    "name": "TETRA BUTYL AMMONIUM IODIDE",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
+  },
+  {
+    "name": "TETRA BUTYL AMMONIUM HYDROXIDE 25%, 40%, 50% SOL.",
+    "category": "Specialty Chemicals & Catalysts",
+    "note": ""
   }
 ]

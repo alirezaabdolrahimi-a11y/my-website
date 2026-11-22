@@ -96,7 +96,7 @@
   {
     "slug": "international-business-development",
     "en": "International Business Development",
-    "tr": "International İş Geliştirme"
+    "tr": "Uluslararası İş Geliştirme"
   },
   {
     "slug": "supply-chain-solutions",
