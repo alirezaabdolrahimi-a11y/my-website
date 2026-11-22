@@ -1,0 +1,83 @@
+# NIAZ NET — Master Technical Audit & Repair Checklist
+Last updated: 2026-11-22
+Repository: alirezaabdolrahimi-a11y/my-website
+Working branch: fix/sitewide-rebuild-2026-11-21
+Backup baseline commit: 3ac6b2823158e8fd4ad605f28f867cd1e3796bd3
+Latest repair commit: b89f6d8ba0cfe8edcbc9e9615a5c56e64d128b95
+Production/main: untouched; no merge or production deployment without separate approval.
+
+## Operating rule
+This is the single numbered master list. Every newly discovered issue must be appended with a number. Never discard, silently defer or mark an issue complete because work moved to another item. After each repair batch, rerun the earlier checks. Mark complete only with evidence.
+
+## Backup and integrity
+1. [x] Create a full ZIP backup before code repairs.
+2. [x] Verify ZIP integrity and all archive entries.
+3. [x] Record 215 files, 231 entries, 110,201,653 uncompressed bytes.
+4. [x] Record SHA-256: f97430a3e4692033b4c83e2c356046fbea59245c5be3ceff3d6c6b2db20e2a60.
+5. [x] Preserve the downloadable ZIP independently of the 90-day Actions artifact.
+6. [x] Inventory 84 HTML pages, 12 JS files after repair, 14 CSS files, 78 PNG files and 15 RTF files.
+7. [x] Check all HTML pages for duplicate IDs — none.
+8. [x] Check duplicate script and stylesheet tags per page — none.
+9. [x] Check static local HTML/CSS asset references — none missing.
+10. [x] Syntax-check all external and inline JavaScript — no failures.
+11. [x] Check CSS braces and JSON syntax — no failures.
+12. [x] Check image alt text and target=_blank rel=noopener — no failures.
+13. [x] Fix tr/contact.html broken About footer link to /tr/index.html#about.
+14. [x] Classify 16 remaining #contact fragments as placeholders routed by site-shell.js.
+15. [x] Re-run static route and asset checks after first repair batch.
+
+## Core code and cleanup
+16. [x] Remove 50 obsolete newsletter.js script references and delete newsletter.js; site-shell removes the form before this script could run.
+17. [x] Verify no newsletter.js references remain in the repaired page set.
+18. [x] Map site-shell.js responsibilities: global style injection, WhatsApp, mailto forms, contact hub, link routing, MutationObserver, year, language loader, Home links and mobile navigation.
+19. [ ] Refactor site-shell.js only after behavior/load-order tests exist; no speculative split.
+20. [ ] Audit fa-translation-runtime.js (327 KB / 2,237 lines) for coverage, duplicate ownership and observer cost.
+21. [ ] Review global CSS injected by site-shell.js and migrate only if computed layout can be preserved.
+22. [ ] Review static Header/Footer duplication; retain server-rendered markup unless an SEO-safe build-time alternative is proven.
+23. [ ] Browser-test navigation, mobile menu, contact hub, WhatsApp, language switching and dynamic link routing.
+
+## CSS and visual regression
+24. [x] Compare CSS overlap against representative page stylesheet loading; selector overlap alone was not treated as a live conflict.
+25. [ ] Audit repeated selectors within homepage.css, service-page-shared.css, secondary-page-base.css, projects-base.css and localized styles.
+26. [ ] Remove only proven redundant CSS after checking cascade order, declarations and media context.
+27. [ ] Verify navy/gold palette, typography, icon sizing, hero layout, cards, footer and navigation on desktop/tablet/mobile.
+28. [ ] Verify no visual drift after every shared CSS/core change.
+
+## Homepage and slideshows
+29. [x] Compare homepage content/sections with the authoritative Library reference index(1).html; core text and section structure are substantially preserved.
+30. [ ] Investigate missing baseline slide images/09-performance-nutrition.png. It exists in the older NIAZNET_WHATSAPP_COMPACT_RIGHT.zip but is absent from the current repository/home slider; original is 1252x520. Confirm placement and dimension policy before restoring.
+31. [x] Confirm Cosmoderma EN/TR each have exactly 8 slides in identical order.
+32. [ ] Normalize the two MASPORT slides from 1952x806 to 1944x809 without cropping or changing artwork; verify actual binary assets before closing.
+33. [x] Confirm the other six Cosmoderma slides are 1944x809.
+34. [x] Confirm Sports Nutrition EN/TR each retain four empty logo placeholders.
+35. [x] Confirm Infant Formula EN/TR dynamically receive four existing slideshow images, each 1944x809.
+36. [x] Confirm Infant Formula EN/TR each retain four empty brand/project placeholders.
+37. [ ] Browser-test slideshow order, dots, swipe, loading, reduced-motion and missing-image behavior.
+38. [ ] Preserve existing artwork and order except explicit, verified restoration/normalization requirements.
+
+## API catalogue
+39. [x] Confirm EN API table has 239 unique rows.
+40. [x] Confirm TR API table has the same 239 unique product names as EN.
+41. [x] Unify ES/FR data: api-catalog.json now has the canonical 239 EN/TR records; localized-homepage.js consumes this single source and builds all seven category filters with ES/FR labels.
+42. [ ] Browser-test search, category filters, sorting, counts, empty state and mobile readability.
+
+## Forms, downloads and locale
+43. [x] Confirm 15 FCM/CMO RTF files exist (3 form types × EN/FA/TR/ES/FR).
+44. [x] Validate RTF headers, balanced braces and info@niaznet.net address in all 15.
+45. [x] Confirm FCM/CMO EN/TR download cards and required data attributes.
+46. [ ] Browser-test FCM/CMO dynamic fields, locale switch, submit-to-mailto, print and editable HTML download.
+47. [ ] Browser-test Contact and Become Partner forms in EN/TR and Persian query mode.
+48. [ ] Verify every Contact / Become Partner / Get in Touch CTA across locales.
+49. [ ] Complete EN/FA/TR translation and navigation coverage, including dynamic content and accessibility labels.
+50. [ ] Audit ES/FR legacy homepage/service routes, labels and catalogue.
+51. [ ] Verify Persian preference, query parameter and translation runtime timing/coverage.
+52. [x] Fix mixed-language Turkish service label: International İş Geliştirme → Uluslararası İş Geliştirme.
+
+## Regression, QA and release
+53. [ ] Perform real browser visual/interactive regression on desktop/tablet/mobile. Static checks and HTTP 200 are not browser tests.
+54. [ ] Re-run all previous checks after every repair batch.
+55. [ ] Append every new finding to this list; do not drop unresolved items when moving to the next number.
+56. [ ] Keep PR #34 draft/unmerged until the user separately approves publication.
+57. [ ] Keep main and Production unchanged until separate publication approval.
+58. [x] Search for the historical industryItems undefined-reference issue; no remaining references found.
+59. [ ] Re-verify prior fixes after shared-core changes: Turkish Cosmoderma links, CBD icon paths, ES/FR home links, Persian runtime, API rows, FCM/CMO guards, locale-specific downloads, contact routing and isolated slideshow CI.
