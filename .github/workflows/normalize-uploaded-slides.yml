@@ -25,6 +25,23 @@ jobs:
       - run: python -m pip install --disable-pip-version-check Pillow
       - name: Normalize every uploaded slide without cropping or stretching
         run: python tools/normalize-slides.py
+      - name: Check shared JavaScript syntax
+        run: |
+          node --check site-shell.js
+          node --check hero-slideshow.js
+          node --check language-switcher.js
+          node --check fa-translation.js
+          node --check fa-translation-runtime.js
+          node --check assets/js/api-catalog.js
+          node --check assets/js/fcm-cmo-forms.js
+          node --check assets/js/fcm-cmo-downloads.js
+          node --check assets/js/localized-homepage.js
+          node --check assets/js/service-grid.js
+          node --check assets/js/homepage.js
+          node --check assets/js/homepage-tr.js
+          node --check tools/test-locale-precedence.js
+      - name: Run full site integrity audit
+        run: python tools/check-site-integrity.py
       - name: Commit normalized source canvases if needed
         run: |
           git config user.name "github-actions[bot]"
