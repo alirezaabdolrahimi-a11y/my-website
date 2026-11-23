@@ -1,214 +1,105 @@
-// Shared accessible slideshow controller used across NIAZ NET pages.
+// NIAZ NET shared slideshow controller — folder-driven image mapping.
 (function () {
   'use strict';
-
   var root = document.querySelector('.hero-showcase');
   if (!root || root.dataset.slideshowReady === 'true') return;
 
-  var slides = Array.from(root.querySelectorAll('.showcase-image'));
+  var path = (window.location.pathname || '/').toLowerCase().replace(/\\/g, '/');
+  var key = 'home';
+  if (/about\\.html$/.test(path)) key = 'about';
+  else if (/brand-registration\\.html$/.test(path)) key = 'brand';
+  else if (/sports-nutrition\\.html$/.test(path)) key = 'sport';
+  else if (/infant-formula\\.html$/.test(path)) key = 'infant';
+  else if (/cbd-products\\.html$/.test(path)) key = 'cbd';
+  else if (/api-supply\\.html$/.test(path)) key = 'api';
+  else if (/cosmoderma\\.html$/.test(path)) key = 'cosmo';
+  else if (/pet-food\\.html$/.test(path)) key = 'pet';
+  else if (/international-markets\\.html$/.test(path)) key = 'all';
+
   var params = new URLSearchParams(window.location.search);
-  var pathname = (window.location.pathname || '/').toLowerCase();
-  var routeLocaleMatch = pathname.match(/^\/(tr|es|fr|fa)(?:\/|$)/i);
-  var locale = routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() : (params.get('lang') || document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
-  if (root.getAttribute('data-slideshow') === 'infant-formula') {
-    var infantSlides = [
-      { src: '/images/slides/04-infant-formula.png', alt: {
-        en: 'Infant formula and baby nutrition products',
-        fa: 'محصولات شیرخشک و تغذیه نوزاد',
-        tr: 'Bebek maması ve bebek beslenmesi ürünleri'
-      }},
-      { src: '/images/slides/Infant%2001.png', alt: {
-        en: 'Infant nutrition product range',
-        fa: 'گروه محصولات تغذیه نوزاد',
-        tr: 'Bebek beslenmesi ürün grubu'
-      }},
-      { src: '/images/slides/Infant%2002.png', alt: {
-        en: 'Infant formula supply and product presentation',
-        fa: 'معرفی و تأمین محصولات شیرخشک',
-        tr: 'Bebek maması tedariki ve ürün sunumu'
-      }},
-      { src: '/images/slides/Infant%2003.png', alt: {
-        en: 'Infant formula and specialized baby nutrition',
-        fa: 'شیرخشک و محصولات تخصصی تغذیه نوزاد',
-        tr: 'Bebek maması ve özel bebek beslenmesi'
-      }}
-    ];
-    infantSlides.forEach(function (item, index) {
-      var slide = document.createElement('div');
-      var image = document.createElement('img');
-      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
-      image.src = item.src;
-      image.alt = item.alt[locale] || item.alt.en;
-      image.loading = index === 0 ? 'eager' : 'lazy';
-      image.decoding = 'async';
-      image.onerror = function () { slide.classList.add('image-missing'); };
-      slide.appendChild(image);
-      root.appendChild(slide);
-    });
-    slides = Array.from(root.querySelectorAll('.showcase-image'));
-  }
-  if (root.getAttribute('data-slideshow') === 'cbd') {
-    var cbdSlides = [
-      { src: '/images/slides/05%20-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20%282%29.png', alt: { en: 'CBD_NON THC product coordination and compliant sourcing', fa: 'هماهنگی تجاری و تأمین محصولات CBD_NON THC مطابق مقررات', tr: 'CBD_NON THC ürün koordinasyonu ve mevzuata uygun tedarik' } },
-      { src: '/images/slides/15-CBD%20Isolate_%20Pure%20Pharmaceutical%20Grade%20%281%29.png', alt: { en: 'CBD_NON THC pharmaceutical-grade product presentation', fa: 'معرفی محصولات CBD_NON THC با گرید دارویی', tr: 'CBD_NON THC farmasötik kalite ürün sunumu' } }
-    ];
-    Array.from(root.querySelectorAll('.showcase-image')).forEach(function (slide) { slide.remove(); });
-    slides = [];
-    cbdSlides.forEach(function (item, index) {
-      var slide = document.createElement('div');
-      var image = document.createElement('img');
-      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
-      image.src = item.src;
-      image.alt = item.alt[locale] || item.alt.en;
-      image.loading = index === 0 ? 'eager' : 'lazy';
-      image.decoding = 'async';
-      image.onerror = function () { slide.classList.add('image-missing'); };
-      slide.appendChild(image);
-      root.appendChild(slide);
-    });
-    slides = Array.from(root.querySelectorAll('.showcase-image'));
-  }
-  if (root.getAttribute('data-slideshow') === 'sports') {
-    var sportsSlides = [
-      { src: '/images/slides/03-sports-nutrition.png', alt: {
-        en: 'Sports nutrition and supplement sourcing',
-        fa: 'تأمین و تجارت محصولات تغذیه ورزشی و مکمل‌ها',
-        tr: 'Sporcu beslenmesi ve takviye ürünleri tedariki'
-      }},
-      { src: '/images/slides/12-international-sports-brands.png', alt: {
-        en: 'International sports nutrition brands and partnerships',
-        fa: 'برندها و همکاری‌های بین‌المللی در حوزه تغذیه ورزشی',
-        tr: 'Uluslararası sporcu beslenmesi markaları ve iş birlikleri'
-      }}
-    ];
-    sportsSlides.forEach(function (item, index) {
-      var slide = document.createElement('div');
-      var image = document.createElement('img');
-      slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
-      image.src = item.src;
-      image.alt = item.alt[locale] || item.alt.en;
-      image.loading = index === 0 ? 'eager' : 'lazy';
-      image.decoding = 'async';
-      image.onerror = function () { slide.classList.add('image-missing'); };
-      slide.appendChild(image);
-      root.appendChild(slide);
-    });
-    slides = Array.from(root.querySelectorAll('.showcase-image'));
-  }
-  if (!slides.length) return;
-
-  // Add the approved Persian-only introductory artwork as slide 1 on the
-  // homepage and About Us showcase. Existing EN/TR slides remain untouched.
-  var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
-    /(?:^|\/)about\.html$/.test(pathname);
-  var isPersian = isHomeOrAbout && (routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() === 'fa' : (locale === 'fa' || params.get('lang') === 'fa'));
-  if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
-    var persianSlide = document.createElement('div');
-    var persianImage = document.createElement('img');
-    persianSlide.className = 'showcase-image active';
-    persianImage.src = '/images/slides/FA_About%20us01.png';
-    persianImage.alt = 'معرفی نیاز نت';
-    persianImage.loading = 'eager';
-    persianImage.decoding = 'async';
-    persianSlide.appendChild(persianImage);
-    slides.forEach(function (slide) { slide.classList.remove('active'); });
-    root.insertBefore(persianSlide, root.firstChild);
-    slides.unshift(persianSlide);
-  }
-  root.dataset.slideshowReady = 'true';
-
+  var route = path.match(/^\\/(tr|es|fr|fa)(?:\\/|$)/);
+  var locale = (route ? route[1] : (params.get('lang') || document.documentElement.lang || 'en')).toLowerCase().slice(0,2);
   var labels = {
-    en: { choose: 'Choose a featured image', show: 'Show slide ', featured: 'Featured image', previous: 'Previous slide', next: 'Next slide' },
-    fa: { choose: 'انتخاب اسلاید', show: 'نمایش اسلاید ', featured: 'تصویر منتخب', previous: 'اسلاید قبلی', next: 'اسلاید بعدی' },
-    tr: { choose: 'Öne çıkan görseli seçin', show: 'Slaytı göster ', featured: 'Öne çıkan görsel', previous: 'Önceki slayt', next: 'Sonraki slayt' },
-    es: { choose: 'Elegir imagen destacada', show: 'Mostrar diapositiva ', featured: 'Imagen destacada', previous: 'Diapositiva anterior', next: 'Diapositiva siguiente' },
-    fr: { choose: 'Choisir une image à la une', show: 'Afficher la diapositive ', featured: 'Image à la une', previous: 'Diapositive précédente', next: 'Diapositive suivante' }
+    home: {en:'NIAZ NET featured services',fa:'خدمات و فرصت‌های نیاز نت',tr:'NIAZ NET öne çıkan hizmetler'},
+    about: {en:'About NIAZ NET',fa:'درباره نیاز نت',tr:'NIAZ NET hakkında'},
+    brand: {en:'Brand registration and partnerships',fa:'ثبت برند و همکاری‌های تجاری',tr:'Marka tescili ve iş ortaklıkları'},
+    sport: {en:'Sports nutrition and supplements',fa:'تغذیه ورزشی و مکمل‌ها',tr:'Sporcu beslenmesi ve takviyeler'},
+    infant: {en:'Infant formula and baby nutrition',fa:'شیرخشک و تغذیه نوزاد',tr:'Bebek maması ve beslenmesi'},
+    cbd: {en:'CBD product coordination',fa:'هماهنگی محصولات CBD',tr:'CBD ürün koordinasyonu'},
+    api: {en:'API and pharmaceutical ingredients',fa:'مواد اولیه دارویی و API',tr:'API ve farmasötik hammaddeler'},
+    cosmo: {en:'Cosmoderma and aesthetic medicine',fa:'کازمودرما و پزشکی زیبایی',tr:'Kozmoderma ve estetik tıp'},
+    pet: {en:'Pet food and animal nutrition',fa:'غذای حیوانات و تغذیه دامپزشکی',tr:'Evcil hayvan maması ve beslenmesi'},
+    all: {en:'Global products and opportunities',fa:'محصولات و فرصت‌های جهانی',tr:'Küresel ürünler ve fırsatlar'}
   };
-  var textLabels = labels[locale] || labels.en;
-  var current = Math.max(0, slides.findIndex(function (slide) {
-    return slide.classList.contains('active');
-  }));
-  var timer = null;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var dotsWrap = document.createElement('div');
-  dotsWrap.className = 'showcase-dots';
-  dotsWrap.setAttribute('role', 'group');
-  dotsWrap.setAttribute('aria-label', textLabels.choose);
+  fetch('/images/slideshow-manifest.json', {cache:'no-cache'})
+    .then(function (response) { if (!response.ok) throw new Error('Slideshow manifest unavailable'); return response.json(); })
+    .then(function (manifest) {
+      var sources = Array.isArray(manifest[key]) ? manifest[key].slice() : [];
+      if (!sources.length) return;
+      root.querySelectorAll('.showcase-image, .showcase-dots, .showcase-arrow').forEach(function (node) { node.remove(); });
+      sources.forEach(function (src, index) {
+        var slide = document.createElement('div');
+        var img = document.createElement('img');
+        slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
+        img.src = encodeURI(src);
+        img.alt = (labels[key] && (labels[key][locale] || labels[key].en)) || 'NIAZ NET';
+        img.loading = index === 0 ? 'eager' : 'lazy';
+        img.decoding = 'async';
+        if (index === 0) img.fetchPriority = 'high';
+        img.onerror = function () { slide.classList.add('image-missing'); };
+        slide.appendChild(img);
+        root.appendChild(slide);
+      });
+      initialize();
+    })
+    .catch(function (error) { console.error('[NIAZ NET slideshow]', error); });
 
-  var dots = slides.map(function (slide, index) {
-    var dot = document.createElement('button');
-    var caption = slide.querySelector('span');
-    dot.type = 'button';
-    dot.className = 'showcase-dot';
-    dot.setAttribute('aria-label', textLabels.show + (index + 1) + ': ' + (caption ? caption.textContent.trim() : textLabels.featured));
-    dot.addEventListener('click', function () {
-      show(index);
-      start();
+  function initialize() {
+    var slides = Array.from(root.querySelectorAll('.showcase-image'));
+    if (!slides.length) return;
+    root.dataset.slideshowReady = 'true';
+    var labelsByLocale = {
+      en: {choose:'Choose a featured image',show:'Show slide ',featured:'Featured image'},
+      fa: {choose:'انتخاب اسلاید',show:'نمایش اسلاید ',featured:'تصویر منتخب'},
+      tr: {choose:'Öne çıkan görseli seçin',show:'Slaytı göster ',featured:'Öne çıkan görsel'},
+      es: {choose:'Elegir imagen destacada',show:'Mostrar diapositiva ',featured:'Imagen destacada'},
+      fr: {choose:'Choisir une image à la une',show:'Afficher la diapositive ',featured:'Image à la une'}
+    };
+    var text = labelsByLocale[locale] || labelsByLocale.en;
+    var current = 0, timer = null;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'showcase-dots';
+    dotsWrap.setAttribute('role','group');
+    dotsWrap.setAttribute('aria-label',text.choose);
+    var dots = slides.map(function (slide,index) {
+      var dot = document.createElement('button');
+      dot.type='button'; dot.className='showcase-dot';
+      dot.setAttribute('aria-label',text.show+(index+1)+': '+text.featured);
+      dot.addEventListener('click',function(){ show(index); start(); });
+      dotsWrap.appendChild(dot); return dot;
     });
-    dotsWrap.appendChild(dot);
-    return dot;
-  });
-  root.appendChild(dotsWrap);
-
-  // Per the site-wide slideshow standard, no left/right arrow controls are rendered.
-
-  var touchStart = null;
-  root.addEventListener('touchstart', function (event) {
-    if (event.touches.length === 1) touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-  }, { passive: true });
-  root.addEventListener('touchend', function (event) {
-    if (!touchStart || !event.changedTouches.length) return;
-    var dx = event.changedTouches[0].clientX - touchStart.x;
-    var dy = event.changedTouches[0].clientY - touchStart.y;
-    touchStart = null;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-      show(current + (dx < 0 ? 1 : -1));
-      start();
+    root.appendChild(dotsWrap);
+    function show(index) {
+      current=(index+slides.length)%slides.length;
+      slides.forEach(function(slide,i){
+        var active=i===current; slide.classList.toggle('active',active);
+        slide.setAttribute('aria-hidden',String(!active));
+      });
+      dots.forEach(function(dot,i){dot.classList.toggle('active',i===current);dot.setAttribute('aria-pressed',String(i===current));});
     }
-  }, { passive: true });
-
-  function show(index) {
-    current = (index + slides.length) % slides.length;
-    slides.forEach(function (slide, i) {
-      var active = i === current;
-      slide.classList.toggle('active', active);
-      slide.setAttribute('aria-hidden', String(!active));
-    });
-    dots.forEach(function (dot, i) {
-      var active = i === current;
-      dot.classList.toggle('active', active);
-      dot.setAttribute('aria-current', active ? 'true' : 'false');
-    });
+    function stop(){if(timer){window.clearInterval(timer);timer=null;}}
+    function start(){stop();if(!reduced.matches && slides.length>1) timer=window.setInterval(function(){show(current+1);},5500);}
+    var touch=null;
+    root.addEventListener('touchstart',function(e){if(e.touches.length===1)touch={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+    root.addEventListener('touchend',function(e){
+      if(!touch||!e.changedTouches.length)return;
+      var dx=e.changedTouches[0].clientX-touch.x,dy=e.changedTouches[0].clientY-touch.y;touch=null;
+      if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.2){show(current+(dx<0?1:-1));start();}
+    },{passive:true});
+    root.addEventListener('mouseenter',stop); root.addEventListener('mouseleave',start);
+    root.addEventListener('focusin',stop); root.addEventListener('focusout',start);
+    if(reduced.addEventListener) reduced.addEventListener('change',start);
+    show(0); start();
   }
-
-  function stop() {
-    if (timer !== null) {
-      window.clearInterval(timer);
-      timer = null;
-    }
-  }
-
-  function start() {
-    stop();
-    if (slides.length > 1 && !reducedMotion.matches && !document.hidden) {
-      timer = window.setInterval(function () {
-        show(current + 1);
-      }, 4000);
-    }
-  }
-
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
-  root.addEventListener('focusin', stop);
-  root.addEventListener('focusout', function (event) {
-    if (!root.contains(event.relatedTarget)) start();
-  });
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) stop();
-    else start();
-  });
-  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', start);
-
-  show(current);
-  start();
 })();
