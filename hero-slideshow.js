@@ -70,12 +70,12 @@
   }
   if (root.getAttribute('data-slideshow') === 'sports') {
     var sportsSlides = [
-      { src: '/images/slides/03sports.png', alt: {
+      { src: '/images/slides/03-sports-nutrition.png', alt: {
         en: 'Sports nutrition and supplement sourcing',
         fa: 'تأمین و تجارت محصولات تغذیه ورزشی و مکمل‌ها',
         tr: 'Sporcu beslenmesi ve takviye ürünleri tedariki'
       }},
-      { src: '/images/slides/12sport.png', alt: {
+      { src: '/images/slides/12-international-sports-brands.png', alt: {
         en: 'International sports nutrition brands and partnerships',
         fa: 'برندها و همکاری‌های بین‌المللی در حوزه تغذیه ورزشی',
         tr: 'Uluslararası sporcu beslenmesi markaları ve iş birlikleri'
@@ -97,8 +97,10 @@
   }
   if (!slides.length) return;
 
-  // Keep the approved Persian-only introductory artwork exclusive to the Persian About Us page.
-  var isHomeOrAbout = /(?:^|\/)fa\/about\.html$/.test(pathname);
+  // Add the approved Persian-only introductory artwork as slide 1 on the
+  // homepage and About Us showcase. Existing EN/TR slides remain untouched.
+  var isHomeOrAbout = pathname === '/' || /(?:^|\/)index\.html$/.test(pathname) ||
+    /(?:^|\/)about\.html$/.test(pathname);
   var isPersian = isHomeOrAbout && (routeLocaleMatch ? routeLocaleMatch[1].toLowerCase() === 'fa' : (locale === 'fa' || params.get('lang') === 'fa'));
   if (isPersian && !root.querySelector('img[src*="FA_About%20us01.png"], img[src*="FA_About us01.png"]')) {
     var persianSlide = document.createElement('div');
