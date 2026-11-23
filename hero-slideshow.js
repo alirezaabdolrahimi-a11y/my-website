@@ -6,18 +6,18 @@
 
   var path = (window.location.pathname || '/').toLowerCase().replace(/\\/g, '/');
   var key = 'home';
-  if (/about\\.html$/.test(path)) key = 'about';
-  else if (/brand-registration\\.html$/.test(path)) key = 'brand';
-  else if (/sports-nutrition\\.html$/.test(path)) key = 'sport';
-  else if (/infant-formula\\.html$/.test(path)) key = 'infant';
-  else if (/cbd-products\\.html$/.test(path)) key = 'cbd';
-  else if (/api-supply\\.html$/.test(path)) key = 'api';
-  else if (/cosmoderma\\.html$/.test(path)) key = 'cosmo';
-  else if (/pet-food\\.html$/.test(path)) key = 'pet';
-  else if (/international-markets\\.html$/.test(path)) key = 'all';
+  if (/about\.html$/.test(path)) key = 'about';
+  else if (/brand-registration\.html$/.test(path)) key = 'brand';
+  else if (/sports-nutrition\.html$/.test(path)) key = 'sport';
+  else if (/infant-formula\.html$/.test(path)) key = 'infant';
+  else if (/cbd-products\.html$/.test(path)) key = 'cbd';
+  else if (/api-supply\.html$/.test(path)) key = 'api';
+  else if (/cosmoderma\.html$/.test(path)) key = 'cosmo';
+  else if (/pet-food\.html$/.test(path)) key = 'pet';
+  else if (/international-markets\.html$/.test(path)) key = 'all';
 
   var params = new URLSearchParams(window.location.search);
-  var route = path.match(/^\\/(tr|es|fr|fa)(?:\\/|$)/);
+  var route = path.match(/^\/(tr|es|fr|fa)(?:\/|$)/);
   var locale = (route ? route[1] : (params.get('lang') || document.documentElement.lang || 'en')).toLowerCase().slice(0,2);
   var labels = {
     home: {en:'NIAZ NET featured services',fa:'خدمات و فرصت‌های نیاز نت',tr:'NIAZ NET öne çıkan hizmetler'},
