@@ -277,4 +277,5 @@ if ERRORS:
     print(f"SITE INTEGRITY FAILED: {len(ERRORS)} issue(s)")
     for error in ERRORS: print(" - "+error)
     sys.exit(1)
-print(f"SITE INTEGRITY PASSED: {len(pages)} HTML pages; API=239; Cosmoderma=8/8; normalized slides={len(slide_files)}; FCM/CMO RTF={len(rtfs)}.")
+slide_count = sum(len(manifest.get(key, [])) for key in expected_slides)
+print(f"SITE INTEGRITY PASSED: {len(pages)} HTML pages; API=239; uploaded slides={slide_count}/54 at 1944x809; FCM/CMO RTF={len(rtfs)}.")
