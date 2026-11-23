@@ -1,0 +1,76 @@
+{
+  "home": [
+    "/images/Home page/00ALL.png",
+    "/images/Home page/01brand.png",
+    "/images/Home page/02sports.png",
+    "/images/Home page/03infant formula.png",
+    "/images/Home page/04CBD.png",
+    "/images/Home page/05 masport.png",
+    "/images/Home page/06PET.png",
+    "/images/Home page/07Api.png",
+    "/images/Home page/08filler.png",
+    "/images/Home page/09About us.png",
+    "/images/Home page/10Sport.png",
+    "/images/Home page/11Infant.png",
+    "/images/Home page/12Cosmo.png",
+    "/images/Home page/13Pet.png",
+    "/images/Home page/14CBD.png",
+    "/images/Home page/15Cosmo.png",
+    "/images/Home page/16About us.png",
+    "/images/Home page/17Sport.png",
+    "/images/Home page/18Infant.png"
+  ],
+  "about": [
+    "/images/About us/01About us.png",
+    "/images/About us/02All.png",
+    "/images/About us/02brand.png",
+    "/images/About us/03sport.png",
+    "/images/About us/FA01_About us.png",
+    "/images/About us/FA02_About us.png"
+  ],
+  "sport": [
+    "/images/Sport/01sports.png",
+    "/images/Sport/02Sport.png",
+    "/images/Sport/03Sport.png"
+  ],
+  "api": [
+    "/images/API/01API.png",
+    "/images/API/02API.png"
+  ],
+  "infant": [
+    "/images/INFANT/01Infant.png",
+    "/images/INFANT/02infant.png",
+    "/images/INFANT/03Infant.png",
+    "/images/INFANT/04Infant .png"
+  ],
+  "cbd": [
+    "/images/CBD/01CBD.png",
+    "/images/CBD/02CBD.png"
+  ],
+  "all": [
+    "/images/ALL/01All.png",
+    "/images/ALL/01Global .png"
+  ],
+  "cosmo": [
+    "/images/COSMO/01Masport.png",
+    "/images/COSMO/02masport.png",
+    "/images/COSMO/03Cosmo.png",
+    "/images/COSMO/04cosmoy.png",
+    "/images/COSMO/05 masport.png",
+    "/images/COSMO/05Noncolor.png",
+    "/images/COSMO/06cosmo.png",
+    "/images/COSMO/07Cosmo.png",
+    "/images/COSMO/08Cosmo.png",
+    "/images/COSMO/09filler.png",
+    "/images/COSMO/10Cosmo.png"
+  ],
+  "pet": [
+    "/images/PET/01PET.png",
+    "/images/PET/02pet .png"
+  ],
+  "brand": [
+    "/images/BRAND/01brand.png",
+    "/images/BRAND/02BRAND.png",
+    "/images/BRAND/FA_About Sample.png"
+  ]
+}

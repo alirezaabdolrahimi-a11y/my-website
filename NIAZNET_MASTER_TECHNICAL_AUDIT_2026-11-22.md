@@ -147,3 +147,14 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 89. [x] Automate the Persian visible-text coverage audit in `tools/check-site-integrity.py`: Node extracts the runtime dictionary and Python checks all dictionary-backed HTML pages; the local run passes with no meaningful untranslated English UI text (brand/product names excluded by design).
+
+90. [x] Create the requested slideshow upload directories under `images/`: `Home page`, `About us`, `Sport`, `API`, `INFANT`, `CBD`, `ALL`, `COSMO`, `PET`, and `BRAND`. Each directory contains a README with the 1944×809 px requirement. These changes are isolated to `prep/sitewide-final-2026-11-23`; no production deployment or merge was performed.
+
+91. [x] Reapply the audited non-binary sitewide code repairs from the isolated repair branch onto the current-main-based preparation branch, without restoring any slideshow images that the user explicitly requested to clear. Applied 84 changed non-image paths, including the shared shell, translation runtime, API catalogue, FCM/CMO forms, locale routing, integrity checker, and CI validation. The obsolete newsletter script and unused Turkish override stylesheet are absent from the preparation tree.
+
+92. [x] The user uploaded 54 PNG assets across the ten approved folders. `images/slideshow-manifest.json` maps all 54 assets to their matching page families in numeric filename order; shared controller now reads this manifest and no longer depends on legacy `/images/slides/` arrays. Source pixel dimensions and browser rendering remain release checks.
+
+93. [~] Browser-based visual and interactive regression remains open. Static integrity, slideshow normalization, JavaScript syntax, and seven locale-precedence scenarios pass in the normalized working package; Chromium did not complete a minimal headless page in this runtime, so no browser-level pass is claimed.
+
+
+94. [x] Connect all 54 uploaded slideshow PNGs from the ten approved folders through one shared JSON manifest and the shared slideshow controller; map Home page, About us, Brand, Sport, Infant, CBD, API, Cosmoderma, Pet Food, and ALL/Business Development page families. Hide all left/right arrow controls globally. The controller and manifest are committed on the preparation branch; browser verification and physical image-dimension validation remain open under #93 and release QA.
