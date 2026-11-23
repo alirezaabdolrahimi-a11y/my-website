@@ -31,7 +31,7 @@
     pet: {en:'Pet food and animal nutrition',fa:'غذای حیوانات و تغذیه دامپزشکی',tr:'Evcil hayvan maması ve beslenmesi'},
     all: {en:'Global products and opportunities',fa:'محصولات و فرصت‌های جهانی',tr:'Küresel ürünler ve fırsatlar'}
   };
-  fetch('/images/slideshow-manifest.json', {cache:'no-cache'})
+  root.querySelectorAll('.showcase-image, .showcase-dots, .showcase-arrow').forEach(function (node) { node.remove(); });\n  fetch('/images/slideshow-manifest.json', {cache:'no-cache'})
     .then(function (response) { if (!response.ok) throw new Error('Slideshow manifest unavailable'); return response.json(); })
     .then(function (manifest) {
       var sources = Array.isArray(manifest[key]) ? manifest[key].slice() : [];

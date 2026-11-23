@@ -216,36 +216,54 @@ for page_name,consumer in (("index.html","homepage.js"),("tr/index.html","homepa
     other_consumers = {"homepage.js","homepage-tr.js","localized-homepage.js"} - {consumer}
     check(not (other_consumers & set(sources)),f"Conflicting homepage renderer loaded in {page_name}")
 
-home_en = page_data["index.html"].slide_sources
-home_tr = page_data["tr/index.html"].slide_sources
-home_es = page_data["es/index.html"].slide_sources
-home_fr = page_data["fr/index.html"].slide_sources
-check(all(len(x)==18 for x in (home_en,home_tr,home_es,home_fr)),f"All four homepages must have 18 slides: EN={len(home_en)}, TR={len(home_tr)}, ES={len(home_es)}, FR={len(home_fr)}")
-check(home_en==home_tr==home_es==home_fr,"Homepage slide order differs between locales")
-check(all(x.count("/images/slides/03-sports-nutrition.png")==2 for x in (home_en,home_tr,home_es,home_fr)),"Restored Performance Nutrition slide is missing or does not reuse the verified original image")
-check(all(x[3].endswith("03-sports-nutrition.png") and x[9].endswith("03-sports-nutrition.png") for x in (home_en,home_tr,home_es,home_fr)),"Performance Nutrition slide must remain at position 09")
-check('alt="Performance Nutrition"' in (ROOT/"index.html").read_text(encoding="utf-8"),"English Performance Nutrition slide alt text missing")
-check('alt="Performans Beslenmesi"' in (ROOT/"tr/index.html").read_text(encoding="utf-8"),"Turkish Performance Nutrition slide alt text missing")
-
-cos_en = page_data["cosmoderma.html"].slide_sources
-cos_tr = page_data["tr/cosmoderma.html"].slide_sources
-check(len(cos_en)==8 and len(cos_tr)==8,f"Cosmoderma must have 8 slides in both locales: EN={len(cos_en)}, TR={len(cos_tr)}")
-check(cos_en==cos_tr,"Cosmoderma EN/TR slide order differs")
-slide_files = sorted((ROOT/"images/slides").glob("*.png"))
-check(len(slide_files)>=26,f"Expected at least 26 normalized slide assets; found {len(slide_files)}")
-for file in slide_files:
-    try:
-        with Image.open(file) as image: check(image.size==(1944,809),f"Non-canonical slide size: {file.relative_to(ROOT)} is {image.size}")
-    except Exception as exc: ERRORS.append(f"Cannot read slide image {file.relative_to(ROOT)}: {exc}")
+manifest_path = ROOT/"images/slideshow-manifest.json"
+try:
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+except Exception as exc:
+    manifest = {}
+    ERRORS.append(f"Cannot read slideshow manifest: {exc}")
+expected_slides = {"home":19,"about":6,"sport":3,"api":2,"infant":4,"cbd":2,"all":2,"cosmo":11,"pet":2,"brand":3}
+check(set(manifest)==set(expected_slides),f"Slideshow manifest keys mismatch: {sorted(manifest)}")
+for key,count in expected_slides.items():
+    paths=manifest.get(key,[])
+    check(len(paths)==count,f"Slideshow {key} expected {count} images, found {len(paths)}")
+    check(len(paths)==len(set(paths)),f"Slideshow {key} contains duplicate image paths")
+    for raw in paths:
+        target=ROOT/unquote(urlsplit(raw).path).lstrip("/")
+        check(raw.startswith("/images/") and target.is_file(),f"Missing or invalid slideshow asset for {key}: {raw}")
+        if target.is_file():
+            try:
+                with Image.open(target) as image: check(image.format=="PNG" and image.size==(1944,809),f"Slideshow image must be 1944x809 PNG: {raw} is {image.format} {image.size}")
+            except Exception as exc: ERRORS.append(f"Cannot read slideshow image {raw}: {exc}")
+check(sum(len(manifest.get(k,[])) for k in expected_slides)==54,"The ten uploaded folders must map exactly 54 slides")
+check("fetch('/images/slideshow-manifest.json'" in hero,"Shared slideshow controller does not load the folder manifest")
+check("object-fit:contain!important;" in (ROOT/"assets/css/site-shell-enhancements.css").read_text(encoding="utf-8"),"Shared slideshow must preserve complete artwork without cropping")
+check("html body .hero-showcase .showcase-arrow{display:none!important;}" in (ROOT/"assets/css/site-shell-enhancements.css").read_text(encoding="utf-8"),"Left/right slideshow arrows must be hidden globally")
+page_map = {
+    "home":["index.html","tr/index.html","es/index.html","fr/index.html"],
+    "about":["about.html","fa/about.html","tr/about.html"],
+    "brand":["brand-registration.html","tr/brand-registration.html"],
+    "sport":["sports-nutrition.html","tr/sports-nutrition.html"],
+    "infant":["infant-formula.html","tr/infant-formula.html"],
+    "cbd":["cbd-products.html","tr/cbd-products.html"],
+    "api":["api-supply.html","tr/api-supply.html"],
+    "cosmo":["cosmoderma.html","tr/cosmoderma.html"],
+    "pet":["pet-food.html","tr/pet-food.html"],
+    "all":["international-markets.html","tr/international-markets.html"],
+}
+for key,names in page_map.items():
+    for name in names:
+        source=ROOT/name
+        check(source.is_file(),f"Missing page for slideshow {key}: {name}")
+        if source.is_file():
+            content=source.read_text(encoding="utf-8")
+            check("hero-showcase" in content and "hero-slideshow.js" in content,f"{name} does not load the shared slideshow root/controller")
 
 for name in ("sports-nutrition.html","tr/sports-nutrition.html"):
     check(page_data[name].classes.count("sports-brand-placeholder")==4,f"Sports Nutrition must retain four logo placeholders in {name}")
 for name in ("infant-formula.html","tr/infant-formula.html"):
     check(page_data[name].classes.count("sports-brand-placeholder")==4,f"Infant Formula must retain four project placeholders in {name}")
-infant = (ROOT/"hero-slideshow.js").read_text(encoding="utf-8")
-start = infant.find("var infantSlides = [")
-end = infant.find("];",start)
-check(start >= 0 and end > start and infant[start:end].count("{ src:")==4,"Infant Formula slideshow must contain four image records")
+check(len(manifest.get("infant",[]))==4,"Infant Formula slideshow must contain exactly four manifest images")
 
 rtfs = sorted((ROOT/"downloads/fcm-cmo").glob("*.rtf"))
 check(len(rtfs)==15,f"Expected 15 FCM/CMO RTF files; found {len(rtfs)}")
