@@ -14,7 +14,7 @@
   else if (/api-supply\.html$/.test(path)) key = 'api';
   else if (/cosmoderma\.html$/.test(path)) key = 'cosmo';
   else if (/pet-food\.html$/.test(path)) key = 'pet';
-  else if (/international-markets\.html$/.test(path)) key = 'all';
+  else if (/business-development\.html$/.test(path)) key = 'all';
 
   var params = new URLSearchParams(window.location.search);
   var route = path.match(/^\/(tr|es|fr|fa)(?:\/|$)/);

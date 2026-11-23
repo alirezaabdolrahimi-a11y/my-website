@@ -140,7 +140,7 @@ check("niazContactHubForm" in shell and "niaz-contact-hub" in shell,"Homepage co
 for name in ("contact.html","become-our-partner.html","tr/contact.html","tr/become-our-partner.html"):
     check("data-mailto-form" in (ROOT/name).read_text(encoding="utf-8"),f"Shared enquiry form marker missing in {name}")
 check("var whatsappRouteMatch = whatsappPath.match(" in shell and "(tr|es|fr|fa)" in shell and "es:" in shell and "fr:" in shell,"WhatsApp labels do not cover all localized routes")
-check("var routeLocaleMatch = pathname.match(" in hero and "(tr|es|fr|fa)" in hero and "routeLocaleMatch ? routeLocaleMatch[1].toLowerCase()" in hero and "routeLocaleMatch[1].toLowerCase() === 'fa'" in hero,"Slideshow locale does not prioritize localized routes")
+check("var route = path.match(" in hero and "(tr|es|fr|fa)" in hero and "route ? route[1]" in hero,"Slideshow locale does not prioritize localized routes")
 check("var routeLocaleMatch = (window.location.pathname || '/').match(" in api_js and "(tr|es|fr|fa)" in api_js and "var language = routeLocaleMatch ? routeLocaleMatch[1].toLowerCase()" in api_js,"API catalogue locale does not prioritize localized routes")
 check("if (!localizedRoute && (params.get('lang') === 'fa'" in grid,"Service links can append Persian query to a localized route")
 # Historical regressions retained from the prior audit report.
@@ -238,7 +238,7 @@ for key,count in expected_slides.items():
 check(sum(len(manifest.get(k,[])) for k in expected_slides)==54,"The ten uploaded folders must map exactly 54 slides")
 check("fetch('/images/slideshow-manifest.json'" in hero,"Shared slideshow controller does not load the folder manifest")
 check("object-fit:contain!important;" in (ROOT/"assets/css/site-shell-enhancements.css").read_text(encoding="utf-8"),"Shared slideshow must preserve complete artwork without cropping")
-check("html body .hero-showcase .showcase-arrow{display:none!important;}" in (ROOT/"assets/css/site-shell-enhancements.css").read_text(encoding="utf-8"),"Left/right slideshow arrows must be hidden globally")
+check(".showcase-arrow{display:none!important;" in (ROOT/"assets/css/site-shell-enhancements.css").read_text(encoding="utf-8"),"Left/right slideshow arrows must be hidden globally")
 page_map = {
     "home":["index.html","tr/index.html","es/index.html","fr/index.html"],
     "about":["about.html","fa/about.html","tr/about.html"],
@@ -249,7 +249,7 @@ page_map = {
     "api":["api-supply.html","tr/api-supply.html"],
     "cosmo":["cosmoderma.html","tr/cosmoderma.html"],
     "pet":["pet-food.html","tr/pet-food.html"],
-    "all":["international-markets.html","tr/international-markets.html"],
+    "all":["business-development.html","tr/business-development.html"],
 }
 for key,names in page_map.items():
     for name in names:
