@@ -147,3 +147,11 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 89. [x] Automate the Persian visible-text coverage audit in `tools/check-site-integrity.py`: Node extracts the runtime dictionary and Python checks all dictionary-backed HTML pages; the local run passes with no meaningful untranslated English UI text (brand/product names excluded by design).
+
+90. [x] Create the requested slideshow upload directories under `images/`: `Home page`, `About us`, `Sport`, `API`, `INFANT`, `CBD`, `ALL`, `COSMO`, `PET`, and `BRAND`. Each directory contains a README with the 1944×809 px requirement. These changes are isolated to `prep/sitewide-final-2026-11-23`; no production deployment or merge was performed.
+
+91. [x] Reapply the audited non-binary sitewide code repairs from the isolated repair branch onto the current-main-based preparation branch, without restoring any slideshow images that the user explicitly requested to clear. Applied 84 changed non-image paths, including the shared shell, translation runtime, API catalogue, FCM/CMO forms, locale routing, integrity checker, and CI validation. The obsolete newsletter script and unused Turkish override stylesheet are absent from the preparation tree.
+
+92. [~] Slideshow assets are intentionally empty pending the user's new uploads. Existing slideshow markup/controller references still need to be mapped to the uploaded folder assets; do not restore deleted images or claim slideshow loading is complete until new assets are present and verified.
+
+93. [~] Browser-based visual and interactive regression remains open. Static integrity, slideshow normalization, JavaScript syntax, and seven locale-precedence scenarios pass in the normalized working package; Chromium did not complete a minimal headless page in this runtime, so no browser-level pass is claimed.
