@@ -6,6 +6,8 @@ on:
     paths:
       - 'images/**'
       - 'tools/normalize-slides.py'
+      - 'tools/check-site-integrity.py'
+      - '.github/workflows/normalize-uploaded-slides.yml'
 permissions:
   contents: write
 concurrency:
