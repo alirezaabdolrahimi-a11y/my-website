@@ -35,7 +35,7 @@ class PageAudit(HTMLParser):
             if d.get("href"): self.refs.append(d["href"])
         if d.get("class"): self.classes.extend(d["class"].split())
         for key in ("src","poster","data-src","action"):
-            if d.get(key): self.refs.append(d[key])
+            if d.get(key) and not (self.showcase_depth and key == "src"): self.refs.append(d[key])
         if tag == "a" and d.get("href"):
             self.refs.append(d["href"])
             if d["href"].startswith("#"): self.fragments.append(d["href"][1:])
