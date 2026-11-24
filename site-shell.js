@@ -7,10 +7,10 @@
   // NIAZ NET GLOBAL UI STANDARD — the single source of truth for every locale/page.
   // Slideshow artwork is always fully visible inside a 1944×809 frame (no crop/stretch).
   // Shared visual rules are loaded from one cacheable stylesheet.
-  var shellStylesheetAlreadyLoaded = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
-    return stylesheet.href && stylesheet.href.indexOf('/assets/css/site-shell-enhancements.css') !== -1;
+  var shellStylesheetLoadedByPageBase = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
+    return stylesheet.href && /\/assets\/css\/(?:homepage|secondary-page-base|service-page-shared)\.css(?:[?#]|$)/.test(stylesheet.href);
   });
-  if (!shellStylesheetAlreadyLoaded && !document.getElementById('niaz-site-shell-stylesheet')) {
+  if (!shellStylesheetLoadedByPageBase && !document.getElementById('niaz-site-shell-stylesheet')) {
     var shellStylesheet = document.createElement('link');
     shellStylesheet.id = 'niaz-site-shell-stylesheet';
     shellStylesheet.rel = 'stylesheet';
