@@ -4,19 +4,26 @@
   document.documentElement.dataset.niazSiteShellInitialized = 'true';
 
 
-  // NIAZ NET GLOBAL UI STANDARD — the single source of truth for every locale/page.
-  // Slideshow artwork is always fully visible inside a 1944×809 frame (no crop/stretch).
-  // Shared visual rules are loaded from one cacheable stylesheet.
-  var shellStylesheetAlreadyLoaded = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
-    return stylesheet.href && /\/assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/.test(stylesheet.href);
-  });
-  if (!shellStylesheetAlreadyLoaded && !document.getElementById('niaz-site-shell-stylesheet')) {
-    var shellStylesheet = document.createElement('link');
-    shellStylesheet.id = 'niaz-site-shell-stylesheet';
-    shellStylesheet.rel = 'stylesheet';
-    shellStylesheet.href = '/assets/css/site-shell-enhancements.css?v=20261124-slideshow-standard';
+  // NIAZ NET GLOBAL UI STANDARD — one current stylesheet on every page and locale.
+  // Normalize legacy links to the same cache-busted file; never mistake an older URL for the current rules.
+  var shellStylesheetHref = '/assets/css/site-shell-enhancements.css?v=20261124-slideshow-unified';
+  var shellStylesheetLinks = Array.prototype.filter.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return /(?:^|\/)assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/i.test(link.getAttribute('href') || '');
+    }
+  );
+  var shellStylesheet = shellStylesheetLinks.shift() || document.getElementById('niaz-site-shell-stylesheet');
+  if (!shellStylesheet) {
+    shellStylesheet = document.createElement('link');
     document.head.appendChild(shellStylesheet);
   }
+  shellStylesheet.id = 'niaz-site-shell-stylesheet';
+  shellStylesheet.rel = 'stylesheet';
+  if (shellStylesheet.getAttribute('href') !== shellStylesheetHref) {
+    shellStylesheet.setAttribute('href', shellStylesheetHref);
+  }
+  shellStylesheetLinks.forEach(function (link) { link.remove(); });
 
   if (!document.querySelector('.whatsapp-float')) {
     var whatsappLink = document.createElement('a');
