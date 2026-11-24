@@ -8,7 +8,10 @@
   // Slideshow artwork is always fully visible inside a 1944×809 frame (no crop/stretch).
   // Shared visual rules are loaded from one cacheable stylesheet.
   var shellStylesheetLoadedByPageBase = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
-    return stylesheet.href && /\/assets\/css\/(?:homepage|secondary-page-base|service-page-shared)\.css(?:[?#]|$)/.test(stylesheet.href);
+    return stylesheet.href && (
+      /\/assets\/css\/(?:homepage|secondary-page-base|service-page-shared)\.css(?:[?#]|$)/.test(stylesheet.href) ||
+      /\/assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/.test(stylesheet.href)
+    );
   });
   if (!shellStylesheetLoadedByPageBase && !document.getElementById('niaz-site-shell-stylesheet')) {
     var shellStylesheet = document.createElement('link');

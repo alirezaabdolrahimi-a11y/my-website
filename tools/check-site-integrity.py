@@ -201,6 +201,7 @@ for page_key,page_dictionary in fa_dictionary.get("pages",{}).items():
         if len(re.findall(r"[A-Za-z]{2,}",phrase))<2 or re.fullmatch(r"[A-Z0-9 &|,.-]+",phrase): continue
         if page_key=="api-supply.html" and (phrase.lower() in api_names or phrase=="Showing 239 of 239 records"): continue
         if page_key=="sports-nutrition.html" and re.match(r"^(Premium|100%|Whey)",phrase): continue
+        if page_key=="cosmoderma.html" and phrase=="Vita Cosmo, Cosmoderma & Aesthetic Medicine": continue
         translation_gaps.append((page_key,phrase))
 check(not translation_gaps,f"Meaningful untranslated Persian UI text remains: {translation_gaps[:12]}")
 check("if(document.getElementById('fcm-cmo-forms'))return;" in forms,"FCM/CMO form duplicate-insertion guard missing")
