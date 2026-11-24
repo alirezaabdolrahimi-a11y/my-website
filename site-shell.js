@@ -7,17 +7,14 @@
   // NIAZ NET GLOBAL UI STANDARD — the single source of truth for every locale/page.
   // Slideshow artwork is always fully visible inside a 1944×809 frame (no crop/stretch).
   // Shared visual rules are loaded from one cacheable stylesheet.
-  var shellStylesheetLoadedByPageBase = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
-    return stylesheet.href && (
-      /\/assets\/css\/(?:homepage|secondary-page-base|service-page-shared)\.css(?:[?#]|$)/.test(stylesheet.href) ||
-      /\/assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/.test(stylesheet.href)
-    );
+  var shellStylesheetAlreadyLoaded = Array.prototype.some.call(document.styleSheets, function (stylesheet) {
+    return stylesheet.href && /\/assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/.test(stylesheet.href);
   });
-  if (!shellStylesheetLoadedByPageBase && !document.getElementById('niaz-site-shell-stylesheet')) {
+  if (!shellStylesheetAlreadyLoaded && !document.getElementById('niaz-site-shell-stylesheet')) {
     var shellStylesheet = document.createElement('link');
     shellStylesheet.id = 'niaz-site-shell-stylesheet';
     shellStylesheet.rel = 'stylesheet';
-    shellStylesheet.href = '/assets/css/site-shell-enhancements.css';
+    shellStylesheet.href = '/assets/css/site-shell-enhancements.css?v=20261124-slideshow-standard';
     document.head.appendChild(shellStylesheet);
   }
 
