@@ -1,0 +1,36 @@
+/* Canonical NIAZ NET slideshow component */
+.hero-showcase{position:relative;isolation:isolate;box-sizing:border-box;display:block;align-self:start;justify-self:stretch;width:100%;max-width:none;height:auto;min-height:0;aspect-ratio:1944 / 809;overflow:hidden;border:1px solid rgba(226,230,238,.28);border-radius:12px;background:#061a36;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.hero-inner>.hero-showcase,.about-hero-inner>.hero-showcase{grid-column:2;grid-row:1;width:100%;max-width:none;margin:0}
+.hero-showcase>.showcase-image{position:absolute;inset:0;display:none;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background:#061a36;opacity:0;transition:opacity .35s ease}
+.hero-showcase>.showcase-image.active{display:block;opacity:1;animation:showcaseFade .55s ease}
+.hero-showcase>.showcase-image img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;object-position:center center;background:#061a36}
+.hero-showcase .showcase-arrow{display:none;place-items:center;box-sizing:border-box;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;margin:0;transform:translateY(-50%);border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(4,20,42,.68);color:#fff;font:600 28px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+.hero-showcase .showcase-arrow:hover{background:rgba(4,20,42,.92);transform:translateY(-50%) scale(1.04)}
+.hero-showcase .showcase-arrow.prev{left:14px;right:auto}
+.hero-showcase .showcase-arrow.next{right:14px;left:auto}
+.hero-showcase .showcase-dots{position:absolute;z-index:9;right:18px;left:auto;bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px;direction:ltr;margin:0;padding:6px 9px;border-radius:20px;background:rgba(4,20,42,.38)}
+.hero-showcase .showcase-dot{display:block;box-sizing:border-box;width:8px;height:8px;min-width:8px;min-height:8px;padding:0;margin:0;border:0;border-radius:50%;background:rgba(255,255,255,.65);cursor:pointer}
+.hero-showcase .showcase-dot.active{width:19px;min-width:19px;border-radius:8px;background:#e2b65f}
+.hero-showcase .showcase-arrow:focus-visible,.hero-showcase .showcase-dot:focus-visible{outline:2px solid #e2b65f;outline-offset:3px}
+.hero-showcase .showcase-image.image-missing{background:#061a36}
+.hero-showcase .showcase-image.image-missing img{display:none}
+.hero-showcase .showcase-image:after,.hero-showcase .showcase-image span{display:none}
+.showcase-art-slide{background:#071b38;overflow:hidden}
+.showcase-art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(24px,5vw,70px);overflow:hidden;color:#fff;background:linear-gradient(120deg,#071b38 0%,#123b63 58%,#071b38 100%)}
+.showcase-art:before{content:"";position:absolute;width:48%;aspect-ratio:1;border:1px solid rgba(226,182,95,.5);border-radius:50%;right:8%;top:12%;box-shadow:0 0 0 18px rgba(226,182,95,.04),0 0 0 38px rgba(226,182,95,.035)}
+.showcase-art .art-kicker{position:relative;z-index:1;color:#e2b65f;font-size:clamp(9px,1vw,13px);font-weight:700;letter-spacing:2px;margin-bottom:12px}
+.showcase-art .art-title{position:relative;z-index:1;font-size:clamp(30px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-1.4px}
+.showcase-art .art-rule{position:relative;z-index:1;width:76px;height:3px;background:#c99a43;margin:18px 0 14px}
+.showcase-art .art-subtitle{position:relative;z-index:1;color:#f1d18b;font-size:clamp(10px,1.3vw,16px);font-weight:700;letter-spacing:1.5px}
+@keyframes showcaseFade{from{opacity:.35}to{opacity:1}}
+@media(max-width:760px){
+ .hero-showcase{width:100%;height:auto;min-height:0;aspect-ratio:1944 / 809;border-radius:10px}
+ .hero-showcase .showcase-arrow{width:34px;height:34px;min-width:34px;min-height:34px;font-size:23px}
+ .hero-showcase .showcase-arrow.prev{left:9px}
+ .hero-showcase .showcase-arrow.next{right:9px}
+ .hero-showcase .showcase-dots{right:10px;bottom:8px;gap:6px;padding:5px 7px}
+ .hero-showcase .showcase-dot{width:7px;height:7px;min-width:7px;min-height:7px}
+ .hero-showcase .showcase-dot.active{width:16px;min-width:16px}
+ .showcase-art{padding:clamp(18px,4vw,32px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-showcase .showcase-image{transition:none;animation:none}}

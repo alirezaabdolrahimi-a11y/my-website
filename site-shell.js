@@ -4,26 +4,14 @@
   document.documentElement.dataset.niazSiteShellInitialized = 'true';
 
 
-  // NIAZ NET GLOBAL UI STANDARD — one current stylesheet on every page and locale.
-  // Normalize legacy links to the same cache-busted file; never mistake an older URL for the current rules.
-  var shellStylesheetHref = '/assets/css/site-shell-enhancements.css?v=20261124-slideshow-unified';
-  var shellStylesheetLinks = Array.prototype.filter.call(
-    document.querySelectorAll('link[rel="stylesheet"]'),
-    function (link) {
-      return /(?:^|\/)assets\/css\/site-shell-enhancements\.css(?:[?#]|$)/i.test(link.getAttribute('href') || '');
-    }
-  );
-  var shellStylesheet = shellStylesheetLinks.shift() || document.getElementById('niaz-site-shell-stylesheet');
-  if (!shellStylesheet) {
-    shellStylesheet = document.createElement('link');
-    document.head.appendChild(shellStylesheet);
+  // Load slideshow styles only on pages that contain the slideshow component.
+  if (document.querySelector('.hero-showcase') && !document.querySelector('link[data-niaz-hero-showcase]')) {
+    var slideshowStylesheet = document.createElement('link');
+    slideshowStylesheet.rel = 'stylesheet';
+    slideshowStylesheet.href = '/assets/css/hero-showcase.css';
+    slideshowStylesheet.dataset.niazHeroShowcase = 'true';
+    document.head.appendChild(slideshowStylesheet);
   }
-  shellStylesheet.id = 'niaz-site-shell-stylesheet';
-  shellStylesheet.rel = 'stylesheet';
-  if (shellStylesheet.getAttribute('href') !== shellStylesheetHref) {
-    shellStylesheet.setAttribute('href', shellStylesheetHref);
-  }
-  shellStylesheetLinks.forEach(function (link) { link.remove(); });
 
   if (!document.querySelector('.whatsapp-float')) {
     var whatsappLink = document.createElement('a');
@@ -67,7 +55,7 @@
   var homePath = locale === 'tr' ? '/tr/index.html' : locale === 'es' ? '/es/index.html' : locale === 'fr' ? '/fr/index.html' : '/index.html';
   var contactTarget = homePath + (locale === 'fa' ? '?lang=fa' : '') + '#niaz-contact-hub';
   var isLocalizedHomepage = window.location.pathname === '/' || /\/index\.html$/i.test(window.location.pathname);
-  // Contact visibility rules are in site-shell-enhancements.css.
+  // Contact visibility rules are defined by the homepage stylesheets.
 
   // Remove only the legacy newsletter form; preserve contact and partnership enquiry forms.
   document.querySelectorAll('form#newsletterForm').forEach(function (form) { form.remove(); });
