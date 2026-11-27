@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Run Renovate against this public repository
-        uses: renovatebot/github-action@v43.0.13
+        uses: renovatebot/github-action@v46.3.13
         with:
           configurationFile: renovate.json
         env:
