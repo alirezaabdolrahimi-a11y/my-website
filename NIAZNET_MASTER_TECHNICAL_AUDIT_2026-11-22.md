@@ -260,4 +260,7 @@ This is the single numbered master list. Every newly discovered issue must be ap
 142. [x] Verify the final live-page hierarchy corrections: default-hidden contact band, removal of scraped useful-links from home, localized News & Events headline, centered section headings with gold underline, wrapping of long oval service labels, and restoration of the original service order with all additional services retained. Re-run all browser checks and inspect desktop/tablet/mobile screenshots.
 
 
-143. [ ] Final hero and icon polish: compare the rebuilt desktop hero text wrapping and slideshow width against the live reference; verify the localized Import/Export lead tile label and compact WhatsApp SVG icon at all breakpoints. Confirm 32+ browser checks remain green and no horizontal overflow is introduced.
+143. [~] Final hero and icon polish: compare the rebuilt desktop hero text wrapping and slideshow width against the live reference; verify the localized Import/Export lead tile label and compact WhatsApp SVG icon at all breakpoints. Confirm 32+ browser checks remain green and no horizontal overflow is introduced.
+
+
+144. [ ] Verify desktop hero title wraps into the same two-line hierarchy as the live homepage at 1440px while preserving the original slideshow ratio and responsive stacking; re-run the full Playwright suite and compare fresh desktop/mobile screenshots.
