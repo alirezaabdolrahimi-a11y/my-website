@@ -264,3 +264,5 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 144. [ ] Verify desktop hero title wraps into the same two-line hierarchy as the live homepage at 1440px while preserving the original slideshow ratio and responsive stacking; re-run the full Playwright suite and compare fresh desktop/mobile screenshots.
+
+145. [ ] Owner requested expedited completion on 2026-11-28. Re-run the existing Playwright browser QA workflow on this isolated rebuild branch and review its screenshots/artifacts. This is QA only: no merge, Production deployment, Vercel action, or legacy cleanup is authorized by this entry. Keep #131, #132, #136, #138–#144 open until the corresponding browser and visual evidence is reviewed.
