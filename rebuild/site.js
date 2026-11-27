@@ -143,6 +143,8 @@
       'international-business-development':'all','cote-divoire-market':'all',
       'kenya-market':'all','south-africa-market':'all','contract-manufacturing':'all',
       'market-entry':'all','chamber-of-commerce':'all','exclusive-agency':'brand',
+      'licensing-partnerships':'brand','medical-devices':'all','nutraceuticals':'all',
+      'pharmaceutical-products':'api','private-label':'brand','regulatory-affairs':'api',
       'supply-chain-solutions':'all','technology-transfer':'all'
     };
     return exact[slug] || '';
