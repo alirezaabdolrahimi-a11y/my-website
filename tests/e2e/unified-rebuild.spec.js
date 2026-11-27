@@ -44,7 +44,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Fcontract-manufacturing.html');
     await expect(page.locator('#fcm-downloads')).toBeVisible();
     await expect(page.locator('a[href="/downloads/fcm-cmo/solid-en.rtf"]')).toHaveCount(1);
-    const response = await page.request.get('/downloads/fcm-cmo/solid-en.rtf');
+    const response = await page.request.get('http://127.0.0.1:4173/downloads/fcm-cmo/solid-en.rtf');
     expect(response.status()).toBe(200);
   });
 
@@ -65,4 +65,28 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.api-tools select')).toHaveCount(2);
     await expect(page.locator('.table-wrap')).toBeVisible();
   });
+  test('shared slideshow manifest renders matching dots and no arrow controls', async ({ page }) => {
+    await page.goto('/rebuild/');
+    const slideshow = page.locator('.slideshow');
+    await expect(slideshow).toHaveCount(1);
+    const slideCount = await slideshow.locator('.slide').count();
+    expect(slideCount).toBeGreaterThan(0);
+    await expect(slideshow.locator('.slide-dot')).toHaveCount(slideCount);
+    await expect(slideshow.locator('button[aria-label*="previous"], button[aria-label*="next"]')).toHaveCount(0);
+    const firstImage = slideshow.locator('.slide.is-active img');
+    await expect.poll(() => firstImage.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+    await slideshow.locator('.slide-dot').nth(1).click();
+    await expect(slideshow.locator('.slide').nth(1)).toHaveClass(/is-active/);
+  });
+
+  test('reduced-motion preference disables slideshow autoplay', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/rebuild/');
+    const activeBefore = await page.locator('.slideshow .slide.is-active').count();
+    await page.waitForTimeout(5200);
+    const activeAfter = await page.locator('.slideshow .slide.is-active').count();
+    expect(activeBefore).toBe(1);
+    expect(activeAfter).toBe(1);
+  });
+
 });
