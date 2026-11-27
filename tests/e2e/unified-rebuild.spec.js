@@ -99,7 +99,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
 
   test('Spanish navigation uses its local sections and working English contact fallback', async ({ page }) => {
     await page.goto('/rebuild/?page=%2Fes%2F');
-    await expect(page.locator('.main-nav a').filter({ hasText: '¿Por qué elegir' })).toHaveAttribute('href', '?page=%2Fes%2F#about');
+    await expect(page.locator('.main-nav a').filter({ hasText: 'Quiénes somos' })).toHaveAttribute('href', '?page=%2Fes%2F#about');
     await expect(page.locator('.main-nav a').filter({ hasText: 'Proyectos' })).toHaveAttribute('href', '?page=%2Fes%2F#projects');
     await expect(page.locator('.main-nav a').filter({ hasText: 'Contacto' })).toHaveAttribute('href', '?page=%2Fcontact.html');
   });
