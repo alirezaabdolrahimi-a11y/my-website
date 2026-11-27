@@ -1,0 +1,14 @@
+/* API catalogue search and table presentation */
+.niaz-api-tools{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(180px,.7fr);gap:14px;margin:18px 0}
+.niaz-api-tools label{display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:#10203c}
+.niaz-api-tools input,.niaz-api-tools select{width:100%;border:1px solid #d7dee8;border-radius:6px;padding:12px 13px;background:#fff;color:#10203c;font:inherit;font-size:13px}
+.niaz-api-count{font-size:12px;color:#627087;margin:0 0 10px}
+.niaz-api-table-wrap{max-height:560px;overflow:auto;border:1px solid #e6eaf0;border-radius:8px;overscroll-behavior:contain}
+.niaz-api-table{width:100%;border-collapse:collapse;font-size:13px}
+.niaz-api-table th,.niaz-api-table td{padding:11px 14px;text-align:left;border-bottom:1px solid #edf0f4}
+.niaz-api-table thead th{position:sticky;top:0;z-index:2}
+.niaz-api-table th{background:#071b39;color:#fff;font-size:11px;letter-spacing:.04em}
+.niaz-api-table tbody tr:nth-child(even){background:#f8fafc}
+.niaz-api-table tbody tr[hidden]{display:none}
+.niaz-api-empty{padding:18px;text-align:center;color:#627087;font-size:13px}
+@media(max-width:760px){.niaz-api-tools{grid-template-columns:1fr}.niaz-api-table th,.niaz-api-table td{padding:9px 10px;font-size:12px}}

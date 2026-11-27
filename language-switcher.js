@@ -1,0 +1,133 @@
+(function () {
+  'use strict';
+
+  var nav = document.querySelector('.nav-links');
+  if (!nav) return;
+
+  var button = document.getElementById('langButton');
+  if (!button) {
+    var existing = nav.querySelector('.lang');
+    if (existing && existing.tagName.toLowerCase() === 'a') {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = existing.className;
+      button.id = 'langButton';
+      existing.replaceWith(button);
+    } else if (existing) {
+      button = existing;
+      button.id = 'langButton';
+      button.type = 'button';
+    } else {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'lang';
+      button.id = 'langButton';
+      nav.appendChild(button);
+    }
+  }
+  if (button.dataset.languageMenuReady === 'true') return;
+  button.dataset.languageMenuReady = 'true';
+
+  var path = window.location.pathname || '/';
+  var localeMatch = path.match(/^\/(tr|es|fr|fa)(\/|$)/i);
+  var params = new URLSearchParams(window.location.search);
+  var active = (localeMatch && localeMatch[1].toLowerCase()) ||
+    (params.get('lang') === 'fa' ? 'fa' : (document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
+
+  // Keep language names in English on every localized page.
+  var languageNames = { en: 'English', fa: 'Persian', tr: 'Turkish' };
+  var languageLabels = { en: 'Language', fa: 'زبان', tr: 'Dil', es: 'Idioma', fr: 'Langue' };
+  var menuLabels = { en: 'Choose website language', fa: 'انتخاب زبان سایت', tr: 'Web sitesi dilini seçin', es: 'Seleccionar el idioma del sitio', fr: 'Choisir la langue du site' };
+  var languages = ['en', 'fa', 'tr'];
+  if (languages.indexOf(active) === -1 && ['es', 'fr'].indexOf(active) === -1) active = 'en';
+
+  function persistLanguage(code) {
+    try {
+      localStorage.setItem('niaznet-language', code);
+      document.cookie = 'niaznet-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax';
+      document.cookie = 'niaznet-manual-language=' + code + '; Path=/; Max-Age=31536000; SameSite=Lax';
+    } catch (error) {}
+  }
+
+  function languageTarget(code) {
+    var target = new URL(window.location.href);
+    var currentPath = target.pathname || '/';
+    var currentLocale = currentPath.match(/^\/(tr|es|fr|fa)(\/|$)/i);
+    var cleanPath = currentLocale ? (currentPath.replace(/^\/(tr|es|fr|fa)(?=\/|$)/i, '') || '/') : currentPath;
+
+    target.searchParams.delete('lang');
+    if (code === 'fa') {
+      if (cleanPath === '/about.html') {
+        target.pathname = '/fa/about.html';
+      } else {
+        target.pathname = cleanPath;
+        target.searchParams.set('lang', 'fa');
+      }
+    } else if (code === 'tr') {
+      target.pathname = '/tr' + (cleanPath === '/' ? '/' : cleanPath);
+    } else if (code === 'en') {
+      target.pathname = cleanPath;
+    } else {
+      target.pathname = cleanPath;
+    }
+    return target.pathname + target.search + target.hash;
+  }
+
+  var wrapper = document.createElement('span');
+  wrapper.className = 'niaz-language-switcher';
+  button.parentNode.insertBefore(wrapper, button);
+  wrapper.appendChild(button);
+
+  var menu = document.createElement('div');
+  menu.className = 'niaz-language-menu';
+  menu.hidden = true;
+  menu.setAttribute('role', 'menu');
+  menu.setAttribute('aria-label', menuLabels[active] || menuLabels.en);
+
+  languages.forEach(function (code) {
+    var item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'niaz-language-option';
+    item.textContent = languageNames[code];
+    item.setAttribute('role', 'menuitem');
+    item.setAttribute('aria-current', code === active ? 'true' : 'false');
+    item.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      persistLanguage(code);
+      window.location.assign(languageTarget(code));
+    });
+    menu.appendChild(item);
+  });
+  wrapper.appendChild(menu);
+
+  var style = document.createElement('style');
+  style.textContent = '.niaz-language-switcher{position:relative;display:inline-flex;align-items:center}.niaz-language-menu{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:150px;padding:7px;background:#fff;border:1px solid #e6eaf0;border-radius:8px;box-shadow:0 10px 30px rgba(5,24,51,.18)}.niaz-language-menu[hidden]{display:none}.niaz-language-option{display:block;width:100%;padding:10px 12px;border:0;border-radius:5px;background:#fff;color:#10203c;text-align:left;font:500 12px/1.3 Inter,Arial,sans-serif;cursor:pointer}.niaz-language-option:hover,.niaz-language-option:focus{background:#f3f6fa;outline:none}.niaz-language-option[aria-current=true]{color:#9b7028;font-weight:700}.niaz-language-switcher>.lang{white-space:nowrap}';
+  document.head.appendChild(style);
+
+  function closeMenu() {
+    menu.hidden = true;
+    button.setAttribute('aria-expanded', 'false');
+  }
+
+  button.setAttribute('aria-haspopup', 'menu');
+  button.setAttribute('aria-expanded', 'false');
+  button.textContent = (languageLabels[active] || languageLabels.en) + '⌄';
+
+  button.addEventListener('click', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    menu.hidden = !menu.hidden;
+    button.setAttribute('aria-expanded', String(!menu.hidden));
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!wrapper.contains(event.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeMenu();
+      button.focus();
+    }
+  });
+})();

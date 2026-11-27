@@ -1,0 +1,5 @@
+NIAZ NET – uniform service and VIP button update
+
+Base: NIAZ_NET_international_SEO_optimized.zip
+Changes: fixed, equal-height oval Service buttons; VIP buttons share one consistent size, are shorter and wider; service and VIP icon containers are standardized without cropping icon artwork; responsive tablet/mobile sizes included.
+Import / Export special banner styling and all page destinations/content are retained.
