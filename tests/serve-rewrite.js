@@ -9,7 +9,7 @@ const inventoryFile = path.join(root, 'data/live-page-inventory.jsonl');
 const publishedPaths = new Set(
   fs.readFileSync(inventoryFile, 'utf8')
     .trim()
-    .split(/\\r?\\n/)
+    .split(/\r?\n/)
     .map(line => JSON.parse(line).path)
 );
 publishedPaths.add('/index.html');

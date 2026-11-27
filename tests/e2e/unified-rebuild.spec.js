@@ -25,7 +25,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('Vercel route rules cover every published inventory URL', async () => {
     const root = path.resolve(__dirname, '../..');
     const inventory = fs.readFileSync(path.join(root, 'data/live-page-inventory.jsonl'), 'utf8')
-      .trim().split(/\\r?\\n/).map(line => JSON.parse(line).path);
+      .trim().split(/\r?\n/).map(line => JSON.parse(line).path);
     const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
     const rules = (config.routes || []).filter(rule => rule.dest === '/rebuild/index.html');
     const missing = inventory.filter(url => !rules.some(rule => new RegExp(rule.src).test(url)));
