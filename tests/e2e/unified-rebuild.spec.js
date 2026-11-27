@@ -8,6 +8,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.services-grid .import-export-card')).toHaveCount(1);
     await expect(page.locator('.services-grid .import-export-card')).toContainText('IMPORT / EXPORT');
     await expect(page.locator('.whatsapp svg')).toHaveCount(1);
+    await expect(page.locator('.footer-contact-link')).toHaveCSS('display', 'inline-flex');
     await expect(page.locator('.services-grid .service-card').nth(1)).toContainText('Brand Registration');
     await expect(page.locator('.services-grid .service-card').nth(2)).toContainText('API');
     await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);

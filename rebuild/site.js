@@ -18,69 +18,69 @@
 
   const COPY = {
     en: {
-      home:'Home',about:'About Us',navServices:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
-      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
+      home:'Home',about:'About Us',navServices:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',getInTouch:'Get in Touch',
+      services:'Our Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
       send:'Prepare email enquiry',mailNote:'This form opens a pre-addressed email draft in your email application. It does not submit directly to a server.',
-      whatsapp:'WhatsApp',overview:'Page information',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
+      whatsapp:'WhatsApp',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
       faLimited:'صفحه اصلی، صفحات اصلی کسب‌وکار و مجموعه‌ای از خدمات منتخب به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
-      loading:'Loading verified site content…',notFound:'This page is not included in the current live-site inventory.',
+      notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
-      email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
+      email:'Email',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
     },
     tr: {
-      home:'Ana Sayfa',about:'Hakkımızda',navServices:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
-      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
+      home:'Ana Sayfa',about:'Hakkımızda',navServices:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',getInTouch:'Bize Ulaşın',
+      services:'Hizmetlerimiz',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
       send:'E-posta talebi hazırla',mailNote:'Bu form, e-posta uygulamanızda info@niaznet.net adresine hazırlanmış bir taslak açar. Sunucuya doğrudan gönderim yapmaz.',
-      whatsapp:'WhatsApp',overview:'Sayfa bilgileri',useful:'Faydalı bağlantılar',limited:'Yerelleştirilmiş ana sayfa mevcuttur; çevrilmiş bir hizmet sayfası bulunmadığında hizmet ayrıntıları İngilizce açılabilir.',
+      whatsapp:'WhatsApp',useful:'Faydalı bağlantılar',limited:'Yerelleştirilmiş ana sayfa mevcuttur; çevrilmiş bir hizmet sayfası bulunmadığında hizmet ayrıntıları İngilizce açılabilir.',
       faLimited:'Farsça içerik şu anda yalnızca Hakkımızda sayfasında mevcuttur. Diğer hizmet ayrıntıları çevirileri tamamlanana kadar İngilizce açılır.',
-      loading:'Doğrulanmış site içeriği yükleniyor…',notFound:'Bu sayfa mevcut canlı site envanterinde bulunmuyor.',
+      notFound:'Bu sayfa mevcut canlı site envanterinde bulunmuyor.',
       office:'Tahran Ofisi',address:'Marjan Tower, 6. Kat, 603 numaralı ofis, Kuzey Mofatteh Caddesi, Tahran, İran',
-      email:'E-posta',phone:'Telefon',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
+      email:'E-posta',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
     },
     fa: {
-      home:'صفحه اصلی',about:'درباره ما',navServices:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
-      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
+      home:'صفحه اصلی',about:'درباره ما',navServices:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',getInTouch:'تماس با ما',
+      services:'خدمات ما',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
       send:'آماده‌سازی ایمیل درخواست',mailNote:'این فرم یک پیش‌نویس ایمیل به نشانی info@niaznet.net باز می‌کند و اطلاعات را مستقیماً به سرور ارسال نمی‌کند.',
-      whatsapp:'واتساپ',overview:'اطلاعات صفحه',useful:'پیوندهای مفید',limited:'صفحه اصلی بومی‌سازی‌شده در دسترس است؛ در صورت نبود صفحه خدمات ترجمه‌شده، جزئیات خدمات ممکن است به زبان انگلیسی باز شود.',
+      whatsapp:'واتساپ',useful:'پیوندهای مفید',limited:'صفحه اصلی بومی‌سازی‌شده در دسترس است؛ در صورت نبود صفحه خدمات ترجمه‌شده، جزئیات خدمات ممکن است به زبان انگلیسی باز شود.',
       faLimited:'صفحه اصلی، صفحات درباره ما، پروژه‌ها، تماس و همکاری و ۲۶ صفحه خدمات به زبان فارسی در دسترس هستند.',
-      loading:'در حال بارگذاری محتوای تأییدشده سایت…',notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
+      notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
       office:'دفتر تهران',address:'ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳',
-      email:'ایمیل',phone:'تلفن',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
+      email:'ایمیل',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
     },
     es: {
-      home:'Inicio',about:'Quiénes somos',navServices:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
-      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
+      home:'Inicio',about:'Quiénes somos',navServices:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',getInTouch:'Contacte',
+      services:'Nuestros servicios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
       send:'Preparar consulta por correo',mailNote:'Este formulario abre un borrador de correo dirigido a info@niaznet.net. No envía los datos directamente a un servidor.',
-      whatsapp:'WhatsApp',overview:'Información de la página',useful:'Enlaces útiles',limited:'La página de inicio está traducida; las páginas de detalle de servicios pueden abrirse en inglés cuando no existe una ruta traducida.',
+      whatsapp:'WhatsApp',useful:'Enlaces útiles',limited:'La página de inicio está traducida; las páginas de detalle de servicios pueden abrirse en inglés cuando no existe una ruta traducida.',
       faLimited:'El contenido en persa está disponible actualmente solo para la página Acerca de nosotros.',
-      loading:'Cargando contenido verificado…',notFound:'Esta página no figura en el inventario actual del sitio.',
+      notFound:'Esta página no figura en el inventario actual del sitio.',
       office:'Oficina de Teherán',address:'Unidad 603, 6.º piso, Marjan Tower, North Mofatteh St., Teherán, Irán',
-      email:'Correo electrónico',phone:'Teléfono',addressLabel:'Dirección de Teherán',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
+      email:'Correo electrónico',addressLabel:'Dirección de Teherán',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
     },
     fr: {
-      home:'Accueil',about:'À propos',navServices:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
-      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
+      home:'Accueil',about:'À propos',navServices:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',getInTouch:'Nous contacter',
+      services:'Nos services',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
       send:'Préparer une demande par e-mail',mailNote:'Ce formulaire ouvre un brouillon adressé à info@niaznet.net dans votre application e-mail. Il ne transmet pas directement les données à un serveur.',
-      whatsapp:'WhatsApp',overview:'Informations de la page',useful:'Liens utiles',limited:'La page d’accueil est traduite ; les pages détaillées des services peuvent s’ouvrir en anglais lorsqu’une traduction n’est pas publiée.',
+      whatsapp:'WhatsApp',useful:'Liens utiles',limited:'La page d’accueil est traduite ; les pages détaillées des services peuvent s’ouvrir en anglais lorsqu’une traduction n’est pas publiée.',
       faLimited:'Le contenu en persan est actuellement disponible uniquement pour la page À propos.',
-      loading:'Chargement du contenu vérifié…',notFound:'Cette page ne figure pas dans l’inventaire actuel du site.',
+      notFound:'Cette page ne figure pas dans l’inventaire actuel du site.',
       office:'Bureau de Téhéran',address:'Unité 603, 6e étage, Marjan Tower, North Mofatteh St., Téhéran, Iran',
-      email:'E-mail',phone:'Téléphone',addressLabel:'Adresse de Téhéran',copyright:'NIAZ NET · Aperçu unifié · Branche isolée'
+      email:'E-mail',addressLabel:'Adresse de Téhéran',copyright:'NIAZ NET · Aperçu unifié · Branche isolée'
     }
   };
 
