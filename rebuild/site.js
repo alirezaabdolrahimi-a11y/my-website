@@ -9,7 +9,8 @@
   };
   const app = document.getElementById('app');
   const params = new URLSearchParams(window.location.search);
-  const requestedPath = normalizePath(params.get('page') || '/');
+  const directPath = window.location.pathname.replace(/^\/rebuild(?=\/|$)/, '') || '/';
+  const requestedPath = normalizePath(params.get('page') || directPath);
   let pages = [];
   let pageMap = new Map();
   let manifest = {};
