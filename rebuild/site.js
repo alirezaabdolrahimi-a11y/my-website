@@ -528,7 +528,8 @@
     const candidates = (record.links || []).filter(x => x.href && (
       x.href.startsWith('#') || x.href.startsWith('mailto:') || x.href.startsWith('tel:') ||
       x.href.startsWith('http://') || x.href.startsWith('https://') ||
-      x.href.includes('/downloads/') || x.href.startsWith('downloads/') ||
+      ((!record.path.endsWith('/contract-manufacturing.html')) &&
+        (x.href.includes('/downloads/') || x.href.startsWith('downloads/'))) ||
       /\.html(?:$|[?#])/i.test(x.href)
     ));
     const seen = new Set();

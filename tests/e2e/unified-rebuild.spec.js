@@ -25,12 +25,12 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     names = await page.locator('.api-table tbody tr td:first-child').allTextContents();
     expect(names).toEqual([...names].sort((a, b) => b.localeCompare(a)));
     await sort.selectOption('category');
-    const rows = await page.locator('.api-table tbody tr').allTextContents();
-    expect(rows).toEqual([...rows].sort((a, b) => {
-      const [aName, aCategory] = a.split(/\s{2,}/);
-      const [bName, bCategory] = b.split(/\s{2,}/);
-      return aCategory.localeCompare(bCategory) || aName.localeCompare(bName);
-    }));
+    const rows = await page.locator('.api-table tbody tr').evaluateAll(items =>
+      items.map(row => [row.cells[1].textContent, row.cells[0].textContent])
+    );
+    expect(rows).toEqual([...rows].sort((a, b) =>
+      a[0].localeCompare(b[0]) || a[1].localeCompare(b[1])
+    ));
   });
 
   test('language switcher routes to the French homepage', async ({ page }) => {
