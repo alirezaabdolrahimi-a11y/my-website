@@ -704,6 +704,7 @@
       grid.replaceChildren();
       Object.entries(labels).forEach(([type,names]) => {
         const card = el('article', 'download-card');
+        card.id = 'download-' + type;
         card.appendChild(el('h3', '', names[select.value] || names.en));
         const actions = el('div', 'download-actions');
         const html = el('a', '', t.html); html.href = '/downloads/fcm-cmo/' + type + '-' + select.value + '.html';
@@ -891,6 +892,10 @@
     const record = pageMap.get(path);
     if (!record) {
       app.replaceChildren(el('main', 'not-found', COPY.en.notFound));
+      return;
+    }
+    if (record.redirectTo) {
+      window.location.replace(linkTo(record.redirectTo, record.redirectHash || ''));
       return;
     }
     const lang = COPY[record.lang] ? record.lang : 'en';

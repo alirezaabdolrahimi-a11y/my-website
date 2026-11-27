@@ -229,4 +229,16 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('a[href="https://www.sahpra.org.za/document/guideline-for-the-importation-and-exportation-of-medicines/"]')).toHaveAttribute('target', '_blank');
   });
 
+  test('legacy Persian FCM form routes redirect to the unified category downloads', async ({ page }) => {
+    const aliases = [
+      ['/fa/fcm-cmo-fa-1.html', '#download-nonsterile'],
+      ['/fa/fcm-cmo-fa-2.html', '#download-sterile'],
+      ['/fa/fcm-cmo-fa-3.html', '#download-solid']
+    ];
+    for (const [route, hash] of aliases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page).toHaveURL(new RegExp('page=%2Ffa%2Fcontract-manufacturing\.html' + hash.replace('#', '\\#') + '$'));
+    }
+  });
+
 });
