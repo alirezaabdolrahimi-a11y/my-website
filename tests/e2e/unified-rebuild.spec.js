@@ -114,7 +114,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('#contact a[href="mailto:info@niaznet.net"]')).toBeVisible();
   });
 
-  for (const route of ['/', '/tr/', '/es/', '/fr/']) {
+  for (const route of ['/', '/tr/', '/es/', '/fr/', '/fa/']) {
     test(`homepage visual data is present for ${route}`, async ({ page }) => {
       await page.goto('/rebuild/?page=' + encodeURIComponent(route));
       await expect(page.locator('#partners .partner')).toHaveCount(11);

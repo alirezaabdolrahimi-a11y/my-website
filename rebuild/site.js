@@ -460,8 +460,8 @@
       }
     });
     const output = [];
-    const featureGroup = groups.find(g => /why choose|neden|por qué|pourquoi/.test(g.title.toLocaleLowerCase()));
-    const networkGroup = groups.find(g => /network|ağımız|red global|réseau/.test(g.title.toLocaleLowerCase()));
+    const featureGroup = groups.find(g => /why choose|neden|por qué|pourquoi|چرا/.test(g.title.toLocaleLowerCase()));
+    const networkGroup = groups.find(g => /network|ağımız|red global|réseau|شبکه/.test(g.title.toLocaleLowerCase()));
     const renderedFeatureNetwork = Boolean(featureGroup && networkGroup && record.network);
     groups.forEach((group, index) => {
       if (renderedFeatureNetwork && group === networkGroup) return;
@@ -474,11 +474,11 @@
       let kind = 'generic', id = 'home-section-' + index;
       if (/vip/.test(normalized)) return;
       if (/why choose|neden|por qué|pourquoi/.test(normalized)) { kind = 'features'; id = 'about'; }
-      else if (/project|proje|proyectos|projets/.test(normalized)) { kind = 'projects'; id = 'projects'; }
-      else if (/news|haber|noticias|actualités|actualites/.test(normalized)) { kind = 'news'; id = 'news'; }
-      else if (/success|başarı|basari|éxito|exito|réussite|reussite/.test(normalized)) { kind = 'cta'; id = 'contact'; }
-      else if (/office|ofis|oficina|bureaux/.test(normalized)) { kind = 'offices'; id = 'offices'; }
-      else if (/partner|ortak|socios|partenaires/.test(normalized)) { kind = 'partners'; id = 'partners'; }
+      else if (/project|proje|proyectos|projets|پروژه/.test(normalized)) { kind = 'projects'; id = 'projects'; }
+      else if (/news|haber|noticias|actualités|actualites|اخبار/.test(normalized)) { kind = 'news'; id = 'news'; }
+      else if (/success|başarı|basari|éxito|exito|réussite|reussite|موفقیت/.test(normalized)) { kind = 'cta'; id = 'contact'; }
+      else if (/office|ofis|oficina|bureaux|دفتر/.test(normalized)) { kind = 'offices'; id = 'offices'; }
+      else if (/partner|ortak|socios|partenaires|شرکای|همکار/.test(normalized)) { kind = 'partners'; id = 'partners'; }
       else if (/network|ağımız|red global|réseau/.test(normalized)) { kind = 'network'; id = 'network'; }
       else return;
       const hasPartnerData = kind === 'partners' && Array.isArray(record.partners) && record.partners.length;
