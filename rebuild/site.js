@@ -135,7 +135,11 @@
     return langHome(lang);
   }
   function linkTo(path, hash) {
-    return '?page=' + encodeURIComponent(path) + (hash || '');
+    const suffix = hash || '';
+    if (/^\/rebuild(?:\/|$)/.test(window.location.pathname)) {
+      return '?page=' + encodeURIComponent(path) + suffix;
+    }
+    return normalizePath(path) + suffix;
   }
   function textFor(service, lang) {
     return service[lang] || service.en;
@@ -999,6 +1003,13 @@
       document.head.appendChild(descriptionTag);
     }
     descriptionTag.content = description;
+    let robotsTag = document.head.querySelector('meta[name="robots"]');
+    if (!robotsTag) {
+      robotsTag = document.createElement('meta');
+      robotsTag.name = 'robots';
+      document.head.appendChild(robotsTag);
+    }
+    robotsTag.content = /^\\/rebuild(?:\\/|$)/.test(window.location.pathname) ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
     if (record.canonical) {
       let canonical = document.head.querySelector('link[rel="canonical"]');
       if (!canonical) {

@@ -109,5 +109,419 @@
       "destination": "/fr/",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/about.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/become-our-partner.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/international-markets.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/brand-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/sports-nutrition.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/infant-formula.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/cosmoderma.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/api-supply.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/medical-devices.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/cbd-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/import-export.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/exclusive-agency.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/chamber-of-commerce.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/market-entry.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/licensing-partnerships.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/pharmaceutical-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/product-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/regulatory-affairs.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/contract-manufacturing.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/technology-transfer.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/international-business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/supply-chain-solutions.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/private-label.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/pet-food.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/nutraceuticals.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/cote-divoire-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/kenya-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/south-africa-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/es/",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fr/",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/about.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/api-supply.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/become-our-partner.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/brand-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/cbd-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/chamber-of-commerce.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/contact.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/contract-manufacturing.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/cosmoderma.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/cote-divoire-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/exclusive-agency.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/import-export.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/infant-formula.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/international-business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/international-markets.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/kenya-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/licensing-partnerships.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/market-entry.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/medical-devices.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/nutraceuticals.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/pet-food.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/pharmaceutical-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/private-label.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/product-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/projects.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/regulatory-affairs.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/south-africa-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/sports-nutrition.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/supply-chain-solutions.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/technology-transfer.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/about.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/project-details.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/tr/project-details.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/contact.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/become-our-partner.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/projects.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/api-supply.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/import-export.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/sports-nutrition.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/infant-formula.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/cosmoderma.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/contract-manufacturing.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/brand-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/cbd-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/chamber-of-commerce.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/exclusive-agency.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/international-business-development.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/international-markets.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/kenya-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/licensing-partnerships.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/market-entry.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/medical-devices.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/nutraceuticals.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/pet-food.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/pharmaceutical-products.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/private-label.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/product-registration.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/regulatory-affairs.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/south-africa-market.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/supply-chain-solutions.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/technology-transfer.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/fcm-cmo-fa-1.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/fcm-cmo-fa-2.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/fa/fcm-cmo-fa-3.html",
+      "destination": "/rebuild/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/rebuild/index.html"
+    }
   ]
 }
