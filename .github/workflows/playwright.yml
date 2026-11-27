@@ -40,8 +40,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run multilingual homepage smoke tests
         run: npm run test:e2e -- --config=playwright.config.js
-      - name: Upload report on failure
-        if: failure()
+      - name: Upload Playwright QA artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: niaznet-playwright-report

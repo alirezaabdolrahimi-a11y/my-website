@@ -267,4 +267,41 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.form-note')).toHaveCount(1);
   });
 
+  test('desktop, tablet and mobile visual reference screenshots', async ({ page }, testInfo) => {
+    const viewports = [
+      ['desktop', 1440, 1000],
+      ['tablet', 820, 1180],
+      ['mobile', 390, 844]
+    ];
+    for (const [label, width, height] of viewports) {
+      await page.setViewportSize({ width, height });
+      await page.goto('/rebuild/?page=%2F');
+      await expect(page.locator('.site-header')).toBeVisible();
+      await expect(page.locator('.hero')).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      await page.screenshot({ path: testInfo.outputPath('rebuild-' + label + '.png'), fullPage: true });
+      try {
+        const response = await page.goto('https://www.niaznet.net/', {
+          waitUntil: 'domcontentloaded',
+          timeout: 45000
+        });
+        if (!response || !response.ok()) {
+          testInfo.annotations.push({
+            type: 'live-reference',
+            description: 'Live homepage returned ' + (response ? response.status() : 'no response')
+          });
+          continue;
+        }
+        await page.locator('body').waitFor({ state: 'visible' });
+        await page.screenshot({ path: testInfo.outputPath('live-' + label + '.png'), fullPage: true });
+      } catch (error) {
+        testInfo.annotations.push({
+          type: 'live-reference',
+          description: 'Live homepage screenshot unavailable: ' + String(error).slice(0, 240)
+        });
+        break;
+      }
+    }
+  });
+
 });
