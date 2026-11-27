@@ -183,4 +183,20 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('Persian international markets, Kenya, licensing and market-entry routes render', async ({ page }) => {
+    const cases = [
+      ['/fa/international-business-development.html', 'توسعه کسب‌وکار بین‌المللی'],
+      ['/fa/international-markets.html', 'بازارهای واردات و صادرات'],
+      ['/fa/kenya-market.html', 'بازار دارویی و سلامت کنیا'],
+      ['/fa/licensing-partnerships.html', 'راهبرد صدور مجوز'],
+      ['/fa/market-entry.html', 'ورود به بازار']
+    ];
+    for (const [route, heading] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page.locator('h1')).toContainText(heading);
+    }
+    await page.goto('/rebuild/?page=%2Ffa%2Fkenya-market.html');
+    await expect(page.locator('a[href="https://ppb.go.ke/"]')).toHaveAttribute('target', '_blank');
+  });
+
 });
