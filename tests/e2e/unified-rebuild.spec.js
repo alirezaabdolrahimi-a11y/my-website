@@ -241,4 +241,25 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('API catalogue and FCM downloads render once without duplicated static sections', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fapi-supply.html');
+    await expect(page.locator('#api-catalogue')).toHaveCount(1);
+    await expect(page.locator('#api-catalogue h2')).toHaveCount(1);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'API Sourcing Coordination' })).toHaveCount(1);
+    await page.goto('/rebuild/?page=%2Fcontract-manufacturing.html');
+    await expect(page.locator('#fcm-downloads .download-card')).toHaveCount(3);
+    await expect(page.locator('#fcm-downloads .download-card p')).toHaveCount(3);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Download technical enquiry forms' })).toHaveCount(0);
+  });
+
+  test('contact and partner forms have one heading, one intro and one mail note', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fcontact.html');
+    await expect(page.locator('form.form-grid')).toHaveCount(1);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Send an Enquiry' })).toHaveCount(1);
+    await expect(page.locator('.form-note')).toHaveCount(1);
+    await page.goto('/rebuild/?page=%2Fbecome-our-partner.html');
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Partnership Application' })).toHaveCount(1);
+    await expect(page.locator('.form-note')).toHaveCount(1);
+  });
+
 });

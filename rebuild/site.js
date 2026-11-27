@@ -602,6 +602,7 @@
   function renderApiCatalog(lang) {
     const t = COPY[lang] || COPY.en;
     const section = el('section', 'section white');
+    section.id = 'api-catalogue';
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
     panel.appendChild(el('h2', '', t.apiTitle));
@@ -651,9 +652,9 @@
     wrap.appendChild(table);
     const empty = el('div', 'empty-state', t.empty);
     panel.append(count, wrap, empty, el('p', 'form-note', t.apiNote));
-    tools.addEventListener('input', update);
-    tools.addEventListener('change', update);
-    function update() {
+    tools.addEventListener('input', updateApiResults);
+    tools.addEventListener('change', updateApiResults);
+    function updateApiResults() {
       const q = search.value.trim().toLocaleLowerCase();
       const cat = category.value;
       const filtered = apiItems.filter(item =>
@@ -673,23 +674,47 @@
       empty.style.display = filtered.length ? 'none' : 'block';
       wrap.style.display = filtered.length ? 'block' : 'none';
     }
-    update();
+    updateApiResults();
     container.appendChild(panel);
     section.appendChild(container);
     return section;
   }
-  function renderDownloads(lang) {
+  function renderDownloads(lang, record) {
     const t = COPY[lang] || COPY.en;
     const labels = {
       solid:{en:'Solid dosage forms',fa:'اشکال دارویی جامد',tr:'Katı dozaj formları',es:'Formas farmacéuticas sólidas',fr:'Formes pharmaceutiques solides'},
       nonsterile:{en:'Non-sterile liquids',fa:'مایعات غیراستریل',tr:'Steril olmayan sıvılar',es:'Líquidos no estériles',fr:'Liquides non stériles'},
       sterile:{en:'Sterile liquids (injectables)',fa:'مایعات استریل (تزریقی)',tr:'Steril sıvılar (enjeksiyon)',es:'Líquidos estériles (inyectables)',fr:'Liquides stériles (injectables)'}
     };
+    const descriptions = {
+      solid:{
+        en:'Tablets and capsules, manufacturing process, equipment, packaging and testing requirements.',
+        tr:'Tablet ve kapsüller; üretim süreci, ekipman, ambalaj ve test gereklilikleri.',
+        fa:'قرص و کپسول، فرایند تولید، تجهیزات، بسته‌بندی و الزامات آزمون.',
+        es:'Tabletas y cápsulas, proceso de fabricación, equipos, envase y requisitos de ensayo.',
+        fr:'Comprimés et gélules, procédé de fabrication, équipements, conditionnement et exigences d’essai.'
+      },
+      nonsterile:{
+        en:'Solutions, syrups and drops, raw materials, storage, container and packaging specifications.',
+        tr:'Solüsyonlar, şuruplar ve damlalar; hammaddeler, depolama, kap ve ambalaj özellikleri.',
+        fa:'محلول‌ها، شربت‌ها و قطره‌ها، مواد اولیه، شرایط نگهداری، ظرف و مشخصات بسته‌بندی.',
+        es:'Soluciones, jarabes y gotas, materias primas, almacenamiento, envase y especificaciones de embalaje.',
+        fr:'Solutions, sirops et gouttes, matières premières, stockage, contenants et spécifications d’emballage.'
+      },
+      sterile:{
+        en:'Aseptic or terminal sterilization, ampoules and vials, storage, packaging and testing.',
+        tr:'Aseptik veya terminal sterilizasyon, ampul ve flakon, depolama, ambalaj ve test.',
+        fa:'استریلیزاسیون آسپتیک یا نهایی، آمپول و ویال، نگهداری، بسته‌بندی و آزمون.',
+        es:'Esterilización aséptica o terminal, ampollas y viales, almacenamiento, envase y pruebas.',
+        fr:'Stérilisation aseptique ou terminale, ampoules et flacons, stockage, conditionnement et essais.'
+      }
+    };
     const section = el('section', 'section white');
     section.id = 'fcm-downloads';
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
     panel.appendChild(el('h2', '', t.downloads));
+    if (record && record.downloadsIntro) panel.appendChild(el('p', '', record.downloadsIntro));
     const controls = el('div', 'api-tools');
     const select = document.createElement('select');
     select.className = 'field';
@@ -700,12 +725,13 @@
     controls.appendChild(select);
     panel.appendChild(controls);
     const grid = el('div', 'download-grid');
-    function update() {
+    function updateDownloads() {
       grid.replaceChildren();
       Object.entries(labels).forEach(([type,names]) => {
         const card = el('article', 'download-card');
         card.id = 'download-' + type;
         card.appendChild(el('h3', '', names[select.value] || names.en));
+        card.appendChild(el('p', '', descriptions[type][select.value] || descriptions[type].en));
         const actions = el('div', 'download-actions');
         const html = el('a', '', t.html); html.href = '/downloads/fcm-cmo/' + type + '-' + select.value + '.html';
         const rtf = el('a', '', t.rtf); rtf.href = '/downloads/fcm-cmo/' + type + '-' + select.value + '.rtf';
@@ -714,8 +740,8 @@
         grid.appendChild(card);
       });
     }
-    select.addEventListener('change', update);
-    update();
+    select.addEventListener('change', updateDownloads);
+    updateDownloads();
     panel.appendChild(grid);
     container.appendChild(panel);
     section.appendChild(container);
@@ -728,7 +754,9 @@
     const section = el('section', 'section white');
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
-    panel.appendChild(el('h2', '', lang === 'fa' ? 'ارسال درخواست' : lang === 'tr' ? 'Talep gönderin' : lang === 'es' ? 'Enviar una consulta' : lang === 'fr' ? 'Envoyer une demande' : 'Send an Enquiry'));
+    const defaultTitle = lang === 'fa' ? 'ارسال درخواست' : lang === 'tr' ? 'Talep gönderin' : lang === 'es' ? 'Enviar una consulta' : lang === 'fr' ? 'Envoyer une demande' : 'Send an Enquiry';
+    panel.appendChild(el('h2', '', record.formTitle || defaultTitle));
+    if (record.formIntro) panel.appendChild(el('p', '', record.formIntro));
     const form = document.createElement('form');
     form.className = 'form-grid';
     source.fields.forEach((field, index) => {
@@ -738,13 +766,10 @@
       const id = 'field-' + index;
       label.htmlFor = id;
       let control;
-      if (field.tag === 'textarea') {
-        control = document.createElement('textarea');
-      } else if (field.tag === 'select' && field.options && field.options.length) {
+      if (field.tag === 'textarea') control = document.createElement('textarea');
+      else if (field.tag === 'select' && field.options && field.options.length) {
         control = document.createElement('select');
-        field.options.forEach(option => {
-          const o = el('option', '', option.label); o.value = option.value; control.appendChild(o);
-        });
+        field.options.forEach(option => { const o = el('option', '', option.label); o.value = option.value; control.appendChild(o); });
       } else {
         control = document.createElement('input');
         control.type = field.type === 'email' ? 'email' : 'text';
@@ -924,10 +949,10 @@
         app.appendChild(note);
       }
     } else {
+      if (path.endsWith('/api-supply.html') || path === '/api-supply.html') app.appendChild(renderApiCatalog(lang));
       app.appendChild(renderBlocks(record, lang));
     }
-    if (path.endsWith('/api-supply.html') || path === '/api-supply.html') app.appendChild(renderApiCatalog(lang));
-    if (path.endsWith('/contract-manufacturing.html')) app.appendChild(renderDownloads(lang));
+    if (path.endsWith('/contract-manufacturing.html')) app.appendChild(renderDownloads(lang, record));
     const form = renderForm(record, lang);
     if (form) app.appendChild(form);
     const links = renderUsefulLinks(record, lang);
