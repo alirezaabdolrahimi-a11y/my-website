@@ -124,4 +124,27 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     });
   }
 
+  test('Persian homepage, contact, partner and projects routes are available', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Ffa%2F');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fa');
+    await expect(page.locator('.service-grid .service-card')).toHaveCount(26);
+    await expect(page.locator('#partners .partner')).toHaveCount(11);
+    await page.goto('/rebuild/?page=%2Ffa%2Fcontact.html');
+    await expect(page.locator('form.form-grid')).toBeVisible();
+    await expect(page.locator('form.form-grid input, form.form-grid textarea, form.form-grid select')).toHaveCount(7);
+    await page.goto('/rebuild/?page=%2Ffa%2Fbecome-our-partner.html');
+    await expect(page.locator('form.form-grid input, form.form-grid textarea, form.form-grid select')).toHaveCount(9);
+    await page.goto('/rebuild/?page=%2Ffa%2Fprojects.html');
+    await expect(page.locator('h1')).toContainText('پروژه‌ها');
+  });
+
+  test('language switcher uses Persian route when translated and English fallback otherwise', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fabout.html');
+    await page.locator('.language-select').selectOption('fa');
+    await expect(page).toHaveURL(/page=%2Ffa%2Fabout.html/);
+    await page.goto('/rebuild/?page=%2Fapi-supply.html');
+    await page.locator('.language-select').selectOption('fa');
+    await expect(page).toHaveURL(/page=%2Fapi-supply.html/);
+  });
+
 });

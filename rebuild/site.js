@@ -25,7 +25,7 @@
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
       send:'Prepare email enquiry',mailNote:'This form opens a pre-addressed email draft in your email application. It does not submit directly to a server.',
       whatsapp:'WhatsApp',overview:'Page information',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
-      faLimited:'Persian content is currently available for the About page. Other service details open in English until their translations are completed.',
+      faLimited:'صفحه اصلی، درباره ما، پروژه‌ها، تماس و همکاری به فارسی در دسترس‌اند؛ سایر جزئیات خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
       loading:'Loading verified site content…',notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
       email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
@@ -99,14 +99,14 @@
     if (lang === 'tr') return '/tr/';
     if (lang === 'es') return '/es/';
     if (lang === 'fr') return '/fr/';
-    if (lang === 'fa') return '/fa/about.html';
+    if (lang === 'fa') return pageMap.has('/fa/') ? '/fa/' : '/fa/about.html';
     return '/';
   }
   function pageForLanguage(path, lang) {
     const bare = normalizePath(path).replace(/^\/(tr|fa|es|fr)(?=\/)/, '') || '/';
     let candidate = bare;
     if (lang === 'tr') candidate = bare === '/' ? '/tr/' : '/tr' + bare;
-    if (lang === 'fa') candidate = bare === '/about.html' ? '/fa/about.html' : '/fa/about.html';
+    if (lang === 'fa') { candidate = bare === '/' ? '/fa/' : '/fa' + bare; if (pageMap.has(candidate)) return candidate; return pageMap.has(bare) ? bare : langHome(lang); }
     if (lang === 'es' || lang === 'fr') candidate = langHome(lang);
     if (lang === 'en') candidate = bare;
     return pageMap.has(candidate) ? candidate : langHome(lang);
@@ -792,7 +792,7 @@
         let href = rawPath.startsWith('/') ? rawPath : currentPrefix + rawPath.replace(/^\.\//,'');
         if (href === '/index.html') href = '/';
         if (/^\/(tr|es|fr)\/index\.html$/.test(href)) href = href.replace('index.html','');
-        if (href === '/fa/index.html') href = '/fa/about.html';
+        if (href === '/fa/index.html') href = '/fa/';
         href = normalizePath(href);
         if (!pageMap.has(href)) {
           const fallback = pageForLanguage(href, lang);
@@ -873,7 +873,7 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
     updateMetadata(record);
-    const home = path === '/' || path === '/tr/' || path === '/es/' || path === '/fr/';
+    const home = path === '/' || path === '/tr/' || path === '/es/' || path === '/fr/' || path === '/fa/';
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
     app.appendChild(renderHero(record, path, lang));
@@ -884,6 +884,13 @@
         const note = el('section', 'section');
         const box = el('div', 'container');
         box.appendChild(el('p', 'language-note', COPY[lang].limited));
+        note.appendChild(box);
+        app.appendChild(note);
+      }
+      if (lang === 'fa') {
+        const note = el('section', 'section');
+        const box = el('div', 'container');
+        box.appendChild(el('p', 'language-note', COPY.fa.faLimited));
         note.appendChild(box);
         app.appendChild(note);
       }
