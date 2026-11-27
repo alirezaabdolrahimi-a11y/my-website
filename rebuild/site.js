@@ -574,6 +574,42 @@
     footer.appendChild(container);
     return footer;
   }
+  function updateMetadata(record) {
+    const title = record.title || titleFor(record);
+    const description = record.description || descriptionFor(record);
+    document.title = title;
+    let descriptionTag = document.head.querySelector('meta[name="description"]');
+    if (!descriptionTag) {
+      descriptionTag = document.createElement('meta');
+      descriptionTag.name = 'description';
+      document.head.appendChild(descriptionTag);
+    }
+    descriptionTag.content = description;
+    if (record.canonical) {
+      let canonical = document.head.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = record.canonical;
+    }
+    const social = [
+      ['og:title', title],
+      ['og:description', description],
+      ['og:url', record.canonical || window.location.href]
+    ];
+    social.forEach(([property, content]) => {
+      let tag = document.head.querySelector('meta[property="' + property + '"]');
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    });
+  }
+
   function renderPage(path) {
     const record = pageMap.get(path);
     if (!record) {
@@ -583,6 +619,7 @@
     const lang = COPY[record.lang] ? record.lang : 'en';
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+    updateMetadata(record);
     const home = path === '/' || path === '/tr/' || path === '/es/' || path === '/fr/';
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
