@@ -20,6 +20,9 @@ jobs:
   browser-smoke-tests:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: tests
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,14 +37,14 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run multilingual homepage smoke tests
-        run: npm run test:e2e
+        run: npm run test:e2e -- --config=playwright.config.js
       - name: Upload report on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: niaznet-playwright-report
           path: |
-            playwright-report/
-            test-results/
+            tests/playwright-report/
+            tests/test-results/
           if-no-files-found: ignore
           retention-days: 14
