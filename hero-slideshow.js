@@ -65,7 +65,7 @@
     all: {en:'Global products and opportunities',fa:'محصولات و فرصت‌های جهانی',tr:'Küresel ürünler ve fırsatlar'}
   };
 
-  fetch('/images/slideshow-manifest.json', {cache: 'no-cache'})
+  fetch('/images/slideshow-manifest.json')
     .then(function (response) {
       if (!response.ok) throw new Error('Slideshow manifest unavailable');
       return response.json();
@@ -78,16 +78,35 @@
       });
       if (!sources.length) throw new Error('No slideshow images configured for: ' + key);
 
-      // Keep the page's existing artwork visible until the complete manifest is ready.
+      // Reuse the already-rendered first slide when it matches the manifest.
+      // This avoids downloading the hero image twice and prevents a visible swap.
+      var firstLabel = (labels[key] && (labels[key][locale] || labels[key].en)) || 'NIAZ NET';
+      var initialSlide = root.querySelector('.showcase-image');
+      var initialImage = initialSlide && initialSlide.querySelector('img');
+      var initialPath = initialImage ? decodeURI(new URL(initialImage.getAttribute('src'), window.location.href).pathname) : '';
+      var manifestFirstPath = decodeURI(new URL(sources[0], window.location.href).pathname);
+      var reuseInitial = !!(initialImage && initialPath === manifestFirstPath);
+
       root.querySelectorAll('.showcase-image, .showcase-dots, .showcase-arrow').forEach(function (node) {
+        if (reuseInitial && node === initialSlide) return;
         node.remove();
       });
+
       sources.forEach(function (src, index) {
+        if (index === 0 && reuseInitial) {
+          initialSlide.classList.add('active');
+          initialSlide.setAttribute('aria-hidden', 'false');
+          initialImage.alt = firstLabel;
+          initialImage.loading = 'eager';
+          initialImage.decoding = 'async';
+          initialImage.fetchPriority = 'high';
+          return;
+        }
         var slide = document.createElement('div');
         var img = document.createElement('img');
         slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
         img.src = encodeURI(src);
-        img.alt = (labels[key] && (labels[key][locale] || labels[key].en)) || 'NIAZ NET';
+        img.alt = firstLabel;
         img.loading = index === 0 ? 'eager' : 'lazy';
         img.decoding = 'async';
         if (index === 0) img.fetchPriority = 'high';
