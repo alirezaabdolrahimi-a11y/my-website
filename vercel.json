@@ -110,418 +110,522 @@
       "permanent": false
     }
   ],
-  "rewrites": [
+  "rewrites": [],
+  "routes": [
     {
-      "source": "/about.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/contact.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/become-our-partner.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/international-markets.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/brand-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/sports-nutrition.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/infant-formula.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/cosmoderma.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/api-supply.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/medical-devices.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/cbd-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/import-export.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/exclusive-agency.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/chamber-of-commerce.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/market-entry.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/licensing-partnerships.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/pharmaceutical-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/product-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/regulatory-affairs.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/contract-manufacturing.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/technology-transfer.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/international-business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/supply-chain-solutions.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/private-label.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/pet-food.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/nutraceuticals.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/projects.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/cote-divoire-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/cote-divoire-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/kenya-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/south-africa-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/",
-      "destination": "/rebuild/index.html"
+      "src": "^/$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/es/",
-      "destination": "/rebuild/index.html"
+      "src": "^/es/$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fr/",
-      "destination": "/rebuild/index.html"
+      "src": "^/fr/$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/about.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/api-supply.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/become-our-partner.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/brand-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/cbd-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/chamber-of-commerce.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/contact.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/contract-manufacturing.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/cosmoderma.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/cote-divoire-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/cote-divoire-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/exclusive-agency.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/import-export.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/infant-formula.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/international-business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/international-markets.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/kenya-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/licensing-partnerships.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/market-entry.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/medical-devices.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/nutraceuticals.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/pet-food.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/pharmaceutical-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/private-label.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/product-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/projects.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/regulatory-affairs.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/south-africa-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/sports-nutrition.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/supply-chain-solutions.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/technology-transfer.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/about.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/project-details.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/project-details\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/tr/project-details.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/tr/project-details\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/contact.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/become-our-partner.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/projects.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/api-supply.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/import-export.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/sports-nutrition.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/infant-formula.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/cosmoderma.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/contract-manufacturing.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/brand-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/cbd-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/chamber-of-commerce.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/exclusive-agency.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/international-business-development.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/international-markets.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/kenya-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/licensing-partnerships.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/market-entry.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/medical-devices.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/nutraceuticals.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/pet-food.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/pharmaceutical-products.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/private-label.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/product-registration.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/regulatory-affairs.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/south-africa-market.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/supply-chain-solutions.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/technology-transfer.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/fcm-cmo-fa-1.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/fcm-cmo-fa-1\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/fcm-cmo-fa-2.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/fcm-cmo-fa-2\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/fa/fcm-cmo-fa-3.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/fa/fcm-cmo-fa-3\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     },
     {
-      "source": "/index.html",
-      "destination": "/rebuild/index.html"
+      "src": "^/index\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
     }
   ]
 }
