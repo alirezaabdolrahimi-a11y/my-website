@@ -19,7 +19,7 @@
   const COPY = {
     en: {
       home:'Home',about:'About Us',services:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
-      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',
+      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
@@ -32,7 +32,7 @@
     },
     tr: {
       home:'Ana Sayfa',about:'Hakkımızda',services:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
-      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',
+      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
@@ -45,7 +45,7 @@
     },
     fa: {
       home:'صفحه اصلی',about:'درباره ما',services:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
-      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',
+      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
@@ -58,7 +58,7 @@
     },
     es: {
       home:'Inicio',about:'Quiénes somos',services:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
-      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',
+      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
@@ -71,7 +71,7 @@
     },
     fr: {
       home:'Accueil',about:'À propos',services:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
-      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',
+      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
@@ -420,7 +420,7 @@
       card.href = linkTo(routeForService(service.slug, lang));
       const icon = el('span', 'service-icon');
       icon.appendChild(createServiceImage(service));
-      card.append(icon, el('h3', '', textFor(service, lang)));
+      card.append(icon, el('h3', '', isLead ? t.importExportLabel : textFor(service, lang)));
       grid.appendChild(card);
     });
     layout.appendChild(grid);
@@ -1060,6 +1060,14 @@
     app.appendChild(renderFooter(lang));
     const wa = el('a', 'whatsapp whatsapp-float', COPY[lang].whatsapp);
     wa.setAttribute('aria-label', COPY[lang].whatsapp);
+    const waSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    waSvg.setAttribute('viewBox', '0 0 24 24');
+    waSvg.setAttribute('aria-hidden', 'true');
+    const waPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    waPath.setAttribute('fill', 'currentColor');
+    waPath.setAttribute('d', 'M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.45 0 .08 5.37.08 11.98c0 2.11.55 4.17 1.6 5.98L0 24l6.2-1.63a11.9 11.9 0 0 0 5.86 1.53h.01c6.6 0 11.98-5.37 11.98-11.98 0-3.2-1.25-6.2-3.53-8.44ZM12.06 21.87h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.97.98-3.59-.23-.37a9.88 9.88 0 0 1-1.52-5.31c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.98 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.13-.27-.2-.57-.35Z');
+    waSvg.appendChild(waPath);
+    wa.appendChild(waSvg);
     wa.href = 'https://wa.me/905340143473';
     wa.target = '_blank';
     wa.rel = 'noopener noreferrer';
