@@ -368,14 +368,31 @@
     [...new Set(apiItems.map(x => x.category))].sort().forEach(value => {
       const o = el('option', '', value); o.value = value; category.appendChild(o);
     });
-    tools.append(search, category);
+    const sort = document.createElement('select');
+    sort.className = 'field';
+    const sortLabels = {
+      en: ['Sort: original order', 'Name A–Z', 'Name Z–A', 'Category'],
+      fa: ['مرتب‌سازی: ترتیب اصلی', 'نام: الف تا ی', 'نام: ی تا الف', 'دسته‌بندی'],
+      tr: ['Sıralama: özgün sıra', 'Ad A–Z', 'Ad Z–A', 'Kategori'],
+      es: ['Orden: original', 'Nombre A–Z', 'Nombre Z–A', 'Categoría'],
+      fr: ['Tri : ordre initial', 'Nom A–Z', 'Nom Z–A', 'Catégorie']
+    }[lang] || ['Sort: original order', 'Name A–Z', 'Name Z–A', 'Category'];
+    sort.setAttribute('aria-label', sortLabels[0]);
+    [['original',sortLabels[0]],['name-asc',sortLabels[1]],['name-desc',sortLabels[2]],['category',sortLabels[3]]].forEach(([value,label]) => {
+      const option = el('option', '', label);
+      option.value = value;
+      sort.appendChild(option);
+    });
+    tools.append(search, category, sort);
     panel.appendChild(tools);
     const count = el('p', 'api-count');
     const wrap = el('div', 'table-wrap');
     const table = el('table', 'api-table');
     const thead = document.createElement('thead');
     const tr = document.createElement('tr');
-    tr.append(el('th', '', 'Product / Material'), el('th', '', 'Category'));
+    const productHeading = {fa:'محصول / ماده',tr:'Ürün / Hammadde',es:'Producto / Material',fr:'Produit / Matière'}[lang] || 'Product / Material';
+    const categoryHeading = {fa:'دسته‌بندی',tr:'Kategori',es:'Categoría',fr:'Catégorie'}[lang] || 'Category';
+    tr.append(el('th', '', productHeading), el('th', '', categoryHeading));
     thead.appendChild(tr);
     const tbody = document.createElement('tbody');
     table.append(thead, tbody);
@@ -385,12 +402,15 @@
     tools.addEventListener('input', update);
     tools.addEventListener('change', update);
     function update() {
-      const q = search.value.trim().toLowerCase();
+      const q = search.value.trim().toLocaleLowerCase();
       const cat = category.value;
       const filtered = apiItems.filter(item =>
         (!cat || item.category === cat) &&
-        (!q || (item.name + ' ' + item.category).toLowerCase().includes(q))
+        (!q || (item.name + ' ' + item.category).toLocaleLowerCase().includes(q))
       );
+      if (sort.value === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
+      else if (sort.value === 'name-desc') filtered.sort((a,b) => b.name.localeCompare(a.name));
+      else if (sort.value === 'category') filtered.sort((a,b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
       tbody.replaceChildren();
       filtered.forEach(item => {
         const row = document.createElement('tr');

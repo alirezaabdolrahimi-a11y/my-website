@@ -58,7 +58,7 @@ button,a,select{touch-action:manipulation}
 .content-panel blockquote{margin:18px 0;padding:14px 18px;border-left:3px solid var(--gold);background:#fbf8f1;color:#46546a}
 .content-link{display:inline-block;margin:5px 10px 5px 0;color:#0c4c83;font-weight:700;text-decoration:none}
 .content-link:hover{text-decoration:underline}
-.api-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.45fr);gap:12px;margin:20px 0}
+.api-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.45fr) minmax(180px,.4fr);gap:12px;margin:20px 0}
 .field{width:100%;min-height:44px;border:1px solid #cbd4df;border-radius:3px;background:#fff;padding:10px 12px;color:var(--ink)}
 .api-count{color:var(--muted);font-size:13px;margin:10px 0}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:4px}
