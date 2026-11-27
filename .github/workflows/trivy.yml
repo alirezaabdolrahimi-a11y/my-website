@@ -3,7 +3,8 @@ name: NIAZ NET - Trivy Security Scan
 on:
   push:
     branches:
-      - qa/free-agents-2026-11-27
+      - main
+      - qa/free-agent-followup-2026-11-27
   pull_request:
     branches:
       - main
