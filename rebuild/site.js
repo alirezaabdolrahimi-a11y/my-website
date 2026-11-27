@@ -197,7 +197,11 @@
     const dotButtons = [...dots.querySelectorAll('button')];
     function show(i) {
       active = (i + slides.length) % slides.length;
-      slides.forEach((s, n) => { s.classList.toggle('is-active', n === active); s.setAttribute('aria-hidden', String(n !== active)); });
+      slides.forEach((s, n) => {
+        s.classList.toggle('is-active', n === active);
+        s.classList.toggle('active', n === active);
+        s.setAttribute('aria-hidden', String(n !== active));
+      });
       dotButtons.forEach((b, n) => b.setAttribute('aria-current', String(n === active)));
     }
     function stop() { if (timer !== null) { window.clearInterval(timer); timer = null; } }
