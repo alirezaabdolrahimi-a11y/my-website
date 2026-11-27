@@ -169,4 +169,18 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('h1')).toContainText('واردات و صادرات');
   });
 
+  test('Persian brand, business development, CBD, chamber and agency pages are translated', async ({ page }) => {
+    const cases = [
+      ['/fa/brand-registration.html', 'ثبت برند'],
+      ['/fa/business-development.html', 'توسعه کسب‌وکار'],
+      ['/fa/cbd-products.html', 'CBD بدون THC'],
+      ['/fa/chamber-of-commerce.html', 'اتاق بازرگانی'],
+      ['/fa/exclusive-agency.html', 'نمایندگی انحصاری']
+    ];
+    for (const [route, heading] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page.locator('h1')).toContainText(heading);
+    }
+  });
+
 });

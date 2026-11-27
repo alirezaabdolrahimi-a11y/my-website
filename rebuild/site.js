@@ -25,7 +25,7 @@
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
       send:'Prepare email enquiry',mailNote:'This form opens a pre-addressed email draft in your email application. It does not submit directly to a server.',
       whatsapp:'WhatsApp',overview:'Page information',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
-      faLimited:'صفحه اصلی، درباره ما، پروژه‌ها، تماس و همکاری، تأمین API، واردات و صادرات، تغذیه ورزشی، تغذیه نوزاد، کازمودرما و تولید قراردادی به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
+      faLimited:'صفحه اصلی، صفحات اصلی کسب‌وکار و مجموعه‌ای از خدمات منتخب به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
       loading:'Loading verified site content…',notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
       email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
