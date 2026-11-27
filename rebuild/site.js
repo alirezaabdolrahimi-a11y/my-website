@@ -597,11 +597,7 @@
     app.appendChild(wa);
   }
 
-  function normalizePath(path) {
-    if (!path || path === '/index.html') return '/';
-    if (!path.startsWith('/')) path = '/' + path;
-    return path.replace(/\/+/g, '/');
-  }
+
 
   async function init() {
     try {
