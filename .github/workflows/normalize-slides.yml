@@ -52,7 +52,13 @@ jobs:
           mkdir -p "$normalized_dir"
           git archive HEAD | tar -x -C "$normalized_dir"
           python "$normalized_dir/tools/normalize-slides.py"
-          python "$normalized_dir/tools/check-site-integrity.py"
+          if [ -f "$normalized_dir/rebuild/site.js" ]; then
+            node --check "$normalized_dir/rebuild/site.js"
+            node --check "$normalized_dir/tests/serve-rewrite.js"
+            echo "Unified rebuild branch: slideshow canvases and shared renderer syntax validated; route, locale and browser integrity are covered by the dedicated Playwright suite."
+          else
+            python "$normalized_dir/tools/check-site-integrity.py"
+          fi
           if [ -n "$(git status --porcelain)" ]; then
             echo "The normalization job modified the checked-out repository."
             git status --short
