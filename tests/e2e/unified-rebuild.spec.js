@@ -104,4 +104,14 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.main-nav a').filter({ hasText: 'Contacto' })).toHaveAttribute('href', '?page=%2Fcontact.html');
   });
 
+  test('homepage retains partner strip, network map, project icons and contact details', async ({ page }) => {
+    await page.goto('/rebuild/');
+    await expect(page.locator('#partners .partner')).toHaveCount(11);
+    await expect(page.locator('#about .network-map')).toBeVisible();
+    await expect(page.locator('#about .network-routes circle')).toHaveCount(5);
+    await expect(page.locator('#projects .project-card .project-symbol img')).toHaveCount(12);
+    await expect(page.locator('#contact .home-contact-item')).toHaveCount(4);
+    await expect(page.locator('#contact a[href="mailto:info@niaznet.net"]')).toBeVisible();
+  });
+
 });

@@ -112,3 +112,31 @@ button,a,select{touch-action:manipulation}
 #services,#about,#projects,#news,#contact,#offices,#vip-services{scroll-margin-top:88px}
 @media(max-width:900px){.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-grid,.office-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:600px){.feature-grid,.project-grid,.office-grid{grid-template-columns:1fr}.feature-card,.project-card,.office-card{padding:17px}.home-cta{padding:20px}.home-cta-actions{width:100%}.home-cta-actions .btn{flex:1;text-align:center}}
+
+/* Homepage sections matched to the live NIAZ NET content hierarchy. */
+.home-section.partners{padding-top:16px;padding-bottom:8px}
+.partner-strip{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.partner{min-height:56px;display:flex;align-items:center;justify-content:center;gap:4px;border-right:1px solid var(--line);padding:8px;font-weight:800;font-size:13px;color:#25344b;text-align:center}
+.partner:last-child{border-right:0}
+.partner .gold{color:#bc8d32}.partner .blue{color:#1478b7}.partner .green{color:#438b68}
+.home-split{display:grid;grid-template-columns:1.05fr 1fr;gap:12px;padding-top:17px}
+.home-split .panel{border:1px solid var(--line);border-radius:10px;padding:17px;box-shadow:0 4px 20px #10203c05;min-width:0}
+.home-split .panel h2{font-size:16px;margin:0 0 17px;color:var(--navy)}
+.home-split .reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px}
+.home-split .reason{display:flex;gap:8px;align-items:flex-start;min-width:0}
+.home-split .reason-icon{font-size:21px;color:var(--gold);line-height:1.2;flex:0 0 auto}
+.home-split .reason h3{font-size:13px;margin:0 0 5px;color:var(--navy)}
+.home-split .reason p{font-size:11px;line-height:1.55;color:var(--muted);margin:0}
+.network-map{height:210px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#f6f8fb,#fff);border-radius:8px}
+.real-world-map{position:absolute;inset:0;background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/BlankMap-World-Equirectangular.svg');background-position:center;background-repeat:no-repeat;background-size:100% 100%;opacity:.52}
+.network-routes{position:absolute;inset:0;width:100%;height:100%;display:block}
+.network-caption{position:absolute;left:15px;bottom:10px;font-size:9px;letter-spacing:.3px;color:#617087;background:#ffffffd9;border-radius:4px;padding:5px 8px;max-width:calc(100% - 30px)}
+.project-symbol img{width:38px;height:38px;object-fit:contain}
+.home-contact-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.home-contact-item{border-left:1px solid #ffffff2b;padding-left:12px;min-width:0;color:#e5edf7;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.home-contact-item b{display:block;color:#fff;font-size:11px;margin-bottom:4px}
+.home-contact-item a{color:inherit;text-decoration:none}
+.home-contact-item a:hover{text-decoration:underline}
+@media(max-width:1050px){.partner-strip{grid-template-columns:repeat(5,minmax(0,1fr))}.partner:nth-child(5n){border-right:0}.partner:nth-child(n+6){border-top:1px solid var(--line)}}
+@media(max-width:900px){.home-split{grid-template-columns:1fr}.home-contact-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.partner-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.partner{border-top:1px solid var(--line)}.partner:nth-child(2n){border-right:0}.home-split .reasons{grid-template-columns:1fr}.home-contact-details{grid-template-columns:1fr}.home-contact-item{border-left:0;border-top:1px solid #ffffff2b;padding:10px 0 0}}

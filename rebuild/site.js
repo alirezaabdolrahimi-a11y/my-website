@@ -28,7 +28,7 @@
       faLimited:'Persian content is currently available for the About page. Other service details open in English until their translations are completed.',
       loading:'Loading verified site content…',notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
-      email:'Email',phone:'Telephone',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
+      email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
     },
     tr: {
       home:'Ana Sayfa',about:'Hakkımızda',projects:'Projeler',contact:'İletişim',partner:'İş Ortağımız Olun',
@@ -41,7 +41,7 @@
       faLimited:'Farsça içerik şu anda yalnızca Hakkımızda sayfasında mevcuttur. Diğer hizmet ayrıntıları çevirileri tamamlanana kadar İngilizce açılır.',
       loading:'Doğrulanmış site içeriği yükleniyor…',notFound:'Bu sayfa mevcut canlı site envanterinde bulunmuyor.',
       office:'Tahran Ofisi',address:'Marjan Tower, 6. Kat, 603 numaralı ofis, Kuzey Mofatteh Caddesi, Tahran, İran',
-      email:'E-posta',phone:'Telefon',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
+      email:'E-posta',phone:'Telefon',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
     },
     fa: {
       home:'صفحه اصلی',about:'درباره ما',projects:'پروژه‌ها',contact:'تماس با ما',partner:'همکاری با ما',
@@ -54,7 +54,7 @@
       faLimited:'در حال حاضر محتوای فارسی فقط برای صفحه درباره ما موجود است. سایر صفحات خدمات تا زمان تکمیل ترجمه به زبان انگلیسی باز می‌شوند.',
       loading:'در حال بارگذاری محتوای تأییدشده سایت…',notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
       office:'دفتر تهران',address:'ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳',
-      email:'ایمیل',phone:'تلفن',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
+      email:'ایمیل',phone:'تلفن',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
     },
     es: {
       home:'Inicio',about:'Quiénes somos',projects:'Proyectos',contact:'Contacto',partner:'Conviértase en socio',
@@ -67,7 +67,7 @@
       faLimited:'El contenido en persa está disponible actualmente solo para la página Acerca de nosotros.',
       loading:'Cargando contenido verificado…',notFound:'Esta página no figura en el inventario actual del sitio.',
       office:'Oficina de Teherán',address:'Unidad 603, 6.º piso, Marjan Tower, North Mofatteh St., Teherán, Irán',
-      email:'Correo electrónico',phone:'Teléfono',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
+      email:'Correo electrónico',phone:'Teléfono',addressLabel:'Dirección de Teherán',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
     },
     fr: {
       home:'Accueil',about:'À propos',projects:'Projets',contact:'Contact',partner:'Devenir partenaire',
@@ -80,7 +80,7 @@
       faLimited:'Le contenu en persan est actuellement disponible uniquement pour la page À propos.',
       loading:'Chargement du contenu vérifié…',notFound:'Cette page ne figure pas dans l’inventaire actuel du site.',
       office:'Bureau de Téhéran',address:'Unité 603, 6e étage, Marjan Tower, North Mofatteh St., Téhéran, Iran',
-      email:'E-mail',phone:'Téléphone',copyright:'NIAZ NET · Aperçu unifié · Branche isolée'
+      email:'E-mail',phone:'Téléphone',addressLabel:'Adresse de Téhéran',copyright:'NIAZ NET · Aperçu unifié · Branche isolée'
     }
   };
 
@@ -364,6 +364,81 @@
     section.appendChild(container);
     return section;
   }
+  function renderNetworkMap(network) {
+    const map = el('div', 'network-map network-map-modern');
+    map.setAttribute('role', 'img');
+    map.setAttribute('aria-label', (network.locations || []).map(x => x.name).join(', '));
+    map.appendChild(el('div', 'real-world-map'));
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'network-routes');
+    svg.setAttribute('viewBox', '0 0 900 430');
+    svg.setAttribute('role', 'presentation');
+    const paths = [
+      'M440 119 Q470 103 537 122',
+      'M470 103 Q505 108 537 122',
+      'M537 122 Q560 130 582 138',
+      'M537 122 Q586 140 645 162',
+      'M582 138 Q610 148 645 162'
+    ];
+    paths.forEach(d => {
+      const path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', '#c99a43');
+      path.setAttribute('stroke-width', '3');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('opacity', '.9');
+      svg.appendChild(path);
+    });
+    (network.locations || []).forEach(point => {
+      const circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', point.x);
+      circle.setAttribute('cy', point.y);
+      circle.setAttribute('r', '8');
+      circle.setAttribute('fill', '#071b38');
+      circle.setAttribute('stroke', '#fff');
+      circle.setAttribute('stroke-width', '4');
+      svg.appendChild(circle);
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', point.x + (point.x === 440 ? -38 : 10));
+      label.setAttribute('y', point.y + (point.name === 'Switzerland' || point.name === 'İsviçre' || point.name === 'Suiza' || point.name === 'Suisse' ? -12 : 8));
+      label.setAttribute('fill', '#071b38');
+      label.setAttribute('font-family', 'Arial,sans-serif');
+      label.setAttribute('font-size', '18');
+      label.setAttribute('font-weight', '700');
+      label.textContent = point.name;
+      svg.appendChild(label);
+    });
+    map.appendChild(svg);
+    map.appendChild(el('div', 'network-caption', network.caption || ''));
+    return map;
+  }
+
+  function renderFeatureNetwork(featureGroup, networkGroup, record) {
+    const section = el('section', 'container split home-split');
+    section.id = 'about';
+    const left = el('div', 'panel');
+    left.appendChild(el('h2', '', featureGroup.title));
+    const reasons = el('div', 'reasons');
+    const icons = ['◎','♧','♧','▤','♙','◎','▱','♧'];
+    featureGroup.items.forEach((entry, index) => {
+      const reason = el('div', 'reason');
+      reason.appendChild(el('div', 'reason-icon', icons[index] || '•'));
+      const copy = el('div');
+      copy.appendChild(el('h3', '', entry.title));
+      entry.paragraphs.forEach(p => copy.appendChild(el('p', '', p)));
+      reason.appendChild(copy);
+      reasons.appendChild(reason);
+    });
+    left.appendChild(reasons);
+    const right = el('div', 'panel');
+    right.appendChild(el('h2', '', networkGroup.title));
+    if (record.network) right.appendChild(renderNetworkMap(record.network));
+    section.append(left, right);
+    return section;
+  }
+
   function renderHomeSections(record, lang) {
     const blocks = Array.isArray(record.blocks) ? record.blocks : [];
     const groups = [];
@@ -376,10 +451,7 @@
         groups.push(current);
         item = null;
       } else if (block.type === 'h3') {
-        if (!current) {
-          current = { title: '', paragraphs: [], items: [] };
-          groups.push(current);
-        }
+        if (!current) { current = { title: '', paragraphs: [], items: [] }; groups.push(current); }
         item = { title: block.text, paragraphs: [] };
         current.items.push(item);
       } else if (block.type === 'p' || block.type === 'li') {
@@ -388,12 +460,19 @@
       }
     });
     const output = [];
+    const featureGroup = groups.find(g => /why choose|neden|por qué|pourquoi/.test(g.title.toLocaleLowerCase()));
+    const networkGroup = groups.find(g => /network|ağımız|red global|réseau/.test(g.title.toLocaleLowerCase()));
+    const renderedFeatureNetwork = Boolean(featureGroup && networkGroup && record.network);
     groups.forEach((group, index) => {
+      if (renderedFeatureNetwork && group === networkGroup) return;
       const title = group.title || '';
       const normalized = title.toLocaleLowerCase();
-      if (/vip/.test(normalized)) return;
-      if (!group.items.length && !group.paragraphs.length) return;
+      if (renderedFeatureNetwork && group === featureGroup) {
+        output.push(renderFeatureNetwork(featureGroup, networkGroup, record));
+        return;
+      }
       let kind = 'generic', id = 'home-section-' + index;
+      if (/vip/.test(normalized)) return;
       if (/why choose|neden|por qué|pourquoi/.test(normalized)) { kind = 'features'; id = 'about'; }
       else if (/project|proje|proyectos|projets/.test(normalized)) { kind = 'projects'; id = 'projects'; }
       else if (/news|haber|noticias|actualités|actualites/.test(normalized)) { kind = 'news'; id = 'news'; }
@@ -402,15 +481,41 @@
       else if (/partner|iş ortağı|socios|partenaires/.test(normalized)) { kind = 'partners'; id = 'partners'; }
       else if (/network|ağımız|red global|réseau/.test(normalized)) { kind = 'network'; id = 'network'; }
       else return;
+      const hasPartnerData = kind === 'partners' && Array.isArray(record.partners) && record.partners.length;
+      if (!group.items.length && !group.paragraphs.length && !hasPartnerData && !(kind === 'network' && record.network)) return;
       const section = el('section', 'section home-section ' + kind);
       section.id = id;
       const container = el('div', 'container');
       if (title) container.appendChild(el('h2', 'section-title', title));
-      if (kind === 'features' || kind === 'projects' || kind === 'offices') {
+      if (kind === 'partners') {
+        const strip = el('div', 'partner-strip');
+        (record.partners || []).forEach(partner => {
+          const card = el('div', 'partner');
+          if (partner.mark) card.appendChild(el('span', partner.tone || '', partner.mark));
+          card.appendChild(document.createTextNode((partner.mark ? ' ' : '') + partner.name));
+          strip.appendChild(card);
+        });
+        container.appendChild(strip);
+      } else if (kind === 'projects' || kind === 'features' || kind === 'offices') {
         const gridClass = kind === 'features' ? 'feature-grid' : kind === 'projects' ? 'project-grid' : 'office-grid';
         const grid = el('div', gridClass);
-        group.items.forEach(entry => {
+        group.items.forEach((entry, entryIndex) => {
           const card = el('article', kind === 'features' ? 'feature-card' : kind === 'projects' ? 'project-card' : 'office-card');
+          if (kind === 'projects') {
+            const symbol = el('span', 'project-symbol');
+            const imagePath = (record.projectImages || [])[entryIndex];
+            if (imagePath) {
+              const image = document.createElement('img');
+              image.src = imagePath;
+              image.alt = '';
+              image.loading = 'lazy';
+              image.decoding = 'async';
+              symbol.appendChild(image);
+            }
+            card.appendChild(symbol);
+          } else if (kind === 'offices') {
+            card.appendChild(el('span', 'project-symbol', '⌖'));
+          }
           card.appendChild(el('h3', '', entry.title));
           entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
           grid.appendChild(card);
@@ -427,19 +532,42 @@
         partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
         actions.append(contact, partner);
         band.appendChild(actions);
+        const details = record.contactDetails;
+        if (details) {
+          const detailGrid = el('div', 'home-contact-details');
+          const t = COPY[lang] || COPY.en;
+          const items = [
+            {label:t.email,value:details.email,href:'mailto:'+details.email},
+            {label:t.office,value:details.phone,href:'tel:+982188322100'},
+            {label:t.whatsapp,value:details.whatsapp,href:'https://wa.me/905340143473'},
+            {label:t.addressLabel,value:details.address}
+          ];
+          items.forEach(item => {
+            const entry = el('div', 'home-contact-item');
+            entry.appendChild(el('b', '', item.label));
+            if (item.href) {
+              const link = el('a', '', item.value);
+              link.href = item.href;
+              if (item.href.startsWith('https://')) { link.target='_blank'; link.rel='noopener noreferrer'; }
+              entry.appendChild(link);
+            } else entry.appendChild(el('span', '', item.value));
+            detailGrid.appendChild(entry);
+          });
+          band.appendChild(detailGrid);
+        }
         container.appendChild(band);
+      } else if (kind === 'news') {
+        const placeholder = el('div', 'news-placeholder');
+        placeholder.appendChild(el('strong', '', title));
+        group.paragraphs.forEach(paragraph => placeholder.appendChild(el('p', '', paragraph)));
+        const contact = el('a', 'btn', (COPY[lang] || COPY.en).contactCta);
+        contact.href = linkTo(pageForAction('/contact.html', lang));
+        placeholder.appendChild(contact);
+        container.appendChild(placeholder);
+      } else if (kind === 'network' && record.network) {
+        container.appendChild(renderNetworkMap(record.network));
       } else {
         group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
-        if (group.items.length) {
-          const grid = el('div', 'feature-grid');
-          group.items.forEach(entry => {
-            const card = el('article', 'feature-card');
-            card.appendChild(el('h3', '', entry.title));
-            entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
-            grid.appendChild(card);
-          });
-          container.appendChild(grid);
-        }
       }
       section.appendChild(container);
       output.push(section);
