@@ -130,7 +130,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('Persian homepage, contact, partner and projects routes are available', async ({ page }) => {
     await page.goto('/rebuild/?page=%2Ffa%2F');
     await expect(page.locator('html')).toHaveAttribute('lang', 'fa');
-    await expect(page.locator('.service-grid .service-card')).toHaveCount(26);
+    await expect(page.locator('.services-grid .service-card')).toHaveCount(23);
+    await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     await expect(page.locator('#partners .partner')).toHaveCount(11);
     await page.goto('/rebuild/?page=%2Ffa%2Fcontact.html');
     await expect(page.locator('form.form-grid')).toBeVisible();

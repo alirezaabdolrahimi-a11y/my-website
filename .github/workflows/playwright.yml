@@ -47,6 +47,7 @@ jobs:
           name: niaznet-playwright-report
           path: |
             tests/playwright-report/
-            tests/test-results/
+            tests/test-results/**/rebuild-*.png
+            tests/test-results/**/live-*.png
           if-no-files-found: ignore
           retention-days: 14
