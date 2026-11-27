@@ -78,21 +78,14 @@
       });
       if (!sources.length) throw new Error('No slideshow images configured for: ' + key);
 
-      // Keep the page's existing artwork visible until the complete manifest is ready.
       root.querySelectorAll('.showcase-image, .showcase-dots, .showcase-arrow').forEach(function (node) {
         node.remove();
       });
       sources.forEach(function (src, index) {
         var slide = document.createElement('div');
-        var img = document.createElement('img');
         slide.className = 'showcase-image' + (index === 0 ? ' active' : '');
-        img.src = encodeURI(src);
-        img.alt = (labels[key] && (labels[key][locale] || labels[key].en)) || 'NIAZ NET';
-        img.loading = index === 0 ? 'eager' : 'lazy';
-        img.decoding = 'async';
-        if (index === 0) img.fetchPriority = 'high';
-        img.onerror = function () { slide.classList.add('image-missing'); };
-        slide.appendChild(img);
+        slide.dataset.imageSrc = encodeURI(src);
+        slide.setAttribute('aria-hidden', String(index !== 0));
         root.appendChild(slide);
       });
       root.dataset.slideshowKey = key;
@@ -146,8 +139,23 @@
     });
     root.appendChild(dotsWrap);
 
+    function loadImage(index, priority) {
+      var slide = slides[index];
+      if (!slide || slide.querySelector('img')) return;
+      var img = document.createElement('img');
+      img.src = slide.dataset.imageSrc;
+      img.alt = (labels[key] && (labels[key][locale] || labels[key].en)) || 'NIAZ NET';
+      img.loading = priority ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      if (priority) img.fetchPriority = 'high';
+      img.onerror = function () { slide.classList.add('image-missing'); };
+      slide.appendChild(img);
+    }
+
     function show(index) {
       current = (index + slides.length) % slides.length;
+      loadImage(current, true);
+      if (slides.length > 1) loadImage((current + 1) % slides.length, false);
       slides.forEach(function (slide, i) {
         var active = i === current;
         slide.classList.toggle('active', active);
