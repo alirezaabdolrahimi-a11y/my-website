@@ -199,4 +199,18 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('a[href="https://ppb.go.ke/"]')).toHaveAttribute('target', '_blank');
   });
 
+  test('Persian medical, nutraceutical, pet-food, pharmaceutical and private-label routes render', async ({ page }) => {
+    const cases = [
+      ['/fa/medical-devices.html', 'تجهیزات پزشکی'],
+      ['/fa/nutraceuticals.html', 'نوتراسیوتیک‌ها'],
+      ['/fa/pet-food.html', 'غذای حیوانات'],
+      ['/fa/pharmaceutical-products.html', 'محصولات نهایی دارویی'],
+      ['/fa/private-label.html', 'تولید با برند اختصاصی']
+    ];
+    for (const [route, heading] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page.locator('h1')).toContainText(heading);
+    }
+  });
+
 });
