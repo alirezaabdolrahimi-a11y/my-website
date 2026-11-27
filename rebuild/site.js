@@ -617,8 +617,13 @@
           entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
           grid.appendChild(card);
         });
+        if (kind === 'projects') {
+          group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
+        }
         container.appendChild(grid);
-        group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
+        if (kind !== 'projects') {
+          group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
+        }
       } else if (kind === 'cta') {
         const band = el('div', 'home-cta');
         group.paragraphs.forEach(paragraph => band.appendChild(el('p', '', paragraph)));

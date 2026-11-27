@@ -168,3 +168,32 @@ button,a,select{touch-action:manipulation}
 .home-contact-item a:hover{text-decoration:underline}
 @media(max-width:900px){.home-split{grid-template-columns:1fr}.home-contact-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.partner-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.partner{border-top:1px solid var(--line)}.partner:nth-child(2n){border-inline-end:0}.home-split .reasons{grid-template-columns:1fr}.home-contact-details{grid-template-columns:1fr}.home-contact-item{border-inline-start:0;border-top:1px solid #ffffff2b;padding:10px 0 0;padding-inline-start:0}}
+
+
+/* Visual parity pass: align homepage proportions with the retained live design. */
+:root{--paper:#fff;--line:#e6eaf0;--soft:#f7f9fc}
+body{background:#fff;font-family:Inter,Arial,sans-serif}
+.container{width:min(1240px,calc(100% - 48px))}
+.services-grid{grid-template-columns:repeat(auto-fit,5cm);column-gap:10px;row-gap:12px}
+.services-grid>.service-card:not(.import-export-card){width:5cm;min-width:5cm;max-width:5cm;height:2cm;min-height:2cm;max-height:2cm}
+.services-grid>.service-card:not(.import-export-card) .service-icon{width:44px;height:44px;min-width:44px;min-height:44px;flex-basis:44px}
+.services-grid>.service-card:not(.import-export-card) h3{white-space:nowrap;overflow:visible;overflow-wrap:normal;word-break:normal}
+.vip-service-link{width:6cm;min-width:6cm;max-width:6cm;height:1.5cm;min-height:1.5cm;max-height:1.5cm}
+.vip-service-link img{width:36px;height:34px;min-width:36px;min-height:34px;flex-basis:36px}
+.vip-service-link .vip-label{font-size:11px}
+.home-section:not(.partners){padding:22px 0 0}
+.home-section .section-title{font-size:17px;margin:0 0 17px}
+.home-split .panel h2{font-size:14px}
+.home-split .reasons{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px 12px}
+.footer{margin-top:0;border-radius:10px 10px 0 0}
+@media(max-width:1050px){
+  .services-grid{grid-template-columns:repeat(auto-fit,5cm)}
+}
+@media(max-width:760px){
+  .services-grid{grid-template-columns:repeat(auto-fit,5cm);justify-content:center}
+  .home-split .reasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:480px){
+  .container{width:calc(100% - 28px)}
+  .home-split .reasons{grid-template-columns:1fr}
+}
