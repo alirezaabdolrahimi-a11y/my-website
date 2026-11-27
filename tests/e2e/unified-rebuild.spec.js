@@ -213,4 +213,20 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('Persian product registration, regulatory, South Africa, supply chain and technology-transfer routes render', async ({ page }) => {
+    const cases = [
+      ['/fa/product-registration.html', 'ثبت محصول'],
+      ['/fa/regulatory-affairs.html', 'امور رگولاتوری'],
+      ['/fa/south-africa-market.html', 'آفریقای جنوبی'],
+      ['/fa/supply-chain-solutions.html', 'زنجیره تأمین'],
+      ['/fa/technology-transfer.html', 'انتقال فناوری']
+    ];
+    for (const [route, heading] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page.locator('h1')).toContainText(heading);
+    }
+    await page.goto('/rebuild/?page=%2Ffa%2Fsouth-africa-market.html');
+    await expect(page.locator('a[href="https://www.sahpra.org.za/document/guideline-for-the-importation-and-exportation-of-medicines/"]')).toHaveAttribute('target', '_blank');
+  });
+
 });
