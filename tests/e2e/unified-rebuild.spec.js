@@ -126,7 +126,13 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     const slideshow = page.locator('.slideshow');
     await expect(slideshow).toHaveCount(1);
     const slideCount = await slideshow.locator('.slide').count();
-    expect(slideCount).toBeGreaterThan(0);
+    expect(slideCount).toBe(19);
+    const slideSources = await slideshow.locator('.slide img').evaluateAll(images =>
+      images.map(image => image.getAttribute('src') || image.dataset.src)
+    );
+    expect(slideSources).toHaveLength(19);
+    expect(slideSources[0]).toBe('/images/Home page/00ALL.png');
+    expect(slideSources[18]).toBe('/images/Home page/18Infant.png');
     await expect(slideshow.locator('.slide-dot')).toHaveCount(slideCount);
     await expect(slideshow.locator('button[aria-label*="previous"], button[aria-label*="next"]')).toHaveCount(0);
     const firstImage = slideshow.locator('.slide.is-active img');
