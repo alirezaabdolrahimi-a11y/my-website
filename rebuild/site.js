@@ -241,15 +241,17 @@
     nav.id = 'main-nav';
     const items = [
       [t.home, langHome(lang)],
-      [t.about, pageForLanguage('/about.html', lang)],
-      [t.projects, pageForLanguage('/projects.html', lang)],
-      [t.contact, pageForAction('/contact.html', lang)],
-      [t.partner, pageForAction('/become-our-partner.html', lang)]
+      [t.about, '/about.html'],
+      [t.projects, '/projects.html'],
+      [t.contact, '/contact.html'],
+      [t.partner, '/become-our-partner.html']
     ];
     items.forEach(([label, path]) => {
       const a = el('a', '', label);
       a.href = navigationHref(path, lang);
-      if (normalizePath(path) === currentPath) a.setAttribute('aria-current', 'page');
+      const sectionAnchor = (lang === 'es' || lang === 'fr') &&
+        (path === '/about.html' || path === '/projects.html');
+      if (!sectionAnchor && normalizePath(path) === currentPath) a.setAttribute('aria-current', 'page');
       nav.appendChild(a);
     });
     const select = el('select', 'language-select');
@@ -323,6 +325,7 @@
     const panel = el('div', 'content-panel');
     const blocks = Array.isArray(record.blocks) ? record.blocks : [];
     let skippedH1 = false, skippedP = false, list = [];
+    const renderedTableIndexes = new Set();
     const flushList = () => {
       if (!list.length) return;
       const ul = document.createElement('ul');
@@ -339,7 +342,9 @@
       else if (block.type === 'h3') panel.appendChild(el('h3', '', block.text));
       else if (block.type === 'p') panel.appendChild(el('p', '', block.text));
       else if (block.type === 'blockquote') panel.appendChild(el('blockquote', '', block.text));
-      else if (block.type === 'table' && record.tables && record.tables[block.index]) {
+      else if (block.type === 'table' && record.tables && record.tables[block.index] &&
+          !renderedTableIndexes.has(block.index)) {
+        renderedTableIndexes.add(block.index);
         panel.appendChild(renderDataTable(record.tables[block.index], lang));
       }
     });

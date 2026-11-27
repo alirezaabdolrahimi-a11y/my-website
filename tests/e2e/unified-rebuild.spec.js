@@ -91,7 +91,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
 
   test('homepage preserves the live feature, project and office sections', async ({ page }) => {
     await page.goto('/rebuild/');
-    await expect(page.locator('#about .feature-card')).toHaveCount(8);
+    await expect(page.locator('#about .reasons .reason')).toHaveCount(8);
     await expect(page.locator('#projects .project-card')).toHaveCount(12);
     await expect(page.locator('#offices .office-card')).toHaveCount(3);
     await expect(page.locator('#contact .home-cta')).toBeVisible();
@@ -138,13 +138,17 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('h1')).toContainText('پروژه‌ها');
   });
 
-  test('language switcher uses Persian route when translated and English fallback otherwise', async ({ page }) => {
+  test('language switcher uses translated Persian routes and preserves English fallback routes', async ({ page }) => {
     await page.goto('/rebuild/?page=%2Fabout.html');
     await page.locator('.language-select').selectOption('fa');
     await expect(page).toHaveURL(/page=%2Ffa%2Fabout.html/);
     await page.goto('/rebuild/?page=%2Fapi-supply.html');
     await page.locator('.language-select').selectOption('fa');
-    await expect(page).toHaveURL(/page=%2Fapi-supply.html/);
+    await expect(page).toHaveURL(/page=%2Ffa%2Fapi-supply.html/);
+    await expect(page.locator('h1')).toContainText('تأمین API');
+    await page.goto('/rebuild/?page=%2Fproject-details.html');
+    await page.locator('.language-select').selectOption('fa');
+    await expect(page).toHaveURL(/page=%2Fproject-details.html/);
   });
 
   test('Persian homepage includes all three office cards', async ({ page }) => {
@@ -156,6 +160,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Ffa%2Fapi-supply.html');
     await expect(page.locator('.api-count')).toContainText('239 / 239');
     await page.goto('/rebuild/?page=%2Ffa%2Fsports-nutrition.html');
+    await expect(page.locator('.product-price-table')).toHaveCount(1);
     await expect(page.locator('.product-price-table tbody tr')).toHaveCount(6);
     await expect(page.locator('.product-price-table thead')).toContainText('قیمت / کیلوگرم');
     await page.goto('/rebuild/?page=%2Ffa%2Fcontract-manufacturing.html');
