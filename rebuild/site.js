@@ -436,6 +436,7 @@
       sterile:{en:'Sterile liquids (injectables)',fa:'مایعات استریل (تزریقی)',tr:'Steril sıvılar (enjeksiyon)',es:'Líquidos estériles (inyectables)',fr:'Liquides stériles (injectables)'}
     };
     const section = el('section', 'section white');
+    section.id = 'fcm-downloads';
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
     panel.appendChild(el('h2', '', t.downloads));
@@ -525,9 +526,10 @@
   function renderUsefulLinks(record, lang) {
     const t = COPY[lang] || COPY.en;
     const candidates = (record.links || []).filter(x => x.href && (
-      x.href.startsWith('mailto:') || x.href.startsWith('tel:') ||
+      x.href.startsWith('#') || x.href.startsWith('mailto:') || x.href.startsWith('tel:') ||
       x.href.startsWith('http://') || x.href.startsWith('https://') ||
-      x.href.includes('/downloads/') || /\.html(?:$|[?#])/i.test(x.href)
+      x.href.includes('/downloads/') || x.href.startsWith('downloads/') ||
+      /\.html(?:$|[?#])/i.test(x.href)
     ));
     const seen = new Set();
     const filtered = candidates.filter(x => {
@@ -540,21 +542,35 @@
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
     panel.appendChild(el('h2', '', t.useful));
-    filtered.slice(0,20).forEach(item => {
+    filtered.slice(0,30).forEach(item => {
       const a = el('a', 'content-link', item.text || item.href);
-      if (item.href.startsWith('mailto:') || item.href.startsWith('tel:')) {
+      if (item.href.startsWith('#')) {
+        a.href = linkTo(record.path, item.href);
+      } else if (item.href.startsWith('mailto:') || item.href.startsWith('tel:')) {
         a.href = item.href;
       } else if (item.href.startsWith('http://') || item.href.startsWith('https://')) {
         a.href = item.href;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
+      } else if (item.href.includes('/downloads/') || item.href.startsWith('downloads/')) {
+        a.href = item.href.startsWith('/') ? item.href : '/' + item.href;
       } else {
         const currentPrefix = record.path.startsWith('/tr/') ? '/tr/' :
           record.path.startsWith('/es/') ? '/es/' :
           record.path.startsWith('/fr/') ? '/fr/' :
           record.path.startsWith('/fa/') ? '/fa/' : '/';
-        const href = item.href.startsWith('/') ? item.href : currentPrefix + item.href.replace(/^\.\//,'');
-        a.href = linkTo(pageMap.has(href) ? href : href);
+        const rawPath = item.href.split(/[?#]/)[0];
+        const hash = item.href.includes('#') ? item.href.slice(item.href.indexOf('#')) : '';
+        let href = rawPath.startsWith('/') ? rawPath : currentPrefix + rawPath.replace(/^\.\//,'');
+        if (href === '/index.html') href = '/';
+        if (/^\/(tr|es|fr)\/index\.html$/.test(href)) href = href.replace('index.html','');
+        if (href === '/fa/index.html') href = '/fa/about.html';
+        href = normalizePath(href);
+        if (!pageMap.has(href)) {
+          const fallback = pageForLanguage(href, lang);
+          href = pageMap.has(fallback) ? fallback : langHome(lang);
+        }
+        a.href = linkTo(href, hash);
       }
       panel.appendChild(a);
     });
@@ -565,6 +581,7 @@
   function renderFooter(lang) {
     const t = COPY[lang] || COPY.en;
     const footer = el('footer', 'footer');
+    footer.id = 'contact';
     const container = el('div', 'container');
     const grid = el('div', 'footer-grid');
     const about = el('div');
