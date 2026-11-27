@@ -18,7 +18,7 @@
 
   const COPY = {
     en: {
-      home:'Home',about:'About Us',services:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
+      home:'Home',about:'About Us',navServices:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
       services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
@@ -31,7 +31,7 @@
       email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
     },
     tr: {
-      home:'Ana Sayfa',about:'Hakkımızda',services:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
+      home:'Ana Sayfa',about:'Hakkımızda',navServices:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
       services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
@@ -44,20 +44,20 @@
       email:'E-posta',phone:'Telefon',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
     },
     fa: {
-      home:'صفحه اصلی',about:'درباره ما',services:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
+      home:'صفحه اصلی',about:'درباره ما',navServices:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
       services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
       send:'آماده‌سازی ایمیل درخواست',mailNote:'این فرم یک پیش‌نویس ایمیل به نشانی info@niaznet.net باز می‌کند و اطلاعات را مستقیماً به سرور ارسال نمی‌کند.',
       whatsapp:'واتساپ',overview:'اطلاعات صفحه',useful:'پیوندهای مفید',limited:'صفحه اصلی بومی‌سازی‌شده در دسترس است؛ در صورت نبود صفحه خدمات ترجمه‌شده، جزئیات خدمات ممکن است به زبان انگلیسی باز شود.',
-      faLimited:'در حال حاضر محتوای فارسی فقط برای صفحه درباره ما موجود است. سایر صفحات خدمات تا زمان تکمیل ترجمه به زبان انگلیسی باز می‌شوند.',
+      faLimited:'صفحه اصلی، صفحات درباره ما، پروژه‌ها، تماس و همکاری و ۲۶ صفحه خدمات به زبان فارسی در دسترس هستند.',
       loading:'در حال بارگذاری محتوای تأییدشده سایت…',notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
       office:'دفتر تهران',address:'ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳',
       email:'ایمیل',phone:'تلفن',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
     },
     es: {
-      home:'Inicio',about:'Quiénes somos',services:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
+      home:'Inicio',about:'Quiénes somos',navServices:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
       services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
@@ -70,7 +70,7 @@
       email:'Correo electrónico',phone:'Teléfono',addressLabel:'Dirección de Teherán',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
     },
     fr: {
-      home:'Accueil',about:'À propos',services:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
+      home:'Accueil',about:'À propos',navServices:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
       services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
@@ -128,7 +128,8 @@
   }
   function routeForService(slug, lang) {
     const en = '/' + slug + '.html';
-    if (lang === 'tr' && pageMap.has('/tr/' + slug + '.html')) return '/tr/' + slug + '.html';
+    const localized = '/' + lang + '/' + slug + '.html';
+    if ((lang === 'fa' || lang === 'tr') && pageMap.has(localized)) return localized;
     if (pageMap.has(en)) return en;
     return langHome(lang);
   }
@@ -140,11 +141,11 @@
   }
   function titleFor(record) {
     const h1 = (record.blocks || []).find(b => b.type === 'h1');
-    return h1 ? h1.text : ((record.headings || [])[0] || record.title || 'NIAZ NET');
+    return h1 ? h1.text : (record.title || 'NIAZ NET');
   }
   function descriptionFor(record) {
     const p = (record.blocks || []).find(b => b.type === 'p');
-    return p ? p.text : ((record.paragraphs || [])[0] || record.description || '');
+    return p ? p.text : (record.description || '');
   }
   function slideGroup(path) {
     const bare = normalizePath(path).replace(/^\/(tr|fa|es|fr)(?=\/)/, '');
@@ -179,9 +180,9 @@
       const slide = el('div', 'slide showcase-image' + (index === 0 ? ' is-active active' : ''));
       slide.setAttribute('aria-hidden', String(index !== 0));
       const img = document.createElement('img');
-      img.src = src;
+      img.dataset.src = src;
       img.alt = label + ' — ' + (index + 1);
-      img.loading = index === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
       slide.appendChild(img);
       wrap.appendChild(slide);
       slides.push(slide);
@@ -195,8 +196,19 @@
     wrap.appendChild(dots);
     let active = 0, timer = null, startX = null;
     const dotButtons = [...dots.querySelectorAll('button')];
+    function loadSlide(i, priority) {
+      const img = slides[i].querySelector('img');
+      if (!img || img.hasAttribute('src')) return;
+      const src = img.dataset.src;
+      delete img.dataset.src;
+      img.loading = 'eager';
+      img.fetchPriority = priority ? 'high' : 'low';
+      img.src = src;
+    }
     function show(i) {
       active = (i + slides.length) % slides.length;
+      loadSlide(active, true);
+      if (slides.length > 1) loadSlide((active + 1) % slides.length, false);
       slides.forEach((s, n) => {
         s.classList.toggle('is-active', n === active);
         s.classList.toggle('active', n === active);
@@ -254,7 +266,7 @@
     const items = [
       [t.home, langHome(lang)],
       [t.about, '/about.html'],
-      [t.services, '#services'],
+      [t.navServices, '#services'],
       [t.partners, '#partners'],
       [t.projects, '/projects.html'],
       [t.news, '#news'],
@@ -377,9 +389,6 @@
       }
     });
     flushList();
-    if (!panel.childElementCount) {
-      (record.paragraphs || []).slice(1).forEach(p => panel.appendChild(el('p', '', p)));
-    }
     container.appendChild(panel);
     section.appendChild(container);
     return section;
@@ -826,9 +835,15 @@
       label.htmlFor = id;
       let control;
       if (field.tag === 'textarea') control = document.createElement('textarea');
-      else if (field.tag === 'select' && field.options && field.options.length) {
+      else if (field.tag === 'select') {
         control = document.createElement('select');
-        field.options.forEach(option => { const o = el('option', '', option.label); o.value = option.value; control.appendChild(o); });
+        if (Array.isArray(field.options) && field.options.length) {
+          field.options.forEach(option => { const o = el('option', '', option.label); o.value = option.value; control.appendChild(o); });
+        } else {
+          const option = el('option', '', labelText);
+          option.value = '';
+          control.appendChild(option);
+        }
       } else {
         control = document.createElement('input');
         control.type = field.type === 'email' ? 'email' : 'text';
@@ -933,7 +948,7 @@
     quick.appendChild(el('h3', '', t.quickLinks));
     [
       [t.about, '/about.html'],
-      [t.services, '#services'],
+      [t.navServices, '#services'],
       [t.partners, '#partners'],
       [t.projects, '/projects.html'],
       [t.news, '#news']
@@ -1078,18 +1093,30 @@
 
   async function init() {
     try {
+      const apiPage = requestedPath === '/api-supply.html' || requestedPath.endsWith('/api-supply.html');
       const [pageText, slideData, apiData, serviceData] = await Promise.all([
         fetch(DATA.pages).then(r => { if (!r.ok) throw new Error('page inventory ' + r.status); return r.text(); }),
-        fetch(DATA.slides).then(r => { if (!r.ok) throw new Error('slideshow manifest ' + r.status); return r.json(); }),
-        fetch(DATA.api).then(r => { if (!r.ok) throw new Error('API catalogue ' + r.status); return r.json(); }),
+        slideGroup(requestedPath)
+          ? fetch(DATA.slides).then(r => { if (!r.ok) throw new Error('slideshow manifest ' + r.status); return r.json(); })
+          : Promise.resolve(null),
+        apiPage
+          ? fetch(DATA.api).then(r => { if (!r.ok) throw new Error('API catalogue ' + r.status); return r.json(); })
+          : Promise.resolve(null),
         fetch(DATA.services).then(r => { if (!r.ok) throw new Error('service catalogue ' + r.status); return r.json(); })
       ]);
       pages = pageText.trim().split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line));
       pageMap = new Map(pages.map(page => [normalizePath(page.path), page]));
-      manifest = slideData;
+      const renderPath = pageMap.has(requestedPath) ? requestedPath : '/';
+      manifest = slideData || {};
+      if (!slideData && slideGroup(renderPath)) {
+        manifest = await fetch(DATA.slides).then(r => {
+          if (!r.ok) throw new Error('slideshow manifest ' + r.status);
+          return r.json();
+        });
+      }
       apiItems = Array.isArray(apiData) ? apiData : [];
       services = Array.isArray(serviceData) ? serviceData : [];
-      renderPage(pageMap.has(requestedPath) ? requestedPath : '/');
+      renderPage(renderPath);
     } catch (error) {
       app.replaceChildren(el('main', 'not-found', 'Unified preview could not load its source data: ' + error.message));
     }

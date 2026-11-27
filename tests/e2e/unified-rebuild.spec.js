@@ -65,6 +65,54 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(ppb).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
+  test('homepage defers API data and non-visible slideshow images', async ({ page }) => {
+    const apiRequests = [];
+    const slideRequests = [];
+    page.on('request', request => {
+      const url = new URL(request.url());
+      if (url.pathname.endsWith('/api-catalog.json')) apiRequests.push(url.href);
+      if (decodeURIComponent(url.pathname).includes('/images/Home page/')) slideRequests.push(url.href);
+    });
+    await page.goto('/rebuild/');
+    const firstImage = page.locator('.slideshow .slide.is-active img');
+    await expect.poll(() => firstImage.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+    expect(apiRequests).toHaveLength(0);
+    expect(slideRequests.length).toBeGreaterThan(0);
+    expect(slideRequests.length).toBeLessThanOrEqual(2);
+    await page.goto('/rebuild/?page=%2Fnot-a-real-page.html');
+    await expect(page.locator('.slideshow')).toHaveCount(1);
+  });
+
+  test('Persian service cards use their published Persian routes and larger layout', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Ffa%2F');
+    const hrefs = await page.locator('.services-grid .service-card, .vip-service-list .vip-service-link')
+      .evaluateAll(links => links.map(link => link.getAttribute('href')));
+    expect(hrefs).toHaveLength(26);
+    expect(hrefs.every(href => href.includes('%2Ffa%2F'))).toBe(true);
+    await expect(page.locator('.language-note')).toContainText('۲۶ صفحه خدمات');
+    const card = await page.locator('.services-grid .service-card').nth(1).boundingBox();
+    expect(card.width).toBeGreaterThan(210);
+    expect(card.height).toBeGreaterThan(75);
+    const borderRight = await page.locator('.language-note').evaluate(el => getComputedStyle(el).borderRightWidth);
+    expect(borderRight).toBe('3px');
+    await page.goto('/rebuild/?page=%2Fes%2F');
+    await expect(page.locator('.services-grid .service-card[href*="%2Fapi-supply.html"]')).toHaveCount(1);
+  });
+
+  test('English and Turkish forms preserve field labels and select options', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fcontact.html');
+    await expect(page.locator('.form-field').nth(0).locator('label')).toHaveText('Full name *');
+    await expect(page.locator('.form-field').nth(1).locator('label')).toHaveText('Company');
+    await expect(page.locator('.form-field').nth(5).locator('select option')).toHaveCount(8);
+    await page.goto('/rebuild/?page=%2Fbecome-our-partner.html');
+    await expect(page.locator('.form-field').nth(5).locator('select option')).toHaveCount(5);
+    await page.goto('/rebuild/?page=%2Ftr%2Fcontact.html');
+    await expect(page.locator('.form-field').nth(0).locator('label')).toHaveText('Ad Soyad *');
+    await expect(page.locator('.form-field').nth(5).locator('select option')).toHaveCount(8);
+    await page.goto('/rebuild/?page=%2Ftr%2Fbecome-our-partner.html');
+    await expect(page.locator('.form-field').nth(5).locator('select option')).toHaveCount(5);
+  });
+
   test('API controls remain visible on a mobile viewport', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/rebuild/?page=%2Fapi-supply.html');
