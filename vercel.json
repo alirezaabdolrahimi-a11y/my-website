@@ -109,5 +109,523 @@
       "destination": "/fr/",
       "permanent": false
     }
+  ],
+  "rewrites": [],
+  "routes": [
+    {
+      "src": "^/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/cote-divoire-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/es/$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fr/$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/cote-divoire-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/about\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/project-details\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/tr/project-details\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/contact\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/become-our-partner\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/projects\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/api-supply\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/import-export\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/sports-nutrition\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/infant-formula\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/cosmoderma\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/contract-manufacturing\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/brand-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/cbd-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/chamber-of-commerce\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/exclusive-agency\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/international-business-development\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/international-markets\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/kenya-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/licensing-partnerships\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/market-entry\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/medical-devices\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/nutraceuticals\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/pet-food\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/pharmaceutical-products\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/private-label\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/product-registration\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/regulatory-affairs\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/south-africa-market\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/supply-chain-solutions\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/technology-transfer\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/fcm-cmo-fa-1\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/fcm-cmo-fa-2\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/fa/fcm-cmo-fa-3\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    },
+    {
+      "src": "^/index\\.html$",
+      "dest": "/rebuild/index.html",
+      "override": true
+    }
   ]
 }

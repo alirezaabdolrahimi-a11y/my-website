@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - qa/free-agent-followup-2026-11-27
+      - rebuild/unified-site-2026-11-27
   pull_request:
     branches:
       - main
@@ -39,13 +40,14 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run multilingual homepage smoke tests
         run: npm run test:e2e -- --config=playwright.config.js
-      - name: Upload report on failure
-        if: failure()
+      - name: Upload Playwright QA artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: niaznet-playwright-report
           path: |
             tests/playwright-report/
-            tests/test-results/
+            tests/test-results/**/rebuild-*.png
+            tests/test-results/**/live-*.png
           if-no-files-found: ignore
           retention-days: 14
