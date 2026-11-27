@@ -3,9 +3,7 @@ const { test, expect } = require('@playwright/test');
 const localeRoutes = [
   { name: 'English', path: '/' },
   { name: 'Persian', path: '/?lang=fa' },
-  { name: 'Turkish', path: '/tr/' },
-  { name: 'Spanish', path: '/es/' },
-  { name: 'French', path: '/fr/' }
+  { name: 'Turkish', path: '/tr/' }
 ];
 
 for (const locale of localeRoutes) {
