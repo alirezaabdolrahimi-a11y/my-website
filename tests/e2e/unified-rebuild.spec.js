@@ -347,7 +347,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ];
     for (const [route, hash] of aliases) {
       await page.goto('/rebuild/?page=' + encodeURIComponent(route));
-      await expect(page).toHaveURL(new RegExp('page=%2Ffa%2Fcontract-manufacturing\\.html' + hash.replace('#', '\\#') + ');
+      await expect(page).toHaveURL(new RegExp('page=%2Ffa%2Fcontract-manufacturing\\.html' + hash.replace('#', '\\#') + '$'));
     }
   });
 
