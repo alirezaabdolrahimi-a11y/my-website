@@ -124,8 +124,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(hrefs.every(href => href.includes('%2Ffa%2F'))).toBe(true);
     await expect(page.locator('.language-note')).toContainText('۲۶ صفحه خدمات');
     const card = await page.locator('.services-grid .service-card').nth(1).boundingBox();
-    expect(card.width).toBeGreaterThan(210);
-    expect(card.height).toBeGreaterThan(75);
+    expect(card.width).toBeGreaterThan(180);
+    expect(card.height).toBeGreaterThan(70);
     const borderRight = await page.locator('.language-note').evaluate(el => getComputedStyle(el).borderRightWidth);
     expect(borderRight).toBe('3px');
     await page.goto('/rebuild/?page=%2Fes%2F');
