@@ -89,4 +89,19 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(activeAfter).toBe(1);
   });
 
+  test('homepage preserves the live feature, project and office sections', async ({ page }) => {
+    await page.goto('/rebuild/');
+    await expect(page.locator('#about .feature-card')).toHaveCount(8);
+    await expect(page.locator('#projects .project-card')).toHaveCount(12);
+    await expect(page.locator('#offices .office-card')).toHaveCount(3);
+    await expect(page.locator('#contact .home-cta')).toBeVisible();
+  });
+
+  test('Spanish navigation uses its local sections and working English contact fallback', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fes%2F');
+    await expect(page.locator('.main-nav a').filter({ hasText: '¿Por qué elegir' })).toHaveAttribute('href', '?page=%2Fes%2F#about');
+    await expect(page.locator('.main-nav a').filter({ hasText: 'Proyectos' })).toHaveAttribute('href', '?page=%2Fes%2F#projects');
+    await expect(page.locator('.main-nav a').filter({ hasText: 'Contacto' })).toHaveAttribute('href', '?page=%2Fcontact.html');
+  });
+
 });

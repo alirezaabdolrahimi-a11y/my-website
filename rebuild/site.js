@@ -111,6 +111,19 @@
     if (lang === 'en') candidate = bare;
     return pageMap.has(candidate) ? candidate : langHome(lang);
   }
+  function pageForAction(path, lang) {
+    const candidate = pageForLanguage(path, lang);
+    if ((path === '/contact.html' || path === '/become-our-partner.html') &&
+        candidate === langHome(lang) && pageMap.has(path)) return path;
+    return candidate;
+  }
+  function navigationHref(path, lang) {
+    if (lang === 'es' || lang === 'fr') {
+      if (path === '/about.html') return linkTo(langHome(lang), '#about');
+      if (path === '/projects.html') return linkTo(langHome(lang), '#projects');
+    }
+    return linkTo(pageForAction(path, lang));
+  }
   function routeForService(slug, lang) {
     const en = '/' + slug + '.html';
     if (lang === 'tr' && pageMap.has('/tr/' + slug + '.html')) return '/tr/' + slug + '.html';
@@ -230,12 +243,12 @@
       [t.home, langHome(lang)],
       [t.about, pageForLanguage('/about.html', lang)],
       [t.projects, pageForLanguage('/projects.html', lang)],
-      [t.contact, pageForLanguage('/contact.html', lang)],
-      [t.partner, pageForLanguage('/become-our-partner.html', lang)]
+      [t.contact, pageForAction('/contact.html', lang)],
+      [t.partner, pageForAction('/become-our-partner.html', lang)]
     ];
     items.forEach(([label, path]) => {
       const a = el('a', '', label);
-      a.href = linkTo(path);
+      a.href = navigationHref(path, lang);
       if (normalizePath(path) === currentPath) a.setAttribute('aria-current', 'page');
       nav.appendChild(a);
     });
@@ -269,9 +282,9 @@
     copy.appendChild(el('p', 'hero-copy', descriptionFor(record)));
     const actions = el('div', 'hero-actions');
     const contact = el('a', 'btn', t.contactCta);
-    contact.href = linkTo(pageForLanguage('/contact.html', lang));
+    contact.href = linkTo(pageForAction('/contact.html', lang));
     const partner = el('a', 'btn secondary', t.partnerCta);
-    partner.href = linkTo(pageForLanguage('/become-our-partner.html', lang));
+    partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
     actions.append(contact, partner);
     copy.appendChild(actions);
     grid.appendChild(copy);
@@ -317,6 +330,7 @@
   function renderServiceGrid(lang) {
     const t = COPY[lang] || COPY.en;
     const section = el('section', 'section');
+    section.id = 'services';
     const container = el('div', 'container');
     const head = el('div', 'section-heading');
     const title = el('div');
@@ -339,6 +353,7 @@
     if (vip.length) {
       container.appendChild(el('h3', 'section-subtitle', t.vip));
       const strip = el('div', 'vip-strip');
+      strip.id = 'vip-services';
       vip.forEach(service => {
         const a = el('a', 'vip-link', textFor(service, lang));
         a.href = linkTo(routeForService(service.slug, lang));
@@ -349,6 +364,89 @@
     section.appendChild(container);
     return section;
   }
+  function renderHomeSections(record, lang) {
+    const blocks = Array.isArray(record.blocks) ? record.blocks : [];
+    const groups = [];
+    let current = null, item = null, skippedH1 = false, skippedP = false;
+    blocks.forEach(block => {
+      if (block.type === 'h1' && !skippedH1) { skippedH1 = true; return; }
+      if (block.type === 'p' && !skippedP) { skippedP = true; return; }
+      if (block.type === 'h2') {
+        current = { title: block.text, paragraphs: [], items: [] };
+        groups.push(current);
+        item = null;
+      } else if (block.type === 'h3') {
+        if (!current) {
+          current = { title: '', paragraphs: [], items: [] };
+          groups.push(current);
+        }
+        item = { title: block.text, paragraphs: [] };
+        current.items.push(item);
+      } else if (block.type === 'p' || block.type === 'li') {
+        if (item) item.paragraphs.push(block.text);
+        else if (current) current.paragraphs.push(block.text);
+      }
+    });
+    const output = [];
+    groups.forEach((group, index) => {
+      const title = group.title || '';
+      const normalized = title.toLocaleLowerCase();
+      if (/vip/.test(normalized)) return;
+      if (!group.items.length && !group.paragraphs.length) return;
+      let kind = 'generic', id = 'home-section-' + index;
+      if (/why choose|neden|por qué|pourquoi/.test(normalized)) { kind = 'features'; id = 'about'; }
+      else if (/project|proje|proyectos|projets/.test(normalized)) { kind = 'projects'; id = 'projects'; }
+      else if (/news|haber|noticias|actualités|actualites/.test(normalized)) { kind = 'news'; id = 'news'; }
+      else if (/success|başarı|basari|éxito|exito|réussite|reussite/.test(normalized)) { kind = 'cta'; id = 'contact'; }
+      else if (/office|ofis|oficina|bureaux/.test(normalized)) { kind = 'offices'; id = 'offices'; }
+      else if (/partner|iş ortağı|socios|partenaires/.test(normalized)) { kind = 'partners'; id = 'partners'; }
+      else if (/network|ağımız|red global|réseau/.test(normalized)) { kind = 'network'; id = 'network'; }
+      else return;
+      const section = el('section', 'section home-section ' + kind);
+      section.id = id;
+      const container = el('div', 'container');
+      if (title) container.appendChild(el('h2', 'section-title', title));
+      if (kind === 'features' || kind === 'projects' || kind === 'offices') {
+        const gridClass = kind === 'features' ? 'feature-grid' : kind === 'projects' ? 'project-grid' : 'office-grid';
+        const grid = el('div', gridClass);
+        group.items.forEach(entry => {
+          const card = el('article', kind === 'features' ? 'feature-card' : kind === 'projects' ? 'project-card' : 'office-card');
+          card.appendChild(el('h3', '', entry.title));
+          entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
+          grid.appendChild(card);
+        });
+        container.appendChild(grid);
+        group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
+      } else if (kind === 'cta') {
+        const band = el('div', 'home-cta');
+        group.paragraphs.forEach(paragraph => band.appendChild(el('p', '', paragraph)));
+        const actions = el('div', 'home-cta-actions');
+        const contact = el('a', 'btn', (COPY[lang] || COPY.en).contactCta);
+        contact.href = linkTo(pageForAction('/contact.html', lang));
+        const partner = el('a', 'btn secondary', (COPY[lang] || COPY.en).partnerCta);
+        partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
+        actions.append(contact, partner);
+        band.appendChild(actions);
+        container.appendChild(band);
+      } else {
+        group.paragraphs.forEach(paragraph => container.appendChild(el('p', 'section-intro', paragraph)));
+        if (group.items.length) {
+          const grid = el('div', 'feature-grid');
+          group.items.forEach(entry => {
+            const card = el('article', 'feature-card');
+            card.appendChild(el('h3', '', entry.title));
+            entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
+            grid.appendChild(card);
+          });
+          container.appendChild(grid);
+        }
+      }
+      section.appendChild(container);
+      output.push(section);
+    });
+    return output;
+  }
+
   function renderApiCatalog(lang) {
     const t = COPY[lang] || COPY.en;
     const section = el('section', 'section white');
@@ -583,7 +681,7 @@
   function renderFooter(lang) {
     const t = COPY[lang] || COPY.en;
     const footer = el('footer', 'footer');
-    footer.id = 'contact';
+    footer.id = 'site-footer';
     const container = el('div', 'container');
     const grid = el('div', 'footer-grid');
     const about = el('div');
@@ -653,6 +751,7 @@
     app.appendChild(renderHero(record, path, lang));
     if (home) {
       app.appendChild(renderServiceGrid(lang));
+      renderHomeSections(record, lang).forEach(section => app.appendChild(section));
       if (lang === 'es' || lang === 'fr') {
         const note = el('section', 'section');
         const box = el('div', 'container');
@@ -660,15 +759,9 @@
         note.appendChild(box);
         app.appendChild(note);
       }
-      if (lang === 'fa') {
-        const note = el('section', 'section');
-        const box = el('div', 'container');
-        box.appendChild(el('p', 'language-note', COPY.fa.faLimited));
-        note.appendChild(box);
-        app.appendChild(note);
-      }
+    } else {
+      app.appendChild(renderBlocks(record, lang));
     }
-    app.appendChild(renderBlocks(record, lang));
     if (path.endsWith('/api-supply.html') || path === '/api-supply.html') app.appendChild(renderApiCatalog(lang));
     if (path.endsWith('/contract-manufacturing.html')) app.appendChild(renderDownloads(lang));
     const form = renderForm(record, lang);
