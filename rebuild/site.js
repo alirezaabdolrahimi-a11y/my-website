@@ -1009,7 +1009,7 @@
       robotsTag.name = 'robots';
       document.head.appendChild(robotsTag);
     }
-    robotsTag.content = /^\\/rebuild(?:\\/|$)/.test(window.location.pathname) ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+    robotsTag.content = /^\/rebuild(?:\/|$)/.test(window.location.pathname) ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
     if (record.canonical) {
       let canonical = document.head.querySelector('link[rel="canonical"]');
       if (!canonical) {
