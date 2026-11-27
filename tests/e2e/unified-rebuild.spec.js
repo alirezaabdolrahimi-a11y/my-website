@@ -6,6 +6,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.site-header')).toBeVisible();
     await expect(page.locator('.services-grid .service-card')).toHaveCount(23);
     await expect(page.locator('.services-grid .import-export-card')).toHaveCount(1);
+    await expect(page.locator('.services-grid .service-card').nth(1)).toContainText('Brand Registration');
+    await expect(page.locator('.services-grid .service-card').nth(2)).toContainText('API');
     await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     await expect(page.locator('#contact')).toBeAttached();
     await expect(page.locator('.main-nav a')).toHaveCount(8);
@@ -97,7 +99,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('#about .reasons .reason')).toHaveCount(8);
     await expect(page.locator('#projects .project-card')).toHaveCount(12);
     await expect(page.locator('#offices .office-card')).toHaveCount(3);
-    await expect(page.locator('#contact .home-cta')).toBeVisible();
+    await expect(page.locator('#contact .home-cta')).toBeAttached();
+    await expect(page.locator('#contact')).toBeHidden();
   });
 
   test('Spanish navigation uses its local sections and working English contact fallback', async ({ page }) => {
@@ -114,7 +117,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('#about .network-routes circle')).toHaveCount(5);
     await expect(page.locator('#projects .project-card .project-symbol img')).toHaveCount(12);
     await expect(page.locator('#contact .home-contact-item')).toHaveCount(4);
-    await expect(page.locator('#contact a[href="mailto:info@niaznet.net"]')).toBeVisible();
+    await expect(page.locator('#contact')).toBeHidden();
+    await expect(page.locator('.useful-links')).toHaveCount(0);
   });
 
   for (const route of ['/', '/tr/', '/es/', '/fr/', '/fa/']) {

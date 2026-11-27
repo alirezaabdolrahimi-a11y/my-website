@@ -255,3 +255,6 @@ This is the single numbered master list. Every newly discovered issue must be ap
 
 
 140. [~] First browser pass after restoring the live homepage visual hierarchy: 31 tests passed and one Persian-homepage test failed because it still queried the removed legacy `.service-grid .service-card` selector and expected 26 cards in one grid. The new renderer intentionally separates 23 primary service tiles from 3 VIP tiles; update the remaining stale assertion to verify both groups. The responsive screenshot test passed, including live-site references. Restrict successful-run artifacts to the six desktop/tablet/mobile rebuild/live screenshots plus the HTML report, excluding bulky failure traces and unrelated test-result files. Re-run and inspect the new screenshots before confirming visual alignment.
+
+
+142. [ ] Verify the final live-page hierarchy corrections: default-hidden contact band, removal of scraped useful-links from home, localized News & Events headline, centered section headings with gold underline, wrapping of long oval service labels, and restoration of the original service order with all additional services retained. Re-run all browser checks and inspect desktop/tablet/mobile screenshots.

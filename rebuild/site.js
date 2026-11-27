@@ -19,7 +19,7 @@
   const COPY = {
     en: {
       home:'Home',about:'About Us',services:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
-      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',
+      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
@@ -32,7 +32,7 @@
     },
     tr: {
       home:'Ana Sayfa',about:'Hakkımızda',services:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
-      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',
+      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
@@ -45,7 +45,7 @@
     },
     fa: {
       home:'صفحه اصلی',about:'درباره ما',services:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
-      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',
+      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
@@ -58,7 +58,7 @@
     },
     es: {
       home:'Inicio',about:'Quiénes somos',services:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
-      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',
+      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
@@ -71,7 +71,7 @@
     },
     fr: {
       home:'Accueil',about:'À propos',services:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
-      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',
+      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
@@ -401,8 +401,18 @@
     const layout = el('div', 'services-layout');
     const grid = el('div', 'services-grid');
     const primary = services.filter(service => !service.vip);
-    const lead = primary.find(service => service.slug === 'import-export');
-    const ordered = lead ? [lead, ...primary.filter(service => service !== lead)] : primary;
+    const displayOrder = [
+      'import-export','brand-registration','api-supply','sports-nutrition','infant-formula',
+      'cbd-products','business-development','pharmaceutical-products','nutraceuticals',
+      'pet-food','medical-devices','technology-transfer','private-label','contract-manufacturing',
+      'cosmoderma','regulatory-affairs','licensing-partnerships','supply-chain-solutions'
+    ];
+    const ordered = displayOrder
+      .map(slug => primary.find(service => service.slug === slug))
+      .filter(Boolean);
+    primary.forEach(service => {
+      if (!displayOrder.includes(service.slug)) ordered.push(service);
+    });
 
     ordered.forEach(service => {
       const isLead = service.slug === 'import-export';
@@ -631,7 +641,7 @@
         container.appendChild(band);
       } else if (kind === 'news') {
         const placeholder = el('div', 'news-placeholder');
-        placeholder.appendChild(el('strong', '', title));
+        placeholder.appendChild(el('strong', '', (COPY[lang] || COPY.en).newsHeadline));
         group.paragraphs.forEach(paragraph => placeholder.appendChild(el('p', '', paragraph)));
         const contact = el('a', 'btn', (COPY[lang] || COPY.en).contactCta);
         contact.href = linkTo(pageForAction('/contact.html', lang));
@@ -1019,6 +1029,11 @@
     if (home) {
       app.appendChild(renderServiceGrid(lang));
       renderHomeSections(record, lang).forEach(section => app.appendChild(section));
+      const contactBand = app.querySelector('#contact');
+      if (contactBand) {
+        const showContactBand = ['#contact', '#niaz-contact-hub'].includes(window.location.hash.toLowerCase());
+        contactBand.hidden = !showContactBand;
+      }
       if (lang === 'es' || lang === 'fr') {
         const note = el('section', 'section');
         const box = el('div', 'container');
@@ -1041,7 +1056,7 @@
     const form = renderForm(record, lang);
     if (form) app.appendChild(form);
     const links = renderUsefulLinks(record, lang);
-    if (links) app.appendChild(links);
+    if (links && !home) app.appendChild(links);
     app.appendChild(renderFooter(lang));
     const wa = el('a', 'whatsapp whatsapp-float', COPY[lang].whatsapp);
     wa.setAttribute('aria-label', COPY[lang].whatsapp);
