@@ -1,0 +1,59 @@
+name: NIAZ NET - SonarQube Community Scan
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sonar-community:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Start temporary SonarQube Community server
+        run: |
+          docker run -d --name niaznet-sonarqube \
+            -p 127.0.0.1:9000:9000 \
+            -e SONAR_WEB_JAVAADDITIONALOPTS="-Dsonar.forceAuthentication=false" \
+            sonarqube:community
+          for attempt in $(seq 1 60); do
+            status="$(curl -fsS http://127.0.0.1:9000/api/system/status 2>/dev/null || true)"
+            if echo "$status" | grep -q '"status":"UP"'; then
+              echo "SonarQube is ready."
+              exit 0
+            fi
+            sleep 5
+          done
+          docker logs niaznet-sonarqube
+          exit 1
+      - name: Analyze source code
+        run: |
+          docker run --rm --network host \
+            -v "$PWD:/usr/src" -w /usr/src \
+            sonarsource/sonar-scanner-cli:latest \
+            -Dsonar.host.url=http://127.0.0.1:9000 \
+            -Dsonar.projectKey=niaznet \
+            -Dsonar.projectName="NIAZ NET" \
+            -Dsonar.sources=. \
+            -Dsonar.exclusions="assets/**,images/**,*.min.js,*.min.css,playwright-report/**,test-results/**"
+      - name: Export SonarQube findings
+        if: always()
+        run: |
+          curl -fsS "http://127.0.0.1:9000/api/issues/search?componentKeys=niaznet&ps=500" \
+            -o sonar-issues.json || echo '{"error":"SonarQube findings were not available"}' > sonar-issues.json
+      - name: Upload findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: niaznet-sonarqube-findings
+          path: sonar-issues.json
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Show SonarQube logs on failure
+        if: failure()
+        run: docker logs niaznet-sonarqube

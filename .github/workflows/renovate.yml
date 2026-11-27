@@ -1,0 +1,29 @@
+name: NIAZ NET - Renovate Dependency Updates
+
+on:
+  schedule:
+    - cron: '30 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: renovate
+  cancel-in-progress: false
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Run Renovate against this public repository
+        uses: renovatebot/github-action@v43.0.13
+        with:
+          configurationFile: renovate.json
+        env:
+          LOG_LEVEL: info
+          RENOVATE_REPOSITORIES: alirezaabdolrahimi-a11y/my-website
+          RENOVATE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
