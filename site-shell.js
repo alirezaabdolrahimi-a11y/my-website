@@ -5,7 +5,7 @@
 
 
   // Load slideshow styles only on pages that contain the slideshow component.
-  if (document.querySelector('.hero-showcase') && !document.querySelector('link[data-niaz-hero-showcase]')) {
+  if (document.querySelector('.hero-showcase') && !document.querySelector('link[data-niaz-hero-showcase]') && !Array.prototype.some.call(document.styleSheets, function (sheet) { return /(?:^|\/)hero-showcase\.css(?:[?#]|$)/.test(sheet.href || ''); })) {
     var slideshowStylesheet = document.createElement('link');
     slideshowStylesheet.rel = 'stylesheet';
     slideshowStylesheet.href = '/assets/css/hero-showcase.css';
