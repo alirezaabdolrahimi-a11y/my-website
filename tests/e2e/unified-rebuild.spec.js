@@ -152,4 +152,21 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('#offices .office-card')).toHaveCount(3);
   });
 
+  test('Persian API catalogue and translated service pages are present', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Ffa%2Fapi-supply.html');
+    await expect(page.locator('.api-count')).toContainText('239 / 239');
+    await page.goto('/rebuild/?page=%2Ffa%2Fsports-nutrition.html');
+    await expect(page.locator('.product-price-table tbody tr')).toHaveCount(6);
+    await expect(page.locator('.product-price-table thead')).toContainText('قیمت / کیلوگرم');
+    await page.goto('/rebuild/?page=%2Ffa%2Fcontract-manufacturing.html');
+    await expect(page.locator('#fcm-downloads')).toBeVisible();
+    await expect(page.locator('a[href="/downloads/fcm-cmo/solid-fa.html"]')).toHaveCount(1);
+    await page.goto('/rebuild/?page=%2Ffa%2Fcosmoderma.html');
+    await expect(page.locator('h1')).toContainText('کازمودرما');
+    await page.goto('/rebuild/?page=%2Ffa%2Finfant-formula.html');
+    await expect(page.locator('h1')).toContainText('شیرخشک');
+    await page.goto('/rebuild/?page=%2Ffa%2Fimport-export.html');
+    await expect(page.locator('h1')).toContainText('واردات و صادرات');
+  });
+
 });

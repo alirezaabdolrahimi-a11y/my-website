@@ -25,7 +25,7 @@
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
       send:'Prepare email enquiry',mailNote:'This form opens a pre-addressed email draft in your email application. It does not submit directly to a server.',
       whatsapp:'WhatsApp',overview:'Page information',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
-      faLimited:'صفحه اصلی، درباره ما، پروژه‌ها، تماس و همکاری به فارسی در دسترس‌اند؛ سایر جزئیات خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
+      faLimited:'صفحه اصلی، درباره ما، پروژه‌ها، تماس و همکاری، تأمین API، واردات و صادرات، تغذیه ورزشی، تغذیه نوزاد، کازمودرما و تولید قراردادی به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
       loading:'Loading verified site content…',notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
       email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
@@ -296,6 +296,27 @@
     hero.appendChild(grid);
     return hero;
   }
+  function renderDataTable(dataTable, lang) {
+    const wrap = el('div', 'table-wrap');
+    const table = el('table', 'api-table product-price-table');
+    if (dataTable.caption) table.appendChild(el('caption', '', dataTable.caption));
+    const headers = dataTable.headers[lang] || dataTable.headers.en;
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    headers.forEach(label => headerRow.appendChild(el('th', '', label)));
+    thead.appendChild(headerRow);
+    const tbody = document.createElement('tbody');
+    const rows = dataTable.rowsByLang && dataTable.rowsByLang[lang] ? dataTable.rowsByLang[lang] : (dataTable.rows || []);
+    rows.forEach(values => {
+      const row = document.createElement('tr');
+      values.forEach(value => row.appendChild(el('td', '', value)));
+      tbody.appendChild(row);
+    });
+    table.append(thead, tbody);
+    wrap.appendChild(table);
+    return wrap;
+  }
+
   function renderBlocks(record, lang) {
     const section = el('section', 'section white');
     const container = el('div', 'container');
@@ -318,6 +339,9 @@
       else if (block.type === 'h3') panel.appendChild(el('h3', '', block.text));
       else if (block.type === 'p') panel.appendChild(el('p', '', block.text));
       else if (block.type === 'blockquote') panel.appendChild(el('blockquote', '', block.text));
+      else if (block.type === 'table' && record.tables && record.tables[block.index]) {
+        panel.appendChild(renderDataTable(record.tables[block.index], lang));
+      }
     });
     flushList();
     if (!panel.childElementCount) {
