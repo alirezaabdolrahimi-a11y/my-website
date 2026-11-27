@@ -525,13 +525,14 @@
   }
   function renderUsefulLinks(record, lang) {
     const t = COPY[lang] || COPY.en;
-    const candidates = (record.links || []).filter(x => x.href && (
-      x.href.startsWith('#') || x.href.startsWith('mailto:') || x.href.startsWith('tel:') ||
-      x.href.startsWith('http://') || x.href.startsWith('https://') ||
-      ((!record.path.endsWith('/contract-manufacturing.html')) &&
-        (x.href.includes('/downloads/') || x.href.startsWith('downloads/'))) ||
-      /\.html(?:$|[?#])/i.test(x.href)
-    ));
+    const candidates = (record.links || []).filter(x => {
+      const href = x.href || '';
+      const isDownload = href.includes('/downloads/') || href.startsWith('downloads/');
+      if (isDownload && record.path.endsWith('/contract-manufacturing.html')) return false;
+      return href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') ||
+        href.startsWith('http://') || href.startsWith('https://') ||
+        isDownload || /\.html(?:$|[?#])/i.test(href);
+    });
     const seen = new Set();
     const filtered = candidates.filter(x => {
       if (seen.has(x.href)) return false;
