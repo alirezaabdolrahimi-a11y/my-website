@@ -525,8 +525,9 @@
   function renderUsefulLinks(record, lang) {
     const t = COPY[lang] || COPY.en;
     const candidates = (record.links || []).filter(x => x.href && (
-      x.href.startsWith('mailto:') || x.href.startsWith('https://wa.me/') ||
-      x.href.includes('/downloads/') || /\.html(?:$|\?)/i.test(x.href)
+      x.href.startsWith('mailto:') || x.href.startsWith('tel:') ||
+      x.href.startsWith('http://') || x.href.startsWith('https://') ||
+      x.href.includes('/downloads/') || /\.html(?:$|[?#])/i.test(x.href)
     ));
     const seen = new Set();
     const filtered = candidates.filter(x => {
@@ -541,10 +542,17 @@
     panel.appendChild(el('h2', '', t.useful));
     filtered.slice(0,20).forEach(item => {
       const a = el('a', 'content-link', item.text || item.href);
-      if (item.href.startsWith('mailto:') || item.href.startsWith('https://')) {
+      if (item.href.startsWith('mailto:') || item.href.startsWith('tel:')) {
         a.href = item.href;
+      } else if (item.href.startsWith('http://') || item.href.startsWith('https://')) {
+        a.href = item.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
       } else {
-        const currentPrefix = record.path.startsWith('/tr/') ? '/tr/' : '/';
+        const currentPrefix = record.path.startsWith('/tr/') ? '/tr/' :
+          record.path.startsWith('/es/') ? '/es/' :
+          record.path.startsWith('/fr/') ? '/fr/' :
+          record.path.startsWith('/fa/') ? '/fa/' : '/';
         const href = item.href.startsWith('/') ? item.href : currentPrefix + item.href.replace(/^\.\//,'');
         a.href = linkTo(pageMap.has(href) ? href : href);
       }
