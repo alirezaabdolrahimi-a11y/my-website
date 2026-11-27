@@ -104,7 +104,7 @@ button,a,select{touch-action:manipulation}
 .footer a:hover{color:var(--gold2)}
 .footer-brand img{display:block;width:auto;max-width:220px;height:52px;object-fit:contain}
 .footer-brand p{max-width:240px;margin:14px 0;color:#d0d9e7}
-.footer .footer-contact-link{display:inline-flex;width:max-content;max-width:100%;margin:12px 0 0;padding:9px 15px;border-radius:999px;background:linear-gradient(135deg,#e2b65f,#c99a43);color:#071b38;font-weight:800}
+.footer .footer-contact-link{display:inline-flex;width:max-content;max-width:100%;margin-top:12px;padding:9px 15px;border-radius:999px;background:linear-gradient(135deg,#e2b65f,#c99a43);color:#071b38;font-weight:800}
 .footer-bottom{border-top:1px solid #263d5a;margin-top:22px;padding-top:14px;color:#91a1b7;font-size:11px}
 .whatsapp{position:fixed;right:8px;bottom:14px;z-index:30;display:grid;place-items:center;width:36px;height:36px;min-height:36px;padding:0;border:1px solid var(--gold);border-radius:50%;background:linear-gradient(135deg,#071b38,#123b66);color:#fff;text-decoration:none;font-size:0;box-shadow:0 2px 8px #071b3828}
 .whatsapp:before{content:none}
