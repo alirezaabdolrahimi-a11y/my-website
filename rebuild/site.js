@@ -478,7 +478,7 @@
       else if (/news|haber|noticias|actualités|actualites/.test(normalized)) { kind = 'news'; id = 'news'; }
       else if (/success|başarı|basari|éxito|exito|réussite|reussite/.test(normalized)) { kind = 'cta'; id = 'contact'; }
       else if (/office|ofis|oficina|bureaux/.test(normalized)) { kind = 'offices'; id = 'offices'; }
-      else if (/partner|iş ortağı|socios|partenaires/.test(normalized)) { kind = 'partners'; id = 'partners'; }
+      else if (/partner|ortak|socios|partenaires/.test(normalized)) { kind = 'partners'; id = 'partners'; }
       else if (/network|ağımız|red global|réseau/.test(normalized)) { kind = 'network'; id = 'network'; }
       else return;
       const hasPartnerData = kind === 'partners' && Array.isArray(record.partners) && record.partners.length;
