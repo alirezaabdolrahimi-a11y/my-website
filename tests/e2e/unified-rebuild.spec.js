@@ -121,6 +121,14 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.api-tools select')).toHaveCount(2);
     await expect(page.locator('.table-wrap')).toBeVisible();
   });
+  test('root homepage uses the 19-slide manifest without legacy static images', async ({ page }) => {
+    await page.goto('/');
+    const showcase = page.locator('.hero-showcase');
+    await expect(showcase.locator('.showcase-image')).toHaveCount(19);
+    await expect(showcase.locator('img')).toHaveCount(2);
+    await expect(showcase.locator('.showcase-dots .showcase-dot')).toHaveCount(19);
+  });
+
   test('shared slideshow manifest renders matching dots and no arrow controls', async ({ page }) => {
     await page.goto('/rebuild/');
     const slideshow = page.locator('.slideshow');
