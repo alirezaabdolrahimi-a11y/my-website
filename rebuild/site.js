@@ -477,7 +477,7 @@
       else if (/project|proje|proyectos|projets|پروژه/.test(normalized)) { kind = 'projects'; id = 'projects'; }
       else if (/news|haber|noticias|actualités|actualites|اخبار/.test(normalized)) { kind = 'news'; id = 'news'; }
       else if (/success|başarı|basari|éxito|exito|réussite|reussite|موفقیت/.test(normalized)) { kind = 'cta'; id = 'contact'; }
-      else if (/office|ofis|oficina|bureaux|دفتر/.test(normalized)) { kind = 'offices'; id = 'offices'; }
+      else if (/office|ofis|oficina|bureaux|دفتر|دفاتر/.test(normalized)) { kind = 'offices'; id = 'offices'; }
       else if (/partner|ortak|socios|partenaires|شرکای|همکار/.test(normalized)) { kind = 'partners'; id = 'partners'; }
       else if (/network|ağımız|red global|réseau/.test(normalized)) { kind = 'network'; id = 'network'; }
       else return;

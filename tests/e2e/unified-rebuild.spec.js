@@ -147,4 +147,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page).toHaveURL(/page=%2Fapi-supply.html/);
   });
 
+  test('Persian homepage includes all three office cards', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Ffa%2F');
+    await expect(page.locator('#offices .office-card')).toHaveCount(3);
+  });
+
 });
