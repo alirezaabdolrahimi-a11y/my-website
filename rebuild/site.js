@@ -18,8 +18,8 @@
 
   const COPY = {
     en: {
-      home:'Home',about:'About Us',projects:'Projects',contact:'Contact',partner:'Become Our Partner',
-      services:'Our Services',vip:'Priority Services',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',
+      home:'Home',about:'About Us',services:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',partner:'Become Our Partner',getInTouch:'Get in Touch',
+      services:'Our Services',vip:'Priority Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
@@ -31,8 +31,8 @@
       email:'Email',phone:'Telephone',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
     },
     tr: {
-      home:'Ana Sayfa',about:'Hakkımızda',projects:'Projeler',contact:'İletişim',partner:'İş Ortağımız Olun',
-      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',
+      home:'Ana Sayfa',about:'Hakkımızda',services:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',partner:'İş Ortağımız Olun',getInTouch:'Bize Ulaşın',
+      services:'Hizmetlerimiz',vip:'Öncelikli Hizmetler',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
@@ -44,8 +44,8 @@
       email:'E-posta',phone:'Telefon',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
     },
     fa: {
-      home:'صفحه اصلی',about:'درباره ما',projects:'پروژه‌ها',contact:'تماس با ما',partner:'همکاری با ما',
-      services:'خدمات ما',vip:'خدمات ویژه',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',
+      home:'صفحه اصلی',about:'درباره ما',services:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',partner:'همکاری با ما',getInTouch:'تماس با ما',
+      services:'خدمات ما',vip:'خدمات ویژه',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
@@ -57,8 +57,8 @@
       email:'ایمیل',phone:'تلفن',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
     },
     es: {
-      home:'Inicio',about:'Quiénes somos',projects:'Proyectos',contact:'Contacto',partner:'Conviértase en socio',
-      services:'Nuestros servicios',vip:'Servicios prioritarios',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',
+      home:'Inicio',about:'Quiénes somos',services:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',partner:'Conviértase en socio',getInTouch:'Contacte',
+      services:'Nuestros servicios',vip:'Servicios prioritarios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
@@ -70,8 +70,8 @@
       email:'Correo electrónico',phone:'Teléfono',addressLabel:'Dirección de Teherán',copyright:'NIAZ NET · Vista previa unificada · Rama aislada'
     },
     fr: {
-      home:'Accueil',about:'À propos',projects:'Projets',contact:'Contact',partner:'Devenir partenaire',
-      services:'Nos services',vip:'Services prioritaires',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',
+      home:'Accueil',about:'À propos',services:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',partner:'Devenir partenaire',getInTouch:'Nous contacter',
+      services:'Nos services',vip:'Services prioritaires',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
@@ -118,6 +118,8 @@
     return candidate;
   }
   function navigationHref(path, lang) {
+    if (/^mailto:/i.test(path)) return path;
+    if (path.startsWith('#')) return linkTo(langHome(lang), path);
     if (lang === 'es' || lang === 'fr') {
       if (path === '/about.html') return linkTo(langHome(lang), '#about');
       if (path === '/projects.html') return linkTo(langHome(lang), '#projects');
@@ -166,15 +168,15 @@
     let list = Array.isArray(manifest[group]) ? manifest[group].slice() : [];
     if (lang !== 'fa') list = list.filter(src => !/(^|\/)(FA[^/]*|[^/]*FA_[^/]*)\.png$/i.test(src));
     if (!list.length) return null;
-    const wrap = el('div', 'slideshow');
+    const wrap = el('div', 'slideshow hero-showcase');
     wrap.setAttribute('role', 'group');
     wrap.setAttribute('aria-label', label + ' slideshow');
     const slides = [];
-    const dots = el('div', 'slide-dots');
+    const dots = el('div', 'slide-dots showcase-dots');
     dots.setAttribute('role', 'group');
     dots.setAttribute('aria-label', 'Slideshow navigation');
     list.forEach((src, index) => {
-      const slide = el('div', 'slide' + (index === 0 ? ' is-active' : ''));
+      const slide = el('div', 'slide showcase-image' + (index === 0 ? ' is-active active' : ''));
       slide.setAttribute('aria-hidden', String(index !== 0));
       const img = document.createElement('img');
       img.src = src;
@@ -183,7 +185,7 @@
       slide.appendChild(img);
       wrap.appendChild(slide);
       slides.push(slide);
-      const dot = el('button', 'slide-dot');
+      const dot = el('button', 'slide-dot showcase-dot');
       dot.type = 'button';
       dot.setAttribute('aria-label', 'Show slide ' + (index + 1));
       dot.setAttribute('aria-current', String(index === 0));
@@ -225,36 +227,48 @@
   function renderHeader(lang, currentPath) {
     const t = COPY[lang] || COPY.en;
     const header = el('header', 'site-header');
-    const inner = el('div', 'container header-inner');
+    const inner = el('div', 'container nav header-inner');
     const brand = el('a', 'brand');
     brand.href = linkTo(langHome(lang));
     const logo = document.createElement('img');
+    logo.className = 'brand-logo';
     logo.src = '/images/niaz-net-logo.png';
-    logo.alt = 'NIAZ NET';
-    brand.append(logo, el('span', '', 'NIAZ NET'));
+    logo.alt = 'NIAZ NET Tehran';
+    logo.onerror = () => {
+      logo.hidden = true;
+      brand.appendChild(el('span', 'brand-fallback-text', 'NIAZ NET TEHRAN'));
+    };
+    brand.appendChild(logo);
     inner.appendChild(brand);
-    const toggle = el('button', 'nav-toggle', 'Menu');
+
+    const toggle = el('button', 'mobile-toggle nav-toggle', '☰');
     toggle.type = 'button';
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Toggle navigation');
-    const nav = el('nav', 'main-nav');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    const nav = el('nav', 'nav-links main-nav');
     nav.id = 'main-nav';
     const items = [
       [t.home, langHome(lang)],
       [t.about, '/about.html'],
+      [t.services, '#services'],
+      [t.partners, '#partners'],
       [t.projects, '/projects.html'],
+      [t.news, '#news'],
       [t.contact, '/contact.html'],
-      [t.partner, '/become-our-partner.html']
+      [t.getInTouch, 'mailto:info@niaznet.net?subject=Business%20Inquiry']
     ];
     items.forEach(([label, path]) => {
-      const a = el('a', '', label);
+      const a = el('a', path.startsWith('mailto:') ? 'nav-cta' : '', label);
       a.href = navigationHref(path, lang);
-      const sectionAnchor = (lang === 'es' || lang === 'fr') &&
-        (path === '/about.html' || path === '/projects.html');
-      if (!sectionAnchor && normalizePath(path) === currentPath) a.setAttribute('aria-current', 'page');
+      const sectionAnchor = path.startsWith('#') ||
+        ((lang === 'es' || lang === 'fr') && (path === '/about.html' || path === '/projects.html'));
+      if (!sectionAnchor && !path.startsWith('mailto:') && normalizePath(path) === currentPath) {
+        a.setAttribute('aria-current', 'page');
+      }
       nav.appendChild(a);
     });
-    const select = el('select', 'language-select');
+
+    const select = el('select', 'language-select lang');
     select.setAttribute('aria-label', 'Language');
     [['en','EN'],['fa','FA'],['tr','TR'],['es','ES'],['fr','FR']].forEach(([value,label]) => {
       const option = el('option', '', label);
@@ -267,8 +281,10 @@
     });
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('is-open');
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'Close' : 'Menu';
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      toggle.textContent = open ? '×' : '☰';
     });
     inner.append(toggle, nav, select);
     header.appendChild(inner);
@@ -277,15 +293,23 @@
   function renderHero(record, path, lang) {
     const t = COPY[lang] || COPY.en;
     const hero = el('section', 'hero');
-    const grid = el('div', 'container hero-grid');
-    const copy = el('div', 'hero-copy-wrap');
-    copy.appendChild(el('div', 'eyebrow', 'NIAZ NET · INTERNATIONAL BUSINESS'));
-    copy.appendChild(el('h1', '', titleFor(record)));
-    copy.appendChild(el('p', 'hero-copy', descriptionFor(record)));
+    const grid = el('div', 'container hero-inner hero-grid');
+    const copy = el('div', 'hero-copy');
+    copy.appendChild(el('div', 'eyebrow', t.tagline));
+    const heading = el('h1');
+    const title = titleFor(record);
+    if (lang === 'en' && title.endsWith(' Partner')) {
+      heading.append(document.createTextNode(title.slice(0, -7)));
+      heading.appendChild(el('span', '', 'Partner'));
+    } else {
+      heading.textContent = title;
+    }
+    copy.appendChild(heading);
+    copy.appendChild(el('p', 'hero-description', descriptionFor(record)));
     const actions = el('div', 'hero-actions');
-    const contact = el('a', 'btn', t.contactCta);
+    const contact = el('a', 'btn btn-outline', t.contactCta);
     contact.href = linkTo(pageForAction('/contact.html', lang));
-    const partner = el('a', 'btn secondary', t.partnerCta);
+    const partner = el('a', 'btn partner-hero-btn', t.partnerCta);
     partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
     actions.append(contact, partner);
     copy.appendChild(actions);
@@ -356,41 +380,57 @@
     section.appendChild(container);
     return section;
   }
+  function createServiceImage(service) {
+    const image = document.createElement('img');
+    image.src = '/images/service-icons/' + service.icon;
+    image.alt = '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    return image;
+  }
+
   function renderServiceGrid(lang) {
     const t = COPY[lang] || COPY.en;
-    const section = el('section', 'section');
+    const section = el('section', 'container service-section');
     section.id = 'services';
-    const container = el('div', 'container');
-    const head = el('div', 'section-heading');
-    const title = el('div');
-    title.appendChild(el('h2', '', t.services));
-    head.appendChild(title);
-    container.appendChild(head);
-    const grid = el('div', 'service-grid');
-    services.forEach(service => {
-      const a = el('a', 'service-card' + (service.vip ? ' vip' : ''));
-      a.href = linkTo(routeForService(service.slug, lang));
-      const img = document.createElement('img');
-      img.src = '/images/service-icons/' + service.icon;
-      img.alt = '';
-      img.loading = 'lazy';
-      a.append(img, el('h3', '', textFor(service, lang)));
-      grid.appendChild(a);
+    section.setAttribute('aria-label', t.services);
+    const layout = el('div', 'services-layout');
+    const grid = el('div', 'services-grid');
+    const primary = services.filter(service => !service.vip);
+    const lead = primary.find(service => service.slug === 'import-export');
+    const ordered = lead ? [lead, ...primary.filter(service => service !== lead)] : primary;
+
+    ordered.forEach(service => {
+      const isLead = service.slug === 'import-export';
+      const card = el('a', 'service-card' + (isLead ? ' import-export-card' : ''));
+      card.href = linkTo(routeForService(service.slug, lang));
+      const icon = el('span', 'service-icon');
+      icon.appendChild(createServiceImage(service));
+      card.append(icon, el('h3', '', textFor(service, lang)));
+      grid.appendChild(card);
     });
-    container.appendChild(grid);
-    const vip = services.filter(x => x.vip);
+    layout.appendChild(grid);
+
+    const vip = services.filter(service => service.vip);
     if (vip.length) {
-      container.appendChild(el('h3', 'section-subtitle', t.vip));
-      const strip = el('div', 'vip-strip');
-      strip.id = 'vip-services';
+      const panel = el('aside', 'vip-services');
+      panel.id = 'vip-services';
+      panel.appendChild(el('h2', '', '♛ ' + t.vipTitle));
+      const list = el('div', 'vip-service-list');
       vip.forEach(service => {
-        const a = el('a', 'vip-link', textFor(service, lang));
-        a.href = linkTo(routeForService(service.slug, lang));
-        strip.appendChild(a);
+        const link = el('a', 'vip-service-link');
+        link.href = linkTo(routeForService(service.slug, lang));
+        link.append(createServiceImage(service), el('span', 'vip-label', textFor(service, lang)));
+        list.appendChild(link);
       });
-      container.appendChild(strip);
+      panel.appendChild(list);
+      const arrow = el('a', 'vip-arrow', '→');
+      arrow.href = linkTo(langHome(lang), '#contact');
+      arrow.setAttribute('aria-label', t.contactCta);
+      panel.appendChild(arrow);
+      layout.appendChild(panel);
     }
-    section.appendChild(container);
+    section.appendChild(layout);
     return section;
   }
   function renderNetworkMap(network) {
@@ -867,16 +907,52 @@
     footer.id = 'site-footer';
     const container = el('div', 'container');
     const grid = el('div', 'footer-grid');
-    const about = el('div');
-    about.append(el('h3', '', 'NIAZ NET'), el('p', '', t.copyright));
-    const office = el('div');
-    office.append(el('h3', '', t.office), el('p', '', t.address));
-    const contact = el('div');
-    contact.append(el('h3', '', t.contact), el('a', '', 'info@niaznet.net'), el('a', '', '+98 21 8832 2100 ext. 2'), el('a', '', '+90 534 014 3473'));
-    contact.querySelectorAll('a')[0].href = 'mailto:info@niaznet.net';
-    contact.querySelectorAll('a')[1].href = 'tel:+982188322100';
-    contact.querySelectorAll('a')[2].href = 'https://wa.me/905340143473';
-    grid.append(about, office, contact);
+
+    const brand = el('div', 'footer-brand');
+    const logo = document.createElement('img');
+    logo.src = '/images/niaz-net-logo.png';
+    logo.alt = 'NIAZ NET Tehran';
+    logo.loading = 'lazy';
+    brand.append(logo, el('p', '', t.copyright));
+
+    const quick = el('div', 'footer-col');
+    quick.appendChild(el('h3', '', t.quickLinks));
+    [
+      [t.about, '/about.html'],
+      [t.services, '#services'],
+      [t.partners, '#partners'],
+      [t.projects, '/projects.html'],
+      [t.news, '#news']
+    ].forEach(([label, path]) => {
+      const link = el('a', '', label);
+      link.href = navigationHref(path, lang);
+      quick.appendChild(link);
+    });
+
+    const serviceColumn = el('div', 'footer-col');
+    serviceColumn.appendChild(el('h3', '', t.services));
+    services.filter(service => !service.vip).slice(0, 5).forEach(service => {
+      const link = el('a', '', textFor(service, lang));
+      link.href = linkTo(routeForService(service.slug, lang));
+      serviceColumn.appendChild(link);
+    });
+
+    const contact = el('div', 'footer-col footer-contact');
+    contact.appendChild(el('h3', '', 'Contact NIAZ NET'));
+    contact.appendChild(el('p', '', t.address));
+    const email = el('a', '', 'info@niaznet.net');
+    email.href = 'mailto:info@niaznet.net';
+    const phone = el('a', '', '+98 21 8832 2100 ext. 2');
+    phone.href = 'tel:+982188322100';
+    const whatsapp = el('a', '', '+90 534 014 3473');
+    whatsapp.href = 'https://wa.me/905340143473';
+    whatsapp.target = '_blank';
+    whatsapp.rel = 'noopener noreferrer';
+    const contactCta = el('a', 'footer-contact-link', t.contactCta);
+    contactCta.href = linkTo(pageForAction('/contact.html', lang));
+    contact.append(email, phone, whatsapp, contactCta);
+
+    grid.append(brand, quick, serviceColumn, contact);
     container.appendChild(grid);
     container.appendChild(el('div', 'footer-bottom', t.copyright));
     footer.appendChild(container);
@@ -963,7 +1039,8 @@
     const links = renderUsefulLinks(record, lang);
     if (links) app.appendChild(links);
     app.appendChild(renderFooter(lang));
-    const wa = el('a', 'whatsapp', COPY[lang].whatsapp);
+    const wa = el('a', 'whatsapp whatsapp-float', COPY[lang].whatsapp);
+    wa.setAttribute('aria-label', COPY[lang].whatsapp);
     wa.href = 'https://wa.me/905340143473';
     wa.target = '_blank';
     wa.rel = 'noopener noreferrer';

@@ -4,8 +4,11 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('homepage renders the shared shell and all 26 service cards', async ({ page }) => {
     await page.goto('/rebuild/');
     await expect(page.locator('.site-header')).toBeVisible();
-    await expect(page.locator('.service-grid .service-card')).toHaveCount(26);
+    await expect(page.locator('.services-grid .service-card')).toHaveCount(23);
+    await expect(page.locator('.services-grid .import-export-card')).toHaveCount(1);
+    await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     await expect(page.locator('#contact')).toBeAttached();
+    await expect(page.locator('.main-nav a')).toHaveCount(8);
     await expect(page.locator('.language-select option')).toHaveCount(5);
   });
 
@@ -278,7 +281,10 @@ test.describe('NIAZ NET unified rebuild preview', () => {
       await page.goto('/rebuild/?page=%2F');
       await expect(page.locator('.site-header')).toBeVisible();
       await expect(page.locator('.hero')).toBeVisible();
+      await expect(page.locator('.services-layout')).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
+      const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+      expect(pageWidth).toBeLessThanOrEqual(width);
       await page.screenshot({ path: testInfo.outputPath('rebuild-' + label + '.png'), fullPage: true });
       try {
         const response = await page.goto('https://www.niaznet.net/', {
