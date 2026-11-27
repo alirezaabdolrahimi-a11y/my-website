@@ -1,6 +1,38 @@
 const { test, expect } = require('@playwright/test');
+const fs = require('node:fs');
+const path = require('node:path');
 
 test.describe('NIAZ NET unified rebuild preview', () => {
+  test('clean published URLs resolve through the unified renderer', async ({ page }) => {
+    const cases = [
+      ['/', 'en'],
+      ['/about.html', 'en'],
+      ['/tr/about.html', 'tr'],
+      ['/fa/about.html', 'fa'],
+      ['/tr/api-supply.html', 'tr'],
+      ['/fa/api-supply.html', 'fa']
+    ];
+    for (const [url, language] of cases) {
+      await page.goto(url);
+      await expect(page.locator('html')).toHaveAttribute('lang', language);
+      await expect(page.locator('.site-header')).toBeVisible();
+      await expect(page.locator('main.not-found')).toHaveCount(0);
+      await expect(page.locator('h1').first()).toBeVisible();
+      expect(new URL(page.url()).pathname).toBe(url);
+    }
+  });
+
+  test('Vercel route rules cover every published inventory URL', async () => {
+    const root = path.resolve(__dirname, '../..');
+    const inventory = fs.readFileSync(path.join(root, 'data/live-page-inventory.jsonl'), 'utf8')
+      .trim().split(/\\r?\\n/).map(line => JSON.parse(line).path);
+    const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
+    const rules = (config.routes || []).filter(rule => rule.dest === '/rebuild/index.html');
+    const missing = inventory.filter(url => !rules.some(rule => new RegExp(rule.src).test(url)));
+    expect(missing).toEqual([]);
+    expect(rules.some(rule => new RegExp(rule.src).test('/index.html'))).toBe(true);
+  });
+
   test('homepage renders the shared shell and all 26 service cards', async ({ page }) => {
     await page.goto('/rebuild/');
     await expect(page.locator('.site-header')).toBeVisible();
@@ -121,12 +153,12 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.api-tools select')).toHaveCount(2);
     await expect(page.locator('.table-wrap')).toBeVisible();
   });
-  test('root homepage uses the 19-slide manifest without legacy static images', async ({ page }) => {
+  test('root homepage uses the unified 19-slide manifest', async ({ page }) => {
     await page.goto('/');
-    const showcase = page.locator('.hero-showcase');
-    await expect(showcase.locator('.showcase-image')).toHaveCount(19);
-    await expect(showcase.locator('img')).toHaveCount(2);
-    await expect(showcase.locator('.showcase-dots .showcase-dot')).toHaveCount(19);
+    const slideshow = page.locator('.slideshow');
+    await expect(slideshow).toHaveCount(1);
+    await expect(slideshow.locator('.slide')).toHaveCount(19);
+    await expect(slideshow.locator('.slide-dot')).toHaveCount(19);
   });
 
   test('shared slideshow manifest renders matching dots and no arrow controls', async ({ page }) => {
