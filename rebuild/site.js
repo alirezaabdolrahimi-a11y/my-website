@@ -811,9 +811,13 @@
         card.appendChild(el('h3', '', names[select.value] || names.en));
         card.appendChild(el('p', '', descriptions[type][select.value] || descriptions[type].en));
         const actions = el('div', 'download-actions');
-        const html = el('a', '', t.html); html.href = '/downloads/fcm-cmo/' + type + '-' + select.value + '.html';
-        const rtf = el('a', '', t.rtf); rtf.href = '/downloads/fcm-cmo/' + type + '-' + select.value + '.rtf';
-        actions.append(html, rtf);
+        const selectedLanguage = ['en','fa','tr','es','fr'].includes(select.value) ? select.value : 'en';
+        const downloadBase = '/downloads/fcm-cmo/' + encodeURIComponent(type) + '-' + selectedLanguage;
+        const htmlLink = el('a', '', t.html);
+        htmlLink.href = downloadBase + '.html';
+        const rtfLink = el('a', '', t.rtf);
+        rtfLink.href = downloadBase + '.rtf';
+        actions.append(htmlLink, rtfLink);
         card.appendChild(actions);
         grid.appendChild(card);
       });

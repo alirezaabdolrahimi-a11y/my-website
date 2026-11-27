@@ -347,7 +347,73 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ];
     for (const [route, hash] of aliases) {
       await page.goto('/rebuild/?page=' + encodeURIComponent(route));
-      await expect(page).toHaveURL(new RegExp('page=%2Ffa%2Fcontract-manufacturing\.html' + hash.replace('#', '\\#') + '$'));
+      await expect(page).toHaveURL(new RegExp('page=%2Ffa%2Fcontract-manufacturing\\.html' + hash.replace('#', '\\#') + ');
+    }
+  });
+
+  test('API catalogue and FCM downloads render once without duplicated static sections', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fapi-supply.html');
+    await expect(page.locator('#api-catalogue')).toHaveCount(1);
+    await expect(page.locator('#api-catalogue h2')).toHaveCount(1);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'API Sourcing Coordination' })).toHaveCount(1);
+    await page.goto('/rebuild/?page=%2Fcontract-manufacturing.html');
+    await expect(page.locator('#fcm-downloads .download-card')).toHaveCount(3);
+    await expect(page.locator('#fcm-downloads .download-card p')).toHaveCount(3);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Download technical enquiry forms' })).toHaveCount(0);
+  });
+
+  test('contact and partner forms have one heading, one intro and one mail note', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fcontact.html');
+    await expect(page.locator('form.form-grid')).toHaveCount(1);
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Send an Enquiry' })).toHaveCount(1);
+    await expect(page.locator('.form-note')).toHaveCount(1);
+    await page.goto('/rebuild/?page=%2Fbecome-our-partner.html');
+    await expect(page.locator('.content-panel h2').filter({ hasText: 'Partnership Application' })).toHaveCount(1);
+    await expect(page.locator('.form-note')).toHaveCount(1);
+  });
+
+  test('desktop, tablet and mobile visual reference screenshots', async ({ page }, testInfo) => {
+    const viewports = [
+      ['desktop', 1440, 1000],
+      ['tablet', 820, 1180],
+      ['mobile', 390, 844]
+    ];
+    for (const [label, width, height] of viewports) {
+      await page.setViewportSize({ width, height });
+      await page.goto('/rebuild/?page=%2F');
+      await expect(page.locator('.site-header')).toBeVisible();
+      await expect(page.locator('.hero')).toBeVisible();
+      await expect(page.locator('.services-layout')).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+      expect(pageWidth).toBeLessThanOrEqual(width);
+      await page.screenshot({ path: testInfo.outputPath('rebuild-' + label + '.png'), fullPage: true });
+      try {
+        const response = await page.goto('https://www.niaznet.net/', {
+          waitUntil: 'domcontentloaded',
+          timeout: 45000
+        });
+        if (!response || !response.ok()) {
+          testInfo.annotations.push({
+            type: 'live-reference',
+            description: 'Live homepage returned ' + (response ? response.status() : 'no response')
+          });
+          continue;
+        }
+        await page.locator('body').waitFor({ state: 'visible' });
+        await page.screenshot({ path: testInfo.outputPath('live-' + label + '.png'), fullPage: true });
+      } catch (error) {
+        testInfo.annotations.push({
+          type: 'live-reference',
+          description: 'Live homepage screenshot unavailable: ' + String(error).slice(0, 240)
+        });
+        break;
+      }
+    }
+  });
+
+});
+));
     }
   });
 
