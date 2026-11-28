@@ -271,9 +271,10 @@ function renderAboutPage(record) {
     const targetPath = localizedPath(lang, slug);
     const target = byPath.get(normalize(targetPath)) || byPath.get('/' + slug);
     if (!target) return '';
+    const marketLink = (record.links || []).find(item => (item.href || '').includes(slug));
     return '<a class="about-market-card" href="' + attr(targetPath) + '">' +
       '<span class="about-market-kicker">' + escapeHtml(lang === 'fa' ? 'بازار هدف' : lang === 'tr' ? 'HEDEF PAZAR' : 'MARKET PROFILE') + '</span>' +
-      '<h3>' + escapeHtml(firstBlock(target, 'h1') || target.title) + '</h3><p>' + escapeHtml(firstBlock(target, 'p') || target.description || '') + '</p>' +
+      '<h3>' + escapeHtml(marketLink?.text || firstBlock(target, 'h1') || target.title) + '</h3><p>' + escapeHtml(firstBlock(target, 'p') || target.description || '') + '</p>' +
       '<span class="about-market-arrow" aria-hidden="true">→</span></a>';
   }).join('');
   const ctaLinks = (record.links || []).filter(item => /become-our-partner|contact\.html/.test(item.href || '')).map(item => {
