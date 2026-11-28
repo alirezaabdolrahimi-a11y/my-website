@@ -94,9 +94,8 @@ function renderHero(record) {
   const description = firstBlock(record, 'p') || pageDescription(record);
   const lang = record.lang || 'en';
   const text = labels[lang] || labels.en;
-  const prefix = languagePrefix(lang);
   return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
-    '<div class="eyebrow">Connecting markets worldwide</div><h1>' + escapeHtml(heading) + '</h1>' +
+    '<div class="eyebrow">' + escapeHtml(text.tagline) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
     '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
