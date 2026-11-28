@@ -601,7 +601,7 @@
       svg.appendChild(circle);
       const label = document.createElementNS(ns, 'text');
       label.setAttribute('x', point.x + (point.x === 440 ? -38 : 10));
-      label.setAttribute('y', point.y + (point.name === 'Switzerland' || point.name === 'İsviçre' || point.name === 'Suiza' || point.name === 'Suisse' ? -12 : 8));
+      label.setAttribute('y', point.y + (point.name === 'Switzerland' || point.name === 'İsviçre' || point.name === 'سوئیس' || point.name === 'Suiza' || point.name === 'Suisse' ? -12 : 8));
       label.setAttribute('fill', '#071b38');
       label.setAttribute('font-family', 'Arial,sans-serif');
       label.setAttribute('font-size', '18');
