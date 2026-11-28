@@ -13,7 +13,8 @@ module.exports = defineConfig({
     ...devices['Desktop Chrome']
   },
   webServer: {
-    command: 'node serve-rewrite.js',
+    command: 'cd .. && node tools/prerender-pages.mjs && cd tests && node serve-rewrite.js',
+    cwd: __dirname,
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
     timeout: 30_000

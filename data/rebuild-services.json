@@ -1,12 +1,12 @@
 [
   {
-    "slug": "api-supply",
-    "en": "API Supply",
-    "fa": "تأمین مواد مؤثره دارویی",
-    "tr": "API Tedariki",
-    "es": "Suministro de API",
-    "fr": "Approvisionnement en API",
-    "icon": "api.png"
+    "slug": "import-export",
+    "en": "Import & Export",
+    "fa": "واردات و صادرات",
+    "tr": "İthalat ve İhracat",
+    "es": "Importación y exportación",
+    "fr": "Importation et exportation",
+    "icon": "import-export-globe.png"
   },
   {
     "slug": "brand-registration",
@@ -18,69 +18,22 @@
     "icon": "brand.png"
   },
   {
-    "slug": "business-development",
-    "en": "Business Development",
-    "fa": "توسعه کسب‌وکار",
-    "tr": "İş Geliştirme",
-    "es": "Desarrollo empresarial",
-    "fr": "Développement commercial",
-    "icon": "business-development.png"
+    "slug": "api-supply",
+    "en": "API Supply",
+    "fa": "تأمین مواد مؤثره دارویی",
+    "tr": "API Tedariki",
+    "es": "Suministro de API",
+    "fr": "Approvisionnement en API",
+    "icon": "api.png"
   },
   {
-    "slug": "cbd-products",
-    "en": "CBD Products",
-    "fa": "محصولات CBD",
-    "tr": "CBD Ürünleri",
-    "es": "Productos CBD sin THC",
-    "fr": "Produits CBD sans THC",
-    "icon": "cbd.png"
-  },
-  {
-    "slug": "chamber-of-commerce",
-    "en": "Chamber of Commerce",
-    "fa": "اتاق بازرگانی",
-    "tr": "Ticaret Odası",
-    "es": "Cámara de comercio privada",
-    "fr": "Chambre de commerce privée",
-    "icon": "chamber-of-commerce.png",
-    "vip": true
-  },
-  {
-    "slug": "contract-manufacturing",
-    "en": "Contract Manufacturing (FCM & CMO)",
-    "fa": "تولید قراردادی",
-    "tr": "Fason Üretim (FCM & CMO)",
-    "es": "Fabricación por contrato (FCM y CMO)",
-    "fr": "Fabrication à façon (FCM et CMO)",
-    "icon": "contract-manufacturing.png"
-  },
-  {
-    "slug": "cosmoderma",
-    "en": "Cosmoderma",
-    "fa": "کازمودرما",
-    "tr": "Kozmoderma",
-    "es": "Cosmoderma",
-    "fr": "Cosmoderma",
-    "icon": "cosmoderma.png"
-  },
-  {
-    "slug": "exclusive-agency",
-    "en": "Exclusive Agency",
-    "fa": "نمایندگی انحصاری",
-    "tr": "Münhasır Distribütörlük",
-    "es": "Representación exclusiva",
-    "fr": "Représentation exclusive",
-    "icon": "exclusive-agency.png",
-    "vip": true
-  },
-  {
-    "slug": "import-export",
-    "en": "Import & Export",
-    "fa": "واردات و صادرات",
-    "tr": "İthalat ve İhracat",
-    "es": "Importación y exportación",
-    "fr": "Importation et exportation",
-    "icon": "import-export-globe.png"
+    "slug": "sports-nutrition",
+    "en": "Sports Nutrition",
+    "fa": "تغذیه ورزشی",
+    "tr": "Sporcu Beslenmesi",
+    "es": "Nutrición deportiva",
+    "fr": "Nutrition sportive",
+    "icon": "sports-nutrition.png"
   },
   {
     "slug": "infant-formula",
@@ -92,59 +45,31 @@
     "icon": "infant-formula.png"
   },
   {
-    "slug": "international-business-development",
-    "en": "International Business Development",
-    "fa": "توسعه کسب‌وکار بین‌المللی",
-    "tr": "Uluslararası İş Geliştirme",
-    "es": "Desarrollo empresarial internacional",
-    "fr": "Développement commercial international",
+    "slug": "cbd-products",
+    "en": "CBD Products",
+    "fa": "محصولات CBD",
+    "tr": "CBD Ürünleri",
+    "es": "Productos CBD sin THC",
+    "fr": "Produits CBD sans THC",
+    "icon": "cbd.png"
+  },
+  {
+    "slug": "business-development",
+    "en": "BD / R&D",
+    "fa": "توسعه کسب‌وکار",
+    "tr": "İş Geliştirme",
+    "es": "Desarrollo empresarial",
+    "fr": "Développement commercial",
     "icon": "business-development.png"
   },
   {
-    "slug": "international-markets",
-    "en": "International Markets",
-    "fa": "بازارهای بین‌المللی",
-    "tr": "Uluslararası Pazarlar",
-    "es": "Mercados internacionales",
-    "fr": "Marchés internationaux",
-    "icon": "import-export-globe.png"
-  },
-  {
-    "slug": "kenya-market",
-    "en": "Kenya Market",
-    "fa": "بازار کنیا",
-    "tr": "Kenya Pazarı",
-    "es": "Mercado de Kenia",
-    "fr": "Marché du Kenya",
-    "icon": "import-export-globe.png"
-  },
-  {
-    "slug": "licensing-partnerships",
-    "en": "Licensing & Partnerships",
-    "fa": "مجوزها و مشارکت‌ها",
-    "tr": "Lisanslama ve Ortaklıklar",
-    "es": "Licencias y alianzas",
-    "fr": "Licences et partenariats",
-    "icon": "licensing-partnerships.png"
-  },
-  {
-    "slug": "market-entry",
-    "en": "Market Entry",
-    "fa": "ورود به بازار",
-    "tr": "Pazara Giriş",
-    "es": "Entrada al mercado",
-    "fr": "Entrée sur le marché",
-    "icon": "market-entry.png",
-    "vip": true
-  },
-  {
-    "slug": "medical-devices",
-    "en": "Medical Devices",
-    "fa": "تجهیزات پزشکی",
-    "tr": "Tıbbi Cihazlar",
-    "es": "Dispositivos médicos",
-    "fr": "Dispositifs médicaux",
-    "icon": "medical-devices.png"
+    "slug": "pharmaceutical-products",
+    "en": "Pharmaceutical Products",
+    "fa": "محصولات دارویی",
+    "tr": "Farmasötik Ürünler",
+    "es": "Productos farmacéuticos",
+    "fr": "Produits pharmaceutiques",
+    "icon": "pharmaceutical-products.png"
   },
   {
     "slug": "nutraceuticals",
@@ -165,13 +90,22 @@
     "icon": "pet-food.png"
   },
   {
-    "slug": "pharmaceutical-products",
-    "en": "Pharmaceutical Products",
-    "fa": "محصولات دارویی",
-    "tr": "Farmasötik Ürünler",
-    "es": "Productos farmacéuticos",
-    "fr": "Produits pharmaceutiques",
-    "icon": "pharmaceutical-products.png"
+    "slug": "medical-devices",
+    "en": "Medical Devices",
+    "fa": "تجهیزات پزشکی",
+    "tr": "Tıbbi Cihazlar",
+    "es": "Dispositivos médicos",
+    "fr": "Dispositifs médicaux",
+    "icon": "medical-devices.png"
+  },
+  {
+    "slug": "technology-transfer",
+    "en": "Technology Transfer",
+    "fa": "انتقال فناوری",
+    "tr": "Teknoloji Transferi",
+    "es": "Transferencia de tecnología",
+    "fr": "Transfert de technologie",
+    "icon": "technology-transfer.png"
   },
   {
     "slug": "private-label",
@@ -183,13 +117,22 @@
     "icon": "private-label.png"
   },
   {
-    "slug": "product-registration",
-    "en": "Product Registration",
-    "fa": "ثبت محصول",
-    "tr": "Ürün Tescili",
-    "es": "Registro de productos",
-    "fr": "Enregistrement des produits",
-    "icon": "brand.png"
+    "slug": "contract-manufacturing",
+    "en": "Contract Manufacturing (FCM & CMO)",
+    "fa": "تولید قراردادی",
+    "tr": "Fason Üretim (FCM & CMO)",
+    "es": "Fabricación por contrato (FCM y CMO)",
+    "fr": "Fabrication à façon (FCM et CMO)",
+    "icon": "contract-manufacturing.png"
+  },
+  {
+    "slug": "cosmoderma",
+    "en": "Cosmoderma",
+    "fa": "کازمودرما",
+    "tr": "Kozmoderma",
+    "es": "Cosmoderma",
+    "fr": "Cosmoderma",
+    "icon": "cosmoderma.png"
   },
   {
     "slug": "regulatory-affairs",
@@ -201,22 +144,13 @@
     "icon": "regulatory-affairs.png"
   },
   {
-    "slug": "south-africa-market",
-    "en": "South Africa Market",
-    "fa": "بازار آفریقای جنوبی",
-    "tr": "Güney Afrika Pazarı",
-    "es": "Mercado de Sudáfrica",
-    "fr": "Marché d’Afrique du Sud",
-    "icon": "import-export-globe.png"
-  },
-  {
-    "slug": "sports-nutrition",
-    "en": "Sports Nutrition",
-    "fa": "تغذیه ورزشی",
-    "tr": "Sporcu Beslenmesi",
-    "es": "Nutrición deportiva",
-    "fr": "Nutrition sportive",
-    "icon": "sports-nutrition.png"
+    "slug": "licensing-partnerships",
+    "en": "Licensing & Partnerships",
+    "fa": "مجوزها و مشارکت‌ها",
+    "tr": "Lisanslama ve Ortaklıklar",
+    "es": "Licencias y alianzas",
+    "fr": "Licences et partenariats",
+    "icon": "licensing-partnerships.png"
   },
   {
     "slug": "supply-chain-solutions",
@@ -228,12 +162,83 @@
     "icon": "supply-chain-solutions.png"
   },
   {
-    "slug": "technology-transfer",
-    "en": "Technology Transfer",
-    "fa": "انتقال فناوری",
-    "tr": "Teknoloji Transferi",
-    "es": "Transferencia de tecnología",
-    "fr": "Transfert de technologie",
-    "icon": "technology-transfer.png"
+    "slug": "chamber-of-commerce",
+    "en": "Chamber of Commerce",
+    "fa": "اتاق بازرگانی",
+    "tr": "Ticaret Odası",
+    "es": "Cámara de comercio privada",
+    "fr": "Chambre de commerce privée",
+    "icon": "chamber-of-commerce.png",
+    "vip": true
+  },
+  {
+    "slug": "exclusive-agency",
+    "en": "Exclusive Agency",
+    "fa": "نمایندگی انحصاری",
+    "tr": "Münhasır Distribütörlük",
+    "es": "Representación exclusiva",
+    "fr": "Représentation exclusive",
+    "icon": "exclusive-agency.png",
+    "vip": true
+  },
+  {
+    "slug": "market-entry",
+    "en": "Market Entry",
+    "fa": "ورود به بازار",
+    "tr": "Pazara Giriş",
+    "es": "Entrada al mercado",
+    "fr": "Entrée sur le marché",
+    "icon": "market-entry.png",
+    "vip": true
+  },
+  {
+    "slug": "international-business-development",
+    "en": "International Business Development",
+    "fa": "توسعه کسب‌وکار بین‌المللی",
+    "tr": "Uluslararası İş Geliştirme",
+    "es": "Desarrollo empresarial internacional",
+    "fr": "Développement commercial international",
+    "icon": "business-development.png",
+    "showOnHomepage": false
+  },
+  {
+    "slug": "product-registration",
+    "en": "Product Registration",
+    "fa": "ثبت محصول",
+    "tr": "Ürün Tescili",
+    "es": "Registro de productos",
+    "fr": "Enregistrement des produits",
+    "icon": "brand.png",
+    "showOnHomepage": false
+  },
+  {
+    "slug": "international-markets",
+    "en": "International Markets",
+    "fa": "بازارهای بین‌المللی",
+    "tr": "Uluslararası Pazarlar",
+    "es": "Mercados internacionales",
+    "fr": "Marchés internationaux",
+    "icon": "import-export-globe.png",
+    "showOnHomepage": false
+  },
+  {
+    "slug": "kenya-market",
+    "en": "Kenya Market",
+    "fa": "بازار کنیا",
+    "tr": "Kenya Pazarı",
+    "es": "Mercado de Kenia",
+    "fr": "Marché du Kenya",
+    "icon": "import-export-globe.png",
+    "showOnHomepage": false
+  },
+  {
+    "slug": "south-africa-market",
+    "en": "South Africa Market",
+    "fa": "بازار آفریقای جنوبی",
+    "tr": "Güney Afrika Pazarı",
+    "es": "Mercado de Sudáfrica",
+    "fr": "Marché d’Afrique du Sud",
+    "icon": "import-export-globe.png",
+    "showOnHomepage": false
   }
 ]

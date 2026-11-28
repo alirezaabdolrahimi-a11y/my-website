@@ -23,11 +23,11 @@ const navLabels = {
   fr:['Accueil','À propos','Services','Partenaires','Projets','Actualités','Contact','Nous contacter']
 };
 const labels = {
-  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
-  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
-  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
-  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
-  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
+  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',importExportLabel:'IMPORT / EXPORT',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
+  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',importExportLabel:'واردات / صادرات',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
+  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',importExportLabel:'İTHALAT / İHRACAT',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
+  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
+  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',importExportLabel:'IMPORT / EXPORT',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
 };
 function normalize(value) {
   let result = String(value || '/').replace(/\/+/g, '/');
@@ -104,10 +104,10 @@ function renderHero(record) {
 function renderServices(lang) {
   const text = labels[lang] || labels.en;
   const prefix = languagePrefix(lang);
-  const primary = services.filter(service => !service.vip);
-  const vip = services.filter(service => service.vip);
+  const primary = services.filter(service => !service.vip && service.showOnHomepage !== false);
+  const vip = services.filter(service => service.vip && service.showOnHomepage !== false);
   const cards = primary.map(service => {
-    const title = service[lang] || service.en || service.slug;
+    const title = service.slug === 'import-export' ? text.importExportLabel : (service[lang] || service.en || service.slug);
     const href = prefix + service.slug + '.html';
     const target = byPath.has(normalize(href)) ? href : byPath.has('/' + service.slug + '.html') ? '/' + service.slug + '.html' : languageHome(lang);
     return '<a class="service-card' + (service.slug === 'import-export' ? ' import-export-card' : '') + '" href="' + attr(target) + '">' +

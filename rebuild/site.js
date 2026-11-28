@@ -454,21 +454,8 @@
     section.setAttribute('aria-label', t.services);
     const layout = el('div', 'services-layout');
     const grid = el('div', 'services-grid');
-    const primary = services.filter(service => !service.vip);
-    const displayOrder = [
-      'import-export','brand-registration','api-supply','sports-nutrition','infant-formula',
-      'cbd-products','business-development','pharmaceutical-products','nutraceuticals',
-      'pet-food','medical-devices','technology-transfer','private-label','contract-manufacturing',
-      'cosmoderma','regulatory-affairs','licensing-partnerships','supply-chain-solutions'
-    ];
-    const ordered = displayOrder
-      .map(slug => primary.find(service => service.slug === slug))
-      .filter(Boolean);
+    const primary = services.filter(service => !service.vip && service.showOnHomepage !== false);
     primary.forEach(service => {
-      if (!displayOrder.includes(service.slug)) ordered.push(service);
-    });
-
-    ordered.forEach(service => {
       const isLead = service.slug === 'import-export';
       const card = el('a', 'service-card' + (isLead ? ' import-export-card' : ''));
       card.href = linkTo(routeForService(service.slug, lang));
@@ -479,7 +466,7 @@
     });
     layout.appendChild(grid);
 
-    const vip = services.filter(service => service.vip);
+    const vip = services.filter(service => service.vip && service.showOnHomepage !== false);
     if (vip.length) {
       const panel = el('aside', 'vip-services');
       panel.id = 'vip-services';
