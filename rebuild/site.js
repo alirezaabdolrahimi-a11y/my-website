@@ -687,6 +687,7 @@
     const marketSection = el('section', 'about-section white');
     const marketContainer = el('div', 'container');
     marketContainer.appendChild(sectionHead(groups[2]));
+    marketContainer.appendChild(el('h3', 'about-market-profiles-heading', lang === 'fa' ? 'صفحات بازار' : lang === 'tr' ? 'Pazar Profilleri' : 'Market Profiles'));
     const marketCards = el('div', 'about-market-cards');
     ['kenya-market.html', 'south-africa-market.html', 'international-markets.html'].forEach(slug => {
       const targetPath = pageForLanguage('/' + slug, lang);
