@@ -199,7 +199,7 @@
       dots.appendChild(dot);
     });
     wrap.appendChild(dots);
-    let active = 0, timer = null, startX = null;
+    let active = 0, timer = null, startX = null, preloadTimer = null;
     const dotButtons = [...dots.querySelectorAll('button')];
     function loadSlide(i, priority) {
       const img = slides[i].querySelector('img');
@@ -212,8 +212,20 @@
     }
     function show(i) {
       active = (i + slides.length) % slides.length;
+      if (preloadTimer !== null) { window.clearTimeout(preloadTimer); preloadTimer = null; }
       loadSlide(active, true);
-      if (slides.length > 1) loadSlide((active + 1) % slides.length, false);
+      if (slides.length > 1) {
+        const shown = active;
+        const activeImage = slides[shown].querySelector('img');
+        const queueNext = () => {
+          if (active !== shown) return;
+          preloadTimer = window.setTimeout(() => {
+            if (active === shown) loadSlide((shown + 1) % slides.length, false);
+          }, 1200);
+        };
+        if (activeImage && activeImage.complete) queueNext();
+        else if (activeImage) activeImage.addEventListener('load', queueNext, { once: true });
+      }
       slides.forEach((s, n) => {
         s.classList.toggle('is-active', n === active);
         s.classList.toggle('active', n === active);
