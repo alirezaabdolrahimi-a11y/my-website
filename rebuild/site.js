@@ -1225,7 +1225,7 @@
     const panel = el('div', 'content-panel');
 
     const appendLink = (item, marketLink = false) => {
-      const label = String(item.text || item.href).normalize('NFD').replace(/\\p{M}/gu, '').toLowerCase();
+      const label = String(item.text || item.href).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
       const rawPath = (item.href || '').split(/[?#]/)[0];
       const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && /(?:contact|become-our-partner)\.html$/i.test(rawPath);
       const a = el('a', marketLink ? 'content-link about-market-link' : formAction ? 'btn btn-gold-cta' : 'content-link', item.text || item.href);
