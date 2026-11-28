@@ -655,9 +655,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
 
   test('Import & Export shows the three requested market cards in EN, FA and TR', async ({ page }) => {
     const cases = [
-      ['/import-export.html', ['Kenya', 'South Africa', 'International Markets'], ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']],
-      ['/fa/import-export.html', ['کنیا', 'آفریقای جنوبی', 'بازارهای بین‌المللی'], ['/fa/kenya-market.html', '/fa/south-africa-market.html', '/fa/international-markets.html']],
-      ['/tr/import-export.html', ['Kenya', 'Güney Afrika', 'Uluslararası Pazarlar'], ['/tr/kenya-market.html', '/tr/south-africa-market.html', '/tr/international-markets.html']]
+      ['/import-export.html', ['Kenya', 'South Africa', 'International Markets'], ['?page=%2Fkenya-market.html', '?page=%2Fsouth-africa-market.html', '?page=%2Finternational-markets.html']],
+      ['/fa/import-export.html', ['کنیا', 'آفریقای جنوبی', 'بازارهای بین‌المللی'], ['?page=%2Ffa%2Fkenya-market.html', '?page=%2Ffa%2Fsouth-africa-market.html', '?page=%2Ffa%2Finternational-markets.html']],
+      ['/tr/import-export.html', ['Kenya', 'Güney Afrika', 'Uluslararası Pazarlar'], ['?page=%2Ftr%2Fkenya-market.html', '?page=%2Ftr%2Fsouth-africa-market.html', '?page=%2Ftr%2Finternational-markets.html']]
     ];
     for (const [route, titles, hrefs] of cases) {
       await page.goto('/rebuild/?page=' + encodeURIComponent(route));
@@ -671,6 +671,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     const root = path.resolve(__dirname, '../..');
     const staticPage = fs.readFileSync(path.join(root, 'import-export.html'), 'utf8');
     expect((staticPage.match(/class="market-profile-card"/g) || []).length).toBe(3);
+    for (const href of ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']) {
+      expect(staticPage).toContain('href="' + href + '"');
+    }
     expect(staticPage.indexOf('class="hero-actions"')).toBeLessThan(staticPage.indexOf('class="hero-service-back"'));
   });
 
