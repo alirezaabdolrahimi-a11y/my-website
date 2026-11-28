@@ -422,13 +422,13 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ];
     for (const [route, hrefs] of cases) {
       await page.goto(route);
-      await expect(page.locator('.about-market-links')).toBeVisible();
-      await expect(page.locator('.about-market-links h2').first()).toHaveText(
+      await expect(page.locator('.about-market-cards')).toBeVisible();
+      await expect(page.locator('.about-market-profiles-heading')).toHaveText(
         route.startsWith('/fa/') ? 'صفحات بازار' : route.startsWith('/tr/') ? 'Pazar Profilleri' : 'Market Profiles'
       );
-      await expect(page.locator('.about-market-link')).toHaveCount(3);
+      await expect(page.locator('.about-market-card')).toHaveCount(3);
       for (const href of hrefs) {
-        await expect(page.locator('.about-market-link[href="' + href + '"]')).toHaveCount(1);
+        await expect(page.locator('.about-market-card[href="' + href + '"]')).toHaveCount(1);
       }
     }
   });
