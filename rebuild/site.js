@@ -345,9 +345,14 @@
     const partner = el('a', 'btn partner-hero-btn', t.partnerCta);
     partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
     actions.append(contact, partner);
-    copy.appendChild(actions);
     const serviceBack = renderServiceBackLink(path, lang);
-    if (serviceBack) copy.appendChild(serviceBack);
+    if (serviceBack) {
+      const ctaStack = el('div', 'hero-cta-stack');
+      ctaStack.append(actions, serviceBack);
+      copy.appendChild(ctaStack);
+    } else {
+      copy.appendChild(actions);
+    }
     grid.appendChild(copy);
     const group = slideGroup(path);
     if (group) {
@@ -427,17 +432,17 @@
     const copy = {
       en: {
         brandTitle:'Sports Brand Experience & Portfolio',
-        brandIntro:'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.',
+        brandIntro:'Four empty partner-card positions are reserved for future sports nutrition collaborations. No logos are displayed until the selected brands and logo-use permissions are confirmed.',
         brandLabel:'SPORTS BRAND LOGO ', pending:'To be added'
       },
       tr: {
         brandTitle:'Spor Markası Deneyimi ve Portföyü',
-        brandIntro:'Seçili spor markaları ve marka ortaklığı deneyimi için dört alan ayrılmıştır. Tercih edilen markalar onaylandığında logolar eklenecektir.',
+        brandIntro:'Gelecekteki sporcu beslenmesi iş birlikleri için dört boş iş ortağı kartı alanı ayrılmıştır. Seçilen markalar ve logo kullanım izinleri onaylanana kadar hiçbir logo gösterilmez.',
         brandLabel:'SPOR MARKASI LOGOSU ', pending:'Eklenecek'
       },
       fa: {
         brandTitle:'تجربه و سبد برندهای ورزشی',
-        brandIntro:'چهار جایگاه برای برندهای ورزشی منتخب و سوابق همکاری با برندها در نظر گرفته شده است. نشان‌ها پس از تأیید برندهای موردنظر اضافه می‌شوند.',
+        brandIntro:'چهار جایگاه خالی برای کارت همکاری با برندهای تغذیه ورزشی در آینده در نظر گرفته شده است. تا زمان تأیید برندها و دریافت مجوز استفاده از نشان‌ها، هیچ لوگویی نمایش داده نمی‌شود.',
         brandLabel:'نشان برند ورزشی ', pending:'در انتظار افزودن'
       }
     };
