@@ -518,7 +518,7 @@ function build() {
   const canonicalSet = new Set(indexable.map(record => canonicalFor(record, canonicalCounts)));
   const titleSet = new Set(indexable.map(record => {
     const base = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
-    return titleCounts.get(base) > 1 ? base + ' — ' + normalize(record.path).split('/').filter(Boolean).pop().replace(/\\.html$/, '').replace(/-/g, ' ') : base;
+    return titleCounts.get(base) > 1 ? base + ' — ' + normalize(record.path).split('/').filter(Boolean).pop().replace(/\.html$/, '').replace(/-/g, ' ') : base;
   }));
   const descriptionSet = new Set(indexable.map(record => pageDescription(record, descriptionCounts)));
   if (canonicalSet.size !== indexable.length || titleSet.size !== indexable.length || descriptionSet.size !== indexable.length) {
