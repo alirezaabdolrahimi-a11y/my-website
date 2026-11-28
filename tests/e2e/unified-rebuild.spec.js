@@ -54,19 +54,19 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('market pages are linked from About Us in EN, TR and FA and remain published', async ({ page }) => {
     const cases = [
       ['/rebuild/?page=%2Fabout.html', [
-        ['International Markets', '/international-markets.html'],
-        ['South Africa Market', '/south-africa-market.html'],
-        ['Kenya Market', '/kenya-market.html']
+        ['International Markets', '?page=%2Finternational-markets.html'],
+        ['South Africa Market', '?page=%2Fsouth-africa-market.html'],
+        ['Kenya Market', '?page=%2Fkenya-market.html']
       ]],
       ['/rebuild/?page=%2Ftr%2Fabout.html', [
-        ['Uluslararası Pazarlar', '/tr/international-markets.html'],
-        ['Güney Afrika Pazarı', '/tr/south-africa-market.html'],
-        ['Kenya Pazarı', '/tr/kenya-market.html']
+        ['Uluslararası Pazarlar', '?page=%2Ftr%2Finternational-markets.html'],
+        ['Güney Afrika Pazarı', '?page=%2Ftr%2Fsouth-africa-market.html'],
+        ['Kenya Pazarı', '?page=%2Ftr%2Fkenya-market.html']
       ]],
       ['/rebuild/?page=%2Ffa%2Fabout.html', [
-        ['بازارهای بین‌المللی', '/fa/international-markets.html'],
-        ['بازار آفریقای جنوبی', '/fa/south-africa-market.html'],
-        ['بازار کنیا', '/fa/kenya-market.html']
+        ['بازارهای بین‌المللی', '?page=%2Ffa%2Finternational-markets.html'],
+        ['بازار آفریقای جنوبی', '?page=%2Ffa%2Fsouth-africa-market.html'],
+        ['بازار کنیا', '?page=%2Ffa%2Fkenya-market.html']
       ]]
     ];
     for (const [url, links] of cases) {
