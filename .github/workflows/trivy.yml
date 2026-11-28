@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - qa/free-agent-followup-2026-11-27
+      - fix/seo-technical-gaps-2026-11-28
   pull_request:
     branches:
       - main

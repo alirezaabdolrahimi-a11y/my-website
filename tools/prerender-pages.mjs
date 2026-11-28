@@ -110,7 +110,7 @@ function renderHero(record) {
   const ctaMarkup = backLink
     ? '<div class="hero-cta-stack">' + actions + backLink + '</div>'
     : actions;
-  return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
+  return '<section class="hero" id="home"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
     '<div class="eyebrow">' + escapeHtml(text.tagline) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' + ctaMarkup + '</div>' + showcase + '</div></section>';
 }
@@ -128,7 +128,7 @@ function renderAboutHero(record) {
       slides.map((src, index) => '<button class="slide-dot showcase-dot" type="button" aria-label="Show slide ' + (index + 1) + '" aria-current="' + (index === 0) + '"></button>').join('') +
       '</div></div>'
     : '';
-  return '<section class="about-hero"><div class="container about-hero-inner"><div class="about-hero-copy">' +
+  return '<section class="about-hero" id="home"><div class="container about-hero-inner"><div class="about-hero-copy">' +
     '<div class="eyebrow">' + escapeHtml(eyebrow) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p>' + escapeHtml(description) + '</p></div>' + showcase + '</div></section>';
 }
@@ -440,7 +440,7 @@ function renderServiceBackLink(record) {
     attr(languageHome(lang) + '#services') + '">' + escapeHtml(labels[lang] || labels.en) + '</a></div>';
 }
 
-function pageHtml(record, canonical, titleCounts, descriptionCounts) {
+function pageHtml(record, canonical, canonicalCounts, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
   const description = pageDescription(record, descriptionCounts);
   if (record.redirectTo) {
@@ -455,13 +455,18 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const title = titleCounts.get(baseTitle) > 1 ? baseTitle + ' — ' + pathName.split('/').filter(Boolean).pop().replace(/\.html$/, '').replace(/-/g, ' ') : baseTitle;
   const alternates = records.filter(other => other.path.split('/').pop() === pathName.split('/').pop() &&
     (other.path === '/' || other.path.endsWith('/' + pathName.split('/').pop())) && other.lang);
-  const alternateTags = [...new Map(alternates.map(other => [other.lang, other])).values()]
-    .map(other => '<link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(other.canonical || SITE + normalize(other.path)) + '">').join('');
+  const uniqueAlternates = [...new Map(alternates.map(other => [other.lang, other])).values()];
+  const alternateTags = uniqueAlternates.map(other => '<link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(canonicalFor(other, canonicalCounts)) + '">').join('') +
+    (uniqueAlternates.some(other => other.lang === 'en') ? '<link rel="alternate" hreflang="x-default" href="' + attr(canonicalFor(uniqueAlternates.find(other => other.lang === 'en'), canonicalCounts)) + '">' : '');
   const isAboutPage = pathName.endsWith('/about.html');
   const mainContent = home ? renderServices(lang) + renderBlocks(record) :
     isAboutPage ? renderAboutPage(record) :
     (pathName.endsWith('/api-supply.html') ? renderApiCatalogStatic(lang) : '') + renderBlocks(record) + renderDownloadsStatic(record) + renderForm(record) + renderLinks(record);
   const direction = lang === 'fa' ? 'rtl' : 'ltr';
+  const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Organization', '@id': SITE + '#organization', name: 'NIAZ NET', url: SITE + '/', logo: SITE + '/images/niaz-net-logo.png', email: 'info@niaznet.net' },
+    { '@type': 'WebSite', '@id': SITE + '#website', name: 'NIAZ NET', url: SITE + '/', publisher: { '@id': SITE + '#organization' } }
+  ] });
   return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '" data-prerendered="true"><head>' +
     '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' +
@@ -470,6 +475,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<meta property="og:type" content="website"><meta property="og:site_name" content="NIAZ NET">' +
     '<meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(description) + '">' +
     '<meta property="og:url" content="' + attr(canonical) + '"><meta property="og:image" content="' + SITE + '/images/niaz-net-logo.png">' +
+    '<script type="application/ld+json">' + structuredData + '</script>' +
     '<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/rebuild/site.css">' +
     (isAboutPage ? '<link rel="stylesheet" href="/assets/css/about-page.css">' : '') +
     (pathName.endsWith('/sports-nutrition.html') ? '<link rel="stylesheet" href="/assets/css/sports-nutrition-page.css">' : '') +
@@ -492,7 +498,7 @@ function build() {
     const file = outputPath(record.path);
     const canonical = canonicalFor(record, canonicalCounts);
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, pageHtml(record, canonical, titleCounts, descriptionCounts), 'utf8');
+    fs.writeFileSync(file, pageHtml(record, canonical, canonicalCounts, titleCounts, descriptionCounts), 'utf8');
   }
   const sitemapRecords = records.filter(record => !record.redirectTo);
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -501,9 +507,10 @@ function build() {
       const canonical = canonicalFor(record, canonicalCounts);
       const basename = normalize(record.path).split('/').pop();
       const translations = sitemapRecords.filter(other => normalize(other.path).split('/').pop() === basename);
-      return '<url><loc>' + escapeHtml(canonical) + '</loc>' + translations.map(other =>
-        '<xhtml:link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(canonicalFor(other, canonicalCounts)) + '"/>'
-      ).join('') + '</url>';
+      const languageLinks = translations.map(other => '<xhtml:link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(canonicalFor(other, canonicalCounts)) + '"/>').join('');
+      const englishTranslation = translations.find(other => other.lang === 'en');
+      const defaultLink = englishTranslation ? '<xhtml:link rel="alternate" hreflang="x-default" href="' + attr(canonicalFor(englishTranslation, canonicalCounts)) + '"/>' : '';
+      return '<url><loc>' + escapeHtml(canonical) + '</loc>' + languageLinks + defaultLink + '</url>';
     }).join('') + '</urlset>';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf8');
   fs.writeFileSync(path.join(ROOT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + SITE + '/sitemap.xml\n', 'utf8');
@@ -511,7 +518,7 @@ function build() {
   const canonicalSet = new Set(indexable.map(record => canonicalFor(record, canonicalCounts)));
   const titleSet = new Set(indexable.map(record => {
     const base = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
-    return titleCounts.get(base) > 1 ? base + ' — ' + normalize(record.path).split('/').filter(Boolean).pop().replace(/\\.html$/, '').replace(/-/g, ' ') : base;
+    return titleCounts.get(base) > 1 ? base + ' — ' + normalize(record.path).split('/').filter(Boolean).pop().replace(/\.html$/, '').replace(/-/g, ' ') : base;
   }));
   const descriptionSet = new Set(indexable.map(record => pageDescription(record, descriptionCounts)));
   if (canonicalSet.size !== indexable.length || titleSet.size !== indexable.length || descriptionSet.size !== indexable.length) {
@@ -522,6 +529,14 @@ function build() {
     if (!/<h1\b/.test(html) || !/<meta name="description"/.test(html) || !/<link rel="canonical"/.test(html) || !/<a\s/.test(html)) {
       throw new Error('Pre-render validation failed for ' + record.path + ': missing heading, metadata or internal links.');
     }
+  }
+  const sitemapOutput = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  const sitemapUrlCount = (sitemapOutput.match(/<url><loc>/g) || []).length;
+  if (sitemapUrlCount !== indexable.length) throw new Error('SEO validation failed: sitemap URL count does not match indexable pages.');
+  for (const record of indexable) {
+    const html = fs.readFileSync(outputPath(record.path), 'utf8');
+    if (!html.includes('application/ld+json')) throw new Error('Missing Organization/WebSite structured data: ' + record.path);
+    if (html.includes('#home') && !html.includes('id="home"')) throw new Error('Missing #home anchor destination: ' + record.path);
   }
   console.log('Pre-rendered and validated ' + indexable.length + ' indexable pages plus ' + (records.length - indexable.length) + ' redirect aliases.');
 }
