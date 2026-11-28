@@ -29,7 +29,7 @@
       faLimited:'صفحه اصلی، صفحات اصلی کسب‌وکار و مجموعه‌ای از خدمات منتخب به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
       notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
-      email:'Email',addressLabel:'Tehran Address',copyright:'NIAZ NET · Unified rebuild preview · Isolated branch only'
+      email:'Email',addressLabel:'Tehran Address',contactHeading:'Contact NIAZ NET',copyright:'NIAZ NET · International Business Development'
     },
     tr: {
       home:'Ana Sayfa',about:'Hakkımızda',navServices:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',getInTouch:'Bize Ulaşın',
@@ -42,7 +42,7 @@
       faLimited:'Farsça içerik şu anda yalnızca Hakkımızda sayfasında mevcuttur. Diğer hizmet ayrıntıları çevirileri tamamlanana kadar İngilizce açılır.',
       notFound:'Bu sayfa mevcut canlı site envanterinde bulunmuyor.',
       office:'Tahran Ofisi',address:'Marjan Tower, 6. Kat, 603 numaralı ofis, Kuzey Mofatteh Caddesi, Tahran, İran',
-      email:'E-posta',addressLabel:'Tahran Adresi',copyright:'NIAZ NET · Birleşik yeniden yapım önizlemesi · Yalnızca izole dal'
+      email:'E-posta',addressLabel:'Tahran Adresi',contactHeading:'NIAZ NET İletişim',copyright:'NIAZ NET · Uluslararası İş Geliştirme'
     },
     fa: {
       home:'صفحه اصلی',about:'درباره ما',navServices:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',getInTouch:'تماس با ما',
@@ -55,7 +55,7 @@
       faLimited:'صفحه اصلی، صفحات درباره ما، پروژه‌ها، تماس و همکاری و ۲۶ صفحه خدمات به زبان فارسی در دسترس هستند.',
       notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
       office:'دفتر تهران',address:'ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳',
-      email:'ایمیل',addressLabel:'نشانی دفتر تهران',copyright:'NIAZ NET · پیش‌نمایش بازسازی یکپارچه · فقط شاخه آزمایشی'
+      email:'ایمیل',addressLabel:'نشانی دفتر تهران',contactHeading:'تماس با نیاز نت',copyright:'نیاز نت · توسعه کسب‌وکار بین‌المللی'
     },
     es: {
       home:'Inicio',about:'Quiénes somos',navServices:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',getInTouch:'Contacte',
@@ -355,10 +355,11 @@
     hero.appendChild(grid);
     return hero;
   }
-  function renderDataTable(dataTable, lang) {
-    const wrap = el('div', 'table-wrap');
-    const table = el('table', 'api-table product-price-table');
-    if (dataTable.caption) table.appendChild(el('caption', '', dataTable.caption));
+  function renderDataTable(dataTable, lang, sportsPage = false) {
+    const wrap = el('div', sportsPage ? 'bulk-whey-table-wrap' : 'table-wrap');
+    const table = el('table', sportsPage ? 'bulk-whey-table product-price-table' : 'api-table product-price-table');
+    const caption = dataTable.captionByLang?.[lang] || dataTable.caption;
+    if (caption) table.appendChild(el('caption', '', caption));
     const headers = dataTable.headers[lang] || dataTable.headers.en;
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
@@ -368,7 +369,12 @@
     const rows = dataTable.rowsByLang && dataTable.rowsByLang[lang] ? dataTable.rowsByLang[lang] : (dataTable.rows || []);
     rows.forEach(values => {
       const row = document.createElement('tr');
-      values.forEach(value => row.appendChild(el('td', '', value)));
+      const displayValues = sportsPage ? [...values, twentyKgBagPrice(values[2])] : values;
+      displayValues.forEach((value, index) => {
+        const cell = el('td', sportsPage && index === 2 ? 'bulk-whey-price' : '');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
       tbody.appendChild(row);
     });
     table.append(thead, tbody);
@@ -376,6 +382,121 @@
     return wrap;
   }
 
+  function twentyKgBagPrice(price) {
+    const amount = Number(String(price || '').replace(/[^0-9.]/g, ''));
+    return Number.isFinite(amount) && amount > 0 ? '€' + (amount * 20).toFixed(2) : '';
+  }
+
+  function sportsPageCopy(lang) {
+    const copy = {
+      en: {
+        brandTitle:'Sports Brand Experience & Portfolio',
+        brandIntro:'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.',
+        brandLabel:'SPORTS BRAND LOGO ', pending:'To be added'
+      },
+      tr: {
+        brandTitle:'Spor Markası Deneyimi ve Portföyü',
+        brandIntro:'Seçili spor markaları ve marka ortaklığı deneyimi için dört alan ayrılmıştır. Tercih edilen markalar onaylandığında logolar eklenecektir.',
+        brandLabel:'SPOR MARKASI LOGOSU ', pending:'Eklenecek'
+      },
+      fa: {
+        brandTitle:'تجربه و سبد برندهای ورزشی',
+        brandIntro:'چهار جایگاه برای برندهای ورزشی منتخب و سوابق همکاری با برندها در نظر گرفته شده است. نشان‌ها پس از تأیید برندهای موردنظر اضافه می‌شوند.',
+        brandLabel:'نشان برند ورزشی ', pending:'در انتظار افزودن'
+      }
+    };
+    return copy[lang] || copy.en;
+  }
+
+  function renderSportsPricing(record, lang, titleIndex, tableIndex) {
+    const title = record.blocks[titleIndex]?.text || '';
+    const paragraphs = record.blocks.slice(titleIndex + 1, tableIndex)
+      .filter(block => block.type === 'p').map(block => block.text);
+    const section = el('section', 'container service-content bulk-whey-section');
+    section.setAttribute('aria-labelledby', 'bulk-whey-title');
+    const panel = el('div', 'bulk-whey-panel');
+    panel.appendChild(el('h2', '', title));
+    if (paragraphs[0]) panel.appendChild(el('p', 'bulk-whey-intro', paragraphs[0]));
+    const tableBlock = record.blocks[tableIndex];
+    panel.appendChild(renderDataTable(record.tables[tableBlock.index], lang, true));
+    if (paragraphs[1]) panel.appendChild(el('p', 'bulk-whey-note', paragraphs[1]));
+    section.appendChild(panel);
+    return section;
+  }
+
+  function renderBlocks(record, lang) {
+    const section = el('section', 'section white');
+    const container = el('div', 'container');
+    const panel = el('div', 'content-panel');
+    const blocks = Array.isArray(record.blocks) ? record.blocks : [];
+    const pagePath = normalizePath(record.path || '');
+    const isSportsPage = pagePath.endsWith('/sports-nutrition.html');
+    const isInfantPage = pagePath.endsWith('/infant-formula.html');
+    const tableIndex = isSportsPage ? blocks.findIndex(block => block.type === 'table' && record.tables?.[block.index]) : -1;
+    let pricingTitleIndex = -1;
+    if (tableIndex > 0) {
+      for (let i = 0; i < tableIndex; i++) if (blocks[i].type === 'h2') pricingTitleIndex = i;
+    }
+    let brandTitleIndex = -1;
+    if (isSportsPage && tableIndex >= 0) {
+      for (let i = tableIndex + 1; i < blocks.length; i++) if (blocks[i].type === 'h2') brandTitleIndex = i;
+    }
+    let skippedH1 = false, skippedP = false, list = [];
+    const flushList = () => {
+      if (!list.length) return;
+      const ul = document.createElement('ul');
+      list.forEach(item => ul.appendChild(el('li', '', item)));
+      panel.appendChild(ul);
+      list = [];
+    };
+    blocks.forEach((block, index) => {
+      if (block.type === 'h1' && !skippedH1) { skippedH1 = true; return; }
+      if (block.type === 'p' && !skippedP) { skippedP = true; return; }
+      if (isSportsPage && pricingTitleIndex >= 0 && index >= pricingTitleIndex && index <= tableIndex) return;
+      if (isSportsPage && brandTitleIndex >= 0 && index >= brandTitleIndex && index <= brandTitleIndex + 1) return;
+      if (block.type === 'li') { list.push(block.text); return; }
+      flushList();
+      if (block.type === 'h2') panel.appendChild(el('h2', '', block.text));
+      else if (block.type === 'h3') panel.appendChild(el('h3', '', block.text));
+      else if (block.type === 'p') panel.appendChild(el('p', '', block.text));
+      else if (block.type === 'blockquote') panel.appendChild(el('blockquote', '', block.text));
+      else if (block.type === 'table' && record.tables && record.tables[block.index]) {
+        panel.appendChild(renderDataTable(record.tables[block.index], lang));
+      }
+    });
+    flushList();
+    if (isSportsPage && pricingTitleIndex >= 0 && tableIndex >= 0) {
+      container.appendChild(renderSportsPricing(record, lang, pricingTitleIndex, tableIndex));
+    }
+    container.appendChild(panel);
+
+    if (isSportsPage || isInfantPage) {
+      const brandSection = el('section', 'service-content niaz-brand-network');
+      const brandPanel = el('div', 'panel');
+      const sportsCopy = sportsPageCopy(lang);
+      const heading = isSportsPage ? sportsCopy.brandTitle : 'Selected Brands, Technology & Supply Experience';
+      const intro = isSportsPage
+        ? sportsCopy.brandIntro
+        : 'Four spaces are reserved for infant-nutrition brands or selected project references. Logos or approved references will be added after the brands and projects are confirmed.';
+      brandPanel.appendChild(el('h2', '', heading));
+      brandPanel.appendChild(el('p', '', intro));
+      const brandGrid = el('div', 'sports-brand-grid' + (isInfantPage ? ' infant-brand-grid' : ''));
+      brandGrid.setAttribute('aria-label', heading);
+      for (let i = 1; i <= 4; i++) {
+        const placeholder = el('div', 'sports-brand-placeholder');
+        const label = isSportsPage ? sportsCopy.brandLabel : 'BRAND / PROJECT ';
+        const pending = isSportsPage ? sportsCopy.pending : 'To be added';
+        placeholder.appendChild(el('span', '', label + String(i).padStart(2, '0') + '\n' + pending));
+        brandGrid.appendChild(placeholder);
+      }
+      brandPanel.appendChild(brandGrid);
+      brandSection.appendChild(brandPanel);
+      container.appendChild(brandSection);
+    }
+
+    section.appendChild(container);
+    return section;
+  }
   function renderBlocks(record, lang) {
     const section = el('section', 'section white');
     const container = el('div', 'container');
@@ -1008,7 +1129,7 @@
     });
 
     const contact = el('div', 'footer-col footer-contact');
-    contact.appendChild(el('h3', '', 'Contact NIAZ NET'));
+    contact.appendChild(el('h3', '', t.contactHeading || 'Contact NIAZ NET'));
     contact.appendChild(el('p', '', t.address));
     const email = el('a', '', 'info@niaznet.net');
     email.href = 'mailto:info@niaznet.net';
@@ -1088,6 +1209,12 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
     updateMetadata(record);
+    if (path.endsWith('/sports-nutrition.html') && !document.head.querySelector('link[href="/assets/css/sports-nutrition-page.css"]')) {
+      const pageStyle = document.createElement('link');
+      pageStyle.rel = 'stylesheet';
+      pageStyle.href = '/assets/css/sports-nutrition-page.css';
+      document.head.appendChild(pageStyle);
+    }
     const home = path === '/' || path === '/tr/' || path === '/es/' || path === '/fr/' || path === '/fa/';
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
