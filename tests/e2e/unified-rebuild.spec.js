@@ -104,7 +104,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     page.on('request', request => {
       const url = new URL(request.url());
       if (url.pathname.endsWith('/api-catalog.json')) apiRequests.push(url.href);
-      if (decodeURIComponent(url.pathname).includes('/images/Home page/')) slideRequests.push(url.href);
+      if (decodeURIComponent(url.pathname).includes('/images/Home page/') || url.pathname.includes('/images/optimized-slides/')) slideRequests.push(url.href);
     });
     await page.goto('/rebuild/');
     const firstImage = page.locator('.slideshow .slide.is-active img');
@@ -171,8 +171,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
       images.map(image => image.getAttribute('src') || image.dataset.src)
     );
     expect(slideSources).toHaveLength(19);
-    expect(slideSources[0]).toBe('/images/Home page/00ALL.png');
-    expect(slideSources[18]).toBe('/images/Home page/18Infant.png');
+    expect(slideSources[0]).toBe('/images/optimized-slides/00ALL.webp');
+    expect(slideSources[18]).toBe('/images/optimized-slides/18Infant.webp');
     await expect(slideshow.locator('.slide-dot')).toHaveCount(slideCount);
     await expect(slideshow.locator('button[aria-label*="previous"], button[aria-label*="next"]')).toHaveCount(0);
     const firstImage = slideshow.locator('.slide.is-active img');
