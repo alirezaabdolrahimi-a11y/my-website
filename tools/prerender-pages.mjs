@@ -36,6 +36,12 @@ function normalize(value) {
 }
 function languagePrefix(lang) { return lang === 'en' ? '/' : '/' + lang + '/'; }
 function languageHome(lang) { return lang === 'en' ? '/' : '/' + lang + '/'; }
+function localizedPath(lang, page) {
+  const localized = (lang === 'en' ? '/' : '/' + lang + '/') + page;
+  if (byPath.has(normalize(localized))) return localized;
+  const english = '/' + page;
+  return byPath.has(english) ? english : languageHome(lang);
+}
 function outputPath(urlPath) {
   const clean = normalize(urlPath);
   return path.join(ROOT, clean === '/' ? 'index.html' : clean.endsWith('/') ? clean.slice(1) + 'index.html' : clean.slice(1));
@@ -57,12 +63,12 @@ function renderHeader(record) {
   const prefix = languagePrefix(lang);
   const items = [
     [names[0], languageHome(lang)],
-    [names[1], prefix + 'about.html'],
+    [names[1], localizedPath(lang, 'about.html')],
     [names[2], languageHome(lang) + '#services'],
     [names[3], languageHome(lang) + '#partners'],
-    [names[4], prefix + 'projects.html'],
+    [names[4], localizedPath(lang, 'projects.html')],
     [names[5], languageHome(lang) + '#news'],
-    [names[6], prefix + 'contact.html'],
+    [names[6], localizedPath(lang, 'contact.html')],
     [names[7], 'mailto:info@niaznet.net?subject=Business%20Inquiry']
   ];
   return '<header class="site-header"><div class="container nav header-inner">' +
@@ -85,7 +91,7 @@ function renderHero(record) {
     '<div class="eyebrow">Connecting markets worldwide</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
     '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(prefix + 'contact.html') + '">' + escapeHtml(text.contact) + '</a>' +
-    '<a class="btn partner-hero-btn" href="' + attr(prefix + 'become-our-partner.html') + '">' + escapeHtml(text.partner) + '</a></div>' +
+    '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
     '</div></div></section>';
 }
 function renderServices(lang) {
@@ -99,9 +105,9 @@ function renderServices(lang) {
     return '<a class="service-card' + (service.slug === 'import-export' ? ' import-export-card' : '') + '" href="' + attr(href) + '">' +
       '<span class="service-icon"><img src="/images/service-icons/' + attr(service.icon) + '" alt="" loading="lazy"></span><h3>' + escapeHtml(title) + '</h3></a>';
   }).join('');
-  const vipCards = vip.map(service => '<a class="vip-service-link" href="' + attr(prefix + service.slug + '.html') + '">' +
+  const vipCards = vip.map(service => { const target = byPath.has(normalize(prefix + service.slug + '.html')) ? prefix + service.slug + '.html' : byPath.has('/' + service.slug + '.html') ? '/' + service.slug + '.html' : languageHome(lang); return '<a class="vip-service-link" href="' + attr(target) + '">' +
     '<img src="/images/service-icons/' + attr(service.icon) + '" alt="" loading="lazy"><span class="vip-label">' +
-    escapeHtml(service[lang] || service.en || service.slug) + '</span></a>').join('');
+    escapeHtml(service[lang] || service.en || service.slug) + '</span></a>'; }).join('');
   return '<section class="container service-section" id="services" aria-label="' + attr(text.services) + '">' +
     '<div class="services-layout"><div class="services-grid">' + cards + '</div>' +
     (vipCards ? '<aside class="vip-services" id="vip-services"><h2>' + escapeHtml(text.vip) + '</h2><div class="vip-service-list">' + vipCards + '</div></aside>' : '') +
@@ -171,7 +177,7 @@ function renderFooter(record) {
   const prefix = languagePrefix(lang);
   return '<footer class="footer" id="site-footer"><div class="container"><div class="footer-grid">' +
     '<div class="footer-brand"><img src="/images/niaz-net-logo.png" alt="NIAZ NET"><p>NIAZ NET · International Business Development</p></div>' +
-    '<div class="footer-col"><h3>Quick Links</h3><a href="' + attr(prefix + 'about.html') + '">About Us</a><a href="' + attr(prefix + 'projects.html') + '">Projects</a><a href="' + attr(prefix + 'contact.html') + '">Contact</a></div>' +
+    '<div class="footer-col"><h3>Quick Links</h3><a href="' + attr(localizedPath(lang, 'about.html')) + '">About Us</a><a href="' + attr(localizedPath(lang, 'projects.html')) + '">Projects</a><a href="' + attr(localizedPath(lang, 'contact.html')) + '">Contact</a></div>' +
     '<div class="footer-col"><h3>' + escapeHtml(text.services) + '</h3>' + services.filter(item => !item.vip).slice(0, 5).map(item => '<a href="' + attr(prefix + item.slug + '.html') + '">' + escapeHtml(item[lang] || item.en || item.slug) + '</a>').join('') + '</div>' +
     '<div class="footer-col footer-contact"><h3>Contact NIAZ NET</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">+98 21 8832 2100 ext. 2</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
     '</div><div class="footer-bottom">NIAZ NET · International Business Development</div></div></footer>';
