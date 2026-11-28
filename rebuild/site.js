@@ -692,11 +692,12 @@
       const targetPath = pageForLanguage('/' + slug, lang);
       const target = pageMap.get(targetPath) || pageMap.get('/' + slug);
       if (!target) return;
+      const marketLink = (record.links || []).find(item => (item.href || '').includes(slug));
       const card = el('a', 'about-market-card');
       card.href = linkTo(targetPath);
       card.append(
         el('span', 'about-market-kicker', lang === 'fa' ? 'بازار هدف' : lang === 'tr' ? 'HEDEF PAZAR' : 'MARKET PROFILE'),
-        el('h3', '', titleFor(target)),
+        el('h3', '', marketLink?.text || titleFor(target)),
         el('p', '', descriptionFor(target)),
         el('span', 'about-market-arrow', '→')
       );
