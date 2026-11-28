@@ -12,6 +12,7 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 const attr = escapeHtml;
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const records = fs.readFileSync(inventoryFile, 'utf8').split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line));
+const slideManifest = readJson(path.join(ROOT, 'images/slideshow-manifest.json'));
 const services = readJson(servicesFile);
 const byPath = new Map(records.map(record => [normalize(record.path), record]));
 const languageNames = { en:'EN', fa:'FA', tr:'TR', es:'ES', fr:'FR' };
@@ -94,12 +95,21 @@ function renderHero(record) {
   const description = firstBlock(record, 'p') || pageDescription(record);
   const lang = record.lang || 'en';
   const text = labels[lang] || labels.en;
+  const sportSlides = normalize(record.path).endsWith('/sports-nutrition.html') ? (slideManifest.sport || []) : [];
+  const showcase = sportSlides.length
+    ? '<div class="slideshow hero-showcase" role="group" aria-label="' + attr(heading + ' slideshow') + '">' +
+      sportSlides.map((src, index) => '<div class="slide showcase-image' + (index === 0 ? ' is-active active' : '') + '" aria-hidden="' + (index !== 0) + '">' +
+        '<img src="' + attr(src) + '" alt="' + attr(heading + ' — ' + (index + 1)) + '" decoding="async"></div>').join('') +
+      '<div class="slide-dots showcase-dots" role="group" aria-label="Slideshow navigation">' +
+      sportSlides.map((src, index) => '<button class="slide-dot showcase-dot" type="button" aria-label="Show slide ' + (index + 1) + '" aria-current="' + (index === 0) + '"></button>').join('') +
+      '</div></div>'
+    : '';
   return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
     '<div class="eyebrow">' + escapeHtml(text.tagline) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
     '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
-    '</div></div></section>';
+    '</div>' + showcase + '</div></section>';
 }
 function renderServices(lang) {
   const text = labels[lang] || labels.en;
@@ -155,24 +165,64 @@ function renderDownloadsStatic(record) {
       '<a href="/downloads/fcm-cmo/' + type + '-' + attr(lang) + '.rtf">RTF form</a>' +
       '</div></article>').join('') + '</div></div></div></section>';
 }
-function renderTable(table, lang) {
+function twentyKgBagPrice(price) {
+  const amount = Number(String(price || '').replace(/[^0-9.]/g, ''));
+  return Number.isFinite(amount) && amount > 0 ? '€' + (amount * 20).toFixed(2) : '';
+}
+function renderTable(table, lang, sportsPage = false) {
   const headers = table.headers?.[lang] || table.headers?.en || [];
   const rows = table.rowsByLang?.[lang] || table.rows || [];
-  return '<div class="table-wrap"><table class="api-table product-price-table">' +
-    (table.caption ? '<caption>' + escapeHtml(table.caption) + '</caption>' : '') +
-    '<thead><tr>' + headers.map(value => '<th>' + escapeHtml(value) + '</th>').join('') + '</tr></thead>' +
-    '<tbody>' + rows.map(row => '<tr>' + row.map(value => '<td>' + escapeHtml(value) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+  const caption = table.captionByLang?.[lang] || table.caption || '';
+  const displayRows = sportsPage ? rows.map(row => [...row, twentyKgBagPrice(row[2])]) : rows;
+  const wrapperClass = sportsPage ? 'bulk-whey-table-wrap' : 'table-wrap';
+  const tableClass = sportsPage ? 'bulk-whey-table product-price-table' : 'api-table product-price-table';
+  return '<div class="' + wrapperClass + '"><table class="' + tableClass + '">' +
+    (caption ? '<caption>' + escapeHtml(caption) + '</caption>' : '') +
+    '<thead><tr>' + headers.map(value => '<th scope="col">' + escapeHtml(value) + '</th>').join('') + '</tr></thead>' +
+    '<tbody>' + displayRows.map(row => '<tr>' + row.map((value, index) => '<td' + (sportsPage && index === 2 ? ' class="bulk-whey-price"' : '') + '>' + escapeHtml(value) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+}
+const sportsPageCopy = {
+  en:{brandTitle:'Sports Brand Experience & Portfolio',brandIntro:'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.',brandLabel:'SPORTS BRAND LOGO ',pending:'To be added'},
+  tr:{brandTitle:'Spor Markası Deneyimi ve Portföyü',brandIntro:'Seçili spor markaları ve marka ortaklığı deneyimi için dört alan ayrılmıştır. Tercih edilen markalar onaylandığında logolar eklenecektir.',brandLabel:'SPOR MARKASI LOGOSU ',pending:'Eklenecek'},
+  fa:{brandTitle:'تجربه و سبد برندهای ورزشی',brandIntro:'چهار جایگاه برای برندهای ورزشی منتخب و سوابق همکاری با برندها در نظر گرفته شده است. نشان‌ها پس از تأیید برندهای موردنظر اضافه می‌شوند.',brandLabel:'نشان برند ورزشی ',pending:'در انتظار افزودن'}
+};
+function renderSportsPricing(record, lang, titleIndex, tableIndex) {
+  const title = record.blocks[titleIndex]?.text || '';
+  const paragraphs = record.blocks.slice(titleIndex + 1, tableIndex).filter(block => block.type === 'p').map(block => block.text);
+  const tableBlock = record.blocks[tableIndex];
+  return '<section class="container service-content bulk-whey-section" aria-labelledby="bulk-whey-title"><div class="bulk-whey-panel">' +
+    '<h2 id="bulk-whey-title">' + escapeHtml(title) + '</h2>' +
+    (paragraphs[0] ? '<p class="bulk-whey-intro">' + escapeHtml(paragraphs[0]) + '</p>' : '') +
+    renderTable(record.tables[tableBlock.index], lang, true) +
+    (paragraphs[1] ? '<p class="bulk-whey-note">' + escapeHtml(paragraphs[1]) + '</p>' : '') +
+    '</div></section>';
+}
+function renderSportsBrandSection(lang) {
+  const copy = sportsPageCopy[lang] || sportsPageCopy.en;
+  return '<section class="container service-content niaz-brand-network"><div class="panel"><h2>' + escapeHtml(copy.brandTitle) + '</h2>' +
+    '<p>' + escapeHtml(copy.brandIntro) + '</p><div class="sports-brand-grid" aria-label="' + attr(copy.brandTitle) + '">' +
+    [1,2,3,4].map(number => '<div class="sports-brand-placeholder"><span>' + escapeHtml(copy.brandLabel + String(number).padStart(2, '0')) + '<br>' + escapeHtml(copy.pending) + '</span></div>').join('') +
+    '</div></div></section>';
 }
 function renderBlocks(record) {
   const lang = record.lang || 'en';
   const blocks = record.blocks || [];
+  const isSportsPage = normalize(record.path).endsWith('/sports-nutrition.html');
+  const tableIndex = isSportsPage ? blocks.findIndex(block => block.type === 'table' && record.tables?.[block.index]) : -1;
+  let pricingTitleIndex = -1;
+  if (tableIndex > 0) for (let i = 0; i < tableIndex; i++) if (blocks[i].type === 'h2') pricingTitleIndex = i;
+  let brandTitleIndex = -1;
+  if (isSportsPage && tableIndex >= 0) for (let i = tableIndex + 1; i < blocks.length; i++) if (blocks[i].type === 'h2') brandTitleIndex = i;
   let skippedH1 = false, skippedP = false, list = [], body = '';
   const flush = () => {
     if (list.length) { body += '<ul>' + list.map(value => '<li>' + escapeHtml(value) + '</li>').join('') + '</ul>'; list = []; }
   };
-  for (const block of blocks) {
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
     if (block.type === 'h1' && !skippedH1) { skippedH1 = true; continue; }
     if (block.type === 'p' && !skippedP) { skippedP = true; continue; }
+    if (isSportsPage && pricingTitleIndex >= 0 && i >= pricingTitleIndex && i <= tableIndex) continue;
+    if (isSportsPage && brandTitleIndex >= 0 && i >= brandTitleIndex && i <= brandTitleIndex + 1) continue;
     if (block.type === 'li') { list.push(block.text); continue; }
     flush();
     if (block.type === 'h2') body += '<h2>' + escapeHtml(block.text) + '</h2>';
@@ -186,7 +236,9 @@ function renderBlocks(record) {
     record.partners.map(partner => '<div class="partner">' + (partner.mark ? '<span class="' + attr(partner.tone || '') + '">' + escapeHtml(partner.mark) + '</span> ' : '') + escapeHtml(partner.name) + '</div>').join('') + '</div>';
   if (record.network?.locations?.length) body += '<h3>' + escapeHtml(record.network.locations.map(point => point.name).join(' · ')) + '</h3>' + (record.network.caption ? '<p>' + escapeHtml(record.network.caption) + '</p>' : '');
   if (record.projectImages?.length) body += '<div class="project-image-list">' + record.projectImages.map(src => '<img src="' + attr(src) + '" alt="" loading="lazy">').join('') + '</div>';
-  return '<section class="section white"><div class="container"><div class="content-panel">' + body + '</div></div></section>';
+  const pricing = isSportsPage && pricingTitleIndex >= 0 && tableIndex >= 0 ? renderSportsPricing(record, lang, pricingTitleIndex, tableIndex) : '';
+  const brand = isSportsPage ? renderSportsBrandSection(lang) : '';
+  return '<section class="section white"><div class="container">' + pricing + '<div class="content-panel">' + body + '</div>' + brand + '</div></section>';
 }
 function renderForm(record) {
   const form = record.forms?.[0];
@@ -224,13 +276,18 @@ function renderLinks(record) {
 function renderFooter(record) {
   const lang = record.lang || 'en';
   const text = labels[lang] || labels.en;
-  const prefix = languagePrefix(lang);
+  const footerCopy = {
+    en:{quick:'Quick Links',about:'About Us',projects:'Projects',contact:'Contact',contactHeading:'Contact NIAZ NET',tagline:'NIAZ NET · International Business Development'},
+    tr:{quick:'Hızlı Bağlantılar',about:'Hakkımızda',projects:'Projeler',contact:'İletişim',contactHeading:'NIAZ NET İletişim',tagline:'NIAZ NET · Uluslararası İş Geliştirme'},
+    fa:{quick:'دسترسی سریع',about:'درباره ما',projects:'پروژه‌ها',contact:'تماس با ما',contactHeading:'تماس با نیاز نت',tagline:'نیاز نت · توسعه کسب‌وکار بین‌المللی'}
+  };
+  const copy = footerCopy[lang] || footerCopy.en;
   return '<footer class="footer" id="site-footer"><div class="container"><div class="footer-grid">' +
-    '<div class="footer-brand"><img src="/images/niaz-net-logo.png" alt="NIAZ NET"><p>NIAZ NET · International Business Development</p></div>' +
-    '<div class="footer-col"><h3>Quick Links</h3><a href="' + attr(localizedPath(lang, 'about.html')) + '">About Us</a><a href="' + attr(localizedPath(lang, 'projects.html')) + '">Projects</a><a href="' + attr(localizedPath(lang, 'contact.html')) + '">Contact</a></div>' +
+    '<div class="footer-brand"><img src="/images/niaz-net-logo.png" alt="NIAZ NET"><p>' + escapeHtml(copy.tagline) + '</p></div>' +
+    '<div class="footer-col"><h3>' + escapeHtml(copy.quick) + '</h3><a href="' + attr(localizedPath(lang, 'about.html')) + '">' + escapeHtml(copy.about) + '</a><a href="' + attr(localizedPath(lang, 'projects.html')) + '">' + escapeHtml(copy.projects) + '</a><a href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(copy.contact) + '</a></div>' +
     '<div class="footer-col"><h3>' + escapeHtml(text.services) + '</h3>' + services.filter(item => !item.vip).slice(0, 5).map(item => '<a href="' + attr(localizedPath(lang, item.slug + '.html')) + '">' + escapeHtml(item[lang] || item.en || item.slug) + '</a>').join('') + '</div>' +
-    '<div class="footer-col footer-contact"><h3>Contact NIAZ NET</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">+98 21 8832 2100 ext. 2</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
-    '</div><div class="footer-bottom">NIAZ NET · International Business Development</div></div></footer>';
+    '<div class="footer-col footer-contact"><h3>' + escapeHtml(copy.contactHeading) + '</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">' + escapeHtml(lang === 'fa' ? '+98 21 8832 2100 · داخلی ۲' : lang === 'tr' ? '+98 21 8832 2100 · dahili 2' : '+98 21 8832 2100 ext. 2') + '</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
+    '</div><div class="footer-bottom">' + escapeHtml(copy.tagline) + '</div></div></footer>';
 }
 function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
@@ -260,6 +317,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(description) + '">' +
     '<meta property="og:url" content="' + attr(canonical) + '"><meta property="og:image" content="' + SITE + '/images/niaz-net-logo.png">' +
     '<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/rebuild/site.css">' +
+    (pathName.endsWith('/sports-nutrition.html') ? '<link rel="stylesheet" href="/assets/css/sports-nutrition-page.css">' : '') +
     '</head><body><div id="app">' + renderHeader(record) + renderHero(record) + mainContent + renderFooter(record) +
     '<a class="whatsapp whatsapp-float" href="https://wa.me/905340143473" aria-label="WhatsApp">WhatsApp</a></div>' +
     '<noscript><nav aria-label="Essential pages"><a href="/">Home</a> · <a href="/about.html">About Us</a> · <a href="/projects.html">Projects</a> · <a href="/contact.html">Contact</a> · <a href="/become-our-partner.html">Become Our Partner</a></nav></noscript>' +

@@ -4,7 +4,7 @@
 .bulk-whey-panel h2{color:#d8b66f;margin:0 0 10px;font-size:clamp(22px,2.3vw,29px)}
 .bulk-whey-intro{color:#e0e6ef;line-height:1.75;margin:0 0 20px}
 .bulk-whey-table-wrap{overflow-x:auto;border:1px solid rgba(220,190,130,.35);border-radius:12px}
-.bulk-whey-table{width:100%;border-collapse:collapse;min-width:620px;background:rgba(255,255,255,.035)}
+.bulk-whey-table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(255,255,255,.035)}
 .bulk-whey-table th{background:rgba(211,174,101,.16);color:#f1d69e;text-align:left;font-weight:700;padding:15px 17px;border-bottom:1px solid rgba(220,190,130,.4);white-space:nowrap}
 .bulk-whey-table td{padding:16px 17px;color:#f5f6f8;border-bottom:1px solid rgba(255,255,255,.11);vertical-align:middle}
 .bulk-whey-table tbody tr:last-child td{border-bottom:0}
@@ -16,6 +16,6 @@
 /* Sports nutrition partner-brand placeholders */
 .sports-brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 28px}
 .sports-brand-placeholder{min-height:118px;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;border:1px dashed rgba(201,154,67,.55);border-radius:12px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(201,154,67,.045));color:#627087;font-size:12px;letter-spacing:.04em}
-.sports-brand-placeholder span{display:block;max-width:150px}
+.sports-brand-placeholder span{display:block;max-width:150px;white-space:pre-line}
 @media(max-width:760px){.sports-brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.sports-brand-grid{grid-template-columns:1fr 1fr;gap:9px}.sports-brand-placeholder{min-height:95px;padding:10px}}
