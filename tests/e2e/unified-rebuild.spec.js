@@ -386,6 +386,22 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('About Us exposes all three market pages in English, Persian and Turkish', async ({ page }) => {
+    const cases = [
+      ['/about.html', ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']],
+      ['/fa/about.html', ['/fa/kenya-market.html', '/fa/south-africa-market.html', '/fa/international-markets.html']],
+      ['/tr/about.html', ['/tr/kenya-market.html', '/tr/south-africa-market.html', '/tr/international-markets.html']]
+    ];
+    for (const [route, hrefs] of cases) {
+      await page.goto(route);
+      await expect(page.locator('.about-market-links-head')).toBeVisible();
+      await expect(page.locator('.about-market-links-head + .about-market-grid a')).toHaveCount(3);
+      for (const href of hrefs) {
+        await expect(page.locator('.about-market-links-head + .about-market-grid a[href="' + href + '"]')).toHaveCount(1);
+      }
+    }
+  });
+
   test('Persian international markets, Kenya, licensing and market-entry routes render', async ({ page }) => {
     const cases = [
       ['/fa/international-business-development.html', 'توسعه کسب‌وکار بین‌المللی'],
@@ -525,6 +541,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(box.height).toBeGreaterThan(55);
     expect(box.height).toBeLessThan(65);
     await expect(card).toHaveCSS('flex-direction', 'row');
+    const icon = await card.locator('.service-icon').boundingBox();
+    expect(icon.width).toBeGreaterThanOrEqual(39);
+    expect(icon.height).toBeGreaterThanOrEqual(39);
   });
 
 });
