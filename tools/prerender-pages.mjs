@@ -104,12 +104,15 @@ function renderHero(record) {
       sportSlides.map((src, index) => '<button class="slide-dot showcase-dot" type="button" aria-label="Show slide ' + (index + 1) + '" aria-current="' + (index === 0) + '"></button>').join('') +
       '</div></div>'
     : '';
+  const actions = '<div class="hero-actions"><a class="btn btn-gold-cta" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
+    '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>';
+  const backLink = renderServiceBackLink(record);
+  const ctaMarkup = backLink
+    ? '<div class="hero-cta-stack">' + actions + backLink + '</div>'
+    : actions;
   return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
     '<div class="eyebrow">' + escapeHtml(text.tagline) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
-    '<p class="hero-description">' + escapeHtml(description) + '</p>' +
-    '<div class="hero-actions"><a class="btn btn-gold-cta" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
-    '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
-    renderServiceBackLink(record) + '</div>' + showcase + '</div></section>';
+    '<p class="hero-description">' + escapeHtml(description) + '</p>' + ctaMarkup + '</div>' + showcase + '</div></section>';
 }
 function renderAboutHero(record) {
   const lang = record.lang || 'en';
