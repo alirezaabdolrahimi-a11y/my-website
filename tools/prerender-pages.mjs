@@ -109,7 +109,7 @@ function renderHero(record) {
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
     '<div class="hero-actions"><a class="btn btn-gold-cta" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
-    '</div>' + showcase + '</div></section>';
+    renderServiceBackLink(record) + '</div>' + showcase + '</div></section>';
 }
 function renderAboutHero(record) {
   const lang = record.lang || 'en';
@@ -330,6 +330,7 @@ function renderBlocks(record) {
     else if (block.type === 'h3') body += '<h3>' + escapeHtml(block.text) + '</h3>';
     else if (block.type === 'p') body += '<p>' + escapeHtml(block.text) + '</p>';
     else if (block.type === 'blockquote') body += '<blockquote>' + escapeHtml(block.text) + '</blockquote>';
+    else if (block.type === 'marketCards') body += renderMarketCards(block, record);
     else if (block.type === 'table' && record.tables?.[block.index]) body += renderTable(record.tables[block.index], lang);
   }
   flush();
@@ -340,6 +341,17 @@ function renderBlocks(record) {
   const pricing = isSportsPage && pricingTitleIndex >= 0 && tableIndex >= 0 ? renderSportsPricing(record, lang, pricingTitleIndex, tableIndex) : '';
   const brand = isSportsPage ? renderSportsBrandSection(lang) : '';
   return '<section class="section white"><div class="container">' + pricing + '<div class="content-panel">' + body + '</div>' + brand + '</div></section>';
+}
+function renderMarketCards(block, record) {
+  if (!Array.isArray(block.items) || !block.items.length) return '';
+  return '<div class="market-profile-grid">' + block.items.map(item =>
+    '<a class="market-profile-card" href="' + attr(resolvePageLink(record, item.href)) + '">' +
+      '<span class="market-profile-region">' + escapeHtml(item.region) + '</span>' +
+      '<h3>' + escapeHtml(item.title) + '</h3>' +
+      '<p>' + escapeHtml(item.description) + '</p>' +
+      '<span class="market-profile-cta">' + escapeHtml(item.cta) + '</span>' +
+    '</a>'
+  ).join('') + '</div>';
 }
 function renderForm(record) {
   const form = record.forms?.[0];
@@ -421,8 +433,8 @@ function renderServiceBackLink(record) {
     es: '← Volver a todos los servicios',
     fr: '← Retour à tous les services'
   };
-  return '<section class="container service-back-section"><a class="service-back-link" href="' +
-    attr(languageHome(lang) + '#services') + '">' + escapeHtml(labels[lang] || labels.en) + '</a></section>';
+  return '<div class="hero-service-back"><a class="service-back-link" href="' +
+    attr(languageHome(lang) + '#services') + '">' + escapeHtml(labels[lang] || labels.en) + '</a></div>';
 }
 
 function pageHtml(record, canonical, titleCounts, descriptionCounts) {
@@ -458,7 +470,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/rebuild/site.css">' +
     (isAboutPage ? '<link rel="stylesheet" href="/assets/css/about-page.css">' : '') +
     (pathName.endsWith('/sports-nutrition.html') ? '<link rel="stylesheet" href="/assets/css/sports-nutrition-page.css">' : '') +
-    '</head><body><div id="app">' + renderHeader(record) + (isAboutPage ? renderAboutHero(record) : renderHero(record)) + renderServiceBackLink(record) + mainContent + renderFooter(record) +
+    '</head><body><div id="app">' + renderHeader(record) + (isAboutPage ? renderAboutHero(record) : renderHero(record)) + mainContent + renderFooter(record) +
     '<a class="whatsapp whatsapp-float" href="https://wa.me/905340143473" aria-label="WhatsApp">WhatsApp</a></div>' +
     '<noscript><nav aria-label="Essential pages"><a href="/">Home</a> · <a href="/about.html">About Us</a> · <a href="/projects.html">Projects</a> · <a href="/contact.html">Contact</a> · <a href="/become-our-partner.html">Become Our Partner</a></nav></noscript>' +
     '<script src="/rebuild/site.js" defer></script></body></html>';
