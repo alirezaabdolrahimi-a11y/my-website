@@ -1133,7 +1133,8 @@
     contact.appendChild(el('p', '', t.address));
     const email = el('a', '', 'info@niaznet.net');
     email.href = 'mailto:info@niaznet.net';
-    const phone = el('a', '', '+98 21 8832 2100 ext. 2');
+    const phoneLabel = lang === 'fa' ? '+98 21 8832 2100 · داخلی ۲' : lang === 'tr' ? '+98 21 8832 2100 · dahili 2' : '+98 21 8832 2100 ext. 2';
+    const phone = el('a', '', phoneLabel);
     phone.href = 'tel:+982188322100';
     const whatsapp = el('a', '', '+90 534 014 3473');
     whatsapp.href = 'https://wa.me/905340143473';
