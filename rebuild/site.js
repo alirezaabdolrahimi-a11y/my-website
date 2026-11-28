@@ -945,7 +945,7 @@
           card.appendChild(el('h3', '', entry.title));
           entry.paragraphs.forEach(paragraph => {
             const description = el('p');
-            const count = paragraph.match(/[\\p{N}][\\p{N},٬٫.]*\\+?/u);
+            const count = paragraph.match(/[\p{N}][\p{N},٬٫.]*\+?/u);
             if (kind === 'projects' && count) {
               const start = count.index;
               const end = start + count[0].length;
