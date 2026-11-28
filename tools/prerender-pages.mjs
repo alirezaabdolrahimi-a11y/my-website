@@ -90,7 +90,7 @@ function renderHero(record) {
   return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
     '<div class="eyebrow">Connecting markets worldwide</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
-    '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(prefix + 'contact.html') + '">' + escapeHtml(text.contact) + '</a>' +
+    '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
     '</div></div></section>';
 }
@@ -102,7 +102,8 @@ function renderServices(lang) {
   const cards = primary.map(service => {
     const title = service[lang] || service.en || service.slug;
     const href = prefix + service.slug + '.html';
-    return '<a class="service-card' + (service.slug === 'import-export' ? ' import-export-card' : '') + '" href="' + attr(href) + '">' +
+    const target = byPath.has(normalize(href)) ? href : byPath.has('/' + service.slug + '.html') ? '/' + service.slug + '.html' : languageHome(lang);
+    return '<a class="service-card' + (service.slug === 'import-export' ? ' import-export-card' : '') + '" href="' + attr(target) + '">' +
       '<span class="service-icon"><img src="/images/service-icons/' + attr(service.icon) + '" alt="" loading="lazy"></span><h3>' + escapeHtml(title) + '</h3></a>';
   }).join('');
   const vipCards = vip.map(service => { const target = byPath.has(normalize(prefix + service.slug + '.html')) ? prefix + service.slug + '.html' : byPath.has('/' + service.slug + '.html') ? '/' + service.slug + '.html' : languageHome(lang); return '<a class="vip-service-link" href="' + attr(target) + '">' +
