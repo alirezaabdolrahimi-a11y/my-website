@@ -345,9 +345,14 @@
     const partner = el('a', 'btn partner-hero-btn', t.partnerCta);
     partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
     actions.append(contact, partner);
-    copy.appendChild(actions);
     const serviceBack = renderServiceBackLink(path, lang);
-    if (serviceBack) copy.appendChild(serviceBack);
+    if (serviceBack) {
+      const ctaStack = el('div', 'hero-cta-stack');
+      ctaStack.append(actions, serviceBack);
+      copy.appendChild(ctaStack);
+    } else {
+      copy.appendChild(actions);
+    }
     grid.appendChild(copy);
     const group = slideGroup(path);
     if (group) {
