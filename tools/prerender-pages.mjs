@@ -211,7 +211,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     .map(other => '<link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(other.canonical || SITE + normalize(other.path)) + '">').join('');
   const mainContent = (home ? renderServices(lang) : '') + renderBlocks(record) + renderForm(record) + (!home ? renderLinks(record) : '');
   const direction = lang === 'fa' ? 'rtl' : 'ltr';
-  return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '"><head>' +
+  return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '" data-prerendered="true"><head>' +
     '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' +
     '<title>' + escapeHtml(title) + '</title><meta name="description" content="' + attr(description) + '">' +
