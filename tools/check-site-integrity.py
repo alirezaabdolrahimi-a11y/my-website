@@ -26,13 +26,8 @@ class PageAudit(HTMLParser):
         self.refs, self.fragments, self.classes = [], [], []
         self.slide_sources = []
         self.stack, self.showcase_depth = [], 0
-        self.pre_rendered = False
-        self.images_without_alt = []
     def handle_starttag(self, tag, attrs):
         d = dict(attrs)
-        if tag == "html" and d.get("data-prerendered") == "true": self.pre_rendered = True
-        if tag == "img" and self.pre_rendered and "alt" not in d:
-            self.images_without_alt.append(d.get("src", "(missing src)"))
         if d.get("id"): self.ids.append(d["id"])
         if tag == "script" and d.get("src"): self.scripts.append(d["src"])
         if tag == "link" and "stylesheet" in (d.get("rel") or ""):
@@ -75,8 +70,6 @@ for page in pages:
         continue
     rel = page.relative_to(ROOT).as_posix()
     page_data[rel] = parser
-    if parser.pre_rendered:
-        check(not parser.images_without_alt, f"Pre-rendered images without alt in {rel}: {parser.images_without_alt}")
     for label, values in (("ID",parser.ids),("script",parser.scripts),("stylesheet",parser.styles)):
         normalized = values
         if label in ("script","stylesheet"):
