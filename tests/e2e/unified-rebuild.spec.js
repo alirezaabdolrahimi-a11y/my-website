@@ -412,4 +412,25 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('service pages restore four brand and project logo placeholders', async ({ page }) => {
+    for (const route of ['/sports-nutrition.html', '/infant-formula.html']) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      await expect(page.locator('.sports-brand-grid .sports-brand-placeholder')).toHaveCount(4);
+    }
+  });
+
+  test('action buttons and service tiles retain the original raised treatment', async ({ page }) => {
+    await page.goto('/rebuild/');
+    const button = page.locator('.home-cta .btn').first();
+    await expect(button).toBeVisible();
+    const shadow = await button.evaluate(el => getComputedStyle(el).boxShadow);
+    expect(shadow).not.toBe('none');
+    const card = page.locator('.services-grid .service-card').nth(1);
+    const box = await card.boundingBox();
+    expect(box.width).toBeGreaterThan(180);
+    expect(box.width).toBeLessThan(200);
+    expect(box.height).toBeGreaterThan(70);
+    expect(box.height).toBeLessThan(82);
+  });
+
 });
