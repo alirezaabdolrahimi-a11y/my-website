@@ -445,7 +445,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const description = pageDescription(record, descriptionCounts);
   if (record.redirectTo) {
     const target = normalize(record.redirectTo);
-    return '<!doctype html><html lang="' + attr(lang) + '"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">' +
+    return '<!doctype html><html lang="' + attr(lang) + '"><head><meta charset="utf-8"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png"><meta name="robots" content="noindex,follow">' +
       '<meta http-equiv="refresh" content="0;url=' + attr(target) + '"><link rel="canonical" href="' + attr(canonical) + '">' +
       '<title>Redirecting to NIAZ NET</title></head><body><p>This page has moved. <a href="' + attr(target) + '">Continue to the updated page</a>.</p></body></html>';
   }
@@ -463,7 +463,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     (pathName.endsWith('/api-supply.html') ? renderApiCatalogStatic(lang) : '') + renderBlocks(record) + renderDownloadsStatic(record) + renderForm(record) + renderLinks(record);
   const direction = lang === 'fa' ? 'rtl' : 'ltr';
   return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '" data-prerendered="true"><head>' +
-    '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+    '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png">' +
     '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' +
     '<title>' + escapeHtml(title) + '</title><meta name="description" content="' + attr(description) + '">' +
     '<link rel="canonical" href="' + attr(canonical) + '">' + alternateTags +
@@ -479,6 +479,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<script src="/rebuild/site.js" defer></script></body></html>';
 }
 function build() {
+  if (!fs.existsSync(path.join(ROOT, 'favicon.png'))) throw new Error('Required existing favicon.png is missing.');
   const canonicalCounts = new Map(), titleCounts = new Map(), descriptionCounts = new Map();
   for (const record of records) {
     const canonical = record.canonical || SITE + normalize(record.path);
