@@ -204,7 +204,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const pathName = normalize(record.path);
   const home = pathName === '/' || /^\/(fa|tr|es|fr)\/$/.test(pathName);
   const baseTitle = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
-  const title = titleCounts.get(baseTitle) > 1 ? baseTitle + ' — ' + pathName.split('/').filter(Boolean).pop().replace(/\\.html$/, '').replace(/-/g, ' ') : baseTitle;
+  const title = titleCounts.get(baseTitle) > 1 ? baseTitle + ' — ' + pathName.split('/').filter(Boolean).pop().replace(/\.html$/, '').replace(/-/g, ' ') : baseTitle;
   const alternates = records.filter(other => other.path.split('/').pop() === pathName.split('/').pop() &&
     (other.path === '/' || other.path.endsWith('/' + pathName.split('/').pop())) && other.lang);
   const alternateTags = [...new Map(alternates.map(other => [other.lang, other])).values()]
@@ -266,7 +266,7 @@ function build() {
   }
   for (const record of indexable) {
     const html = fs.readFileSync(outputPath(record.path), 'utf8');
-    if (!/<h1\\b/.test(html) || !/<meta name="description"/.test(html) || !/<link rel="canonical"/.test(html) || !/<a\\s/.test(html)) {
+    if (!/<h1\b/.test(html) || !/<meta name="description"/.test(html) || !/<link rel="canonical"/.test(html) || !/<a\s/.test(html)) {
       throw new Error('Pre-render validation failed for ' + record.path + ': missing heading, metadata or internal links.');
     }
   }
