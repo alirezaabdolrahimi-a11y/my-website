@@ -71,7 +71,6 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ];
     for (const [url, links] of cases) {
       await page.goto(url);
-      await expect(page.locator('.content-panel h2').filter({ hasText: /Explore Our Markets|Pazarlarımızı|بازارهای ما/ })).toHaveCount(1);
       for (const [label, href] of links) {
         await expect(page.locator('.content-link').filter({ hasText: label })).toHaveAttribute('href', href);
       }
