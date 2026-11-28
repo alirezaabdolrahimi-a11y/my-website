@@ -23,11 +23,11 @@ const navLabels = {
   fr:['Accueil','À propos','Services','Partenaires','Projets','Actualités','Contact','Nous contacter']
 };
 const labels = {
-  en:{services:'Our Services',vip:'VIP SERVICES',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
-  fa:{services:'خدمات ما',vip:'خدمات ویژه',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
-  tr:{services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
-  es:{services:'Nuestros servicios',vip:'SERVICIOS VIP',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
-  fr:{services:'Nos services',vip:'SERVICES VIP',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
+  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
+  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
+  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
+  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
+  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
 };
 function normalize(value) {
   let result = String(value || '/').replace(/\/+/g, '/');
@@ -148,8 +148,9 @@ function renderDownloadsStatic(record) {
     fr:['Formes pharmaceutiques solides','Liquides non stériles','Liquides stériles (injectables)']
   };
   const names = titles[lang] || titles.en;
+  const downloadHeading = {en:'Download FCM/CMO enquiry forms',fa:'دریافت فرم‌های درخواست FCM/CMO',tr:'FCM/CMO talep formlarını indirin',es:'Descargar formularios de consulta FCM/CMO',fr:'Télécharger les formulaires FCM/CMO'}[lang] || 'Download FCM/CMO enquiry forms';
   const types = ['solid','nonsterile','sterile'];
-  return '<section class="section white" id="fcm-downloads"><div class="container"><div class="content-panel"><h2>Downloads / Téléchargements / دانلود فرم‌ها</h2><div class="download-grid">' +
+  return '<section class="section white" id="fcm-downloads"><div class="container"><div class="content-panel"><h2>' + escapeHtml(downloadHeading) + '</h2><div class="download-grid">' +
     types.map((type,index) => '<article class="download-card"><h3>' + escapeHtml(names[index]) + '</h3><div class="download-actions">' +
       '<a href="/downloads/fcm-cmo/' + type + '-' + attr(lang) + '.html">HTML form</a>' +
       '<a href="/downloads/fcm-cmo/' + type + '-' + attr(lang) + '.rtf">RTF form</a>' +
@@ -210,7 +211,7 @@ function renderLinks(record) {
   const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\.html(?:$|[?#])/i.test(item.href)));
   if (!links.length) return '';
   const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
-  return '<section class="section"><div class="container"><div class="content-panel"><h2>Useful Links</h2>' +
+  return '<section class="section"><div class="container"><div class="content-panel"><h2>' + escapeHtml((labels[record.lang] || labels.en).useful) + '</h2>' +
     links.slice(0, 30).map(item => {
       const raw = item.href;
       const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
