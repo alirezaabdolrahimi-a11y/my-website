@@ -497,68 +497,6 @@
     section.appendChild(container);
     return section;
   }
-  function renderBlocks(record, lang) {
-    const section = el('section', 'section white');
-    const container = el('div', 'container');
-    const panel = el('div', 'content-panel');
-    const blocks = Array.isArray(record.blocks) ? record.blocks : [];
-    let skippedH1 = false, skippedP = false, list = [];
-    const renderedTableIndexes = new Set();
-    const flushList = () => {
-      if (!list.length) return;
-      const ul = document.createElement('ul');
-      list.forEach(item => ul.appendChild(el('li', '', item)));
-      panel.appendChild(ul);
-      list = [];
-    };
-    blocks.forEach(block => {
-      if (block.type === 'h1' && !skippedH1) { skippedH1 = true; return; }
-      if (block.type === 'p' && !skippedP) { skippedP = true; return; }
-      if (block.type === 'li') { list.push(block.text); return; }
-      flushList();
-      if (block.type === 'h2') panel.appendChild(el('h2', '', block.text));
-      else if (block.type === 'h3') panel.appendChild(el('h3', '', block.text));
-      else if (block.type === 'p') panel.appendChild(el('p', '', block.text));
-      else if (block.type === 'blockquote') panel.appendChild(el('blockquote', '', block.text));
-      else if (block.type === 'table' && record.tables && record.tables[block.index] &&
-          !renderedTableIndexes.has(block.index)) {
-        renderedTableIndexes.add(block.index);
-        panel.appendChild(renderDataTable(record.tables[block.index], lang));
-      }
-    });
-    flushList();
-    container.appendChild(panel);
-
-    const pagePath = normalizePath(record.path || '');
-    const isSportsPage = pagePath.endsWith('/sports-nutrition.html');
-    const isInfantPage = pagePath.endsWith('/infant-formula.html');
-    if (isSportsPage || isInfantPage) {
-      const brandSection = el('section', 'service-content niaz-brand-network');
-      const brandPanel = el('div', 'panel');
-      const heading = isSportsPage
-        ? 'Sports Brand Experience & Portfolio'
-        : 'Selected Brands, Technology & Supply Experience';
-      const intro = isSportsPage
-        ? 'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.'
-        : 'Four spaces are reserved for infant-nutrition brands or selected project references. Logos or approved references will be added after the brands and projects are confirmed.';
-      brandPanel.appendChild(el('h2', '', heading));
-      brandPanel.appendChild(el('p', '', intro));
-      const brandGrid = el('div', 'sports-brand-grid' + (isInfantPage ? ' infant-brand-grid' : ''));
-      brandGrid.setAttribute('aria-label', heading);
-      for (let i = 1; i <= 4; i++) {
-        const placeholder = el('div', 'sports-brand-placeholder');
-        const label = isSportsPage ? 'SPORTS BRAND LOGO ' : 'BRAND / PROJECT ';
-        placeholder.appendChild(el('span', '', label + String(i).padStart(2, '0') + '\nTo be added'));
-        brandGrid.appendChild(placeholder);
-      }
-      brandPanel.appendChild(brandGrid);
-      brandSection.appendChild(brandPanel);
-      container.appendChild(brandSection);
-    }
-
-    section.appendChild(container);
-    return section;
-  }
   function createServiceImage(service) {
     const image = document.createElement('img');
     image.src = '/images/service-icons/' + service.icon;
