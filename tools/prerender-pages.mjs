@@ -78,13 +78,13 @@ function renderHeader(record) {
     [names[4], localizedPath(lang, 'projects.html')],
     [names[5], languageHome(lang) + '#news'],
     [names[6], localizedPath(lang, 'contact.html')],
-    [names[7], 'mailto:info@niaznet.net?subject=Business%20Inquiry']
+    [names[7], localizedPath(lang, 'contact.html')]
   ];
   return '<header class="site-header"><div class="container nav header-inner">' +
     '<a class="brand" href="' + attr(languageHome(lang)) + '"><img class="brand-logo" src="/images/niaz-net-logo.png" alt="NIAZ NET"></a>' +
     '<button class="mobile-toggle nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">☰</button>' +
-    '<nav class="nav-links main-nav" id="main-nav">' + items.map(item =>
-      '<a' + (item[1].startsWith('mailto:') ? ' class="nav-cta"' : '') + ' href="' + attr(item[1]) + '">' + escapeHtml(item[0]) + '</a>'
+    '<nav class="nav-links main-nav" id="main-nav">' + items.map((item, index) =>
+      '<a' + (index === 7 ? ' class="nav-cta"' : '') + ' href="' + attr(item[1]) + '">' + escapeHtml(item[0]) + '</a>'
     ).join('') + '</nav>' +
     '<select class="language-select lang" aria-label="Language">' +
     Object.entries(languageNames).map(([code, name]) => '<option value="' + code + '"' + (code === lang ? ' selected' : '') + '>' + name + '</option>').join('') +
@@ -107,7 +107,7 @@ function renderHero(record) {
   return '<section class="hero"><div class="container hero-inner hero-grid"><div class="hero-copy">' +
     '<div class="eyebrow">' + escapeHtml(text.tagline) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
     '<p class="hero-description">' + escapeHtml(description) + '</p>' +
-    '<div class="hero-actions"><a class="btn btn-outline" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
+    '<div class="hero-actions"><a class="btn btn-gold-cta" href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(text.contact) + '</a>' +
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
     '</div>' + showcase + '</div></section>';
 }
@@ -161,7 +161,7 @@ function renderApiCatalogStatic(lang) {
   const labels = headings[lang] || headings.en;
   const items = readJson(path.join(ROOT, 'api-catalog.json'));
   return '<section class="section white" id="api-catalogue"><div class="container"><div class="content-panel"><h2>' + escapeHtml(labels[0]) + '</h2>' +
-    '<div class="table-wrap"><table class="api-table"><thead><tr><th>' + escapeHtml(labels[1]) + '</th><th>' + escapeHtml(labels[2]) + '</th></tr></thead><tbody>' +
+    '<div class="table-wrap api-catalog-wrap"><table class="api-table"><thead><tr><th>' + escapeHtml(labels[1]) + '</th><th>' + escapeHtml(labels[2]) + '</th></tr></thead><tbody>' +
     items.map(item => '<tr><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.category) + '</td></tr>').join('') +
     '</tbody></table></div></div></div></section>';
 }
@@ -279,7 +279,7 @@ function renderAboutPage(record) {
   }).join('');
   const ctaLinks = (record.links || []).filter(item => /become-our-partner|contact\.html/.test(item.href || '')).map(item => {
     const href = /contact\.html/.test(item.href || '') ? localizedPath(lang, 'contact.html') : localizedPath(lang, 'become-our-partner.html');
-    return '<a class="btn' + (/contact\.html/.test(item.href || '') ? ' btn-outline' : '') + '" href="' + attr(href) + '">' + escapeHtml(item.text || item.href) + '</a>';
+    return '<a class="btn' + (/contact\.html/.test(item.href || '') ? ' btn-gold-cta' : '') + '" href="' + attr(href) + '">' + escapeHtml(item.text || item.href) + '</a>';
   }).join('');
   const facts = (layout.facts || []).map(([value,label]) => '<article><strong>' + escapeHtml(value) + '</strong><span>' + escapeHtml(label) + '</span></article>').join('');
   const regions = (layout.regions || []).map(region => '<span>' + escapeHtml(region) + '</span>').join('');
@@ -356,7 +356,7 @@ function renderForm(record) {
   }).join('');
   return '<section class="section white"><div class="container"><div class="content-panel"><h2>' +
     escapeHtml(record.formTitle || 'Send an Enquiry') + '</h2>' + (record.formIntro ? '<p>' + escapeHtml(record.formIntro) + '</p>' : '') +
-    '<form class="form-grid" action="mailto:info@niaznet.net" method="get">' + fields +
+    '<form id="enquiry-form" class="form-grid" action="mailto:info@niaznet.net" method="get">' + fields +
     '<div class="form-field full"><button class="btn" type="submit">Send an Enquiry</button></div></form></div></div></section>';
 }
 function renderLinks(record) {
@@ -377,7 +377,10 @@ function renderLinks(record) {
     const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
       ? raw
       : resolvePageLink(record, rawPath) + hash;
-    return '<a class="content-link' + (marketLink ? ' about-market-link' : '') + '" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
+    const label = String(item.text || raw).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+    const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && (raw.startsWith('#enquiry-form') || /(?:contact|become-our-partner)\.html$/i.test(rawPath));
+    const linkClass = marketLink ? 'content-link about-market-link' : formAction ? 'btn btn-gold-cta' : 'content-link';
+    return '<a class="' + linkClass + '" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
   };
   const marketSection = isAboutPage && marketLinks.length
     ? '<h2>' + escapeHtml((labels[record.lang] || labels.en).marketPages) + '</h2>' + marketLinks.slice(0, 3).map(item => renderItem(item, true)).join('')
@@ -406,6 +409,22 @@ function renderFooter(record) {
     '<div class="footer-col footer-contact"><h3>' + escapeHtml(copy.contactHeading) + '</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">' + escapeHtml(lang === 'fa' ? '+98 21 8832 2100 · داخلی ۲' : lang === 'tr' ? '+98 21 8832 2100 · dahili 2' : '+98 21 8832 2100 ext. 2') + '</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
     '</div><div class="footer-bottom">' + escapeHtml(copy.tagline) + '</div></div></footer>';
 }
+
+function renderServiceBackLink(record) {
+  const lang = record.lang || 'en';
+  const slug = normalize(record.path).split('/').pop().replace(/\.html$/, '');
+  if (!services.some(service => service.slug === slug)) return '';
+  const labels = {
+    en: '← Back to All Services',
+    fa: 'بازگشت به همه خدمات ←',
+    tr: '← Tüm Hizmetlere Dön',
+    es: '← Volver a todos los servicios',
+    fr: '← Retour à tous les services'
+  };
+  return '<section class="container service-back-section"><a class="service-back-link" href="' +
+    attr(languageHome(lang) + '#services') + '">' + escapeHtml(labels[lang] || labels.en) + '</a></section>';
+}
+
 function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
   const description = pageDescription(record, descriptionCounts);
@@ -439,7 +458,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/rebuild/site.css">' +
     (isAboutPage ? '<link rel="stylesheet" href="/assets/css/about-page.css">' : '') +
     (pathName.endsWith('/sports-nutrition.html') ? '<link rel="stylesheet" href="/assets/css/sports-nutrition-page.css">' : '') +
-    '</head><body><div id="app">' + renderHeader(record) + (isAboutPage ? renderAboutHero(record) : renderHero(record)) + mainContent + renderFooter(record) +
+    '</head><body><div id="app">' + renderHeader(record) + (isAboutPage ? renderAboutHero(record) : renderHero(record)) + renderServiceBackLink(record) + mainContent + renderFooter(record) +
     '<a class="whatsapp whatsapp-float" href="https://wa.me/905340143473" aria-label="WhatsApp">WhatsApp</a></div>' +
     '<noscript><nav aria-label="Essential pages"><a href="/">Home</a> · <a href="/about.html">About Us</a> · <a href="/projects.html">Projects</a> · <a href="/contact.html">Contact</a> · <a href="/become-our-partner.html">Become Our Partner</a></nav></noscript>' +
     '<script src="/rebuild/site.js" defer></script></body></html>';

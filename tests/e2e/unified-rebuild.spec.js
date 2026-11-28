@@ -157,6 +157,65 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ));
   });
 
+
+  test('all localized service detail pages have a Back to All Services link', async () => {
+    const root = path.resolve(__dirname, '../..');
+    const services = JSON.parse(fs.readFileSync(path.join(root, 'data/rebuild-services.json'), 'utf8'));
+    const inventory = fs.readFileSync(path.join(root, 'data/live-page-inventory.jsonl'), 'utf8')
+      .split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line));
+    const serviceSlugs = new Set(services.map(service => service.slug));
+    const servicePages = inventory.filter(record => serviceSlugs.has(record.path.split('/').pop().replace(/\.html$/, '')));
+    expect(servicePages.length).toBe(78);
+    for (const record of servicePages) {
+      const file = path.join(root, record.path === '/' ? 'index.html' : record.path.slice(1));
+      const html = fs.readFileSync(file, 'utf8');
+      expect(html, record.path).toContain('class="service-back-link"');
+      const locale = record.lang || 'en';
+      const target = locale === 'en' ? '/#services' : '/' + locale + '/#services';
+      expect(html, record.path).toContain('href="' + target + '"');
+    }
+  });
+
+  test('service and company CTAs lead to the relevant enquiry forms', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fapi-supply.html');
+    await expect(page.locator('.hero-actions a').filter({ hasText: 'Contact Our Team' })).toHaveAttribute('href', /contact\.html/);
+    await expect(page.locator('.hero-actions a').filter({ hasText: 'Become Our Partner' })).toHaveAttribute('href', /become-our-partner\.html/);
+    await expect(page.locator('.main-nav a').filter({ hasText: 'Get in Touch' })).toHaveAttribute('href', /contact\.html/);
+    await expect(page.locator('.hero-actions .btn-gold-cta')).toHaveCSS('border-radius', '999px');
+    await page.goto('/rebuild/?page=%2Fcontact.html');
+    await expect(page.locator('form.form-grid')).toBeVisible();
+    await expect(page.locator('.form-note')).toContainText('does not submit directly to a server');
+    await expect(page.locator('form#enquiry-form')).toBeVisible();
+    await expect(page.locator('a').filter({ hasText: 'EMAIL OUR TEAM' })).toHaveAttribute('href', /#enquiry-form/);
+    await page.goto('/rebuild/?page=%2Fbecome-our-partner.html');
+    await expect(page.locator('form#enquiry-form')).toBeVisible();
+    await expect(page.locator('a').filter({ hasText: 'START A PARTNERSHIP DISCUSSION' })).toHaveAttribute('href', /#enquiry-form/);
+  });
+
+  test('API catalogue keeps all records inside a 20-row-height scroll window', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fapi-supply.html');
+    const wrap = page.locator('.api-catalog-wrap');
+    await expect(wrap).toBeVisible();
+    const rowCount = await page.locator('.api-table tbody tr').count();
+    expect(rowCount).toBeGreaterThan(20);
+    const dimensions = await wrap.evaluate(element => ({
+      maxHeight: getComputedStyle(element).maxHeight,
+      clientHeight: element.clientHeight,
+      scrollHeight: element.scrollHeight
+    }));
+    expect(dimensions.maxHeight).toBe('900px');
+    expect(dimensions.scrollHeight).toBeGreaterThan(dimensions.clientHeight);
+  });
+
+  test('language selector uses the navy and gold pill treatment', async ({ page }) => {
+    await page.goto('/rebuild/');
+    const language = page.locator('.language-select');
+    await expect(language).toHaveCSS('border-radius', '999px');
+    await expect(language).toHaveCSS('border-top-width', '1px');
+    await expect(language).toHaveCSS('background-color', 'rgb(8, 30, 59)');
+    await expect(language.locator('option')).toHaveCount(5);
+  });
+
   test('language switcher routes to the French homepage', async ({ page }) => {
     await page.goto('/rebuild/');
     await page.locator('.language-select').selectOption('fr');

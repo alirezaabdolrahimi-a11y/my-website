@@ -288,10 +288,10 @@
       [t.projects, '/projects.html'],
       [t.news, '#news'],
       [t.contact, '/contact.html'],
-      [t.getInTouch, 'mailto:info@niaznet.net?subject=Business%20Inquiry']
+      [t.getInTouch, '/contact.html']
     ];
     items.forEach(([label, path]) => {
-      const a = el('a', path.startsWith('mailto:') ? 'nav-cta' : '', label);
+      const a = el('a', label === t.getInTouch ? 'nav-cta' : '', label);
       a.href = navigationHref(path, lang);
       const sectionAnchor = path.startsWith('#') ||
         ((lang === 'es' || lang === 'fr') && (path === '/about.html' || path === '/projects.html'));
@@ -340,7 +340,7 @@
     copy.appendChild(heading);
     copy.appendChild(el('p', 'hero-description', descriptionFor(record)));
     const actions = el('div', 'hero-actions');
-    const contact = el('a', 'btn btn-outline', t.contactCta);
+    const contact = el('a', 'btn btn-gold-cta', t.contactCta);
     contact.href = linkTo(pageForAction('/contact.html', lang));
     const partner = el('a', 'btn partner-hero-btn', t.partnerCta);
     partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
@@ -355,6 +355,24 @@
     hero.appendChild(grid);
     return hero;
   }
+
+  function renderServiceBackLink(path, lang) {
+    const slug = normalizePath(path).split('/').pop().replace(/\.html$/, '');
+    if (!services.some(service => service.slug === slug)) return null;
+    const labels = {
+      en: '← Back to All Services',
+      fa: 'بازگشت به همه خدمات ←',
+      tr: '← Tüm Hizmetlere Dön',
+      es: '← Volver a todos los servicios',
+      fr: '← Retour à tous les services'
+    };
+    const section = el('section', 'container service-back-section');
+    const link = el('a', 'service-back-link', labels[lang] || labels.en);
+    link.href = linkTo(langHome(lang) + '#services');
+    section.appendChild(link);
+    return section;
+  }
+
   function renderAboutHero(record, path, lang) {
     const hero = el('section', 'about-hero');
     const inner = el('div', 'container about-hero-inner');
@@ -791,7 +809,7 @@
     (record.links || []).filter(item => /become-our-partner|contact\.html/.test(item.href || '')).forEach(item => {
       const rawPath = (item.href || '').split(/[?#]/)[0];
       const href = item.href.startsWith('mailto:') ? item.href : linkTo(pageForLanguage(rawPath, lang));
-      const button = el('a', 'btn' + (/contact\.html/.test(rawPath) ? ' btn-outline' : ''), item.text || item.href);
+      const button = el('a', 'btn' + (/contact\.html/.test(rawPath) ? ' btn-gold-cta' : ''), item.text || item.href);
       button.href = href;
       actions.appendChild(button);
     });
@@ -1006,7 +1024,7 @@
     tools.append(search, category, sort);
     panel.appendChild(tools);
     const count = el('p', 'api-count');
-    const wrap = el('div', 'table-wrap');
+    const wrap = el('div', 'table-wrap api-catalog-wrap');
     const table = el('table', 'api-table');
     const thead = document.createElement('thead');
     const tr = document.createElement('tr');
@@ -1130,6 +1148,7 @@
     if (record.formIntro) panel.appendChild(el('p', '', record.formIntro));
     const form = document.createElement('form');
     form.className = 'form-grid';
+    form.id = 'enquiry-form';
     source.fields.forEach((field, index) => {
       const wrapper = el('div', 'form-field' + (field.tag === 'textarea' ? ' full' : ''));
       const labelText = field.label || field.name || 'Field';
@@ -1207,7 +1226,10 @@
     const panel = el('div', 'content-panel');
 
     const appendLink = (item, marketLink = false) => {
-      const a = el('a', marketLink ? 'content-link about-market-link' : 'content-link', item.text || item.href);
+      const label = String(item.text || item.href).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+      const rawPath = (item.href || '').split(/[?#]/)[0];
+      const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && (String(item.href || '').startsWith('#enquiry-form') || /(?:contact|become-our-partner)\.html$/i.test(rawPath));
+      const a = el('a', marketLink ? 'content-link about-market-link' : formAction ? 'btn btn-gold-cta' : 'content-link', item.text || item.href);
       if (item.href.startsWith('#')) {
         a.href = linkTo(record.path, item.href);
       } else if (item.href.startsWith('mailto:') || item.href.startsWith('tel:')) {
@@ -1391,6 +1413,8 @@
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
     app.appendChild(isAboutPage ? renderAboutHero(record, path, lang) : renderHero(record, path, lang));
+    const serviceBack = home ? null : renderServiceBackLink(path, lang);
+    if (serviceBack) app.appendChild(serviceBack);
     if (home) {
       app.appendChild(renderServiceGrid(lang));
       renderHomeSections(record, lang).forEach(section => app.appendChild(section));
