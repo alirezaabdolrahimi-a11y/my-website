@@ -54,6 +54,7 @@ function pageDescription(record, descriptionCounts) {
   return descriptionCounts.get(base) > 1 ? base + ' ' + (firstBlock(record, 'h1') || record.title) : base;
 }
 function canonicalFor(record, canonicalCounts) {
+  if (record.redirectTo) return SITE + normalize(record.redirectTo);
   const canonical = record.canonical || SITE + normalize(record.path);
   return canonicalCounts.get(canonical) > 1 ? SITE + normalize(record.path) : canonical;
 }
@@ -186,6 +187,12 @@ function renderFooter(record) {
 function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
   const description = pageDescription(record, descriptionCounts);
+  if (record.redirectTo) {
+    const target = normalize(record.redirectTo);
+    return '<!doctype html><html lang="' + attr(lang) + '"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">' +
+      '<meta http-equiv="refresh" content="0;url=' + attr(target) + '"><link rel="canonical" href="' + attr(canonical) + '">' +
+      '<title>Redirecting to NIAZ NET</title></head><body><p>This page has moved. <a href="' + attr(target) + '">Continue to the updated page</a>.</p></body></html>';
+  }
   const pathName = normalize(record.path);
   const home = pathName === '/' || /^\/(fa|tr|es|fr)\/$/.test(pathName);
   const baseTitle = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
@@ -239,6 +246,22 @@ function build() {
     }).join('') + '</urlset>';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf8');
   fs.writeFileSync(path.join(ROOT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + SITE + '/sitemap.xml\n', 'utf8');
-  console.log('Pre-rendered ' + records.length + ' pages from the single page inventory.');
+  const indexable = records.filter(record => !record.redirectTo);
+  const canonicalSet = new Set(indexable.map(record => canonicalFor(record, canonicalCounts)));
+  const titleSet = new Set(indexable.map(record => {
+    const base = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
+    return titleCounts.get(base) > 1 ? base + ' — ' + normalize(record.path).split('/').filter(Boolean).pop().replace(/\\.html$/, '').replace(/-/g, ' ') : base;
+  }));
+  const descriptionSet = new Set(indexable.map(record => pageDescription(record, descriptionCounts)));
+  if (canonicalSet.size !== indexable.length || titleSet.size !== indexable.length || descriptionSet.size !== indexable.length) {
+    throw new Error('SEO validation failed: canonical URLs, titles and descriptions must be unique for indexable pages.');
+  }
+  for (const record of indexable) {
+    const html = fs.readFileSync(outputPath(record.path), 'utf8');
+    if (!/<h1\\b/.test(html) || !/<meta name="description"/.test(html) || !/<link rel="canonical"/.test(html) || !/<a\\s/.test(html)) {
+      throw new Error('Pre-render validation failed for ' + record.path + ': missing heading, metadata or internal links.');
+    }
+  }
+  console.log('Pre-rendered and validated ' + indexable.length + ' indexable pages plus ' + (records.length - indexable.length) + ' redirect aliases.');
 }
 build();
