@@ -30,6 +30,25 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(config.routes || []).toHaveLength(0);
   });
 
+  test('static pre-render output preserves 18 primary tiles, 3 VIP tiles and About market links', async () => {
+    const root = path.resolve(__dirname, '../..');
+    const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+    expect((homepage.match(/class="service-card/g) || []).length).toBe(18);
+    expect((homepage.match(/class="vip-service-link/g) || []).length).toBe(3);
+    expect(homepage).toContain('BD / R&amp;D');
+    for (const [file, marketPaths] of [
+      ['about.html', ['/international-markets.html', '/south-africa-market.html', '/kenya-market.html']],
+      ['tr/about.html', ['/tr/international-markets.html', '/tr/south-africa-market.html', '/tr/kenya-market.html']],
+      ['fa/about.html', ['/fa/international-markets.html', '/fa/south-africa-market.html', '/fa/kenya-market.html']]
+    ]) {
+      const html = fs.readFileSync(path.join(root, file), 'utf8');
+      for (const marketPath of marketPaths) expect(html).toContain('href="' + marketPath + '"');
+    }
+    for (const slug of ['international-markets', 'south-africa-market', 'kenya-market']) {
+      expect(fs.existsSync(path.join(root, slug + '.html'))).toBe(true);
+    }
+  });
+
   test('homepage renders 18 primary service tiles and 3 separate VIP tiles', async ({ page }) => {
     await page.goto('/rebuild/');
     await expect(page.locator('.site-header')).toBeVisible();
