@@ -22,31 +22,65 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
-  test('Vercel route rules cover every published inventory URL', async () => {
+  test('Vercel uses static pre-rendering instead of legacy catch-all rewrites', async () => {
     const root = path.resolve(__dirname, '../..');
-    const inventory = fs.readFileSync(path.join(root, 'data/live-page-inventory.jsonl'), 'utf8')
-      .trim().split(/\r?\n/).map(line => JSON.parse(line).path);
     const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
-    const rules = (config.routes || []).filter(rule => rule.dest === '/rebuild/index.html');
-    const missing = inventory.filter(url => !rules.some(rule => new RegExp(rule.src).test(url)));
-    expect(missing).toEqual([]);
-    expect(rules.some(rule => new RegExp(rule.src).test('/index.html'))).toBe(true);
+    expect(config.buildCommand).toBe('node tools/prerender-pages.mjs');
+    expect(config.outputDirectory).toBe('.');
+    expect(config.routes || []).toHaveLength(0);
   });
 
-  test('homepage renders the shared shell and all 26 service cards', async ({ page }) => {
+  test('homepage renders 18 primary service tiles and 3 separate VIP tiles', async ({ page }) => {
     await page.goto('/rebuild/');
     await expect(page.locator('.site-header')).toBeVisible();
-    await expect(page.locator('.services-grid .service-card')).toHaveCount(23);
+    await expect(page.locator('.services-grid .service-card')).toHaveCount(18);
     await expect(page.locator('.services-grid .import-export-card')).toHaveCount(1);
     await expect(page.locator('.services-grid .import-export-card')).toContainText('IMPORT / EXPORT');
     await expect(page.locator('.whatsapp svg')).toHaveCount(1);
     await expect(page.locator('.footer-contact-link')).toHaveCSS('display', 'inline-flex');
+    await expect(page.locator('.services-grid .service-card').nth(0)).toContainText('IMPORT / EXPORT');
     await expect(page.locator('.services-grid .service-card').nth(1)).toContainText('Brand Registration');
     await expect(page.locator('.services-grid .service-card').nth(2)).toContainText('API');
+    await expect(page.locator('.services-grid .service-card').nth(6)).toContainText('BD / R&D');
+    await expect(page.locator('.services-grid .service-card').filter({ hasText: 'South Africa Market' })).toHaveCount(0);
+    await expect(page.locator('.services-grid .service-card').filter({ hasText: 'International Markets' })).toHaveCount(0);
+    await expect(page.locator('.services-grid .service-card').filter({ hasText: 'Kenya Market' })).toHaveCount(0);
     await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     await expect(page.locator('#contact')).toBeAttached();
     await expect(page.locator('.main-nav a')).toHaveCount(8);
     await expect(page.locator('.language-select option')).toHaveCount(5);
+  });
+
+  test('market pages are linked from About Us in EN, TR and FA and remain published', async ({ page }) => {
+    const cases = [
+      ['/rebuild/?page=%2Fabout.html', [
+        ['International Markets', '/international-markets.html'],
+        ['South Africa Market', '/south-africa-market.html'],
+        ['Kenya Market', '/kenya-market.html']
+      ]],
+      ['/rebuild/?page=%2Ftr%2Fabout.html', [
+        ['Uluslararası Pazarlar', '/tr/international-markets.html'],
+        ['Güney Afrika Pazarı', '/tr/south-africa-market.html'],
+        ['Kenya Pazarı', '/tr/kenya-market.html']
+      ]],
+      ['/rebuild/?page=%2Ffa%2Fabout.html', [
+        ['بازارهای بین‌المللی', '/fa/international-markets.html'],
+        ['بازار آفریقای جنوبی', '/fa/south-africa-market.html'],
+        ['بازار کنیا', '/fa/kenya-market.html']
+      ]]
+    ];
+    for (const [url, links] of cases) {
+      await page.goto(url);
+      await expect(page.locator('.content-panel h2').filter({ hasText: /Explore Our Markets|Pazarlarımızı|بازارهای ما/ })).toHaveCount(1);
+      for (const [label, href] of links) {
+        await expect(page.locator('.content-link').filter({ hasText: label })).toHaveAttribute('href', href);
+      }
+    }
+    for (const slug of ['international-markets', 'kenya-market', 'south-africa-market']) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent('/' + slug + '.html'));
+      await expect(page.locator('h1').first()).toBeVisible();
+      await expect(page.locator('main.not-found')).toHaveCount(0);
+    }
   });
 
   test('API catalogue preserves all 239 records and supports search and sorting', async ({ page }) => {
@@ -120,7 +154,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Ffa%2F');
     const hrefs = await page.locator('.services-grid .service-card, .vip-service-list .vip-service-link')
       .evaluateAll(links => links.map(link => link.getAttribute('href')));
-    expect(hrefs).toHaveLength(26);
+    expect(hrefs).toHaveLength(21);
+    await expect(page.locator('.services-grid .service-card')).toHaveCount(18);
+    await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     expect(hrefs.every(href => href.includes('%2Ffa%2F'))).toBe(true);
     await expect(page.locator('.language-note')).toContainText('۲۶ صفحه خدمات');
     const card = await page.locator('.services-grid .service-card').nth(1).boundingBox();
@@ -231,7 +267,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('Persian homepage, contact, partner and projects routes are available', async ({ page }) => {
     await page.goto('/rebuild/?page=%2Ffa%2F');
     await expect(page.locator('html')).toHaveAttribute('lang', 'fa');
-    await expect(page.locator('.services-grid .service-card')).toHaveCount(23);
+    await expect(page.locator('.services-grid .service-card')).toHaveCount(18);
     await expect(page.locator('.vip-service-list .vip-service-link')).toHaveCount(3);
     await expect(page.locator('#partners .partner')).toHaveCount(11);
     await page.goto('/rebuild/?page=%2Ffa%2Fcontact.html');
