@@ -357,7 +357,7 @@
   }
 
   function renderServiceBackLink(path, lang) {
-    const slug = normalizePath(path).split('/').pop().replace(/\\.html$/, '');
+    const slug = normalizePath(path).split('/').pop().replace(/\.html$/, '');
     if (!services.some(service => service.slug === slug)) return null;
     const labels = {
       en: '← Back to All Services',
