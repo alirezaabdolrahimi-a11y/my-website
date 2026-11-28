@@ -421,7 +421,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
 
   test('action buttons and service tiles retain the original raised treatment', async ({ page }) => {
     await page.goto('/rebuild/');
-    const button = page.locator('.home-cta:visible .btn:visible').first();
+    const button = page.locator('.hero-actions .btn:visible').first();
     await expect(button).toBeVisible();
     const shadow = await button.evaluate(el => getComputedStyle(el).boxShadow);
     expect(shadow).not.toBe('none');
