@@ -33,7 +33,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('static pre-render output preserves 18 primary tiles, 3 VIP tiles and About market links', async () => {
     const root = path.resolve(__dirname, '../..');
     const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-    expect((homepage.match(/class="service-card/g) || []).length).toBe(18);
+    expect((homepage.match(/class="service-card(?: |")/g) || []).length).toBe(18);
     expect((homepage.match(/class="vip-service-link/g) || []).length).toBe(3);
     expect(homepage).toContain('BD / R&amp;D');
     for (const [file, marketPaths] of [
@@ -710,4 +710,48 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(hoverGradient).toContain('linear-gradient');
   });
 
+});
+
+test('all pre-rendered pages have one h1, no skipped heading levels and no duplicate heading text', async ({ page }) => {
+  const siteRoot = path.resolve(__dirname, '../..');
+  const records = fs.readFileSync(path.join(siteRoot, 'data/live-page-inventory.jsonl'), 'utf8')
+    .trim().split(/\r?\n/).map(line => JSON.parse(line)).filter(record => !record.redirectTo);
+  const failures = [];
+
+  for (const record of records) {
+    const relativePath = record.path === '/'
+      ? 'index.html'
+      : record.path.endsWith('/')
+        ? record.path.slice(1) + 'index.html'
+        : record.path.slice(1);
+    const html = fs.readFileSync(path.join(siteRoot, relativePath), 'utf8');
+    const audit = await page.evaluate(source => {
+      const doc = new DOMParser().parseFromString(source, 'text/html');
+      const headings = [...doc.querySelectorAll('h1,h2,h3,h4')]
+        .map(node => ({ level: Number(node.tagName.slice(1)), text: node.textContent.replace(/\s+/g, ' ').trim() }))
+        .filter(item => item.text);
+      const h1Count = headings.filter(item => item.level === 1).length;
+      const skipped = [];
+      if (headings.length && headings[0].level !== 1) skipped.push('outline does not start with h1');
+      for (let i = 1; i < headings.length; i++) {
+        if (headings[i].level > headings[i - 1].level + 1) {
+          skipped.push('h' + headings[i - 1].level + ' to h' + headings[i].level + ': ' + headings[i].text);
+        }
+      }
+      const seen = new Set();
+      const duplicates = [];
+      for (const item of headings) {
+        const key = item.text.toLowerCase();
+        if (seen.has(key)) duplicates.push(item.text);
+        else seen.add(key);
+      }
+      return { h1Count, skipped, duplicates };
+    }, html);
+
+    if (audit.h1Count !== 1 || audit.skipped.length || audit.duplicates.length) {
+      failures.push({ path: record.path, ...audit });
+    }
+  }
+
+  expect(failures).toEqual([]);
 });
