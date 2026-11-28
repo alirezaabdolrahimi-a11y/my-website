@@ -33,7 +33,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('static pre-render output preserves 18 primary tiles, 3 VIP tiles and About market links', async () => {
     const root = path.resolve(__dirname, '../..');
     const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-    expect((homepage.match(/class="service-card/g) || []).length).toBe(18);
+    expect((homepage.match(/class="service-card(?:\\s|")/g) || []).length).toBe(18);
     expect((homepage.match(/class="vip-service-link/g) || []).length).toBe(3);
     expect(homepage).toContain('BD / R&amp;D');
     for (const [file, marketPaths] of [
