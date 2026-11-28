@@ -20,7 +20,7 @@
   const COPY = {
     en: {
       home:'Home',about:'About Us',navServices:'Services',partners:'Partners',projects:'Projects',news:'News',contact:'Contact',getInTouch:'Get in Touch',
-      services:'Our Services',vipTitle:'VIP SERVICES',markets:'Explore Our Markets',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
+      services:'Our Services',vipTitle:'VIP SERVICES',contactCta:'Contact Our Team',partnerCta:'Become Our Partner',quickLinks:'Quick Links',tagline:'Connecting markets worldwide',newsHeadline:'Meet NIAZ NET at upcoming industry events',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'API & Pharmaceutical Raw Materials Catalogue',search:'Search by product or category',allCategories:'All categories',
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
@@ -33,7 +33,7 @@
     },
     tr: {
       home:'Ana Sayfa',about:'Hakkımızda',navServices:'Hizmetlerimiz',partners:'İş Ortakları',projects:'Projeler',news:'Haberler',contact:'İletişim',getInTouch:'Bize Ulaşın',
-      services:'Hizmetlerimiz',vipTitle:'VIP HİZMETLER',markets:'Pazarlarımızı Keşfedin',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
+      services:'Hizmetlerimiz',vipTitle:'VIP HİZMETLER',contactCta:'Ekibimizle İletişime Geçin',partnerCta:'İş Ortağımız Olun',quickLinks:'Hızlı Bağlantılar',tagline:'Dünya pazarlarını birbirine bağlıyoruz',newsHeadline:'Yaklaşan sektör etkinliklerinde NIAZ NET ile buluşun',importExportLabel:'İTHALAT / İHRACAT',
       apiTitle:'API ve Farmasötik Hammaddeler Kataloğu',search:'Ürün veya kategori ara',allCategories:'Tüm kategoriler',
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
@@ -46,7 +46,7 @@
     },
     fa: {
       home:'صفحه اصلی',about:'درباره ما',navServices:'خدمات',partners:'شرکای ما',projects:'پروژه‌ها',news:'اخبار',contact:'تماس با ما',getInTouch:'تماس با ما',
-      services:'خدمات ما',vipTitle:'خدمات VIP',markets:'بازارهای ما را بشناسید',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
+      services:'خدمات ما',vipTitle:'خدمات VIP',contactCta:'تماس با تیم ما',partnerCta:'همکاری با ما',quickLinks:'دسترسی سریع',tagline:'پیونددهنده بازارهای جهانی',newsHeadline:'در رویدادهای پیش‌روی صنعت با نیاز نت دیدار کنید',importExportLabel:'واردات / صادرات',
       apiTitle:'فهرست مواد مؤثره دارویی و مواد اولیه',search:'جست‌وجو بر اساس نام محصول یا دسته',allCategories:'همه دسته‌ها',
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
@@ -59,7 +59,7 @@
     },
     es: {
       home:'Inicio',about:'Quiénes somos',navServices:'Servicios',partners:'Socios',projects:'Proyectos',news:'Noticias',contact:'Contacto',getInTouch:'Contacte',
-      services:'Nuestros servicios',vipTitle:'SERVICIOS VIP',markets:'Explore nuestros mercados',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
+      services:'Nuestros servicios',vipTitle:'SERVICIOS VIP',contactCta:'Contacte con nuestro equipo',partnerCta:'Conviértase en socio',quickLinks:'Enlaces rápidos',tagline:'Conectando mercados en todo el mundo',newsHeadline:'Conozca a NIAZ NET en los próximos eventos del sector',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',
       apiTitle:'Catálogo de API y materias primas farmacéuticas',search:'Buscar por producto o categoría',allCategories:'Todas las categorías',
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
@@ -72,7 +72,7 @@
     },
     fr: {
       home:'Accueil',about:'À propos',navServices:'Services',partners:'Partenaires',projects:'Projets',news:'Actualités',contact:'Contact',getInTouch:'Nous contacter',
-      services:'Nos services',vipTitle:'SERVICES VIP',markets:'Découvrez nos marchés',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
+      services:'Nos services',vipTitle:'SERVICES VIP',contactCta:'Contacter notre équipe',partnerCta:'Devenir partenaire',quickLinks:'Liens rapides',tagline:'Connecter les marchés du monde',newsHeadline:'Rencontrez NIAZ NET lors des prochains événements du secteur',importExportLabel:'IMPORT / EXPORT',
       apiTitle:'Catalogue des API et matières premières pharmaceutiques',search:'Rechercher par produit ou catégorie',allCategories:'Toutes les catégories',
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
@@ -934,7 +934,7 @@
     const section = el('section', 'section');
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
-    panel.appendChild(el('h2', '', /\/about\.html$/i.test(normalizePath(record.path)) ? t.markets : t.useful));
+    panel.appendChild(el('h2', '', t.useful));
     filtered.slice(0,30).forEach(item => {
       const a = el('a', 'content-link', item.text || item.href);
       if (item.href.startsWith('#')) {
