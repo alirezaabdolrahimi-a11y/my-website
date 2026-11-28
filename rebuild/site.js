@@ -199,7 +199,7 @@
       dots.appendChild(dot);
     });
     wrap.appendChild(dots);
-    let active = 0, timer = null, startX = null;
+    let active = 0, timer = null, startX = null, preloadTimer = null;
     const dotButtons = [...dots.querySelectorAll('button')];
     function loadSlide(i, priority) {
       const img = slides[i].querySelector('img');
@@ -212,8 +212,20 @@
     }
     function show(i) {
       active = (i + slides.length) % slides.length;
+      if (preloadTimer !== null) { window.clearTimeout(preloadTimer); preloadTimer = null; }
       loadSlide(active, true);
-      if (slides.length > 1) loadSlide((active + 1) % slides.length, false);
+      if (slides.length > 1) {
+        const shown = active;
+        const activeImage = slides[shown].querySelector('img');
+        const queueNext = () => {
+          if (active !== shown) return;
+          preloadTimer = window.setTimeout(() => {
+            if (active === shown) loadSlide((shown + 1) % slides.length, false);
+          }, 1200);
+        };
+        if (activeImage && activeImage.complete) queueNext();
+        else if (activeImage) activeImage.addEventListener('load', queueNext, { once: true });
+      }
       slides.forEach((s, n) => {
         s.classList.toggle('is-active', n === active);
         s.classList.toggle('active', n === active);
@@ -395,6 +407,34 @@
     });
     flushList();
     container.appendChild(panel);
+
+    const pagePath = normalizePath(record.path || '');
+    const isSportsPage = pagePath.endsWith('/sports-nutrition.html');
+    const isInfantPage = pagePath.endsWith('/infant-formula.html');
+    if (isSportsPage || isInfantPage) {
+      const brandSection = el('section', 'service-content niaz-brand-network');
+      const brandPanel = el('div', 'panel');
+      const heading = isSportsPage
+        ? 'Sports Brand Experience & Portfolio'
+        : 'Selected Brands, Technology & Supply Experience';
+      const intro = isSportsPage
+        ? 'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.'
+        : 'Four spaces are reserved for infant-nutrition brands or selected project references. Logos or approved references will be added after the brands and projects are confirmed.';
+      brandPanel.appendChild(el('h2', '', heading));
+      brandPanel.appendChild(el('p', '', intro));
+      const brandGrid = el('div', 'sports-brand-grid' + (isInfantPage ? ' infant-brand-grid' : ''));
+      brandGrid.setAttribute('aria-label', heading);
+      for (let i = 1; i <= 4; i++) {
+        const placeholder = el('div', 'sports-brand-placeholder');
+        const label = isSportsPage ? 'SPORTS BRAND LOGO ' : 'BRAND / PROJECT ';
+        placeholder.appendChild(el('span', '', label + String(i).padStart(2, '0') + '\nTo be added'));
+        brandGrid.appendChild(placeholder);
+      }
+      brandPanel.appendChild(brandGrid);
+      brandSection.appendChild(brandPanel);
+      container.appendChild(brandSection);
+    }
+
     section.appendChild(container);
     return section;
   }
