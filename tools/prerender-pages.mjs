@@ -43,8 +43,9 @@ function outputPath(urlPath) {
 function firstBlock(record, type) {
   return (record.blocks || []).find(block => block.type === type)?.text || '';
 }
-function pageDescription(record) {
-  return record.description || firstBlock(record, 'p') || record.title || 'NIAZ NET — International business development, strategic distribution, trade and partnerships.';
+function pageDescription(record, descriptionCounts) {
+  const base = record.description || firstBlock(record, 'p') || record.title || 'NIAZ NET — International business development, strategic distribution, trade and partnerships.';
+  return descriptionCounts.get(base) > 1 ? base + ' ' + (firstBlock(record, 'h1') || record.title) : base;
 }
 function canonicalFor(record, canonicalCounts) {
   const canonical = record.canonical || SITE + normalize(record.path);
@@ -135,6 +136,7 @@ function renderBlocks(record) {
   flush();
   if (record.partners?.length) body += '<h2>' + escapeHtml((labels[lang] || labels.en).partners || 'Global Partners') + '</h2><div class="partner-strip">' +
     record.partners.map(partner => '<div class="partner">' + (partner.mark ? '<span class="' + attr(partner.tone || '') + '">' + escapeHtml(partner.mark) + '</span> ' : '') + escapeHtml(partner.name) + '</div>').join('') + '</div>';
+  if (record.network?.locations?.length) body += '<h3>' + escapeHtml(record.network.locations.map(point => point.name).join(' · ')) + '</h3>' + (record.network.caption ? '<p>' + escapeHtml(record.network.caption) + '</p>' : '');
   if (record.projectImages?.length) body += '<div class="project-image-list">' + record.projectImages.map(src => '<img src="' + attr(src) + '" alt="" loading="lazy">').join('') + '</div>';
   return '<section class="section white"><div class="container"><div class="content-panel">' + body + '</div></div></section>';
 }
@@ -174,12 +176,13 @@ function renderFooter(record) {
     '<div class="footer-col footer-contact"><h3>Contact NIAZ NET</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">+98 21 8832 2100 ext. 2</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
     '</div><div class="footer-bottom">NIAZ NET · International Business Development</div></div></footer>';
 }
-function pageHtml(record, canonical) {
+function pageHtml(record, canonical, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
-  const description = pageDescription(record);
+  const description = pageDescription(record, descriptionCounts);
   const pathName = normalize(record.path);
   const home = pathName === '/' || /^\/(fa|tr|es|fr)\/$/.test(pathName);
-  const title = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
+  const baseTitle = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
+  const title = titleCounts.get(baseTitle) > 1 ? baseTitle + ' — ' + pathName.split('/').filter(Boolean).pop().replace(/\\.html$/, '').replace(/-/g, ' ') : baseTitle;
   const alternates = records.filter(other => other.path.split('/').pop() === pathName.split('/').pop() &&
     (other.path === '/' || other.path.endsWith('/' + pathName.split('/').pop())) && other.lang);
   const alternateTags = [...new Map(alternates.map(other => [other.lang, other])).values()]
@@ -201,16 +204,20 @@ function pageHtml(record, canonical) {
     '<script src="/rebuild/site.js" defer></script></body></html>';
 }
 function build() {
-  const canonicalCounts = new Map();
+  const canonicalCounts = new Map(), titleCounts = new Map(), descriptionCounts = new Map();
   for (const record of records) {
     const canonical = record.canonical || SITE + normalize(record.path);
+    const title = record.title || firstBlock(record, 'h1') || 'NIAZ NET';
+    const description = record.description || firstBlock(record, 'p') || title;
     canonicalCounts.set(canonical, (canonicalCounts.get(canonical) || 0) + 1);
+    titleCounts.set(title, (titleCounts.get(title) || 0) + 1);
+    descriptionCounts.set(description, (descriptionCounts.get(description) || 0) + 1);
   }
   for (const record of records) {
     const file = outputPath(record.path);
     const canonical = canonicalFor(record, canonicalCounts);
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, pageHtml(record, canonical), 'utf8');
+    fs.writeFileSync(file, pageHtml(record, canonical, titleCounts, descriptionCounts), 'utf8');
   }
   const sitemapRecords = records.filter(record => !record.redirectTo);
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>' +
