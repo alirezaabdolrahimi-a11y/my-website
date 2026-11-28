@@ -626,7 +626,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     ];
     for (const [route, headings] of cases) {
       await page.goto('/rebuild/?page=' + encodeURIComponent(route));
-      for (const heading of headings) await expect(page.locator('.content-panel')).toContainText(heading);
+      for (const heading of headings) await expect(page.locator('.content-panel').first()).toContainText(heading);
       await expect(page.locator('.sports-brand-placeholder')).toHaveCount(4);
       await expect(page.locator('.sports-brand-placeholder img')).toHaveCount(0);
     }
