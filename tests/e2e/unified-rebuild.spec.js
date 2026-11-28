@@ -714,16 +714,19 @@ test.describe('NIAZ NET unified rebuild preview', () => {
   test('all indexable pages have unique, concise SEO titles and descriptions', () => {
     const root = path.resolve(__dirname, '../..');
     const inventory = fs.readFileSync(path.join(root, 'data/live-page-inventory.jsonl'), 'utf8')
-      .split(/\\r?\\n/).filter(Boolean).map(line => JSON.parse(line))
+      .split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line))
       .filter(record => !record.redirectTo);
+    const decodeHtml = value => value
+      .replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
     const titles = [];
     const descriptions = [];
     for (const record of inventory) {
       const file = record.path === '/' ? 'index.html' :
         record.path.endsWith('/') ? record.path.slice(1) + 'index.html' : record.path.slice(1);
       const html = fs.readFileSync(path.join(root, file), 'utf8');
-      const title = html.match(/<title>([\\s\\S]*?)<\\/title>/i)?.[1]?.trim();
-      const description = html.match(/<meta\\s+name="description"\\s+content="([^"]*)"\\s*\\/?>/i)?.[1]?.trim();
+      const title = decodeHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || '');
+      const description = decodeHtml(html.match(/<meta\s+name="description"\s+content="([^"]*)"\s*\/?>/i)?.[1]?.trim() || '');
       expect(title, record.path + ' title').toBeTruthy();
       expect(description, record.path + ' meta description').toBeTruthy();
       expect(title.length, record.path + ' title length').toBeLessThanOrEqual(60);
@@ -734,5 +737,4 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(new Set(titles).size, 'unique page titles').toBe(titles.length);
     expect(new Set(descriptions).size, 'unique meta descriptions').toBe(descriptions.length);
   });
-
 });
