@@ -981,7 +981,7 @@
       if (isDownload && record.path.endsWith('/contract-manufacturing.html')) return false;
       return href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') ||
         href.startsWith('http://') || href.startsWith('https://') ||
-        isDownload || /\\.html(?:$|[?#])/i.test(href);
+        isDownload || href.includes('.html');
     });
     const seen = new Set();
     const filtered = candidates.filter(item => {
@@ -991,8 +991,12 @@
     });
     if (!filtered.length) return null;
 
-    const isAboutPage = /(?:^|\\/)about\\.html$/.test(record.path);
-    const isMarketLink = item => /\\/(?:kenya-market|south-africa-market|international-markets)\\.html(?:$|[?#])/.test(item.href || '');
+    const isAboutPage = record.path.endsWith('/about.html');
+    const isMarketLink = item => {
+      const path = (item.href || '').split(/[?#]/)[0];
+      return ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']
+        .some(suffix => path.endsWith(suffix));
+    };
     const marketLinks = isAboutPage ? filtered.filter(isMarketLink) : [];
     const otherLinks = isAboutPage ? filtered.filter(item => !isMarketLink(item)) : filtered;
     const section = el('section', isAboutPage ? 'section about-market-links' : 'section');
@@ -1018,9 +1022,10 @@
           record.path.startsWith('/fa/') ? '/fa/' : '/';
         const rawPath = item.href.split(/[?#]/)[0];
         const hash = item.href.includes('#') ? item.href.slice(item.href.indexOf('#')) : '';
-        let href = rawPath.startsWith('/') ? rawPath : currentPrefix + rawPath.replace(/^\\.\\//, '');
+        const relativePath = rawPath.startsWith('./') ? rawPath.slice(2) : rawPath;
+        let href = relativePath.startsWith('/') ? relativePath : currentPrefix + relativePath;
         if (href === '/index.html') href = '/';
-        if (/^\\/(tr|es|fr)\\/index\\.html$/.test(href)) href = href.replace('index.html', '');
+        if (['/tr/index.html', '/es/index.html', '/fr/index.html'].includes(href)) href = href.slice(0, -'index.html'.length);
         if (href === '/fa/index.html') href = '/fa/';
         href = normalizePath(href);
         if (!pageMap.has(href)) {

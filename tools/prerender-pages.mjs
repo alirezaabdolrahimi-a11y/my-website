@@ -259,13 +259,16 @@ function renderForm(record) {
     '<div class="form-field full"><button class="btn" type="submit">Send an Enquiry</button></div></form></div></div></section>';
 }
 function renderLinks(record) {
-  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\\.html(?:$|[?#])/i.test(item.href)));
+  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || item.href.includes('.html')));
   if (!links.length) return '';
-  const isAboutPage = /(?:^|\\/)about\\.html$/.test(record.path);
-  const isMarketLink = item => /\\/(?:kenya-market|south-africa-market|international-markets)\\.html(?:$|[?#])/.test(item.href || '');
+  const isAboutPage = record.path.endsWith('/about.html');
+  const isMarketLink = item => {
+    const path = (item.href || '').split(/[?#]/)[0];
+    return ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']
+      .some(suffix => path.endsWith(suffix));
+  };
   const marketLinks = isAboutPage ? links.filter(isMarketLink) : [];
   const otherLinks = isAboutPage ? links.filter(item => !isMarketLink(item)) : links;
-  const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
   const renderItem = (item, marketLink = false) => {
     const raw = item.href;
     const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
