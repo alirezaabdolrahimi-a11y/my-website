@@ -23,11 +23,11 @@ const navLabels = {
   fr:['Accueil','À propos','Services','Partenaires','Projets','Actualités','Contact','Nous contacter']
 };
 const labels = {
-  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',markets:'Explore Our Markets',importExportLabel:'IMPORT / EXPORT',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
-  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',markets:'بازارهای ما را بشناسید',importExportLabel:'واردات / صادرات',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
-  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',markets:'Pazarlarımızı Keşfedin',importExportLabel:'İTHALAT / İHRACAT',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
-  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',markets:'Explore nuestros mercados',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
-  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',markets:'Découvrez nos marchés',importExportLabel:'IMPORT / EXPORT',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
+  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',importExportLabel:'IMPORT / EXPORT',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
+  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',importExportLabel:'واردات / صادرات',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
+  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',importExportLabel:'İTHALAT / İHRACAT',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
+  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
+  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',importExportLabel:'IMPORT / EXPORT',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
 };
 function normalize(value) {
   let result = String(value || '/').replace(/\/+/g, '/');
@@ -210,7 +210,7 @@ function renderLinks(record) {
   const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\.html(?:$|[?#])/i.test(item.href)));
   if (!links.length) return '';
   const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
-  return '<section class="section"><div class="container"><div class="content-panel"><h2>' + escapeHtml(/\/about\.html$/i.test(normalize(record.path)) ? (labels[record.lang] || labels.en).markets : (labels[record.lang] || labels.en).useful) + '</h2>' +
+  return '<section class="section"><div class="container"><div class="content-panel"><h2>' + escapeHtml((labels[record.lang] || labels.en).useful) + '</h2>' +
     links.slice(0, 30).map(item => {
       const raw = item.href;
       const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
