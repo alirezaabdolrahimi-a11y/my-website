@@ -1042,10 +1042,13 @@
     return footer;
   }
   function updateMetadata(record) {
-    const title = record.title || titleFor(record);
-    const description = record.description || descriptionFor(record);
-    document.title = title;
+    const prerendered = document.documentElement.dataset.prerendered === 'true';
     let descriptionTag = document.head.querySelector('meta[name="description"]');
+    const title = prerendered ? document.title : (record.title || titleFor(record));
+    const description = prerendered && descriptionTag
+      ? descriptionTag.content
+      : (record.description || descriptionFor(record));
+    document.title = title;
     if (!descriptionTag) {
       descriptionTag = document.createElement('meta');
       descriptionTag.name = 'description';
