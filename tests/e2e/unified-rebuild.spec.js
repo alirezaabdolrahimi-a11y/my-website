@@ -196,7 +196,8 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Fapi-supply.html');
     const wrap = page.locator('.api-catalog-wrap');
     await expect(wrap).toBeVisible();
-    await expect(page.locator('.api-table tbody tr').count()).resolves.toBeGreaterThan(20);
+    const rowCount = await page.locator('.api-table tbody tr').count();
+    expect(rowCount).toBeGreaterThan(20);
     const dimensions = await wrap.evaluate(element => ({
       maxHeight: getComputedStyle(element).maxHeight,
       clientHeight: element.clientHeight,
