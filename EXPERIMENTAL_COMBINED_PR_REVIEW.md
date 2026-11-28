@@ -1,19 +1,16 @@
 # Experimental combined PR review — 2026-11-28
 
-This branch is an isolated snapshot of the current `main` commit for review of PRs #40, #35, and #27 together.
+This isolated branch ports the relevant changes from PRs #40, #35, and #27 into the current unified site renderer. It is not merged into `main`.
 
-## Why the PR heads were not copied over
+## What is included
 
-The PR branches are older than current `main`. Their intended functional changes are already represented in the current production source, and replacing current files with their older versions would risk regressions.
+- PR #40 — slideshow paths: the current renderer uses the slideshow manifest and normalized image paths. Existing slide assets and their order are preserved; no image files were changed.
+- PR #35 — redundant newsletter scripts: the current site uses the unified renderer and does not depend on the legacy `newsletter.js` references. The current source already has those redundant references removed.
+- PR #27 — API and sports content: the API catalogue remains the current 239-item catalogue with its existing search, category filter, and sort controls. The additional API coordination, approach, enquiry-information and disclaimer content has been ported into the live page inventory in English, Turkish and Persian.
+- PR #27 — sports nutrition: the brand, bulk powder, and vitamins/wellness sourcing content has been ported into the live page inventory in English, Turkish and Persian. The existing whey product table, prices, four brand-logo placeholders, and regulatory disclaimer are preserved. The renderer's existing sports slideshow and brand section remain in use.
 
-- PR #40 — slideshow image paths: current `index.html`, `about.html`, `fa/about.html`, and `tr/about.html` already use the normalized `/images/slides/` paths.
-- PR #35 — redundant newsletter script references: current pages no longer reference `newsletter.js`; the current source has retained its newer shared-page implementation.
-- PR #27 — API catalogue and sports nutrition: current API pages contain the catalogue and current product data; the current sports nutrition pages retain the whey product list and four reserved brand-logo slots. The older PR #27 page versions would replace newer content.
+## Validation boundary
 
-## Safety boundary
+The preview is isolated from Production. No changes were made to `main`, Production aliases, or image assets. Review the Vercel Preview before deciding whether any of this should be promoted.
 
-This branch is not merged into `main`. No production deployment, production alias change, or source-branch deletion is intended by this review snapshot.
-
-## Review recommendation
-
-Review the Preview generated from this branch against the live site. Any further code changes should be made as a separate, explicit patch after identifying a concrete difference or defect.
+The legacy PR HTML files were not copied wholesale because the deployed site renders service pages from `rebuild/site.js` and `data/live-page-inventory.jsonl`; replacing the legacy HTML alone would not update the rendered pages and could overwrite newer source content.
