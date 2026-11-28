@@ -182,8 +182,9 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(hrefs.every(href => href.includes('%2Ffa%2F'))).toBe(true);
     await expect(page.locator('.language-note')).toContainText('۲۶ صفحه خدمات');
     const card = await page.locator('.services-grid .service-card').nth(1).boundingBox();
-    expect(card.width).toBeGreaterThan(180);
-    expect(card.height).toBeGreaterThan(70);
+    expect(card.width).toBeGreaterThan(215);
+    expect(card.height).toBeGreaterThan(55);
+    expect(card.height).toBeLessThan(65);
     const borderRight = await page.locator('.language-note').evaluate(el => getComputedStyle(el).borderRightWidth);
     expect(borderRight).toBe('3px');
     await page.goto('/rebuild/?page=%2Fes%2F');
@@ -519,10 +520,11 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(shadow).not.toBe('none');
     const card = page.locator('.services-grid > .service-card:not(.import-export-card):visible').first();
     const box = await card.boundingBox();
-    expect(box.width).toBeGreaterThan(180);
-    expect(box.width).toBeLessThan(200);
-    expect(box.height).toBeGreaterThan(70);
-    expect(box.height).toBeLessThan(82);
+    expect(box.width).toBeGreaterThan(215);
+    expect(box.width).toBeLessThan(235);
+    expect(box.height).toBeGreaterThan(55);
+    expect(box.height).toBeLessThan(65);
+    await expect(card).toHaveCSS('flex-direction', 'row');
   });
 
 });
