@@ -943,7 +943,20 @@
             card.appendChild(el('span', 'project-symbol', '⌖'));
           }
           card.appendChild(el('h3', '', entry.title));
-          entry.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
+          entry.paragraphs.forEach(paragraph => {
+            const description = el('p');
+            const count = paragraph.match(/[\p{N}][\p{N},٬٫.]*\+?/u);
+            if (kind === 'projects' && count) {
+              const start = count.index;
+              const end = start + count[0].length;
+              description.appendChild(document.createTextNode(paragraph.slice(0, start)));
+              description.appendChild(el('span', 'project-count', count[0]));
+              description.appendChild(document.createTextNode(paragraph.slice(end)));
+            } else {
+              description.textContent = paragraph;
+            }
+            card.appendChild(description);
+          });
           grid.appendChild(card);
         });
         if (kind === 'projects') {
