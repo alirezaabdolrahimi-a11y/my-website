@@ -111,6 +111,25 @@ function renderHero(record) {
     '<a class="btn partner-hero-btn" href="' + attr(localizedPath(lang, 'become-our-partner.html')) + '">' + escapeHtml(text.partner) + '</a></div>' +
     '</div>' + showcase + '</div></section>';
 }
+function renderAboutHero(record) {
+  const lang = record.lang || 'en';
+  const heading = firstBlock(record, 'h1') || record.title;
+  const description = firstBlock(record, 'p') || pageDescription(record);
+  const eyebrow = lang === 'fa' ? 'درباره نیاز نت' : lang === 'tr' ? 'NIAZ NET HAKKINDA' : 'ABOUT NIAZ NET';
+  const slides = (slideManifest.about || []).filter(src => lang === 'fa' || !/(^|\/)(FA[^/]*|[^/]*FA_[^/]*)\.png$/i.test(src));
+  const showcase = slides.length
+    ? '<div class="slideshow hero-showcase about-hero-showcase" role="group" aria-label="' + attr(heading + ' slideshow') + '">' +
+      slides.map((src, index) => '<div class="slide showcase-image' + (index === 0 ? ' is-active active' : '') + '" aria-hidden="' + (index !== 0) + '">' +
+        '<img src="' + attr(src) + '" alt="' + attr(heading + ' — ' + (index + 1)) + '" decoding="async"></div>').join('') +
+      '<div class="slide-dots showcase-dots" role="group" aria-label="Slideshow navigation">' +
+      slides.map((src, index) => '<button class="slide-dot showcase-dot" type="button" aria-label="Show slide ' + (index + 1) + '" aria-current="' + (index === 0) + '"></button>').join('') +
+      '</div></div>'
+    : '';
+  return '<section class="about-hero"><div class="container about-hero-inner"><div class="about-hero-copy">' +
+    '<div class="eyebrow">' + escapeHtml(eyebrow) + '</div><h1>' + escapeHtml(heading) + '</h1>' +
+    '<p>' + escapeHtml(description) + '</p></div>' + showcase + '</div></section>';
+}
+
 function renderServices(lang) {
   const text = labels[lang] || labels.en;
   const prefix = languagePrefix(lang);
@@ -204,6 +223,85 @@ function renderSportsBrandSection(lang) {
     [1,2,3,4].map(number => '<div class="sports-brand-placeholder"><span>' + escapeHtml(copy.brandLabel + String(number).padStart(2, '0')) + '<br>' + escapeHtml(copy.pending) + '</span></div>').join('') +
     '</div></div></section>';
 }
+function getAboutGroups(record) {
+  const blocks = record.blocks || [];
+  const headings = [];
+  blocks.forEach((block, index) => { if (block.type === 'h2') headings.push(index); });
+  return headings.map((start, index) => ({
+    title: blocks[start].text,
+    blocks: blocks.slice(start + 1, headings[index + 1] ?? blocks.length)
+  }));
+}
+function getAboutItems(group) {
+  const items = [];
+  let current = null;
+  (group?.blocks || []).forEach(block => {
+    if (block.type === 'h3') {
+      current = { title: block.text, paragraphs: [] };
+      items.push(current);
+    } else if (block.type === 'p' && current) current.paragraphs.push(block.text);
+  });
+  return items;
+}
+function renderAboutNetwork(layout) {
+  const points = layout.network?.locations || [];
+  const paths = ['M440 119 Q470 103 537 122','M470 103 Q505 108 537 122','M537 122 Q560 130 582 138','M537 122 Q586 140 645 162','M582 138 Q610 148 645 162'];
+  const routes = paths.map(d => '<path d="' + d + '" fill="none" stroke="#c99a43" stroke-width="3" stroke-linecap="round" opacity=".9"></path>').join('');
+  const marks = points.map(([name,x,y]) => '<circle cx="' + x + '" cy="' + y + '" r="8" fill="#071b38" stroke="#fff" stroke-width="4"></circle>' +
+    '<text x="' + (x === 440 ? x - 38 : x + 10) + '" y="' + (name.toLowerCase().includes('switzerland') || name === 'سوئیس' || name === 'İsviçre' ? y - 12 : y + 8) +
+    '" fill="#071b38" font-family="Arial,sans-serif" font-size="18" font-weight="700">' + escapeHtml(name) + '</text>').join('');
+  return '<div class="network-map network-map-modern" role="img" aria-label="' + attr(points.map(point => point[0]).join(', ')) + '">' +
+    '<div class="real-world-map" aria-hidden="true"></div><svg class="network-routes" viewBox="0 0 900 430" role="presentation">' +
+    '<g fill="none">' + routes + '</g><g>' + marks + '</g></svg><div class="network-caption">' + escapeHtml(layout.network?.caption || '') + '</div></div>';
+}
+function renderAboutPage(record) {
+  const lang = record.lang || 'en';
+  const layout = record.aboutLayout || {};
+  const groups = getAboutGroups(record);
+  const sectionHead = group => '<div class="about-section-head"><h2>' + escapeHtml(group?.title || '') + '</h2>' +
+    ((group?.blocks || []).find(block => block.type === 'p') ? '<p>' + escapeHtml(group.blocks.find(block => block.type === 'p').text) + '</p>' : '') + '</div>';
+  const itemsMarkup = (group, cardClass, numbered = false) => '<div class="' + cardClass + '">' +
+    getAboutItems(group).map((item, index) => '<article class="' + (cardClass === 'about-process' ? 'about-process-item' : 'about-path-card') + '">' +
+      (numbered ? '<strong>' + String(index + 1).padStart(2, '0') + '</strong>' : '<div class="about-path-body"><span class="about-path-kicker">' + String(index + 1).padStart(2, '0') + ' / NIAZ NET</span>') +
+      '<h3>' + escapeHtml(item.title) + '</h3>' + item.paragraphs.map(paragraph => '<p>' + escapeHtml(paragraph) + '</p>').join('') +
+      (numbered ? '</article>' : '</div></article>')).join('') + '</div>';
+  const portfolio = (group, items) => '<section class="about-section"><div class="container">' + sectionHead(group) +
+    '<div class="about-portfolio">' + (items || []).map(item => '<div class="about-portfolio-item">' + escapeHtml(item) + '</div>').join('') + '</div></div></section>';
+  const markets = ['kenya-market.html','south-africa-market.html','international-markets.html'].map(slug => {
+    const targetPath = localizedPath(lang, slug);
+    const target = byPath.get(normalize(targetPath)) || byPath.get('/' + slug);
+    if (!target) return '';
+    return '<a class="about-market-card" href="' + attr(targetPath) + '">' +
+      '<span class="about-market-kicker">' + escapeHtml(lang === 'fa' ? 'بازار هدف' : lang === 'tr' ? 'HEDEF PAZAR' : 'MARKET PROFILE') + '</span>' +
+      '<h3>' + escapeHtml(firstBlock(target, 'h1') || target.title) + '</h3><p>' + escapeHtml(firstBlock(target, 'p') || target.description || '') + '</p>' +
+      '<span class="about-market-arrow" aria-hidden="true">→</span></a>';
+  }).join('');
+  const ctaLinks = (record.links || []).filter(item => /become-our-partner|contact\.html/.test(item.href || '')).map(item => {
+    const href = /contact\.html/.test(item.href || '') ? localizedPath(lang, 'contact.html') : localizedPath(lang, 'become-our-partner.html');
+    return '<a class="btn' + (/contact\.html/.test(item.href || '') ? ' btn-outline' : '') + '" href="' + attr(href) + '">' + escapeHtml(item.text || item.href) + '</a>';
+  }).join('');
+  const facts = (layout.facts || []).map(([value,label]) => '<article><strong>' + escapeHtml(value) + '</strong><span>' + escapeHtml(label) + '</span></article>').join('');
+  const regions = (layout.regions || []).map(region => '<span>' + escapeHtml(region) + '</span>').join('');
+  const reasons = getAboutItems(groups[0]).map((item,index) => '<article class="about-reason"><span class="about-reason-icon">' +
+    ['◎','♧','♧','▤','♙','◎','▱','♧'][index] + '</span><div><h3>' + escapeHtml(item.title) + '</h3>' +
+    item.paragraphs.map(paragraph => '<p>' + escapeHtml(paragraph) + '</p>').join('') + '</div></article>').join('');
+  const mvv = [groups[9],groups[10],groups[11]].map(group => '<article class="panel"><h2>' + escapeHtml(group?.title || '') + '</h2>' +
+    '<p>' + escapeHtml((group?.blocks || []).find(block => block.type === 'p')?.text || '') + '</p></article>').join('');
+  const cta = groups[12];
+  return '<main class="about-page-content"><section class="about-section"><div class="container"><div class="about-facts">' + facts + '</div></div></section>' +
+    '<section class="container about-feature-network"><div class="about-feature-panel"><h2>' + escapeHtml(groups[0]?.title || '') + '</h2><div class="about-reasons">' + reasons + '</div></div>' +
+    '<div class="about-feature-panel"><h2>' + escapeHtml(groups[1]?.title || '') + '</h2>' + renderAboutNetwork(layout) + '</div></section>' +
+    '<section class="about-section white"><div class="container">' + sectionHead(groups[2]) + '<div class="about-market-cards">' + markets + '</div>' +
+    '<div class="about-market-grid">' + regions + '</div></div></section>' +
+    '<section class="about-section"><div class="container"><div class="about-value-chain">' + sectionHead(groups[3]) + '</div></div></section>' +
+    '<section class="about-section white"><div class="container">' + sectionHead(groups[4]) + itemsMarkup(groups[4], 'about-pathways') + '</div></section>' +
+    portfolio(groups[5], layout.industries) + portfolio(groups[6], layout.additionalIndustries) +
+    '<section class="about-section white"><div class="container">' + sectionHead(groups[7]) + itemsMarkup(groups[7], 'about-process', true) + '</div></section>' +
+    '<section class="about-section"><div class="container">' + sectionHead(groups[8]) + '<div class="about-mvv">' + mvv + '</div></div></section>' +
+    '<section class="about-cta"><div class="container about-cta-inner"><div><h2>' + escapeHtml(cta?.title || '') + '</h2>' +
+    '<p>' + escapeHtml((cta?.blocks || []).find(block => block.type === 'p')?.text || '') + '</p></div><div class="page-actions">' + ctaLinks + '</div></div></section></main>';
+}
+
 function renderBlocks(record) {
   const lang = record.lang || 'en';
   const blocks = record.blocks || [];
@@ -322,7 +420,10 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     (other.path === '/' || other.path.endsWith('/' + pathName.split('/').pop())) && other.lang);
   const alternateTags = [...new Map(alternates.map(other => [other.lang, other])).values()]
     .map(other => '<link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(other.canonical || SITE + normalize(other.path)) + '">').join('');
-  const mainContent = (home ? renderServices(lang) : '') + (pathName.endsWith('/api-supply.html') ? renderApiCatalogStatic(lang) : '') + renderBlocks(record) + renderDownloadsStatic(record) + renderForm(record) + (!home ? renderLinks(record) : '');
+  const isAboutPage = pathName.endsWith('/about.html');
+  const mainContent = home ? renderServices(lang) + renderBlocks(record) :
+    isAboutPage ? renderAboutPage(record) :
+    (pathName.endsWith('/api-supply.html') ? renderApiCatalogStatic(lang) : '') + renderBlocks(record) + renderDownloadsStatic(record) + renderForm(record) + renderLinks(record);
   const direction = lang === 'fa' ? 'rtl' : 'ltr';
   return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '" data-prerendered="true"><head>' +
     '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
@@ -333,8 +434,9 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     '<meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(description) + '">' +
     '<meta property="og:url" content="' + attr(canonical) + '"><meta property="og:image" content="' + SITE + '/images/niaz-net-logo.png">' +
     '<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/rebuild/site.css">' +
+    (isAboutPage ? '<link rel="stylesheet" href="/assets/css/about-page.css">' : '') +
     (pathName.endsWith('/sports-nutrition.html') ? '<link rel="stylesheet" href="/assets/css/sports-nutrition-page.css">' : '') +
-    '</head><body><div id="app">' + renderHeader(record) + renderHero(record) + mainContent + renderFooter(record) +
+    '</head><body><div id="app">' + renderHeader(record) + (isAboutPage ? renderAboutHero(record) : renderHero(record)) + mainContent + renderFooter(record) +
     '<a class="whatsapp whatsapp-float" href="https://wa.me/905340143473" aria-label="WhatsApp">WhatsApp</a></div>' +
     '<noscript><nav aria-label="Essential pages"><a href="/">Home</a> · <a href="/about.html">About Us</a> · <a href="/projects.html">Projects</a> · <a href="/contact.html">Contact</a> · <a href="/become-our-partner.html">Become Our Partner</a></nav></noscript>' +
     '<script src="/rebuild/site.js" defer></script></body></html>';
