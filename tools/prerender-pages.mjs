@@ -167,11 +167,19 @@ function renderForm(record) {
     '<div class="form-field full"><button class="btn" type="submit">Send an Enquiry</button></div></form></div></div></section>';
 }
 function renderLinks(record) {
-  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\.html(?:$|[?#])/i.test(item.href)));
+  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\.html(?:$|[?#])/i.test(item.href)));
   if (!links.length) return '';
+  const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
   return '<section class="section"><div class="container"><div class="content-panel"><h2>Useful Links</h2>' +
-    links.slice(0, 30).map(item => '<a class="content-link" href="' + attr(item.href) + '">' + escapeHtml(item.text || item.href) + '</a>').join('') +
-    '</div></div></section>';
+    links.slice(0, 30).map(item => {
+      const raw = item.href;
+      const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
+      const rawPath = raw.split(/[?#]/)[0];
+      const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
+        ? raw
+        : (rawPath.startsWith('/') ? rawPath : prefix + rawPath.replace(/^\.\//, '')) + hash;
+      return '<a class="content-link" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
+    }).join('') + '</div></div></section>';
 }
 function renderFooter(record) {
   const lang = record.lang || 'en';
