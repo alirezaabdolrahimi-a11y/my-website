@@ -329,7 +329,7 @@ function renderBlocks(record) {
       const heading = String(block.text || '').replace(/^♛\s*/u, '').trim().toLowerCase();
       const vipHeading = String(copy.vip || '').trim().toLowerCase();
       const partnersHeading = String(copy.partners || 'Global Partners').trim().toLowerCase();
-      if (heading === vipHeading || (record.partners?.length && heading === partnersHeading)) continue;
+      if (heading === vipHeading || heading.includes('vip') || (record.partners?.length && heading === partnersHeading)) continue;
     }
     if (block.type === 'h1' && !skippedH1) { skippedH1 = true; continue; }
     if (block.type === 'p' && !skippedP) { skippedP = true; continue; }
