@@ -427,7 +427,7 @@
       for (let i = 1; i <= 4; i++) {
         const placeholder = el('div', 'sports-brand-placeholder');
         const label = isSportsPage ? 'SPORTS BRAND LOGO ' : 'BRAND / PROJECT ';
-        placeholder.appendChild(el('span', '', label + String(i).padStart(2, '0') + '\\nTo be added'));
+        placeholder.appendChild(el('span', '', label + String(i).padStart(2, '0') + '\nTo be added'));
         brandGrid.appendChild(placeholder);
       }
       brandPanel.appendChild(brandGrid);
