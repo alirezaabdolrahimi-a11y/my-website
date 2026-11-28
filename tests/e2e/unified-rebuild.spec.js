@@ -618,6 +618,20 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     }
   });
 
+  test('Sports Nutrition content is localized and brand cards remain empty until approval', async ({ page }) => {
+    const cases = [
+      ['/sports-nutrition.html', ['European Brand Representation & Strategic Partnerships', 'Premium European Sports Nutrition Ingredients & Bulk Sourcing', 'Premium Creatine Sourcing: Creapure®', 'Brand Development & Sports Marketing in Iran']],
+      ['/tr/sports-nutrition.html', ['Avrupa Markalarının Temsili ve Stratejik İş Ortaklıkları', 'Premium Avrupa Sporcu Beslenmesi Hammaddeleri ve Dökme Tedarik', 'Premium Kreatin Tedariki: Creapure®', "İran'da Marka Geliştirme ve Spor Pazarlaması"]],
+      ['/fa/sports-nutrition.html', ['نمایندگی برندهای معتبر اروپایی و مشارکت‌های راهبردی', 'تأمین مواد اولیه ممتاز اروپایی و محصولات ورزشی فله', 'تأمین کراتین ممتاز: Creapure®', 'توسعه برند و بازاریابی ورزشی در ایران']]
+    ];
+    for (const [route, headings] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      for (const heading of headings) await expect(page.locator('.content-panel')).toContainText(heading);
+      await expect(page.locator('.sports-brand-placeholder')).toHaveCount(4);
+      await expect(page.locator('.sports-brand-placeholder img')).toHaveCount(0);
+    }
+  });
+
   test('action buttons and service tiles retain the original raised treatment', async ({ page }) => {
     await page.goto('/rebuild/');
     const button = page.locator('.hero-actions .btn:visible').first();
@@ -636,19 +650,20 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(icon.height).toBeGreaterThanOrEqual(39);
   });
 
-  test('service return link sits inside the hero, centered beneath the CTA row', async ({ page }) => {
-    await page.goto('/rebuild/?page=%2Fimport-export.html');
-    const hero = page.locator('.hero');
-    const actions = hero.locator('.hero-actions');
-    const wrapper = hero.locator('.hero-service-back');
-    const back = wrapper.locator('.service-back-link');
-    await expect(back).toBeVisible();
-    const actionsBox = await actions.boundingBox();
-    const backBox = await back.boundingBox();
-    const wrapperBox = await wrapper.boundingBox();
-    const copyBox = await hero.locator('.hero-copy').boundingBox();
-    expect(backBox.y).toBeGreaterThanOrEqual(actionsBox.y + actionsBox.height + 5);
-    expect(Math.abs((wrapperBox.x + wrapperBox.width / 2) - (copyBox.x + copyBox.width / 2))).toBeLessThanOrEqual(4);
+  test('service return link sits inside the hero, centered on the CTA-pair axis in EN, FA and TR', async ({ page }) => {
+    for (const route of ['/import-export.html', '/fa/import-export.html', '/tr/import-export.html']) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      const hero = page.locator('.hero');
+      const actions = hero.locator('.hero-actions');
+      const wrapper = hero.locator('.hero-service-back');
+      const back = wrapper.locator('.service-back-link');
+      await expect(back).toBeVisible();
+      const actionsBox = await actions.boundingBox();
+      const backBox = await back.boundingBox();
+      const wrapperBox = await wrapper.boundingBox();
+      expect(backBox.y).toBeGreaterThanOrEqual(actionsBox.y + actionsBox.height + 5);
+      expect(Math.abs((wrapperBox.x + wrapperBox.width / 2) - (actionsBox.x + actionsBox.width / 2))).toBeLessThanOrEqual(4);
+    }
     await page.goto('/import-export.html');
     await expect(page.locator('.hero .hero-service-back .service-back-link')).toBeVisible();
   });
@@ -677,16 +692,22 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(staticPage.indexOf('class="hero-actions"')).toBeLessThan(staticPage.indexOf('class="hero-service-back"'));
   });
 
-  test('header navigation uses the softened navy-and-gold glass treatment', async ({ page }) => {
+  test('header has no enclosing frame and navigation controls retain the refined navy-and-gold treatment', async ({ page }) => {
     await page.goto('/rebuild/');
     const header = page.locator('.header-inner');
-    await expect(header).toHaveCSS('border-radius', '18px');
-    await expect(header).toHaveCSS('backdrop-filter', 'blur(14px)');
-    await expect(header).not.toHaveCSS('box-shadow', 'none');
+    await expect(header).toHaveCSS('border-radius', '0px');
+    await expect(header).toHaveCSS('border-top-width', '0px');
+    await expect(header).toHaveCSS('backdrop-filter', 'none');
+    await expect(header).toHaveCSS('box-shadow', 'none');
     await expect(page.locator('.main-nav a').first()).toHaveCSS('border-radius', '999px');
     const language = page.locator('.language-select');
     await expect(language).toHaveCSS('border-radius', '999px');
     await expect(language).toHaveCSS('background-color', 'rgb(8, 30, 59)');
+    const getInTouch = page.locator('.main-nav .nav-cta');
+    await getInTouch.hover();
+    await expect(getInTouch).toHaveCSS('color', 'rgb(7, 27, 56)');
+    const hoverGradient = await getInTouch.evaluate(el => getComputedStyle(el).backgroundImage);
+    expect(hoverGradient).toContain('linear-gradient');
   });
 
 });
