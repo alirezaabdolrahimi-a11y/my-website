@@ -74,6 +74,34 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('.language-select option')).toHaveCount(5);
   });
 
+  test('About Us restores its full content, graphic sections and three market cards in EN, TR and FA', async ({ page }) => {
+    for (const [path, language] of [['/about.html','en'], ['/tr/about.html','tr'], ['/fa/about.html','fa']]) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(path));
+      await expect(page.locator('html')).toHaveAttribute('lang', language);
+      await expect(page.locator('.about-hero-showcase')).toBeVisible();
+      await expect(page.locator('.about-facts article')).toHaveCount(4);
+      await expect(page.locator('.about-feature-panel')).toHaveCount(2);
+      await expect(page.locator('.about-market-card')).toHaveCount(3);
+      await expect(page.locator('.about-pathways .about-path-card')).toHaveCount(4);
+      await expect(page.locator('.about-portfolio-item')).toHaveCount(15);
+      await expect(page.locator('.about-process-item')).toHaveCount(4);
+      await expect(page.locator('.about-mvv .panel')).toHaveCount(3);
+    }
+  });
+
+  test('service tile icon and label form one centered horizontal group', async ({ page }) => {
+    await page.goto('/rebuild/');
+    const card = page.locator('.services-grid .service-card').nth(1);
+    const icon = await card.locator('.service-icon').boundingBox();
+    const label = await card.locator('h3').boundingBox();
+    const tile = await card.boundingBox();
+    expect(icon.width).toBeGreaterThanOrEqual(50);
+    const groupCenter = (icon.x + label.x + label.width) / 2;
+    const tileCenter = tile.x + tile.width / 2;
+    expect(Math.abs(groupCenter - tileCenter)).toBeLessThanOrEqual(5);
+    expect(icon.y + icon.height / 2).toBeCloseTo(label.y + label.height / 2, 0);
+  });
+
   test('market pages are linked from About Us in EN, TR and FA and remain published', async ({ page }) => {
     const cases = [
       ['/rebuild/?page=%2Fabout.html', [
@@ -95,7 +123,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     for (const [url, links] of cases) {
       await page.goto(url);
       for (const [label, href] of links) {
-        await expect(page.locator('.content-link').filter({ hasText: label })).toHaveAttribute('href', href);
+        await expect(page.locator('.about-market-card').filter({ hasText: label })).toHaveAttribute('href', href);
       }
     }
     for (const slug of ['international-markets', 'kenya-market', 'south-africa-market']) {
