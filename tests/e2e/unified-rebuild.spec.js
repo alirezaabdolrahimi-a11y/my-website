@@ -636,4 +636,54 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     expect(icon.height).toBeGreaterThanOrEqual(39);
   });
 
+  test('service return link sits inside the hero, centered beneath the CTA row', async ({ page }) => {
+    await page.goto('/rebuild/?page=%2Fimport-export.html');
+    const hero = page.locator('.hero');
+    const actions = hero.locator('.hero-actions');
+    const wrapper = hero.locator('.hero-service-back');
+    const back = wrapper.locator('.service-back-link');
+    await expect(back).toBeVisible();
+    const actionsBox = await actions.boundingBox();
+    const backBox = await back.boundingBox();
+    const wrapperBox = await wrapper.boundingBox();
+    const copyBox = await hero.locator('.hero-copy').boundingBox();
+    expect(backBox.y).toBeGreaterThanOrEqual(actionsBox.y + actionsBox.height + 5);
+    expect(Math.abs((wrapperBox.x + wrapperBox.width / 2) - (copyBox.x + copyBox.width / 2))).toBeLessThanOrEqual(4);
+    await page.goto('/import-export.html');
+    await expect(page.locator('.hero .hero-service-back .service-back-link')).toBeVisible();
+  });
+
+  test('Import & Export shows the three requested market cards in EN, FA and TR', async ({ page }) => {
+    const cases = [
+      ['/import-export.html', ['Kenya', 'South Africa', 'International Markets'], ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']],
+      ['/fa/import-export.html', ['کنیا', 'آفریقای جنوبی', 'بازارهای بین‌المللی'], ['/fa/kenya-market.html', '/fa/south-africa-market.html', '/fa/international-markets.html']],
+      ['/tr/import-export.html', ['Kenya', 'Güney Afrika', 'Uluslararası Pazarlar'], ['/tr/kenya-market.html', '/tr/south-africa-market.html', '/tr/international-markets.html']]
+    ];
+    for (const [route, titles, hrefs] of cases) {
+      await page.goto('/rebuild/?page=' + encodeURIComponent(route));
+      const cards = page.locator('.market-profile-card');
+      await expect(cards).toHaveCount(3);
+      for (let index = 0; index < 3; index++) {
+        await expect(cards.nth(index)).toContainText(titles[index]);
+        await expect(cards.nth(index)).toHaveAttribute('href', hrefs[index]);
+      }
+    }
+    const root = path.resolve(__dirname, '../..');
+    const staticPage = fs.readFileSync(path.join(root, 'import-export.html'), 'utf8');
+    expect((staticPage.match(/class="market-profile-card"/g) || []).length).toBe(3);
+    expect(staticPage.indexOf('class="hero-actions"')).toBeLessThan(staticPage.indexOf('class="hero-service-back"'));
+  });
+
+  test('header navigation uses the softened navy-and-gold glass treatment', async ({ page }) => {
+    await page.goto('/rebuild/');
+    const header = page.locator('.header-inner');
+    await expect(header).toHaveCSS('border-radius', '18px');
+    await expect(header).toHaveCSS('backdrop-filter', 'blur(14px)');
+    await expect(header).not.toHaveCSS('box-shadow', 'none');
+    await expect(page.locator('.main-nav a').first()).toHaveCSS('border-radius', '999px');
+    const language = page.locator('.language-select');
+    await expect(language).toHaveCSS('border-radius', '999px');
+    await expect(language).toHaveCSS('background-color', 'rgb(8, 30, 59)');
+  });
+
 });
