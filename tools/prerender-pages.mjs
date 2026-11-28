@@ -292,7 +292,9 @@ function renderAboutPage(record) {
   return '<main class="about-page-content"><section class="about-section"><div class="container"><div class="about-facts">' + facts + '</div></div></section>' +
     '<section class="container about-feature-network"><div class="about-feature-panel"><h2>' + escapeHtml(groups[0]?.title || '') + '</h2><div class="about-reasons">' + reasons + '</div></div>' +
     '<div class="about-feature-panel"><h2>' + escapeHtml(groups[1]?.title || '') + '</h2>' + renderAboutNetwork(layout) + '</div></section>' +
-    '<section class="about-section white"><div class="container">' + sectionHead(groups[2]) + '<div class="about-market-cards">' + markets + '</div>' +
+    '<section class="about-section white"><div class="container">' + sectionHead(groups[2]) +
+    '<h3 class="about-market-profiles-heading">' + escapeHtml(lang === 'fa' ? 'صفحات بازار' : lang === 'tr' ? 'Pazar Profilleri' : 'Market Profiles') + '</h3>' +
+    '<div class="about-market-cards">' + markets + '</div>' +
     '<div class="about-market-grid">' + regions + '</div></div></section>' +
     '<section class="about-section"><div class="container"><div class="about-value-chain">' + sectionHead(groups[3]) + '</div></div></section>' +
     '<section class="about-section white"><div class="container">' + sectionHead(groups[4]) + itemsMarkup(groups[4], 'about-pathways') + '</div></section>' +
