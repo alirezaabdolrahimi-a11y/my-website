@@ -122,6 +122,39 @@ function renderServices(lang) {
     (vipCards ? '<aside class="vip-services" id="vip-services"><h2>' + escapeHtml(text.vip) + '</h2><div class="vip-service-list">' + vipCards + '</div></aside>' : '') +
     '</div></section>';
 }
+function renderApiCatalogStatic(lang) {
+  const headings = {
+    en:['API & Pharmaceutical Raw Materials Catalogue','Product / Material','Category'],
+    fa:['فهرست مواد اولیه دارویی و مواد مؤثره','محصول / ماده','دسته‌بندی'],
+    tr:['API ve Farmasötik Hammaddeler Kataloğu','Ürün / Hammadde','Kategori'],
+    es:['Catálogo de API y materias primas farmacéuticas','Producto / Material','Categoría'],
+    fr:['Catalogue des API et matières premières pharmaceutiques','Produit / Matière','Catégorie']
+  };
+  const labels = headings[lang] || headings.en;
+  const items = readJson(path.join(ROOT, 'api-catalog.json'));
+  return '<section class="section white" id="api-catalogue"><div class="container"><div class="content-panel"><h2>' + escapeHtml(labels[0]) + '</h2>' +
+    '<div class="table-wrap"><table class="api-table"><thead><tr><th>' + escapeHtml(labels[1]) + '</th><th>' + escapeHtml(labels[2]) + '</th></tr></thead><tbody>' +
+    items.map(item => '<tr><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.category) + '</td></tr>').join('') +
+    '</tbody></table></div></div></div></section>';
+}
+function renderDownloadsStatic(record) {
+  if (!normalize(record.path).endsWith('/contract-manufacturing.html')) return '';
+  const lang = record.lang || 'en';
+  const titles = {
+    en:['Solid dosage forms','Non-sterile liquids','Sterile liquids (injectables)'],
+    fa:['اشکال دارویی جامد','مایعات غیراستریل','مایعات استریل (تزریقی)'],
+    tr:['Katı dozaj formları','Steril olmayan sıvılar','Steril sıvılar (enjeksiyon)'],
+    es:['Formas farmacéuticas sólidas','Líquidos no estériles','Líquidos estériles (inyectables)'],
+    fr:['Formes pharmaceutiques solides','Liquides non stériles','Liquides stériles (injectables)']
+  };
+  const names = titles[lang] || titles.en;
+  const types = ['solid','nonsterile','sterile'];
+  return '<section class="section white" id="fcm-downloads"><div class="container"><div class="content-panel"><h2>Downloads / Téléchargements / دانلود فرم‌ها</h2><div class="download-grid">' +
+    types.map((type,index) => '<article class="download-card"><h3>' + escapeHtml(names[index]) + '</h3><div class="download-actions">' +
+      '<a href="/downloads/fcm-cmo/' + type + '-' + attr(lang) + '.html">HTML form</a>' +
+      '<a href="/downloads/fcm-cmo/' + type + '-' + attr(lang) + '.rtf">RTF form</a>' +
+      '</div></article>').join('') + '</div></div></div></section>';
+}
 function renderTable(table, lang) {
   const headers = table.headers?.[lang] || table.headers?.en || [];
   const rows = table.rowsByLang?.[lang] || table.rows || [];
@@ -216,7 +249,7 @@ function pageHtml(record, canonical, titleCounts, descriptionCounts) {
     (other.path === '/' || other.path.endsWith('/' + pathName.split('/').pop())) && other.lang);
   const alternateTags = [...new Map(alternates.map(other => [other.lang, other])).values()]
     .map(other => '<link rel="alternate" hreflang="' + attr(other.lang) + '" href="' + attr(other.canonical || SITE + normalize(other.path)) + '">').join('');
-  const mainContent = (home ? renderServices(lang) : '') + renderBlocks(record) + renderForm(record) + (!home ? renderLinks(record) : '');
+  const mainContent = (home ? renderServices(lang) : '') + (pathName.endsWith('/api-supply.html') ? renderApiCatalogStatic(lang) : '') + renderBlocks(record) + renderDownloadsStatic(record) + renderForm(record) + (!home ? renderLinks(record) : '');
   const direction = lang === 'fa' ? 'rtl' : 'ltr';
   return '<!doctype html><html lang="' + attr(lang) + '" dir="' + direction + '" data-prerendered="true"><head>' +
     '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
