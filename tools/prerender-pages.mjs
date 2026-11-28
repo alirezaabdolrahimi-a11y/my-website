@@ -412,7 +412,7 @@ function renderFooter(record) {
 
 function renderServiceBackLink(record) {
   const lang = record.lang || 'en';
-  const slug = normalize(record.path).split('/').pop().replace(/\\.html$/, '');
+  const slug = normalize(record.path).split('/').pop().replace(/\.html$/, '');
   if (!services.some(service => service.slug === slug)) return '';
   const labels = {
     en: '← Back to All Services',
