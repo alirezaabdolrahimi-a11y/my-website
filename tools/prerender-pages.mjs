@@ -42,6 +42,13 @@ function localizedPath(lang, page) {
   const english = '/' + page;
   return byPath.has(english) ? english : languageHome(lang);
 }
+function resolvePageLink(record, rawPath) {
+  const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
+  const candidate = rawPath.startsWith('/') ? normalize(rawPath) : normalize(prefix + rawPath.replace(/^\.\//, ''));
+  if (byPath.has(candidate)) return candidate;
+  const english = normalize('/' + rawPath.replace(/^\//, '').replace(/^\.\//, ''));
+  return byPath.has(english) ? english : languageHome(record.lang || 'en');
+}
 function outputPath(urlPath) {
   const clean = normalize(urlPath);
   return path.join(ROOT, clean === '/' ? 'index.html' : clean.endsWith('/') ? clean.slice(1) + 'index.html' : clean.slice(1));
@@ -177,7 +184,7 @@ function renderLinks(record) {
       const rawPath = raw.split(/[?#]/)[0];
       const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
         ? raw
-        : (rawPath.startsWith('/') ? rawPath : prefix + rawPath.replace(/^\.\//, '')) + hash;
+        : resolvePageLink(record, rawPath) + hash;
       return '<a class="content-link" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
     }).join('') + '</div></div></section>';
 }
@@ -188,7 +195,7 @@ function renderFooter(record) {
   return '<footer class="footer" id="site-footer"><div class="container"><div class="footer-grid">' +
     '<div class="footer-brand"><img src="/images/niaz-net-logo.png" alt="NIAZ NET"><p>NIAZ NET · International Business Development</p></div>' +
     '<div class="footer-col"><h3>Quick Links</h3><a href="' + attr(localizedPath(lang, 'about.html')) + '">About Us</a><a href="' + attr(localizedPath(lang, 'projects.html')) + '">Projects</a><a href="' + attr(localizedPath(lang, 'contact.html')) + '">Contact</a></div>' +
-    '<div class="footer-col"><h3>' + escapeHtml(text.services) + '</h3>' + services.filter(item => !item.vip).slice(0, 5).map(item => '<a href="' + attr(prefix + item.slug + '.html') + '">' + escapeHtml(item[lang] || item.en || item.slug) + '</a>').join('') + '</div>' +
+    '<div class="footer-col"><h3>' + escapeHtml(text.services) + '</h3>' + services.filter(item => !item.vip).slice(0, 5).map(item => '<a href="' + attr(localizedPath(lang, item.slug + '.html')) + '">' + escapeHtml(item[lang] || item.en || item.slug) + '</a>').join('') + '</div>' +
     '<div class="footer-col footer-contact"><h3>Contact NIAZ NET</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">+98 21 8832 2100 ext. 2</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
     '</div><div class="footer-bottom">NIAZ NET · International Business Development</div></div></footer>';
 }
