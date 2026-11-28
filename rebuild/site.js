@@ -346,6 +346,8 @@
     partner.href = linkTo(pageForAction('/become-our-partner.html', lang));
     actions.append(contact, partner);
     copy.appendChild(actions);
+    const serviceBack = renderServiceBackLink(path, lang);
+    if (serviceBack) copy.appendChild(serviceBack);
     grid.appendChild(copy);
     const group = slideGroup(path);
     if (group) {
@@ -366,11 +368,11 @@
       es: '← Volver a todos los servicios',
       fr: '← Retour à tous les services'
     };
-    const section = el('section', 'container service-back-section');
+    const wrapper = el('div', 'hero-service-back');
     const link = el('a', 'service-back-link', labels[lang] || labels.en);
     link.href = linkTo(langHome(lang) + '#services');
-    section.appendChild(link);
-    return section;
+    wrapper.appendChild(link);
+    return wrapper;
   }
 
   function renderAboutHero(record, path, lang) {
@@ -494,6 +496,21 @@
       else if (block.type === 'h3') panel.appendChild(el('h3', '', block.text));
       else if (block.type === 'p') panel.appendChild(el('p', '', block.text));
       else if (block.type === 'blockquote') panel.appendChild(el('blockquote', '', block.text));
+      else if (block.type === 'marketCards' && Array.isArray(block.items)) {
+        const grid = el('div', 'market-profile-grid');
+        block.items.forEach(item => {
+          const card = el('a', 'market-profile-card');
+          card.href = linkTo(item.href);
+          card.append(
+            el('span', 'market-profile-region', item.region),
+            el('h3', '', item.title),
+            el('p', '', item.description),
+            el('span', 'market-profile-cta', item.cta)
+          );
+          grid.appendChild(card);
+        });
+        panel.appendChild(grid);
+      }
       else if (block.type === 'table' && record.tables && record.tables[block.index]) {
         panel.appendChild(renderDataTable(record.tables[block.index], lang));
       }
@@ -1413,8 +1430,6 @@
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
     app.appendChild(isAboutPage ? renderAboutHero(record, path, lang) : renderHero(record, path, lang));
-    const serviceBack = home ? null : renderServiceBackLink(path, lang);
-    if (serviceBack) app.appendChild(serviceBack);
     if (home) {
       app.appendChild(renderServiceGrid(lang));
       renderHomeSections(record, lang).forEach(section => app.appendChild(section));
