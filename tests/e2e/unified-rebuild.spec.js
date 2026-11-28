@@ -340,7 +340,7 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Ffa%2Fsports-nutrition.html');
     await expect(page.locator('.footer-contact')).toContainText('تماس با نیاز نت');
     await expect(page.locator('.footer-contact')).not.toContainText('Contact NIAZ NET');
-    await expect(page.locator('.content-link')).not.toContainText('Nutraceuticals & Wellness Products');
+    await expect(page.locator('.content-link').filter({ hasText: 'Nutraceuticals & Wellness Products' })).toHaveCount(0);
     await page.goto('/rebuild/?page=%2Ftr%2Fsports-nutrition.html');
     await expect(page.locator('.footer-contact')).toContainText('NIAZ NET İletişim');
     await expect(page.locator('.footer-contact')).not.toContainText('Contact NIAZ NET');
