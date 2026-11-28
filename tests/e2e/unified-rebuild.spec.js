@@ -319,13 +319,47 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await expect(page.locator('#offices .office-card')).toHaveCount(3);
   });
 
+  test('sports nutrition pricing, localization, slideshow and brand placeholders match the NIAZ NET design', async ({ page }) => {
+    const cases = [
+      ['/rebuild/?page=%2Fsports-nutrition.html', 'Bulk whey protein product list and price per kilogram', '20 kg Bag Price', '€590.00'],
+      ['/rebuild/?page=%2Ftr%2Fsports-nutrition.html', 'Dökme whey protein ürün listesi ve kilogram fiyatları', '20 kg Çuval Fiyatı', '€590.00'],
+      ['/rebuild/?page=%2Ffa%2Fsports-nutrition.html', 'فهرست محصولات پروتئین وی فله و قیمت هر کیلوگرم', 'قیمت کیسه ۲۰ کیلوگرمی', '€590.00']
+    ];
+    for (const [url, caption, bagHeading, bagPrice] of cases) {
+      await page.goto(url);
+      await expect(page.locator('.bulk-whey-panel')).toHaveCount(1);
+      await expect(page.locator('.bulk-whey-table')).toHaveCount(1);
+      await expect(page.locator('.bulk-whey-table tbody tr')).toHaveCount(6);
+      await expect(page.locator('.bulk-whey-table caption')).toHaveText(caption);
+      await expect(page.locator('.bulk-whey-table thead')).toContainText(bagHeading);
+      await expect(page.locator('.bulk-whey-table tbody tr').first()).toContainText(bagPrice);
+      await expect(page.locator('.hero-showcase .slide')).toHaveCount(3);
+      await expect(page.locator('.sports-brand-placeholder')).toHaveCount(4);
+      await expect(page.locator('head link[href="/assets/css/sports-nutrition-page.css"]')).toHaveCount(1);
+    }
+    await page.goto('/rebuild/?page=%2Ffa%2Fsports-nutrition.html');
+    await expect(page.locator('.footer-contact')).toContainText('تماس با نیاز نت');
+    await expect(page.locator('.footer-contact')).not.toContainText('Contact NIAZ NET');
+    await expect(page.locator('.content-link')).not.toContainText('Nutraceuticals & Wellness Products');
+    await page.goto('/rebuild/?page=%2Ftr%2Fsports-nutrition.html');
+    await expect(page.locator('.footer-contact')).toContainText('NIAZ NET İletişim');
+    await expect(page.locator('.footer-contact')).not.toContainText('Contact NIAZ NET');
+  });
+
   test('Persian API catalogue and translated service pages are present', async ({ page }) => {
     await page.goto('/rebuild/?page=%2Ffa%2Fapi-supply.html');
     await expect(page.locator('.api-count')).toContainText('239 / 239');
     await page.goto('/rebuild/?page=%2Ffa%2Fsports-nutrition.html');
+    await expect(page.locator('.bulk-whey-panel')).toHaveCount(1);
     await expect(page.locator('.product-price-table')).toHaveCount(1);
     await expect(page.locator('.product-price-table tbody tr')).toHaveCount(6);
     await expect(page.locator('.product-price-table thead')).toContainText('قیمت / کیلوگرم');
+    await expect(page.locator('.product-price-table thead')).toContainText('قیمت کیسه ۲۰ کیلوگرمی');
+    await expect(page.locator('.product-price-table tbody tr').first()).toContainText('€590.00');
+    await expect(page.locator('.product-price-table tbody tr').first().locator('td').nth(1)).toContainText('پروتئین وی');
+    await expect(page.locator('.product-price-table tbody tr').first().locator('td').nth(1)).not.toContainText('Premium Whey Protein');
+    await expect(page.locator('.hero-showcase .slide')).toHaveCount(3);
+    await expect(page.locator('.sports-brand-placeholder')).toHaveCount(4);
     await page.goto('/rebuild/?page=%2Ffa%2Fcontract-manufacturing.html');
     await expect(page.locator('#fcm-downloads')).toBeVisible();
     await expect(page.locator('a[href="/downloads/fcm-cmo/solid-fa.html"]')).toHaveCount(1);
