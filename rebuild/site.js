@@ -764,7 +764,7 @@
 
     const mvvSection = el('section', 'about-section');
     const mvvContainer = el('div', 'container');
-    mvvContainer.appendChild(el('div', 'about-section-head', groups[8]?.title || ''));
+    mvvContainer.appendChild(sectionHead(groups[8]));
     const mvv = el('div', 'about-mvv');
     [groups[9], groups[10], groups[11]].forEach(group => {
       if (!group) return;
