@@ -32,9 +32,10 @@ def main():
             if not file.is_file():
                 raise FileNotFoundError(f"{key}: missing image {raw}")
             try:
+                expected_format = "WEBP" if key == "home" and file.suffix.lower() == ".webp" else "PNG"
                 with Image.open(file) as opened:
-                    if opened.format != "PNG":
-                        raise RuntimeError(f"{raw}: expected PNG, got {opened.format}")
+                    if opened.format != expected_format:
+                        raise RuntimeError(f"{raw}: expected {expected_format}, got {opened.format}")
                     original_size = opened.size
                     opened.verify()
                 if original_size != SIZE:
@@ -48,15 +49,15 @@ def main():
                         temporary.replace(file)
                     changed.append((raw, original_size))
                 with Image.open(file) as image:
-                    if image.format != "PNG" or image.size != SIZE:
-                        raise RuntimeError(f"{raw}: normalization did not produce {SIZE}; got {image.format} {image.size}")
+                    if image.format != expected_format or image.size != SIZE:
+                        raise RuntimeError(f"{raw}: validation expected {expected_format} {SIZE}; got {image.format} {image.size}")
                     image.verify()
             except Exception as exc:
                 raise RuntimeError(f"Invalid slideshow image {raw}: {exc}") from exc
             total += 1
     if total != 54:
         raise RuntimeError(f"Expected exactly 54 uploaded slides; found {total}")
-    print(f"Validated {total} uploaded slideshow PNGs across {len(EXPECTED)} folders; all are {SIZE[0]}x{SIZE[1]}.")
+    print(f"Validated {total} uploaded slideshow images across {len(EXPECTED)} folders; all are {SIZE[0]}x{SIZE[1]}.")
     if changed:
         print(f"Normalized {len(changed)} source canvases without cropping or stretching artwork:")
         for raw, old_size in changed:
