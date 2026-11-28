@@ -185,6 +185,11 @@ test.describe('NIAZ NET unified rebuild preview', () => {
     await page.goto('/rebuild/?page=%2Fcontact.html');
     await expect(page.locator('form.form-grid')).toBeVisible();
     await expect(page.locator('.form-note')).toContainText('does not submit directly to a server');
+    await expect(page.locator('form#enquiry-form')).toBeVisible();
+    await expect(page.locator('a').filter({ hasText: 'EMAIL OUR TEAM' })).toHaveAttribute('href', /#enquiry-form/);
+    await page.goto('/rebuild/?page=%2Fbecome-our-partner.html');
+    await expect(page.locator('form#enquiry-form')).toBeVisible();
+    await expect(page.locator('a').filter({ hasText: 'START A PARTNERSHIP DISCUSSION' })).toHaveAttribute('href', /#enquiry-form/);
   });
 
   test('API catalogue keeps all records inside a 20-row-height scroll window', async ({ page }) => {
