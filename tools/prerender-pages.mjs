@@ -286,7 +286,7 @@ function renderFooter(record) {
     '<div class="footer-brand"><img src="/images/niaz-net-logo.png" alt="NIAZ NET"><p>' + escapeHtml(copy.tagline) + '</p></div>' +
     '<div class="footer-col"><h3>' + escapeHtml(copy.quick) + '</h3><a href="' + attr(localizedPath(lang, 'about.html')) + '">' + escapeHtml(copy.about) + '</a><a href="' + attr(localizedPath(lang, 'projects.html')) + '">' + escapeHtml(copy.projects) + '</a><a href="' + attr(localizedPath(lang, 'contact.html')) + '">' + escapeHtml(copy.contact) + '</a></div>' +
     '<div class="footer-col"><h3>' + escapeHtml(text.services) + '</h3>' + services.filter(item => !item.vip).slice(0, 5).map(item => '<a href="' + attr(localizedPath(lang, item.slug + '.html')) + '">' + escapeHtml(item[lang] || item.en || item.slug) + '</a>').join('') + '</div>' +
-    '<div class="footer-col footer-contact"><h3>' + escapeHtml(copy.contactHeading) + '</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">+98 21 8832 2100 ext. 2</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
+    '<div class="footer-col footer-contact"><h3>' + escapeHtml(copy.contactHeading) + '</h3><a href="mailto:info@niaznet.net">info@niaznet.net</a><a href="tel:+982188322100">' + escapeHtml(lang === 'fa' ? '+98 21 8832 2100 · داخلی ۲' : lang === 'tr' ? '+98 21 8832 2100 · dahili 2' : '+98 21 8832 2100 ext. 2') + '</a><a href="https://wa.me/905340143473">+90 534 014 3473</a></div>' +
     '</div><div class="footer-bottom">' + escapeHtml(copy.tagline) + '</div></div></footer>';
 }
 function pageHtml(record, canonical, titleCounts, descriptionCounts) {
