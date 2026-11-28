@@ -15,8 +15,11 @@ button,a,select{touch-action:manipulation}
 .main-nav a{color:#fff;text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap;opacity:.94}
 .main-nav a:hover,.main-nav a[aria-current=page]{color:var(--gold2)}
 .main-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:9px 16px;border:1px solid var(--gold);border-radius:999px;background:linear-gradient(135deg,#e2b65f,#c99a43);color:#071b38;font-weight:800;opacity:1}
-.language-select{border:1px solid #ffffff55;background:transparent;color:#fff;border-radius:4px;padding:8px 10px;min-width:64px}
-.language-select option{color:#071b38;background:#fff}
+.language-select{appearance:none;min-width:76px;padding:8px 34px 8px 14px;border:1px solid #e6bd68;border-radius:999px;background-color:#081e3b;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m2 4 4 4 4-4' fill='none' stroke='%23ffe1a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;color:#ffe1a0;font-size:11px;font-weight:750;letter-spacing:.04em;box-shadow:0 2px 0 #805b21,0 4px 10px rgba(5,24,51,.18),inset 0 1px 0 #ffffff35;cursor:pointer}
+.language-select:hover{border-color:#ffdf91;filter:brightness(1.08)}
+.language-select:focus-visible{outline:2px solid #ffe1a0;outline-offset:3px}
+.language-select option{color:#f7e7c7;background:#0b2546}
+html[dir=rtl] .language-select{padding:8px 14px 8px 34px;background-position:left 12px center}
 .nav-toggle{display:none;background:transparent;color:#fff;border:1px solid #ffffff55;border-radius:5px;padding:8px;font-size:20px}
 .hero{min-height:410px;padding:126px 0 64px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 55%,#143e70 0,#071b38 43%,#04152d 75%)}
 .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(3,18,39,.15),rgba(3,18,39,.08)),url('https://images.unsplash.com/photo-1524666041070-9fc6a8a8f416?auto=format&fit=crop&w=1800&q=85');background-position:center 48%;background-size:cover;opacity:.38;mix-blend-mode:screen}
@@ -85,6 +88,8 @@ button,a,select{touch-action:manipulation}
 .field{width:100%;min-height:44px;border:1px solid #cbd4df;border-radius:3px;background:#fff;padding:10px 12px;color:var(--ink)}
 .api-count{color:var(--muted);font-size:13px;margin:10px 0}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:4px}
+.api-catalog-wrap{max-height:900px;overflow-x:auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.api-catalog-wrap .api-table th{z-index:2}
 .api-table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
 .api-table th,.api-table td{padding:11px 14px;text-align:start;border-bottom:1px solid #e8edf2;font-size:13px}
 .api-table th{background:#0b2546;color:#fff;position:sticky;top:0}
@@ -201,11 +206,12 @@ body{background:#fff;font-family:Inter,Arial,sans-serif}
 :root{--nn-navy:#06264b;--nn-navy-deep:#03172f;--nn-gold:#e8b548;--nn-gold-light:#ffdc82}
 
 /* Canonical site action controls */
-.btn,.nav-cta,.service-back-link,.footer-contact-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 20px;border:1px solid #c99a43;border-radius:999px;background:linear-gradient(135deg,#e2b65f 0%,#c99a43 100%);color:#071b38;font-family:inherit;font-size:12px;font-weight:750;line-height:1.25;text-decoration:none;letter-spacing:.02em;box-shadow:0 3px 0 #98702d,0 5px 12px rgba(5,24,51,.15);transition:filter .18s ease,transform .18s ease,box-shadow .18s ease;cursor:pointer}
+.btn,.nav-cta,.service-back-link,.footer-contact-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 20px;border:2px solid #ffdf91;border-radius:999px;background:linear-gradient(180deg,#fff1bd 0%,#f0ca75 16%,#d8a43d 56%,#a9741d 100%);color:#071b38;font-family:inherit;font-size:12px;font-weight:800;line-height:1.25;text-decoration:none;letter-spacing:.02em;text-shadow:0 1px 0 rgba(255,248,218,.75);box-shadow:0 4px 0 #80520f,0 8px 16px rgba(5,24,51,.2),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -2px 4px rgba(111,67,0,.24);transition:filter .18s ease,transform .18s ease,box-shadow .18s ease;cursor:pointer}
+.btn.btn-gold-cta{border:2px solid #fff0b0;background:linear-gradient(180deg,#fff4c9 0%,#f4d17e 14%,#dda93f 54%,#a66e18 100%);color:#071b38;box-shadow:0 4px 0 #80520f,0 9px 18px rgba(5,24,51,.24),inset 0 1px 0 rgba(255,255,255,.98),inset 0 -3px 5px rgba(103,62,0,.26)}
 .service-back-link{margin:0 0 13px}
-.btn:hover,.nav-cta:hover,.service-back-link:hover,.footer-contact-link:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 4px 0 #98702d,0 7px 14px rgba(5,24,51,.18)}
+.btn:hover,.nav-cta:hover,.service-back-link:hover,.footer-contact-link:hover{filter:brightness(1.07) saturate(1.08);transform:translateY(-2px);box-shadow:0 6px 0 #80520f,0 11px 20px rgba(5,24,51,.24),inset 0 1px 0 rgba(255,255,255,.98),inset 0 -2px 4px rgba(111,67,0,.22)}
 .btn.btn-outline{border:1px solid rgba(226,182,95,.9);background:rgba(4,20,42,.48);color:#fff;box-shadow:none}
-.btn:focus-visible,.nav-cta:focus-visible,.service-back-link:focus-visible,.footer-contact-link:focus-visible{outline:2px solid #e2b65f;outline-offset:3px}
+.btn:focus-visible,.nav-cta:focus-visible,.service-back-link:focus-visible,.footer-contact-link:focus-visible{outline:2px solid #fff0b0;outline-offset:3px}
 .whatsapp-float{position:fixed;right:5px;bottom:14px;z-index:20;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;min-height:36px;padding:0;border:1px solid #c99a43;border-radius:50%;background:linear-gradient(135deg,#071b38 0%,#123b66 100%);color:#fff;text-decoration:none;font-size:0;box-shadow:0 2px 8px #071b3828;transition:background .18s ease,border-color .18s ease,box-shadow .18s ease}
 .whatsapp-float:hover,.whatsapp-float:focus-visible{background:#123b66;border-color:#f0bf57;box-shadow:0 5px 16px #071b3840;transform:translateY(-1px)}
 .whatsapp-float svg{width:18px;height:18px;flex:0 0 18px;fill:#45d483}.whatsapp-float span{display:none}
