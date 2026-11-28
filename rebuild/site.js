@@ -355,6 +355,22 @@
     hero.appendChild(grid);
     return hero;
   }
+  function renderAboutHero(record, path, lang) {
+    const hero = el('section', 'about-hero');
+    const inner = el('div', 'container about-hero-inner');
+    const copy = el('div', 'about-hero-copy');
+    const eyebrow = lang === 'fa' ? 'درباره نیاز نت' : lang === 'tr' ? 'NIAZ NET HAKKINDA' : 'ABOUT NIAZ NET';
+    copy.append(el('div', 'eyebrow', eyebrow), el('h1', '', titleFor(record)), el('p', '', descriptionFor(record)));
+    inner.appendChild(copy);
+    const slides = slideMarkup('about', lang, titleFor(record));
+    if (slides) {
+      slides.classList.add('about-hero-showcase');
+      inner.appendChild(slides);
+    }
+    hero.appendChild(inner);
+    return hero;
+  }
+
   function renderDataTable(dataTable, lang, sportsPage = false) {
     const wrap = el('div', sportsPage ? 'bulk-whey-table-wrap' : 'table-wrap');
     const table = el('table', sportsPage ? 'bulk-whey-table product-price-table' : 'api-table product-price-table');
@@ -585,7 +601,7 @@
       svg.appendChild(circle);
       const label = document.createElementNS(ns, 'text');
       label.setAttribute('x', point.x + (point.x === 440 ? -38 : 10));
-      label.setAttribute('y', point.y + (point.name === 'Switzerland' || point.name === 'İsviçre' || point.name === 'Suiza' || point.name === 'Suisse' ? -12 : 8));
+      label.setAttribute('y', point.y + (point.name === 'Switzerland' || point.name === 'İsviçre' || point.name === 'سوئیس' || point.name === 'Suiza' || point.name === 'Suisse' ? -12 : 8));
       label.setAttribute('fill', '#071b38');
       label.setAttribute('font-family', 'Arial,sans-serif');
       label.setAttribute('font-size', '18');
@@ -596,6 +612,193 @@
     map.appendChild(svg);
     map.appendChild(el('div', 'network-caption', network.caption || ''));
     return map;
+  }
+
+  function getAboutGroups(record) {
+    const blocks = Array.isArray(record.blocks) ? record.blocks : [];
+    const headings = [];
+    blocks.forEach((block, index) => { if (block.type === 'h2') headings.push(index); });
+    return headings.map((start, index) => ({
+      title: blocks[start].text,
+      blocks: blocks.slice(start + 1, headings[index + 1] ?? blocks.length)
+    }));
+  }
+
+  function getAboutItems(group) {
+    const items = [];
+    let current = null;
+    (group?.blocks || []).forEach(block => {
+      if (block.type === 'h3') {
+        current = { title: block.text, paragraphs: [] };
+        items.push(current);
+      } else if (block.type === 'p' && current) {
+        current.paragraphs.push(block.text);
+      }
+    });
+    return items;
+  }
+
+  function renderAboutPage(record, lang) {
+    const layout = record.aboutLayout || {};
+    const groups = getAboutGroups(record);
+    const page = el('main', 'about-page-content');
+    const sectionHead = (group, className = 'about-section-head') => {
+      const head = el('div', className);
+      if (group?.title) head.appendChild(el('h2', '', group.title));
+      const intro = (group?.blocks || []).find(block => block.type === 'p');
+      if (intro) head.appendChild(el('p', '', intro.text));
+      return head;
+    };
+
+    const factsSection = el('section', 'about-section');
+    const factsContainer = el('div', 'container');
+    const facts = el('div', 'about-facts');
+    (layout.facts || []).forEach(([value, label]) => {
+      const item = el('article');
+      item.append(el('strong', '', value), el('span', '', label));
+      facts.appendChild(item);
+    });
+    factsContainer.appendChild(facts);
+    factsSection.appendChild(factsContainer);
+    page.appendChild(factsSection);
+
+    const featureSection = el('section', 'container about-feature-network');
+    const whyPanel = el('div', 'about-feature-panel');
+    whyPanel.appendChild(el('h2', '', groups[0]?.title || ''));
+    const reasons = el('div', 'about-reasons');
+    const reasonIcons = ['◎','♧','♧','▤','♙','◎','▱','♧'];
+    getAboutItems(groups[0]).forEach((item, index) => {
+      const reason = el('article', 'about-reason');
+      reason.appendChild(el('span', 'about-reason-icon', reasonIcons[index] || '•'));
+      const copy = el('div');
+      copy.appendChild(el('h3', '', item.title));
+      item.paragraphs.forEach(paragraph => copy.appendChild(el('p', '', paragraph)));
+      reason.appendChild(copy);
+      reasons.appendChild(reason);
+    });
+    whyPanel.appendChild(reasons);
+    const networkPanel = el('div', 'about-feature-panel');
+    networkPanel.appendChild(el('h2', '', groups[1]?.title || ''));
+    const locations = (layout.network?.locations || []).map(([name, x, y]) => ({ name, x, y }));
+    if (locations.length) networkPanel.appendChild(renderNetworkMap({ locations, caption: layout.network.caption || '' }));
+    featureSection.append(whyPanel, networkPanel);
+    page.appendChild(featureSection);
+
+    const marketSection = el('section', 'about-section white');
+    const marketContainer = el('div', 'container');
+    marketContainer.appendChild(sectionHead(groups[2]));
+    marketContainer.appendChild(el('h3', 'about-market-profiles-heading', lang === 'fa' ? 'صفحات بازار' : lang === 'tr' ? 'Pazar Profilleri' : 'Market Profiles'));
+    const marketCards = el('div', 'about-market-cards');
+    ['kenya-market.html', 'south-africa-market.html', 'international-markets.html'].forEach(slug => {
+      const targetPath = pageForLanguage('/' + slug, lang);
+      const target = pageMap.get(targetPath) || pageMap.get('/' + slug);
+      if (!target) return;
+      const marketLink = (record.links || []).find(item => (item.href || '').includes(slug));
+      const card = el('a', 'about-market-card');
+      card.href = linkTo(targetPath);
+      card.append(
+        el('span', 'about-market-kicker', lang === 'fa' ? 'بازار هدف' : lang === 'tr' ? 'HEDEF PAZAR' : 'MARKET PROFILE'),
+        el('h3', '', marketLink?.text || titleFor(target)),
+        el('p', '', descriptionFor(target)),
+        el('span', 'about-market-arrow', '→')
+      );
+      marketCards.appendChild(card);
+    });
+    marketContainer.appendChild(marketCards);
+    const regions = el('div', 'about-market-grid');
+    (layout.regions || []).forEach(region => regions.appendChild(el('span', '', region)));
+    marketContainer.appendChild(regions);
+    marketSection.appendChild(marketContainer);
+    page.appendChild(marketSection);
+
+    const valueGroup = groups[3];
+    const valueSection = el('section', 'about-section');
+    const valueContainer = el('div', 'container');
+    const valuePanel = el('div', 'about-value-chain');
+    valuePanel.appendChild(sectionHead(valueGroup));
+    valueContainer.appendChild(valuePanel);
+    valueSection.appendChild(valueContainer);
+    page.appendChild(valueSection);
+
+    const pathwaysSection = el('section', 'about-section white');
+    const pathwaysContainer = el('div', 'container');
+    pathwaysContainer.appendChild(sectionHead(groups[4]));
+    const pathways = el('div', 'about-pathways');
+    getAboutItems(groups[4]).forEach((item, index) => {
+      const card = el('article', 'about-path-card');
+      const body = el('div', 'about-path-body');
+      body.appendChild(el('span', 'about-path-kicker', String(index + 1).padStart(2, '0') + ' / NIAZ NET'));
+      body.appendChild(el('h3', '', item.title));
+      item.paragraphs.forEach(paragraph => body.appendChild(el('p', '', paragraph)));
+      card.appendChild(body);
+      pathways.appendChild(card);
+    });
+    pathwaysContainer.appendChild(pathways);
+    pathwaysSection.appendChild(pathwaysContainer);
+    page.appendChild(pathwaysSection);
+
+    const portfolioSection = (group, items) => {
+      const section = el('section', 'about-section');
+      const container = el('div', 'container');
+      container.appendChild(sectionHead(group));
+      const grid = el('div', 'about-portfolio');
+      items.forEach(item => grid.appendChild(el('div', 'about-portfolio-item', item)));
+      container.appendChild(grid);
+      section.appendChild(container);
+      return section;
+    };
+    page.appendChild(portfolioSection(groups[5], layout.industries || []));
+    page.appendChild(portfolioSection(groups[6], layout.additionalIndustries || []));
+
+    const processSection = el('section', 'about-section white');
+    const processContainer = el('div', 'container');
+    processContainer.appendChild(sectionHead(groups[7]));
+    const process = el('div', 'about-process');
+    getAboutItems(groups[7]).forEach((item, index) => {
+      const card = el('article', 'about-process-item');
+      card.append(el('strong', '', String(index + 1).padStart(2, '0')), el('h3', '', item.title));
+      item.paragraphs.forEach(paragraph => card.appendChild(el('p', '', paragraph)));
+      process.appendChild(card);
+    });
+    processContainer.appendChild(process);
+    processSection.appendChild(processContainer);
+    page.appendChild(processSection);
+
+    const mvvSection = el('section', 'about-section');
+    const mvvContainer = el('div', 'container');
+    mvvContainer.appendChild(sectionHead(groups[8]));
+    const mvv = el('div', 'about-mvv');
+    [groups[9], groups[10], groups[11]].forEach(group => {
+      if (!group) return;
+      const card = el('article', 'panel');
+      card.appendChild(el('h2', '', group.title));
+      const paragraph = (group.blocks || []).find(block => block.type === 'p');
+      if (paragraph) card.appendChild(el('p', '', paragraph.text));
+      mvv.appendChild(card);
+    });
+    mvvContainer.appendChild(mvv);
+    mvvSection.appendChild(mvvContainer);
+    page.appendChild(mvvSection);
+
+    const ctaGroup = groups[12];
+    const ctaSection = el('section', 'about-cta');
+    const ctaContainer = el('div', 'container about-cta-inner');
+    const ctaCopy = el('div');
+    ctaCopy.appendChild(el('h2', '', ctaGroup?.title || ''));
+    const ctaParagraph = (ctaGroup?.blocks || []).find(block => block.type === 'p');
+    if (ctaParagraph) ctaCopy.appendChild(el('p', '', ctaParagraph.text));
+    const actions = el('div', 'page-actions');
+    (record.links || []).filter(item => /become-our-partner|contact\.html/.test(item.href || '')).forEach(item => {
+      const rawPath = (item.href || '').split(/[?#]/)[0];
+      const href = item.href.startsWith('mailto:') ? item.href : linkTo(pageForLanguage(rawPath, lang));
+      const button = el('a', 'btn' + (/contact\.html/.test(rawPath) ? ' btn-outline' : ''), item.text || item.href);
+      button.href = href;
+      actions.appendChild(button);
+    });
+    ctaContainer.append(ctaCopy, actions);
+    ctaSection.appendChild(ctaContainer);
+    page.appendChild(ctaSection);
+    return page;
   }
 
   function renderFeatureNetwork(featureGroup, networkGroup, record) {
@@ -1178,9 +1381,16 @@
       document.head.appendChild(pageStyle);
     }
     const home = path === '/' || path === '/tr/' || path === '/es/' || path === '/fr/' || path === '/fa/';
+    const isAboutPage = path.endsWith('/about.html');
+    if (isAboutPage && !document.head.querySelector('link[href="/assets/css/about-page.css"]')) {
+      const pageStyle = document.createElement('link');
+      pageStyle.rel = 'stylesheet';
+      pageStyle.href = '/assets/css/about-page.css';
+      document.head.appendChild(pageStyle);
+    }
     app.replaceChildren();
     app.appendChild(renderHeader(lang, path));
-    app.appendChild(renderHero(record, path, lang));
+    app.appendChild(isAboutPage ? renderAboutHero(record, path, lang) : renderHero(record, path, lang));
     if (home) {
       app.appendChild(renderServiceGrid(lang));
       renderHomeSections(record, lang).forEach(section => app.appendChild(section));
@@ -1205,13 +1415,13 @@
       }
     } else {
       if (path.endsWith('/api-supply.html') || path === '/api-supply.html') app.appendChild(renderApiCatalog(lang));
-      app.appendChild(renderBlocks(record, lang));
+      app.appendChild(isAboutPage ? renderAboutPage(record, lang) : renderBlocks(record, lang));
     }
     if (path.endsWith('/contract-manufacturing.html')) app.appendChild(renderDownloads(lang, record));
     const form = renderForm(record, lang);
     if (form) app.appendChild(form);
     const links = renderUsefulLinks(record, lang);
-    if (links && !home) app.appendChild(links);
+    if (links && !home && !isAboutPage) app.appendChild(links);
     app.appendChild(renderFooter(lang));
     const wa = el('a', 'whatsapp whatsapp-float', COPY[lang].whatsapp);
     wa.setAttribute('aria-label', COPY[lang].whatsapp);
