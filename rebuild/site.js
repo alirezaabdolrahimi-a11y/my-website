@@ -400,7 +400,7 @@
     const isSportsPage = pagePath.endsWith('/sports-nutrition.html');
     const isInfantPage = pagePath.endsWith('/infant-formula.html');
     if (isSportsPage || isInfantPage) {
-      const brandSection = el('section', 'container service-content niaz-brand-network');
+      const brandSection = el('section', 'service-content niaz-brand-network');
       const brandPanel = el('div', 'panel');
       const heading = isSportsPage
         ? 'Sports Brand Experience & Portfolio'
