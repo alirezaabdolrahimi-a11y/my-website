@@ -204,9 +204,9 @@ function renderTable(table, lang, sportsPage = false) {
     '<tbody>' + displayRows.map(row => '<tr>' + row.map((value, index) => '<td' + (sportsPage && index === 2 ? ' class="bulk-whey-price"' : '') + '>' + escapeHtml(value) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
 }
 const sportsPageCopy = {
-  en:{brandTitle:'Sports Brand Experience & Portfolio',brandIntro:'Four spaces are reserved for selected sports brands and brand-partnership experience. Logos will be added after the preferred brands are confirmed.',brandLabel:'SPORTS BRAND LOGO ',pending:'To be added'},
-  tr:{brandTitle:'Spor Markası Deneyimi ve Portföyü',brandIntro:'Seçili spor markaları ve marka ortaklığı deneyimi için dört alan ayrılmıştır. Tercih edilen markalar onaylandığında logolar eklenecektir.',brandLabel:'SPOR MARKASI LOGOSU ',pending:'Eklenecek'},
-  fa:{brandTitle:'تجربه و سبد برندهای ورزشی',brandIntro:'چهار جایگاه برای برندهای ورزشی منتخب و سوابق همکاری با برندها در نظر گرفته شده است. نشان‌ها پس از تأیید برندهای موردنظر اضافه می‌شوند.',brandLabel:'نشان برند ورزشی ',pending:'در انتظار افزودن'}
+  en:{brandTitle:'Sports Brand Experience & Portfolio',brandIntro:'Four empty partner-card positions are reserved for future sports nutrition collaborations. No logos are displayed until the selected brands and logo-use permissions are confirmed.',brandLabel:'SPORTS BRAND LOGO ',pending:'To be added'},
+  tr:{brandTitle:'Spor Markası Deneyimi ve Portföyü',brandIntro:'Gelecekteki sporcu beslenmesi iş birlikleri için dört boş iş ortağı kartı alanı ayrılmıştır. Seçilen markalar ve logo kullanım izinleri onaylanana kadar hiçbir logo gösterilmez.',brandLabel:'SPOR MARKASI LOGOSU ',pending:'Eklenecek'},
+  fa:{brandTitle:'تجربه و سبد برندهای ورزشی',brandIntro:'چهار جایگاه خالی برای کارت همکاری با برندهای تغذیه ورزشی در آینده در نظر گرفته شده است. تا زمان تأیید برندها و دریافت مجوز استفاده از نشان‌ها، هیچ لوگویی نمایش داده نمی‌شود.',brandLabel:'نشان برند ورزشی ',pending:'در انتظار افزودن'}
 };
 function renderSportsPricing(record, lang, titleIndex, tableIndex) {
   const title = record.blocks[titleIndex]?.text || '';
