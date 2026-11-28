@@ -25,7 +25,7 @@
       results:'records',empty:'No matching materials found.',apiNote:'This is an indicative sourcing reference, not a statement of current stock, supplier approval or regulatory eligibility. Details must be confirmed for each enquiry.',
       downloads:'Download FCM/CMO enquiry forms',downloadLanguage:'Document language',html:'HTML form',rtf:'RTF form',
       send:'Prepare email enquiry',mailNote:'This form opens a pre-addressed email draft in your email application. It does not submit directly to a server.',
-      whatsapp:'WhatsApp',useful:'Useful links',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
+      whatsapp:'WhatsApp',useful:'Useful links',marketPages:'Market Profiles',limited:'Localized homepage content is available here; service detail pages may open in English where a translated route is not yet published.',
       faLimited:'صفحه اصلی، صفحات اصلی کسب‌وکار و مجموعه‌ای از خدمات منتخب به فارسی در دسترس‌اند؛ سایر خدمات تا زمان تکمیل ترجمه به انگلیسی نمایش داده می‌شوند.',
       notFound:'This page is not included in the current live-site inventory.',
       office:'Tehran Office',address:'Unit 603, 6th Floor, Marjan Tower, North Mofatteh St., Tehran, Iran',
@@ -38,7 +38,7 @@
       results:'kayıt',empty:'Eşleşen ürün bulunamadı.',apiNote:'Bu liste gösterge niteliğinde bir tedarik referansıdır; güncel stok, tedarikçi onayı veya mevzuata uygunluk beyanı değildir. Her talep için ayrıntılar ayrıca doğrulanmalıdır.',
       downloads:'FCM/CMO talep formlarını indir',downloadLanguage:'Belge dili',html:'HTML formu',rtf:'RTF formu',
       send:'E-posta talebi hazırla',mailNote:'Bu form, e-posta uygulamanızda info@niaznet.net adresine hazırlanmış bir taslak açar. Sunucuya doğrudan gönderim yapmaz.',
-      whatsapp:'WhatsApp',useful:'Faydalı bağlantılar',limited:'Yerelleştirilmiş ana sayfa mevcuttur; çevrilmiş bir hizmet sayfası bulunmadığında hizmet ayrıntıları İngilizce açılabilir.',
+      whatsapp:'WhatsApp',useful:'Faydalı bağlantılar',marketPages:'Pazar Profilleri',limited:'Yerelleştirilmiş ana sayfa mevcuttur; çevrilmiş bir hizmet sayfası bulunmadığında hizmet ayrıntıları İngilizce açılabilir.',
       faLimited:'Farsça içerik şu anda yalnızca Hakkımızda sayfasında mevcuttur. Diğer hizmet ayrıntıları çevirileri tamamlanana kadar İngilizce açılır.',
       notFound:'Bu sayfa mevcut canlı site envanterinde bulunmuyor.',
       office:'Tahran Ofisi',address:'Marjan Tower, 6. Kat, 603 numaralı ofis, Kuzey Mofatteh Caddesi, Tahran, İran',
@@ -51,7 +51,7 @@
       results:'رکورد',empty:'موردی مطابق جست‌وجو پیدا نشد.',apiNote:'این فهرست صرفاً مرجع اولیه تأمین است و به معنی موجودی فعلی، تأیید تأمین‌کننده یا مجاز بودن عرضه در بازار مقصد نیست. جزئیات هر درخواست باید جداگانه بررسی شود.',
       downloads:'دریافت فرم‌های درخواست FCM/CMO',downloadLanguage:'زبان مدرک',html:'فرم HTML',rtf:'فرم RTF',
       send:'آماده‌سازی ایمیل درخواست',mailNote:'این فرم یک پیش‌نویس ایمیل به نشانی info@niaznet.net باز می‌کند و اطلاعات را مستقیماً به سرور ارسال نمی‌کند.',
-      whatsapp:'واتساپ',useful:'پیوندهای مفید',limited:'صفحه اصلی بومی‌سازی‌شده در دسترس است؛ در صورت نبود صفحه خدمات ترجمه‌شده، جزئیات خدمات ممکن است به زبان انگلیسی باز شود.',
+      whatsapp:'واتساپ',useful:'پیوندهای مفید',marketPages:'صفحات بازار',limited:'صفحه اصلی بومی‌سازی‌شده در دسترس است؛ در صورت نبود صفحه خدمات ترجمه‌شده، جزئیات خدمات ممکن است به زبان انگلیسی باز شود.',
       faLimited:'صفحه اصلی، صفحات درباره ما، پروژه‌ها، تماس و همکاری و ۲۶ صفحه خدمات به زبان فارسی در دسترس هستند.',
       notFound:'این صفحه در فهرست فعلی صفحات آنلاین وجود ندارد.',
       office:'دفتر تهران',address:'ایران، تهران، خیابان مفتح شمالی، برج مرجان، طبقه ششم، واحد ۶۰۳',
@@ -64,7 +64,7 @@
       results:'registros',empty:'No se encontraron materiales.',apiNote:'Esta lista es una referencia orientativa de abastecimiento; no confirma existencias, aprobación del proveedor ni elegibilidad regulatoria. Cada solicitud debe verificarse individualmente.',
       downloads:'Descargar formularios de consulta FCM/CMO',downloadLanguage:'Idioma del documento',html:'Formulario HTML',rtf:'Formulario RTF',
       send:'Preparar consulta por correo',mailNote:'Este formulario abre un borrador de correo dirigido a info@niaznet.net. No envía los datos directamente a un servidor.',
-      whatsapp:'WhatsApp',useful:'Enlaces útiles',limited:'La página de inicio está traducida; las páginas de detalle de servicios pueden abrirse en inglés cuando no existe una ruta traducida.',
+      whatsapp:'WhatsApp',useful:'Enlaces útiles',marketPages:'Perfiles de mercado',limited:'La página de inicio está traducida; las páginas de detalle de servicios pueden abrirse en inglés cuando no existe una ruta traducida.',
       faLimited:'El contenido en persa está disponible actualmente solo para la página Acerca de nosotros.',
       notFound:'Esta página no figura en el inventario actual del sitio.',
       office:'Oficina de Teherán',address:'Unidad 603, 6.º piso, Marjan Tower, North Mofatteh St., Teherán, Irán',
@@ -77,7 +77,7 @@
       results:'entrées',empty:'Aucun produit correspondant.',apiNote:'Cette liste constitue une référence indicative d’approvisionnement ; elle ne confirme ni stock actuel, ni qualification du fournisseur, ni admissibilité réglementaire. Chaque demande doit être vérifiée.',
       downloads:'Télécharger les formulaires FCM/CMO',downloadLanguage:'Langue du document',html:'Formulaire HTML',rtf:'Formulaire RTF',
       send:'Préparer une demande par e-mail',mailNote:'Ce formulaire ouvre un brouillon adressé à info@niaznet.net dans votre application e-mail. Il ne transmet pas directement les données à un serveur.',
-      whatsapp:'WhatsApp',useful:'Liens utiles',limited:'La page d’accueil est traduite ; les pages détaillées des services peuvent s’ouvrir en anglais lorsqu’une traduction n’est pas publiée.',
+      whatsapp:'WhatsApp',useful:'Liens utiles',marketPages:'Profils de marché',limited:'La page d’accueil est traduite ; les pages détaillées des services peuvent s’ouvrir en anglais lorsqu’une traduction n’est pas publiée.',
       faLimited:'Le contenu en persan est actuellement disponible uniquement pour la page À propos.',
       notFound:'Cette page ne figure pas dans l’inventaire actuel du site.',
       office:'Bureau de Téhéran',address:'Unité 603, 6e étage, Marjan Tower, North Mofatteh St., Téhéran, Iran',
@@ -975,27 +975,32 @@
   }
   function renderUsefulLinks(record, lang) {
     const t = COPY[lang] || COPY.en;
-    const candidates = (record.links || []).filter(x => {
-      const href = x.href || '';
+    const candidates = (record.links || []).filter(item => {
+      const href = item.href || '';
       const isDownload = href.includes('/downloads/') || href.startsWith('downloads/');
       if (isDownload && record.path.endsWith('/contract-manufacturing.html')) return false;
       return href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') ||
         href.startsWith('http://') || href.startsWith('https://') ||
-        isDownload || /\.html(?:$|[?#])/i.test(href);
+        isDownload || /\\.html(?:$|[?#])/i.test(href);
     });
     const seen = new Set();
-    const filtered = candidates.filter(x => {
-      if (seen.has(x.href)) return false;
-      seen.add(x.href);
+    const filtered = candidates.filter(item => {
+      if (seen.has(item.href)) return false;
+      seen.add(item.href);
       return true;
     });
     if (!filtered.length) return null;
-    const section = el('section', 'section');
+
+    const isAboutPage = /(?:^|\\/)about\\.html$/.test(record.path);
+    const isMarketLink = item => /\\/(?:kenya-market|south-africa-market|international-markets)\\.html(?:$|[?#])/.test(item.href || '');
+    const marketLinks = isAboutPage ? filtered.filter(isMarketLink) : [];
+    const otherLinks = isAboutPage ? filtered.filter(item => !isMarketLink(item)) : filtered;
+    const section = el('section', isAboutPage ? 'section about-market-links' : 'section');
     const container = el('div', 'container');
     const panel = el('div', 'content-panel');
-    panel.appendChild(el('h2', '', t.useful));
-    filtered.slice(0,30).forEach(item => {
-      const a = el('a', 'content-link', item.text || item.href);
+
+    const appendLink = (item, marketLink = false) => {
+      const a = el('a', marketLink ? 'content-link about-market-link' : 'content-link', item.text || item.href);
       if (item.href.startsWith('#')) {
         a.href = linkTo(record.path, item.href);
       } else if (item.href.startsWith('mailto:') || item.href.startsWith('tel:')) {
@@ -1013,9 +1018,9 @@
           record.path.startsWith('/fa/') ? '/fa/' : '/';
         const rawPath = item.href.split(/[?#]/)[0];
         const hash = item.href.includes('#') ? item.href.slice(item.href.indexOf('#')) : '';
-        let href = rawPath.startsWith('/') ? rawPath : currentPrefix + rawPath.replace(/^\.\//,'');
+        let href = rawPath.startsWith('/') ? rawPath : currentPrefix + rawPath.replace(/^\\.\\//, '');
         if (href === '/index.html') href = '/';
-        if (/^\/(tr|es|fr)\/index\.html$/.test(href)) href = href.replace('index.html','');
+        if (/^\\/(tr|es|fr)\\/index\\.html$/.test(href)) href = href.replace('index.html', '');
         if (href === '/fa/index.html') href = '/fa/';
         href = normalizePath(href);
         if (!pageMap.has(href)) {
@@ -1025,7 +1030,20 @@
         a.href = linkTo(href, hash);
       }
       panel.appendChild(a);
-    });
+    };
+
+    if (isAboutPage && marketLinks.length) {
+      panel.appendChild(el('h2', '', t.marketPages || t.useful));
+      marketLinks.forEach(item => appendLink(item, true));
+      if (otherLinks.length) {
+        panel.appendChild(el('h2', '', t.useful));
+        otherLinks.slice(0, 30 - marketLinks.length).forEach(item => appendLink(item));
+      }
+    } else {
+      panel.appendChild(el('h2', '', t.useful));
+      filtered.slice(0, 30).forEach(item => appendLink(item));
+    }
+
     container.appendChild(panel);
     section.appendChild(container);
     return section;
