@@ -440,7 +440,7 @@ function renderServiceBackLink(record) {
     attr(languageHome(lang) + '#services') + '">' + escapeHtml(labels[lang] || labels.en) + '</a></div>';
 }
 
-function pageHtml(record, canonical, titleCounts, descriptionCounts) {
+function pageHtml(record, canonical, canonicalCounts, titleCounts, descriptionCounts) {
   const lang = record.lang || 'en';
   const description = pageDescription(record, descriptionCounts);
   if (record.redirectTo) {
@@ -498,7 +498,7 @@ function build() {
     const file = outputPath(record.path);
     const canonical = canonicalFor(record, canonicalCounts);
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, pageHtml(record, canonical, titleCounts, descriptionCounts), 'utf8');
+    fs.writeFileSync(file, pageHtml(record, canonical, canonicalCounts, titleCounts, descriptionCounts), 'utf8');
   }
   const sitemapRecords = records.filter(record => !record.redirectTo);
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>' +
