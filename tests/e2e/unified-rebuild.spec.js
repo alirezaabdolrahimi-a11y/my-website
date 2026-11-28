@@ -44,8 +44,12 @@ test.describe('NIAZ NET unified rebuild preview', () => {
       const html = fs.readFileSync(path.join(root, file), 'utf8');
       for (const marketPath of marketPaths) expect(html).toContain('href="' + marketPath + '"');
     }
-    for (const slug of ['international-markets', 'south-africa-market', 'kenya-market']) {
-      expect(fs.existsSync(path.join(root, slug + '.html'))).toBe(true);
+    for (const file of [
+      'international-markets.html', 'south-africa-market.html', 'kenya-market.html',
+      'tr/international-markets.html', 'tr/south-africa-market.html', 'tr/kenya-market.html',
+      'fa/international-markets.html', 'fa/south-africa-market.html', 'fa/kenya-market.html'
+    ]) {
+      expect(fs.existsSync(path.join(root, file))).toBe(true);
     }
   });
 
