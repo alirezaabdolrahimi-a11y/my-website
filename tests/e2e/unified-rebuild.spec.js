@@ -421,11 +421,11 @@ test.describe('NIAZ NET unified rebuild preview', () => {
 
   test('action buttons and service tiles retain the original raised treatment', async ({ page }) => {
     await page.goto('/rebuild/');
-    const button = page.locator('.home-cta .btn').first();
+    const button = page.locator('.home-cta:visible .btn:visible').first();
     await expect(button).toBeVisible();
     const shadow = await button.evaluate(el => getComputedStyle(el).boxShadow);
     expect(shadow).not.toBe('none');
-    const card = page.locator('.services-grid .service-card').nth(1);
+    const card = page.locator('.services-grid > .service-card:not(.import-export-card):visible').first();
     const box = await card.boundingBox();
     expect(box.width).toBeGreaterThan(180);
     expect(box.width).toBeLessThan(200);
