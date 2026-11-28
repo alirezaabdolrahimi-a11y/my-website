@@ -356,7 +356,7 @@ function renderForm(record) {
   }).join('');
   return '<section class="section white"><div class="container"><div class="content-panel"><h2>' +
     escapeHtml(record.formTitle || 'Send an Enquiry') + '</h2>' + (record.formIntro ? '<p>' + escapeHtml(record.formIntro) + '</p>' : '') +
-    '<form class="form-grid" action="mailto:info@niaznet.net" method="get">' + fields +
+    '<form id="enquiry-form" class="form-grid" action="mailto:info@niaznet.net" method="get">' + fields +
     '<div class="form-field full"><button class="btn" type="submit">Send an Enquiry</button></div></form></div></div></section>';
 }
 function renderLinks(record) {
@@ -378,7 +378,7 @@ function renderLinks(record) {
       ? raw
       : resolvePageLink(record, rawPath) + hash;
     const label = String(item.text || raw).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
-    const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && /(?:contact|become-our-partner)\.html$/i.test(rawPath);
+    const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && (raw.startsWith('#enquiry-form') || /(?:contact|become-our-partner)\.html$/i.test(rawPath));
     const linkClass = marketLink ? 'content-link about-market-link' : formAction ? 'btn btn-gold-cta' : 'content-link';
     return '<a class="' + linkClass + '" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
   };
