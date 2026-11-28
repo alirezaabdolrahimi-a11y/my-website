@@ -1,24 +1,24 @@
 {
   "home": [
-    "/images/Home page/00ALL.png",
-    "/images/Home page/01brand.png",
-    "/images/Home page/02sports.png",
-    "/images/Home page/03infant formula.png",
-    "/images/Home page/04CBD.png",
-    "/images/Home page/05 masport.png",
-    "/images/Home page/06PET.png",
-    "/images/Home page/07Api.png",
-    "/images/Home page/08filler.png",
-    "/images/Home page/09About us.png",
-    "/images/Home page/10Sport.png",
-    "/images/Home page/11Infant.png",
-    "/images/Home page/12Cosmo.png",
-    "/images/Home page/13Pet.png",
-    "/images/Home page/14CBD.png",
-    "/images/Home page/15Cosmo.png",
-    "/images/Home page/16About us.png",
-    "/images/Home page/17Sport.png",
-    "/images/Home page/18Infant.png"
+    "/images/optimized-slides/00ALL.webp",
+    "/images/optimized-slides/01brand.webp",
+    "/images/optimized-slides/02sports.webp",
+    "/images/optimized-slides/03infant formula.webp",
+    "/images/optimized-slides/04CBD.webp",
+    "/images/optimized-slides/05 masport.webp",
+    "/images/optimized-slides/06PET.webp",
+    "/images/optimized-slides/07Api.webp",
+    "/images/optimized-slides/08filler.webp",
+    "/images/optimized-slides/09About us.webp",
+    "/images/optimized-slides/10Sport.webp",
+    "/images/optimized-slides/11Infant.webp",
+    "/images/optimized-slides/12Cosmo.webp",
+    "/images/optimized-slides/13Pet.webp",
+    "/images/optimized-slides/14CBD.webp",
+    "/images/optimized-slides/15Cosmo.webp",
+    "/images/optimized-slides/16About us.webp",
+    "/images/optimized-slides/17Sport.webp",
+    "/images/optimized-slides/18Infant.webp"
   ],
   "about": [
     "/images/About us/01About us.png",
@@ -73,4 +73,4 @@
     "/images/BRAND/02BRAND.png",
     "/images/BRAND/FA_About Sample.png"
   ]
-}
+}\n
