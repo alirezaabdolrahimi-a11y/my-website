@@ -377,8 +377,8 @@ function renderLinks(record) {
     const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
       ? raw
       : resolvePageLink(record, rawPath) + hash;
-    const label = String(item.text || raw).toLowerCase();
-    const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|تماس|همکاری|iletişim|iş ortağımız|equipo|partenaire)/i.test(label) && /(?:contact|become-our-partner)\.html$/i.test(rawPath);
+    const label = String(item.text || raw).normalize('NFD').replace(/\\p{M}/gu, '').toLowerCase();
+    const formAction = !marketLink && /(?:contact|discuss|partner|business enquiry|enquiry|request|talep|demande|solicitud|تماس|درخواست|همکاری|iletisim|is ortagimiz|equipo|partenaire|api bilgi)/i.test(label) && /(?:contact|become-our-partner)\.html$/i.test(rawPath);
     const linkClass = marketLink ? 'content-link about-market-link' : formAction ? 'btn btn-gold-cta' : 'content-link';
     return '<a class="' + linkClass + '" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
   };
