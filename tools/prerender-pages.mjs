@@ -24,11 +24,11 @@ const navLabels = {
   fr:['Accueil','À propos','Services','Partenaires','Projets','Actualités','Contact','Nous contacter']
 };
 const labels = {
-  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',importExportLabel:'IMPORT / EXPORT',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
-  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',importExportLabel:'واردات / صادرات',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
-  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',importExportLabel:'İTHALAT / İHRACAT',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
-  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
-  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',importExportLabel:'IMPORT / EXPORT',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
+  en:{tagline:'Connecting markets worldwide',services:'Our Services',vip:'VIP SERVICES',importExportLabel:'IMPORT / EXPORT',contact:'Contact Our Team',partner:'Become Our Partner',useful:'Useful Links',marketPages:'Market Profiles',address:'Tehran Office',email:'Email',whatsapp:'WhatsApp'},
+  fa:{tagline:'پیونددهنده بازارهای جهان',services:'خدمات ما',vip:'خدمات ویژه',importExportLabel:'واردات / صادرات',contact:'تماس با تیم ما',partner:'همکاری با ما',useful:'پیوندهای مفید',marketPages:'صفحات بازار',address:'دفتر تهران',email:'ایمیل',whatsapp:'واتساپ'},
+  tr:{tagline:'Dünya pazarlarını birbirine bağlıyoruz',services:'Hizmetlerimiz',vip:'ÖZEL HİZMETLER',importExportLabel:'İTHALAT / İHRACAT',contact:'Ekibimizle İletişime Geçin',partner:'İş Ortağımız Olun',useful:'Faydalı Bağlantılar',marketPages:'Pazar Profilleri',address:'Tahran Ofisi',email:'E-posta',whatsapp:'WhatsApp'},
+  es:{tagline:'Conectando mercados en todo el mundo',services:'Nuestros servicios',vip:'SERVICIOS VIP',importExportLabel:'IMPORTACIÓN / EXPORTACIÓN',contact:'Contactar con nuestro equipo',partner:'Conviértase en socio',useful:'Enlaces útiles',marketPages:'Perfiles de mercado',address:'Oficina de Teherán',email:'Correo',whatsapp:'WhatsApp'},
+  fr:{tagline:'Connecter les marchés du monde entier',services:'Nos services',vip:'SERVICES VIP',importExportLabel:'IMPORT / EXPORT',contact:'Contacter notre équipe',partner:'Devenir partenaire',useful:'Liens utiles',marketPages:'Profils de marché',address:'Bureau de Téhéran',email:'E-mail',whatsapp:'WhatsApp'}
 };
 function normalize(value) {
   let result = String(value || '/').replace(/\/+/g, '/');
@@ -259,19 +259,35 @@ function renderForm(record) {
     '<div class="form-field full"><button class="btn" type="submit">Send an Enquiry</button></div></form></div></div></section>';
 }
 function renderLinks(record) {
-  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || /\.html(?:$|[?#])/i.test(item.href)));
+  const links = (record.links || []).filter(item => item.href && (item.href.startsWith('/') || item.href.startsWith('#') || item.href.startsWith('mailto:') || item.href.startsWith('tel:') || item.href.includes('.html')));
   if (!links.length) return '';
-  const prefix = record.path.startsWith('/tr/') ? '/tr/' : record.path.startsWith('/fa/') ? '/fa/' : record.path.startsWith('/es/') ? '/es/' : record.path.startsWith('/fr/') ? '/fr/' : '/';
-  return '<section class="section"><div class="container"><div class="content-panel"><h2>' + escapeHtml((labels[record.lang] || labels.en).useful) + '</h2>' +
-    links.slice(0, 30).map(item => {
-      const raw = item.href;
-      const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
-      const rawPath = raw.split(/[?#]/)[0];
-      const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
-        ? raw
-        : resolvePageLink(record, rawPath) + hash;
-      return '<a class="content-link" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
-    }).join('') + '</div></div></section>';
+  const isAboutPage = record.path.endsWith('/about.html');
+  const isMarketLink = item => {
+    const path = (item.href || '').split(/[?#]/)[0];
+    return ['/kenya-market.html', '/south-africa-market.html', '/international-markets.html']
+      .some(suffix => path.endsWith(suffix));
+  };
+  const marketLinks = isAboutPage ? links.filter(isMarketLink) : [];
+  const otherLinks = isAboutPage ? links.filter(item => !isMarketLink(item)) : links;
+  const renderItem = (item, marketLink = false) => {
+    const raw = item.href;
+    const hash = raw.includes('#') ? raw.slice(raw.indexOf('#')) : '';
+    const rawPath = raw.split(/[?#]/)[0];
+    const href = raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('http') || raw.startsWith('#')
+      ? raw
+      : resolvePageLink(record, rawPath) + hash;
+    return '<a class="content-link' + (marketLink ? ' about-market-link' : '') + '" href="' + attr(href) + '">' + escapeHtml(item.text || raw) + '</a>';
+  };
+  const marketSection = isAboutPage && marketLinks.length
+    ? '<h2>' + escapeHtml((labels[record.lang] || labels.en).marketPages) + '</h2>' + marketLinks.slice(0, 3).map(item => renderItem(item, true)).join('')
+    : '';
+  const quickSection = otherLinks.length
+    ? (marketSection ? '<h2>' + escapeHtml((labels[record.lang] || labels.en).useful) + '</h2>' : '') + otherLinks.slice(0, marketSection ? 27 : 30).map(item => renderItem(item)).join('')
+    : '';
+  if (!marketSection && !quickSection) return '';
+  return '<section class="section' + (marketSection ? ' about-market-links' : '') + '"><div class="container"><div class="content-panel">' +
+    (marketSection || '<h2>' + escapeHtml((labels[record.lang] || labels.en).useful) + '</h2>') + quickSection +
+    '</div></div></section>';
 }
 function renderFooter(record) {
   const lang = record.lang || 'en';
